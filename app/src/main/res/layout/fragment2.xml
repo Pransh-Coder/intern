@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/imageView8"
+        android:src="@drawable/icons_mascot_20" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/textView4"
+        android:gravity="center"
+        android:text="Rs.299 off"
+        android:background="@color/yellow"
+        />
+
+    <TextView
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:text="Beauty parlour"
+        android:textAllCaps="true"
+        android:layout_marginTop="100dp"
+        android:textStyle="bold" />
+</RelativeLayout>
