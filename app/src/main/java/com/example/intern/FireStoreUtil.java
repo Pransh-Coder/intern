@@ -8,7 +8,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
-public class AskExpertUtil {
+public class FireStoreUtil {
 	public static String QUERY_TYPE_UNRESOLVED = "0";
 	public static String QUERY_TYPE_RESOLVED = "1";
 	public static String USER_COLLECTION_NAME = "users";
@@ -19,7 +19,7 @@ public class AskExpertUtil {
 	
 	private static FirebaseFirestore getDbReference(Context context){
 		if(dbReference == null){
-			synchronized (AskExpertUtil.class){
+			synchronized (FireStoreUtil.class){
 				if(dbReference == null){
 					initialiseFirebase(context);
 					dbReference = FirebaseFirestore.getInstance();
@@ -37,7 +37,7 @@ public class AskExpertUtil {
 	
 	public static DocumentReference initialiseUser(Context context, String userID){
 		if(userDocumentReference == null){
-			synchronized (AskExpertUtil.class){
+			synchronized (FireStoreUtil.class){
 				if(userDocumentReference == null){
 					userDocumentReference = getDbReference(context).collection(USER_COLLECTION_NAME).document(userID);
 				}
@@ -49,7 +49,7 @@ public class AskExpertUtil {
 	public static CollectionReference getQueryCollectionReference(Context context, String UID){
 		if(queryCollectionReference == null){
 			userDocumentReference = initialiseUser(context, UID);
-			synchronized (AskExpertUtil.class){
+			synchronized (FireStoreUtil.class){
 				if(queryCollectionReference == null){
 					queryCollectionReference = userDocumentReference.collection(QUERY_COLLECTION_NAME);
 				}
