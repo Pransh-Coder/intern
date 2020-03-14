@@ -19,6 +19,9 @@
         <activity android:name=".Register_asParent_Activity" />
         <activity android:name=".Register_asChild_Activity" />
         <activity android:name=".RegistrationActivity" />
+        <activity android:name=".Gifts"/>
+        <activity android:name=".Holiday"/>
+        <activity android:name=".Lifestyle"/>
         <activity android:name=".Login_Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
