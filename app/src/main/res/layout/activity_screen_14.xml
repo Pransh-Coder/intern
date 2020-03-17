@@ -8,7 +8,7 @@
     android:background="@drawable/background">
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/iv_back_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/icons_mascot_48" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/iv_home_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/icons_mascot_49" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iv_lifestyle_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/iv_search_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
@@ -70,7 +70,7 @@
         app:srcCompat="@drawable/icons_mascot_50" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/iv_notif_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
@@ -82,7 +82,7 @@
         app:srcCompat="@drawable/icons_mascot_47" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/iv_salon_image"
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:src="@drawable/icons_mascot_23"
@@ -94,7 +94,7 @@
         />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_290_off"
         android:layout_width="100dp"
         android:layout_height="25dp"
         android:background="@color/yellow"
@@ -107,7 +107,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_350_off"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="center"
