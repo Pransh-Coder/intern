@@ -41,7 +41,7 @@
         app:srcCompat="@drawable/icons_mascot_09" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_lifestyle"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
 		android:textSize="15dp"
