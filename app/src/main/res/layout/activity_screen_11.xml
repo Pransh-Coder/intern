@@ -33,17 +33,19 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
+        app:layout_constraintVertical_bias="0.2"
         app:srcCompat="@drawable/icons_mascot_09" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+		android:textSize="15dp"
 		android:gravity="center"
-		android:textSize="18sp"
         android:text="Lifestyle"
         android:textAllCaps="true"
         android:textStyle="bold"
@@ -77,47 +79,34 @@
 		android:layout_height="150dp"
 		android:layout_marginTop="10dp"
 		android:orientation="vertical"
-		app:layout_constraintEnd_toStartOf="@id/parlor_layout"
 		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toStartOf="@id/parlor_layout"
 		app:layout_constraintTop_toBottomOf="@id/salon_layout">
 		<TextView
-			android:id="@+id/tv_250_off"
 			android:layout_width="100dp"
 			android:layout_height="20dp"
-			android:background="@color/yellow"
+			android:id="@+id/tv_250_off"
 			android:gravity="center"
 			android:text="Rs.250 off"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
+			android:background="@color/yellow"
 			/>
 	
 		<ImageView
-			android:id="@+id/iv_fitness_image"
 			android:layout_width="100dp"
 			android:layout_height="80dp"
-			android:src="@drawable/icons_mascot_22"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			android:id="@+id/iv_fitness_image"
+			android:src="@drawable/icons_mascot_22" />
 	
 		<TextView
-			android:id="@+id/tv_fitness"
 			android:layout_width="100dp"
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:text="fitness"
 			android:textAllCaps="true"
 			android:textStyle="bold"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
+			android:id="@+id/tv_fitness"
 			/>
 	</LinearLayout>
-
-    
-
-
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -127,127 +116,102 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 	
 	<LinearLayout
-		android:id="@+id/salon_layout"
-		android:layout_width="wrap_content"
-		android:layout_height="150dp"
 		android:layout_marginTop="10dp"
 		android:orientation="vertical"
 		app:layout_constraintEnd_toStartOf="@id/parlor_layout"
 		app:layout_constraintStart_toStartOf="parent"
+		android:id="@+id/salon_layout"
+		android:layout_width="wrap_content"
+		android:layout_height="150dp"
 		app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent">
 		<TextView
-			android:id="@+id/tv_500_off"
 			android:layout_width="100dp"
 			android:layout_height="20dp"
-			android:background="@color/yellow"
+			android:id="@+id/tv_500_off"
 			android:gravity="center"
 			android:text="Rs.500 off"
-			app:layout_constraintEnd_toStartOf="@id/tv_290_off"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent"
+			android:background="@color/yellow"
 			/>
 		<ImageView
-			android:id="@+id/iv_salon_image"
 			android:layout_width="100dp"
 			android:layout_height="80dp"
+			android:id="@+id/iv_salon_image"
 			android:src="@drawable/icons_mascot_19"
-			app:layout_constraintEnd_toStartOf="@id/iv_parlor_image"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/tv_500_off"/>
+			/>
 		<TextView
-			android:id="@+id/tv_salon"
 			android:layout_width="100dp"
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:text="Salon"
 			android:textAllCaps="true"
 			android:textStyle="bold"
-			app:layout_constraintEnd_toStartOf=""
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"/>
+			android:id="@+id/tv_salon" />
 	</LinearLayout>
 	
 	<LinearLayout
-		android:id="@+id/parlor_layout"
 		android:layout_width="wrap_content"
 		android:layout_height="150dp"
 		android:layout_marginTop="10dp"
 		android:orientation="vertical"
+		android:id="@+id/parlor_layout"
 		app:layout_constraintEnd_toStartOf="@id/spa_layout"
 		app:layout_constraintStart_toEndOf="@id/salon_layout"
 		app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent">
 		<TextView
-			android:id="@+id/tv_290_off"
 			android:layout_width="100dp"
 			android:layout_height="20dp"
-			android:background="@color/yellow"
+			android:id="@+id/tv_290_off"
 			android:gravity="center"
 			android:text="Rs.290 off"
-			app:layout_constraintEnd_toStartOf="@id/tv_350_off"
-			app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent"
+			android:background="@color/yellow"
 			/>
 		<ImageView
-			android:id="@+id/iv_parlor_image"
 			android:layout_width="100dp"
 			android:layout_height="80dp"
+			android:id="@+id/iv_parlor_image"
 			android:src="@drawable/icons_mascot_20"
-			app:layout_constraintEnd_toStartOf="@id/iv_spa_image"
-			app:layout_constraintTop_toBottomOf="@id/tv_290_off"
 			/>
 		<TextView
-			android:id="@+id/tv_parlor"
 			android:layout_width="100dp"
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:text="Beauty parlour"
+			android:id="@+id/tv_parlor"
 			android:textAllCaps="true"
-			android:textStyle="bold"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"/>
+			android:textStyle="bold"/>
 	</LinearLayout>
 	
 	<LinearLayout
 		android:id="@+id/spa_layout"
 		android:layout_width="wrap_content"
 		android:layout_height="150dp"
-		android:layout_marginTop="10dp"
 		android:orientation="vertical"
+		android:layout_marginTop="10dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toEndOf="@id/parlor_layout"
 		app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent">
 		<TextView
-			android:id="@+id/tv_350_off"
 			android:layout_width="100dp"
 			android:layout_height="20dp"
-			android:background="@color/yellow"
+			android:id="@+id/tv_350_off"
 			android:gravity="center"
 			android:text="Rs.350 off"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
+			android:background="@color/yellow"
 			/>
 		
 		<ImageView
-			android:id="@+id/iv_spa_image"
 			android:layout_width="100dp"
 			android:layout_height="80dp"
-			android:src="@drawable/icons_mascot_21"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			android:id="@+id/iv_spa_image"
+			android:src="@drawable/icons_mascot_21" />
 		<TextView
-			android:id="@+id/tv_spa"
 			android:layout_width="100dp"
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:text="Spa"
 			android:textAllCaps="true"
 			android:textStyle="bold"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintHorizontal_bias="0.9"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"/>
+			android:id="@+id/tv_spa"/>
 	</LinearLayout>
 	
 	<androidx.constraintlayout.widget.Guideline
