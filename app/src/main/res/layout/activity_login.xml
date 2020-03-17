@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<Button
+		android:id="@+id/btn_login_fb"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="15dp"
+		android:background="#3B5999"
+		android:drawableStart="@drawable/ic_facebook_round"
+		android:drawablePadding="10dp"
+		android:padding="10dp"
+		android:text="Facebook"
+		android:textAlignment="center"
+		android:textAllCaps="false"
+		android:textColor="@android:color/white"
+		app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
+		app:layout_constraintLeft_toRightOf="@id/ver_guide_35_percent"
+		app:layout_constraintRight_toLeftOf="@id/ver_guide_65_percent"/>
+	
+	<Button
+		android:id="@+id/btn_google_login"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp"
+		android:background="@color/colorAccent"
+		android:drawableLeft="@drawable/ic_google_square_foreground"
+		android:drawablePadding="10dp"
+		android:text="Google"
+		android:textAlignment="center"
+		android:textAllCaps="false"
+		android:textColor="@android:color/white"
+		app:layout_constraintLeft_toRightOf="@id/ver_guide_35_percent"
+		app:layout_constraintRight_toLeftOf="@id/ver_guide_65_percent"
+		app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent"/>
+	
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		android:background="#808080"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+	
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@android:color/white"
+		android:fontFamily="monospace"
+		android:padding="15dp"
+		android:text="OR"
+		android:textSize="30sp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+	
+	<Button
+		android:id="@+id/btn_login_phone"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="#808080"
+		android:drawableStart="@android:drawable/ic_menu_call"
+		android:drawablePadding="10dp"
+		android:text="Login using Phone"
+		android:textAlignment="center"
+		android:textAllCaps="false"
+		android:textColor="@android:color/white"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/hor_guide_60_percent"/>
+		
+	
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/ver_guide_35_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.35"/>
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/ver_guide_65_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.65"/>
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/hor_guide_60_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.6"/>
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/hor_guide_30_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.3"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

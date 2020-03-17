@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':razorpay-android-3.8.8'
 rootProject.name='intern'
