@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="5dp">
+	<TextView
+		android:id="@+id/tv_useless"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Name on Card"
+		android:textSize="18dp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+	<EditText
+		android:id="@+id/et_name_on_card"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:background="@drawable/rectangle_outline"
+		android:elevation="8dp"
+		android:hint="Ex : PS"
+		android:inputType="textCapCharacters"
+		android:maxLength="22"
+		android:padding="10dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_useless"/>
+	
+	<TextView
+		android:id="@+id/tv_useless2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:text="Card Number"
+		android:textSize="18dp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/et_name_on_card"/>
+	<EditText
+		android:id="@+id/et_card_number"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:background="@drawable/rectangle_outline"
+		android:digits="1234567890 "
+		android:elevation="8dp"
+		android:hint="Ex : 4XXX XXXX XXXX XXX0"
+		android:inputType="number"
+		android:maxLength="19"
+		android:padding="10dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_useless2"/>
+	
+	<TextView
+		android:id="@+id/tv_useless3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:text="Expiry Date"
+		android:textSize="18dp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/et_card_number"/>
+	<EditText
+		android:id="@+id/et_expiry_month"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:background="@drawable/rectangle_outline"
+		android:elevation="8dp"
+		android:hint="MM"
+		android:inputType="date"
+		android:maxLength="2"
+		android:padding="10dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toLeftOf="@id/tv_slash"
+		app:layout_constraintTop_toBottomOf="@id/tv_useless3"/>
+	<TextView
+		android:id="@+id/tv_slash"
+		android:layout_width="wrap_content"
+		android:layout_height="0dp"
+		android:gravity="center"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp"
+		android:text="/"
+		android:textAlignment="gravity"
+		android:textSize="20dp"
+		app:layout_constraintBottom_toBottomOf="@id/et_expiry_month"
+		app:layout_constraintLeft_toRightOf="@id/et_expiry_month"
+		app:layout_constraintRight_toLeftOf="@id/et_expiry_year"
+		app:layout_constraintTop_toTopOf="@id/et_expiry_month"/>
+	<EditText
+		android:id="@+id/et_expiry_year"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:background="@drawable/rectangle_outline"
+		android:elevation="8dp"
+		android:hint="YY"
+		android:inputType="date"
+		android:maxLength="2"
+		android:padding="10dp"
+		app:layout_constraintLeft_toRightOf="@id/tv_slash"
+		app:layout_constraintRight_toLeftOf="@id/ver_guide_50_percent"
+		app:layout_constraintTop_toBottomOf="@id/tv_useless3"/>
+	
+	<TextView
+		android:id="@+id/tv_useless4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:text="CVV"
+		android:textSize="18dp"
+		app:layout_constraintStart_toEndOf="@id/ver_guide_60_percent"
+		app:layout_constraintTop_toBottomOf="@id/et_card_number"/>
+	<EditText
+		android:id="@+id/et_cvv"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:background="@drawable/rectangle_outline"
+		android:digits="1234567890"
+		android:elevation="8dp"
+		android:hint="Ex : 123"
+		android:inputType="number"
+		android:maxLength="3"
+		android:padding="10dp"
+		app:layout_constraintLeft_toRightOf="@id/ver_guide_60_percent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_useless4"/>
+	
+	<Button
+		android:id="@+id/btn_pay_now"
+		android:layout_width="150dp"
+		android:layout_height="50dp"
+		android:layout_marginTop="25dp"
+		android:background="@drawable/background_button_sign_in"
+		android:text="PAY NOW"
+		android:textSize="18dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/et_cvv"/>
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/ver_guide_50_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.5"/>
+	
+	<TextView
+		android:id="@+id/tv_useless_power"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		android:text="Powered By RazorPay"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toLeftOf="@id/iv_useless"
+		app:layout_constraintTop_toBottomOf="@+id/btn_pay_now" />
+	
+	<ImageView
+		android:id="@+id/iv_useless"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/rzp_name_logo"
+		app:layout_constraintBottom_toBottomOf="@id/tv_useless_power"
+		app:layout_constraintLeft_toRightOf="@id/tv_useless_power"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="@id/tv_useless_power"/>
+<!--	<androidx.cardview.widget.CardView
+		android:id="@+id/cv_useless2"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toBottomOf="@id/tv_useless2"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:cardElevation="8dp">
+		<EditText
+			android:layout_marginTop="10dp"
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:maxLength="22"
+			android:hint="Ex : 44XX XXXX XXXX XX00"
+			android:background="@drawable/rectangle_outline"	/>
+	</androidx.cardview.widget.CardView>
+	<TextView
+		android:id="@+id/tv_useless3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/cv_useless2"
+		android:text="Expiry Date"
+		android:textSize="18dp"/>
+	
+	<androidx.cardview.widget.CardView
+		android:id="@+id/cv_useless3"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		app:layout_constraintRight_toLeftOf="@id/ver_guide_40_percent"
+		app:layout_constraintTop_toBottomOf="@id/tv_useless3"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:cardElevation="8dp">
+		<EditText
+			android:layout_marginTop="10dp"
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:maxLength="4"
+			android:hint="Ex : 04/22"
+			android:background="@drawable/rectangle_outline"	/>
+	</androidx.cardview.widget.CardView>
+	
+	<TextView
+		android:id="@+id/tv_useless4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp"
+		app:layout_constraintStart_toEndOf="@id/ver_guide_60_percent"
+		app:layout_constraintTop_toBottomOf="@id/cv_useless2"
+		android:text="CVV"
+		android:textSize="18dp"/>
+	
+	<androidx.cardview.widget.CardView
+		android:id="@+id/cv_useless4"
+		android:layout_width="0dp"
+		android:layout_height="40dp"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_useless3"
+		app:layout_constraintLeft_toRightOf="@id/ver_guide_60_percent"
+		app:cardElevation="8dp">
+		<EditText
+			android:layout_marginTop="10dp"
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:inputType="number"
+			android:digits="123456789"
+			android:maxLength="3"
+			android:hint="Ex : 123"
+			android:background="@drawable/rectangle_outline"	/>-->
+<!--	</androidx.cardview.widget.CardView>-->
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/ver_guide_40_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.40"/>
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/ver_guide_60_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.60"/>
+	
+	
+	
+</androidx.constraintlayout.widget.ConstraintLayout>

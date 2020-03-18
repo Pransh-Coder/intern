@@ -1,164 +1,201 @@
 package com.example.intern;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.razorpay.BaseRazorpay;
-import com.razorpay.PaymentResultListener;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.razorpay.Razorpay;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Map;
 
-public class PaymentActivity extends Activity implements PaymentResultListener{
-	
-	private static String TAG = PaymentActivity.class.getSimpleName();
-	
-	EditText mAmount;
-	EditText mName;
-	EditText mNumber;
-	EditText mExpMonth;
-	EditText mExpYear;
+public class PaymentActivity extends Activity {
+	CardView mCardPaymentOption;
+	CardView mNetBankingOption;
+	CardView mBankTransferOption;
+	ConstraintLayout mExpandedCardInfo;
+	EditText mCardName;
+	EditText mCardNumber;
+	EditText mExpiryMonth;
+	EditText mExpiryYear;
+	Button mPayNow;
+	private String TAG = PaymentActivity.class.getSimpleName();
+	private boolean isCardOptionsVisible = false;
+	private boolean isNetBankingOptionsVisible = false;
 	EditText mCVV;
-	WebView mWebView;
-	Button mButton;
-	TextView mOrderID;
-	String pay_id;
-	String order_id;
-	String signature;
+	private boolean isBankTransferOptionVisible = false;
 	Razorpay razorpay;
-	Spinner mBankListSpinner;
-	Context context = this;
-	ArrayAdapter adapter;
-	JSONObject payload;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_payment);
-		mAmount = findViewById(R.id.et_amount);
-		mCVV = findViewById(R.id.et_cvv);
-		mExpMonth = findViewById(R.id.et_exp_month);
-		mExpYear  =findViewById(R.id.et_exp_year);
-		mName = findViewById(R.id.et_card_name);
-		mNumber = findViewById(R.id.et_card_number);
-		mWebView = findViewById(R.id.web_view);
-		mButton = findViewById(R.id.btn_card_payment);
-		mOrderID = findViewById(R.id.tv_test);
-		mBankListSpinner = findViewById(R.id.bank_list);
-		initRazorPay();
-	}
-	
-	private void initRazorPay(){
-		razorpay = new Razorpay(this);
-		razorpay.getPaymentMethods(new BaseRazorpay.PaymentMethodsCallback() {
-			@Override
-			public void onPaymentMethodsReceived(String s) {
-				Log.d(TAG, "onPaymentMethodsReceived: started json fetch");
-				adapter = new ArrayAdapter(context, android.R.layout.simple_expandable_list_item_1, PaymentActivityData.getBankListFromJSON(s));
-				adapter.notifyDataSetChanged();
-				Log.d(TAG, "onPaymentMethodsReceived: adapter data chnaged");
-			}
-			
-			@Override
-			public void onError(String s) {
-				Log.d(TAG, "onError: cannot connect to internet");
-				adapter.clear();
-			}
-		});
-		mBankListSpinner.setAdapter(adapter);
+		mCardPaymentOption = findViewById(R.id.option_card_payment);
+		mNetBankingOption = findViewById(R.id.option_net_banking);
+		mBankTransferOption = findViewById(R.id.option_bank_transfer);
+		mExpandedCardInfo = findViewById(R.id.card_payment_required_expanded);
+		setOnClickListeners();
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		razorpay.setWebView(mWebView);
-		//Set these values from user credentials and purchase details
-		try{
-			payload = new JSONObject();
-			payload.put("amount", "100");
-			payload.put("currency", "INR");
-			payload.put("contact" , "9958221386");
-			payload.put("email", "jhkjh@gmail.com");
-		}catch (JSONException ignored){}
-		mButton.setOnClickListener(new View.OnClickListener() {
+		//initialize RazorPay and user payload
+		razorpay = new Razorpay(this);
+	}
+	
+	private void setOnClickListeners(){
+		mCardPaymentOption.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				submitCardDetails();
+				toggleCardInfo();
 			}
 		});
 	}
 	
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		Log.d(TAG, "onBackPressed: payment cancelled");
-	}
-	
-	private void submitCardDetails(){
-		String name = mName.getText().toString();
-		String month = mExpMonth.getText().toString();
-		String year = mExpYear.getText().toString();
-		String number = mNumber.getText().toString();
-		String cvv = mCVV.getText().toString();
+	private void doCardPayment(String cardName, String cardNumber, String expMonth, String expYear, String cvv){
+		//TODO: make payment using card
 		try{
-			payload.put("method", "card");
-			payload.put("card[name]" , name);
-			payload.put("card[number]" , number);
-			payload.put("card[expiry_month]" , month);
-			payload.put("card[expiry_year]" , year);
-			payload.put("card[cvv]" , cvv);
-		}catch (Exception ignored){}
-		finally {
-			initiatePayment();
+			JSONObject payload = new JSONObject();
+			//Amount need to be calculated
+			payload.put("amount" , "100");
+			payload.put("currency", "INR");
+		}catch (Exception e){
+			Log.d(TAG, "doCardPayment: JSON cannot be made");
 		}
 	}
 	
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		razorpay.onActivityResult(requestCode, resultCode, data);
+	private void toggleCardInfo(){
+		if(isCardOptionsVisible){
+			mExpandedCardInfo.setVisibility(View.GONE);
+			mNetBankingOption.setVisibility(View.VISIBLE);
+			mBankTransferOption.setVisibility(View.VISIBLE);
+			isCardOptionsVisible = false;
+		}else {
+			mExpandedCardInfo.setVisibility(View.VISIBLE);
+			mCardName = findViewById(R.id.et_name_on_card);
+			mCardNumber = findViewById(R.id.et_card_number);
+			mExpiryMonth = findViewById(R.id.et_expiry_month);
+			mExpiryYear = findViewById(R.id.et_expiry_year);
+			mCVV = findViewById(R.id.et_cvv);
+			mPayNow = findViewById(R.id.btn_pay_now);
+			setOnCardPayListener();
+			applyTextFilters();
+			mNetBankingOption.setVisibility(View.GONE);
+			mBankTransferOption.setVisibility(View.GONE);
+			isCardOptionsVisible = true;
+		}
 	}
 	
-	private void initiatePayment(){
-		razorpay.validateFields(payload, new BaseRazorpay.ValidationListener() {
+	private void setOnCardPayListener(){
+		mPayNow.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onValidationSuccess() {
-				Log.d(TAG, "onValidationSuccess: ");
-				try{
-					mWebView.setVisibility(View.VISIBLE);
-					razorpay.submit(payload, PaymentActivity.this);
-				} catch (Exception e) {
-					e.printStackTrace();
+			public void onClick(View v) {
+				String name = mCardName.getText().toString();
+				String cardNumber = mCardNumber.getText().toString().trim();
+				String expiryMonth = mExpiryMonth.getText().toString();
+				String expiryYear = mExpiryYear.getText().toString();
+				String cvv = mCVV.getText().toString();
+				if(name.isEmpty()){
+					mCardName.setError("Name cannot be empty");
+				}else if(name.matches(".*\\d.*")){
+					mCardName.setError("Name cannot have digits");
+				}else if(cardNumber.length() < 16){
+					mCardNumber.setError("Invalid Card number");
+				}else if(expiryMonth.length() == 0 || expiryMonth.length() == 1  ){
+					mExpiryMonth.setError("Enter expiry month");
+				} else if(expiryYear.length() == 0  || expiryYear.length() == 1){
+					mExpiryYear.setError("Enter expiry year");
+				} else if(Integer.parseInt(expiryMonth) > 12 ){
+					mExpiryMonth.setError("Invalid expiry month");
+				}else if(Integer.parseInt(expiryYear) < 20){
+					mExpiryYear.setError("Invalid expiry year");
+				} else if(cvv.length() < 3){
+					mCVV.setError("Invalid CVV");
+				}else {
+					doCardPayment(name, cardNumber, expiryMonth, expiryYear, cvv);
 				}
-			}
-			
-			@Override
-			public void onValidationError(Map<String, String> map) {
-				Log.d(TAG, "onValidationError: ");
 			}
 		});
 	}
 	
-	@Override
-	public void onPaymentSuccess(String s) {
-		Log.d(TAG, "onPaymentSuccess: ");
+	private void applyTextFilters(){
+		//For date
+		mExpiryMonth.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			
+			}
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				if(s.toString().length() == 2){
+					mExpiryMonth.clearFocus();
+					mExpiryYear.requestFocus();
+					mExpiryYear.setCursorVisible(true);
+				}
+			}
+		});
+		
+		mExpiryYear.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				if(s.toString().length() == 0){
+					mExpiryYear.clearFocus();
+					mExpiryMonth.requestFocus();
+					mExpiryMonth.setCursorVisible(true);
+				}
+			}
+		});
+		
+		//For the Credit Card Number Formatting
+		mCardNumber.addTextChangedListener(new TextWatcher() {
+			private boolean lock;
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				if (lock || s.length() > 16) {
+					return;
+				}
+				lock = true;
+				for (int i = 4; i < s.length(); i += 5) {
+					if (s.toString().charAt(i) != ' ') {
+						s.insert(i, " ");
+					}
+				}
+				lock = false;
+				Log.d(TAG, "afterTextChanged: " + s.toString());
+			}
+		});
 	}
 	
-	@Override
-	public void onPaymentError(int i, String s) {
-		Log.d(TAG, "onPaymentError: ");
-	}
 }
