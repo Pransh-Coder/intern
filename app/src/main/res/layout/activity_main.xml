@@ -9,7 +9,7 @@
     >
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/iv_back_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="5dp"
@@ -19,7 +19,7 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/imageView2"
+        android:id="@+id/iv_home_button"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="5dp"
         app:srcCompat="@drawable/icons_mascot_49" />
@@ -27,7 +27,7 @@
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/imageView3"
+        android:id="@+id/iv_lifestyle_icon"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="1dp"
         app:srcCompat="@drawable/icons_mascot_09" />
@@ -45,7 +45,7 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/imageView4"
+        android:id="@+id/iv_search_button"
         android:layout_marginLeft="290dp"
         android:layout_marginTop="5dp"
         app:srcCompat="@drawable/icons_mascot_50" />
@@ -53,7 +53,7 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/imageView5"
+        android:id="@+id/iv_notif_button"
         android:layout_marginLeft="325dp"
         android:layout_marginTop="5dp"
         app:srcCompat="@drawable/icons_mascot_47" />
