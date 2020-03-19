@@ -26,8 +26,6 @@ import com.razorpay.PaymentData;
 import com.razorpay.PaymentResultWithDataListener;
 import com.razorpay.Razorpay;
 
-import org.json.JSONObject;
-
 import java.util.Map;
 
 //TODO: Make package private after integration
@@ -41,8 +39,6 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultW
 	Razorpay razorpay;
 	WebView mWebView;
 	PaymentViewModel paymentViewModel;
-	//Base Payload
-	JSONObject basePayload = new JSONObject();
 	private static final long ANIMATION_DURATION = 70;
 	Transition cardInfoSlide = new Slide(Gravity.BOTTOM);
 	//Views
@@ -83,18 +79,8 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultW
 	@Override
 	protected void onResume() {
 		super.onResume();
-		makeBasePayload();
+		paymentViewModel.makeBasePayload(getIntent().getStringExtra("AMOUNT"));
 		razorpay.setWebView(mWebView);
-	}
-	
-	private void makeBasePayload(){
-		//TODO: load payload data from userdataviewmodel
-		try{
-			basePayload.put("amount" , getIntent().getStringExtra("AMOUNT"));
-			basePayload.put("currency" , "INR");
-			basePayload.put("contact" , "9958223456");
-			basePayload.put("email" , "debug@gmail.com");
-		}catch (Exception ignored){}
 	}
 	
 	private void setOnClickListeners(){
@@ -164,20 +150,13 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultW
 					mCVV.setError("Invalid CVV");
 				}else {
 					//TODO: Make a payment for card
-					try {
-						basePayload.put("method" , "card");
-						basePayload.put("card[name]" , name);
-						basePayload.put("card[number]" , cardNumber);
-						basePayload.put("card[expiry_month]" ,expiryMonth);
-						basePayload.put("card[expiry_year]" , expiryYear);
-						basePayload.put("card[cvv]" , cvv);
-					}catch (Exception ignored){}
-					razorpay.validateFields(basePayload, new BaseRazorpay.ValidationListener() {
+					paymentViewModel.makeCardPaymentPayload(name,cardNumber,expiryMonth,expiryYear,cvv);
+					razorpay.validateFields(paymentViewModel.getPayload(), new BaseRazorpay.ValidationListener() {
 						@Override
 						public void onValidationSuccess() {
 							mWebView.setVisibility(View.VISIBLE);
 							try {
-								razorpay.submit(basePayload, PaymentActivity.this);
+								razorpay.submit(paymentViewModel.getPayload(), PaymentActivity.this);
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
