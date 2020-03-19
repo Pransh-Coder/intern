@@ -13,10 +13,10 @@ import java.util.List;
 public class UserDataViewModel  extends ViewModel {
 	private final static String TAG = UserDataViewModel.class.getSimpleName();
 	
-	private  String userName;
 	private  String userID;
-	private  String userEmail;
+	private  String userName;
 	private  String userContact;
+	private  String userEmail;
 	
 	public String getUserName() {
 		return userName;

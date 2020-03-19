@@ -60,6 +60,7 @@
 		app:layout_constraintGuide_percent="0.125"/>
 	
 	<androidx.core.widget.NestedScrollView
+		android:id="@+id/payment_layout_parent"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		app:layout_constraintLeft_toRightOf="@id/ver_guide_margin_start_default"

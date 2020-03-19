@@ -33,6 +33,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(':razorpay-android-3.8.8')
     implementation 'commons-codec:commons-codec:1.3'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
 //    implementation group: 'com.razorpay', name : 'checkout' , version : '1.5.16'
 //    implementation group: 'com.razorpay', name : 'razorpay-java' , version : '1.3.8'
 //    implementation group : 'com.razorpay' , name : 'razorpay-android' , version : '3.8.8'
