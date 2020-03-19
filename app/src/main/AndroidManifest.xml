@@ -14,27 +14,22 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".payment.PaymentConfirmationActivity"></activity>
-		<activity android:name=".payment.PaymentActivity">
+		<activity android:name=".payment.PaymentConfirmationActivity" >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
-				
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity
-			android:name="save_money.Health"
-			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-		<activity
-			android:name="save_money.SaveMoney"
-			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+		<activity android:name=".payment.PaymentActivity" />
+		<activity android:name="save_money.Health" />
+		<activity android:name="save_money.SaveMoney" />
 		<activity android:name=".Register_asParent_Activity" />
 		<activity android:name=".Register_asChild_Activity" />
 		<activity android:name=".RegistrationActivity" />
 		<activity android:name=".Gifts" />
 		<activity android:name=".Holiday" />
 		<activity android:name=".Lifestyle" />
-		<activity android:name=".Login_Register"></activity>
+		<activity android:name=".Login_Register" />
 		<activity android:name=".MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

@@ -6,9 +6,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -19,14 +21,30 @@ import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
 
 import com.example.intern.R;
+import com.razorpay.BaseRazorpay;
+import com.razorpay.PaymentData;
+import com.razorpay.PaymentResultWithDataListener;
+import com.razorpay.Razorpay;
+
+import org.json.JSONObject;
+
+import java.util.Map;
 
 //TODO: Make package private after integration
-public class PaymentActivity extends AppCompatActivity {
-	//Animation
+public class PaymentActivity extends AppCompatActivity implements PaymentResultWithDataListener{
+	//Confirms payment codes
+	public static int PAYMENT_CONFIRMED = 0;
+	public static int PAYMENT_FAILED = -1;
+	public static int PAYMENT_CANCELLED = -2;
+	//Method request codes
+	public static int PAYMENT_METHOD_CARD = 1;
+	Razorpay razorpay;
+	WebView mWebView;
+	PaymentViewModel paymentViewModel;
+	//Base Payload
+	JSONObject basePayload = new JSONObject();
 	private static final long ANIMATION_DURATION = 70;
 	Transition cardInfoSlide = new Slide(Gravity.BOTTOM);
-	//ViewModel
-	PaymentViewModel paymentViewModel;
 	//Views
 	CardView mCardPaymentOption;
 	ScrollView mParent;
@@ -43,20 +61,40 @@ public class PaymentActivity extends AppCompatActivity {
 	Button mPayNow;
 	//Global booleans
 	private boolean isCardOptionsVisible = false;
+	//TODO:
 	private boolean isNetBankingOptionsVisible = false;
 	private boolean isBankTransferOptionVisible = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		paymentViewModel = new ViewModelProvider(this).get(PaymentViewModel.class);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_payment);
+		paymentViewModel = new ViewModelProvider(this).get(PaymentViewModel.class);
+		razorpay = new Razorpay(this);
+		mWebView = findViewById(R.id.webview_payment_activity);
 		mParent = findViewById(R.id.payment_layout_parent);
 		mCardPaymentOption = findViewById(R.id.option_card_payment);
 		mNetBankingOption = findViewById(R.id.option_net_banking);
 		mBankTransferOption = findViewById(R.id.option_bank_transfer);
 		mExpandedCardInfo = findViewById(R.id.card_payment_required_expanded);
 		setOnClickListeners();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		makeBasePayload();
+		razorpay.setWebView(mWebView);
+	}
+	
+	private void makeBasePayload(){
+		//TODO: load payload data from userdataviewmodel
+		try{
+			basePayload.put("amount" , getIntent().getStringExtra("AMOUNT"));
+			basePayload.put("currency" , "INR");
+			basePayload.put("contact" , "9958223456");
+			basePayload.put("email" , "debug@gmail.com");
+		}catch (Exception ignored){}
 	}
 	
 	private void setOnClickListeners(){
@@ -125,7 +163,32 @@ public class PaymentActivity extends AppCompatActivity {
 				} else if(cvv.length() < 3){
 					mCVV.setError("Invalid CVV");
 				}else {
-					//TODO: forward intent to confirmation activity
+					//TODO: Make a payment for card
+					try {
+						basePayload.put("method" , "card");
+						basePayload.put("card[name]" , name);
+						basePayload.put("card[number]" , cardNumber);
+						basePayload.put("card[expiry_month]" ,expiryMonth);
+						basePayload.put("card[expiry_year]" , expiryYear);
+						basePayload.put("card[cvv]" , cvv);
+					}catch (Exception ignored){}
+					razorpay.validateFields(basePayload, new BaseRazorpay.ValidationListener() {
+						@Override
+						public void onValidationSuccess() {
+							mWebView.setVisibility(View.VISIBLE);
+							try {
+								razorpay.submit(basePayload, PaymentActivity.this);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+							Log.d(TAG, "onValidationSuccess");
+						}
+						
+						@Override
+						public void onValidationError(Map<String, String> map) {
+							Log.d(TAG, "onValidationError");
+						}
+					});
 				}
 			}
 		});
@@ -163,7 +226,7 @@ public class PaymentActivity extends AppCompatActivity {
 			}
 		});
 		//For the Credit Card Number Formatting
-		mCardNumber.addTextChangedListener(new TextWatcher() {
+/*		mCardNumber.addTextChangedListener(new TextWatcher() {
 			private boolean lock;
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) { }
@@ -179,6 +242,30 @@ public class PaymentActivity extends AppCompatActivity {
 				lock = false;
 				Log.d(TAG, "afterTextChanged: " + s.toString());
 			}
-		});
+		});*/
+	}
+	
+	@Override
+	public void onPaymentSuccess(String s, PaymentData paymentData) {
+		///TODO: Confirm data
+		Log.d(TAG, "onPaymentSuccess");
+		mWebView.setVisibility(View.GONE);
+		setResult(PAYMENT_CONFIRMED);
+		finish();
+	}
+	
+	@Override
+	public void onPaymentError(int i, String s, PaymentData paymentData) {
+		Log.d(TAG, "onPaymentError");
+		Toast.makeText(this, paymentData.getPaymentId(), Toast.LENGTH_LONG).show();
+		setResult(PAYMENT_FAILED);
+		finish();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		razorpay.onBackPressed();
+		setResult(PAYMENT_CANCELLED);
+		finish();
 	}
 }

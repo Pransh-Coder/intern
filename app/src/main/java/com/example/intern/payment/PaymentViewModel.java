@@ -2,15 +2,11 @@ package com.example.intern.payment;
 
 import androidx.lifecycle.ViewModel;
 
-import org.json.JSONObject;
-
-class PaymentViewModel extends ViewModel {
+public class PaymentViewModel extends ViewModel {
 	//Needed to create customer in RazorPay, initialize from the
 	private String userName;
 	private String userPhone;
 	private String userEmail;
-	//Do a null check before proceeding with payment
-	private JSONObject cardPaymentPayload = null;
 	
 	public String getUserName() {
 		return userName;
@@ -34,13 +30,5 @@ class PaymentViewModel extends ViewModel {
 	
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
-	}
-	
-	public void setCardPaymentPayload(String cardName, String cardNumber, String expMonth, String expYear, String cvv){
-		//TODO: create payload for card payment
-	}
-	
-	public JSONObject getCardPaymentPayload(){
-		return this.cardPaymentPayload;
 	}
 }

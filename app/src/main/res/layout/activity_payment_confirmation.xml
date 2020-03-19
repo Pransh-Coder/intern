@@ -18,6 +18,7 @@
 		app:layout_constraintTop_toBottomOf="@id/guidelinetopbannerstart"/>
 	
 	<TableLayout
+		android:background="@drawable/rectangle_outline"
 		android:id="@+id/tableLayout"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -27,47 +28,66 @@
 		app:layout_constraintTop_toTopOf="parent">
 		<TableRow>
 			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+				android:padding="5dp"
 				android:text="You Are Paying to PS"
 				android:textAlignment="center"
-				android:textSize="26sp" />
+				android:textSize="20sp" />
 		</TableRow>
-		<TableRow>
+		<TableRow >
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:background="@drawable/rectangle_outline"
+				android:padding="5dp"
 				android:text="Membership Fee"
-				android:textSize="20sp" />
+				android:textSize="15sp" />
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/membership_fee"
-				android:textSize="20sp" />
+				android:background="@drawable/rectangle_outline"
+				android:padding="5dp"
+				android:text="INR     "
+				android:textSize="15sp" />
+			<TextView
+				android:id="@+id/tv_membership_fee"
+				android:background="@drawable/rectangle_outline"
+				android:padding="5dp"
+				android:textAlignment="viewEnd"
+				android:textSize="15sp" />
 		</TableRow>
-		<TableRow>
+		<TableRow >
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:background="@drawable/rectangle_outline"
+				android:padding="5dp"
 				android:text="Processing Fee"
-				android:textSize="20sp" />
+				android:textSize="15sp" />
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Rs. "
-				android:textSize="20sp" />
+				android:background="@drawable/rectangle_outline"
+				android:padding="5dp"
+				android:text="INR     "
+				android:textSize="15sp" />
+			<TextView
+				android:id="@+id/tv_processing_fee"
+				android:background="@drawable/rectangle_outline"
+				android:padding="5dp"
+				android:textAlignment="viewEnd"
+				android:textSize="15sp" />
 		</TableRow>
-		<TableRow>
+		<TableRow >
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:background="@drawable/rectangle_outline"
+				android:padding="5dp"
 				android:text="Total Fee"
-				android:textSize="20sp" />
+				android:textSize="15sp" />
 			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Rs. "
-				android:textSize="20sp" />
+				android:background="@drawable/rectangle_outline"
+				android:padding="5dp"
+				android:text="INR     "
+				android:textSize="15sp" />
+			<TextView
+				android:id="@+id/tv_total_fee"
+				android:background="@drawable/rectangle_outline"
+				android:padding="5dp"
+				android:textAlignment="viewEnd"
+				android:textSize="15sp" />
 		</TableRow>
 	</TableLayout>
 	

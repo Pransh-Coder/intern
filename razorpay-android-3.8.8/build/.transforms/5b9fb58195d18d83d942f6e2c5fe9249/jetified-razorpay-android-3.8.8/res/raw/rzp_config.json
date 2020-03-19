@@ -1,0 +1,127 @@
+{
+  "config_end_point": "https://butler.razorpay.com/v1/settings",
+  "enable": true,
+  "checkout": {
+    "end_point": "/v1/checkout"
+  },
+  "permissions": {
+    "custom_message": "We need SMS permission to auto fill bank OTP",
+    "enable_custom_message": false,
+    "max_ask_count": 1
+  },
+  "otpelf": {
+    "enable": true,
+    "settings": {
+      "platform": "android"
+    },
+    "endpoint": "https://cdn.razorpay.com/static/otpelf/",
+    "js_file_name": "otpelf.js",
+    "version_file_name": "version.json"
+  },
+  "retry": {
+    "enabled": true,
+    "max_count": -1
+  },
+  "analytics": {
+    "lumberjack": {
+      "key": "NmFhYWUwMDQ2NmMyOGUyNmFhNzQ0ODk2",
+      "sdk_identifier": "customuiandroid",
+      "end_point": "https://lumberjack.razorpay.com/v1/track",
+      "enable": true
+    }
+  },
+  "update_sdk_config": {
+    "latest_version": 16,
+    "msg": "Razorpay: A new version of the sdk is available. Please update.",
+    "enable_alert": true
+  },
+  "upi": {
+    "isWhiteListingEnabled": true,
+    "blackListedApps": [],
+    "whiteListedApps": [
+      "com.google.android.apps.nbu.paisa.user",
+      "in.org.npci.upiapp",
+      "com.phonepe.app",
+      "com.myairtelapp",
+      "com.myairtelapp.debug",
+      "com.csam.icici.bank.imobile",
+      "net.one97.paytm",
+      "com.sbi.upi",
+      "com.upi.axispay",
+      "com.samsung.android.spaymini",
+      "com.samsung.android.spay",
+      "com.snapwork.hdfc",
+      "com.fss.pnbpsp",
+      "com.icicibank.pockets",
+      "com.bankofbaroda.upi",
+      "com.freecharge.android",
+      "com.fss.unbipsp",
+      "com.axis.mobile",
+      "com.mycompany.kvb",
+      "com.fss.vijayapsp",
+      "com.dena.upi.gui",
+      "com.fss.jnkpsp",
+      "com.olive.kotak.upi",
+      "com.enstage.wibmo.hdfc",
+      "com.bsb.hike",
+      "com.fss.idfcpsp",
+      "com.YesBank",
+      "com.abipbl.upi",
+      "com.microsoft.mobile.polymer",
+      "com.finopaytech.bpayfino",
+      "com.mgs.obcbank",
+      "com.upi.federalbank.org.lotza",
+      "com.mgs.induspsp",
+      "ai.wizely.android",
+      "com.olive.dcb.upi",
+      "com.mgs.yesmerchantnative.prod",
+      "com.example.demo",
+      "in.amazon.mShop.android.shopping"
+    ],
+    "upiAppsPreferredOrder": [
+      "com.google.android.apps.nbu.paisa.user",
+      "in.org.npci.upiapp",
+      "com.phonepe.app",
+      "net.one97.paytm"
+    ]
+  },
+  "static_rules": {
+    "identify_network": {
+      "visa": "^4",
+      "mastercard": "^(5[1-5]|2[2-7])",
+      "maestro16": "^50(81(25|26|59|92)|8227)|4(437|681)",
+      "amex": "^3[47]",
+      "rupay": "^(508[5-9]|60(80(0|)[^0]|8[1-4]|8500|698[5-9]|699|7[^9]|79[0-7]|798[0-4])|65(2(1[5-9]|[2-9])|30|31[0-4])|817[2-9]|81[89]|820[01])",
+      "discover": "^(65[1,3-9]|6011)",
+      "maestro": "^(6|5(0|[6-9])).{5}",
+      "diners": "^3[0689]",
+      "jcb": "^35"
+    },
+    "network_card_length": {
+      "jcb": 16,
+      "discover": 16,
+      "visa": 16,
+      "mastercard": 16,
+      "amex": 15,
+      "diners": 14,
+      "maestro": 19,
+      "maestro16": 16,
+      "default": 19,
+      "rupay": 16
+    },
+    "logos": {
+      "wallet": {
+        "base_url": "https://cdn.razorpay.com/wallet/",
+        "extension": "png"
+      },
+      "wallet_sq": {
+        "base_url": "https://cdn.razorpay.com/wallet-sq/",
+        "extension": "png"
+      },
+      "bank": {
+        "base_url": "https://cdn.razorpay.com/bank/",
+        "extension": "gif"
+      }
+    }
+  }
+}
