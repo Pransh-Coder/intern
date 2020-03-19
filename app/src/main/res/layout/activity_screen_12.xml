@@ -10,240 +10,214 @@
 
     <ImageView
         android:id="@+id/iv_back_button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/icons_mascot_48"
-        app:layout_constraintHorizontal_bias="0.015"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/iv_home_button"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/icons_mascot_49"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/iv_lifestyle_icon"
-        android:layout_marginTop="5dp"
-        app:srcCompat="@drawable/icons_mascot_08"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:text="gifts"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/iv_search_button"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/icons_mascot_48" />
+
+    <ImageView
+        android:id="@+id/iv_home_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/iv_back_button"
+        app:srcCompat="@drawable/icons_mascot_49" />
+
+    <ImageView
+        android:id="@+id/iv_gifts_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:srcCompat="@drawable/icons_mascot_08" />
+
+    <TextView
+        android:id="@+id/tv_gifts"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:text="Gifts"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_gifts_icon" />
+
+    <ImageView
+        android:id="@+id/iv_search_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toStartOf="@id/iv_notif_button"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icons_mascot_50" />
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
         android:id="@+id/iv_notif_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/icons_mascot_47"
-        app:layout_constraintHorizontal_bias="0.95"
+        android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        app:srcCompat="@drawable/icons_mascot_47" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="220dp"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintEnd_toEndOf="parent"
+    <LinearLayout
+        android:id="@+id/game_zone_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/iv_spa_image"
-        android:src="@drawable/icons_mascot_27" />
+        app:layout_constraintEnd_toStartOf="@id/gift_shop_layout"
+        app:layout_constraintTop_toBottomOf="@id/toys_layout">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:id="@+id/tv_100_off"
+            android:gravity="center"
+            android:text="Rs.100 off"
+            android:background="@color/yellow"
+            />
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:id="@+id/tv_350_off"
-        android:gravity="center"
-        android:text="20% off"
-        android:background="@color/yellow"
-        android:layout_marginTop="200dp"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:id="@+id/iv_game_zone_image"
+            android:src="@drawable/icons_mascot_24" />
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="photo studio"
-        android:textAllCaps="true"
-        android:layout_marginTop="300dp"
-        android:textStyle="bold"
-        android:id="@+id/tv_spa"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="220dp"
-        android:id="@+id/iv_parlor_image"
-        android:src="@drawable/icons_mascot_26"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:id="@+id/tv_290_off"
-        android:gravity="center"
-        android:layout_marginTop="200dp"
-        android:text="Art Box free"
-        android:background="@color/yellow"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:layout_width="85dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="gift shop"
-        android:id="@+id/tv_parlor"
-        android:textAllCaps="true"
-        android:layout_marginTop="300dp"
-        android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="220dp"
-        android:id="@+id/iv_salon_image"
-        android:src="@drawable/icons_mascot_25"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:id="@+id/tv_500_off"
-        android:gravity="center"
-        android:layout_marginTop="200dp"
-        android:text="Rs.120 off"
-        android:background="@color/yellow"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="toys"
-        android:textAllCaps="true"
-        android:layout_marginTop="300dp"
-        android:textStyle="bold"
-        android:id="@+id/tv_salon"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="370dp"
-        android:id="@+id/iv_fitness_image"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/icons_mascot_24" />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:id="@+id/tv_250_off"
-        android:gravity="center"
-        android:text="Rs.100 off"
-        android:layout_marginTop="350dp"
-        android:background="@color/yellow"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="game zone"
-        android:textAllCaps="true"
-        android:layout_marginTop="450dp"
-        android:textStyle="bold"
-        android:id="@+id/tv_fitness"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Game zone"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:id="@+id/tv_game_zone"
+            />
+    </LinearLayout>
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="144dp"
         android:src="@drawable/icons_mascot_43"
-        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/imageView10"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@id/gift_shop_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/toys_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:id="@+id/tv_120_off"
+            android:gravity="center"
+            android:text="Rs.120 off"
+            android:background="@color/yellow"
+            />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:id="@+id/iv_toys_image"
+            android:src="@drawable/icons_mascot_25"
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Toys"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:id="@+id/tv_toys" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:id="@+id/gift_shop_layout"
+        app:layout_constraintEnd_toStartOf="@id/photo_studio_layout"
+        app:layout_constraintStart_toEndOf="@id/toys_layout"
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:id="@+id/tv_art_box_free"
+            android:gravity="center"
+            android:text="Art Box free"
+            android:background="@color/yellow"
+            />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:id="@+id/iv_gift_shop_image"
+            android:src="@drawable/icons_mascot_26"
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Gift Shop"
+            android:id="@+id/tv_gift_shop"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/photo_studio_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gift_shop_layout"
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:id="@+id/tv_20_percent_off"
+            android:gravity="center"
+            android:text="20% off"
+            android:background="@color/yellow"
+            />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:id="@+id/iv_photo_studio_image"
+            android:src="@drawable/icons_mascot_27" />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Photo Studio"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:id="@+id/tv_photo_studio"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_guide_30_percent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
