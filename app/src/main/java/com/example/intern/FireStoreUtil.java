@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;

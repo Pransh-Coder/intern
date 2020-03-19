@@ -205,7 +205,7 @@
                         android:layout_weight="1">-->
 
                     <LinearLayout
-                        android:id="@+id/marks"
+                        android:id="@+id/homeopathy"
                         android:layout_width="0dp"
                         android:layout_height="150dp"
                         android:gravity="center"
