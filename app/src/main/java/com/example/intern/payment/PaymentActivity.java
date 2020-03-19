@@ -1,4 +1,4 @@
-package com.example.intern;
+package com.example.intern.payment;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -8,25 +8,28 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.transition.Slide;
 import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
 
+import com.example.intern.R;
+
+//TODO: Make package private after integration
 public class PaymentActivity extends AppCompatActivity {
 	//Animation
-	private static final long ANIMATION_DURATION = 100;
+	private static final long ANIMATION_DURATION = 70;
 	Transition cardInfoSlide = new Slide(Gravity.BOTTOM);
 	//ViewModel
 	PaymentViewModel paymentViewModel;
 	//Views
 	CardView mCardPaymentOption;
-	NestedScrollView mParent;
+	ScrollView mParent;
 	CardView mNetBankingOption;
 	CardView mBankTransferOption;
 	EditText mCVV;

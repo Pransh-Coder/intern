@@ -1,10 +1,10 @@
-package com.example.intern;
+package com.example.intern.payment;
 
 import androidx.lifecycle.ViewModel;
 
 import org.json.JSONObject;
 
-public class PaymentViewModel extends ViewModel {
+class PaymentViewModel extends ViewModel {
 	//Needed to create customer in RazorPay, initialize from the
 	private String userName;
 	private String userPhone;

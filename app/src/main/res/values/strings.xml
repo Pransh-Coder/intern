@@ -1,5 +1,6 @@
 <resources>
 	<string name="app_name">intern</string>
+	<string name="membership_fee">Rs. 500</string>
 	<string-array name="laguauge">
 		<item>Choose Your Language</item>
 		<item>English</item>

@@ -14,7 +14,8 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".PaymentActivity">
+		<activity android:name=".payment.PaymentConfirmationActivity"></activity>
+		<activity android:name=".payment.PaymentActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				
@@ -33,8 +34,7 @@
 		<activity android:name=".Gifts" />
 		<activity android:name=".Holiday" />
 		<activity android:name=".Lifestyle" />
-		<activity android:name=".Login_Register">
-		</activity>
+		<activity android:name=".Login_Register"></activity>
 		<activity android:name=".MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
