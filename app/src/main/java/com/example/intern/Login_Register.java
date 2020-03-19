@@ -22,7 +22,7 @@ public class Login_Register extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registerIntent = new Intent(getApplicationContext(), RegistrationActivity.class);
+                Intent registerIntent = new Intent(getApplicationContext(),RegistrationChoice.class);
                 startActivity(registerIntent);
 
             }
