@@ -159,7 +159,6 @@
 		android:id="@+id/iv_useless"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:src="@drawable/rzp_name_logo"
 		app:layout_constraintBottom_toBottomOf="@id/tv_useless_power"
 		app:layout_constraintLeft_toRightOf="@id/tv_useless_power"
 		app:layout_constraintRight_toRightOf="parent"
