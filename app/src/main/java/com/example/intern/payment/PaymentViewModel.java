@@ -36,6 +36,16 @@ public class PaymentViewModel extends ViewModel {
 		}catch (Exception ignored){}
 	}
 	
+	JSONObject getNetBankingPayload(String bankId){
+		try{
+			basePayload.put("method" , "netbanking");
+			basePayload.put("bank", bankId);
+		}catch (Exception ignored){}
+		finally {
+			return basePayload;
+		}
+	}
+	
 	public String getUserName() {
 		return userName;
 	}
