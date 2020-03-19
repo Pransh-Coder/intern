@@ -1,4 +1,4 @@
-package com.example.intern;
+/*package com.example.intern;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.EditText;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-//import com.razorpay.Razorpay;
+import com.razorpay.Razorpay;
 
 import org.json.JSONObject;
 
@@ -32,7 +32,7 @@ public class PaymentActivity extends Activity {
 	private boolean isNetBankingOptionsVisible = false;
 	EditText mCVV;
 	private boolean isBankTransferOptionVisible = false;
-	//Razorpay razorpay;
+	Razorpay razorpay;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class PaymentActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		//initialize RazorPay and user payload
-		//razorpay = new Razorpay(this);
+		razorpay = new Razorpay(this);
 	}
 	
 	private void setOnClickListeners(){
@@ -198,4 +198,4 @@ public class PaymentActivity extends Activity {
 		});
 	}
 	
-}
+}*/
