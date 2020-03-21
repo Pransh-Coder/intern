@@ -19,7 +19,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        getSupportActionBar().hide();
+       // getSupportActionBar().hide();
         registration_SpinnerLanguages = findViewById(R.id.registration_spin_Language);
 
         registration_tv_AsChild = findViewById(R.id.registration_tv_asChild);

@@ -1,4 +1,4 @@
-package com.example.intern.payment;
+/*package com.example.intern.payment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -83,19 +83,19 @@ public class StandardPaymentActivity extends Activity implements PaymentResultWi
 	public void onPaymentSuccess(String s, PaymentData paymentData) {
 		//TODO:Verify signature
 		try{
-			/*String payment_id = paymentData.getPaymentId();
+			String payment_id = paymentData.getPaymentId();
 			String order_id = paymentData.getOrderId();
 			String signature = paymentData.getSignature();
 			String data = order_id + "|" + payment_id;
-			String generatedSignature = SignatureVerifier.calculateRFC2104HMAC(data, SignatureVerifier.key_secret);*/
-			/*if(generatedSignature == signature){
+			String generatedSignature = SignatureVerifier.calculateRFC2104HMAC(data, SignatureVerifier.key_secret);
+			if(generatedSignature == signature){
 				Toast.makeText(this, "Payment Successful" , Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent();
 				intent.putExtra(MEMBER_STATUS, true);
 				setResult(BecomeAMember.PAYMENT_ACTIVITY_RESULT_CODE, intent);
 				Log.d(TAG, "onPaymentSuccess : Signature verified");
 				finish();
-			}*/
+			}
 			Log.d(TAG, "onPaymentSuccess: Payment successful");
 			Toast.makeText(this, "Payment Successful" , Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent();
@@ -168,4 +168,4 @@ public class StandardPaymentActivity extends Activity implements PaymentResultWi
 			return result;
 		}
 	}
-}
+}*/

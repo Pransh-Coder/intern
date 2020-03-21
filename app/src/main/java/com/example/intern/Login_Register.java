@@ -15,10 +15,9 @@ public class Login_Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_login_register);
 
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         btnLogin = findViewById(R.id.login_button);
         btnRegister = findViewById(R.id.registration_button);
 

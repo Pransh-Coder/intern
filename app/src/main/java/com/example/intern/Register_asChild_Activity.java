@@ -29,7 +29,7 @@ public class Register_asChild_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_as_child);
-        getSupportActionBar().hide();
+       // getSupportActionBar().hide();
         name=findViewById(R.id.et_name);
         petname=findViewById(R.id.et_nick_name);
         pspetnem=findViewById(R.id.et_ps_nick_name);
