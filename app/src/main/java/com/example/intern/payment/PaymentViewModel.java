@@ -4,13 +4,47 @@ import androidx.lifecycle.ViewModel;
 
 import org.json.JSONObject;
 
-class PaymentViewModel extends ViewModel {
+public class PaymentViewModel extends ViewModel {
 	//Needed to create customer in RazorPay, initialize from the
 	private String userName;
 	private String userPhone;
 	private String userEmail;
-	//Do a null check before proceeding with payment
-	private JSONObject cardPaymentPayload = null;
+	private JSONObject basePayload = new JSONObject();
+	
+	void makeBasePayload(String amount){
+		//TODO: load payload data from userdataviewmodel
+		try{
+			basePayload.put("amount" , amount);
+			basePayload.put("currency" , "INR");
+			basePayload.put("contact" , "9958223456");
+			basePayload.put("email" , "debug@gmail.com");
+		}catch (Exception ignored){}
+	}
+	
+	JSONObject getPayload(){
+		return this.basePayload;
+	}
+	
+	void makeCardPaymentPayload(String name, String cardNumber, String expiryMonth, String expiryYear, String cvv){
+		try {
+			basePayload.put("method" , "card");
+			basePayload.put("card[name]" , name);
+			basePayload.put("card[number]" , cardNumber);
+			basePayload.put("card[expiry_month]" ,expiryMonth);
+			basePayload.put("card[expiry_year]" , expiryYear);
+			basePayload.put("card[cvv]" , cvv);
+		}catch (Exception ignored){}
+	}
+	
+	JSONObject getNetBankingPayload(String bankId){
+		try{
+			basePayload.put("method" , "netbanking");
+			basePayload.put("bank", bankId);
+		}catch (Exception ignored){}
+		finally {
+			return basePayload;
+		}
+	}
 	
 	public String getUserName() {
 		return userName;
@@ -34,13 +68,5 @@ class PaymentViewModel extends ViewModel {
 	
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
-	}
-	
-	public void setCardPaymentPayload(String cardName, String cardNumber, String expMonth, String expYear, String cvv){
-		//TODO: create payload for card payment
-	}
-	
-	public JSONObject getCardPaymentPayload(){
-		return this.cardPaymentPayload;
 	}
 }
