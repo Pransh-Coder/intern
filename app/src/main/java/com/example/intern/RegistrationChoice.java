@@ -17,6 +17,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,21 +32,23 @@ public class RegistrationChoice extends AppCompatActivity {
     private final static int RC_SIGN_IN = 2;
     GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth.AuthStateListener mauthlistner;
-    @Override
+   /* @Override
     protected void onStart() {
         super.onStart();
         mauth.addAuthStateListener(mauthlistner);
 
-    }
+    }*/
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_registration_choice);
         googlereg= (Button) findViewById(R.id.btn_google_signup);
         phn=(Button)findViewById(R.id.btn_signup_phone);
         mauth = FirebaseAuth.getInstance();
+
         phn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +60,7 @@ public class RegistrationChoice extends AppCompatActivity {
             }
         });
 
-        mauthlistner=new FirebaseAuth.AuthStateListener() {
+     /*   mauthlistner=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser()!=null)
@@ -65,7 +68,7 @@ public class RegistrationChoice extends AppCompatActivity {
                     //Toast.makeText(RegistrationChoice.this,"User already exists with this account",Toast.LENGTH_LONG).show();
                 }
             }
-        };
+        };*/
         googlereg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
