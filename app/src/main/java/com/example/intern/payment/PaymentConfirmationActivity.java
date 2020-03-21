@@ -1,3 +1,4 @@
+/*
 package com.example.intern.payment;
 
 import android.content.Intent;
@@ -102,3 +103,4 @@ public class PaymentConfirmationActivity extends AppCompatActivity{
 		}
 	}
 }
+*/

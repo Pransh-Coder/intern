@@ -1,3 +1,4 @@
+/*
 package com.example.intern.payment;
 
 import android.content.Context;
@@ -298,6 +299,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultW
 			}
 		});
 		//For the Credit Card Number Formatting
+*/
 /*		mCardNumber.addTextChangedListener(new TextWatcher() {
 			private boolean lock;
 			@Override
@@ -314,7 +316,8 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultW
 				lock = false;
 				Log.d(TAG, "afterTextChanged: " + s.toString());
 			}
-		});*/
+		});*//*
+
 	}
 	
 	@Override
@@ -347,4 +350,4 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultW
 		setResult(PAYMENT_CANCELLED);
 		finish();
 	}
-}
+}*/

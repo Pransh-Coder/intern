@@ -18,6 +18,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    viewBinding{
+        enabled = true
+    }
 }
 
 dependencies {
@@ -31,7 +38,8 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
-    implementation project(':razorpay-android-3.8.8')
+    implementation 'com.razorpay:checkout:1.5.16'
+//    implementation project(':razorpay-android-3.8.8')
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
