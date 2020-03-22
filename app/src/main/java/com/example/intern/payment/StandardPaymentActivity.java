@@ -1,4 +1,4 @@
-/*package com.example.intern.payment;
+package com.example.intern.payment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -86,27 +86,27 @@ public class StandardPaymentActivity extends Activity implements PaymentResultWi
 			String payment_id = paymentData.getPaymentId();
 			String order_id = paymentData.getOrderId();
 			String signature = paymentData.getSignature();
-			String data = order_id + "|" + payment_id;
+			String data = payment_id + "|" + order_id;
 			String generatedSignature = SignatureVerifier.calculateRFC2104HMAC(data, SignatureVerifier.key_secret);
-			if(generatedSignature == signature){
+			if(generatedSignature.equals(signature)){
 				Toast.makeText(this, "Payment Successful" , Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent();
 				intent.putExtra(MEMBER_STATUS, true);
 				setResult(BecomeAMember.PAYMENT_ACTIVITY_RESULT_CODE, intent);
 				Log.d(TAG, "onPaymentSuccess : Signature verified");
 				finish();
+			}else {
+				Log.d(TAG, "onPaymentSuccess: client side signature verification failed");
+				Intent intent = new Intent();
+				intent.putExtra(MEMBER_STATUS, true);
+				intent.putExtra(BecomeAMember.PAY_ID_TAG, paymentData.getPaymentId());
+				setResult(BecomeAMember.PAYMENT_ACTIVITY_RESULT_CODE, intent);
+				finish();
 			}
-			Log.d(TAG, "onPaymentSuccess: Payment successful");
-			Toast.makeText(this, "Payment Successful" , Toast.LENGTH_SHORT).show();
-			Intent intent = new Intent();
-			intent.putExtra(MEMBER_STATUS, true);
-			setResult(BecomeAMember.PAYMENT_ACTIVITY_RESULT_CODE, intent);
-			finish();
 		}catch (Exception e){
 			Log.d(TAG, "onPaymentSuccess: Unknown error");
 			Toast.makeText(this, "Something Went Wrong\nPlease Try Again", Toast.LENGTH_LONG).show();
 		}
-		Log.d(TAG, "onPaymentSuccess: Signature verification failure");
 	}
 	
 	@SuppressWarnings("unused")
@@ -134,22 +134,17 @@ public class StandardPaymentActivity extends Activity implements PaymentResultWi
 		super.onBackPressed();
 	}
 	
-	@Override
-	protected void onDestroy() {
-		Log.d(TAG, "onDestroy: PaymentActivity is Destroyed");
-		super.onDestroy();
-	}
-	
 	static class SignatureVerifier{
 		private static String TAG = SignatureVerifier.class.getSimpleName();
-		private static String key_secret = "rzp_test_jBHSfE2SDuVJtO";
-		private static String HMAC_SHA256_ALGORITHM = "HmacSHA256";
+		private static String key_secret = "Qi9f1wEd1SSTeEprS64810cZ";
+		
 		public static String calculateRFC2104HMAC(String data, String secret)
 				throws java.security.SignatureException
 		{
 			String result;
 			try {
 				// get an hmac_sha256 key from the raw secret bytes
+				String HMAC_SHA256_ALGORITHM = "HmacSHA256";
 				SecretKeySpec signingKey = new SecretKeySpec(secret.getBytes(), HMAC_SHA256_ALGORITHM);
 				
 				// get an hmac_sha256 Mac instance and initialize with the signing key
@@ -168,4 +163,4 @@ public class StandardPaymentActivity extends Activity implements PaymentResultWi
 			return result;
 		}
 	}
-}*/
+}
