@@ -4,8 +4,7 @@
     package="com.example.intern">
 
     <dist:module dist:instant="true" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    <dist:module dist:instant="true" />
 
     <application
         android:allowBackup="true"
@@ -14,23 +13,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LifeStyleDetailsActivity"></activity>
-        <activity android:name=".GiftDetailsActivity" />
-        <activity android:name=".ServicesActivity" />
-        <activity android:name=".FoodActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".RegistrationChoice"></activity>
         <activity
             android:name="save_money.Health"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="save_money.SaveMoney"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="save_money.Offers.DentalCategoryOffers"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="save_money.Offers.DieticianOffers"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="save_money.Offers.EyeClinicOffers"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="save_money.Offers.HomeopathicOffers"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="save_money.Offers.Patholgy_LaborartoryOffers"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".payment.StandardPaymentActivity"/>
+        <activity
+            android:name="save_money.Offers.PhysiotherapyOffers"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Register_asParent_Activity" />
         <activity android:name=".Register_asChild_Activity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".Gifts" />
-        <activity android:name=".Holiday" />
-        <activity android:name=".Lifestyle" />
+        <activity android:name=".PhnRegistration"/>
         <activity android:name=".Login_Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +50,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".payment.BecomeAMember"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +58,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="save_money.Offers.DentalCategoryOffers" />
     </application>
 
 </manifest>
