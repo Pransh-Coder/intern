@@ -4,10 +4,14 @@ buildscript {
     repositories {
         google()
         jcenter()
-        mavenCentral()
+        maven {
+            url "https://maven.google.com"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.1'
+       // classpath 'com.google.gms:google-game_zone:4.3.3'
+        //classpath 'com.google.gms:google-game_zone:4.0.0'
         classpath 'com.google.gms:google-services:4.3.3'
     }
 }
@@ -19,6 +23,10 @@ allprojects {
         flatDir {
             dirs 'libs'
         }
+        maven {
+            url "https://maven.google.com"
+        }
+
     }
 }
 
