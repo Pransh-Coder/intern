@@ -35,6 +35,7 @@
         <activity
             android:name="save_money.Offers.Patholgy_LaborartoryOffers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".payment.StandardPaymentActivity"/>
         <activity
             android:name="save_money.Offers.PhysiotherapyOffers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
