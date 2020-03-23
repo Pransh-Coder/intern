@@ -72,7 +72,7 @@ public class Register_asChild_Activity extends AppCompatActivity {
                 pn=petname.getText().toString();
                 pspn=pspetnem.getText().toString();
                 userid=fauth.getCurrentUser().getUid();
-                DocumentReference documentReference=fstore.collection("Users").document(userid);
+                DocumentReference documentReference=fstore.collection("Registered_As_Child").document(userid);
                 HashMap<String,String> profilemap=new HashMap<>();
                 profilemap.put("uid",userid);
                 profilemap.put("name",nm);

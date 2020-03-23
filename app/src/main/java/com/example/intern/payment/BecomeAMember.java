@@ -1,6 +1,6 @@
 package com.example.intern.payment;
 
-import android.content.Intent;
+/*import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -97,5 +97,7 @@ public class BecomeAMember extends AppCompatActivity {
 		call.enqueue(callback);
 	}
 }
+*/
+
 
 
