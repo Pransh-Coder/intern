@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/ps">
+	
+	<FrameLayout
+		android:id="@+id/qr_image_frame"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toTopOf="@id/guide_hor_70_per"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_20_per" >
+		<com.journeyapps.barcodescanner.DecoratedBarcodeView
+			android:id="@+id/qr_view"
+			android:layout_width="300dp"
+			android:layout_height="300dp"
+			app:zxing_preview_scaling_strategy = "centerCrop"/>
+		<ImageView
+			android:id="@+id/iv_scanned_image"
+			android:layout_width="300dp"
+			android:layout_height="300dp"
+			android:layout_gravity="center"
+			android:scaleType="centerCrop"
+			android:visibility="invisible"/>
+	</FrameLayout>
+	
+	<TextView
+		android:id="@+id/textView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		app:layout_constraintBottom_toTopOf="@+id/button"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/qr_image_frame" />
+	
+	<Button
+		android:id="@+id/button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/background_button_sign_in"
+		android:text="SCAN"
+		android:padding="10dp"
+		app:layout_constraintBottom_toTopOf="@id/redeem"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/textView" />
+	<Button
+		android:id="@+id/redeem"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/background_button_sign_in"
+		android:padding="10dp"
+		android:text="REDEEM OFFER"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/button" />
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_ver_15_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.15"/>
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_ver_85_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.85"/>
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_hor_20_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.2"/>
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_hor_70_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.7"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
