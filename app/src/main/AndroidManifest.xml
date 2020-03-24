@@ -9,6 +9,7 @@
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:hardwareAccelerated="true"
@@ -21,7 +22,7 @@
         <activity android:name=".holiday_list" />
         <activity android:name=".lifestyle_list" />
         <activity android:name=".food_list" />
-        <activity android:name=".RegistrationChoice" />
+        <activity android:name=".auth.RegistrationChoice" />
         <activity android:name=".qr.QRScanner">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,11 +55,11 @@
         <activity
             android:name="save_money.Offers.PhysiotherapyOffers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Register_asParent_Activity" />
-        <activity android:name=".Register_asChild_Activity" />
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".PhnRegistration" />
-        <activity android:name=".Login_Register">
+        <activity android:name=".auth.Register_asParent_Activity" />
+        <activity android:name=".auth.Register_asChild_Activity" />
+        <activity android:name=".auth.RegistrationActivity" />
+        <activity android:name=".auth.PhnRegistration" />
+        <activity android:name=".auth.Login_Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

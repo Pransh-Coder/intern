@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/front_blank_with_logo"
-    tools:context=".Register_asChild_Activity">
+    tools:context=".auth.Register_asChild_Activity">
 
     <EditText
         android:id="@+id/et_name"

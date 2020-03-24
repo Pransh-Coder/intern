@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_welcome"
-    tools:context=".Login_Register">
+    tools:context=".auth.Login_Register">
 
     <LinearLayout
         android:layout_width="match_parent"

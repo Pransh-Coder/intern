@@ -1,6 +1,4 @@
-package com.example.intern;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.intern.auth;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.intern.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -140,7 +142,7 @@ public class PhnRegistration extends AppCompatActivity {
 
 
     private void  sendtoprofilecreation() {
-        Intent profileintent = new Intent(PhnRegistration.this,RegistrationActivity.class);
+        Intent profileintent = new Intent(PhnRegistration.this, RegistrationActivity.class);
         startActivity(profileintent);
         finish();
     }

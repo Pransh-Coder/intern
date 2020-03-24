@@ -1,4 +1,4 @@
-package com.example.intern;
+package com.example.intern.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -36,6 +37,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;*/
 
 public class RegistrationChoice extends AppCompatActivity {
+    public static String E_MAIL_SELECTED;
     private final static int RC_SIGN_IN = 2;
     FirebaseAuth mauth;
     GoogleSignInClient mGoogleSignInClient;
@@ -56,8 +58,8 @@ public class RegistrationChoice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_registration_choice);
-        googlereg = (Button) findViewById(R.id.btn_google_signup);
-        phn = (Button) findViewById(R.id.btn_signup_phone);
+        googlereg = findViewById(R.id.btn_google_signup);
+        phn = findViewById(R.id.btn_signup_phone);
         mauth = FirebaseAuth.getInstance();
 
         phn.setOnClickListener(new View.OnClickListener() {
@@ -144,7 +146,9 @@ public class RegistrationChoice extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
-        startActivity(new Intent(RegistrationChoice.this, RegistrationActivity.class));
+        Intent intent  = new Intent(RegistrationChoice.this, RegistrationActivity.class);
+        intent.putExtra(E_MAIL_SELECTED, user.getEmail());
+        startActivity(intent);
         Toast.makeText(RegistrationChoice.this, "Welcome", Toast.LENGTH_LONG).show();
         finish();
 
