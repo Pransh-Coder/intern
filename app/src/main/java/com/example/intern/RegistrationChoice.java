@@ -1,36 +1,47 @@
 package com.example.intern;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+/*import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;*/
+
 public class RegistrationChoice extends AppCompatActivity {
+    private final static int RC_SIGN_IN = 2;
+    FirebaseAuth mauth;
+    GoogleSignInClient mGoogleSignInClient;
     private Button googlereg;
     private Button Fb;
     private Button phn;
-    FirebaseAuth mauth;
-    private final static int RC_SIGN_IN = 2;
-    GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth.AuthStateListener mauthlistner;
    /* @Override
     protected void onStart() {
@@ -45,16 +56,15 @@ public class RegistrationChoice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_registration_choice);
-        googlereg= (Button) findViewById(R.id.btn_google_signup);
-        phn=(Button)findViewById(R.id.btn_signup_phone);
+        googlereg = (Button) findViewById(R.id.btn_google_signup);
+        phn = (Button) findViewById(R.id.btn_signup_phone);
         mauth = FirebaseAuth.getInstance();
 
         phn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(RegistrationChoice.this,PhnRegistration.class));
-
+                startActivity(new Intent(RegistrationChoice.this, PhnRegistration.class));
 
 
             }
@@ -101,17 +111,16 @@ public class RegistrationChoice extends AppCompatActivity {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
-                Toast.makeText(RegistrationChoice.this,"Signed up successfully",Toast.LENGTH_LONG).show();
+                Toast.makeText(RegistrationChoice.this, "Signed up successfully", Toast.LENGTH_LONG).show();
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Toast.makeText(RegistrationChoice.this,"Sign up issues",Toast.LENGTH_LONG).show();
+                Toast.makeText(RegistrationChoice.this, "Sign up issues", Toast.LENGTH_LONG).show();
                 // ...
             }
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount account)
-    {
+    private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mauth.signInWithCredential(credential)
@@ -125,7 +134,7 @@ public class RegistrationChoice extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
 
-                            Toast.makeText(RegistrationChoice.this,"Authentication Failed",Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegistrationChoice.this, "Authentication Failed", Toast.LENGTH_LONG).show();
                             //updateUI(null);
                         }
 
@@ -135,8 +144,8 @@ public class RegistrationChoice extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
-        startActivity(new Intent(RegistrationChoice.this,RegistrationActivity.class));
-        Toast.makeText(RegistrationChoice.this,"Welcome",Toast.LENGTH_LONG).show();
+        startActivity(new Intent(RegistrationChoice.this, RegistrationActivity.class));
+        Toast.makeText(RegistrationChoice.this, "Welcome", Toast.LENGTH_LONG).show();
         finish();
 
     }

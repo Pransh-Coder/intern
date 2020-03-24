@@ -23,8 +23,8 @@ public class Register_asChild_Activity extends AppCompatActivity {
     Button child_SignIn;
     private EditText name,petname,pspetnem,dob,pincode,phn;
     String userid,nm,pn,pspn,Dob,phone,pin;
-    FirebaseFirestore fstore;
-    FirebaseAuth fauth;
+    private FirebaseFirestore fstore;
+    private FirebaseAuth fauth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,7 @@ public class Register_asChild_Activity extends AppCompatActivity {
                     return ;
                 }
                 Dob=dob.getText().toString();
-                if(pn.isEmpty())
+                if(Dob.isEmpty())
                 {
                     dob.setError("DOB is required");
                     return;
