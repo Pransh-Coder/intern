@@ -1,19 +1,45 @@
 package com.example.intern.database;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.ContactsContract;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;
+import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Nullable;
 
 public abstract class FireStoreUtil {
+	//Firebase provides concurrent running of their commands. So no need for concurrency
+	
 	public static String QUERY_TYPE_UNRESOLVED = "0";
 	public static String QUERY_TYPE_RESOLVED = "1";
+	
+	//Collection Names in the database
 	public static String USER_COLLECTION_NAME = "Users";
+	public static String USER_CLUSTER_COLLECTION_NAME = "uclust";
 	public static String QUERY_COLLECTION_NAME = "queries";
+	//Storage path names used
+	private static String USER_IMAGE_STORAGE_NAME = "imgs";
+	
 	//Field Names used
 	private static String USER_NAME = "un";
 	private static String USER_EMAIL = "em";
@@ -24,15 +50,34 @@ public abstract class FireStoreUtil {
 	private static String USER_PIN_CODE = "pc";
 	private static String USER_PAY_ID = "pay";
 	
+	//References needs to be synchronised
+	private static volatile FirebaseApp firebaseApp;
 	private static volatile FirebaseFirestore dbReference;
+	private static volatile FirebaseStorage firebaseStorage;
 	private static volatile DocumentReference userDocumentReference;
+	private static volatile  DocumentReference userClusterReference;
+	private static volatile StorageReference userStorageReference;
 	private static volatile CollectionReference queryCollectionReference;
+	
+	private static FirebaseApp getFirebaseApp(Context context) {
+		if(FirebaseApp.getApps(context).isEmpty()){
+			firebaseApp = FirebaseApp.initializeApp(context);
+		}
+		return firebaseApp;
+	}
+	
+	@Nullable
+	public static String getCurrentUID(Context context){
+		return FirebaseAuth.getInstance(getFirebaseApp(context)).getCurrentUser().getUid();
+	}
 	
 	private static FirebaseFirestore getDbReference(Context context){
 		if(dbReference == null){
 			synchronized (FireStoreUtil.class){
 				if(dbReference == null){
-					initialiseFirebase(context);
+					if(firebaseApp == null){
+						getFirebaseApp(context);
+					}
 					dbReference = FirebaseFirestore.getInstance();
 				}
 			}
@@ -40,10 +85,13 @@ public abstract class FireStoreUtil {
 		return dbReference;
 	}
 	
-	private static void initialiseFirebase(Context context) {
-		if(FirebaseApp.getApps(context).isEmpty()){
-			FirebaseApp.initializeApp(context);
+	private static FirebaseStorage getFirebaseStorage(Context context){
+		if(firebaseStorage == null){
+			synchronized (FireStoreUtil.class){
+				firebaseStorage = FirebaseStorage.getInstance(getFirebaseApp(context));
+			}
 		}
+		return firebaseStorage;
 	}
 	
 	private static DocumentReference getUserDocumentReference(Context context, String userID){
@@ -57,13 +105,99 @@ public abstract class FireStoreUtil {
 		return userDocumentReference;
 	}
 	
+	private static DocumentReference getUserClusterReference(Context context, String pinCode){
+		if(userClusterReference == null){
+			synchronized (FireStoreUtil.class){
+				if(userClusterReference == null){
+					userClusterReference = getDbReference(context).collection(USER_CLUSTER_COLLECTION_NAME).document(pinCode);
+				}
+			}
+		}
+		return userClusterReference;
+	}
+	
+	private static StorageReference getUserImageStorageReference(Context context, String UID){
+		if(userStorageReference == null){
+			synchronized (FireStoreUtil.class){
+				if(userStorageReference == null){
+					userStorageReference = getFirebaseStorage(context).getReference(UID).child(USER_IMAGE_STORAGE_NAME);
+				}
+			}
+		}
+		return userStorageReference;
+	}
+	
+	//Methods to create new users or find existing ones
 	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode){
 		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode);
-		Task<Void> task = getUserDocumentReference(context, UID).collection(USER_COLLECTION_NAME).document(UID).set(user);
-		return task;
+		return getUserDocumentReference(context, UID).collection(USER_COLLECTION_NAME).document(UID).set(user);
+	}
+	
+/*	public static boolean findUserWithUID(Context context, String UID){
+		getUserDocumentReference(context, UID).get().addOnSuccessListener( snapshot -> {
+			if(snapshot.exists()){
+				//TODO: Login the user
+			}else if(!snapshot.exists()){
+				//TODO : Send to registration page
+			}else{
+				//TODO:Handle unknown error
+			}
+		});
+	}*/
+	
+	//TODO: make a method to get user friends from the cluster
+	//Creates a new cluster if not already present
+	public static Task<Void> addToCluster(Context context, String pinCode, String UID){
+		Map<String, String> userClusterEntity = new HashMap<>();
+		userClusterEntity.put("u", UID);
+		return getUserClusterReference(context, pinCode).set(userClusterEntity, SetOptions.merge());
+	}
+	
+	public static List<String> getFriendsInContact(Context context){
+		List<String> friends = new ArrayList<>();
+		//TODO : Find user's friends from contact list
+		ContentResolver cr = context.getContentResolver();
+		Cursor cursor = cr.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+		if(cursor.moveToFirst()) {
+			do {
+				String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+				if(Integer.parseInt(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
+					Cursor pCur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = ?",new String[]{ id }, null);
+					while (pCur.moveToNext()) {
+						String contactNumber = pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+						friends.add(contactNumber);
+						break;
+					}
+					pCur.close();
+				}
+			} while (cursor.moveToNext()) ;
+		}
+		cursor.close();
+		return friends;
 	}
 	
 	//TODO : Make updater methods
+	//Updater methods for user fields
+	public static Task<Void> uploadPayID(Context context, String payID){
+		Map<String, Object> updata = new HashMap<>();
+		updata.put(USER_PAY_ID, payID);
+		return getUserDocumentReference(context, getCurrentUID(context)).update(updata);
+	}
+	
+	
+	public static UploadTask uploadImage(Context context, String UID, Bitmap bitmap){
+		StorageReference imagePathRef = getUserImageStorageReference(context, UID).child(Long.toString(System.currentTimeMillis()));
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+		byte[] data = outputStream.toByteArray();
+		return imagePathRef.putBytes(data);
+	}
+	
+	public static UploadTask uploadImage(Context context, String UID, Uri uri){
+		StorageReference imagePathRef = getUserImageStorageReference(context, UID).child(Long.toString(System.currentTimeMillis()));
+		return imagePathRef.putFile(uri);
+	}
+	
 	
 	@IgnoreExtraProperties
 	public static class PSUser{
@@ -95,6 +229,7 @@ public abstract class FireStoreUtil {
 			this.pn = phoneNumber;
 			this.dob = DOB;
 			this.pc = pinCode;
+			this.pay = "";
 		}
 	}
 	
@@ -117,7 +252,7 @@ public abstract class FireStoreUtil {
 			Query buildQuery = new Query(QUERY_TYPE_UNRESOLVED, query);
 			userDocumentReference.collection(QUERY_COLLECTION_NAME).add(buildQuery);
 		}
-	}*/
+	}
 	
 	@IgnoreExtraProperties
 	static class Query{
@@ -158,5 +293,5 @@ public abstract class FireStoreUtil {
 		public void setQ(String q) {
 			this.q = q;
 		}
-	}
+	}*/
 }

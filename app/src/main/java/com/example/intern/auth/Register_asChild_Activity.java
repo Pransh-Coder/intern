@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -59,65 +58,63 @@ public class Register_asChild_Activity extends AppCompatActivity {
         final Context context = getApplicationContext();
         final Intent intent = getIntent();
         child_SignIn.setEnabled(false);
-        child_SignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nm=name.getText().toString();
-                if(nm.isEmpty())
-                {
-                    name.setError("Name is Required");
-                    return ;
-                }
-                Dob=dob.getText().toString();
-                if(Dob.isEmpty())
-                {
-                    dob.setError("DOB is required");
-                    return;
-                }
-                phone=phn.getText().toString();
-                if(phone.isEmpty())
-                {
-                    phn.setError("Phone number is required");
-                    return;
-                }
-                pin=pincode.getText().toString();
-                if(pin.isEmpty())
-                {
-                    getLocationPermsAndPinCode();
-                    return;
-                }
-                pn=petname.getText().toString();
-                pspn=pspetnem.getText().toString();
-                userid=fauth.getCurrentUser().getUid();
-                child_SignIn.setEnabled(true);
+        child_SignIn.setOnClickListener(view -> {
+            nm=name.getText().toString();
+            if(nm.isEmpty())
+            {
+                name.setError("Name is Required");
+                return ;
+            }
+            Dob=dob.getText().toString();
+            if(Dob.isEmpty())
+            {
+                dob.setError("DOB is required");
+                return;
+            }
+            phone=phn.getText().toString();
+            if(phone.isEmpty())
+            {
+                phn.setError("Phone number is required");
+                return;
+            }
+            pin=pincode.getText().toString();
+            if(pin.isEmpty() || pin.length() < 6)
+            {
+                pin = requirePinCode();
+            }
+            pn=petname.getText().toString();
+            pspn=pspetnem.getText().toString();
+            userid=fauth.getCurrentUser().getUid();
+            child_SignIn.setEnabled(true);
 //                DocumentReference documentReference=fstore.collection("Users").document(userid);
-//                TODO:Get pin code from location
-                FireStoreUtil.makeUserWithUID(context, userid, nm,intent.getStringExtra(RegistrationChoice.E_MAIL_SELECTED)
-                ,pn , pspn , pn, Dob, pin).addOnSuccessListener(aVoid -> {
+	        FireStoreUtil.addToCluster(context, pin, userid).addOnSuccessListener(aVoid -> {
+	        	//TODO : User needs to be aware of friends in the same pincode
+	        });
+            FireStoreUtil.makeUserWithUID(context, userid, nm,intent.getStringExtra(RegistrationChoice.E_MAIL_SELECTED)
+            ,pn , pspn , pn, Dob, pin).addOnSuccessListener(aVoid -> {
+                Toast.makeText(Register_asChild_Activity.this,"Profile set up Successfully",Toast.LENGTH_LONG).show();
+                Intent intent1 = new Intent(Register_asChild_Activity.this, SaveMoney.class);
+                startActivity(intent1);
+                finish();
+            });
+            /*HashMap<String,String> profilemap=new HashMap<>();
+            profilemap.put("uid",userid);
+            profilemap.put("name",nm);
+            profilemap.put("Nick Name",pn);
+            profilemap.put("Ps Nick Name",pspn);
+            profilemap.put("Phone number",phone);
+            profilemap.put("DOB",Dob);
+            profilemap.put("Pincode",pin);
+            documentReference.set(profilemap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
                     Toast.makeText(Register_asChild_Activity.this,"Profile set up Successfully",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(Register_asChild_Activity.this, SaveMoney.class);
                     startActivity(intent);
                     finish();
-                });
-                /*HashMap<String,String> profilemap=new HashMap<>();
-                profilemap.put("uid",userid);
-                profilemap.put("name",nm);
-                profilemap.put("Nick Name",pn);
-                profilemap.put("Ps Nick Name",pspn);
-                profilemap.put("Phone number",phone);
-                profilemap.put("DOB",Dob);
-                profilemap.put("Pincode",pin);
-                documentReference.set(profilemap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(Register_asChild_Activity.this,"Profile set up Successfully",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(Register_asChild_Activity.this, SaveMoney.class);
-                        startActivity(intent);
-                        finish();
 
-                    }
-                });*/
-            }
+                }
+            });*/
         });
     }
     
@@ -142,13 +139,14 @@ public class Register_asChild_Activity extends AppCompatActivity {
         pincode.setError("Provide location permissions or enter manually");
     }
 
-    private void getLocationPermsAndPinCode(){
+    private String requirePinCode(){
         String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
         if(ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[] {permission}, LOCATION_REQUEST_CODE);
         }else{
-            getPostalCodeFromGPS();
+            return getPostalCodeFromGPS();
         }
+        return null;
     }
     
     @Override
@@ -156,7 +154,7 @@ public class Register_asChild_Activity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode == LOCATION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                getPostalCodeFromGPS();
+                 requirePinCode();
             }else{
                 getPostalCodeFromUser();
             }
