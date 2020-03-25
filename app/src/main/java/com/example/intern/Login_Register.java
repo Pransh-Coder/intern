@@ -25,7 +25,10 @@ public class Login_Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent registerIntent = new Intent(getApplicationContext(),RegistrationChoice.class);
+                registerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(registerIntent);
+                finish();
+
 
             }
         });

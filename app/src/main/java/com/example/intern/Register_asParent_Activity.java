@@ -75,17 +75,18 @@ public class Register_asParent_Activity extends AppCompatActivity {
                 DocumentReference documentReference=fstore.collection("Registered_As_Parent").document(userid);
                 HashMap<String,String> profilemap=new HashMap<>();
                 profilemap.put("uid",userid);
-                profilemap.put("name",nm);
-                profilemap.put("Nick Name",pn);
-                profilemap.put("Ps Nick Name",pspn);
-                profilemap.put("Phone number",phone);
+                profilemap.put("N",nm);
+                profilemap.put("NN",pn);
+                profilemap.put("PNN",pspn);
+                profilemap.put("Phn",phone);
                 profilemap.put("DOB",Dob);
-                profilemap.put("Pincode",pin);
+                profilemap.put("Pin",pin);
                 documentReference.set(profilemap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(Register_asParent_Activity.this,"Profile set up Successfully",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Register_asParent_Activity.this, SaveMoney.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();
 
