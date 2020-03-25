@@ -4,20 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.intern">
 
-    <dist:module dist:instant="true" />
-    <dist:module dist:instant="true" />
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <dist:module dist:instant="true" />
+    <dist:module dist:instant="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:hardwareAccelerated="true"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".swabhiman_register"></activity>
+        <activity android:name=".swabhiman_dp" />
         <activity android:name=".holiday_list" />
         <activity android:name=".lifestyle_list" />
         <activity android:name=".food_list" />
@@ -25,7 +29,7 @@
         <activity android:name=".qr.QRScanner">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-        
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
