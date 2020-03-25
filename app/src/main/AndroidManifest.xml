@@ -26,11 +26,6 @@
         <activity android:name=".food_list" />
         <activity android:name=".auth.RegistrationChoice" />
         <activity android:name=".qr.QRScanner">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-        
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="save_money.Health"
@@ -64,17 +59,11 @@
         <activity android:name=".auth.Login_Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".payment.BecomeAMember" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Gifts" />
     </application>

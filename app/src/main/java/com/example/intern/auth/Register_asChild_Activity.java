@@ -7,114 +7,136 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.intern.R;
 import com.example.intern.database.FireStoreUtil;
+import com.example.intern.databinding.ActivityRegisterAsChildBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 import save_money.SaveMoney;
 
 public class Register_asChild_Activity extends AppCompatActivity {
-
-    Button child_SignIn;
-    private EditText name,petname,pspetnem,dob,pincode,phn;
-    String userid,nm,pn,pspn,Dob,phone,pin;
-    private FirebaseFirestore fstore;
-    private FirebaseAuth fauth;
-    private final Context activityContext = this;
+    private static String TAG = Register_asChild_Activity.class.getSimpleName();
+    private ActivityRegisterAsChildBinding binding;
+    private String password;
+    private String pinCode;
+    private Context activityContext = this;
+    
     private FusedLocationProviderClient locationProviderClient;
     private int LOCATION_REQUEST_CODE = 23;
-    private AtomicReference<String> pinCode = null;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_as_child);
-       // getSupportActionBar().hide();
-        name=findViewById(R.id.et_name);
-        petname=findViewById(R.id.et_nick_name);
-        pspetnem=findViewById(R.id.et_ps_nick_name);
-        dob=findViewById(R.id.et_DOB);
-        phn=findViewById(R.id.et_parent_number);
-        pincode=findViewById(R.id.et_pin_code);
-        fauth=FirebaseAuth.getInstance();
-        fstore=FirebaseFirestore.getInstance();
-        child_SignIn= findViewById(R.id.btnRegisterasChild_SignIn);
-        final Context context = getApplicationContext();
-        final Intent intent = getIntent();
-        child_SignIn.setEnabled(false);
-        child_SignIn.setOnClickListener(view -> {
-            nm=name.getText().toString();
-            if(nm.isEmpty())
-            {
-                name.setError("Name is Required");
-                return ;
+        binding = ActivityRegisterAsChildBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setTextWatchers();
+        setClickListeners();
+    }
+    
+    private void setTextWatchers(){
+        binding.etPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        
             }
-            Dob=dob.getText().toString();
-            if(Dob.isEmpty())
-            {
-                dob.setError("DOB is required");
-                return;
+    
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+        
             }
-            phone=phn.getText().toString();
-            if(phone.isEmpty())
-            {
-                phn.setError("Phone number is required");
-                return;
-            }
-            pin=pincode.getText().toString();
-            if(pin.isEmpty() || pin.length() < 6)
-            {
-                pin = requirePinCode();
-            }
-            pn=petname.getText().toString();
-            pspn=pspetnem.getText().toString();
-            userid=fauth.getCurrentUser().getUid();
-            child_SignIn.setEnabled(true);
-//                DocumentReference documentReference=fstore.collection("Users").document(userid);
-	        FireStoreUtil.addToCluster(context, pin, userid).addOnSuccessListener(aVoid -> {
-	        	//TODO : User needs to be aware of friends in the same pincode
-	        });
-            FireStoreUtil.makeUserWithUID(context, userid, nm,intent.getStringExtra(RegistrationChoice.E_MAIL_SELECTED)
-            ,pn , pspn , pn, Dob, pin).addOnSuccessListener(aVoid -> {
-                Toast.makeText(Register_asChild_Activity.this,"Profile set up Successfully",Toast.LENGTH_LONG).show();
-                Intent intent1 = new Intent(Register_asChild_Activity.this, SaveMoney.class);
-                startActivity(intent1);
-                finish();
-            });
-            /*HashMap<String,String> profilemap=new HashMap<>();
-            profilemap.put("uid",userid);
-            profilemap.put("name",nm);
-            profilemap.put("Nick Name",pn);
-            profilemap.put("Ps Nick Name",pspn);
-            profilemap.put("Phone number",phone);
-            profilemap.put("DOB",Dob);
-            profilemap.put("Pincode",pin);
-            documentReference.set(profilemap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Toast.makeText(Register_asChild_Activity.this,"Profile set up Successfully",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(Register_asChild_Activity.this, SaveMoney.class);
-                    startActivity(intent);
-                    finish();
-
+    
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s != null && s.length() >= 8){
+                    password = s.toString();
+                }else{
+                    binding.etPassword.setError("Password must be 8 characters");
                 }
-            });*/
+            }
+        });
+        binding.etConfirmPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        
+            }
+    
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+        
+            }
+    
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s != null && s.length() >= 8){
+                    if(s.toString().equals(password)){
+                        return;
+                    }else{
+                        binding.etConfirmPassword.setError("Passwords do not match");
+                    }
+                }
+            }
+        });
+        binding.etPinCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        
+            }
+    
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+    
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s != null && s.length() == 6) {
+                    pinCode = s.toString();
+                }else return;
+            }
+        });
+    }
+    
+    private void setClickListeners(){
+        binding.btnRegisterasChildSignIn.setOnClickListener(v->{
+            String name = binding.etName.getText().toString();
+            String DOB = binding.etDOB.getText().toString();
+            String password = binding.etPassword.getText().toString();
+            if(name.isEmpty()){
+                binding.etName.setError("Name Cannot Be Empty");return;
+            }
+            if(DOB.isEmpty()){
+                binding.etDOB.setError("DOB Cannot Be Empty");return;
+            }
+            if(password.isEmpty()){
+                binding.etPassword.setError("Password Cannot Be Empty");return;
+            }
+            if(pinCode != null && pinCode.length() == 6){
+                FirebaseUser user = FireStoreUtil.getFirebaseUser(activityContext);
+                FireStoreUtil.makeUserWithUID(activityContext, user.getUid()
+                        ,name, user.getEmail(), binding.etNickName.getText().toString(),
+                        binding.etPsNickName.getText().toString(), binding.etParentNumber.getText().toString(),
+                        DOB, pinCode, password)
+                        .addOnSuccessListener(success->{
+                            FireStoreUtil.addToCluster(activityContext, pinCode, user.getUid());
+                            Intent intent = new Intent(Register_asChild_Activity.this, SaveMoney.class);
+                            Log.d(TAG, "successfully made user");
+                            startActivity(intent);
+                        });
+            }else {
+                requirePinCode();
+            }
         });
     }
     
@@ -125,18 +147,17 @@ public class Register_asChild_Activity extends AppCompatActivity {
             try {
                 List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude() , 1);
                 if(addresses != null && addresses.size() > 0 ){
-                    pinCode.set(addresses.get(0).getPostalCode());
+                    pinCode = addresses.get(0).getPostalCode();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-        return pinCode.get();
+        return pinCode;
     }
 
     private void getPostalCodeFromUser(){
-        child_SignIn.setEnabled(false);
-        pincode.setError("Provide location permissions or enter manually");
+        binding.etPinCode.setError("Provide location permissions or enter manually");
     }
 
     private String requirePinCode(){

@@ -47,7 +47,7 @@ public class PhnRegistration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String phnno=Phnno.getText().toString();
+                String phnno= Phnno.getText().toString();
                 if (TextUtils.isEmpty(phnno)) {
                     Toast.makeText(PhnRegistration.this, "Please enter your phone number first", Toast.LENGTH_LONG).show();
                 } else {
@@ -57,7 +57,7 @@ public class PhnRegistration extends AppCompatActivity {
                     loadingbar.show();
 
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            phnno,        // Phone number to verify
+                            "+91" + phnno,        // Phone number to verify
                             60,                 // Timeout duration
                             TimeUnit.SECONDS,   // Unit of timeout
                             PhnRegistration.this,               // Activity (for callback binding)

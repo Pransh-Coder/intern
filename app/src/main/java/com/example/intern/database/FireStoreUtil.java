@@ -10,6 +10,7 @@ import android.provider.ContactsContract;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,8 +25,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.Nullable;
 
 public abstract class FireStoreUtil {
 	//Firebase provides concurrent running of their commands. So no need for concurrency
@@ -52,6 +51,7 @@ public abstract class FireStoreUtil {
 	
 	//References needs to be synchronised
 	private static volatile FirebaseApp firebaseApp;
+	private static volatile FirebaseUser firebaseUser;
 	private static volatile FirebaseFirestore dbReference;
 	private static volatile FirebaseStorage firebaseStorage;
 	private static volatile DocumentReference userDocumentReference;
@@ -66,9 +66,9 @@ public abstract class FireStoreUtil {
 		return firebaseApp;
 	}
 	
-	@Nullable
-	public static String getCurrentUID(Context context){
-		return FirebaseAuth.getInstance(getFirebaseApp(context)).getCurrentUser().getUid();
+	public static FirebaseUser getFirebaseUser(Context context){
+		getFirebaseApp(context);
+		return FirebaseAuth.getInstance().getCurrentUser();
 	}
 	
 	private static FirebaseFirestore getDbReference(Context context){
@@ -128,9 +128,9 @@ public abstract class FireStoreUtil {
 	}
 	
 	//Methods to create new users or find existing ones
-	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode){
-		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode);
-		return getUserDocumentReference(context, UID).collection(USER_COLLECTION_NAME).document(UID).set(user);
+	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String password){
+		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode, password);
+		return getUserDocumentReference(context, UID).set(user);
 	}
 	
 /*	public static boolean findUserWithUID(Context context, String UID){
@@ -181,7 +181,7 @@ public abstract class FireStoreUtil {
 	public static Task<Void> uploadPayID(Context context, String payID){
 		Map<String, Object> updata = new HashMap<>();
 		updata.put(USER_PAY_ID, payID);
-		return getUserDocumentReference(context, getCurrentUID(context)).update(updata);
+		return getUserDocumentReference(context, getFirebaseUser(context).getUid()).update(updata);
 	}
 	
 	
@@ -217,11 +217,13 @@ public abstract class FireStoreUtil {
 		public String pc;
 		//Pay ID
 		public String pay;
+		//Password
+		public String pass;
 		
 		public PSUser(){}
 		
 		public PSUser(String name, String email, String nickName, String psNickName,
-		              String phoneNumber, String DOB , String pinCode){
+		              String phoneNumber, String DOB , String pinCode, String password){
 			this.un = name;
 			this.em = email;
 			this.nn = nickName;
@@ -229,7 +231,8 @@ public abstract class FireStoreUtil {
 			this.pn = phoneNumber;
 			this.dob = DOB;
 			this.pc = pinCode;
-			this.pay = "";
+			this.pay = null;
+			this.pass = password;
 		}
 	}
 	
