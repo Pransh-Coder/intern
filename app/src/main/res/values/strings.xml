@@ -17,4 +17,6 @@
     <string name="bpcl_fuel">BPCL FUEL</string>
     <string name="request">REQUEST</string>
     <string name="social_network">SOCIAL\n NETWORK</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
