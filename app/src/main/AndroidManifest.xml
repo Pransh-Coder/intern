@@ -30,7 +30,7 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".socialnetwork.SocialActivity"></activity>
+		<activity android:name=".socialnetwork.SocialActivity" />
 		<activity android:name=".holiday_list" />
 		<activity android:name=".lifestyle_list" />
 		<activity android:name=".food_list" />
@@ -65,13 +65,7 @@
 		<activity android:name=".auth.Register_asChild_Activity" />
 		<activity android:name=".auth.RegistrationActivity" />
 		<activity android:name=".auth.PhnRegistration" />
-		<activity android:name=".auth.Login_Register">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
+		<activity android:name=".auth.Login_Register" />
 		<activity android:name=".payment.BecomeAMember" />
 		<activity android:name=".MainActivity" />
 		<activity android:name=".Gifts" />

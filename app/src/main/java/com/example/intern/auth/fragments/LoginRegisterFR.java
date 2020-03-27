@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
+import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.databinding.FragmentLoginRegisterFRBinding;
 
@@ -32,8 +34,9 @@ public class LoginRegisterFR extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
+		//TODO: make a login FR too
 		binding.registrationButton.setOnClickListener(v->{
-		
+			Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_registrationChoiceFR);
 		});
 	}
 }

@@ -26,9 +26,20 @@
 		<action
 			android:id="@+id/action_registrationOptionsFR_to_registerAsChildFR"
 			app:destination="@id/registerAsChildFR" />
+		<action
+			android:id="@+id/action_registrationOptionsFR_to_phoneRegistrationFR"
+			app:destination="@id/phoneRegistrationFR" />
 	</fragment>
 	<fragment
 		android:id="@+id/registerAsChildFR"
 		android:name="com.example.intern.auth.fragments.RegisterAsChildFR"
 		android:label="RegisterAsChildFR" />
+	<fragment
+		android:id="@+id/phoneRegistrationFR"
+		android:name="com.example.intern.auth.fragments.PhoneRegistrationFR"
+		android:label="PhoneRegistrationFR" >
+		<action
+			android:id="@+id/action_phoneRegistrationFR_to_registerAsChildFR"
+			app:destination="@id/registerAsChildFR" />
+	</fragment>
 </navigation>
