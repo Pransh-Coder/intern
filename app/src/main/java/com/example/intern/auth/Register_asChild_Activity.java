@@ -17,15 +17,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.intern.database.FireStoreUtil;
+import com.example.intern.database.local.UserEntity;
 import com.example.intern.databinding.ActivityRegisterAsChildBinding;
+import com.example.intern.socialnetwork.SocialActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 import java.util.List;
-
-import save_money.SaveMoney;
 
 public class Register_asChild_Activity extends AppCompatActivity {
     private static String TAG = Register_asChild_Activity.class.getSimpleName();
@@ -130,8 +130,10 @@ public class Register_asChild_Activity extends AppCompatActivity {
                         DOB, pinCode, password)
                         .addOnSuccessListener(success->{
                             FireStoreUtil.addToCluster(activityContext, pinCode, user.getUid());
-                            Intent intent = new Intent(Register_asChild_Activity.this, SaveMoney.class);
+                            //TODO:Change intent to send to main app
+                            Intent intent = new Intent(Register_asChild_Activity.this, SocialActivity.class);
                             Log.d(TAG, "successfully made user");
+                            UserEntity userEntity = new UserEntity(user.getUid(), name, DOB, pinCode);
                             startActivity(intent);
                         });
             }else {

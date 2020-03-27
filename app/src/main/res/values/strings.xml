@@ -1,20 +1,23 @@
 <resources>
-    <string name="app_name">intern</string>
-    <string-array name="laguauge">
-        <item>Choose Your Language</item>
-        <item>English</item>
-        <item>हिन्दी</item>
-        <item>ગુજરાતી</item>
-    </string-array>
-    <string-array name="currentlaguauge">
-        <item>Current Language English</item>
-        <item>Current Language हिन्दी</item>
-        <item>Current Language ગુજરાતી</item>
-    </string-array>
-    <string name="save_money">SAVE MONEY</string>
-    <string name="swabhiman">SWABHIMAN</string>
-    <string name="shopping">SHOPPING</string>
-    <string name="bpcl_fuel">BPCL FUEL</string>
-    <string name="request">REQUEST</string>
-    <string name="social_network">SOCIAL\n NETWORK</string>
+	<string name="app_name">intern</string>
+	<string-array name="laguauge">
+		<item>Choose Your Language</item>
+		<item>English</item>
+		<item>हिन्दी</item>
+		<item>ગુજરાતી</item>
+	</string-array>
+	<string-array name="currentlaguauge">
+		<item>Current Language English</item>
+		<item>Current Language हिन्दी</item>
+		<item>Current Language ગુજરાતી</item>
+	</string-array>
+	<string name="save_money">SAVE MONEY</string>
+	<string name="swabhiman">SWABHIMAN</string>
+	<string name="shopping">SHOPPING</string>
+	<string name="bpcl_fuel">BPCL FUEL</string>
+	<string name="request">REQUEST</string>
+	<string name="social_network">SOCIAL\n NETWORK</string>
+	
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

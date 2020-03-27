@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/auth_nav_graph"
+	app:startDestination="@id/loginRegisterFR">
+	
+	<fragment
+		android:id="@+id/loginRegisterFR"
+		android:name="com.example.intern.auth.fragments.LoginRegisterFR"
+		android:label="LoginRegisterFR" >
+		<action
+			android:id="@+id/action_loginRegisterFR_to_registrationChoiceFR"
+			app:destination="@id/registrationChoiceFR" />
+	</fragment>
+	<fragment
+		android:id="@+id/registrationChoiceFR"
+		android:name="com.example.intern.auth.fragments.RegistrationChoiceFR"
+		android:label="RegistrationChoiceFR" >
+		<action
+			android:id="@+id/action_registrationChoiceFR_to_registrationOptionsFR"
+			app:destination="@id/registrationOptionsFR" />
+	</fragment>
+	<fragment
+		android:id="@+id/registrationOptionsFR"
+		android:name="com.example.intern.auth.fragments.RegistrationOptionsFR"
+		android:label="RegistrationOptionsFR" >
+		<action
+			android:id="@+id/action_registrationOptionsFR_to_registerAsChildFR"
+			app:destination="@id/registerAsChildFR" />
+	</fragment>
+	<fragment
+		android:id="@+id/registerAsChildFR"
+		android:name="com.example.intern.auth.fragments.RegisterAsChildFR"
+		android:label="RegisterAsChildFR" />
+</navigation>

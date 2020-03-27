@@ -13,9 +13,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;
-import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -71,7 +71,7 @@ public abstract class FireStoreUtil {
 		return FirebaseAuth.getInstance().getCurrentUser();
 	}
 	
-	private static FirebaseFirestore getDbReference(Context context){
+	public static FirebaseFirestore getDbReference(Context context){
 		if(dbReference == null){
 			synchronized (FireStoreUtil.class){
 				if(dbReference == null){
@@ -105,7 +105,7 @@ public abstract class FireStoreUtil {
 		return userDocumentReference;
 	}
 	
-	private static DocumentReference getUserClusterReference(Context context, String pinCode){
+	public static DocumentReference getUserClusterReference(Context context, String pinCode){
 		if(userClusterReference == null){
 			synchronized (FireStoreUtil.class){
 				if(userClusterReference == null){
@@ -148,9 +148,8 @@ public abstract class FireStoreUtil {
 	//TODO: make a method to get user friends from the cluster
 	//Creates a new cluster if not already present
 	public static Task<Void> addToCluster(Context context, String pinCode, String UID){
-		Map<String, String> userClusterEntity = new HashMap<>();
-		userClusterEntity.put("u", UID);
-		return getUserClusterReference(context, pinCode).set(userClusterEntity, SetOptions.merge());
+		return getUserClusterReference(context, pinCode).update("u"
+		, FieldValue.arrayUnion(UID));
 	}
 	
 	public static List<String> getFriendsInContact(Context context){
