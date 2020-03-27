@@ -37,5 +37,6 @@ public class AuthActivity extends AppCompatActivity {
 		viewModel.setFirebaseApp(firebaseApp);
 		viewModel.setGoogleSignInClient(GoogleSignIn.getClient(this, gso));
 		viewModel.setFirebaseAuth(FirebaseAuth.getInstance(viewModel.getFirebaseApp()));
+		viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
 	}
 }

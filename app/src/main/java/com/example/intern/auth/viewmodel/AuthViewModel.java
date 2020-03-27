@@ -22,7 +22,6 @@ public class AuthViewModel extends ViewModel {
 	public void setGoogleSignInClient(GoogleSignInClient googleSignInClient) {
 		this.googleSignInClient = googleSignInClient;
 	}
-	
 	public FirebaseAuth getFirebaseAuth() {
 		return firebaseAuth;
 	}

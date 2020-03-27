@@ -17,7 +17,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.intern.database.FireStoreUtil;
-import com.example.intern.database.local.UserEntity;
 import com.example.intern.databinding.ActivityRegisterAsChildBinding;
 import com.example.intern.socialnetwork.SocialActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -133,7 +132,6 @@ public class Register_asChild_Activity extends AppCompatActivity {
                             //TODO:Change intent to send to main app
                             Intent intent = new Intent(Register_asChild_Activity.this, SocialActivity.class);
                             Log.d(TAG, "successfully made user");
-                            UserEntity userEntity = new UserEntity(user.getUid(), name, DOB, pinCode);
                             startActivity(intent);
                         });
             }else {
@@ -162,14 +160,13 @@ public class Register_asChild_Activity extends AppCompatActivity {
         binding.etPinCode.setError("Provide location permissions or enter manually");
     }
 
-    private String requirePinCode(){
+    private void requirePinCode(){
         String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
         if(ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[] {permission}, LOCATION_REQUEST_CODE);
         }else{
-            return getPostalCodeFromGPS();
+            getPostalCodeFromGPS();
         }
-        return null;
     }
     
     @Override

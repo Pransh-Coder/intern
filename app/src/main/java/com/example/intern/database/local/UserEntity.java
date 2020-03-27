@@ -9,9 +9,17 @@ public class UserEntity {
 	@PrimaryKey
 	@NonNull
 			public String UID;
+	@NonNull
 	public String user_name;
+	public String ps_nick_name;
+	public String nick_name;
+	public String phone_number;
+	@NonNull
 	public String user_DOB;
+	@NonNull
 	public String user_pin_code;
+	@NonNull
+	public boolean isLoggedIn;
 	public UserEntity(String UID, String user_name, String user_DOB, String user_pin_code){
 		this.UID = UID;
 		this.user_DOB = user_DOB;

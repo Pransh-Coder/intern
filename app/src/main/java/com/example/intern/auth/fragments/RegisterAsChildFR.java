@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,8 +21,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.database.FireStoreUtil;
+import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.FragmentRegisterAsChildFRBinding;
 import com.example.intern.socialnetwork.SocialActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -137,17 +140,27 @@ public class RegisterAsChildFR extends Fragment {
 				binding.etPassword.setError("Password Cannot Be Empty");return;
 			}
 			if(pinCode != null && pinCode.length() == 6){
+				String nick_name = binding.etNickName.getText().toString();
+				String ps_nick_name = binding.etPsNickName.getText().toString();
+				String parent_number =binding.etParentNumber.getText().toString();
+				viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
 				FirebaseUser user = viewModel.getFirebaseUser();
+				if(user == null){
+					Toast.makeText(requireContext(), "Cannot find account", Toast.LENGTH_LONG).show();
+					viewModel.getNavController().navigate(R.id.action_registerAsChildFR_to_registrationChoiceFR);
+					return;
+				}
 				FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-						,name, user.getEmail(), binding.etNickName.getText().toString(),
-						binding.etPsNickName.getText().toString(), binding.etParentNumber.getText().toString(),
-						DOB, pinCode, password)
+						,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode, password)
 						.addOnSuccessListener(success->{
 							FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
 							//TODO:Change intent to send to main app
 							Intent intent = new Intent(requireContext(), SocialActivity.class);
 							Log.d(TAG, "successfully made user");
-							//TODO : Store user info in room
+							//TODO : Store user info in shared preferences
+							SharedPrefUtil prefUtil = new SharedPrefUtil(requireActivity());
+							prefUtil.updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
+									DOB, pinCode, parent_number);
 							startActivity(intent);
 						});
 			}else {

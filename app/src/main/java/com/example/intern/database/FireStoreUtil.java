@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 import com.google.firebase.storage.FirebaseStorage;
@@ -94,7 +93,7 @@ public abstract class FireStoreUtil {
 		return firebaseStorage;
 	}
 	
-	private static DocumentReference getUserDocumentReference(Context context, String userID){
+	public static DocumentReference getUserDocumentReference(Context context, String userID){
 		if(userDocumentReference == null){
 			synchronized (FireStoreUtil.class){
 				if(userDocumentReference == null){
@@ -148,8 +147,9 @@ public abstract class FireStoreUtil {
 	//TODO: make a method to get user friends from the cluster
 	//Creates a new cluster if not already present
 	public static Task<Void> addToCluster(Context context, String pinCode, String UID){
-		return getUserClusterReference(context, pinCode).update("u"
-		, FieldValue.arrayUnion(UID));
+		Map<String, Boolean> data = new HashMap<>();
+		data.put(UID, Boolean.FALSE);
+		return getUserClusterReference(context, pinCode).set(data);
 	}
 	
 	public static List<String> getFriendsInContact(Context context){
