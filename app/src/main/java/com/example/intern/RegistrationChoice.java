@@ -144,7 +144,9 @@ public class RegistrationChoice extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
-        startActivity(new Intent(RegistrationChoice.this, RegistrationActivity.class));
+        Intent intent=new Intent(RegistrationChoice.this,RegistrationActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
         Toast.makeText(RegistrationChoice.this, "Welcome", Toast.LENGTH_LONG).show();
         finish();
 
