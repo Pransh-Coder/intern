@@ -23,18 +23,26 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".mainapp.MainAppActivity"></activity>
-		
-		<service
-			android:name=".auth.AuthVerifyService"
-			android:exported="false" />
-		
-		<activity android:name=".auth.AuthActivity">
+		<activity android:name=".Splash">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
+		</activity>
+		<activity
+			android:name=".mainapp.MainApp"
+			android:label="@string/title_activity_main_app"
+			android:theme="@style/AppTheme.NoActionBar"></activity>
+		<activity android:name=".mainapp.Main" />
+		
+		<service
+			android:name=".auth.AuthVerifyService"
+			android:exported="false" />
+		
+		<activity
+			android:name=".auth.AuthActivity"
+			android:launchMode="singleTop">
 		</activity>
 		<activity android:name=".socialnetwork.SocialActivity" />
 		<activity android:name=".holiday_list" />
@@ -73,7 +81,6 @@
 		<activity android:name=".auth.PhnRegistration" />
 		<activity android:name=".auth.Login_Register" />
 		<activity android:name=".payment.BecomeAMember" />
-		<activity android:name=".MainActivity" />
 		<activity android:name=".Gifts" />
 	</application>
 

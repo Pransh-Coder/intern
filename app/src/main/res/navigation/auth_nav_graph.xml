@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/auth_nav_graph"
-	app:startDestination="@id/splashFR">
+	app:startDestination="@id/loginRegisterFR">
 	
 	<fragment
 		android:id="@+id/loginRegisterFR"
@@ -47,14 +46,5 @@
 		<action
 			android:id="@+id/action_phoneRegistrationFR_to_registerAsChildFR"
 			app:destination="@id/registerAsChildFR" />
-	</fragment>
-	<fragment
-		android:id="@+id/splashFR"
-		android:name="com.example.intern.auth.fragments.SplashFR"
-		android:label="fragment_splash_f_r"
-		tools:layout="@layout/fragment_splash_f_r" >
-		<action
-			android:id="@+id/action_splashFR_to_loginRegisterFR"
-			app:destination="@id/loginRegisterFR" />
 	</fragment>
 </navigation>

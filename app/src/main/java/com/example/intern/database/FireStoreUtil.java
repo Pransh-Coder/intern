@@ -34,6 +34,7 @@ public abstract class FireStoreUtil {
 	//Collection Names in the database
 	public static String USER_COLLECTION_NAME = "Users";
 	public static String USER_CLUSTER_COLLECTION_NAME = "uclust";
+	private static String USER_PHONE_LIST_COLLECTION_NAME = "uph";
 	public static String QUERY_COLLECTION_NAME = "queries";
 	//Storage path names used
 	private static String USER_IMAGE_STORAGE_NAME = "imgs";
@@ -56,6 +57,7 @@ public abstract class FireStoreUtil {
 	private static volatile DocumentReference userDocumentReference;
 	private static volatile  DocumentReference userClusterReference;
 	private static volatile StorageReference userStorageReference;
+	private static volatile CollectionReference userPhoneCollectionReference;
 	private static volatile CollectionReference queryCollectionReference;
 	
 	private static FirebaseApp getFirebaseApp(Context context) {
@@ -126,6 +128,17 @@ public abstract class FireStoreUtil {
 		return userStorageReference;
 	}
 	
+	private static CollectionReference getUserPhoneCollectionReference(Context context){
+		if(userPhoneCollectionReference == null){
+			synchronized (FireStoreUtil.class){
+				if(userPhoneCollectionReference == null){
+					userPhoneCollectionReference = getDbReference(context).collection(USER_PHONE_LIST_COLLECTION_NAME);
+				}
+			}
+		}
+		return userPhoneCollectionReference;
+	}
+	
 	//Methods to create new users or find existing ones
 	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String password){
 		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode, password);
@@ -150,6 +163,12 @@ public abstract class FireStoreUtil {
 		Map<String, Boolean> data = new HashMap<>();
 		data.put(UID, Boolean.FALSE);
 		return getUserClusterReference(context, pinCode).set(data);
+	}
+	
+	public static Task<DocumentReference> addToPhoneNumberList(Context context, String phoneNumber, String UID){
+		Map<String, String> data = new HashMap<>();
+		data.put(phoneNumber, UID);
+		return getUserPhoneCollectionReference(context).add(data);
 	}
 	
 	public static List<String> getFriendsInContact(Context context){

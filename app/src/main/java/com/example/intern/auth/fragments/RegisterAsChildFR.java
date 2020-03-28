@@ -26,7 +26,7 @@ import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.FragmentRegisterAsChildFRBinding;
-import com.example.intern.socialnetwork.SocialActivity;
+import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,6 +42,7 @@ public class RegisterAsChildFR extends Fragment {
 	private int LOCATION_REQUEST_CODE = 23;
 	private String password;
 	private String pinCode;
+	private FirebaseUser user;
 	
 	public RegisterAsChildFR() {
 		// Required empty public constructor
@@ -60,6 +61,13 @@ public class RegisterAsChildFR extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
+		user = viewModel.getFirebaseUser();
+		if(user == null){
+			Toast.makeText(requireContext(), "Cannot find account", Toast.LENGTH_LONG).show();
+			viewModel.getNavController().navigate(R.id.action_registerAsChildFR_to_registrationChoiceFR);
+			onDetach();
+		}
 		setTextWatchers();
 		setClickListeners();
 	}
@@ -143,24 +151,19 @@ public class RegisterAsChildFR extends Fragment {
 				String nick_name = binding.etNickName.getText().toString();
 				String ps_nick_name = binding.etPsNickName.getText().toString();
 				String parent_number =binding.etParentNumber.getText().toString();
-				viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
-				FirebaseUser user = viewModel.getFirebaseUser();
-				if(user == null){
-					Toast.makeText(requireContext(), "Cannot find account", Toast.LENGTH_LONG).show();
-					viewModel.getNavController().navigate(R.id.action_registerAsChildFR_to_registrationChoiceFR);
-					return;
-				}
 				FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
 						,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode, password)
 						.addOnSuccessListener(success->{
 							FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
-							//TODO:Change intent to send to main app
-							Intent intent = new Intent(requireContext(), SocialActivity.class);
 							Log.d(TAG, "successfully made user");
 							//TODO : Store user info in shared preferences
+							if(user.getPhoneNumber() != null){
+								FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
+							}
 							SharedPrefUtil prefUtil = new SharedPrefUtil(requireActivity());
 							prefUtil.updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
 									DOB, pinCode, parent_number);
+							Intent intent = new Intent(requireContext(), MainApp.class);
 							startActivity(intent);
 						});
 			}else {
