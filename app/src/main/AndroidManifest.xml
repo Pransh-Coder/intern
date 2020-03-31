@@ -21,6 +21,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SocialNetwork.PersonDetails"></activity>
+        <activity android:name=".swabhiman_tc"></activity>
+        <activity android:name=".shopping_desc_h" />
+        <activity android:name=".swabhiman_register" />
+        <activity android:name=".swabhiman_dp" />
+        <activity android:name=".main" />
         <activity android:name=".holiday_list" />
         <activity android:name=".lifestyle_list" />
         <activity android:name=".food_list" />
