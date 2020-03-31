@@ -1,5 +1,7 @@
 package save_money;
 
+import com.example.intern.SocialNetwork.PersonDetails_pojo;
+
 import java.util.ArrayList;
 
 public class giveMeFakeData {
@@ -40,10 +42,19 @@ public class giveMeFakeData {
         return offersPojosList;
     }
 
-    public static  ArrayList<Offers_Pojo> giveMeFakeData_homeopathy(){
+    public static  ArrayList<Offers_Pojo> giveMeFakeData_homeopathy(){          //return type - ArrayList<Offers_Pojo>
         ArrayList<Offers_Pojo> offersPojosList = new ArrayList<>();
         offersPojosList.add(new Offers_Pojo("1","Diviyam Homepathy","Paldi","70% OFF + 30% on Second Onwards"));
         offersPojosList.add(new Offers_Pojo("1","Spandan Homepathy","Satellite","70% OFF + 30%  on Second Onwards"));
         return offersPojosList;
+    }
+
+    public static ArrayList<PersonDetails_pojo> givefakePeopleDetails(){
+        ArrayList<PersonDetails_pojo> personDetails_pojoArrayList = new ArrayList<>();
+        personDetails_pojoArrayList.add(new PersonDetails_pojo("1","Ashu","Business","50"));    // calling the constructor of pojoClass
+        personDetails_pojoArrayList.add(new PersonDetails_pojo("1","Pransh","CEO","20"));
+        personDetails_pojoArrayList.add(new PersonDetails_pojo("1","Amishi","Manager","18"));
+        personDetails_pojoArrayList.add(new PersonDetails_pojo("1","Ramnish","Founder CEO","52"));
+        return  personDetails_pojoArrayList ;
     }
 }
