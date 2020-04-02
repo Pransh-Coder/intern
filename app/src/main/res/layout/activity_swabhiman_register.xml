@@ -111,6 +111,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:hint="Name :"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

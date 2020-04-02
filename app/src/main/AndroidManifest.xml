@@ -9,6 +9,7 @@
     <dist:module dist:instant="true" />
     <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -20,8 +21,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SocialNetwork.PersonDetails"></activity>
-        <activity android:name=".swabhiman_tc"></activity>
+        <activity android:name=".MedicalRecords.MedicalRecord">
+        </activity>
+        <activity android:name=".Vitals.Vitals" />
+        <activity android:name=".ReduceExpenses.ReduceExpenses" />
+        <activity android:name=".EditProfile.EditProfile">
+        </activity>
+        <activity android:name=".TotalDiscountReceived.TotalDiscountReceived" />
+        <activity android:name=".SocialNetwork.PersonDetails" />
+        <activity android:name=".swabhiman_tc" />
         <activity android:name=".shopping_desc_h" />
         <activity android:name=".swabhiman_register" />
         <activity android:name=".swabhiman_dp" />
@@ -57,8 +65,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="save_money.Offers.Patholgy_LaborartoryOffers"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".payment.StandardPaymentActivity" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- <activity android:name=".payment.StandardPaymentActivity" /> -->
         <activity
             android:name="save_money.Offers.PhysiotherapyOffers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -72,8 +79,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".payment.BecomeAMember" />
+        </activity> <!-- <activity android:name=".payment.BecomeAMember" /> -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
