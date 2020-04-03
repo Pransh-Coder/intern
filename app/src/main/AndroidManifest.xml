@@ -20,7 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".swabhiman_tc"></activity>
+        <activity android:name=".swabhiman_business_associate"></activity>
+        <activity android:name=".swabhiman_investor" />
+        <activity android:name=".swabhiman_donar" />
+        <activity android:name=".fuel_with_us" />
+        <activity android:name=".swabhiman_tc" />
         <activity android:name=".shopping_desc_h" />
         <activity android:name=".swabhiman_register" />
         <activity android:name=".swabhiman_dp" />
