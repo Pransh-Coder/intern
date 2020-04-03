@@ -45,7 +45,7 @@ public class Splash extends AppCompatActivity {
 	private void segueIntoApp(){
 		Log.d(TAG, "segueIntoApp: authentication verified");
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(500);
 			Toast.makeText(this, "Welcome back to PS", Toast.LENGTH_LONG).show();
 			String UID = user.getUid();
 			Intent intent = new Intent(this, AuthVerifyService.class);
@@ -55,7 +55,7 @@ public class Splash extends AppCompatActivity {
 			Intent intent1 = new Intent(this, MainApp.class);
 			startActivity(intent1);
 			finish();
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
