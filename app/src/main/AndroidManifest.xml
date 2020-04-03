@@ -21,6 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".swabhiman_tc"></activity>
+        <activity android:name=".fuel_with_us"/>
+        <activity android:name=".swabhiman_business_associate"/>
+        <activity android:name=".swabhiman_donar"/>
+        <activity android:name=".swabhiman_investor"/>
         <activity android:name=".shopping_desc_h" />
         <activity android:name=".swabhiman_register" />
         <activity android:name=".swabhiman_dp" />
