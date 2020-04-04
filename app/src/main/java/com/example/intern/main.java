@@ -43,9 +43,9 @@ public class main extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.nav_message:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new MessageFragment()).commit();
                 break;
-            case R.id.nav_chat:
+           /* case R.id.nav_chat:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ChatFragment()).commit();
-                break;
+                break;*/
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
                 break;

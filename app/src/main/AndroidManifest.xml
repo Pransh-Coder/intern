@@ -22,10 +22,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MedicalRecords.MedicalRecord">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Vitals.Vitals" />
         <activity android:name=".ReduceExpenses.ReduceExpenses" />
-        <activity android:name=".EditProfile.EditProfile">
+        <activity android:name=".EditProfile.EditProfile" android:theme="@style/MaterialAppTheme">
         </activity>
         <activity android:name=".TotalDiscountReceived.TotalDiscountReceived" />
         <activity android:name=".SocialNetwork.PersonDetails" />
@@ -39,11 +44,11 @@
         <activity android:name=".food_list" />
         <activity android:name=".RegistrationChoice" />
         <activity android:name=".qr.QRScanner">
-            <intent-filter>
+         <!--   <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name="save_money.Health"
