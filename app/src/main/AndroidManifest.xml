@@ -29,6 +29,10 @@
         <activity android:name=".swabhiman_register" />
         <activity android:name=".swabhiman_dp" />
         <activity android:name=".main" />
+        <activity android:name=".ask_the_expert"/>
+        <activity android:name=".feedback_or_complaint"/>
+        <activity android:name=".news_and_updates"/>
+        <activity android:name=".terms_and_conditions"/>
         <activity android:name=".holiday_list" />
         <activity android:name=".lifestyle_list" />
         <activity android:name=".food_list" />
