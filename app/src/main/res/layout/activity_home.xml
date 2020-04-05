@@ -7,233 +7,242 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/home_activity_background"
-    tools:context=".HomeActivity">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="189dp"
-        android:layout_marginTop="168dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/home_activity_search_background"
-        android:drawableEnd="@drawable/ic_search"
-        android:hint="Search Categories..."
-        android:paddingStart="10dp"
-        android:textAlignment="viewStart"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="210dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/home_activity_background"
+        tools:context=".HomeActivity">
 
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="189dp"
+            android:layout_marginTop="168dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/home_activity_search_background"
+            android:drawableEnd="@drawable/ic_search"
+            android:hint="Search Categories..."
+            android:paddingStart="10dp"
+            android:textAlignment="viewStart"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="210dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/home_activity_icon_background"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                    <ImageView
-                        android:id="@+id/savemoney"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/savemoney" />
+                    <LinearLayout
+                        android:id="@+id/SaveMoneyLinear"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/home_activity_icon_background"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="@font/century_gothic_400"
-                        android:text="@string/save_money"
-                        android:textColor="@color/black" />
+                        <ImageView
+                            android:id="@+id/savemoney"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/savemoney" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/century_gothic_400"
+                            android:text="@string/save_money"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/home_activity_icon_background"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/savemoney1"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/home_activity_swabhiman_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/century_gothic_400"
+                            android:text="@string/swabhiman"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/home_activity_icon_background"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                    <ImageView
-                        android:id="@+id/savemoney1"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/home_activity_swabhiman_icon" />
+                    <LinearLayout
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/home_activity_icon_background"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="@font/century_gothic_400"
-                        android:text="@string/swabhiman"
-                        android:textColor="@color/black" />
+                        <ImageView
+                            android:id="@+id/savemoney10"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/home_activity_shopping_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/century_gothic_400"
+                            android:text="@string/shopping"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:background="@drawable/home_activity_icon_background"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/savemoney11"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/home_activity_bpcl_fuel_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/century_gothic_400"
+                            android:text="@string/bpcl_fuel"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/home_activity_icon_background"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/savemoney12"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/home_activity_request_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/century_gothic_400"
+                            android:text="@string/request"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/home_activity_icon_background"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/savemoney13"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="7dp"
+                            android:src="@drawable/savemoney" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/century_gothic_400"
+                            android:text="@string/social_network"
+                            android:textAlignment="center"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/home_activity_icon_background"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/savemoney10"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/home_activity_shopping_icon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="@font/century_gothic_400"
-                        android:text="@string/shopping"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:background="@drawable/home_activity_icon_background"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/savemoney11"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/home_activity_bpcl_fuel_icon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="@font/century_gothic_400"
-                        android:text="@string/bpcl_fuel"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/home_activity_icon_background"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/savemoney12"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/home_activity_request_icon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="@font/century_gothic_400"
-                        android:text="@string/request"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/home_activity_icon_background"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/savemoney13"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="7dp"
-                        android:src="@drawable/savemoney" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/century_gothic_400"
-                        android:text="@string/social_network"
-                        android:textAlignment="center"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -241,7 +250,5 @@
         android:layout_gravity="start"
         android:id="@+id/navigationId"
         app:headerLayout="@layout/home_menu_header"
-        app:menu="@menu/home_profile_menu"
-        app:layout_constraintStart_toStartOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:menu="@menu/home_profile_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>

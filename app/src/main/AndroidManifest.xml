@@ -9,7 +9,6 @@
     <dist:module dist:instant="true" />
     <dist:module dist:instant="true" />
 
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -22,11 +21,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MedicalRecords.MedicalRecord">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Vitals.Vitals" />
         <activity android:name=".ReduceExpenses.ReduceExpenses" />
@@ -35,10 +29,18 @@
         <activity android:name=".TotalDiscountReceived.TotalDiscountReceived" />
         <activity android:name=".SocialNetwork.PersonDetails" />
         <activity android:name=".swabhiman_tc" />
+        <activity android:name=".fuel_with_us" />
+        <activity android:name=".swabhiman_business_associate" />
+        <activity android:name=".swabhiman_donar" />
+        <activity android:name=".swabhiman_investor" />
         <activity android:name=".shopping_desc_h" />
         <activity android:name=".swabhiman_register" />
         <activity android:name=".swabhiman_dp" />
         <activity android:name=".main" />
+        <activity android:name=".ask_the_expert" />
+        <activity android:name=".feedback_or_complaint" />
+        <activity android:name=".news_and_updates" />
+        <activity android:name=".terms_and_conditions" />
         <activity android:name=".holiday_list" />
         <activity android:name=".lifestyle_list" />
         <activity android:name=".food_list" />
@@ -70,7 +72,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="save_money.Offers.Patholgy_LaborartoryOffers"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- <activity android:name=".payment.StandardPaymentActivity" /> -->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!--<activity android:name=".payment.StandardPaymentActivity" />-->
         <activity
             android:name="save_money.Offers.PhysiotherapyOffers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -84,7 +87,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- <activity android:name=".payment.BecomeAMember" /> -->
+        </activity>
+        <!--<activity android:name=".payment.BecomeAMember" />-->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -93,6 +97,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".Gifts" />
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

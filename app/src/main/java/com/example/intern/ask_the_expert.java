@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Lifestyle extends AppCompatActivity {
+public class ask_the_expert extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_11);
-        //getSupportActionBar().hide();
+        setContentView(R.layout.activity_ask_the_expert);
+        getSupportActionBar().hide();
     }
 }

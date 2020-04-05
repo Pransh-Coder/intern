@@ -15,11 +15,13 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 public class main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
         //getSupportActionBar().hide();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
