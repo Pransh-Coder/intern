@@ -51,6 +51,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);                                                           // we have to add icon to drawable
         actionBarDrawerToggle.syncState();
+        navigationView.getMenu().getItem(0).setActionView(R.layout.menu_image);
+        navigationView.getMenu().getItem(1).setActionView(R.layout.menu_image);
+        navigationView.getMenu().getItem(2).setActionView(R.layout.menu_image);
+        navigationView.getMenu().getItem(3).setActionView(R.layout.menu_image);
+        navigationView.getMenu().getItem(4).setActionView(R.layout.menu_image);
+        navigationView.getMenu().getItem(5).setActionView(R.layout.menu_image);
+        navigationView.getMenu().getItem(6).setActionView(R.layout.menu_image);
+        navigationView.getMenu().getItem(7).setActionView(R.layout.menu_image);
+        navigationView.getMenu().getItem(8).setActionView(R.layout.menu_image);
 
         save_money.setOnClickListener(new View.OnClickListener() {
             @Override
