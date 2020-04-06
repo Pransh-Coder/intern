@@ -30,6 +30,9 @@
 		<action
 			android:id="@+id/action_registrationOptionsFR_to_phoneRegistrationFR"
 			app:destination="@id/phoneRegistrationFR" />
+		<action
+			android:id="@+id/action_registrationOptionsFR_to_registerAsParentFR"
+			app:destination="@id/registerAsParentFR" />
 	</fragment>
 	<fragment
 		android:id="@+id/registerAsChildFR"
@@ -46,5 +49,16 @@
 		<action
 			android:id="@+id/action_phoneRegistrationFR_to_registerAsChildFR"
 			app:destination="@id/registerAsChildFR" />
+		<action
+			android:id="@+id/action_phoneRegistrationFR_to_registerAsParentFR"
+			app:destination="@id/registerAsParentFR" />
+	</fragment>
+	<fragment
+		android:id="@+id/registerAsParentFR"
+		android:name="com.example.intern.auth.fragments.RegisterAsParentFR"
+		android:label="RegisterAsParentFR" >
+		<action
+			android:id="@+id/action_registerAsParentFR_to_registrationChoiceFR"
+			app:destination="@id/registrationChoiceFR" />
 	</fragment>
 </navigation>

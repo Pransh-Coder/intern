@@ -78,7 +78,11 @@ public class RegistrationOptionsFR extends Fragment {
 			if(authResult.getUser() != null){
 				Log.d(TAG, "firebaseAuthWithGoogle: success");
 				viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
-				viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsChildFR);
+				if(!viewModel.isRegChoiceisParent()){
+					viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsChildFR);
+				}else{
+					viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsParentFR);
+				}
 			}else{
 				Log.d(TAG, "firebaseAuthWithGoogle: dismissed");
 			}

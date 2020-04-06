@@ -14,6 +14,7 @@ public class AuthViewModel extends ViewModel {
 	private FirebaseApp firebaseApp;
 	private FirebaseAuth firebaseAuth;
 	private FirebaseUser firebaseUser;
+	private boolean regChoiceisParent;
 	
 	public GoogleSignInClient getGoogleSignInClient() {
 		return googleSignInClient;
@@ -52,5 +53,13 @@ public class AuthViewModel extends ViewModel {
 	
 	public void setNavController(NavController navController) {
 		this.navController = navController;
+	}
+	
+	public boolean isRegChoiceisParent() {
+		return regChoiceisParent;
+	}
+	
+	public void setRegChoiceisParent(boolean regChoiceisParent) {
+		this.regChoiceisParent = regChoiceisParent;
 	}
 }

@@ -35,6 +35,11 @@ public class RegistrationChoiceFR extends Fragment {
 	public void onStart() {
 		super.onStart();
 		binding.registrationTvAsChild.setOnClickListener(v ->{
+			viewModel.setRegChoiceisParent(false);
+			Navigation.findNavController(v).navigate(R.id.action_registrationChoiceFR_to_registrationOptionsFR);
+		});
+		binding.registrationTvAsParent.setOnClickListener(v->{
+			viewModel.setRegChoiceisParent(true);
 			Navigation.findNavController(v).navigate(R.id.action_registrationChoiceFR_to_registrationOptionsFR);
 		});
 	}
