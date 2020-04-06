@@ -76,6 +76,9 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.0'
     //SkyDove PB
     implementation 'com.github.skydoves:progressview:1.0.7'
+    //Mail API
     implementation 'com.sun.mail:android-mail:1.6.2'
     implementation 'com.sun.mail:android-activation:1.6.2'
+    //Graph Libs
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

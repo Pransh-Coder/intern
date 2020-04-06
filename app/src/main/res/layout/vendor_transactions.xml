@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/common_background"
+	tools:context=".LifeStyleDetailsActivity">
+	
+	<ImageView
+		android:id="@+id/LifeStyleDetails_button_back"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/back"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<ImageView
+		android:id="@+id/LifeStyleDetails_button_home"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:layout_marginLeft="7dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/homeimg"
+		app:layout_constraintLeft_toRightOf="@+id/LifeStyleDetails_button_back"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<ImageView
+		android:id="@+id/LifeStyleDetails_button_notification"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:layout_marginTop="10dp"
+		android:layout_marginRight="10dp"
+		android:src="@drawable/notification"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:fontFamily="@font/century_gothic_400"
+		android:text="Transaction History"
+		android:textColor="@color/black"
+		android:textSize="23dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@id/guide_hor_20_per"
+		app:layout_constraintLeft_toRightOf="@id/guide_ver_6_per"
+		app:layout_constraintRight_toLeftOf="@id/guide_ver_93_per"/>
+	
+	<Button
+		android:id="@+id/btn_vendor_trans_month"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="15dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="15dp"
+		android:background="@drawable/button_outlined_selected"
+		android:elevation="10dp"
+		android:fontFamily="@font/century_gothic_400"
+		android:paddingLeft="15dp"
+		android:paddingRight="15dp"
+		android:text="Monthly"
+		android:textAllCaps="false"
+		android:textColor="@color/black"
+		android:textStyle="bold"
+		app:layout_constraintLeft_toRightOf="@id/guide_ver_6_per"
+		app:layout_constraintRight_toLeftOf="@id/guide_ver_50_per"
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_20_per"/>
+	<Button
+		android:id="@+id/btn_vendor_trans_year"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="15dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="15dp"
+		android:background="@drawable/button_oulined_not_selected"
+		android:elevation="10dp"
+		android:fontFamily="@font/century_gothic_400"
+		android:paddingLeft="15dp"
+		android:paddingRight="15dp"
+		android:text="Yearly"
+		android:textAllCaps="false"
+		android:textColor="@color/black"
+		android:textStyle="bold"
+		app:layout_constraintLeft_toRightOf="@id/guide_ver_50_per"
+		app:layout_constraintRight_toLeftOf="@id/guide_ver_93_per"
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_20_per"/>
+	<LinearLayout
+		android:id="@+id/table_headers"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="5dp"
+		android:layout_marginTop="30dp"
+		android:layout_marginRight="5dp"
+		android:layout_marginBottom="5dp"
+		android:background="@drawable/button_oulined_not_selected"
+		android:orientation="horizontal"
+		app:layout_constraintLeft_toRightOf="@id/guide_ver_6_per"
+		app:layout_constraintRight_toLeftOf="@id/guide_ver_93_per"
+		app:layout_constraintTop_toBottomOf="@id/btn_vendor_trans_month">
+		<TextView
+			android:id="@+id/tv_no_of_customer"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.4"
+			android:elevation="10dp"
+			android:fontFamily="@font/century_gothic_400"
+			android:padding="5dp"
+			android:text="Total No. of Customer"
+			android:textAlignment="center"
+			android:textColor="@color/black"
+			android:textSize="14dp"
+			android:textStyle="bold"/>
+		<View
+			android:layout_width="2dp"
+			android:layout_height="match_parent"
+			android:background="@color/black"/>
+		<TextView
+			android:id="@+id/tv_amount"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="2.2"
+			android:elevation="10dp"
+			android:fontFamily="@font/century_gothic_400"
+			android:padding="5dp"
+			android:text="Amount"
+			android:textAlignment="center"
+			android:textColor="@color/black"
+			android:textSize="14dp"
+			android:textStyle="bold"/>
+		<View
+			android:layout_width="2dp"
+			android:layout_height="match_parent"
+			android:background="@color/black"/>
+		<TextView
+			android:id="@+id/tv_datentime"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.972"
+			android:elevation="10dp"
+			android:fontFamily="@font/century_gothic_400"
+			android:padding="5dp"
+			android:text="Date &amp; Time"
+			android:textAlignment="center"
+			android:textColor="@color/black"
+			android:textSize="14dp"
+			android:textStyle="bold"/>
+	</LinearLayout>
+	<ScrollView
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="5dp"
+		app:layout_constraintLeft_toRightOf="@id/guide_ver_6_per"
+		app:layout_constraintRight_toLeftOf="@id/guide_ver_93_per"
+		app:layout_constraintTop_toBottomOf="@id/table_headers">
+<!--		TODO : Add a table-->
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/vendor_trans_recycler"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+	</ScrollView>
+	
+	<ImageView
+		android:id="@+id/iv_dash_pslogo"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_marginBottom="4dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:srcCompat="@drawable/pslogo" />
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_ver_50_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.5"/>
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_hor_20_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.2"/>
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_ver_6_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.06"/>
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_ver_93_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.93"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,17 +23,21 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".Splash">
+		<activity android:name=".vendortest.VendorMain"
+			android:theme="@style/AppTheme.NoActionBar"
+			android:windowSoftInputMode="stateHidden">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+		<activity android:name=".Splash">
+		</activity>
 		<activity
 			android:name=".mainapp.MainApp"
 			android:label="@string/title_activity_main_app"
-			android:theme="@style/AppTheme.NoActionBar"></activity>
+			android:theme="@style/AppTheme.NoActionBar" />
 		<activity android:name=".mainapp.Main" />
 		
 		<service
@@ -42,8 +46,7 @@
 		
 		<activity
 			android:name=".auth.AuthActivity"
-			android:launchMode="singleTop">
-		</activity>
+			android:launchMode="singleTop" />
 		<activity android:name=".socialnetwork.SocialActivity" />
 		<activity android:name=".holiday_list" />
 		<activity android:name=".lifestyle_list" />

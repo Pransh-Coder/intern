@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/common_background"
+	tools:context=".LifeStyleDetailsActivity">
+	
+	<ImageView
+		android:id="@+id/LifeStyleDetails_button_back"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/back"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<ImageView
+		android:id="@+id/LifeStyleDetails_button_home"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:layout_marginLeft="7dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/homeimg"
+		app:layout_constraintLeft_toRightOf="@+id/LifeStyleDetails_button_back"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<ImageView
+		android:id="@+id/LifeStyleDetails_button_notification"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:layout_marginTop="10dp"
+		android:layout_marginRight="10dp"
+		android:src="@drawable/notification"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:fontFamily="@font/century_gothic_400"
+		android:text="Dashboard"
+		android:textSize="25dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@id/guide_hor_20_per"
+		app:layout_constraintLeft_toRightOf="@id/guide_ver_6_per"
+		app:layout_constraintRight_toLeftOf="@id/guide_ver_93_per"/>
+<!--	TODO : Add a graph-->
+	
+	<com.github.mikephil.charting.charts.LineChart
+		android:id="@+id/vendor_dash_chart"
+		android:layout_width="0dp"
+		android:layout_height="400dp"
+		app:layout_constraintBottom_toTopOf="@id/btn_vendor_graph_submit"
+		app:layout_constraintLeft_toRightOf="@id/guide_ver_6_per"
+		app:layout_constraintRight_toLeftOf="@id/guide_ver_93_per"
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_20_per"/>
+	
+	<Button
+		android:id="@+id/btn_vendor_graph_submit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
+		android:background="@drawable/gradient_button"
+		android:fontFamily="@font/century_gothic_400"
+		android:paddingLeft="15dp"
+		android:paddingRight="15dp"
+		android:text="SUBMIT"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@id/iv_dash_pslogo"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"/>
+		
+	<ImageView
+		android:id="@+id/iv_dash_pslogo"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_marginBottom="4dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:srcCompat="@drawable/pslogo" />
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_hor_20_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.2"/>
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_ver_6_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.06"/>
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_ver_93_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.93"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
