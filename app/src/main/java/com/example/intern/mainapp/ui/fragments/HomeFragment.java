@@ -1,5 +1,6 @@
 package com.example.intern.mainapp.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.intern.databinding.FragmentHomeBinding;
 import com.example.intern.mainapp.MainAppViewModel;
 
+import save_money.SaveMoney;
+
 public class HomeFragment extends Fragment {
 	private FragmentHomeBinding binding;
 	private MainAppViewModel viewModel;
@@ -25,6 +28,7 @@ public class HomeFragment extends Fragment {
 		return view;
 	}
 	
+	
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -34,6 +38,11 @@ public class HomeFragment extends Fragment {
 			}else{
 				viewModel.drawerLayout.openDrawer(GravityCompat.START);
 			}
+		});
+		//Go to save money activity, it needs to be a different activity altogether
+		binding.savemoney.setOnClickListener(v->{
+			Intent intent = new Intent(requireContext(), SaveMoney.class);
+			startActivity(intent);
 		});
 	}
 }

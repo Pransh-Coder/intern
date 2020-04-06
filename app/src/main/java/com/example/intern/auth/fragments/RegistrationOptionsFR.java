@@ -14,7 +14,7 @@ import androidx.navigation.Navigation;
 
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
-import com.example.intern.databinding.FragmentRegistrationOptionsFRBinding;
+import com.example.intern.databinding.LoginUiBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
@@ -25,7 +25,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class RegistrationOptionsFR extends Fragment {
 	private static String TAG = RegistrationOptionsFR.class.getSimpleName();
 	private int G_SIGN_IN_REQ_CODE = 12;
-	private FragmentRegistrationOptionsFRBinding binding;
+	private LoginUiBinding binding;
 	private AuthViewModel viewModel;
 	
 	public RegistrationOptionsFR() {
@@ -37,7 +37,7 @@ public class RegistrationOptionsFR extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
-		binding = FragmentRegistrationOptionsFRBinding.inflate(inflater, container, false);
+		binding = LoginUiBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
 		return view;
 	}
@@ -46,11 +46,11 @@ public class RegistrationOptionsFR extends Fragment {
 	public void onStart() {
 		super.onStart();
 		//TODO:
-		binding.btnGoogleSignup.setOnClickListener(v->{
+		binding.googleSignIn.setOnClickListener(v->{
 			Intent intent = viewModel.getGoogleSignInClient().getSignInIntent();
 			startActivityForResult(intent, G_SIGN_IN_REQ_CODE);
 		});
-		binding.btnSignupPhone.setOnClickListener(v->{
+		binding.phoneSignIn.setOnClickListener(v->{
 			Navigation.findNavController(v).navigate(R.id.action_registrationOptionsFR_to_phoneRegistrationFR);
 		});
 	}

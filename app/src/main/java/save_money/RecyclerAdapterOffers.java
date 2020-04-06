@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +18,15 @@ import java.util.List;
 
 public class RecyclerAdapterOffers extends RecyclerView.Adapter<RecyclerAdapterOffers.ViewHolder> {
 
+    private ClickListener listener;
+
+    public void setListener(ClickListener listener){
+        this.listener = listener;
+    }
+    public interface ClickListener{
+        void isSelected();
+    }
+    
     Context context;
     List<Offers_Pojo> offers_pojoList = new ArrayList<>();
     public int lastSelectedPosition = -1;
@@ -80,7 +88,7 @@ public class RecyclerAdapterOffers extends RecyclerView.Adapter<RecyclerAdapterO
                 public void onClick(View view) {
                     lastSelectedPosition = getAdapterPosition();
                     notifyDataSetChanged();
-
+                    listener.isSelected();
                     Toast.makeText(context, ""+shopName.getText(),Toast.LENGTH_SHORT).show();
                 }
             });
