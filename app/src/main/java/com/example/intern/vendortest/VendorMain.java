@@ -18,8 +18,8 @@ public class VendorMain extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = VendotDashboardBinding.inflate(getLayoutInflater());
-		setContentView(R.layout.vendor_main);
-		getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.home_activity_background));
+		setContentView(R.layout.login_ui);
+//		getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.home_activity_background));
 /*		mTransRecycler = findViewById(R.id.vendor_trans_recycler);
 		mMonthly = findViewById(R.id.btn_vendor_trans_month);
 		mYearly = findViewById(R.id.btn_vendor_trans_year);
