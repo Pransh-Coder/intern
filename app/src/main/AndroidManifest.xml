@@ -20,6 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Login_With_OTP.Login_with_OTP"></activity>
         <activity android:name=".swabhiman_tc" />
         <activity android:name=".fuel_with_us" />
         <activity android:name=".swabhiman_business_associate" />
@@ -37,13 +38,7 @@
         <activity android:name=".lifestyle_list" />
         <activity android:name=".food_list" />
         <activity android:name=".RegistrationChoice" />
-        <activity android:name=".qr.QRScanner">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".qr.QRScanner"></activity>
         <activity
             android:name="save_money.Health"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -64,8 +59,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="save_money.Offers.Patholgy_LaborartoryOffers"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <!--<activity android:name=".payment.StandardPaymentActivity" />-->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- <activity android:name=".payment.StandardPaymentActivity" /> -->
         <activity
             android:name="save_money.Offers.PhysiotherapyOffers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -79,8 +73,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--<activity android:name=".payment.BecomeAMember" />-->
+        </activity> <!-- <activity android:name=".payment.BecomeAMember" /> -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -89,7 +82,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".Gifts" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EditProfile.EditProfile"
+            android:theme="@style/MaterialAppTheme" />
+        <activity android:name=".MedicalRecords.MedicalRecord" />
+        <activity android:name=".ReduceExpenses.ReduceExpenses" />
+        <activity android:name=".TotalDiscountReceived.TotalDiscountReceived" />
+        <activity android:name=".Vitals.Vitals" />
+        <activity android:name=".SocialNetwork.PersonDetails" />
     </application>
 
 </manifest>

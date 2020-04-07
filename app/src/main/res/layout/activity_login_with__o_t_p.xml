@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/front_blank">
+
+    <ImageView
+        android:id="@+id/iv_mascot"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/icons_mascot_44"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/century_gothic_400"
+        android:text="Login"
+        android:textColor="@color/black"
+        android:textSize="35dp"
+        app:layout_constraintLeft_toLeftOf="@id/iv_mascot"
+        app:layout_constraintRight_toRightOf="@id/iv_mascot"
+        app:layout_constraintTop_toBottomOf="@id/iv_mascot"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_guide_30_percent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/imageView12"
+        app:layout_constraintLeft_toRightOf="@id/guide_15_per_ver"
+        app:layout_constraintRight_toLeftOf="@id/guide_85_per_ver"
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/custom_button2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:popupBackground="@drawable/custom_button2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@drawable/custom_button2">
+
+                <EditText
+                    android:layout_width="280dp"
+                    android:layout_height="40dp"
+                    android:hint="Your Mobile Number"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:background="@android:color/transparent"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verify Mobile Number Via"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:background="@drawable/custom_button2"
+            android:text="OTP"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:text="Login"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_button2"/>
+
+    </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_15_per_ver"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_85_per_ver"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/pslogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
