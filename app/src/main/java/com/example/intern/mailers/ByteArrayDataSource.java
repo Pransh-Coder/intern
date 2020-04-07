@@ -1,4 +1,4 @@
-package com.example.intern.medical;
+package com.example.intern.mailers;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

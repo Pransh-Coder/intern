@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
-import com.example.intern.databinding.FragmentPhoneRegistrationFRBinding;
+import com.example.intern.databinding.PhoneLoginUiBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -30,7 +30,7 @@ public class PhoneRegistrationFR extends Fragment {
 	private PhoneAuthProvider.ForceResendingToken mResendToken;
 	private ProgressDialog loadingbar;
 	private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
-	private FragmentPhoneRegistrationFRBinding binding;
+	private PhoneLoginUiBinding binding;
 	private AuthViewModel viewModel;
 	
 	public PhoneRegistrationFR() {
@@ -40,7 +40,7 @@ public class PhoneRegistrationFR extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
-		binding = FragmentPhoneRegistrationFRBinding.inflate(inflater, container, false);
+		binding = PhoneLoginUiBinding.inflate(inflater, container, false);
 		viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
 		View view = binding.getRoot();
 		return view;

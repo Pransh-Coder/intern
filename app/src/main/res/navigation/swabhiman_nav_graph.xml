@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/swabhiman_nav_graph"
+	app:startDestination="@id/choicesFR">
+	
+	<fragment
+		android:id="@+id/tnCFR"
+		android:name="com.example.intern.swabhiman.fragments.TnCFR"
+		android:label="TnCFR" >
+		<action
+			android:id="@+id/action_tnCFR_to_choicesFR"
+			app:destination="@id/choicesFR" />
+	</fragment>
+	<fragment
+		android:id="@+id/choicesFR"
+		android:name="com.example.intern.swabhiman.fragments.ChoicesFR"
+		android:label="ChoicesFR" >
+		<action
+			android:id="@+id/action_choicesFR_to_employement"
+			app:destination="@id/employement" />
+		<action
+			android:id="@+id/action_choicesFR_to_donorFR"
+			app:destination="@id/donorFR" />
+		<action
+			android:id="@+id/action_choicesFR_to_investorFR"
+			app:destination="@id/investorFR" />
+		<action
+			android:id="@+id/action_choicesFR_to_businessAssociateFR"
+			app:destination="@id/businessAssociateFR" />
+		<action
+			android:id="@+id/action_choicesFR_to_tnCFR"
+			app:destination="@id/tnCFR" />
+	</fragment>
+	<fragment
+		android:id="@+id/employement"
+		android:name="com.example.intern.swabhiman.fragments.Employement"
+		android:label="Employement" />
+	<fragment
+		android:id="@+id/donorFR"
+		android:name="com.example.intern.swabhiman.fragments.DonorFR"
+		android:label="DonorFR" />
+	<fragment
+		android:id="@+id/investorFR"
+		android:name="com.example.intern.swabhiman.fragments.InvestorFR"
+		android:label="InvestorFR" />
+	<fragment
+		android:id="@+id/businessAssociateFR"
+		android:name="com.example.intern.swabhiman.fragments.BusinessAssociateFR"
+		android:label="BusinessAssociateFR" />
+</navigation>

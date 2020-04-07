@@ -1,4 +1,4 @@
-package com.example.intern.medical;
+package com.example.intern.mailers;
 
 import java.security.Security;
 import java.util.Properties;

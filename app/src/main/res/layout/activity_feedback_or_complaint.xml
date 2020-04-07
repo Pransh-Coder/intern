@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".feedback_or_complaint">
+    tools:context=".FeedBackOrComplaintACT">
 
     <ImageView
         android:id="@+id/iv_back_button"

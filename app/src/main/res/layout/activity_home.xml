@@ -52,7 +52,7 @@
                     android:weightSum="2">
 
                     <LinearLayout
-                        android:id="@+id/SaveMoneyLinear"
+                        android:id="@+id/exclusive_services"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_marginEnd="30dp"
@@ -75,11 +75,12 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="15dp"
                             android:fontFamily="@font/century_gothic_400"
-                            android:text="@string/save_money"
+                            android:text="EXCLUSIVE SERVICES"
                             android:textColor="@color/black" />
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/swabhiman_main_choice"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_weight="1"
@@ -116,6 +117,7 @@
                     android:weightSum="2">
 
                     <LinearLayout
+                        android:id="@+id/shopping"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_marginEnd="30dp"
@@ -145,6 +147,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/bpclfuel"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:background="@drawable/home_activity_icon_background"
@@ -180,6 +183,7 @@
                     android:weightSum="2">
 
                     <LinearLayout
+                        android:id="@+id/requestService"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_marginEnd="30dp"
@@ -209,6 +213,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/SaveMoneyLinear"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_weight="1"

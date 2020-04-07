@@ -3,6 +3,10 @@ package com.example.intern.database;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 public class SharedPrefUtil {
 	public static String SHARED_PREF_NAME = "user_prefs";
 	public static String USER_UID_KEY = "user_uid";
@@ -61,6 +65,19 @@ public class SharedPrefUtil {
 		SharedPreferences.Editor editor = preferences.edit();
 		editor.putString(USER_PAY_ID, payID);
 		editor.apply();
+	}
+	
+	public int getProfileCompletionPercent(){
+		int percent = 0;
+		Map map = preferences.getAll();
+		Set keySet = map.keySet();
+		Iterator iterator = keySet.iterator();
+		while(iterator.hasNext()){
+			if(map.get(iterator.next()) != null){
+				percent += 10;
+			}
+		}
+		return percent;
 	}
 	
 	public SharedPreferences getPreferences(){

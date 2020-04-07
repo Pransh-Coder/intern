@@ -41,6 +41,15 @@
 		<service
 			android:name=".auth.AuthVerifyService"
 			android:exported="false" />
+		<activity android:name=".swabhiman.SwabhimanActivity"/>
+		<activity android:name=".ActivityShopping"/>
+		<activity android:name=".BPCL_Fuel_QR_ScannerActivity"/>
+		<activity android:name=".MedicalRecords.MedicalRecord"/>
+		<activity android:name=".TermsAndConditions"/>
+		<activity android:name=".ReduceExpenses.ReduceExpenses"/>
+		<activity android:name=".TotalDiscountReceived.TotalDiscountReceived"/>
+		<activity android:name=".NewsAndUpdatesACT"/>
+		<activity android:name=".FeedBackOrComplaintACT"/>
 		
 		<activity
 			android:name=".auth.AuthActivity"
@@ -50,6 +59,7 @@
 		<activity android:name=".lifestyle_list" />
 		<activity android:name=".food_list" />
 		<activity android:name=".qr.QRScanner" />
+		<activity android:name=".EditProfile.EditProfile"/>
 		<activity
 			android:name="save_money.Health"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
