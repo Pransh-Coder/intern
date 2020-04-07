@@ -4,14 +4,10 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.intern.R;
 import com.example.intern.databinding.VendotDashboardBinding;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class VendorMain extends AppCompatActivity {
 	RecyclerView mTransRecycler;
@@ -22,11 +18,11 @@ public class VendorMain extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = VendotDashboardBinding.inflate(getLayoutInflater());
-		setContentView(R.layout.vendor_transactions);
-		mTransRecycler = findViewById(R.id.vendor_trans_recycler);
+		setContentView(R.layout.login_ui);
+//		getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.home_activity_background));
+/*		mTransRecycler = findViewById(R.id.vendor_trans_recycler);
 		mMonthly = findViewById(R.id.btn_vendor_trans_month);
 		mYearly = findViewById(R.id.btn_vendor_trans_year);
-		getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.home_activity_background));
 		mMonthly.setOnClickListener(v->{
 			mMonthly.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
 			mYearly.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
@@ -36,11 +32,11 @@ public class VendorMain extends AppCompatActivity {
 			mYearly.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
 			mMonthly.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
 			//TODO:Change data in recycler view
-		});
+		});*/
 	}
 	
 	//For debugging Recycler View in Transaction History
-	@Override
+/*	@Override
 	protected void onStart() {
 		super.onStart();
 		List<String> custNum = Arrays.asList("20", "3", "14", "6");
@@ -49,7 +45,7 @@ public class VendorMain extends AppCompatActivity {
 		VendorTrHistRecAdapter adapter = new VendorTrHistRecAdapter(custNum, amount, datnTime);
 		mTransRecycler.setLayoutManager(new LinearLayoutManager(this));
 		mTransRecycler.setAdapter(adapter);
-	}
+	}*/
 	
 	/*	@Override
 	protected void onStart() {
