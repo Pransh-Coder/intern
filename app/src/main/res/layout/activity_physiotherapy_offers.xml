@@ -78,7 +78,6 @@
             android:layout_marginTop="3dp"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            app:layout_constraintBottom_toTopOf="@+id/LinearLayout"
             app:layout_constraintTop_toBottomOf="@+id/txthealth" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

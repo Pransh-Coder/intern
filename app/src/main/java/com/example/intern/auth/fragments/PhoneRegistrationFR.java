@@ -1,6 +1,7 @@
 package com.example.intern.auth.fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,12 +16,16 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.databinding.FragmentPhoneRegistrationFRBinding;
+import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.TimeUnit;
 
@@ -116,12 +121,42 @@ public class PhoneRegistrationFR extends Fragment {
 						if (task.isSuccessful()) {
 							loadingbar.dismiss();
 							Toast.makeText(requireContext(), "Logged in Successfully", Toast.LENGTH_LONG).show();
-							viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsChildFR);
+							viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
+							checkuser();
+							if(!viewModel.isRegChoiceisParent()){
+								viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsChildFR);
+							}else{
+								viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsParentFR);
+							}
 						} else {
 							String msg = task.getException().toString();
 							Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show();
 						}
 					}
-				});
-	}
+				});}
+		private void checkuser() {
+			int r;
+			String currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+			//Toast.makeText(getContext(), "No such user exists", Toast.LENGTH_LONG).show();
+			FirebaseFirestore.getInstance().collection("Users").document(currentuserid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+				@Override
+				public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+					if (task.getResult().exists()) {
+						Toast.makeText(getContext(),"Welcome Back",Toast.LENGTH_LONG).show();
+						Intent intent = new Intent(requireContext(), MainApp.class);
+						intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+						startActivity(intent);
+					} else {
+
+						Toast.makeText(getContext(), "No such user exists", Toast.LENGTH_LONG).show();
+						//Intent intent = new Intent(requireContext(), LoginRegisterFR.class);
+						//intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+						//startActivity(intent);
+
+
+					}
+				}
+			});
+		}
 }
+

@@ -21,7 +21,7 @@ public class Login_Register extends AppCompatActivity {
         btnLogin = findViewById(R.id.login_button);
         btnRegister = findViewById(R.id.registration_button);
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+       /* btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent registerIntent = new Intent(getApplicationContext(), RegistrationChoice.class);
@@ -29,5 +29,7 @@ public class Login_Register extends AppCompatActivity {
 
             }
         });
-    }
+
+        */
+}
 }
