@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:background="@drawable/background"
-    >
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/iv_back_button"
@@ -17,17 +16,17 @@
         app:srcCompat="@drawable/icons_mascot_48" />
 
     <ImageView
+        android:id="@+id/iv_home_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/iv_home_button"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="5dp"
         app:srcCompat="@drawable/icons_mascot_49" />
 
     <ImageView
+        android:id="@+id/iv_lifestyle_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/iv_lifestyle_icon"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="1dp"
         app:srcCompat="@drawable/icons_mascot_09" />
@@ -43,62 +42,57 @@
         android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/iv_search_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/iv_search_button"
         android:layout_marginLeft="290dp"
         android:layout_marginTop="5dp"
         app:srcCompat="@drawable/icons_mascot_50" />
 
     <ImageView
+        android:id="@+id/iv_notif_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/iv_notif_button"
         android:layout_marginLeft="325dp"
         android:layout_marginTop="5dp"
         app:srcCompat="@drawable/icons_mascot_47" />
 
     <fragment
+        android:id="@+id/fragment3"
+        android:name="com.example.intern.fragments.fragment3"
         android:layout_width="90dp"
         android:layout_height="130dp"
-        android:name="com.example.intern.fragments.fragment3"
-        android:id="@+id/fragment3"
         android:layout_marginLeft="280dp"
-        android:layout_marginTop="200dp"
-        />
+        android:layout_marginTop="200dp" />
 
     <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.intern.fragments.fragment2"
         android:layout_width="90dp"
         android:layout_height="150dp"
-        android:name="com.example.intern.fragments.fragment2"
-        android:id="@+id/fragment2"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="200dp"
-        />
+        android:layout_marginTop="200dp" />
 
     <fragment
-        android:name="com.example.intern.fragments.fragment1"
         android:id="@+id/fragment1"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="200dp"
+        android:name="com.example.intern.fragments.fragment1"
         android:layout_width="90dp"
         android:layout_height="130dp"
-        />
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="200dp" />
 
     <fragment
+        android:id="@+id/fragment4"
+        android:name="com.example.intern.fragments.fragment4"
         android:layout_width="90dp"
         android:layout_height="130dp"
-        android:id="@+id/fragment4"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="350dp"
-        android:name="com.example.intern.fragments.fragment4"
-        />
+        android:layout_marginTop="350dp" />
 
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginLeft="175dp"
-        android:src="@drawable/icons_mascot_43"
         android:layout_marginTop="550dp"
-        />
+        android:src="@drawable/icons_mascot_43" />
 </RelativeLayout>

@@ -15,11 +15,13 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 public class main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
         //getSupportActionBar().hide();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,9 +45,9 @@ public class main extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.nav_message:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new MessageFragment()).commit();
                 break;
-            case R.id.nav_chat:
+           /* case R.id.nav_chat:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ChatFragment()).commit();
-                break;
+                break;*/
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ProfileFragment()).commit();
                 break;

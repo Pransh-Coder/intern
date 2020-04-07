@@ -1,8 +1,8 @@
 package com.example.intern;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Swabhiman_Investor_Activity extends AppCompatActivity {
 
