@@ -1,33 +1,29 @@
 package save_money.Offers;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-import android.util.Log;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.intern.R;
+import com.example.intern.qr.QRScanner;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import save_money.Health;
 import save_money.Offers_Pojo;
 import save_money.RecyclerAdapterOffers;
-import save_money.SaveMoney;
 import save_money.ViewPagerAdapter;
 import save_money.giveMeFakeData;
 
@@ -37,22 +33,25 @@ public class DentalCategoryOffers extends AppCompatActivity {
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
     RequestQueue requestQueue;
+    ImageButton mProceedButton;
     //ViewPager
     ViewPager viewPager;
 
     List<Offers_Pojo> offers_pojoList = new ArrayList<>();
 
+    ImageView chat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dental_category_offers);
-
+        mProceedButton = findViewById(R.id.btn_proceed);
         recyclerView = findViewById(R.id.recyclerView_dental);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         requestQueue = Volley.newRequestQueue(this);
         //ViewPager
         viewPager = findViewById(R.id.viewpager);
+        chat = findViewById(R.id.chat);
 
         //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
@@ -63,6 +62,16 @@ public class DentalCategoryOffers extends AppCompatActivity {
 
         RecyclerAdapterOffers recyclerAdapterOffers = new RecyclerAdapterOffers(DentalCategoryOffers.this, giveMeFakeData.giveMeFakeData());
         recyclerView.setAdapter(recyclerAdapterOffers);
+        recyclerAdapterOffers.setListener(new RecyclerAdapterOffers.ClickListener() {
+            @Override
+            public void isSelected() {
+                mProceedButton.setVisibility(View.VISIBLE);
+            }
+        });
+        mProceedButton.setOnClickListener(v->{
+            Intent intent = new Intent(DentalCategoryOffers.this, QRScanner.class);
+            startActivity(intent);
+        });
 
         /*StringRequest stringRequest = new StringRequest(Request.Method.GET, "", new Response.Listener<String>() {
             @Override
@@ -85,6 +94,13 @@ public class DentalCategoryOffers extends AppCompatActivity {
             }
         };
         requestQueue.add(stringRequest);*/
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openWhatsApp();
+            }
+        });
     }
 
     public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
@@ -103,6 +119,24 @@ public class DentalCategoryOffers extends AppCompatActivity {
                     }
                 }
             });
+        }
+    }
+    public void openWhatsApp(){
+        try {
+            String text = "Thank you for Connecting with PSbyPrarambh.\n" +
+                    "Will you be willing to share your feedback with us? \n" +
+                    "Please type “Feedback” in reply here.";// Replace with your message.
+
+            String toNumber = "919737824882"; // Replace with mobile phone number without +Sign or leading zeros, but with country code
+            //Suppose your country is India and your phone number is “xxxxxxxxxx”, then you need to send “91xxxxxxxxxx”.
+
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+toNumber +"&text="+text));
+            startActivity(intent);
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

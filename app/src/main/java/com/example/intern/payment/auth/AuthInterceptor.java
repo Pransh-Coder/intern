@@ -1,6 +1,6 @@
 package com.example.intern.payment.auth;
 
-/*import java.io.IOException;
+import java.io.IOException;
 
 import okhttp3.Credentials;
 import okhttp3.Interceptor;
@@ -24,4 +24,3 @@ public class AuthInterceptor implements Interceptor {
 		return chain.proceed(request);
 	}
 }
-*/

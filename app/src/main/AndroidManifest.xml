@@ -26,7 +26,6 @@
 		<activity android:name=".vendortest.VendorMain"
 			android:theme="@style/AppTheme.NoActionBar"
 			android:windowSoftInputMode="stateHidden">
-			
 		</activity>
 		<activity android:name=".Splash">
 			<intent-filter>
@@ -37,7 +36,6 @@
 		</activity>
 		<activity
 			android:name=".mainapp.MainApp"
-			android:label="@string/title_activity_main_app"
 			android:theme="@style/AppTheme.NoActionBar" />
 		
 		<service
@@ -51,7 +49,6 @@
 		<activity android:name=".holiday_list" />
 		<activity android:name=".lifestyle_list" />
 		<activity android:name=".food_list" />
-		<activity android:name=".auth.RegistrationChoice" />
 		<activity android:name=".qr.QRScanner" />
 		<activity
 			android:name="save_money.Health"
@@ -78,11 +75,6 @@
 		<activity
 			android:name="save_money.Offers.PhysiotherapyOffers"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-		<activity android:name=".auth.Register_asParent_Activity" />
-		<activity android:name=".auth.Register_asChild_Activity" />
-		<activity android:name=".auth.RegistrationActivity" />
-		<activity android:name=".auth.PhnRegistration" />
-		<activity android:name=".auth.Login_Register" />
 		<activity android:name=".payment.BecomeAMember" />
 		<activity android:name=".Gifts" />
 	</application>

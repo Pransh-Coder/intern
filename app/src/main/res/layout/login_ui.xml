@@ -20,7 +20,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:fontFamily="@font/century_gothic_400"
-		android:text="@string/login_static"
+		android:text="Login"
 		android:textColor="@color/black"
 		android:textSize="35dp"
 		app:layout_constraintLeft_toLeftOf="@id/iv_mascot"

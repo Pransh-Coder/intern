@@ -1,43 +1,41 @@
 package com.example.intern.mainapp;
 
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.R;
 import com.example.intern.auth.AuthVerifyService;
+import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityHomeBinding;
-import com.example.intern.databinding.ActivityMainAppBinding;
+import com.example.intern.payment.BecomeAMember;
+import com.example.intern.payment.auth.RazorPayAuthAPI;
 
 import save_money.SaveMoney;
 
 public class MainApp extends AppCompatActivity {
 	private BroadcastReceiver broadcastReceiver;
-	private ActivityMainAppBinding binding;
-	LinearLayout mSaveMoney;
+	public static int BECOME_MEMBER_REQ_CODE = 20;
 	private MainAppViewModel viewModel;
-	private ActivityHomeBinding childBinding;
-	
-	private void initializeViews(){
-		mSaveMoney = findViewById(R.id.savemoney);
-	}
+	private ActivityHomeBinding binding;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		viewModel = new ViewModelProvider(this).get(MainAppViewModel.class);
-		binding = ActivityMainAppBinding.inflate(getLayoutInflater());
-		childBinding = ActivityHomeBinding.inflate(getLayoutInflater());
+		binding = ActivityHomeBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
-		initializeViews();
 //		Toolbar toolbar = findViewById(R.id.toolbar);
 //		setSupportActionBar(toolbar);
-		viewModel.drawerLayout = findViewById(R.id.drawer_layout);
 		getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.home_activity_background));
 //		NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_main_app);
 //		viewModel.setNavController(navController);
@@ -59,10 +57,17 @@ public class MainApp extends AppCompatActivity {
 	}
 	
 	private void setClickListeners(){
-		mSaveMoney.setOnClickListener(v->{
-			Intent intent = new Intent(MainApp.this, SaveMoney.class);
-			startActivity(intent);
+		binding.savemoney.setOnClickListener(v->{
+			SharedPrefUtil prefUtil = new SharedPrefUtil(this);
+			String userPayID = prefUtil.getUserPayId();
+			if(userPayID != null){
+				razorPayVerification(userPayID);
+			}else {
+				Intent intent = new Intent(MainApp.this, BecomeAMember.class);
+				startActivityForResult(intent, BECOME_MEMBER_REQ_CODE);
+			}
 		});
+		//TODO : Setting click listeners for others
 	}
 	
 	@Override
@@ -74,5 +79,42 @@ public class MainApp extends AppCompatActivity {
 	@Override
 	public void onBackPressed() {
 		moveTaskToBack(true);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == BECOME_MEMBER_REQ_CODE && resultCode == BecomeAMember.IS_A_MEMBER_RESULT_CODE) {
+			if(data!= null){
+				String payID = data.getStringExtra(BecomeAMember.PAY_ID_TAG);
+				razorPayVerification(payID);
+			}
+		}else{
+			Toast.makeText(this,"Payment Not Complete!", Toast.LENGTH_LONG).show();
+		}
+	}
+	
+	private void razorPayVerification(String payID){
+		ProgressDialog dialog = new ProgressDialog(this);
+		dialog.setTitle("Verifying Payment");dialog.show();
+		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
+		boolean verified = prefUtil.getPreferences().getBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, false);
+		if(verified){
+			Intent intent = new Intent(MainApp.this, SaveMoney.class);
+			dialog.hide();
+			startActivity(intent);
+		}else {
+			RazorPayAuthAPI.isPaymentVerified(payID, verificationStatus -> {
+				if (verificationStatus) {
+					SharedPreferences.Editor editor = prefUtil.getPreferences().edit();
+					editor.putBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, true); editor.apply();
+					Intent intent = new Intent(MainApp.this, SaveMoney.class);
+					dialog.hide();
+					startActivity(intent);
+				} else {
+					Toast.makeText(this, "Payment Cannot Be Confirmed", Toast.LENGTH_LONG).show();
+				}
+			});
+		}
 	}
 }

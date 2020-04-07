@@ -1,12 +1,17 @@
 package com.example.intern.qr;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.intern.databinding.ActivityQrBinding;
 import com.google.zxing.BarcodeFormat;
@@ -25,6 +30,7 @@ public class QRScanner extends AppCompatActivity {
     private ActivityQrBinding binding;
     private String lastText;
     private BeepManager beepManager;
+    private static int CAMERA_PERMISSION_REQ_CODE;
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
@@ -53,6 +59,7 @@ public class QRScanner extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        checkPerms();
         binding.qrView.resume();
         binding.button.setOnClickListener(v -> {
             binding.qrView.resume();
@@ -82,6 +89,26 @@ public class QRScanner extends AppCompatActivity {
 		}
 	}*/
 
+    private void checkPerms(){
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+            return;
+        }else{
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQ_CODE);
+        }
+    }
+    
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode==CAMERA_PERMISSION_REQ_CODE){
+            if(permissions[0].equals(Manifest.permission.CAMERA)){
+                if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    onResume();
+                }
+            }
+        }
+    }
+    
     @Override
     protected void onPause() {
         super.onPause();
