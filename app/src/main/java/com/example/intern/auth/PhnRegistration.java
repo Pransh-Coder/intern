@@ -1,4 +1,6 @@
-package com.example.intern.auth;
+package com.example.intern;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,10 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.intern.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -47,22 +45,21 @@ public class PhnRegistration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String phnno= Phnno.getText().toString();
-                if (TextUtils.isEmpty(phnno)) {
-                    Toast.makeText(PhnRegistration.this, "Please enter your phone number first", Toast.LENGTH_LONG).show();
-                } else {
+                String phnno=Phnno.getText().toString();
+                StringBuilder s=new StringBuilder("+91");
+                s.append(phnno);
+                //Toast.makeText(PhnRegistration.this,String.valueOf(s),Toast.LENGTH_LONG).show();
                     loadingbar.setTitle("Phone Verification");
                     loadingbar.setMessage("Please wait,while we authenticate your phone");
                     loadingbar.setCanceledOnTouchOutside(false);
                     loadingbar.show();
 
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            "+91" + phnno,        // Phone number to verify
+                            String.valueOf(s),        // Phone number to verify
                             60,                 // Timeout duration
                             TimeUnit.SECONDS,   // Unit of timeout
                             PhnRegistration.this,               // Activity (for callback binding)
                             callbacks);        // OnVerificationStateChangedCallbacks
-                }
 
 
             }
@@ -142,7 +139,7 @@ public class PhnRegistration extends AppCompatActivity {
 
 
     private void  sendtoprofilecreation() {
-        Intent profileintent = new Intent(PhnRegistration.this, RegistrationActivity.class);
+        Intent profileintent = new Intent(PhnRegistration.this,RegistrationActivity.class);
         startActivity(profileintent);
         finish();
     }

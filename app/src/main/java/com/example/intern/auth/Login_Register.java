@@ -1,13 +1,13 @@
-package com.example.intern.auth;
+package com.example.intern;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.intern.R;
+import com.google.firebase.FirebaseApp;
 
 public class Login_Register extends AppCompatActivity {
 
@@ -24,8 +24,11 @@ public class Login_Register extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registerIntent = new Intent(getApplicationContext(), RegistrationChoice.class);
+                Intent registerIntent = new Intent(getApplicationContext(),RegistrationChoice.class);
+                registerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(registerIntent);
+                finish();
+
 
             }
         });
