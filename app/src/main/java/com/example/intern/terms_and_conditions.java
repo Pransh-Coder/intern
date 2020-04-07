@@ -1,8 +1,8 @@
 package com.example.intern;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class terms_and_conditions extends AppCompatActivity {
 

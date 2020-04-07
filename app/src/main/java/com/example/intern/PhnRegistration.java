@@ -1,6 +1,4 @@
 package com.example.intern;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,35 +32,36 @@ public class PhnRegistration extends AppCompatActivity {
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private FirebaseAuth mAuth;
     private ProgressDialog loadingbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_login);
-        Phnno=findViewById(R.id.et_phone_number);
-        otp=findViewById(R.id.et_otp);
-        signup=findViewById(R.id.btn_login);
-        getotp=findViewById(R.id.btn_get_otp);
+        Phnno = findViewById(R.id.et_phone_number);
+        otp = findViewById(R.id.et_otp);
+        signup = findViewById(R.id.btn_login);
+        getotp = findViewById(R.id.btn_get_otp);
         mAuth = FirebaseAuth.getInstance();
         loadingbar = new ProgressDialog(this);
         getotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String phnno=Phnno.getText().toString();
-                StringBuilder s=new StringBuilder("+91");
+                String phnno = Phnno.getText().toString();
+                StringBuilder s = new StringBuilder("+91");
                 s.append(phnno);
                 //Toast.makeText(PhnRegistration.this,String.valueOf(s),Toast.LENGTH_LONG).show();
-                    loadingbar.setTitle("Phone Verification");
-                    loadingbar.setMessage("Please wait,while we authenticate your phone");
-                    loadingbar.setCanceledOnTouchOutside(false);
-                    loadingbar.show();
+                loadingbar.setTitle("Phone Verification");
+                loadingbar.setMessage("Please wait,while we authenticate your phone");
+                loadingbar.setCanceledOnTouchOutside(false);
+                loadingbar.show();
 
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            String.valueOf(s),        // Phone number to verify
-                            60,                 // Timeout duration
-                            TimeUnit.SECONDS,   // Unit of timeout
-                            PhnRegistration.this,               // Activity (for callback binding)
-                            callbacks);        // OnVerificationStateChangedCallbacks
+                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                        String.valueOf(s),        // Phone number to verify
+                        60,                 // Timeout duration
+                        TimeUnit.SECONDS,   // Unit of timeout
+                        PhnRegistration.this,               // Activity (for callback binding)
+                        callbacks);        // OnVerificationStateChangedCallbacks
 
 
             }
@@ -138,8 +140,8 @@ public class PhnRegistration extends AppCompatActivity {
     }
 
 
-    private void  sendtoprofilecreation() {
-        Intent profileintent = new Intent(PhnRegistration.this,RegistrationActivity.class);
+    private void sendtoprofilecreation() {
+        Intent profileintent = new Intent(PhnRegistration.this, RegistrationActivity.class);
         startActivity(profileintent);
         finish();
     }

@@ -1,170 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@drawable/front_blank_with_logo"
-	tools:context=".Register_asParent_Activity">
-	
-	<EditText
-		android:id="@+id/et_name"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:layout_marginTop="190dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Name"
-		android:inputType="textPersonName"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.255"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
-	
-	<EditText
-		android:id="@+id/et_nick_name"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="What we called you:(Chachu,Dadu,Chachi)"
-		android:inputType="textPhonetic"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_name" />
-	
-	<EditText
-		android:id="@+id/et_child_number"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Your Child Number : "
-		android:inputType="phone"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_nick_name" />
-	
-	<EditText
-		android:id="@+id/et_parent_number"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Parents Numeber : "
-		android:inputType="phone"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_child_number" />
-	
-	<EditText
-		android:id="@+id/et_DOB"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Date of Birth : "
-		android:inputType="date"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_parent_number" />
-	
-	<EditText
-		android:id="@+id/et_pin_code"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Area/Pincode : "
-		android:inputType="number"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_DOB" />
-	
-	<EditText
-		android:id="@+id/et_ps_nick_name"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="What you call to PS : "
-		android:inputType="text"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_pin_code" />
-	
-	<EditText
-		android:id="@+id/et_password"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Password : "
-		android:inputType="textPassword"
-		android:paddingLeft="20dp"
-		android:password="true"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_ps_nick_name" />
-	
-	<EditText
-		android:id="@+id/et_confirm_password"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Confirm Password : "
-		android:inputType="textPassword"
-		android:paddingLeft="20dp"
-		android:password="true"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_password" />
-	
-	<View
-		android:id="@+id/view"
-		style="@style/Divider"
-		android:layout_width="200dp"
-		android:layout_height="2dp"
-		android:layout_marginTop="8dp"
-		android:background="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
-	
-	<Button
-		android:id="@+id/btn_continue"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginRight="30dp"
-		android:layout_marginBottom="30dp"
-		android:background="@color/yellow"
-		android:text="Continue"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintRight_toRightOf="parent"/>
-	
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/front_blank_with_logo"
+    tools:context=".Register_asParent_Activity">
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="190dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:textColorHint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.255"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_nick_name"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="What we called you:(Chachu,Dadu,Chachi)"
+        android:inputType="textPhonetic"
+        android:paddingLeft="20dp"
+        android:textColorHint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+    <EditText
+        android:id="@+id/et_child_number"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="Your Child Number : "
+        android:inputType="phone"
+        android:paddingLeft="20dp"
+        android:textColorHint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nick_name" />
+
+    <EditText
+        android:id="@+id/et_parent_number"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="Parents Numeber : "
+        android:inputType="phone"
+        android:paddingLeft="20dp"
+        android:textColorHint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_child_number" />
+
+    <EditText
+        android:id="@+id/et_DOB"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="Date of Birth : "
+        android:inputType="date"
+        android:paddingLeft="20dp"
+        android:textColorHint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_parent_number" />
+
+    <EditText
+        android:id="@+id/et_pin_code"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="Area/Pincode : "
+        android:inputType="number"
+        android:paddingLeft="20dp"
+        android:textColorHint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_DOB" />
+
+    <EditText
+        android:id="@+id/et_ps_nick_name"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="What you call to PS : "
+        android:inputType="text"
+        android:paddingLeft="20dp"
+        android:textColorHint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_pin_code" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="Password : "
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:password="true"
+        android:textColorHint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_ps_nick_name" />
+
+    <EditText
+        android:id="@+id/et_confirm_password"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="Confirm Password : "
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:password="true"
+        android:textColorHint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+    <View
+        android:id="@+id/view"
+        style="@style/Divider"
+        android:layout_width="200dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
+
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/yellow"
+        android:text="Continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

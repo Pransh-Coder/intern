@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/constraintView2"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="3dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    android:padding="3dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:padding="5dp"
         android:id="@+id/constraintView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="5dp">
 
 
         <CheckBox
@@ -21,54 +19,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            android:layout_marginBottom="5dp"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name :"
-            android:textSize="18sp"
-            android:fontFamily="@font/century_gothic"
-            android:textStyle="bold"
-            android:textColor="@color/black"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/century_gothic"
+            android:text="Name :"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/occupation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Occupation :"
-            android:textSize="15sp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/century_gothic"
+            android:text="Occupation :"
+            android:textSize="15sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Name"/>
+            app:layout_constraintTop_toBottomOf="@+id/Name" />
 
         <TextView
             android:id="@+id/Age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/century_gothic"
             android:text="Age :"
             android:textSize="15sp"
-            android:fontFamily="@font/century_gothic"
-            android:layout_marginTop="7dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/occupation"/>
+            app:layout_constraintTop_toBottomOf="@+id/occupation" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="#000"
             android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/Age"/>
+            android:background="#000"
+            app:layout_constraintTop_toBottomOf="@id/Age" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

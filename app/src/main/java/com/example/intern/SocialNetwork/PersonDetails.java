@@ -1,11 +1,11 @@
 package com.example.intern.SocialNetwork;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-
-import android.os.Bundle;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -16,9 +16,6 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import save_money.Offers.DentalCategoryOffers;
-import save_money.Offers_Pojo;
-import save_money.RecyclerAdapterOffers;
 import save_money.ViewPagerAdapter;
 import save_money.giveMeFakeData;
 
@@ -32,6 +29,7 @@ public class PersonDetails extends AppCompatActivity {
     ViewPager viewPager;
 
     List<PersonDetails_pojo> personDetails_pojoList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +52,7 @@ public class PersonDetails extends AppCompatActivity {
         RecyclerAdapterPersonDetails recyclerAdapterPersonDetails = new RecyclerAdapterPersonDetails(PersonDetails.this, giveMeFakeData.givefakePeopleDetails());
         recyclerView.setAdapter(recyclerAdapterPersonDetails);
     }
+
     public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
         @Override
         public void run() {
