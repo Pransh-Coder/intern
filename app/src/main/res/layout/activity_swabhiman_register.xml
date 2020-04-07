@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".swabhiman_register"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    tools:context=".swabhiman_register">
 
     <ImageView
         android:id="@+id/iv_back_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icons_mascot_48" />
 
     <ImageView
@@ -22,17 +22,17 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="5dp"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toEndOf="@id/iv_back_button"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icons_mascot_49" />
 
     <ImageView
         android:id="@+id/iv_swabhiman_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,10 +43,10 @@
         android:id="@+id/tv_swabhiman"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
         android:gravity="center"
         android:text="Swabhiman"
         android:textAllCaps="true"
+        android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,15 +55,14 @@
     <TextView
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:text="Employment"
-        android:textStyle="bold"
+        android:background="@color/white"
         android:gravity="center"
+        android:text="Employment"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hor_guide_14_percent"
-        android:background="@color/white"
-        />
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_14_percent" />
 
     <ImageView
         android:id="@+id/iv_search_button"
@@ -89,9 +88,9 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/icons_mascot_43"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor_guide_14_percent"
@@ -101,80 +100,86 @@
         app:layout_constraintGuide_percent="0.18" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/name"
-        app:layout_constraintVertical_bias="0.35"
-        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Name :"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:hint="Name :"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/exp"
-        app:layout_constraintTop_toBottomOf="@id/name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="Years of experience in Job/others :"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:layout_constraintTop_toBottomOf="@id/name">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/good"
-        app:layout_constraintTop_toBottomOf="@id/exp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="What you are good at :"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:layout_constraintTop_toBottomOf="@id/exp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/hrs"
-        app:layout_constraintTop_toBottomOf="@id/good"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="How many Hrs. you can work daily :"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:layout_constraintTop_toBottomOf="@id/good">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/condition"
-        app:layout_constraintTop_toBottomOf="@id/hrs"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="Any specific condition :"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:layout_constraintTop_toBottomOf="@id/hrs">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/currently"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/currently"
-        app:layout_constraintTop_toBottomOf="@id/condition"
         android:hint="Anything doing currently :"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:layout_constraintTop_toBottomOf="@id/condition">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

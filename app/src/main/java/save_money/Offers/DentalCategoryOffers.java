@@ -1,27 +1,33 @@
 package save_money.Offers;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Bundle;
+import android.util.Log;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.intern.R;
-import com.example.intern.qr.QRScanner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import save_money.Health;
 import save_money.Offers_Pojo;
 import save_money.RecyclerAdapterOffers;
+import save_money.SaveMoney;
 import save_money.ViewPagerAdapter;
 import save_money.giveMeFakeData;
 
@@ -31,7 +37,6 @@ public class DentalCategoryOffers extends AppCompatActivity {
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
     RequestQueue requestQueue;
-    ImageButton mProceedButton;
     //ViewPager
     ViewPager viewPager;
 
@@ -41,7 +46,7 @@ public class DentalCategoryOffers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dental_category_offers);
-        mProceedButton = findViewById(R.id.btn_proceed);
+
         recyclerView = findViewById(R.id.recyclerView_dental);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -58,16 +63,6 @@ public class DentalCategoryOffers extends AppCompatActivity {
 
         RecyclerAdapterOffers recyclerAdapterOffers = new RecyclerAdapterOffers(DentalCategoryOffers.this, giveMeFakeData.giveMeFakeData());
         recyclerView.setAdapter(recyclerAdapterOffers);
-        recyclerAdapterOffers.setListener(new RecyclerAdapterOffers.ClickListener() {
-            @Override
-            public void isSelected() {
-                mProceedButton.setVisibility(View.VISIBLE);
-            }
-        });
-        mProceedButton.setOnClickListener(v->{
-            Intent intent = new Intent(DentalCategoryOffers.this, QRScanner.class);
-            startActivity(intent);
-        });
 
         /*StringRequest stringRequest = new StringRequest(Request.Method.GET, "", new Response.Listener<String>() {
             @Override

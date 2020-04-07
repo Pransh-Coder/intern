@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/home_activity_icon_background">
+
+    <TextView
+        android:id="@+id/TransactionHistory_tvTotalCustomers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/home_activity_icon_background"
+        android:fontFamily="@font/century_gothic_400"
+        android:padding="10dp"
+        android:text="Total No of Customer"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TransactionHistory_tvAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_activity_icon_background"
+        android:fontFamily="@font/century_gothic_400"
+        android:padding="10dp"
+        android:text="Amount"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/TransactionHistory_tvTotalCustomers"
+        app:layout_constraintStart_toEndOf="@+id/TransactionHistory_tvTotalCustomers"
+        app:layout_constraintTop_toTopOf="@+id/TransactionHistory_tvTotalCustomers" />
+
+    <TextView
+        android:id="@+id/TransactionHistory_tvDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/home_activity_icon_background"
+        android:fontFamily="@font/century_gothic_400"
+        android:padding="10dp"
+        android:text="@string/date_time"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/TransactionHistory_tvAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/TransactionHistory_tvAmount"
+        app:layout_constraintTop_toTopOf="@+id/TransactionHistory_tvAmount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

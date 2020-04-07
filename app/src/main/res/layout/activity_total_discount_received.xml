@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ps"
+        android:padding="10dp"
+        tools:context=".TotalDiscountReceived.TotalDiscountReceived">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/homeimg"
+            app:layout_constraintLeft_toRightOf="@+id/back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/notifi"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/notification"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/percent_30_Of_Screen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="150dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic"
+            android:text="Total Discount Received"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/percent_30_Of_Screen"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.87" />
+
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:stretchColumns="0,1,2,3"
+            app:layout_constraintTop_toBottomOf="@+id/percent_30_Of_Screen">
+
+
+            <TableRow
+                android:id="@+id/row1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border">
+
+
+                <TextView
+                    android:id="@+id/data1"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text="Categories"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/data2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text="Amount"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/data3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text="Discount"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/data4"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/data7"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/row4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/data10"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/data13"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/row6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/data16"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data17"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/row7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border">
+
+                <TextView
+                    android:id="@+id/data19"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data50"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/row8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/data21"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data22"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data23"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/row9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/data24"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data25"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/data26"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/traningprogram_tableRow_mondayHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/traningprogram_textView_mondayheadingWeek"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/traningprogram_textView_mondeyheadingWeekName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/traningprogram_textView_mondeyheadingWeek"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textSize="12dp" />
+
+            </TableRow>
+        </TableLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/pslogo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

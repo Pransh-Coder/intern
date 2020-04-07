@@ -1,4 +1,6 @@
-package com.example.intern.auth;
+package com.example.intern;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +15,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.intern.R;
 
 import save_money.SaveMoney;
 

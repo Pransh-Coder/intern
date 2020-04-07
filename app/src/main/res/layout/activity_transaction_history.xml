@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/common_background"
+    tools:context=".TransactionHistoryActivity">
+
+    <ImageView
+        android:id="@+id/transactionHistory_button_back"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/transactionHistory_button_home"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/homeimg"
+        app:layout_constraintLeft_toRightOf="@+id/transactionHistory_button_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/transactionHistory_notification"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/notification"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/century_gothic_400"
+        android:padding="10dp"
+        android:text="Transaction History"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/transactionHistory_button_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/home_activity_icon_background"
+        android:fontFamily="@font/century_gothic_400"
+        android:padding="10dp"
+        android:text="Monthly"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/transactionHistory_button_product"
+        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/transactionHistory_button_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/home_activity_icon_background"
+        android:fontFamily="@font/century_gothic_400"
+        android:padding="10dp"
+        android:text="Yearly"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/transactionHistory_button_service"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/home_activity_icon_background"
+        android:fontFamily="@font/century_gothic_400"
+        android:padding="10dp"
+        android:text="Total No of Customer"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transactionHistory_button_service" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_activity_icon_background"
+        android:fontFamily="@font/century_gothic_400"
+        android:padding="10dp"
+        android:text="Amount"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/home_activity_icon_background"
+        android:fontFamily="@font/century_gothic_400"
+        android:padding="10dp"
+        android:text="@string/date_time"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/ps_bottomLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.104" />
+
+    <ImageView
+        android:id="@+id/ps_bottomLogo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pslogo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

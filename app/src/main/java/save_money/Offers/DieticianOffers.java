@@ -5,7 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -27,6 +31,7 @@ public class DieticianOffers extends AppCompatActivity {
     //ViewPager
     ViewPager viewPager;
 
+    ImageView chat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,7 @@ public class DieticianOffers extends AppCompatActivity {
         //ViewPager
         viewPager = findViewById(R.id.viewpager);
 
+        chat = findViewById(R.id.chat);
         //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
@@ -48,6 +54,13 @@ public class DieticianOffers extends AppCompatActivity {
 
         RecyclerAdapterOffers recyclerAdapterOffers = new RecyclerAdapterOffers(DieticianOffers.this, giveMeFakeData.giveMeFakeData_dietician());
         recyclerView.setAdapter(recyclerAdapterOffers);
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openWhatsApp();
+            }
+        });
     }
     public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
         @Override
@@ -65,6 +78,24 @@ public class DieticianOffers extends AppCompatActivity {
                     }
                 }
             });
+        }
+    }
+    public void openWhatsApp(){
+        try {
+            String text = "Thank you for Connecting with PSbyPrarambh.\n" +
+                    "Will you be willing to share your feedback with us? \n" +
+                    "Please type “Feedback” in reply here.";// Replace with your message.
+
+            String toNumber = "919737824882"; // Replace with mobile phone number without +Sign or leading zeros, but with country code
+            //Suppose your country is India and your phone number is “xxxxxxxxxx”, then you need to send “91xxxxxxxxxx”.
+
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+toNumber +"&text="+text));
+            startActivity(intent);
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

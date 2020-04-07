@@ -1,38 +1,35 @@
 <resources>
-	<string name="app_name">intern</string>
-	<string-array name="laguauge">
-		<item>Choose Your Language</item>
-		<item>English</item>
-		<item>हिन्दी</item>
-		<item>ગુજરાતી</item>
-	</string-array>
-	<string-array name="currentlaguauge">
-		<item>Current Language English</item>
-		<item>Current Language हिन्दी</item>
-		<item>Current Language ગુજરાતી</item>
-	</string-array>
-	<string name="save_money">SAVE MONEY</string>
-	<string name="swabhiman">SWABHIMAN</string>
-	<string name="shopping">SHOPPING</string>
-	<string name="bpcl_fuel">BPCL FUEL</string>
-	<string name="request">REQUEST</string>
-	<string name="social_network">SOCIAL\n NETWORK</string>
-	
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
-	<string name="title_activity_test_drawer">TestDrawer</string>
-	<string name="navigation_drawer_open">Open navigation drawer</string>
-	<string name="navigation_drawer_close">Close navigation drawer</string>
-	<string name="nav_header_title">Android Studio</string>
-	<string name="nav_header_subtitle">android.studio@android.com</string>
-	<string name="nav_header_desc">Navigation header</string>
-	<string name="action_settings">Settings</string>
-	
-	<string name="menu_home">Home</string>
-	<string name="menu_gallery">Gallery</string>
-	<string name="menu_slideshow">Slideshow</string>
-	
-	<string name="home_second">Home Second</string>
-	<string name="title_activity_main_app">MainApp</string>
-	<string name="login_static">Login</string>
+    <string name="app_name">intern</string>
+    <string-array name="laguauge">
+        <item>Choose Your Language</item>
+        <item>English</item>
+        <item>हिन्दी</item>
+        <item>ગુજરાતી</item>
+    </string-array>
+    <string-array name="currentlaguauge">
+        <item>Current Language English</item>
+        <item>Current Language हिन्दी</item>
+        <item>Current Language ગુજરાતી</item>
+    </string-array>
+    <string-array name="available_service_array">
+        <item>Which Service you want?</item>
+        <item>Health Services</item>
+        <item>Legal Service</item>
+        <item>Finance and Consultant Services</item>
+        <item>Tiffin Services</item>
+        <item>Cab Services</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="more_about_special_offers">Tell us more about \nyour special offers</string>
+    <string name="date_time">Date &amp; Time</string>
+    <string name="save_money">SAVE MONEY</string>
+    <string name="swabhiman">SWABHIMAN</string>
+    <string name="shopping">SHOPPING/\nMEDICINE </string>
+    <string name="fuel_with_us">FUEL WITH US</string>
+    <string name="exclusive_services">EXCLUSIVE\nSERVICES</string>
+    <string name="ask_services">ASK SERVICES/\nPRODUCTS</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>
