@@ -1,6 +1,7 @@
 package com.example.intern.EditProfile;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,10 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityEditProfileBinding;
+import com.example.intern.mainapp.MainApp;
 
 public class EditProfile extends AppCompatActivity {
     private ActivityEditProfileBinding binding;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +85,9 @@ public class EditProfile extends AppCompatActivity {
             FireStoreUtil.uploadMeta(this,u_name,email,occ,add).addOnSuccessListener(aVoid -> {
                 prefUtil.updateWithCloud(FireStoreUtil.getFirebaseUser(getApplicationContext()).getUid());
                 dialog.hide();
+                Intent intent = new Intent(EditProfile.this, MainApp.class);
                 finish();
+                startActivity(intent);
             });
         });
     }

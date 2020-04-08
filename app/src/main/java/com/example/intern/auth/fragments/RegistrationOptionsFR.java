@@ -1,12 +1,12 @@
 package com.example.intern.auth.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +16,9 @@ import androidx.navigation.Navigation;
 
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
-import com.example.intern.databinding.FragmentRegistrationOptionsFRBinding;
+import com.example.intern.database.FireStoreUtil;
+import com.example.intern.database.SharedPrefUtil;
+import com.example.intern.databinding.LoginUiBinding;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -33,19 +35,17 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.Arrays;
-import java.util.concurrent.Executor;
 
 public class RegistrationOptionsFR extends Fragment {
 	private static String TAG = RegistrationOptionsFR.class.getSimpleName();
 	private int G_SIGN_IN_REQ_CODE = 12;
-	private FragmentRegistrationOptionsFRBinding binding;
+	private LoginUiBinding binding;
 	private AuthViewModel viewModel;
 	private CallbackManager mCallbackManager;
 	private FirebaseAuth mAuth;
@@ -63,7 +63,7 @@ public class RegistrationOptionsFR extends Fragment {
 		viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
 		mCallbackManager = CallbackManager.Factory.create();
 		mAuth=FirebaseAuth.getInstance();
-		binding = FragmentRegistrationOptionsFRBinding.inflate(inflater, container, false);
+		binding = LoginUiBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
 		return view;
 	}
@@ -72,14 +72,14 @@ public class RegistrationOptionsFR extends Fragment {
 	public void onStart() {
 		super.onStart();
 		//TODO:
-		binding.btnGoogleSignup.setOnClickListener(v->{
+		binding.googleSignIn.setOnClickListener(v->{
 			Intent intent = viewModel.getGoogleSignInClient().getSignInIntent();
 			startActivityForResult(intent, G_SIGN_IN_REQ_CODE);
 		});
-		binding.btnSignupPhone.setOnClickListener(v->{
+		binding.phoneSignIn.setOnClickListener(v->{
 			Navigation.findNavController(v).navigate(R.id.action_registrationOptionsFR_to_phoneRegistrationFR);
 		});
-		binding.btnSignupFb.setOnClickListener(v->{
+		binding.facebookSignIn.setOnClickListener(v->{
 			LoginManager.getInstance().logInWithReadPermissions(RegistrationOptionsFR.this, Arrays.asList("email"));
 			LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
 				@Override
@@ -125,8 +125,20 @@ public class RegistrationOptionsFR extends Fragment {
 	
 	private void firebaseAuthWithGoogle(GoogleSignInAccount account){
 		AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+		final Context context = requireContext();
 		viewModel.getFirebaseAuth().signInWithCredential(credential).addOnSuccessListener(authResult -> {
 			if(authResult.getUser() != null){
+				FireStoreUtil.getUserDocumentReference(requireContext(), authResult.getUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+					@Override
+					public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
+						if(snapshot != null && snapshot.exists()){
+							//TODO : User Exists already, log in
+							SharedPrefUtil prefUtil = new SharedPrefUtil(context);
+							prefUtil.updateSharedPrefsPostLogin(snapshot);
+							viewModel.getLoggedInListener().isLoggedIn(true);
+						}
+					}
+				});
 				Log.d(TAG, "firebaseAuthWithGoogle: success");
 				viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
 				if(!viewModel.isRegChoiceisParent()){

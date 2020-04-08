@@ -54,15 +54,9 @@ public class Splash extends AppCompatActivity {
 			//TODO:Redirect to main app
 			Intent intent1 = new Intent(this, MainApp.class);
 			startActivity(intent1);
-			finish();
+			finishAffinity();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	@Override
-	protected void onDestroy() {
-		finish();
-		super.onDestroy();
 	}
 }

@@ -1,64 +1,96 @@
 package com.example.intern.fuel;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-import com.example.intern.R;
+import com.example.intern.databinding.ActivityBpclFuelQrScannerBinding;
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeCallback;
+import com.journeyapps.barcodescanner.DefaultDecoderFactory;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 public class FuelBPCLACT extends AppCompatActivity {
-    EditText amount;
-    TextView tv_qty;
-    Button submit;
+    private static final int CAMERA_PERMISSION_REQ_CODE = 23;
+    private ActivityBpclFuelQrScannerBinding binding;
+    private BarcodeCallback barcodeCallback = result -> {
+        //TODO : Set callback for the scanned bar code
+        Toast.makeText(this, "Found An Invoice!", Toast.LENGTH_SHORT).show();
+    };
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fuel_with_us);
-        getSupportActionBar().hide();
-        tv_qty = findViewById(R.id.tv_petrol_qty);
-        amount = findViewById(R.id.et_amt);
-        submit = findViewById(R.id.submit_petrol);
-        amount.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(s.length()!=0){
-                    int amt = Integer.parseInt(s.toString());
-                    float qty = (float) amt / 70;
-                    tv_qty.setText("Petrol quantity is "+qty);
-                }
-                else{
-                    tv_qty.setText("Petrol quantity is 0");
-                }
-            }
-        });
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText e1 = findViewById(R.id.et_amt);
-                EditText e2 = findViewById(R.id.et_invoice);
-                if(e1.getText().toString().length()==0){
-                    Toast.makeText(getApplicationContext(),"Please enter the amount ",Toast.LENGTH_SHORT).show();
-                }
-                else if(e2.getText().toString().length()==0){
-                    Toast.makeText(getApplicationContext(),"Please enter invoice number",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    //Intent object where you want to submit
+        binding = ActivityBpclFuelQrScannerBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        checkPerms();
+        Collection<BarcodeFormat> formats = Arrays.asList(BarcodeFormat.QR_CODE);
+        binding.qrView.getBarcodeView().setDecoderFactory(new DefaultDecoderFactory(formats));
+        binding.qrView.initializeFromIntent(getIntent());
+        binding.qrView.setStatusText("Scan the Invoice");
+        binding.qrView.decodeContinuous(barcodeCallback);
+    }
+    
+    private void checkPerms(){
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+            return;
+        }else{
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQ_CODE);
+        }
+    }
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        binding.bpclFuelQrScannerSubmit.setOnClickListener(v -> {
+            Editable amount = binding.bpclFuelQrScannerEtEnterAmount.getText();
+            Editable invoiceNo = binding.bpclFuelQrScannerEtInvoiceNumber.getText();
+            if(amount != null && invoiceNo != null){
+                String amt= amount.toString();
+                String invoice = invoiceNo.toString();
+                if(amt.isEmpty()){
+                    binding.bpclFuelQrScannerEtEnterAmount.setError("Cannot be empty");
+                    return;
+                }else if(invoice.isEmpty()){
+                    binding.bpclFuelQrScannerEtInvoiceNumber.setError("Cannot be Empty");
+                    return;
+                }else{
+                    //TODO : Submit the data
                 }
             }
         });
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode==CAMERA_PERMISSION_REQ_CODE){
+            if(permissions[0].equals(Manifest.permission.CAMERA)){
+                if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    //TODO : Camera permission granted
+                }else{
+                    new AlertDialog.Builder(this).setTitle("Needs Camera Permission")
+                            .setMessage("To scan the invoice")
+                            .setPositiveButton("OK", (button, which)->{
+                        if(which == AlertDialog.BUTTON_POSITIVE){
+                            checkPerms();
+                        }
+                    }).setNegativeButton("EXIT", (button, which)->{
+                        if(which==AlertDialog.BUTTON_NEGATIVE){
+                            finish();
+                        }
+                    }).show();
+                }
+            }
+        }
     }
 }

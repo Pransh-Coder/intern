@@ -15,6 +15,19 @@ public class AuthViewModel extends ViewModel {
 	private FirebaseAuth firebaseAuth;
 	private FirebaseUser firebaseUser;
 	private boolean regChoiceisParent;
+	private IsLoggedInListener loggedInListener;
+	
+	public IsLoggedInListener getLoggedInListener() {
+		return loggedInListener;
+	}
+	
+	public void setLoggedInListener(IsLoggedInListener loggedInListener) {
+		this.loggedInListener = loggedInListener;
+	}
+	
+	public interface IsLoggedInListener{
+		void isLoggedIn(boolean isLoggedIn);
+	}
 	
 	public GoogleSignInClient getGoogleSignInClient() {
 		return googleSignInClient;

@@ -9,11 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
+import com.example.intern.database.FireStoreUtil;
+import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.PhoneLoginUiBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +24,9 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.concurrent.TimeUnit;
 
@@ -32,7 +38,6 @@ public class PhoneRegistrationFR extends Fragment {
 	private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
 	private PhoneLoginUiBinding binding;
 	private AuthViewModel viewModel;
-	
 	public PhoneRegistrationFR() {
 		// Required empty public constructor
 	}
@@ -76,7 +81,7 @@ public class PhoneRegistrationFR extends Fragment {
 		};
 		binding.btnGetOtp.setOnClickListener(v -> {
 			String phnno= binding.etPhoneNumber.getText().toString();
-			if (TextUtils.isEmpty(phnno)) {
+			if (phnno.isEmpty()) {
 				binding.etPhoneNumber.setError("Phone Number is invalid");
 			} else {
 				loadingbar.setTitle("Phone Verification");
@@ -115,6 +120,20 @@ public class PhoneRegistrationFR extends Fragment {
 					public void onComplete(@NonNull Task<AuthResult> task) {
 						if (task.isSuccessful()) {
 							loadingbar.dismiss();
+							AuthResult authResult = task.getResult();
+							if(authResult != null){
+								FireStoreUtil.getUserDocumentReference(requireContext(), authResult.getUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+									@Override
+									public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
+										if(snapshot != null && snapshot.exists()){
+											//TODO : User Exists already, log in
+											SharedPrefUtil prefUtil = new SharedPrefUtil(requireContext());
+											prefUtil.updateSharedPrefsPostLogin(snapshot);
+											viewModel.getLoggedInListener().isLoggedIn(true);
+										}
+									}
+								});
+							}
 							Toast.makeText(requireContext(), "Logged in Successfully", Toast.LENGTH_LONG).show();
 							viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsChildFR);
 						} else {

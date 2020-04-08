@@ -9,6 +9,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -104,6 +105,18 @@ public class QRScanner extends AppCompatActivity {
             if(permissions[0].equals(Manifest.permission.CAMERA)){
                 if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
                     onResume();
+                }else{
+                    new AlertDialog.Builder(this).setTitle("Needs Camera Permission")
+                            .setMessage("To scan the invoice")
+                            .setPositiveButton("OK", (button, which)->{
+                        if(which == AlertDialog.BUTTON_POSITIVE){
+                            checkPerms();
+                        }
+                    }).setNegativeButton("EXIT", (button, which)->{
+                        if(which==AlertDialog.BUTTON_NEGATIVE){
+                            finish();
+                        }
+                    }).show();
                 }
             }
         }

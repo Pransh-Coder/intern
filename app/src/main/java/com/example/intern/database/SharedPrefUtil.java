@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.example.intern.payment.auth.RazorPayAuthAPI;
+import com.google.firebase.firestore.DocumentSnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +44,33 @@ public class SharedPrefUtil {
 				.putBoolean(USER_LOGGED_IN_STATUS_KEY, true).putString(USER_PAY_ID, null)
 				.putString(USER_PHONE_NO, null).putBoolean(USER_PAY_VER_STATUS , false)
 				.putString(USER_OCCUPATION_KEY, null).putString(USER_ADDRESS_KEY, null);
+		editor.apply();
+	}
+	
+	public void updateSharedPrefsPostLogin(DocumentSnapshot snapshot){
+		SharedPreferences.Editor editor = preferences.edit();
+		editor.putString(USER_NAME_KEY, snapshot.getString(FireStoreUtil.USER_NAME));
+		editor.putString(USER_NICK_NAME_KEY, snapshot.getString(FireStoreUtil.USER_NICK_NAME));
+		editor.putString(USER_PS_NICK_NAME_KEY, snapshot.getString(FireStoreUtil.USER_PS_NICK_NAME));
+		editor.putString(USER_PHONE_NO, snapshot.getString(FireStoreUtil.USER_PHONE_NUMBER));
+		editor.putString(USER_RELATIVE_PHONE_NUMBER_KEY, snapshot.getString(USER_RELATIVE_PHONE_NUMBER_KEY));
+		editor.putString(USER_DOB_KEY, snapshot.getString(FireStoreUtil.USER_DOB));
+		editor.putString(USER_PIN_CODE_KEY, snapshot.getString(FireStoreUtil.USER_PIN_CODE));
+		editor.putString(USER_PAY_ID, snapshot.getString(FireStoreUtil.USER_PAY_ID));
+		editor.putString(USER_EMAIL_KEY, snapshot.getString(FireStoreUtil.USER_EMAIL));
+		editor.putBoolean(USER_LOGGED_IN_STATUS_KEY, true);
+		editor.putString(USER_OCCUPATION_KEY, snapshot.getString(FireStoreUtil.USER_OCCUPATION));
+		editor.putString(USER_ADDRESS_KEY, snapshot.getString(FireStoreUtil.USER_ADDRESS));
+		String payID = snapshot.getString(FireStoreUtil.USER_PAY_ID);
+		if(payID!=null && !payID.isEmpty()){
+			RazorPayAuthAPI.isPaymentVerified(payID, verificationStatus -> {
+				if(verificationStatus){
+					editor.putBoolean(USER_PAY_VER_STATUS, true);
+				}else {
+					editor.putBoolean(USER_PAY_VER_STATUS, false);
+				}
+			});
+		}
 		editor.apply();
 	}
 	

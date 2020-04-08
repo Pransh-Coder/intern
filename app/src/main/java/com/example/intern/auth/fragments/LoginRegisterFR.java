@@ -34,13 +34,8 @@ public class LoginRegisterFR extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		//TODO: make a login FR too
-		binding.registrationButton.setOnClickListener(v->{
+		binding.getStarted.setOnClickListener(v->{
 			Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_registrationChoiceFR);
 		});
-		binding.loginButton.setOnClickListener(v -> {
-			Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_registrationChoiceFR);
-				}
-				);
 	}
 }

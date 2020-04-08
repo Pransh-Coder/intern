@@ -3,6 +3,7 @@ package com.example.intern.swabhiman;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -31,7 +32,7 @@ public class SwabhimanActivity extends AppCompatActivity implements PaymentResul
 		viewModel.setNavController(navController);
 		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
 		viewModel.setUserMail(prefUtil.getPreferences().getString(SharedPrefUtil.USER_EMAIL_KEY, null));
-		if(viewModel.getUserMail() == null|| viewModel.getUserMail().equals("null")){
+		if(viewModel.getUserMail() == null|| viewModel.getUserMail().equals("null") || viewModel.getUserMail().isEmpty() || TextUtils.isEmpty(viewModel.getUserMail())){
 			new AlertDialog.Builder(this).setTitle("Needs Your E-Mail")
 					.setMessage("Please Update your e-mail address and try again")
 					.setPositiveButton("OK", (dialog, which) -> {

@@ -1,5 +1,6 @@
 package com.example.intern.auth;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.navigation.Navigation;
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.databinding.ActivityAuthBinding;
+import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.FirebaseApp;
@@ -19,7 +21,6 @@ public class AuthActivity extends AppCompatActivity {
 	private static String TAG = AuthActivity.class.getSimpleName();
 	private ActivityAuthBinding binding;
 	private AuthViewModel viewModel;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,5 +39,12 @@ public class AuthActivity extends AppCompatActivity {
 		viewModel.setGoogleSignInClient(GoogleSignIn.getClient(this, gso));
 		viewModel.setFirebaseAuth(FirebaseAuth.getInstance(viewModel.getFirebaseApp()));
 		viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
+		viewModel.setLoggedInListener(isLoggedIn -> {
+			if(isLoggedIn){
+				Intent intent = new Intent(AuthActivity.this, MainApp.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 }

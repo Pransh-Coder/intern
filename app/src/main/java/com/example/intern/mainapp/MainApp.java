@@ -1,5 +1,6 @@
 package com.example.intern.mainapp;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -17,7 +18,6 @@ import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.EditProfile.EditProfile;
-import com.example.intern.ExecutorProvider;
 import com.example.intern.FeedBackOrComplaintACT;
 import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.NewsAndUpdatesACT;
@@ -45,7 +45,7 @@ public class MainApp extends AppCompatActivity {
 	private ActivityHomeBinding binding;
 	private HomeMenuHeaderBinding headerBinding;
 	private MainAppViewModel viewModel;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,7 +61,18 @@ public class MainApp extends AppCompatActivity {
 		setClickListeners();
 		setDrawerClickListeners();
 	}
-
+	
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		int percentage = viewModel.getPrefUtil().getProfileCompletionPercent();
+		headerBinding.tvProfileUsername.setText(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, "PS User"));
+		headerBinding.progressMenuProfileCompletion.setProgress(percentage);
+		headerBinding.eighty.setText(percentage + "% Profile Completed");
+		binding.navigationId.getHeaderView(0).refreshDrawableState();
+	}
+	
+	@SuppressLint("SetTextI18n")
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -118,13 +129,6 @@ public class MainApp extends AppCompatActivity {
 	}
 	
 	private void setDrawerClickListeners(){
-		ExecutorProvider.getExecutorService().submit(() -> {
-			int percentage = viewModel.getPrefUtil().getProfileCompletionPercent();
-			headerBinding.tvProfileUsername.setText(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, "PS User"));
-			headerBinding.progressMenuProfileCompletion.setProgress(percentage);
-			headerBinding.eighty.setText(percentage + "% Profile Completed");
-			headerBinding.notify();
-		});
 		headerBinding.ivProfilePic.setOnClickListener(v->{
 			Intent intent = new Intent(MainApp.this, EditProfile.class);
 			startActivity(intent);
@@ -136,7 +140,7 @@ public class MainApp extends AppCompatActivity {
 							FirebaseAuth.getInstance().signOut();
 							SharedPrefUtil prefUtil = new SharedPrefUtil(this);
 							prefUtil.getPreferences().edit().clear().apply();
-							finish();
+							finishAffinity();
 						}
 					}).setNegativeButton("No", null).show();
 		});
@@ -185,11 +189,6 @@ public class MainApp extends AppCompatActivity {
 	}
 	
 	@Override
-	public void onBackPressed() {
-		moveTaskToBack(true);
-	}
-	
-	@Override
 	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == BECOME_MEMBER_REQ_CODE && resultCode == BecomeAMember.IS_A_MEMBER_RESULT_CODE) {
@@ -224,5 +223,11 @@ public class MainApp extends AppCompatActivity {
 				}
 			});
 		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+		finishAffinity();
+		super.onBackPressed();
 	}
 }
