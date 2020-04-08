@@ -127,8 +127,8 @@ public class QRScanner extends AppCompatActivity {
             if (data.has("offer")) {
                 binding.qrView.setStatusText("Found an offer!");
             }
-            String vendorData = data.get("vendor") + "\n" + data.get("offer");
-            return vendorData;
+            //TODO : Verify with the vendor ID and offer ID to confirm offer
+            return data.get("vendor") + "\n" + data.get("offer");
         } catch (Exception e) {
             Log.d(TAG, "getQRData: JSON parse error");
         }

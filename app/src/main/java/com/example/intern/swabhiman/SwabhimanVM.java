@@ -6,6 +6,7 @@ import androidx.navigation.NavController;
 public class SwabhimanVM extends ViewModel {
 	private NavController navController;
 	private boolean hasAcceptedTnC;
+	private String userMail;
 	
 	public NavController getNavController() {
 		return navController;
@@ -21,5 +22,13 @@ public class SwabhimanVM extends ViewModel {
 	
 	public void setHasAcceptedTnC(boolean hasAcceptedTnC) {
 		this.hasAcceptedTnC = hasAcceptedTnC;
+	}
+	
+	public String getUserMail() {
+		return userMail;
+	}
+	
+	public void setUserMail(String userMail) {
+		this.userMail = userMail;
 	}
 }

@@ -41,11 +41,12 @@
 		<service
 			android:name=".auth.AuthVerifyService"
 			android:exported="false" />
-		<activity android:name=".swabhiman.SwabhimanActivity"/>
-		<activity android:name=".ActivityShopping"/>
+		<activity android:name=".swabhiman.SwabhimanActivity"
+			android:theme="@style/MaterialAppTheme"/>
+		<activity android:name=".shopping.ActivityShopping"/>
 		<activity android:name=".BPCL_Fuel_QR_ScannerActivity"/>
 		<activity android:name=".MedicalRecords.MedicalRecord"/>
-		<activity android:name=".TermsAndConditions"/>
+		<activity android:name=".tnc.TermsAndConditions"/>
 		<activity android:name=".ReduceExpenses.ReduceExpenses"/>
 		<activity android:name=".TotalDiscountReceived.TotalDiscountReceived"/>
 		<activity android:name=".NewsAndUpdatesACT"/>
@@ -55,11 +56,13 @@
 			android:name=".auth.AuthActivity"
 			android:launchMode="singleTop" />
 		<activity android:name=".socialnetwork.SocialActivity" />
+		<activity android:name=".MedicalRecords.Vitals"/>
 		<activity android:name=".holiday_list" />
 		<activity android:name=".lifestyle_list" />
 		<activity android:name=".food_list" />
 		<activity android:name=".qr.QRScanner" />
-		<activity android:name=".EditProfile.EditProfile"/>
+		<activity android:name=".EditProfile.EditProfile"
+			android:theme="@style/MaterialAppTheme"/>
 		<activity
 			android:name="save_money.Health"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

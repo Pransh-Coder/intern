@@ -1,6 +1,4 @@
-package com.example.intern;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.intern.fuel;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,7 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class fuel_with_us extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.intern.R;
+
+public class FuelBPCLACT extends AppCompatActivity {
     EditText amount;
     TextView tv_qty;
     Button submit;

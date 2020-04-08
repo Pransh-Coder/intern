@@ -1,5 +1,6 @@
 package com.example.intern.payment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -55,6 +56,7 @@ public class BecomeAMember extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == BECOME_MEMBER_REQUEST_CODE){
+			assert data != null;
 			isMember = data.getBooleanExtra(MEMBER_STATUS , false);
 			 payID = data.getStringExtra(PAY_ID_TAG);
 			if(payID != null){
@@ -63,6 +65,32 @@ public class BecomeAMember extends AppCompatActivity {
 				Log.d(TAG, "onActivityResult: something went wrong");
 			}
 		}
+	}
+	
+	private void startWebAuth(String paymentID){
+		ProgressDialog dialog = new ProgressDialog(this);
+		dialog.setTitle("Verifying");
+		dialog.setCancelable(false);
+		RazorPayAPI razorPayAPI = RazorPayAuthAPI.getRetrofit().create(RazorPayAPI.class);
+		Call<PaymentEntity> call = razorPayAPI.paymentInfo(paymentID);
+		Log.d(TAG, "startWebAuth: URL called" + call.request().url());
+		Callback<PaymentEntity> callback = new Callback<PaymentEntity>() {
+			@Override
+			public void onResponse(Call<PaymentEntity> call, Response<PaymentEntity> response) {
+				if(response.body().getStatus().equals("authorized")){
+					Log.d(TAG, "onResponse: Payment authorized");
+					isMember = true;
+					dialog.hide();
+					updateUI();
+				}
+			}
+			@Override
+			public void onFailure(Call<PaymentEntity> call, Throwable t) {
+				dialog.hide();
+				Log.d(TAG, "onFailure: call failure");
+			}
+		};
+		call.enqueue(callback);
 	}
 	
 	private void updateUI(){
@@ -79,47 +107,26 @@ public class BecomeAMember extends AppCompatActivity {
 	
 	private void finishPaymentProcess(){
 		FireStoreUtil.uploadPayID(this, payID);
-		if(payID != null){
-			SharedPrefUtil prefUtil = new SharedPrefUtil(this);
-			prefUtil.setUserPayID(payID);
+		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
+		prefUtil.setUserPayID(payID);
+		if(isMember){
 			SharedPreferences.Editor editor = prefUtil.getPreferences().edit();
 			editor.putBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, true); editor.apply();
-			Intent intent = new Intent();
-			intent.putExtra(PAY_ID_TAG, payID);
-			setResult(IS_A_MEMBER_RESULT_CODE, intent);
-			finish();
-		}else{
-			Toast.makeText(this, "Something went wrong!", Toast.LENGTH_LONG).show();
-			finish();
 		}
-	}
-	
-	private void startWebAuth(String paymentID){
-		RazorPayAPI razorPayAPI = RazorPayAuthAPI.getRetrofit().create(RazorPayAPI.class);
-		Call<PaymentEntity> call = razorPayAPI.paymentInfo(paymentID);
-		Log.d(TAG, "startWebAuth: URL called" + call.request().url());
-		Callback<PaymentEntity> callback = new Callback<PaymentEntity>() {
-			@Override
-			public void onResponse(Call<PaymentEntity> call, Response<PaymentEntity> response) {
-				if(response.body().getStatus().equals("authorized")){
-					Log.d(TAG, "onResponse: Payment authorized");
-					Intent intent = new Intent();
-					intent.putExtra(MEMBER_STATUS, true);
-					setResult(BecomeAMember.PAYMENT_ACTIVITY_RESULT_CODE, intent);
-					updateUI();
-				}
-			}
-			@Override
-			public void onFailure(Call<PaymentEntity> call, Throwable t) {
-				Log.d(TAG, "onFailure: call failure");
-			}
-		};
-		call.enqueue(callback);
+		Intent intent = new Intent();
+		intent.putExtra(PAY_ID_TAG, payID);
+		setResult(IS_A_MEMBER_RESULT_CODE, intent);
+		finish();
 	}
 	
 	@Override
 	public void onBackPressed() {
-		finishPaymentProcess();
+		if(payID != null){
+			finishPaymentProcess();
+		}else{
+			Toast.makeText(this, "Payment not complete", Toast.LENGTH_LONG).show();
+			finishAndRemoveTask();
+		}
 	}
 }
 

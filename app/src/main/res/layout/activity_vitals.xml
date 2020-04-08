@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/ps"
     android:padding="10dp"
-    tools:context=".Vitals.Vitals">
+    tools:context=".MedicalRecords.Vitals">
 
     <ImageView
         android:id="@+id/back"

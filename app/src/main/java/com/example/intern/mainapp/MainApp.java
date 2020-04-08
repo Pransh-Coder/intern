@@ -1,5 +1,6 @@
 package com.example.intern.mainapp;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,25 +13,28 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.intern.ActivityShopping;
-import com.example.intern.BPCL_Fuel_QR_ScannerActivity;
 import com.example.intern.EditProfile.EditProfile;
+import com.example.intern.ExecutorProvider;
 import com.example.intern.FeedBackOrComplaintACT;
 import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.ReduceExpenses.ReduceExpenses;
-import com.example.intern.TermsAndConditions;
 import com.example.intern.TotalDiscountReceived.TotalDiscountReceived;
 import com.example.intern.auth.AuthVerifyService;
+import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityHomeBinding;
 import com.example.intern.databinding.HomeMenuHeaderBinding;
+import com.example.intern.fuel.FuelBPCLACT;
 import com.example.intern.payment.BecomeAMember;
 import com.example.intern.payment.auth.RazorPayAuthAPI;
+import com.example.intern.shopping.ActivityShopping;
 import com.example.intern.swabhiman.SwabhimanActivity;
+import com.example.intern.tnc.TermsAndConditions;
 import com.google.firebase.auth.FirebaseAuth;
 
 import save_money.SaveMoney;
@@ -38,27 +42,26 @@ import save_money.SaveMoney;
 public class MainApp extends AppCompatActivity {
 	private BroadcastReceiver broadcastReceiver;
 	public static int BECOME_MEMBER_REQ_CODE = 20;
-	private MainAppViewModel viewModel;
 	private ActivityHomeBinding binding;
 	private HomeMenuHeaderBinding headerBinding;
+	private MainAppViewModel viewModel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		viewModel = new ViewModelProvider(this).get(MainAppViewModel.class);
+		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
+		viewModel.setPrefUtil(prefUtil);
 		binding = ActivityHomeBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
-//		Toolbar toolbar = findViewById(R.id.toolbar);
-//		setSupportActionBar(toolbar);
 		getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.home_activity_background));
-//		NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_main_app);
-//		viewModel.setNavController(navController);
 		View headerView = binding.navigationId.getHeaderView(0);
 		headerBinding =  HomeMenuHeaderBinding.bind(headerView);
+		viewModel.getPrefUtil().updateWithCloud(FireStoreUtil.getFirebaseUser(this).getUid());
 		setClickListeners();
 		setDrawerClickListeners();
 	}
-	
+
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -71,22 +74,26 @@ public class MainApp extends AppCompatActivity {
 		};
 		IntentFilter filter = new IntentFilter();
 		registerReceiver(broadcastReceiver, filter);
-		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
-		int percentage = prefUtil.getProfileCompletionPercent();
-		headerBinding.tvProfileUsername.setText(prefUtil.getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, "PS User"));
-		headerBinding.progressMenuProfileCompletion.setProgress(percentage);
-		headerBinding.eighty.setText(percentage + "% Profile Completed");
 	}
 	
 	private void setClickListeners(){
+		binding.drawerPinHome.setOnClickListener(v->{
+			binding.drawer.openDrawer(GravityCompat.START);
+		});
 		binding.SaveMoneyLinear.setOnClickListener(v->{
-			SharedPrefUtil prefUtil = new SharedPrefUtil(this);
-			String userPayID = prefUtil.getUserPayId();
+			String userPayID = viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_PAY_ID, null);
 			if(userPayID != null){
 				razorPayVerification(userPayID);
-			}else {
-				Intent intent = new Intent(MainApp.this, BecomeAMember.class);
-				startActivityForResult(intent, BECOME_MEMBER_REQ_CODE);
+			}else{
+				FireStoreUtil.getUserDocumentReference(this, FireStoreUtil.getFirebaseUser(this).getUid()).addSnapshotListener((snapshot, e) -> {
+					String payID = snapshot.getString(FireStoreUtil.USER_PAY_ID);
+					if(payID != null){
+						razorPayVerification(payID);
+					}else{
+						Intent intent = new Intent(MainApp.this, BecomeAMember.class);
+						startActivityForResult(intent, BECOME_MEMBER_REQ_CODE);
+					}
+				});
 			}
 		});
 		//TODO : Setting click listeners for others
@@ -99,7 +106,7 @@ public class MainApp extends AppCompatActivity {
 			startActivity(intent);
 		});
 		binding.bpclfuel.setOnClickListener(v->{
-			Intent intent = new Intent(this, BPCL_Fuel_QR_ScannerActivity.class);
+			Intent intent = new Intent(this, FuelBPCLACT.class);
 			startActivity(intent);
 		});
 		binding.requestService.setOnClickListener(v->{
@@ -111,15 +118,27 @@ public class MainApp extends AppCompatActivity {
 	}
 	
 	private void setDrawerClickListeners(){
+		ExecutorProvider.getExecutorService().submit(() -> {
+			int percentage = viewModel.getPrefUtil().getProfileCompletionPercent();
+			headerBinding.tvProfileUsername.setText(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, "PS User"));
+			headerBinding.progressMenuProfileCompletion.setProgress(percentage);
+			headerBinding.eighty.setText(percentage + "% Profile Completed");
+			headerBinding.notify();
+		});
 		headerBinding.ivProfilePic.setOnClickListener(v->{
 			Intent intent = new Intent(MainApp.this, EditProfile.class);
 			startActivity(intent);
 		});
 		headerBinding.ivLogOut.setOnClickListener(v->{
-			FirebaseAuth.getInstance().signOut();
-			//TODO : Purge the shared Prefs
-			SharedPrefUtil prefUtil = new SharedPrefUtil(this);
-			prefUtil.getPreferences().edit().clear().apply();
+			new AlertDialog.Builder(this).setTitle("Log Out ?")
+					.setPositiveButton("Yes", (button, which)->{
+						if(which == AlertDialog.BUTTON_POSITIVE){
+							FirebaseAuth.getInstance().signOut();
+							SharedPrefUtil prefUtil = new SharedPrefUtil(this);
+							prefUtil.getPreferences().edit().clear().apply();
+							finish();
+						}
+					}).setNegativeButton("No", null).show();
 		});
 		binding.navigationId.setNavigationItemSelectedListener(item -> {
 			Intent intent = null;
@@ -174,10 +193,8 @@ public class MainApp extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == BECOME_MEMBER_REQ_CODE && resultCode == BecomeAMember.IS_A_MEMBER_RESULT_CODE) {
-			if(data!= null){
-				String payID = data.getStringExtra(BecomeAMember.PAY_ID_TAG);
-				razorPayVerification(payID);
-			}
+			Intent intent = new Intent(MainApp.this, SaveMoney.class);
+			startActivity(intent);
 		}else{
 			Toast.makeText(this,"Payment Not Complete!", Toast.LENGTH_LONG).show();
 		}
@@ -186,8 +203,7 @@ public class MainApp extends AppCompatActivity {
 	private void razorPayVerification(String payID){
 		ProgressDialog dialog = new ProgressDialog(this);
 		dialog.setTitle("Verifying Payment");dialog.show();
-		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
-		boolean verified = prefUtil.getPreferences().getBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, false);
+		boolean verified = viewModel.getPrefUtil().getPreferences().getBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, false);
 		if(verified){
 			Intent intent = new Intent(MainApp.this, SaveMoney.class);
 			dialog.hide();
@@ -195,13 +211,16 @@ public class MainApp extends AppCompatActivity {
 		}else {
 			RazorPayAuthAPI.isPaymentVerified(payID, verificationStatus -> {
 				if (verificationStatus) {
-					SharedPreferences.Editor editor = prefUtil.getPreferences().edit();
+					SharedPreferences.Editor editor = viewModel.getPrefUtil().getPreferences().edit();
 					editor.putBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, true); editor.apply();
 					Intent intent = new Intent(MainApp.this, SaveMoney.class);
 					dialog.hide();
 					startActivity(intent);
 				} else {
+					dialog.hide();
 					Toast.makeText(this, "Payment Cannot Be Confirmed", Toast.LENGTH_LONG).show();
+					Intent intent = new Intent(MainApp.this, BecomeAMember.class);
+					startActivityForResult(intent, BECOME_MEMBER_REQ_CODE);
 				}
 			});
 		}

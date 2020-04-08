@@ -15,6 +15,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -40,14 +41,17 @@ public abstract class FireStoreUtil {
 	private static String USER_IMAGE_STORAGE_NAME = "imgs";
 	
 	//Field Names used
-	private static String USER_NAME = "un";
-	private static String USER_EMAIL = "em";
-	private static String USER_NICK_NAME = "nn";
-	private static String USER_PS_NICK_NAME = "psnn";
-	private static String USER_PHONE_NUMBER = "pn";
-	private static String USER_DOB = "dob";
-	private static String USER_PIN_CODE = "pc";
-	private static String USER_PAY_ID = "pay";
+	public static String USER_NAME = "un";
+	public static String USER_EMAIL = "em";
+	public static String USER_NICK_NAME = "nn";
+	public static String USER_PS_NICK_NAME = "psnn";
+	public static String USER_PHONE_NUMBER = "pn";
+	public static String USER_DOB = "dob";
+	public static String USER_PIN_CODE = "pc";
+	public static String USER_PAY_ID = "pay";
+	public static String USER_PASS = "pass";
+	public static String USER_OCCUPATION = "occ";
+	public static String USER_ADDRESS = "add";
 	
 	//References needs to be synchronised
 	private static volatile FirebaseApp firebaseApp;
@@ -200,6 +204,15 @@ public abstract class FireStoreUtil {
 		Map<String, Object> updata = new HashMap<>();
 		updata.put(USER_PAY_ID, payID);
 		return getUserDocumentReference(context, getFirebaseUser(context).getUid()).update(updata);
+	}
+	
+	public static Task<Void> uploadMeta(Context context, String name, String email, String occupation, String address){
+		Map<String, Object> metadata = new HashMap<>();
+		metadata.put(USER_NAME, name);
+		metadata.put(USER_EMAIL, email);
+		metadata.put(USER_OCCUPATION, occupation);
+		metadata.put(USER_ADDRESS, address);
+		return getUserDocumentReference(context, getFirebaseUser(context).getUid()).set(metadata, SetOptions.merge());
 	}
 	
 	
