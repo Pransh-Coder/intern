@@ -1,13 +1,19 @@
 package com.example.intern.vendortest;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.intern.R;
 import com.example.intern.databinding.VendotDashboardBinding;
+import com.razorpay.Checkout;
+
+import org.json.JSONObject;
 
 public class VendorMain extends AppCompatActivity {
 	RecyclerView mTransRecycler;
@@ -19,6 +25,7 @@ public class VendorMain extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		binding = VendotDashboardBinding.inflate(getLayoutInflater());
 		setContentView(R.layout.login_ui);
+		doPayment();
 //		getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.home_activity_background));
 /*		mTransRecycler = findViewById(R.id.vendor_trans_recycler);
 		mMonthly = findViewById(R.id.btn_vendor_trans_month);
@@ -78,4 +85,32 @@ public class VendorMain extends AppCompatActivity {
 			binding.vendorDashChart.notifyDataSetChanged();
 		}
 	}*/
+	
+	private void doPayment(){
+		final Activity activity = this;
+		final Checkout checkout = new Checkout();
+		checkout.setImage(R.drawable.pslogotrimmed);
+		try{
+			JSONObject options = new JSONObject();
+			options.put("name", "Prarambh PVT LTD");
+			options.put("description" ,"PS Membership Fee");
+			options.put("currency" , "INR");
+			options.put("amount" , "51000");
+			//TODO:Fetch user data from database
+			JSONObject prefill = new JSONObject();
+			prefill.put("email" , "usermail@gmail.com");
+			prefill.put("contact" , "9999999999");
+			//Theme options
+			JSONObject theme = new JSONObject();
+			theme.put("color" , "#FFEB00");
+			
+			options.put("prefill" , prefill);
+			options.put("theme", theme);
+			
+			checkout.open(activity, options);
+		}catch (Exception e){
+			Log.d("Vendor TEst", "doPayment: unexpected error");
+			Toast.makeText(this, "Something Went Wrong\nPlease Try Again", Toast.LENGTH_LONG).show();
+		}
+	}
 }

@@ -1,6 +1,7 @@
 package com.example.intern.payment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.database.FireStoreUtil;
+import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityBecomeMemberBinding;
 import com.example.intern.payment.auth.PaymentEntity;
 import com.example.intern.payment.auth.RazorPayAPI;
@@ -26,6 +29,8 @@ public class BecomeAMember extends AppCompatActivity {
 	public static int PAYMENT_ACTIVITY_RESULT_CODE = 2;
 	ActivityBecomeMemberBinding binding;
 	private int BECOME_MEMBER_REQUEST_CODE = 1;
+	public static int IS_A_MEMBER_RESULT_CODE = 11;
+	private static String payID;
 	private boolean isMember = false;
 
 	@Override
@@ -50,9 +55,8 @@ public class BecomeAMember extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == BECOME_MEMBER_REQUEST_CODE){
-			//TODO:Check whether user is still a member or not
 			isMember = data.getBooleanExtra(MEMBER_STATUS , false);
-			String payID = data.getStringExtra(PAY_ID_TAG);
+			 payID = data.getStringExtra(PAY_ID_TAG);
 			if(payID != null){
 				startWebAuth(payID);
 			}else {
@@ -66,11 +70,27 @@ public class BecomeAMember extends AppCompatActivity {
 			binding.frameNotAMember.setVisibility(View.GONE);
 			binding.frameMember.setVisibility(View.VISIBLE);
 			binding.btnGreat.setOnClickListener( v -> {
-				//TODO:Send back with member privileges
-				finish();
+				finishPaymentProcess();
 			});
 		}else{
 			Toast.makeText(this, "Please complete Payment" , Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	private void finishPaymentProcess(){
+		FireStoreUtil.uploadPayID(this, payID);
+		if(payID != null){
+			SharedPrefUtil prefUtil = new SharedPrefUtil(this);
+			prefUtil.setUserPayID(payID);
+			SharedPreferences.Editor editor = prefUtil.getPreferences().edit();
+			editor.putBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, true); editor.apply();
+			Intent intent = new Intent();
+			intent.putExtra(PAY_ID_TAG, payID);
+			setResult(IS_A_MEMBER_RESULT_CODE, intent);
+			finish();
+		}else{
+			Toast.makeText(this, "Something went wrong!", Toast.LENGTH_LONG).show();
+			finish();
 		}
 	}
 	
@@ -96,6 +116,12 @@ public class BecomeAMember extends AppCompatActivity {
 		};
 		call.enqueue(callback);
 	}
+	
+	@Override
+	public void onBackPressed() {
+		finishPaymentProcess();
+	}
 }
+
 
 

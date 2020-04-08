@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.intern.R;
+import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityPaymentConfirmationBinding;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentData;
@@ -53,6 +54,8 @@ public class StandardPaymentActivity extends Activity implements PaymentResultWi
 	private void doPayment(){
 		final Activity activity = this;
 		final Checkout checkout = new Checkout();
+		//TODO: Set key ID for razor pay
+		checkout.setKeyID("rzp_test_9SFxBSOfMFPxyk");
 		checkout.setImage(R.drawable.pslogotrimmed);
 		try{
 			JSONObject options = new JSONObject();
@@ -60,10 +63,12 @@ public class StandardPaymentActivity extends Activity implements PaymentResultWi
 			options.put("description" ,"PS Membership Fee");
 			options.put("currency" , "INR");
 			options.put("amount" , "51000");
-			//TODO:Fetch user data from database
+			SharedPrefUtil prefUtil = new SharedPrefUtil(this);
+			String email = prefUtil.getPreferences().getString(SharedPrefUtil.USER_EMAIL_KEY,null);
+			String contact = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null);
 			JSONObject prefill = new JSONObject();
-			prefill.put("email" , "usermail@gmail.com");
-			prefill.put("contact" , "9999999999");
+			prefill.put("email" ,email);
+			prefill.put("contact" , contact);
 			//Theme options
 			JSONObject theme = new JSONObject();
 			theme.put("color" , "#FFEB00");
@@ -86,7 +91,7 @@ public class StandardPaymentActivity extends Activity implements PaymentResultWi
 			String payment_id = paymentData.getPaymentId();
 			String order_id = paymentData.getOrderId();
 			String signature = paymentData.getSignature();
-			String data = payment_id + "|" + order_id;
+			String data = order_id + "|" + payment_id ;
 			String generatedSignature = SignatureVerifier.calculateRFC2104HMAC(data, SignatureVerifier.key_secret);
 			if(generatedSignature.equals(signature)){
 				Toast.makeText(this, "Payment Successful" , Toast.LENGTH_SHORT).show();
