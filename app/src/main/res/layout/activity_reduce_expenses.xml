@@ -105,12 +105,13 @@
                     android:textColor="@color/cardview_dark_background"
                     android:text="Medicine" />
 
-                <TextView
+                <EditText
                     android:id="@+id/data3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="10dp"
+                    android:background="@null"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp"
                     android:text="Rs." />
@@ -136,11 +137,12 @@
                     android:text="Grocery" />
 
 
-                <TextView
+                <EditText
                     android:id="@+id/data6"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@null"
                     android:padding="10dp"
                     android:textSize="12dp"
                     android:text="Rs." />
@@ -167,11 +169,12 @@
                     android:textColor="@color/cardview_dark_background"
                     android:text="Travelling" />
 
-                <TextView
+                <EditText
                     android:id="@+id/data9"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@null"
                     android:padding="10dp"
                     android:textSize="12dp"
                     android:text="Rs." />
@@ -200,11 +203,12 @@
                     android:text="Entertainment" />
 
 
-                <TextView
+                <EditText
                     android:id="@+id/data12"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@null"
                     android:padding="10dp"
                     android:textSize="12dp"
                     android:text="Rs." />
@@ -230,11 +234,12 @@
                     android:text="Food" />
 
 
-                <TextView
+                <EditText
                     android:id="@+id/data15"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@null"
                     android:padding="10dp"
                     android:textSize="12dp"
                     android:text="Rs." />
@@ -263,11 +268,12 @@
                     android:text="Lifestyle" />
 
 
-                <TextView
+                <EditText
                     android:id="@+id/data18"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@null"
                     android:padding="10dp"
                     android:textSize="12dp"
                     android:text="Rs." />
@@ -294,11 +300,12 @@
                     android:text="Health Insurance" />
 
 
-                <TextView
+                <EditText
                     android:id="@+id/data20"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@null"
                     android:padding="10dp"
                     android:textSize="12dp"
                     android:text="Rs." />
@@ -327,11 +334,12 @@
                     android:text="Your Utility Bills" />
 
 
-                <TextView
+                <EditText
                     android:id="@+id/data23"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@null"
                     android:padding="10dp"
                     android:textSize="12dp"
                     android:text="Rs." />
@@ -360,11 +368,12 @@
                     android:text="Others" />
 
 
-                <TextView
+                <EditText
                     android:id="@+id/data26"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@null"
                     android:padding="10dp"
                     android:textSize="12dp"
                     android:text="Rs." />

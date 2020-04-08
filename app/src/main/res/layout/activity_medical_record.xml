@@ -97,9 +97,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/century_gothic"
             android:textColor="@color/black"
-            android:text="vCura Enable senior citizens for better care coordination, compilance and tracking
-by helping them all their Medical Records for self and family at one central secure location.
-                            (Developing your health journey)"
+            android:text="vCura Enable senior citizens for better care coordination, compilance and tracking by helping them all their Medical Records for self and family at one central secure location.(Developing your health journey)"
             app:layout_constraintTop_toBottomOf="@+id/mainHeading"/>
 
         <TextView
@@ -120,8 +118,7 @@ by helping them all their Medical Records for self and family at one central sec
             android:id="@+id/thrPara"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="B.Reminder Services for Vaccinations and
-                            Medicines"
+            android:text="B.Reminder Services for Vaccinations and Medicines"
             android:textStyle="bold"
             android:padding="10dp"
             android:fontFamily="@font/century_gothic"
@@ -135,8 +132,7 @@ by helping them all their Medical Records for self and family at one central sec
         android:id="@+id/forPara"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="C.Ease of access sharing with Physician and
-                            analysis"
+        android:text="C.Ease of access sharing with Physician and analysis"
         android:textStyle="bold"
         android:padding="10dp"
         android:fontFamily="@font/century_gothic"
