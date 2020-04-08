@@ -38,5 +38,9 @@ public class LoginRegisterFR extends Fragment {
 		binding.registrationButton.setOnClickListener(v->{
 			Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_registrationChoiceFR);
 		});
+		binding.loginButton.setOnClickListener(v -> {
+			Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_registrationChoiceFR);
+				}
+				);
 	}
 }

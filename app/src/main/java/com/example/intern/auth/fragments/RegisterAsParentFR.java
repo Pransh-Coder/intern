@@ -73,48 +73,6 @@ public class RegisterAsParentFR extends Fragment {
         setClickListeners();
     }
     private void setTextWatchers(){
-        binding.etPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(s != null && s.length() >= 8){
-                    password = s.toString();
-                }else{
-                    binding.etPassword.setError("Password must be 8 characters");
-                }
-            }
-        });
-        binding.etConfirmPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(s != null && s.length() >= 8){
-                    if(s.toString().equals(password)){
-                        return;
-                    }else{
-                        binding.etConfirmPassword.setError("Passwords do not match");
-                    }
-                }
-            }
-        });
         binding.etPinCode.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

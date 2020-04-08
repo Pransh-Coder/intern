@@ -151,7 +151,7 @@
 		android:background="@android:color/black"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
+		app:layout_constraintTop_toBottomOf="@+id/btnRegisterasParent_SignIn" />
 	<Button
 		android:id="@+id/btnRegisterasParent_SignIn"
 		android:layout_width="0dp"
