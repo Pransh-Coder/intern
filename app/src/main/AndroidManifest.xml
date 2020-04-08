@@ -23,9 +23,29 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
+		<meta-data android:name="com.facebook.sdk.ApplicationId"
+			android:value="@string/facebook_app_id"/>
+
+		<activity android:name="com.facebook.FacebookActivity"
+			android:configChanges=
+				"keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+			android:label="@string/app_name" />
+		<activity
+			android:name="com.facebook.CustomTabActivity"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="@string/fb_login_protocol_scheme" />
+			</intent-filter>
+		</activity>
+
 		<activity android:name=".vendortest.VendorMain"
 			android:theme="@style/AppTheme.NoActionBar"
-			android:windowSoftInputMode="stateHidden">
+			android:windowSoftInputMode="stateHidden"
+			>
+			
 		</activity>
 		<activity android:name=".Splash">
 			<intent-filter>
@@ -36,20 +56,12 @@
 		</activity>
 		<activity
 			android:name=".mainapp.MainApp"
+			android:label="@string/title_activity_main_app"
 			android:theme="@style/AppTheme.NoActionBar" />
 		
 		<service
 			android:name=".auth.AuthVerifyService"
 			android:exported="false" />
-		<activity android:name=".swabhiman.SwabhimanActivity"/>
-		<activity android:name=".ActivityShopping"/>
-		<activity android:name=".BPCL_Fuel_QR_ScannerActivity"/>
-		<activity android:name=".MedicalRecords.MedicalRecord"/>
-		<activity android:name=".TermsAndConditions"/>
-		<activity android:name=".ReduceExpenses.ReduceExpenses"/>
-		<activity android:name=".TotalDiscountReceived.TotalDiscountReceived"/>
-		<activity android:name=".NewsAndUpdatesACT"/>
-		<activity android:name=".FeedBackOrComplaintACT"/>
 		
 		<activity
 			android:name=".auth.AuthActivity"
@@ -59,7 +71,6 @@
 		<activity android:name=".lifestyle_list" />
 		<activity android:name=".food_list" />
 		<activity android:name=".qr.QRScanner" />
-		<activity android:name=".EditProfile.EditProfile"/>
 		<activity
 			android:name="save_money.Health"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -87,6 +98,7 @@
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		<activity android:name=".payment.BecomeAMember" />
 		<activity android:name=".Gifts" />
+
 	</application>
 
 </manifest>
