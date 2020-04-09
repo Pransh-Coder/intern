@@ -97,13 +97,13 @@
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/data3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@null"
                 android:padding="10dp"
-                android:text=""
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
@@ -128,13 +128,13 @@
                 android:textSize="14dp" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/data6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@null"
                 android:padding="10dp"
-                android:text=""
                 android:textSize="12dp" />
 
         </TableRow>
@@ -159,13 +159,13 @@
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/data9"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@null"
                 android:padding="10dp"
-                android:text=""
                 android:textSize="12dp" />
 
         </TableRow>
@@ -192,13 +192,13 @@
                 android:textSize="14dp" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/data12"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@null"
                 android:padding="10dp"
-                android:text=""
                 android:textSize="12dp" />
 
         </TableRow>
@@ -222,13 +222,13 @@
                 android:textSize="14dp" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/data15"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text=""
+                android:background="@null"
                 android:textSize="12dp" />
 
         </TableRow>
@@ -255,11 +255,12 @@
                 android:textSize="14dp" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/data18"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@null"
                 android:padding="10dp"
                 android:text=""
                 android:textSize="12dp" />
