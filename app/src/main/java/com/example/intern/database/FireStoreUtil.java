@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.ContactsContract;
 
 import com.google.android.gms.tasks.Task;
@@ -21,6 +22,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,8 +39,7 @@ public abstract class FireStoreUtil {
 	public static String USER_CLUSTER_COLLECTION_NAME = "uclust";
 	private static String USER_PHONE_LIST_COLLECTION_NAME = "uph";
 	public static String QUERY_COLLECTION_NAME = "queries";
-	//Storage path names used
-	private static String USER_IMAGE_STORAGE_NAME = "imgs";
+	public static String USER_RELATIVE_PHONE_NUMBER = "rph";
 	
 	//Field Names used
 	public static String USER_NAME = "un";
@@ -46,6 +47,8 @@ public abstract class FireStoreUtil {
 	public static String USER_NICK_NAME = "nn";
 	public static String USER_PS_NICK_NAME = "psnn";
 	public static String USER_PHONE_NUMBER = "pn";
+	//Storage path names used
+	private static String USER_PROFILE_IMAGE_FILE_NAME = "pp.jpg";
 	public static String USER_DOB = "dob";
 	public static String USER_PIN_CODE = "pc";
 	public static String USER_PAY_ID = "pay";
@@ -72,17 +75,20 @@ public abstract class FireStoreUtil {
 	}
 	
 	public static FirebaseUser getFirebaseUser(Context context){
-		getFirebaseApp(context);
-		return FirebaseAuth.getInstance().getCurrentUser();
+		if(firebaseUser == null){
+			synchronized (FireStoreUtil.class){
+				if(firebaseUser==null){
+					firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+				}
+			}
+		}
+		return firebaseUser;
 	}
 	
 	public static FirebaseFirestore getDbReference(Context context){
 		if(dbReference == null){
 			synchronized (FireStoreUtil.class){
 				if(dbReference == null){
-					if(firebaseApp == null){
-						getFirebaseApp(context);
-					}
 					dbReference = FirebaseFirestore.getInstance();
 				}
 			}
@@ -93,7 +99,9 @@ public abstract class FireStoreUtil {
 	private static FirebaseStorage getFirebaseStorage(Context context){
 		if(firebaseStorage == null){
 			synchronized (FireStoreUtil.class){
-				firebaseStorage = FirebaseStorage.getInstance(getFirebaseApp(context));
+				if(firebaseStorage==null){
+					firebaseStorage = FirebaseStorage.getInstance();
+				}
 			}
 		}
 		return firebaseStorage;
@@ -125,7 +133,7 @@ public abstract class FireStoreUtil {
 		if(userStorageReference == null){
 			synchronized (FireStoreUtil.class){
 				if(userStorageReference == null){
-					userStorageReference = getFirebaseStorage(context).getReference(UID).child(USER_IMAGE_STORAGE_NAME);
+					userStorageReference = getFirebaseStorage(context).getReference(UID);
 				}
 			}
 		}
@@ -144,8 +152,8 @@ public abstract class FireStoreUtil {
 	}
 	
 	//Methods to create new users or find existing ones
-	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String password){
-		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode, password);
+	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String password, String relative_number){
+		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode, password,relative_number);
 		return getUserDocumentReference(context, UID).set(user);
 	}
 	
@@ -166,7 +174,7 @@ public abstract class FireStoreUtil {
 	public static Task<Void> addToCluster(Context context, String pinCode, String UID){
 		Map<String, Boolean> data = new HashMap<>();
 		data.put(UID, Boolean.FALSE);
-		return getUserClusterReference(context, pinCode).set(data);
+		return getUserClusterReference(context, pinCode).set(data, SetOptions.merge());
 	}
 	
 	public static Task<DocumentReference> addToPhoneNumberList(Context context, String phoneNumber, String UID){
@@ -219,7 +227,7 @@ public abstract class FireStoreUtil {
 	public static UploadTask uploadImage(Context context, String UID, Bitmap bitmap){
 		StorageReference imagePathRef = getUserImageStorageReference(context, UID).child(Long.toString(System.currentTimeMillis()));
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
 		byte[] data = outputStream.toByteArray();
 		return imagePathRef.putBytes(data);
 	}
@@ -229,6 +237,23 @@ public abstract class FireStoreUtil {
 		return imagePathRef.putFile(uri);
 	}
 	
+	public static UploadTask uploadProfilePic(Context context, String UID, Bitmap bitmap){
+		StorageReference imagePathRef = getUserImageStorageReference(context, UID).child(USER_PROFILE_IMAGE_FILE_NAME);
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+		byte[] data = outputStream.toByteArray();
+		return imagePathRef.putBytes(data);
+	}
+	
+	public static File getProfilePicInLocal(Context context, String UID){
+		StorageReference ppRef = getUserImageStorageReference(context, UID).child(USER_PROFILE_IMAGE_FILE_NAME);
+		File rootPath = new File(Environment.getDataDirectory(), "profile_pic.jpg");
+		ppRef.getFile(rootPath).addOnSuccessListener(taskSnapshot -> {
+			SharedPrefUtil prefUtil = new SharedPrefUtil(context);
+			prefUtil.getPreferences().edit().putString(SharedPrefUtil.USER_PROFILE_PIC_PATH_KEY, rootPath.getAbsolutePath()).apply();
+		});
+		return rootPath;
+	}
 	
 	@IgnoreExtraProperties
 	public static class PSUser{
@@ -250,11 +275,13 @@ public abstract class FireStoreUtil {
 		public String pay;
 		//Password
 		public String pass;
+		//Relative Number
+		public String rph;
 		
 		public PSUser(){}
 		
 		public PSUser(String name, String email, String nickName, String psNickName,
-		              String phoneNumber, String DOB , String pinCode, String password){
+		              String phoneNumber, String DOB , String pinCode, String password, String relative_number){
 			this.un = name;
 			this.em = email;
 			this.nn = nickName;
@@ -263,6 +290,7 @@ public abstract class FireStoreUtil {
 			this.dob = DOB;
 			this.pc = pinCode;
 			this.pay = null;
+			this.rph = relative_number;
 			this.pass = password;
 		}
 	}

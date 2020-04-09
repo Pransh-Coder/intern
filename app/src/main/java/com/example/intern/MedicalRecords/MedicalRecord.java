@@ -3,6 +3,7 @@ package com.example.intern.MedicalRecords;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class MedicalRecord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMedicalRecordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        populateText();
         binding.agree.setOnClickListener(v->{
             SharedPrefUtil prefUtil = new SharedPrefUtil(this);
             String email = prefUtil.getPreferences().getString(SharedPrefUtil.USER_EMAIL_KEY, null);
@@ -41,5 +43,11 @@ public class MedicalRecord extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    
+    private void populateText(){
+        String source = "Create your health passport with " + "<b>vCura</b>" + " and have all your Medical Records at one place" +
+                ". We help elderly with -";
+        binding.fstPara.setText(Html.fromHtml(source));
     }
 }

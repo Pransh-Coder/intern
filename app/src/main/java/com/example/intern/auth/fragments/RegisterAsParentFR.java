@@ -24,8 +24,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.database.FireStoreUtil;
-import com.example.intern.database.SharedPrefUtil;
-import com.example.intern.databinding.FragmentRegisterAsChildFRBinding;
 import com.example.intern.databinding.FragmentRegisterAsParentFRBinding;
 import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -112,17 +110,15 @@ public class RegisterAsParentFR extends Fragment {
                 String parent_number =binding.etParentNumber.getText().toString();
                 String child_number =binding.etChildNumber.getText().toString();
                 FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode, password)
+                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode, password, child_number)
                         .addOnSuccessListener(success->{
                             FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
                             Log.d(TAG, "successfully made user");
-                            //TODO : Store user info in shared preferences
                             if(user.getPhoneNumber() != null){
                                 FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
                             }
-                            SharedPrefUtil prefUtil = new SharedPrefUtil(requireActivity());
-                            prefUtil.updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
-                                    DOB, pinCode, parent_number);
+                            viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
+                                    DOB, pinCode,parent_number,child_number);
                             Intent intent = new Intent(requireContext(), MainApp.class);
                             startActivity(intent);
                         });
@@ -131,7 +127,7 @@ public class RegisterAsParentFR extends Fragment {
             }
         });
     }
-    private String getPostalCodeFromGPS(){
+    private void getPostalCodeFromGPS(){
         locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
         locationProviderClient.getLastLocation().addOnSuccessListener(requireActivity(), location -> {
             Geocoder geocoder = new Geocoder(requireContext());
@@ -144,21 +140,19 @@ public class RegisterAsParentFR extends Fragment {
                 e.printStackTrace();
             }
         });
-        return pinCode;
     }
 
     private void getPostalCodeFromUser(){
         binding.etPinCode.setError("Provide location permissions or enter manually");
     }
 
-    private String requirePinCode(){
+    private void requirePinCode(){
         String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
         if(ContextCompat.checkSelfPermission(requireContext(), permission) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(requireActivity(), new String[] {permission}, LOCATION_REQUEST_CODE);
         }else{
-            return getPostalCodeFromGPS();
+            getPostalCodeFromGPS();
         }
-        return null;
     }
 
     @Override

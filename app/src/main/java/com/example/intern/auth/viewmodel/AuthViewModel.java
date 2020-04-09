@@ -3,6 +3,7 @@ package com.example.intern.auth.viewmodel;
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.NavController;
 
+import com.example.intern.database.SharedPrefUtil;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,6 +17,7 @@ public class AuthViewModel extends ViewModel {
 	private FirebaseUser firebaseUser;
 	private boolean regChoiceisParent;
 	private IsLoggedInListener loggedInListener;
+	private SharedPrefUtil prefUtil;
 	
 	public IsLoggedInListener getLoggedInListener() {
 		return loggedInListener;
@@ -23,6 +25,14 @@ public class AuthViewModel extends ViewModel {
 	
 	public void setLoggedInListener(IsLoggedInListener loggedInListener) {
 		this.loggedInListener = loggedInListener;
+	}
+	
+	public SharedPrefUtil getPrefUtil() {
+		return prefUtil;
+	}
+	
+	public void setPrefUtil(SharedPrefUtil prefUtil) {
+		this.prefUtil = prefUtil;
 	}
 	
 	public interface IsLoggedInListener{

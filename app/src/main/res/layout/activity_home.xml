@@ -82,10 +82,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/century_gothic_400"
-                            android:text="EXCLUSIVE SERVICES"
-                            android:textColor="@color/black" />
+                            android:text="@string/exclusive_services"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout

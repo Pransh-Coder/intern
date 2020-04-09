@@ -1,6 +1,5 @@
 package com.example.intern.auth.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -17,7 +15,6 @@ import androidx.navigation.Navigation;
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.database.FireStoreUtil;
-import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.LoginUiBinding;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -29,16 +26,11 @@ import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.Arrays;
 
@@ -125,18 +117,13 @@ public class RegistrationOptionsFR extends Fragment {
 	
 	private void firebaseAuthWithGoogle(GoogleSignInAccount account){
 		AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-		final Context context = requireContext();
 		viewModel.getFirebaseAuth().signInWithCredential(credential).addOnSuccessListener(authResult -> {
 			if(authResult.getUser() != null){
-				FireStoreUtil.getUserDocumentReference(requireContext(), authResult.getUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
-					@Override
-					public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
-						if(snapshot != null && snapshot.exists()){
-							//TODO : User Exists already, log in
-							SharedPrefUtil prefUtil = new SharedPrefUtil(context);
-							prefUtil.updateSharedPrefsPostLogin(snapshot);
-							viewModel.getLoggedInListener().isLoggedIn(true);
-						}
+				FireStoreUtil.getUserDocumentReference(requireContext(), authResult.getUser().getUid()).addSnapshotListener((snapshot, e) -> {
+					if(snapshot != null && snapshot.exists()){
+						//TODO : User Exists already, log in
+						viewModel.getPrefUtil().updateSharedPrefsPostLogin(snapshot);
+						viewModel.getLoggedInListener().isLoggedIn(true);
 					}
 				});
 				Log.d(TAG, "firebaseAuthWithGoogle: success");
@@ -156,21 +143,18 @@ public class RegistrationOptionsFR extends Fragment {
 
 		AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
 		mAuth.signInWithCredential(credential)
-				.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-					@Override
-					public void onComplete(@NonNull Task<AuthResult> task) {
-								if (task.isSuccessful()) {
-									viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
-									if (!viewModel.isRegChoiceisParent()) {
-										viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsChildFR);
-									} else {
-										viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsParentFR);
-									}
-
-									// ...
+				.addOnCompleteListener(task -> {
+							if (task.isSuccessful()) {
+								viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
+								if (!viewModel.isRegChoiceisParent()) {
+									viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsChildFR);
 								} else {
-									Log.d(TAG, "firebaseAuthWithFacebook: dismissed");
+									viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsParentFR);
 								}
+
+								// ...
+							} else {
+								Log.d(TAG, "firebaseAuthWithFacebook: dismissed");
 							}
 						});
 

@@ -3,10 +3,7 @@ package com.example.intern.mainapp;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -15,8 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.example.intern.EditProfile.EditProfile;
 import com.example.intern.FeedBackOrComplaintACT;
 import com.example.intern.MedicalRecords.MedicalRecord;
@@ -24,7 +21,6 @@ import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.ReduceExpenses.ReduceExpenses;
 import com.example.intern.TotalDiscountReceived.TotalDiscountReceived;
-import com.example.intern.auth.AuthVerifyService;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityHomeBinding;
@@ -37,67 +33,69 @@ import com.example.intern.swabhiman.SwabhimanActivity;
 import com.example.intern.tnc.TermsAndConditions;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.File;
+
 import save_money.SaveMoney;
 
 public class MainApp extends AppCompatActivity {
-	private BroadcastReceiver broadcastReceiver;
 	public static int BECOME_MEMBER_REQ_CODE = 20;
 	private ActivityHomeBinding binding;
 	private HomeMenuHeaderBinding headerBinding;
-	private MainAppViewModel viewModel;
+	private SharedPrefUtil prefUtil;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		viewModel = new ViewModelProvider(this).get(MainAppViewModel.class);
-		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
-		viewModel.setPrefUtil(prefUtil);
 		binding = ActivityHomeBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
+		prefUtil = new SharedPrefUtil(this);
 		getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.home_activity_background));
 		View headerView = binding.navigationId.getHeaderView(0);
 		headerBinding =  HomeMenuHeaderBinding.bind(headerView);
-		viewModel.getPrefUtil().updateWithCloud(FireStoreUtil.getFirebaseUser(this).getUid());
+	}
+	
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		populateDrawer();
 		setClickListeners();
 		setDrawerClickListeners();
 	}
 	
-	@Override
-	public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-		int percentage = viewModel.getPrefUtil().getProfileCompletionPercent();
-		headerBinding.tvProfileUsername.setText(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, "PS User"));
+	@SuppressLint("SetTextI18n")
+	private void populateDrawer(){
+		int percentage = prefUtil.getProfileCompletionPercent();
+		String ppFilePath = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PROFILE_PIC_PATH_KEY, null);
+		if (ppFilePath != null && !ppFilePath.isEmpty()) {
+			Glide.with(this).load(ppFilePath)
+					.fallback(R.drawable.edit_profile).into(headerBinding.ivProfilePic);
+		} else {
+			String UID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null);
+			if (UID != null && !UID.isEmpty()) {
+				File imageFile = FireStoreUtil.getProfilePicInLocal(this, UID);
+				Glide.with(this).load(imageFile)
+						.fallback(R.drawable.edit_profile).into(headerBinding.ivProfilePic);
+			}
+		}
+		headerBinding.tvProfileUsername.setText(prefUtil.getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, "PS User"));
 		headerBinding.progressMenuProfileCompletion.setProgress(percentage);
 		headerBinding.eighty.setText(percentage + "% Profile Completed");
 		binding.navigationId.getHeaderView(0).refreshDrawableState();
 	}
 	
-	@SuppressLint("SetTextI18n")
-	@Override
-	protected void onStart() {
-		super.onStart();
-		broadcastReceiver = new BroadcastReceiver() {
-			@Override
-			public void onReceive(Context context, Intent intent) {
-				boolean b = intent.getBooleanExtra(AuthVerifyService.KILL_APP_INTENT_KEY, false);
-				if(b)finish();
-			}
-		};
-		IntentFilter filter = new IntentFilter();
-		registerReceiver(broadcastReceiver, filter);
-	}
-	
 	private void setClickListeners(){
-		binding.drawerPinHome.setOnClickListener(v->{
-			binding.drawer.openDrawer(GravityCompat.START);
-		});
+		binding.drawerPinHome.setOnClickListener(v-> binding.drawer.openDrawer(GravityCompat.START));
 		binding.SaveMoneyLinear.setOnClickListener(v->{
-			String userPayID = viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_PAY_ID, null);
+			String userPayID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PAY_ID, null);
 			if(userPayID != null){
 				razorPayVerification(userPayID);
 			}else{
 				FireStoreUtil.getUserDocumentReference(this, FireStoreUtil.getFirebaseUser(this).getUid()).addSnapshotListener((snapshot, e) -> {
-					String payID = snapshot.getString(FireStoreUtil.USER_PAY_ID);
+					String payID = null;
+					if(snapshot!= null){
+						payID = snapshot.getString(FireStoreUtil.USER_PAY_ID);
+					}
 					if(payID != null){
 						razorPayVerification(payID);
 					}else{
@@ -133,17 +131,14 @@ public class MainApp extends AppCompatActivity {
 			Intent intent = new Intent(MainApp.this, EditProfile.class);
 			startActivity(intent);
 		});
-		headerBinding.ivLogOut.setOnClickListener(v->{
-			new AlertDialog.Builder(this).setTitle("Log Out ?")
-					.setPositiveButton("Yes", (button, which)->{
-						if(which == AlertDialog.BUTTON_POSITIVE){
-							FirebaseAuth.getInstance().signOut();
-							SharedPrefUtil prefUtil = new SharedPrefUtil(this);
-							prefUtil.getPreferences().edit().clear().apply();
-							finishAffinity();
-						}
-					}).setNegativeButton("No", null).show();
-		});
+		headerBinding.ivLogOut.setOnClickListener(v-> new AlertDialog.Builder(this).setTitle("Log Out ?")
+				.setPositiveButton("Yes", (button, which)->{
+					if(which == AlertDialog.BUTTON_POSITIVE){
+						FirebaseAuth.getInstance().signOut();
+						prefUtil.getPreferences().edit().clear().apply();
+						finishAffinity();
+					}
+				}).setNegativeButton("No", null).show());
 		binding.navigationId.setNavigationItemSelectedListener(item -> {
 			Intent intent = null;
 			switch (item.getItemId()){
@@ -183,12 +178,6 @@ public class MainApp extends AppCompatActivity {
 	}
 	
 	@Override
-	protected void onDestroy() {
-		unregisterReceiver(broadcastReceiver);
-		super.onDestroy();
-	}
-	
-	@Override
 	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == BECOME_MEMBER_REQ_CODE && resultCode == BecomeAMember.IS_A_MEMBER_RESULT_CODE) {
@@ -202,7 +191,7 @@ public class MainApp extends AppCompatActivity {
 	private void razorPayVerification(String payID){
 		ProgressDialog dialog = new ProgressDialog(this);
 		dialog.setTitle("Verifying Payment");dialog.show();
-		boolean verified = viewModel.getPrefUtil().getPreferences().getBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, false);
+		boolean verified = prefUtil.getPreferences().getBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, false);
 		if(verified){
 			Intent intent = new Intent(MainApp.this, SaveMoney.class);
 			dialog.hide();
@@ -210,7 +199,7 @@ public class MainApp extends AppCompatActivity {
 		}else {
 			RazorPayAuthAPI.isPaymentVerified(payID, verificationStatus -> {
 				if (verificationStatus) {
-					SharedPreferences.Editor editor = viewModel.getPrefUtil().getPreferences().edit();
+					SharedPreferences.Editor editor = prefUtil.getPreferences().edit();
 					editor.putBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, true); editor.apply();
 					Intent intent = new Intent(MainApp.this, SaveMoney.class);
 					dialog.hide();

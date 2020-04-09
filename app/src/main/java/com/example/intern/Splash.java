@@ -8,10 +8,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.auth.AuthActivity;
-import com.example.intern.auth.AuthVerifyService;
+import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.mainapp.MainApp;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Splash extends AppCompatActivity {
@@ -22,7 +21,7 @@ public class Splash extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
-		user = FirebaseAuth.getInstance().getCurrentUser();
+		user = FireStoreUtil.getFirebaseUser(this);
 	}
 	
 	@Override
@@ -47,10 +46,6 @@ public class Splash extends AppCompatActivity {
 		try {
 			Thread.sleep(500);
 			Toast.makeText(this, "Welcome back to PS", Toast.LENGTH_LONG).show();
-			String UID = user.getUid();
-			Intent intent = new Intent(this, AuthVerifyService.class);
-			intent.putExtra(AuthVerifyService.USER_UID_INTENT_KEY, UID);
-			this.startService(intent);
 			//TODO:Redirect to main app
 			Intent intent1 = new Intent(this, MainApp.class);
 			startActivity(intent1);

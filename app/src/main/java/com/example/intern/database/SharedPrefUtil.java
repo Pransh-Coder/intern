@@ -26,6 +26,7 @@ public class SharedPrefUtil {
 	public static String USER_OCCUPATION_KEY = "user_occ";
 	public static String USER_ADDRESS_KEY = "user_add";
 	public static String USER_PAY_VER_STATUS = "pay_verified";
+	public static String USER_PROFILE_PIC_PATH_KEY = "profile_pic_path";
 	private Context context;
 	private SharedPreferences preferences;
 	
@@ -35,15 +36,20 @@ public class SharedPrefUtil {
 	}
 	
 	public void updateSharedPreferencesPostRegister(String uid ,String name, String email, String nick_name, String ps_nick_name,
-	                                     String DOB, String pin_code, String relatives_number){
+	                                     String DOB, String pin_code, String phone_number, String relatives_number){
+		if(nick_name == null ||nick_name.isEmpty())nick_name = null;
+		if(phone_number == null ||phone_number.isEmpty())phone_number = null;
+		if(relatives_number == null ||relatives_number.isEmpty())relatives_number = null;
+		if(ps_nick_name == null ||ps_nick_name.isEmpty())ps_nick_name = null;
 		SharedPreferences.Editor editor = preferences.edit();
 		editor.putString(USER_UID_KEY, uid).putString(USER_NAME_KEY, name)
 				.putString(USER_EMAIL_KEY, email).putString(USER_NICK_NAME_KEY, nick_name)
 				.putString(USER_PS_NICK_NAME_KEY, ps_nick_name).putString(USER_PIN_CODE_KEY, pin_code)
 				.putString(USER_DOB_KEY, DOB).putString(USER_RELATIVE_PHONE_NUMBER_KEY, relatives_number)
 				.putBoolean(USER_LOGGED_IN_STATUS_KEY, true).putString(USER_PAY_ID, null)
-				.putString(USER_PHONE_NO, null).putBoolean(USER_PAY_VER_STATUS , false)
-				.putString(USER_OCCUPATION_KEY, null).putString(USER_ADDRESS_KEY, null);
+				.putString(USER_PHONE_NO, phone_number).putBoolean(USER_PAY_VER_STATUS , false)
+				.putString(USER_OCCUPATION_KEY, null).putString(USER_ADDRESS_KEY, null)
+				.putString(USER_PROFILE_PIC_PATH_KEY, null);
 		editor.apply();
 	}
 	
@@ -74,24 +80,8 @@ public class SharedPrefUtil {
 		editor.apply();
 	}
 	
-	public void storePayIdInSharedPrefs(String pay_id){
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putString(USER_PAY_ID, pay_id);
-		editor.apply();
-	}
-	
 	public boolean getLoginStatus(){
 		return preferences.getBoolean(USER_LOGGED_IN_STATUS_KEY, false);
-	}
-	
-	public void setLoginStatus(boolean b){
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putBoolean(USER_LOGGED_IN_STATUS_KEY, b);
-		editor.apply();
-	}
-	
-	public String getUserPayId(){
-		return preferences.getString(USER_PAY_ID, null);
 	}
 	
 	public void setUserPayID(String payID){
