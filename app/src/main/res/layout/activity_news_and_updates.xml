@@ -52,6 +52,7 @@
         android:gravity="center"
         android:text="News and Updates about senior citizens"
         android:textSize="15sp"
+        android:fontFamily="@font/roboto_regular"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
