@@ -1,4 +1,4 @@
-package save_money.Offers;
+/*package save_money.Offers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,3 +46,5 @@ public class PhysiotherapyOffers extends AppCompatActivity {
         }
     }
 }
+
+ */

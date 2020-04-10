@@ -45,13 +45,13 @@ public class SaveMoney extends AppCompatActivity {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);
 
-        health.setOnClickListener(new View.OnClickListener() {
+        /*health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, Health.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         gifs.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,4 +1,4 @@
-package save_money.Offers;
+/*package save_money.Offers;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -93,7 +93,7 @@ public class DentalCategoryOffers extends AppCompatActivity {
                 return super.getParams();
             }
         };
-        requestQueue.add(stringRequest);*/
+        requestQueue.add(stringRequest);
 
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,3 +140,5 @@ public class DentalCategoryOffers extends AppCompatActivity {
         }
     }
 }
+
+ */

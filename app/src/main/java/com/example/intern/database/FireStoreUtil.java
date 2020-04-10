@@ -15,6 +15,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -160,9 +161,9 @@ public abstract class FireStoreUtil {
 	//TODO: make a method to get user friends from the cluster
 	//Creates a new cluster if not already present
 	public static Task<Void> addToCluster(Context context, String pinCode, String UID){
-		Map<String, Boolean> data = new HashMap<>();
-		data.put(UID, Boolean.FALSE);
-		return getUserClusterReference(context, pinCode).set(data);
+		Map<String, String> data = new HashMap<>();
+		data.put(UID, UID);
+		return getUserClusterReference(context, pinCode).set(data, SetOptions.merge());
 	}
 	
 	public static Task<DocumentReference> addToPhoneNumberList(Context context, String phoneNumber, String UID){

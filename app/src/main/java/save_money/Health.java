@@ -1,4 +1,4 @@
-package save_money;
+/*package save_money;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -110,3 +110,5 @@ public class Health extends AppCompatActivity {
         }
     }
 }
+
+ */

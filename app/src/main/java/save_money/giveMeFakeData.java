@@ -1,6 +1,6 @@
 package save_money;
 
-import com.example.intern.SocialNetwork.PersonDetails_pojo;
+/*import com.example.intern.SocialNetwork.PersonDetails_pojo;
 
 import java.util.ArrayList;
 
@@ -58,3 +58,4 @@ public class giveMeFakeData {
         return personDetails_pojoArrayList;
     }
 }
+*/

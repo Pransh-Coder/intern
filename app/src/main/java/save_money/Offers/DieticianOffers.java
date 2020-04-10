@@ -1,4 +1,4 @@
-package save_money.Offers;
+/*package save_money.Offers;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -99,3 +99,4 @@ public class DieticianOffers extends AppCompatActivity {
         }
     }
 }
+*/

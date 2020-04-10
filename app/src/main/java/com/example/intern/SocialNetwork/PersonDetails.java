@@ -1,4 +1,4 @@
-package com.example.intern.SocialNetwork;
+/*package com.example.intern.socialnetwork;
 
 import android.os.Bundle;
 
@@ -28,7 +28,7 @@ public class PersonDetails extends AppCompatActivity {
     //ViewPager
     ViewPager viewPager;
 
-    List<PersonDetails_pojo> personDetails_pojoList = new ArrayList<>();
+   // List<com.example.intern.SocialNetwork.PersonDetails_pojo> personDetails_pojoList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class PersonDetails extends AppCompatActivity {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);
 
-        RecyclerAdapterPersonDetails recyclerAdapterPersonDetails = new RecyclerAdapterPersonDetails(PersonDetails.this, giveMeFakeData.givefakePeopleDetails());
-        recyclerView.setAdapter(recyclerAdapterPersonDetails);
+//        com.example.intern.socialnetwork.RecyclerAdapterPersonDetails recyclerAdapterPersonDetails = new com.example.intern.socialnetwork.RecyclerAdapterPersonDetails(PersonDetails.this, giveMeFakeData.givefakePeopleDetails());
+  //      recyclerView.setAdapter(recyclerAdapterPersonDetails);
     }
 
     public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
@@ -72,3 +72,4 @@ public class PersonDetails extends AppCompatActivity {
         }
     }
 }
+*/

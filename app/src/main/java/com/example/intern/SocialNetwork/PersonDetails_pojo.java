@@ -1,4 +1,4 @@
-package com.example.intern.SocialNetwork;
+package com.example.intern.socialnetwork;
 
 public class PersonDetails_pojo {
     String id;

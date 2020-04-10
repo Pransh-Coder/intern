@@ -1,4 +1,4 @@
-package com.example.intern.SocialNetwork;
+package com.example.intern.socialnetwork;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,9 +20,9 @@ public class RecyclerAdapterPersonDetails extends RecyclerView.Adapter<RecyclerA
 
     public int lastSelectedPosition = -1;
     Context context;
-    List<PersonDetails_pojo> personDetails_pojoList = new ArrayList<>();
+    ArrayList<com.example.intern.socialnetwork.PersonDetails_pojo> personDetails_pojoList = new ArrayList<>();
 
-    public RecyclerAdapterPersonDetails(Context context, List<PersonDetails_pojo> personDetails_pojoList) {
+    public RecyclerAdapterPersonDetails(Context context, ArrayList<com.example.intern.socialnetwork.PersonDetails_pojo> personDetails_pojoList) {
         this.context = context;
         this.personDetails_pojoList = personDetails_pojoList;
     }
