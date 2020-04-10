@@ -31,6 +31,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/home_activity_search_background"
             android:drawableEnd="@drawable/ic_search"
+            android:fontFamily="@font/roboto_regular"
             android:hint="Search Categories..."
             android:maxLines="1"
             android:paddingStart="10dp"
@@ -86,7 +87,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/exclusive_services"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -115,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="15dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/swabhiman"
                             android:textColor="@color/black" />
                     </LinearLayout>
@@ -153,7 +154,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/shopping"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -181,7 +182,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="15dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/fuel_with_us"
                             android:textColor="@color/black" />
                     </LinearLayout>
@@ -220,7 +221,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/ask_services"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -248,8 +249,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/save_money"
                             android:textAlignment="center"
                             android:textColor="@color/black" />
