@@ -134,9 +134,14 @@ public class MainApp extends AppCompatActivity {
 		headerBinding.ivLogOut.setOnClickListener(v-> new AlertDialog.Builder(this).setTitle("Log Out ?")
 				.setPositiveButton("Yes", (button, which)->{
 					if(which == AlertDialog.BUTTON_POSITIVE){
-						FirebaseAuth.getInstance().signOut();
 						prefUtil.getPreferences().edit().clear().apply();
-						finishAffinity();
+						FirebaseAuth.getInstance().signOut();
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						finishAndRemoveTask();
 					}
 				}).setNegativeButton("No", null).show());
 		binding.navigationId.setNavigationItemSelectedListener(item -> {

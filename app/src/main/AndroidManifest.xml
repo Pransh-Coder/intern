@@ -58,10 +58,6 @@
 			android:name=".mainapp.MainApp"
 			android:label="@string/title_activity_main_app"
 			android:theme="@style/AppTheme.NoActionBar" />
-		
-		<service
-			android:name=".auth.AuthVerifyService"
-			android:exported="false" />
 		<activity android:name=".swabhiman.SwabhimanActivity"
 			android:theme="@style/MaterialAppTheme"/>
 		<activity android:name=".shopping.ActivityShopping"/>

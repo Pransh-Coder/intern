@@ -91,7 +91,7 @@ public class RegisterAsParentFR extends Fragment {
     }
 
     private void setClickListeners(){
-        binding.btnRegisterasParentSignIn.setOnClickListener(v->{
+        binding.btnRegisterasChildSignIn.setOnClickListener(v->{
             String name = binding.etName.getText().toString();
             String DOB = binding.etDOB.getText().toString();
             String password = binding.etPassword.getText().toString();

@@ -33,32 +33,19 @@
 		android:src="@drawable/notification"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-    
-    <TextView
-        android:id="@+id/heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/century_gothic"
-        android:text="Medical Records"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/def_hor_margin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin" />
+	
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_4_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05"/>
+        app:layout_constraintGuide_percent="0.06"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_96_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95"/>
+        app:layout_constraintGuide_percent="0.93"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_hor_margin"
         android:layout_width="match_parent"
@@ -70,37 +57,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12"/>
+        app:layout_constraintGuide_percent="0.13"/>
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_hor_banner_low"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.3"/>
+	
+	<ImageView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:scaleType="fitCenter"
+		android:src="@drawable/vcura_banner"
+		app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
+		app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
+		app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
+		app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin"/>
     
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
-        app:layout_constraintTop_toBottomOf="@id/def_hor_margin">
+        app:layout_constraintTop_toBottomOf="@id/guide_hor_banner_low">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgVcare"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/vcuralogo"
-                app:layout_constraintBottom_toBottomOf="@id/imgVcare"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/mainHeading"
-                app:layout_constraintTop_toTopOf="parent" />
-    
-    
-            <ImageView
-                android:id="@+id/mainHeading"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:src="@drawable/v_cura_heading"
-                app:layout_constraintLeft_toRightOf="@id/imgVcare"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+			
     
             <TextView
                 android:id="@+id/fst_para"
@@ -114,7 +98,7 @@
                 android:textSize="17dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mainHeading"/>
+                app:layout_constraintTop_toTopOf="parent"/>
     
             <TextView
                 android:id="@+id/secPara"
@@ -160,10 +144,23 @@
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/thrPara"/>
+			<TextView
+				android:id="@+id/fifth_para"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:ellipsize="start"
+				android:fontFamily="@font/century_gothic"
+				android:padding="10dp"
+				android:text="PS is providing only platform to VCura to serve our base, the sole responsibility of services will be theirs."
+				android:textColor="@color/black"
+				android:textSize="17dp"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/forPara"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
     
