@@ -21,6 +21,7 @@ import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.FragmentRegistrationOptionsFRBinding;
+import com.example.intern.databinding.LoginUiBinding;
 import com.example.intern.mainapp.MainApp;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -56,7 +57,7 @@ public class LoginOptionFR extends Fragment {
 
     private static String TAG = RegistrationOptionsFR.class.getSimpleName();
     private int G_SIGN_IN_REQ_CODE = 12;
-    private FragmentRegistrationOptionsFRBinding binding;
+    private LoginUiBinding binding;
     private AuthViewModel viewModel;
     private CallbackManager mCallbackManager;
     private FirebaseAuth mAuth;
@@ -76,7 +77,7 @@ public class LoginOptionFR extends Fragment {
         mCallbackManager = CallbackManager.Factory.create();
         progressDialog=new ProgressDialog(getContext());
         mAuth=FirebaseAuth.getInstance();
-        binding = FragmentRegistrationOptionsFRBinding.inflate(inflater, container, false);
+        binding = LoginUiBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         return view;
     }
@@ -85,14 +86,14 @@ public class LoginOptionFR extends Fragment {
     public void onStart() {
         super.onStart();
         //TODO:
-        binding.btnGoogleSignup.setOnClickListener(v->{
+        binding.googleSignIn.setOnClickListener(v->{
             Intent intent = viewModel.getGoogleSignInClient().getSignInIntent();
             startActivityForResult(intent, G_SIGN_IN_REQ_CODE);
         });
-        binding.btnSignupPhone.setOnClickListener(v->{
+        binding.phoneSignIn.setOnClickListener(v->{
             Navigation.findNavController(v).navigate(R.id.action_LoginOptionFR_to_LoginwithPhone);
         });
-        binding.btnSignupFb.setOnClickListener(v->{
+        binding.facebookSignIn.setOnClickListener(v->{
             LoginManager.getInstance().logInWithReadPermissions(LoginOptionFR.this, Arrays.asList("email"));
             LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
                 @Override
@@ -163,7 +164,7 @@ public class LoginOptionFR extends Fragment {
                                             FireStoreUtil.getUserDocumentReference(requireContext(), authResult.getUser().getUid()).addSnapshotListener((snapshot, e) -> {
                                                 if (snapshot != null && snapshot.exists()) {
                                                     viewModel.getPrefUtil().updateSharedPrefsPostLogin(snapshot);
-                                                    viewModel.getLoggedInListener().isLoggedIn(true);
+                                                    //viewModel.getLoggedInListener().isLoggedIn(true);
                                                 }
                                             });
                                         }
@@ -207,7 +208,7 @@ public class LoginOptionFR extends Fragment {
                     } else if(state.equals("1")){
                         progressDialog.dismiss();
                         FirebaseAuth.getInstance().signOut();
-                        //Toast.makeText(getContext(),"User already Logged in from another device...Logout First!!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),"User already Logged in from another device...Logout First!!",Toast.LENGTH_LONG).show();
                         viewModel.getNavController().navigate(R.id.action_LoginOptionFR_to_LoginResgister);
 
                     }
