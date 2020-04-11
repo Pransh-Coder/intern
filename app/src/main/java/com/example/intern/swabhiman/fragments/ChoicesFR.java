@@ -36,7 +36,7 @@ public class ChoicesFR extends Fragment {
 			binding.donar.setOnClickListener(v -> {
 				viewModel.getNavController().navigate(R.id.action_choicesFR_to_donorFR);
 			});
-			binding.employment.setOnClickListener(v -> {
+			binding.employement.setOnClickListener(v -> {
 				viewModel.getNavController().navigate(R.id.action_choicesFR_to_employement);
 			});
 			binding.investor.setOnClickListener(v -> {

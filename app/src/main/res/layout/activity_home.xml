@@ -13,18 +13,31 @@
         android:background="@drawable/home_activity_background"
         tools:context=".HomeActivity">
 
+        <ImageView
+            android:id="@+id/drawer_pin_home"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/menu_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="140dp"
+            android:layout_width="155dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="189dp"
-            android:layout_marginTop="168dp"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="170dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/home_activity_search_background"
             android:drawableEnd="@drawable/ic_search"
+            android:fontFamily="@font/roboto_regular"
             android:hint="Search Categories..."
+            android:maxLines="1"
             android:paddingStart="10dp"
             android:textAlignment="viewStart"
-            android:textSize="10sp"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -73,10 +86,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="15dp"
-                            android:fontFamily="@font/century_gothic_400"
-                            android:text="EXCLUSIVE SERVICES"
-                            android:textColor="@color/black" />
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/exclusive_services"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -101,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="15dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/swabhiman"
                             android:textColor="@color/black" />
                     </LinearLayout>
@@ -139,7 +154,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/shopping"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -167,7 +182,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="15dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/fuel_with_us"
                             android:textColor="@color/black" />
                     </LinearLayout>
@@ -179,6 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -205,7 +221,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/ask_services"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -233,8 +249,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:fontFamily="@font/century_gothic_400"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/save_money"
                             android:textAlignment="center"
                             android:textColor="@color/black" />
@@ -242,7 +258,6 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView

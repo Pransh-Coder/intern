@@ -44,6 +44,7 @@
         android:id="@+id/tv_lifestyle"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
         android:gravity="center"
         android:text="Lifestyle"
         android:textAllCaps="true"

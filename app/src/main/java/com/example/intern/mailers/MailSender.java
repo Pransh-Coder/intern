@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import javax.activation.DataHandler;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -42,18 +43,56 @@ public class MailSender extends javax.mail.Authenticator {
 		return new PasswordAuthentication(user, password);
 	}
 	
-	public synchronized void sendMail(String subject, String body,
-	                                  String sender, String recipients) throws Exception {
+	public synchronized void sendVCuraMail(String subject, String body,
+	                                       String sender) throws Exception {
 		MimeMessage message = new MimeMessage(session);
 		DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
 		message.setSender(new InternetAddress(sender));
 		message.setSubject(subject);
 		message.setDataHandler(handler);
 		//TODO : Edit method body to fabricated needs
-		if (recipients.indexOf(',') > 0)
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipients));
-		else
-			message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress("chandanrajsingh19@gmail.com"));
+		message.setRecipient(Message.RecipientType.BCC, new InternetAddress("chandanraj.official@gmail.com"));
 		Transport.send(message);
+	}
+	
+	public synchronized void sendSwabhimanMail(String subject, String body, String sender) throws Exception{
+		MimeMessage message = new MimeMessage(session);
+		DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
+		message.setSender(new InternetAddress(sender));
+		message.setSubject(subject);
+		message.setDataHandler(handler);
+		//TODO : Edit method body to fabricated needs
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress("chandanrajsingh19@gmail.com"));
+		Transport.send(message);
+		sendConfirmationMail(sender, subject);
+	}
+	
+	public synchronized void sendConfirmationMail(String user_email, String subject) throws MessagingException {
+		MimeMessage message = new MimeMessage(session);
+		message.setSender(new InternetAddress("ps@prarambhlife.com"));
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress(user_email));
+		if(subject.contains(SwabhimanAutoMailer.SWABHIMAN_BUSS_ASSOCIATE_SUB)){
+			String body = "Thank you for showing interest in being a business associate.\nOur team will contact you shorty" +
+					"\nThank you!\nTeam,\nPS by Prarambh";
+			DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
+			message.setDataHandler(handler);
+			message.setSubject(subject);
+			Transport.send(message);
+		}else if(subject.contains(SwabhimanAutoMailer.SWABHIMAN_EMPLOYEMENT_SUB_BASE)){
+			String body = "Thank you for showing interest in employment opportunities.\nOur team will contact you shorty" +
+					"\nThank you!\nTeam,\nPS by Prarambh";
+			DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
+			message.setDataHandler(handler);
+			message.setSubject(subject);
+			Transport.send(message);
+		}else if(subject.contains(SwabhimanAutoMailer.SWABHIMAN_INVESTOR_SUB_BASE)) {
+			String body = "Thank you for showing interest in being an investor.\nOur team will contact you shorty" +
+					"\nThank you!\nTeam,\nPS by Prarambh";
+			DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
+			message.setDataHandler(handler);
+			message.setSubject(subject);
+			Transport.send(message);
+		}
 	}
 }

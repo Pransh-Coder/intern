@@ -15,6 +15,7 @@
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
 	
+	
 	<application
 		android:allowBackup="true"
 		android:hardwareAccelerated="true"
@@ -43,11 +44,10 @@
 
 		<activity android:name=".vendortest.VendorMain"
 			android:theme="@style/AppTheme.NoActionBar"
-			android:windowSoftInputMode="stateHidden"
-			>
-			
+			android:windowSoftInputMode="stateHidden">
 		</activity>
-		<activity android:name=".Splash">
+		<activity android:name=".Splash"
+			android:launchMode="singleTop">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				
@@ -58,19 +58,31 @@
 			android:name=".mainapp.MainApp"
 			android:label="@string/title_activity_main_app"
 			android:theme="@style/AppTheme.NoActionBar" />
-		
-		<service
-			android:name=".auth.AuthVerifyService"
-			android:exported="false" />
+		<activity android:name=".swabhiman.SwabhimanActivity"
+			android:theme="@style/MaterialAppTheme"/>
+		<activity android:name=".shopping.ActivityShopping"/>
+		<activity android:name=".BPCL_Fuel_QR_ScannerActivity"/>
+		<activity android:name=".fuel.FuelBPCLACT"/>
+		<activity android:name=".MedicalRecords.MedicalRecord"/>
+		<activity android:name=".tnc.TermsAndConditions"/>
+		<activity android:name=".ReduceExpenses.ReduceExpenses"/>
+		<activity android:name=".TotalDiscountReceived.TotalDiscountReceived"/>
+		<activity android:name=".NewsAndUpdatesACT"/>
+		<activity android:name=".FeedBackOrComplaintACT"/>
 		
 		<activity
 			android:name=".auth.AuthActivity"
 			android:launchMode="singleTop" />
 		<activity android:name=".socialnetwork.SocialActivity" />
+		<activity android:name=".MedicalRecords.Vitals"/>
 		<activity android:name=".holiday_list" />
 		<activity android:name=".lifestyle_list" />
 		<activity android:name=".food_list" />
-		<activity android:name=".qr.QRScanner" />
+		<activity android:name=".qr.QRScanner"
+			android:launchMode="singleTop"/>
+		<activity android:name=".EditProfile.EditProfile"
+			android:launchMode="singleTop"
+			android:theme="@style/MaterialAppTheme"/>
 		<activity
 			android:name="save_money.Health"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -98,7 +110,6 @@
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		<activity android:name=".payment.BecomeAMember" />
 		<activity android:name=".Gifts" />
-
 	</application>
 
 </manifest>

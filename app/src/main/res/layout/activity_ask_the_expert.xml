@@ -53,6 +53,7 @@
         android:text="Ask the expert"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:fontFamily="@font/roboto_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hor_20" />
@@ -78,6 +79,7 @@
         android:gravity="center"
         android:text="How may I help you today?"
         android:textStyle="bold"
+        android:fontFamily="@font/roboto_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hor_35" />

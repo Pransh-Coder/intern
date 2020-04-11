@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ps"
-    tools:context=".fuel_with_us">
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/ps">
 
     <ImageView
         android:id="@+id/iv_back_button"
@@ -46,6 +44,7 @@
         android:gravity="center"
         android:text="Fuel with us"
         android:textAllCaps="true"
+        android:fontFamily="@font/roboto_regular"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,53 +69,66 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_55"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35"/>
 
     <TextView
         android:id="@+id/tv_amount"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="190dp"
+        android:layout_height="40dp"
         android:background="@null"
-        android:ems="10"
-        android:paddingLeft="20dp"
         android:text="Enter amount"
-        android:textColorHint="@android:color/black"
+        android:paddingLeft="20dp"
+        android:fontFamily="@font/roboto_regular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/hor_55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ver_50"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
 
     <EditText
         android:id="@+id/et_amt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="180dp"
         android:hint="                              "
         android:inputType="number"
-        app:layout_constraintStart_toEndOf="@id/tv_amount"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintStart_toEndOf="@id/ver_50"
+        app:layout_constraintTop_toBottomOf="@id/hor_55" />
 
     <TextView
         android:id="@+id/tv_invoice_number"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@null"
         android:ems="10"
+        android:fontFamily="@font/roboto_regular"
         android:paddingLeft="20dp"
         android:text="Enter Invoice number"
         android:textColorHint="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_amount" />
+        app:layout_constraintTop_toBottomOf="@id/tv_amount" />
 
     <EditText
         android:id="@+id/et_invoice"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:hint="                              "
         android:inputType="text"
-        app:layout_constraintStart_toEndOf="@id/tv_invoice_number"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintStart_toEndOf="@id/ver_50"
         app:layout_constraintTop_toBottomOf="@id/et_amt" />
 
     <TextView
@@ -127,6 +139,7 @@
         android:background="@null"
         android:ems="10"
         android:gravity="center"
+        android:fontFamily="@font/roboto_regular"
         android:hint="Today's petrol price Rs.70"
         android:paddingLeft="20dp"
         android:textColorHint="@android:color/black"
@@ -143,6 +156,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="Petrol in litres "
+        android:fontFamily="@font/roboto_regular"
         android:paddingLeft="20dp"
         android:textColorHint="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,6 +170,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
+        android:fontFamily="@font/roboto_regular"
         android:background="@drawable/background_button_sign_in"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"

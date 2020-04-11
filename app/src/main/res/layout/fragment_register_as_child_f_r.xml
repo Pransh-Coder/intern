@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@drawable/front_blank_with_logo"
-	tools:context=".auth.Register_asChild_Activity">
+	android:background="@drawable/front_blank_with_logo">
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_hor_30_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.33"/>
 	
 	<EditText
 		android:id="@+id/et_name"
 		android:layout_width="0dp"
 		android:layout_height="30dp"
-		android:layout_marginTop="190dp"
 		android:background="@null"
 		android:ems="10"
 		android:hint="Name"
@@ -21,7 +24,7 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.255"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
 	
 	<EditText
 		android:id="@+id/et_nick_name"
@@ -37,6 +40,21 @@
 		app:layout_constraintHorizontal_bias="0.25"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/et_name" />
+	<EditText
+		android:id="@+id/et_child_number"
+		android:layout_width="0dp"
+		android:layout_height="30dp"
+		android:background="@null"
+		android:ems="10"
+		android:inputType="number"
+		android:hint="Your Number : "
+		android:maxLength="10"
+		android:paddingLeft="20dp"
+		android:textColorHint="@android:color/black"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.25"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/et_nick_name" />
 	
 	<EditText
 		android:id="@+id/et_parent_number"
@@ -44,6 +62,7 @@
 		android:layout_height="30dp"
 		android:background="@null"
 		android:ems="10"
+		android:maxLength="10"
 		android:hint="Parents Number : "
 		android:inputType="number"
 		android:paddingLeft="20dp"
@@ -51,7 +70,7 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.25"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_nick_name" />
+		app:layout_constraintTop_toBottomOf="@+id/et_child_number" />
 	
 	<EditText
 		android:id="@+id/et_DOB"
@@ -74,6 +93,7 @@
 		android:layout_height="30dp"
 		android:background="@null"
 		android:ems="10"
+		android:maxLength="6"
 		android:hint="Area/Pincode : "
 		android:inputType="number"
 		android:paddingLeft="20dp"
@@ -105,7 +125,7 @@
 		android:background="@null"
 		android:ems="10"
 		android:hint="Password : "
-		android:inputType="textPersonName"
+		android:inputType="textWebPassword"
 		android:paddingLeft="20dp"
 		android:textColorHint="@android:color/black"
 		app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +140,7 @@
 		android:background="@null"
 		android:ems="10"
 		android:hint="Confirm Password : "
-		android:inputType="textPersonName"
+		android:inputType="textWebPassword"
 		android:paddingLeft="20dp"
 		android:textColorHint="@android:color/black"
 		app:layout_constraintEnd_toEndOf="parent"

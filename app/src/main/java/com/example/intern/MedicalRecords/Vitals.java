@@ -1,15 +1,16 @@
-package com.example.intern;
+package com.example.intern.MedicalRecords;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class swabhiman_donar extends AppCompatActivity {
+import com.example.intern.R;
+
+public class Vitals extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_swabhiman_donar);
-        getSupportActionBar().hide();
+        setContentView(R.layout.activity_vitals);
     }
 }

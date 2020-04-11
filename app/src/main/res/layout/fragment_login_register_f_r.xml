@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@drawable/background_welcome"
-	tools:context=".auth.Login_Register">
+	android:background="@drawable/background_welcome">
+	<ImageView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:src="@drawable/icons_mascot_51"
+		app:layout_constraintBottom_toTopOf="@id/guide_hor_70_per"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_hor_70_per"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.6"/>
+	<Button
+		android:id="@+id/get_started"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/white_back_rounded_button"
+		android:fontFamily="@font/century_gothic_400"
+		android:paddingStart="20dp"
+		android:paddingTop="5dp"
+		android:paddingEnd="20dp"
+		android:paddingBottom="5dp"
+		android:text="GET STARTED"
+		android:textSize="30dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toBottomOf="@id/registration_spin_Language"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_70_per"/>
 	
-	<LinearLayout
+	<!--<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="vertical"
@@ -49,16 +78,20 @@
 			android:text="Register"
 			android:textSize="25sp" />
 		
-		<Spinner
-			android:id="@+id/registration_spin_Language"
-			style="@style/Widget.AppCompat.Spinner.Underlined"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="85dp"
-			android:layout_marginTop="10dp"
-			android:background="@drawable/spinner_background"
-			android:entries="@array/currentlaguauge"
-			android:padding="5dp"
-			android:spinnerMode="dropdown" />
-	</LinearLayout>
+		
+	</LinearLayout>-->
+	<Spinner
+		android:id="@+id/registration_spin_Language"
+		style="@style/Widget.AppCompat.Spinner.Underlined"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_marginBottom="30dp"
+		android:background="@drawable/spinner_background"
+		android:entries="@array/laguauge"
+		android:padding="5dp"
+		android:spinnerMode="dropdown"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

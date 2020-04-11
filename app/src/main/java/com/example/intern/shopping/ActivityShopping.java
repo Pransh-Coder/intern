@@ -1,4 +1,4 @@
-package com.example.intern;
+package com.example.intern.shopping;
 
 import android.content.Intent;
 import android.net.Uri;

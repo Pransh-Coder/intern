@@ -15,7 +15,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;
-import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -49,7 +48,6 @@ public abstract class FireStoreUtil {
 	private static String USER_DOB = "dob";
 	private static String USER_PIN_CODE = "pc";
 	private static String USER_PAY_ID = "pay";
-	private static String Login_State="LS";
 	
 	//References needs to be synchronised
 	private static volatile FirebaseApp firebaseApp;
@@ -142,8 +140,8 @@ public abstract class FireStoreUtil {
 	}
 	
 	//Methods to create new users or find existing ones
-	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode,String state){
-		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode,state);
+	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String password){
+		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode, password);
 		return getUserDocumentReference(context, UID).set(user);
 	}
 	
@@ -162,9 +160,9 @@ public abstract class FireStoreUtil {
 	//TODO: make a method to get user friends from the cluster
 	//Creates a new cluster if not already present
 	public static Task<Void> addToCluster(Context context, String pinCode, String UID){
-		Map<String, String> data = new HashMap<>();
-		data.put(UID, UID);
-		return getUserClusterReference(context, pinCode).set(data, SetOptions.merge());
+		Map<String, Boolean> data = new HashMap<>();
+		data.put(UID, Boolean.FALSE);
+		return getUserClusterReference(context, pinCode).set(data);
 	}
 	
 	public static Task<DocumentReference> addToPhoneNumberList(Context context, String phoneNumber, String UID){
@@ -238,11 +236,12 @@ public abstract class FireStoreUtil {
 		//Pay ID
 		public String pay;
 		//Password
-		public String LS;
-
-
+		public String pass;
+		
+		public PSUser(){}
+		
 		public PSUser(String name, String email, String nickName, String psNickName,
-		              String phoneNumber, String DOB , String pinCode,String state){
+		              String phoneNumber, String DOB , String pinCode, String password){
 			this.un = name;
 			this.em = email;
 			this.nn = nickName;
@@ -251,11 +250,10 @@ public abstract class FireStoreUtil {
 			this.dob = DOB;
 			this.pc = pinCode;
 			this.pay = null;
-			this.LS=state;
-
+			this.pass = password;
 		}
 	}
-
+	
 	//Redundant query related stuff
 	/*public static CollectionReference getQueryCollectionReference(Context context, String UID){
 		if(queryCollectionReference == null){

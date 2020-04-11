@@ -64,6 +64,7 @@
         android:text="BPCL FUEL"
         android:textColor="@color/black"
         android:textSize="15sp"
+        android:fontFamily="@font/roboto_regular"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -74,6 +75,7 @@
         android:layout_width="0dp"
         android:layout_height="130dp"
         android:layout_marginStart="21dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/banner_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,8 +98,9 @@
                 android:id="@+id/bpcl_fuel_qr_scanner_tvEnterAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_regular"
                 android:text="*Enter Amount"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -108,8 +111,9 @@
                 android:id="@+id/bpcl_fuel_qr_scanner_tvInvoiceNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_regular"
                 android:text="*Enter Invoice Number"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -120,8 +124,9 @@
                 android:id="@+id/bpcl_fuel_qr_scanner_tvPetrolPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_regular"
                 android:text="Today's Petrol Price"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -137,8 +142,8 @@
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/dashed_line_edittext"
                 android:ems="10"
+                android:fontFamily="@font/roboto_regular"
                 android:inputType="textPersonName"
-                android:text="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/bpcl_fuel_qr_scanner_tvEnterAmount"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -152,8 +157,8 @@
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/dashed_line_edittext"
                 android:ems="10"
+                android:fontFamily="@font/roboto_regular"
                 android:inputType="numberDecimal"
-                android:text="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/bpcl_fuel_qr_scanner_tvInvoiceNumber"
                 app:layout_constraintTop_toBottomOf="@+id/bpcl_fuel_qr_scanner_etEnterAmount" />
@@ -167,21 +172,45 @@
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/dashed_line_edittext"
                 android:ems="10"
+                android:fontFamily="@font/roboto_regular"
                 android:inputType="textPersonName"
-                android:text="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/bpcl_fuel_qr_scanner_tvPetrolPrice"
                 app:layout_constraintTop_toBottomOf="@+id/bpcl_fuel_qr_scanner_etInvoiceNumber" />
 
-            <!--            <com.journeyapps.barcodescanner.DecoratedBarcodeView
-                            android:id="@+id/qr_view"
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/iv_scanned_image"
-                            app:layout_constraintEnd_toEndOf="@+id/iv_scanned_image"
-                            app:layout_constraintStart_toStartOf="@+id/iv_scanned_image"
-                            app:layout_constraintTop_toTopOf="@+id/iv_scanned_image"
-                            app:zxing_preview_scaling_strategy="centerCrop" />-->
+            <com.journeyapps.barcodescanner.DecoratedBarcodeView
+                android:id="@+id/qr_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bpcl_fuel_qr_scanner_tvPetrolPrice"
+                app:zxing_preview_scaling_strategy="centerCrop" />
+
+            <ImageView
+                android:id="@+id/iv_scanned_image"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_qr_scanner_img"
+                android:scaleType="centerCrop"
+                android:src="@drawable/qr_image"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/qr_view"
+                app:layout_constraintEnd_toEndOf="@+id/qr_view"
+                app:layout_constraintStart_toStartOf="@+id/qr_view"
+                app:layout_constraintTop_toTopOf="@+id/qr_view" />
+
+            <!--<com.journeyapps.barcodescanner.DecoratedBarcodeView
+                android:id="@+id/qr_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_scanned_image"
+                app:layout_constraintEnd_toEndOf="@+id/iv_scanned_image"
+                app:layout_constraintStart_toStartOf="@+id/iv_scanned_image"
+                app:layout_constraintTop_toTopOf="@+id/iv_scanned_image"
+                app:zxing_preview_scaling_strategy="centerCrop" />
 
             <ImageView
                 android:id="@+id/iv_scanned_image"
@@ -195,7 +224,7 @@
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bpcl_fuel_qr_scanner_tvPetrolPrice" />
+                app:layout_constraintTop_toBottomOf="@+id/bpcl_fuel_qr_scanner_tvPetrolPrice" />-->
 
             <Button
                 android:id="@+id/bpcl_fuel_qr_scanner_submit"
@@ -206,7 +235,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/background_button_sign_in"
-                android:fontFamily="@font/century_gothic_400"
+                android:fontFamily="@font/roboto_regular"
                 android:text="Submit"
                 android:textAllCaps="true"
                 android:textSize="18sp"
