@@ -33,8 +33,11 @@ import com.example.intern.socialnetwork.SocialActivity;
 import com.example.intern.swabhiman.SwabhimanActivity;
 import com.example.intern.tnc.TermsAndConditions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import save_money.SaveMoney;
 
@@ -135,6 +138,11 @@ public class MainApp extends AppCompatActivity {
 		headerBinding.ivLogOut.setOnClickListener(v-> new AlertDialog.Builder(this).setTitle("Log Out ?")
 				.setPositiveButton("Yes", (button, which)->{
 					if(which == AlertDialog.BUTTON_POSITIVE){
+						String currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+						Map<String, Object> data = new HashMap<>();
+						data.put("LS","0");
+						FirebaseFirestore.getInstance().collection("Users").document(currentuserid)
+								.update(data);
 						prefUtil.getPreferences().edit().clear().apply();
 						FirebaseAuth.getInstance().signOut();
 						try {
