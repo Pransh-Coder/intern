@@ -90,7 +90,7 @@ public class PhnRegistration extends AppCompatActivity {
                 mResendToken = token;
                 loadingbar.dismiss();
                 Toast.makeText(PhnRegistration.this, "Code sent", Toast.LENGTH_LONG).show();
-                Phnno.setVisibility(View.INVISIBLE);
+                //Phnno.setVisibility(View.INVISIBLE);
 
 
             }
