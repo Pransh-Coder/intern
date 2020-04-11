@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.database.FireStoreUtil;
+import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.PhoneLoginUiBinding;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
