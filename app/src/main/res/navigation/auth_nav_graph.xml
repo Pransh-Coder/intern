@@ -3,7 +3,7 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/auth_nav_graph"
 	app:startDestination="@id/loginRegisterFR">
-	
+
 	<fragment
 		android:id="@+id/loginRegisterFR"
 		android:name="com.example.intern.auth.fragments.LoginRegisterFR"
@@ -11,6 +11,30 @@
 		<action
 			android:id="@+id/action_loginRegisterFR_to_registrationChoiceFR"
 			app:destination="@id/registrationChoiceFR" />
+		<action
+			android:id="@+id/action_loginRegisterFR_to_LoginOptionFR"
+			app:destination="@id/LoginOptionFR" />
+	</fragment>
+	<fragment
+		android:id="@+id/LoginOptionFR"
+		android:name="com.example.intern.auth.fragments.LoginOptionFR"
+		android:label="LoginOptionFR">
+		<action
+			android:id="@+id/action_LoginOptionFR_to_LoginResgister"
+			app:destination="@id/loginRegisterFR" />
+		<action
+			android:id="@+id/action_LoginOptionFR_to_LoginwithPhone"
+			app:destination="@id/loginwithPhone" />
+
+
+	</fragment>
+	<fragment
+		android:id="@+id/loginwithPhone"
+		android:name="com.example.intern.auth.fragments.LoginwithPhoneFR"
+		android:label="LoginWithPhoneFR" >
+		<action
+			android:id="@+id/action_LoginwithPhoneFR_toLoginRegister"
+			app:destination="@id/loginRegisterFR" />
 	</fragment>
 	<fragment
 		android:id="@+id/registrationChoiceFR"
@@ -33,6 +57,9 @@
 		<action
 			android:id="@+id/action_registrationOptionsFR_to_registerAsParentFR"
 			app:destination="@id/registerAsParentFR" />
+		<action
+			android:id="@+id/action_registrationOptionsFR_to_LoginResgister"
+			app:destination="@id/loginRegisterFR" />
 	</fragment>
 	<fragment
 		android:id="@+id/registerAsChildFR"
