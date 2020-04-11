@@ -1,9 +1,7 @@
 package com.example.intern.auth.fragments;
 
-import androidx.fragment.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,8 +17,6 @@ import androidx.navigation.Navigation;
 
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
-import com.example.intern.database.FireStoreUtil;
-import com.example.intern.databinding.FragmentRegistrationOptionsFRBinding;
 import com.example.intern.databinding.LoginUiBinding;
 import com.example.intern.mainapp.MainApp;
 import com.facebook.AccessToken;
@@ -39,19 +35,13 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
-
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Executor;
 public class LoginOptionFR extends Fragment {
 
 
@@ -134,7 +124,6 @@ public class LoginOptionFR extends Fragment {
                 Log.d(TAG, "onActivityResult: failed g sign in");
             }
         }
-
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account){
@@ -161,16 +150,15 @@ public class LoginOptionFR extends Fragment {
                         if (task.isSuccessful()) {
                             viewModel.getFirebaseAuth().signInWithCredential(credential).addOnSuccessListener(authResult -> {
                                         if (authResult.getUser() != null) {
-                                            FireStoreUtil.getUserDocumentReference(requireContext(), authResult.getUser().getUid()).addSnapshotListener((snapshot, e) -> {
+                                            /*FireStoreUtil.getUserDocumentReference(requireContext(), authResult.getUser().getUid()).addSnapshotListener((snapshot, e) -> {
                                                 if (snapshot != null && snapshot.exists()) {
                                                     viewModel.getPrefUtil().updateSharedPrefsPostLogin(snapshot);
                                                     //viewModel.getLoggedInListener().isLoggedIn(true);
                                                 }
-                                            });
+                                            });*/
+                                            checkExistence();
                                         }
-
                                     });
-                                    checkExistence();
                             // ...
                         } else {
                             Log.d(TAG, "firebaseAuthWithFacebook: dismissed");
@@ -202,6 +190,7 @@ public class LoginOptionFR extends Fragment {
                         progressDialog.dismiss();
                         Toast.makeText(getContext(),state,Toast.LENGTH_LONG).show();
                         viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
+                        viewModel.getPrefUtil().updateSharedPrefsPostLogin(document);
                         Intent intent = new Intent(getContext(), MainApp.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
@@ -210,7 +199,6 @@ public class LoginOptionFR extends Fragment {
                         FirebaseAuth.getInstance().signOut();
                         Toast.makeText(getContext(),"User already Logged in from another device...Logout First!!",Toast.LENGTH_LONG).show();
                         viewModel.getNavController().navigate(R.id.action_LoginOptionFR_to_LoginResgister);
-
                     }
                     else
                         Toast.makeText(getContext(),"inelse"+state,Toast.LENGTH_LONG).show();
@@ -220,8 +208,6 @@ public class LoginOptionFR extends Fragment {
                     FirebaseAuth.getInstance().signOut();
                     Toast.makeText(getContext(),"User does not exist...Signup First!!",Toast.LENGTH_LONG).show();
                     viewModel.getNavController().navigate(R.id.action_LoginOptionFR_to_LoginResgister);
-
-
                 }
             }
         });

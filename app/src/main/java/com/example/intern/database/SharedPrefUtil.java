@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.example.intern.payment.auth.RazorPayAuthAPI;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class SharedPrefUtil {
 	public static String USER_PHONE_NO = "user_ph_no";
 	public static String USER_OCCUPATION_KEY = "user_occ";
 	public static String USER_ADDRESS_KEY = "user_add";
-	public static String USER_PAY_VER_STATUS = "pay_verified";
 	public static String USER_PROFILE_PIC_PATH_KEY = "profile_pic_path";
 	private Context context;
 	private SharedPreferences preferences;
@@ -47,7 +45,7 @@ public class SharedPrefUtil {
 				.putString(USER_PS_NICK_NAME_KEY, ps_nick_name).putString(USER_PIN_CODE_KEY, pin_code)
 				.putString(USER_DOB_KEY, DOB).putString(USER_RELATIVE_PHONE_NUMBER_KEY, relatives_number)
 				.putBoolean(USER_LOGGED_IN_STATUS_KEY, true).putString(USER_PAY_ID, null)
-				.putString(USER_PHONE_NO, phone_number).putBoolean(USER_PAY_VER_STATUS , false)
+				.putString(USER_PHONE_NO, phone_number)
 				.putString(USER_OCCUPATION_KEY, null).putString(USER_ADDRESS_KEY, null)
 				.putString(USER_PROFILE_PIC_PATH_KEY, null);
 		editor.apply();
@@ -67,16 +65,6 @@ public class SharedPrefUtil {
 		editor.putBoolean(USER_LOGGED_IN_STATUS_KEY, true);
 		editor.putString(USER_OCCUPATION_KEY, snapshot.getString(FireStoreUtil.USER_OCCUPATION));
 		editor.putString(USER_ADDRESS_KEY, snapshot.getString(FireStoreUtil.USER_ADDRESS));
-		String payID = snapshot.getString(FireStoreUtil.USER_PAY_ID);
-		if(payID!=null && !payID.isEmpty()){
-			RazorPayAuthAPI.isPaymentVerified(payID, verificationStatus -> {
-				if(verificationStatus){
-					editor.putBoolean(USER_PAY_VER_STATUS, true);
-				}else {
-					editor.putBoolean(USER_PAY_VER_STATUS, false);
-				}
-			});
-		}
 		editor.apply();
 	}
 	

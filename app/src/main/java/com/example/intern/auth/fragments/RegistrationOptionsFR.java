@@ -17,7 +17,6 @@ import androidx.navigation.Navigation;
 
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
-import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.LoginUiBinding;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -173,8 +172,6 @@ public class RegistrationOptionsFR extends Fragment {
 					} else {
 						viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsParentFR);
 					}
-
-
 				}
 			}
 		});
