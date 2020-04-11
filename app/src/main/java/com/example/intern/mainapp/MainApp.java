@@ -3,8 +3,9 @@ package com.example.intern.mainapp;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -32,6 +33,9 @@ import com.example.intern.shopping.ActivityShopping;
 import com.example.intern.socialnetwork.SocialActivity;
 import com.example.intern.swabhiman.SwabhimanActivity;
 import com.example.intern.tnc.TermsAndConditions;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -46,14 +50,21 @@ public class MainApp extends AppCompatActivity {
 	private ActivityHomeBinding binding;
 	private HomeMenuHeaderBinding headerBinding;
 	private SharedPrefUtil prefUtil;
+	private GoogleSignInClient signInClient;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = ActivityHomeBinding.inflate(getLayoutInflater());
+		GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+				.requestIdToken(getString(R.string.default_web_client_id))
+				.requestEmail()
+				.build();
+		signInClient = GoogleSignIn.getClient(this,gso);
 		setContentView(binding.getRoot());
 		prefUtil = new SharedPrefUtil(this);
 		getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.home_activity_background));
+		getWindow().setStatusBarColor(Color.RED);
 		View headerView = binding.navigationId.getHeaderView(0);
 		headerBinding =  HomeMenuHeaderBinding.bind(headerView);
 	}
@@ -141,16 +152,18 @@ public class MainApp extends AppCompatActivity {
 						String currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 						Map<String, Object> data = new HashMap<>();
 						data.put("LS","0");
+						Context context = MainApp.this;
 						FirebaseFirestore.getInstance().collection("Users").document(currentuserid)
-								.update(data);
-						prefUtil.getPreferences().edit().clear().apply();
-						FirebaseAuth.getInstance().signOut();
-						try {
-							Thread.sleep(1000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-						finishAndRemoveTask();
+								.update(data).addOnSuccessListener(aVoid -> {
+									prefUtil.getPreferences().edit().clear().apply();
+									FirebaseAuth.getInstance().signOut();
+									signInClient.signOut().addOnSuccessListener(aVoid1 -> {
+										new AlertDialog.Builder(context).setTitle("You have been logged out!")
+												.setPositiveButton("OK", (dialog, which1) -> {
+													if(which1==AlertDialog.BUTTON_POSITIVE)finishAndRemoveTask();
+												}).setCancelable(false).show();
+									});
+								});
 					}
 				}).setNegativeButton("No", null).show());
 		binding.navigationId.setNavigationItemSelectedListener(item -> {
@@ -195,8 +208,11 @@ public class MainApp extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == BECOME_MEMBER_REQ_CODE && resultCode == BecomeAMember.IS_A_MEMBER_RESULT_CODE) {
-			Intent intent = new Intent(MainApp.this, SaveMoney.class);
-			startActivity(intent);
+			if(data != null){
+				String payID = data.getStringExtra(BecomeAMember.PAY_ID_TAG);
+				prefUtil.setUserPayID(payID);
+				razorPayVerification(payID);
+			}
 		}else{
 			Toast.makeText(this,"Payment Not Complete!", Toast.LENGTH_LONG).show();
 		}
@@ -205,27 +221,19 @@ public class MainApp extends AppCompatActivity {
 	private void razorPayVerification(String payID){
 		ProgressDialog dialog = new ProgressDialog(this);
 		dialog.setTitle("Verifying Payment");dialog.show();
-		boolean verified = prefUtil.getPreferences().getBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, false);
-		if(verified){
-			Intent intent = new Intent(MainApp.this, SaveMoney.class);
-			dialog.hide();
-			startActivity(intent);
-		}else {
-			RazorPayAuthAPI.isPaymentVerified(payID, verificationStatus -> {
-				if (verificationStatus) {
-					SharedPreferences.Editor editor = prefUtil.getPreferences().edit();
-					editor.putBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, true); editor.apply();
-					Intent intent = new Intent(MainApp.this, SaveMoney.class);
-					dialog.hide();
-					startActivity(intent);
-				} else {
-					dialog.hide();
-					Toast.makeText(this, "Payment Cannot Be Confirmed", Toast.LENGTH_LONG).show();
-					Intent intent = new Intent(MainApp.this, BecomeAMember.class);
-					startActivityForResult(intent, BECOME_MEMBER_REQ_CODE);
-				}
-			});
-		}
+		//TODO : Check for internet connectivity failure
+		RazorPayAuthAPI.isPaymentVerified(payID, verificationStatus -> {
+			if (verificationStatus) {
+				Intent intent = new Intent(MainApp.this, SaveMoney.class);
+				dialog.hide();
+				startActivity(intent);
+			} else {
+				dialog.hide();
+				Toast.makeText(this, "Payment Cannot Be Confirmed", Toast.LENGTH_LONG).show();
+				Intent intent = new Intent(MainApp.this, BecomeAMember.class);
+				startActivityForResult(intent, BECOME_MEMBER_REQ_CODE);
+			}
+		});
 	}
 	
 	@Override

@@ -158,6 +158,7 @@ public class LoginwithPhoneFR  extends Fragment {
                         progressDialog.dismiss();
                         Toast.makeText(getContext(),state,Toast.LENGTH_LONG).show();
                         viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
+                        viewModel.getPrefUtil().updateSharedPrefsPostLogin(document);
                         Intent intent = new Intent(getContext(), MainApp.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);

@@ -2,7 +2,6 @@ package com.example.intern.payment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -109,14 +108,11 @@ public class BecomeAMember extends AppCompatActivity {
 		FireStoreUtil.uploadPayID(this, payID);
 		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
 		prefUtil.setUserPayID(payID);
-		if(isMember){
-			SharedPreferences.Editor editor = prefUtil.getPreferences().edit();
-			editor.putBoolean(SharedPrefUtil.USER_PAY_VER_STATUS, true); editor.apply();
-		}
 		Intent intent = new Intent();
 		intent.putExtra(PAY_ID_TAG, payID);
 		setResult(IS_A_MEMBER_RESULT_CODE, intent);
 		finish();
+		super.onDestroy();
 	}
 	
 	@Override
@@ -125,7 +121,7 @@ public class BecomeAMember extends AppCompatActivity {
 			finishPaymentProcess();
 		}else{
 			Toast.makeText(this, "Payment not complete", Toast.LENGTH_LONG).show();
-			finishAndRemoveTask();
+			super.onBackPressed();
 		}
 	}
 }

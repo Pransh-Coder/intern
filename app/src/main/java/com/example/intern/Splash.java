@@ -29,9 +29,6 @@ public class Splash extends AppCompatActivity {
 		Log.d(TAG, "onStart: Splash screen shown");
 		super.onResume();
 		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
-		if(user != null){
-			segueIntoApp();
-		}
 		if(prefUtil.getLoginStatus()){
 			segueIntoApp();
 		}else{
@@ -44,7 +41,6 @@ public class Splash extends AppCompatActivity {
 	private void segueIntoApp(){
 		Log.d(TAG, "segueIntoApp: authentication verified");
 		try {
-			Thread.sleep(500);
 			Toast.makeText(this, "Welcome back to PS", Toast.LENGTH_LONG).show();
 			//TODO:Redirect to main app
 			Intent intent1 = new Intent(this, MainApp.class);

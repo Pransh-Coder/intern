@@ -170,8 +170,9 @@ public class EditProfile extends AppCompatActivity {
                 });
             }else{
                 Intent intent = new Intent(EditProfile.this, MainApp.class);
-                finish();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -17,7 +17,7 @@
 	
 	
 	<application
-		android:allowBackup="true"
+		android:allowBackup="false"
 		android:hardwareAccelerated="true"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
@@ -57,6 +57,7 @@
 		<activity
 			android:name=".mainapp.MainApp"
 			android:label="@string/title_activity_main_app"
+			android:launchMode="singleTop"
 			android:theme="@style/AppTheme.NoActionBar" />
 		<activity android:name=".swabhiman.SwabhimanActivity"
 			android:theme="@style/MaterialAppTheme"/>
@@ -104,11 +105,13 @@
 		<activity
 			android:name="save_money.Offers.Patholgy_LaborartoryOffers"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-		<activity android:name=".payment.StandardPaymentActivity" />
+		<activity android:name=".payment.StandardPaymentActivity"
+			android:launchMode="singleTop"/>
 		<activity
 			android:name="save_money.Offers.PhysiotherapyOffers"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-		<activity android:name=".payment.BecomeAMember" />
+		<activity android:name=".payment.BecomeAMember"
+			android:launchMode="singleTop"/>
 		<activity android:name=".Gifts" />
 	</application>
 
