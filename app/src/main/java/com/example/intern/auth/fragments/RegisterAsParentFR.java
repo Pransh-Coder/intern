@@ -110,7 +110,7 @@ public class RegisterAsParentFR extends Fragment {
                 String parent_number =binding.etParentNumber.getText().toString();
                 String child_number =binding.etChildNumber.getText().toString();
                 FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode, password, child_number)
+                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode,"1", child_number)
                         .addOnSuccessListener(success->{
                             FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
                             Log.d(TAG, "successfully made user");

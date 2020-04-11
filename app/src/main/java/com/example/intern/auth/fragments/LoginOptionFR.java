@@ -19,6 +19,7 @@ import androidx.navigation.Navigation;
 
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
+import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.FragmentRegistrationOptionsFRBinding;
 import com.example.intern.mainapp.MainApp;
 import com.facebook.AccessToken;
@@ -157,7 +158,18 @@ public class LoginOptionFR extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            checkExistence();
+                            viewModel.getFirebaseAuth().signInWithCredential(credential).addOnSuccessListener(authResult -> {
+                                        if (authResult.getUser() != null) {
+                                            FireStoreUtil.getUserDocumentReference(requireContext(), authResult.getUser().getUid()).addSnapshotListener((snapshot, e) -> {
+                                                if (snapshot != null && snapshot.exists()) {
+                                                    viewModel.getPrefUtil().updateSharedPrefsPostLogin(snapshot);
+                                                    viewModel.getLoggedInListener().isLoggedIn(true);
+                                                }
+                                            });
+                                        }
+
+                                    });
+                                    checkExistence();
                             // ...
                         } else {
                             Log.d(TAG, "firebaseAuthWithFacebook: dismissed");
@@ -179,7 +191,7 @@ public class LoginOptionFR extends Fragment {
                 if (task.getResult().exists()) {
                     DocumentSnapshot document = task.getResult();
                     String state = document.getString("LS");
-                    //Toast.makeText(getContext(),"before"+state,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"before"+state,Toast.LENGTH_LONG).show();
                     if (state.equals("0")) {
                         //  Toast.makeText(getContext(),state,Toast.LENGTH_LONG).show();
                         Map<String, Object> data = new HashMap<>();

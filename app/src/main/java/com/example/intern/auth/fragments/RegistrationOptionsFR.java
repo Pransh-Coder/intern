@@ -181,18 +181,3 @@ public class RegistrationOptionsFR extends Fragment {
 
 	}
 	}
-	FireStoreUtil.getUserDocumentReference(requireContext(), authResult.getUser().getUid()).addSnapshotListener((snapshot, e) -> {
-			if(snapshot != null && snapshot.exists()){
-			//TODO : User Exists already, log in
-			viewModel.getPrefUtil().updateSharedPrefsPostLogin(snapshot);
-			viewModel.getLoggedInListener().isLoggedIn(true);
-			}
-			});
-			Log.d(TAG, "firebaseAuthWithGoogle: success");
-			viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
-			if(!viewModel.isRegChoiceisParent()){
-			viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsChildFR);
-			}else{
-			viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsParentFR);
-			}
-			}

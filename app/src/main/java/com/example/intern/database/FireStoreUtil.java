@@ -52,7 +52,7 @@ public abstract class FireStoreUtil {
 	public static String USER_DOB = "dob";
 	public static String USER_PIN_CODE = "pc";
 	public static String USER_PAY_ID = "pay";
-	public static String USER_PASS = "pass";
+	public static String USER_STATE= "LS";
 	public static String USER_OCCUPATION = "occ";
 	public static String USER_ADDRESS = "add";
 	
@@ -152,8 +152,8 @@ public abstract class FireStoreUtil {
 	}
 	
 	//Methods to create new users or find existing ones
-	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String password, String relative_number){
-		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode, password,relative_number);
+	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String state, String relative_number){
+		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode, state,relative_number);
 		return getUserDocumentReference(context, UID).set(user);
 	}
 	
@@ -274,14 +274,14 @@ public abstract class FireStoreUtil {
 		//Pay ID
 		public String pay;
 		//Password
-		public String pass;
+		public String LS;
 		//Relative Number
 		public String rph;
 		
 		public PSUser(){}
 		
 		public PSUser(String name, String email, String nickName, String psNickName,
-		              String phoneNumber, String DOB , String pinCode, String password, String relative_number){
+		              String phoneNumber, String DOB , String pinCode, String state, String relative_number){
 			this.un = name;
 			this.em = email;
 			this.nn = nickName;
@@ -291,7 +291,7 @@ public abstract class FireStoreUtil {
 			this.pc = pinCode;
 			this.pay = null;
 			this.rph = relative_number;
-			this.pass = password;
+			this.LS = state;
 		}
 	}
 	
