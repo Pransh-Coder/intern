@@ -16,26 +16,31 @@ import com.example.intern.databinding.FragmentLoginRegisterFRBinding;
 public class LoginRegisterFR extends Fragment {
 	private FragmentLoginRegisterFRBinding binding;
 	private AuthViewModel viewModel;
-	
+
 	public LoginRegisterFR() {
 		// Required empty public constructor
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	                         Bundle savedInstanceState) {
+							 Bundle savedInstanceState) {
 		viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
 		binding = FragmentLoginRegisterFRBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
 		return view;
 	}
-	
+
 	@Override
 	public void onStart() {
 		super.onStart();
+		//TODO: make a login FR too
 		binding.Signup.setOnClickListener(v->{
 			Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_registrationChoiceFR);
 		});
+		binding.loginButton.setOnClickListener(v -> {
+					Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_LoginOptionFR);
+				}
+		);
 	}
 }
