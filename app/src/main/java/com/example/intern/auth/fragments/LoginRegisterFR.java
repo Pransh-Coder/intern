@@ -39,7 +39,7 @@ public class LoginRegisterFR extends Fragment {
 			Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_registrationChoiceFR);
 		});
 		binding.loginButton.setOnClickListener(v -> {
-			Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_registrationChoiceFR);
+			Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_LoginOptionFR);
 				}
 				);
 	}

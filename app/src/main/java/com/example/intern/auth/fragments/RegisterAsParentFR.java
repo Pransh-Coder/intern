@@ -103,16 +103,13 @@ public class RegisterAsParentFR extends Fragment {
             if(DOB.isEmpty()){
                 binding.etDOB.setError("DOB Cannot Be Empty");return;
             }
-            if(password.isEmpty()){
-                binding.etPassword.setError("Password Cannot Be Empty");return;
-            }
             if(pinCode != null && pinCode.length() == 6){
                 String nick_name = binding.etNickName.getText().toString();
                 String ps_nick_name = binding.etPsNickName.getText().toString();
                 String parent_number =binding.etParentNumber.getText().toString();
                 String child_number =binding.etChildNumber.getText().toString();
                 FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode, password)
+                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB,pinCode,"1")
                         .addOnSuccessListener(success->{
                             FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
                             Log.d(TAG, "successfully made user");

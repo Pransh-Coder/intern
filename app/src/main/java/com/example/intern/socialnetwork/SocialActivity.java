@@ -104,10 +104,10 @@ public class SocialActivity extends AppCompatActivity {
 						for (Map.Entry<String, Object> entry : map.entrySet()) {
 							list.add(entry.getKey());
 						}
+						list.remove(uid);
 						Iterator<String> iterator = list.iterator();
 						for(String user:list)
 						{
-							if(user!=uid)
 							getUsername(user);
 							//Toast.makeText(SocialActivity.this, user, Toast.LENGTH_LONG).show();
 

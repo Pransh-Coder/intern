@@ -1,6 +1,8 @@
 package com.example.intern.auth.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,10 +39,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.Arrays;
 import java.util.concurrent.Executor;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class RegistrationOptionsFR extends Fragment {
 	private static String TAG = RegistrationOptionsFR.class.getSimpleName();
@@ -51,6 +57,7 @@ public class RegistrationOptionsFR extends Fragment {
 	private FirebaseAuth mAuth;
 	private FirebaseAuth.AuthStateListener authStateListener;
 	private AccessTokenTracker accessTokenTracker;
+    private ProgressDialog progressDialog;
 	
 	public RegistrationOptionsFR() {
 		// Required empty public constructor
@@ -62,6 +69,7 @@ public class RegistrationOptionsFR extends Fragment {
 	                         Bundle savedInstanceState) {
 		viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
 		mCallbackManager = CallbackManager.Factory.create();
+        progressDialog=new ProgressDialog(getContext());
 		mAuth=FirebaseAuth.getInstance();
 		binding = FragmentRegistrationOptionsFRBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
@@ -128,17 +136,14 @@ public class RegistrationOptionsFR extends Fragment {
 		viewModel.getFirebaseAuth().signInWithCredential(credential).addOnSuccessListener(authResult -> {
 			if(authResult.getUser() != null){
 				Log.d(TAG, "firebaseAuthWithGoogle: success");
-				viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
-				if(!viewModel.isRegChoiceisParent()){
-					viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsChildFR);
-				}else{
-					viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsParentFR);
-				}
+				checkExistence();
 			}else{
 				Log.d(TAG, "firebaseAuthWithGoogle: dismissed");
 			}
 		});
 	}
+
+
 	private void handleFacebookAccessToken(AccessToken token) {
 		Log.d("myfb", "handleFacebookAccessToken:" + token);
 
@@ -148,13 +153,7 @@ public class RegistrationOptionsFR extends Fragment {
 					@Override
 					public void onComplete(@NonNull Task<AuthResult> task) {
 								if (task.isSuccessful()) {
-									viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
-									if (!viewModel.isRegChoiceisParent()) {
-										viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsChildFR);
-									} else {
-										viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsParentFR);
-									}
-
+									checkExistence();
 									// ...
 								} else {
 									Log.d(TAG, "firebaseAuthWithFacebook: dismissed");
@@ -163,4 +162,36 @@ public class RegistrationOptionsFR extends Fragment {
 						});
 
 	}
+	private void checkExistence() {
+        String currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        progressDialog.setTitle("Please Wait");
+        progressDialog.setMessage("This will only take few Seconds...");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+        //Toast.makeText(getContext(), "No such user exists", Toast.LENGTH_LONG).show();
+        FirebaseFirestore.getInstance().collection("Users").document(currentuserid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.getResult().exists()) {
+                    FirebaseAuth.getInstance().signOut();
+                    progressDialog.dismiss();
+                    Toast.makeText(getContext(),"User  already exists..Login instead",Toast.LENGTH_LONG).show();
+                    viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_LoginResgister);
+                } else {
+                	progressDialog.dismiss();
+                    viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
+                    if (!viewModel.isRegChoiceisParent()) {
+                        viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsChildFR);
+                    } else {
+                        viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_registerAsParentFR);
+                    }
+
+
+                }
+            }
+        });
+
 	}
+
+
+}
