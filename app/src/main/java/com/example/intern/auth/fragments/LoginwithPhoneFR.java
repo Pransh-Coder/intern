@@ -2,6 +2,7 @@ package com.example.intern.auth.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -41,6 +42,7 @@ public class LoginwithPhoneFR  extends Fragment {
     private PhoneLoginUiBinding binding;
     private AuthViewModel viewModel;
     private ProgressDialog progressDialog;
+    String phnno;
 
 
     public LoginwithPhoneFR() {
@@ -85,8 +87,8 @@ public class LoginwithPhoneFR  extends Fragment {
                 binding.etPhoneNumber.setVisibility(View.INVISIBLE);
             }
         };
-        binding.btnGetOtp.setOnClickListener(v -> {
-            String phnno = binding.etPhoneNumber.getText().toString();
+        binding.btnOtp.setOnClickListener(v -> {
+            phnno = binding.etPhoneNumber.getText().toString();
             if (TextUtils.isEmpty(phnno)) {
                 binding.etPhoneNumber.setError("Phone Number is invalid");
             } else {
@@ -94,7 +96,14 @@ public class LoginwithPhoneFR  extends Fragment {
                 loadingbar.setMessage("Please wait,while we authenticate your phone");
                 loadingbar.setCanceledOnTouchOutside(false);
                 loadingbar.show();
-
+                binding.btnOtp.setVisibility(View.INVISIBLE);
+                binding.etPhoneNumber.setVisibility(View.INVISIBLE);
+                binding.tvOTP.setVisibility(View.INVISIBLE);
+                binding.code91.setVisibility(View.INVISIBLE);
+                binding.etOtp.setVisibility(View.VISIBLE);
+                binding.btnCancel.setVisibility(View.VISIBLE);
+                binding.btnLogin.setVisibility(View.VISIBLE);
+                binding.btnResendotp.setVisibility(View.VISIBLE);
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+91" + phnno,        // Phone number to verify
                         60,                 // Timeout duration
@@ -102,6 +111,19 @@ public class LoginwithPhoneFR  extends Fragment {
                         requireActivity(),               // Activity (for callback binding)
                         callbacks);        // OnVerificationStateChangedCallbacks
             }
+        });
+        binding.btnResendotp.setOnClickListener(v ->
+        {
+            loadingbar.setTitle("Phone Verification");
+            loadingbar.setMessage("Resending code...");
+            loadingbar.setCanceledOnTouchOutside(false);
+            loadingbar.show();
+            PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                    "+91" + phnno,        // Phone number to verify
+                    60,                 // Timeout duration
+                    TimeUnit.SECONDS,   // Unit of timeout
+                    requireActivity(),               // Activity (for callback binding)
+                    callbacks);
         });
         binding.btnLogin.setOnClickListener(v -> {
             String code = binding.etOtp.getText().toString();
@@ -165,7 +187,7 @@ public class LoginwithPhoneFR  extends Fragment {
                     } else if(state.equals("1")){
                         progressDialog.dismiss();
                         FirebaseAuth.getInstance().signOut();
-                        //Toast.makeText(getContext(),"User already Logged in from another device...Logout First!!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),"User already Logged in from another device...Logout First!!",Toast.LENGTH_LONG).show();
                         viewModel.getNavController().navigate(R.id.action_LoginwithPhoneFR_toLoginRegister);
 
                     }

@@ -68,8 +68,7 @@ public class RegistrationOptionsFR extends Fragment {
 		binding = LoginUiBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
 		progressDialog=new ProgressDialog(getContext());
-
-
+		binding.tvmascot.setText("Signup");
 		return view;
 	}
 	
@@ -77,7 +76,7 @@ public class RegistrationOptionsFR extends Fragment {
 	public void onStart() {
 		super.onStart();
 		//TODO:
-		binding.mascot.setText("Signup");
+
 		binding.googleSignIn.setOnClickListener(v->{
 			Intent intent = viewModel.getGoogleSignInClient().getSignInIntent();
 			startActivityForResult(intent, G_SIGN_IN_REQ_CODE);

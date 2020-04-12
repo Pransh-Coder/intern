@@ -1,6 +1,7 @@
 package com.example.intern.auth.fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -17,12 +18,24 @@ import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.PhoneLoginUiBinding;
+import com.example.intern.mainapp.MainApp;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class PhoneRegistrationFR extends Fragment {
@@ -31,6 +44,8 @@ public class PhoneRegistrationFR extends Fragment {
 	private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
 	private PhoneLoginUiBinding binding;
 	private AuthViewModel viewModel;
+	private String phnno;
+	private ProgressDialog progressDialog;
 	public PhoneRegistrationFR() {
 		// Required empty public constructor
 	}
@@ -41,6 +56,8 @@ public class PhoneRegistrationFR extends Fragment {
 		binding = PhoneLoginUiBinding.inflate(inflater, container, false);
 		viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
 		View view = binding.getRoot();
+		binding.tvmascot.setText("Signup");
+		progressDialog = new ProgressDialog(getContext());
 		return view;
 	}
 	
@@ -71,16 +88,23 @@ public class PhoneRegistrationFR extends Fragment {
 				binding.etPhoneNumber.setVisibility(View.INVISIBLE);
 			}
 		};
-		binding.btnGetOtp.setOnClickListener(v -> {
-			String phnno= binding.etPhoneNumber.getText().toString();
-			if (phnno.isEmpty()) {
+		binding.btnOtp.setOnClickListener(v -> {
+			phnno = binding.etPhoneNumber.getText().toString();
+			if (TextUtils.isEmpty(phnno)) {
 				binding.etPhoneNumber.setError("Phone Number is invalid");
 			} else {
 				loadingbar.setTitle("Phone Verification");
 				loadingbar.setMessage("Please wait,while we authenticate your phone");
 				loadingbar.setCanceledOnTouchOutside(false);
 				loadingbar.show();
-				
+				binding.btnOtp.setVisibility(View.INVISIBLE);
+				binding.etPhoneNumber.setVisibility(View.INVISIBLE);
+				binding.tvOTP.setVisibility(View.INVISIBLE);
+				binding.code91.setVisibility(View.INVISIBLE);
+				binding.etOtp.setVisibility(View.VISIBLE);
+				binding.btnCancel.setVisibility(View.VISIBLE);
+				binding.btnLogin.setVisibility(View.VISIBLE);
+				binding.btnResendotp.setVisibility(View.VISIBLE);
 				PhoneAuthProvider.getInstance().verifyPhoneNumber(
 						"+91" + phnno,        // Phone number to verify
 						60,                 // Timeout duration
@@ -88,6 +112,19 @@ public class PhoneRegistrationFR extends Fragment {
 						requireActivity(),               // Activity (for callback binding)
 						callbacks);        // OnVerificationStateChangedCallbacks
 			}
+		});
+		binding.btnResendotp.setOnClickListener(v ->
+		{
+			loadingbar.setTitle("Phone Verification");
+			loadingbar.setMessage("Resending code...");
+			loadingbar.setCanceledOnTouchOutside(false);
+			loadingbar.show();
+			PhoneAuthProvider.getInstance().verifyPhoneNumber(
+					"+91" + phnno,        // Phone number to verify
+					60,                 // Timeout duration
+					TimeUnit.SECONDS,   // Unit of timeout
+					requireActivity(),               // Activity (for callback binding)
+					callbacks);
 		});
 		binding.btnLogin.setOnClickListener(v -> {
 			String code = binding.etOtp.getText().toString();
@@ -103,32 +140,50 @@ public class PhoneRegistrationFR extends Fragment {
 			}
 		});
 	}
-	
-	
+
+
 	private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
 		viewModel.getFirebaseAuth().signInWithCredential(credential)
-				.addOnCompleteListener(requireActivity(), task -> {
-					if (task.isSuccessful()) {
-						loadingbar.dismiss();
-						AuthResult authResult = task.getResult();
-						if(authResult != null){
-							FirebaseUser user = authResult.getUser();
-							if(user != null){
-								FireStoreUtil.getUserDocumentReference(requireContext(), user.getUid()).addSnapshotListener((snapshot, e) -> {
-									if(snapshot != null && snapshot.exists()){
-										//TODO : User Exists already, log in
-										viewModel.getPrefUtil().updateSharedPrefsPostLogin(snapshot);
-										viewModel.getLoggedInListener().isLoggedIn(true);
-									}
-								});
-							}
+				.addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
+					@Override
+					public void onComplete(@NonNull Task<AuthResult> task) {
+						if (task.isSuccessful()) {
+							loadingbar.dismiss();
+							checkExistence();
+						} else {
+							String msg = task.getException().toString();
+							Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show();
 						}
-						Toast.makeText(requireContext(), "Logged in Successfully", Toast.LENGTH_LONG).show();
-						viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsChildFR);
-					} else {
-						String msg = task.getException().toString();
-						Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show();
 					}
 				});
 	}
+	private void checkExistence() {
+		String currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+		progressDialog.setTitle("Please Wait");
+		progressDialog.setMessage("This will only take few Seconds...");
+		progressDialog.setCanceledOnTouchOutside(false);
+		progressDialog.show();
+		//Toast.makeText(getContext(), "No such user exists", Toast.LENGTH_LONG).show();
+		FirebaseFirestore.getInstance().collection("Users").document(currentuserid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+			@Override
+			public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+				if (task.getResult().exists()) {
+					progressDialog.dismiss();
+					Toast.makeText(getContext(),"User  already exists..Login instead",Toast.LENGTH_LONG).show();
+					viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_LoginRegister);
+				}
+				else {
+					progressDialog.dismiss();
+					viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
+					if (!viewModel.isRegChoiceisParent()) {
+						viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsChildFR);
+					} else {
+						viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsParentFR);
+					}
+				}
+			}
+		});
+
+	}
+
 }

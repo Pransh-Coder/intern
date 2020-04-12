@@ -17,6 +17,7 @@
 		app:layout_constraintTop_toTopOf="parent"/>
 	
 	<TextView
+		android:id="@+id/tvmascot"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:fontFamily="@font/century_gothic_400"
@@ -63,6 +64,7 @@
 			android:layout_height="wrap_content"
 			android:orientation="horizontal">
 			<TextView
+				android:id="@+id/code91"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:background="@drawable/button_rounded"
@@ -77,53 +79,109 @@
 				android:layout_height="match_parent"
 				android:layout_marginLeft="10dp"
 				android:layout_weight="1"
+				android:hint="Your Mobile Number"
 				android:background="@drawable/button_rounded"
 				android:fontFamily="@font/century_gothic_400"
 				android:inputType="number"
 				android:maxLength="10"
 				android:padding="10dp"
-				android:textSize="25dp"/>
+				android:textSize="25dp"></EditText>
+
 		</LinearLayout>
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
 		<TextView
-			android:id="@+id/btn_get_otp"
+			android:id="@+id/tvOTP"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="10dp"
+			android:layout_marginTop="25dp"
 			android:fontFamily="@font/century_gothic_400"
-			android:text="Verify Using OTP"
+			android:text="Verify Mobile Number Via"
 			android:textAlignment="center"
 			android:textColor="@color/black"
 			android:textSize="25dp"/>
 		<EditText
 			android:id="@+id/et_otp"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:layout_marginLeft="70dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginRight="70dp"
+			android:layout_weight="1"
+			android:layout_marginTop="0dp"
+			android:hint="Enter Otp Here"
 			android:background="@drawable/button_rounded"
 			android:fontFamily="@font/century_gothic_400"
-			android:hint="Enter OTP"
 			android:inputType="number"
-			android:maxLength="6"
-			android:padding = "10dp"
-			android:textAlignment="center"
-			android:textColor="@color/black"
+			android:maxLength="10"
+			android:padding="10dp"
+			android:visibility="invisible"
 			android:textSize="25dp"/>
 		<Button
-			android:id="@+id/btn_login"
+			android:id="@+id/btn_otp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
-			android:layout_marginTop="40dp"
+			android:layout_marginTop="10dp"
 			android:background="@drawable/button_rounded"
 			android:fontFamily="@font/century_gothic_400"
+			android:layout_below="@id/et_otp"
+			android:layout_centerHorizontal="true"
 			android:padding="10dp"
-			android:text="Log In"
+			android:text="OTP"
 			android:textAllCaps="false"
 			android:textSize="25dp"
 			android:textStyle="bold"/>
+		</RelativeLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="horizontal">
+			<Button
+				android:id="@+id/btn_Cancel"
+				android:layout_width="150dp"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:background="@drawable/round_button_cancel"
+				android:fontFamily="@font/century_gothic_400"
+				android:padding="10dp"
+				android:layout_marginRight="10dp"
+				android:text="Cancel"
+				android:textAllCaps="false"
+				android:textSize="25dp"
+				android:visibility="invisible"
+				android:textStyle="bold"/>
+			<Button
+				android:id="@+id/btn_login"
+				android:layout_width="150dp"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginLeft="10dp"
+				android:background="@drawable/round_login_button"
+				android:fontFamily="@font/century_gothic_400"
+				android:padding="10dp"
+				android:text="Log In"
+				android:textAllCaps="false"
+				android:visibility="invisible"
+				android:textSize="25dp"
+				android:textStyle="bold"/>
+		</LinearLayout>
+		<TextView
+			android:id="@+id/btn_resendotp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginTop="10dp"
+			android:layout_marginLeft="10dp"
+			android:textAlignment="center"
+			android:background="#FFFFFF"
+			android:fontFamily="@font/century_gothic_400"
+			android:padding="10dp"
+			android:text="Resend OTP"
+			android:textAllCaps="false"
+			android:visibility="invisible"
+			android:textSize="25dp"
+			android:textStyle="bold"
+			android:textColor="@color/black"/>
 	</LinearLayout>
 	<!--<LinearLayout
 		android:id="@+id/google_sign_in"
