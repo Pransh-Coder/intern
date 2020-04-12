@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,8 +28,11 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -64,6 +68,8 @@ public class RegistrationOptionsFR extends Fragment {
 		binding = LoginUiBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
 		progressDialog=new ProgressDialog(getContext());
+
+
 		return view;
 	}
 	
@@ -71,6 +77,7 @@ public class RegistrationOptionsFR extends Fragment {
 	public void onStart() {
 		super.onStart();
 		//TODO:
+		binding.mascot.setText("Signup");
 		binding.googleSignIn.setOnClickListener(v->{
 			Intent intent = viewModel.getGoogleSignInClient().getSignInIntent();
 			startActivityForResult(intent, G_SIGN_IN_REQ_CODE);
@@ -160,11 +167,12 @@ public class RegistrationOptionsFR extends Fragment {
 			@Override
 			public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 				if (task.getResult().exists()) {
-					FirebaseAuth.getInstance().signOut();
 					progressDialog.dismiss();
 					Toast.makeText(getContext(),"User  already exists..Login instead",Toast.LENGTH_LONG).show();
-					viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_LoginResgister);
-				} else {
+                    signoutUser();
+                    viewModel.getNavController().navigate(R.id.action_registrationOptionsFR_to_LoginResgister);
+				}
+				else {
 					progressDialog.dismiss();
 					viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
 					if (!viewModel.isRegChoiceisParent()) {
@@ -177,4 +185,24 @@ public class RegistrationOptionsFR extends Fragment {
 		});
 
 	}
-	}
+
+    private void signoutUser() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+        // Firebase sign out
+        FirebaseAuth.getInstance().signOut();
+
+        // Google revoke access
+        mGoogleSignInClient.revokeAccess().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+
+            }
+        });
+
+    }
+    }
