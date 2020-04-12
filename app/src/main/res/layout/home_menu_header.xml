@@ -61,11 +61,11 @@
 		android:src="@android:drawable/ic_lock_power_off"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintTop_toTopOf="parent"/>
-		
+
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/guide_ver_80_per"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.85"/>
+		app:layout_constraintGuide_percent="0.85" />
 </androidx.constraintlayout.widget.ConstraintLayout>

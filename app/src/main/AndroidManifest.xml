@@ -110,6 +110,7 @@
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		<activity android:name=".payment.BecomeAMember" />
 		<activity android:name=".Gifts" />
+		<activity android:name=".HomeActivity" />
 	</application>
 
 </manifest>
