@@ -47,6 +47,7 @@
 			android:windowSoftInputMode="stateHidden">
 		</activity>
 		<activity android:name=".Splash"
+			android:noHistory="true"
 			android:launchMode="singleTop">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -73,6 +74,7 @@
 		
 		<activity
 			android:name=".auth.AuthActivity"
+			android:noHistory="true"
 			android:launchMode="singleTop" />
 		<activity android:name=".socialnetwork.SocialActivity" />
 		<activity android:name=".MedicalRecords.Vitals"/>
@@ -106,11 +108,13 @@
 			android:name="save_money.Offers.Patholgy_LaborartoryOffers"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		<activity android:name=".payment.StandardPaymentActivity"
+			android:noHistory="true"
 			android:launchMode="singleTop"/>
 		<activity
 			android:name="save_money.Offers.PhysiotherapyOffers"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		<activity android:name=".payment.BecomeAMember"
+			android:noHistory="true"
 			android:launchMode="singleTop"/>
 		<activity android:name=".Gifts" />
 	</application>
