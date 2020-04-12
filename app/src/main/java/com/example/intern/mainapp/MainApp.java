@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -36,6 +37,8 @@ import com.example.intern.tnc.TermsAndConditions;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -157,12 +160,16 @@ public class MainApp extends AppCompatActivity {
 								.update(data).addOnSuccessListener(aVoid -> {
 									prefUtil.getPreferences().edit().clear().apply();
 									FirebaseAuth.getInstance().signOut();
-									signInClient.signOut().addOnSuccessListener(aVoid1 -> {
+									// Google revoke access
+								signInClient.revokeAccess().addOnSuccessListener(aVoid1 -> {
 										new AlertDialog.Builder(context).setTitle("You have been logged out!")
 												.setPositiveButton("OK", (dialog, which1) -> {
 													if(which1==AlertDialog.BUTTON_POSITIVE)finishAndRemoveTask();
+													finish();
+
 												}).setCancelable(false).show();
 									});
+								finish();
 								});
 					}
 				}).setNegativeButton("No", null).show());
