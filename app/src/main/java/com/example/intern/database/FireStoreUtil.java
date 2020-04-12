@@ -55,6 +55,8 @@ public abstract class FireStoreUtil {
 	public static String USER_STATE= "LS";
 	public static String USER_OCCUPATION = "occ";
 	public static String USER_ADDRESS = "add";
+	public static String USER_IS_A_MEMBER = "ums";
+	public static String USER_IS_BANK_USER = "bu";
 	
 	//References needs to be synchronised
 	private static volatile FirebaseApp firebaseApp;
