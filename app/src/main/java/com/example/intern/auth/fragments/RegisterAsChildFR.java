@@ -94,15 +94,11 @@ public class RegisterAsChildFR extends Fragment {
 		binding.btnRegisterasChildSignIn.setOnClickListener(v->{
 			String name = binding.etName.getText().toString();
 			String DOB = binding.etDOB.getText().toString();
-			String password = binding.etPassword.getText().toString();
 			if(name.isEmpty()){
 				binding.etName.setError("Name Cannot Be Empty");return;
 			}
 			if(DOB.isEmpty()){
 				binding.etDOB.setError("DOB Cannot Be Empty");return;
-			}
-			if(password.isEmpty()){
-				binding.etPassword.setError("Password Cannot Be Empty");return;
 			}
 			if(pinCode != null && pinCode.length() == 6){
 				String nick_name = binding.etNickName.getText().toString();
@@ -121,6 +117,7 @@ public class RegisterAsChildFR extends Fragment {
 							viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
 									DOB, pinCode, child_number, parent_number);
 							Intent intent = new Intent(requireContext(), MainApp.class);
+							intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 							startActivity(intent);
 						});
 			}else {

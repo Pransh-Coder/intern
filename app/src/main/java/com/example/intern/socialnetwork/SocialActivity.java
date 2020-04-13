@@ -1,5 +1,6 @@
 package com.example.intern.socialnetwork;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.sax.StartElementListener;
 import android.util.Log;
@@ -44,6 +45,7 @@ public class SocialActivity extends AppCompatActivity {
 	private ArrayAdapter<String> arrayadapter;
 	private ArrayList<String> listOfFriend = new ArrayList<>();
 	Set<String> set = new HashSet<>();
+	private ProgressDialog progressDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class SocialActivity extends AppCompatActivity {
 		list_view = (ListView) findViewById(R.id.list_view);
 		fstore = FirebaseFirestore.getInstance();
 		uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+		progressDialog = new ProgressDialog(SocialActivity.this);
 		initializefileds();
 		retrivePincode();
 
@@ -81,16 +84,20 @@ public class SocialActivity extends AppCompatActivity {
 
 
 					} else {
-						Toast.makeText(SocialActivity.this, "No such document", Toast.LENGTH_LONG).show();
+						//Toast.makeText(SocialActivity.this, "No such document", Toast.LENGTH_LONG).show();
 					}
 				} else {
-					Toast.makeText(SocialActivity.this, "No such document", Toast.LENGTH_LONG).show();
+					//Toast.makeText(SocialActivity.this, "No such document", Toast.LENGTH_LONG).show();
 				}
 			}
 		});
 	}
 
 	private void retriveClust() {
+		progressDialog.setTitle("Please Wait");
+		progressDialog.setMessage("We are Fetching Friends near by you");
+		progressDialog.setCanceledOnTouchOutside(false);
+		progressDialog.show();
 		//Toast.makeText(SocialActivity.this, "In clust", Toast.LENGTH_LONG).show();
 		DocumentReference docRefUclust = fstore.collection("uclust").document(pinCode);
 		docRefUclust.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -106,6 +113,9 @@ public class SocialActivity extends AppCompatActivity {
 						}
 						list.remove(uid);
 						Iterator<String> iterator = list.iterator();
+						Toast.makeText(SocialActivity.this,"We got some Friends for you!! ", Toast.LENGTH_LONG).show();
+						progressDialog.dismiss();
+
 						for(String user:list)
 						{
 							getUsername(user);
@@ -124,9 +134,11 @@ public class SocialActivity extends AppCompatActivity {
                        */
 
 					} else {
+						progressDialog.dismiss();
 						Log.d("IN Social Network", "No such document");
 					}
 				} else {
+					progressDialog.dismiss();
 					Log.d("In Social Netowrk", "get failed with ", task.getException());
 				}
 			}
@@ -138,8 +150,8 @@ public class SocialActivity extends AppCompatActivity {
 
 
 	private void getUsername(String user) {
-		Toast.makeText(SocialActivity.this, user, Toast.LENGTH_LONG).show();
-		Toast.makeText(SocialActivity.this, uid, Toast.LENGTH_LONG).show();
+		//Toast.makeText(SocialActivity.this, user, Toast.LENGTH_LONG).show();
+		//Toast.makeText(SocialActivity.this, uid, Toast.LENGTH_LONG).show();
 		//if (user!=uid) {
 
 		DocumentReference docRef = fstore.collection("Users").document(user);
@@ -156,14 +168,14 @@ public class SocialActivity extends AppCompatActivity {
 
 
 				} else {
-					Toast.makeText(SocialActivity.this, "No such document in ", Toast.LENGTH_LONG).show();
+					//Toast.makeText(SocialActivity.this, "No such document in ", Toast.LENGTH_LONG).show();
 				}
 			}
 
 		}).addOnFailureListener(new OnFailureListener() {
 			@Override
 			public void onFailure(@NonNull Exception e) {
-				Toast.makeText(SocialActivity.this, "No such document", Toast.LENGTH_LONG).show();
+				//Toast.makeText(SocialActivity.this, "No such document", Toast.LENGTH_LONG).show();
 			}
 		});
 	}
