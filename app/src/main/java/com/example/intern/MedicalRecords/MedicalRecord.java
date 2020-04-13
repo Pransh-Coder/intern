@@ -12,6 +12,7 @@ import com.example.intern.EditProfile.EditProfile;
 import com.example.intern.R;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityMedicalRecordBinding;
+import com.example.intern.mainapp.MainApp;
 
 public class MedicalRecord extends AppCompatActivity {
     private ActivityMedicalRecordBinding binding;
@@ -42,6 +43,15 @@ public class MedicalRecord extends AppCompatActivity {
                 Intent intent = new Intent(MedicalRecord.this, Vitals.class);
                 startActivity(intent);
             }
+        });
+        binding.back.setOnClickListener(v->{
+            onBackPressed();
+            finish();
+        });
+        binding.homeBtn.setOnClickListener(v->{
+            Intent intent = new Intent(this, MainApp.class);
+            startActivity(intent);
+            finish();
         });
     }
     
