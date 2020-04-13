@@ -38,6 +38,7 @@
         app:srcCompat="@drawable/icons_mascot_47" />
 
     <ImageView
+        android:id="@+id/pslogo"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/icons_mascot_43"
@@ -56,6 +57,43 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hor_20" />
+    
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/pslogo"
+        app:layout_constraintLeft_toRightOf="@id/guide_5_ver_per"
+        app:layout_constraintRight_toLeftOf="@id/guide_95_ver_per"
+        app:layout_constraintTop_toBottomOf="@id/guide_30_hor_per">
+        <TextView
+            android:id="@+id/tv_termsnconditions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/century_gothic_400"
+            android:textColor="@color/black"
+            android:textSize="16dp"/>
+    </ScrollView>
+    
+    
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_30_hor_per"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_5_ver_per"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_95_ver_per"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor_20"

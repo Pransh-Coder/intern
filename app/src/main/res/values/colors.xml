@@ -6,4 +6,6 @@
     <color name="yellow">#FFFF00</color>
     <color name="black">#000</color>
     <color name="white">#fff</color>
+    <color name="light_orange">#ffaa00</color>
+    <color name="green_default">#364900</color>
 </resources>
