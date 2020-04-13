@@ -21,4 +21,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    
+    <style name="NavigationMenuStyle">
+        <item name="android:textSize">15dp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">@font/century_gothic_400</item>
+    </style>
 </resources>
