@@ -31,6 +31,7 @@ import com.example.intern.fuel.FuelBPCLACT;
 import com.example.intern.payment.BecomeAMember;
 import com.example.intern.payment.auth.RazorPayAuthAPI;
 import com.example.intern.shopping.ActivityShopping;
+import com.example.intern.socialnetwork.Listactivity;
 import com.example.intern.socialnetwork.SocialActivity;
 import com.example.intern.swabhiman.SwabhimanActivity;
 import com.example.intern.tnc.TermsAndConditions;
@@ -194,7 +195,7 @@ public class MainApp extends AppCompatActivity {
 					intent = new Intent(this, TotalDiscountReceived.class);
 					break;
 				case R.id.menu_local_net:
-					intent = new Intent(this, SocialActivity.class);
+					intent = new Intent(this, Listactivity.class);
 					break;
 				case R.id.menu_newsnupdates:
 					intent = new Intent(this, NewsAndUpdatesACT.class);

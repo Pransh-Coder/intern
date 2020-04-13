@@ -40,7 +40,7 @@ public class SocialActivity extends AppCompatActivity {
 	private FragmentSocialNetworkBinding binding;
 	FirebaseFirestore fstore;
 	String uid;
-	String name;
+	String name,occ;
 	private ListView list_view;
 	private ArrayAdapter<String> arrayadapter;
 	private ArrayList<String> listOfFriend = new ArrayList<>();
@@ -161,9 +161,13 @@ public class SocialActivity extends AppCompatActivity {
 				if (documentSnapshot.exists()) {
 					//Toast.makeText(SocialActivity.this, "got in", Toast.LENGTH_LONG).show();
 					name = documentSnapshot.getString("un");
+					occ=documentSnapshot.getString("occ");
+
 					//Toast.makeText(SocialActivity.this,name,Toast.LENGTH_LONG).show();
 					set.add(name);
+					//set.add(occ);
 					listOfFriend.add(name);
+					//listOfFriend.add(occ);
 					arrayadapter.notifyDataSetChanged();
 
 
