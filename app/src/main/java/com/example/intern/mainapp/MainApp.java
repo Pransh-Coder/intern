@@ -187,18 +187,19 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 							Map<String, Object> updata = new HashMap<>();
 							updata.put("LS", "0");
 							FireStoreUtil.getUserDocumentReference(context, currentuserid).update(updata).addOnSuccessListener(aVoid -> {
-								prefUtil.getPreferences().edit().clear().commit();
+								prefUtil.getPreferences().edit().clear().apply();
 								FirebaseAuth.getInstance().signOut();
-								signInClient.revokeAccess().addOnSuccessListener(aVoid1 -> {
-									progressDialog.hide();
-									new AlertDialog.Builder(context).setTitle("You have been logged out!")
-											.setPositiveButton("OK", (dialog, which1) -> {
-												if(which1==AlertDialog.BUTTON_POSITIVE)finishAndRemoveTask();
-											}).setCancelable(false).show();
-								});
-								// Google revoke access
+								progressDialog.dismiss();
+								new AlertDialog.Builder(context).setTitle("You have been logged out!")
+										.setPositiveButton("OK", (dialog, which1) -> {
+											if(which1==AlertDialog.BUTTON_POSITIVE){
+												signInClient.revokeAccess().addOnSuccessListener(aVoid1 -> {
+													finishAndRemoveTask();
+												});
+											}
+										}).setCancelable(false).show();
 								}).addOnFailureListener(e -> {
-									progressDialog.hide();
+									progressDialog.dismiss();
 									new AlertDialog.Builder(context).setTitle("Cannot Connect to the Internet")
 											.setPositiveButton("OK", null).show();
 								});
