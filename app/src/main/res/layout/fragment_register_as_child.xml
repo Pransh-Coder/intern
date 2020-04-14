@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_child_number" />
 
     <EditText
-        android:id="@+id/et_parent_number"
+        android:id="@+id/et_par_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableBottom="@drawable/backgroun_et"
@@ -120,10 +120,12 @@
 
     <TextView
         android:id="@+id/et_DOB"
+        android:focusable="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableBottom="@drawable/backgroun_et"
-        android:hint="              "
+        android:text="Pick A Date"
+        android:textColor="@color/black"
         android:padding="10dp"
         android:textColorHint="#000000"
         app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"

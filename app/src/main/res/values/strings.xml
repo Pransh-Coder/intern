@@ -28,6 +28,17 @@
         <item>Yes</item>
         <item>No</item>
     </string-array>
+    <string-array name="menu_main">
+        <item>Reduce Your Expenses</item>
+        <item>Total Discount Received</item>
+        <item>Edit Profile</item>
+        <item>Medical Records</item>
+        <item>Local Network</item>
+        <item>News And Updates</item>
+        <item>Feedback/Complaints</item>
+        <item>Rate/Share App</item>
+        <item>Terms And Conditions</item>
+    </string-array>
 
     <string name="more_about_special_offers">Tell us more about \nyour special offers</string>
     <string name="date_time">Date &amp; Time</string>

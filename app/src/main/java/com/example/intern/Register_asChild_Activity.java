@@ -1,8 +1,5 @@
 package com.example.intern;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +9,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,7 +41,7 @@ public class Register_asChild_Activity extends AppCompatActivity implements Date
         petname=findViewById(R.id.et_nick_name);
         pspetnem=findViewById(R.id.et_ps_nick_name);
         dob=findViewById(R.id.et_DOB);
-        phn=findViewById(R.id.et_parent_number);
+        phn=findViewById(R.id.et_par_number);
         pincode=findViewById(R.id.et_pin_code);
         fauth=FirebaseAuth.getInstance();
         fstore=FirebaseFirestore.getInstance();

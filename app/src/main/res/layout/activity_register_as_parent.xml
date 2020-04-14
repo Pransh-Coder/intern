@@ -101,13 +101,13 @@
         android:text="*Your Child Number:"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/et_child_number"
+        app:layout_constraintBottom_toBottomOf="@+id/et_par_number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_child_number"
+        app:layout_constraintTop_toTopOf="@+id/et_par_number"
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/et_child_number"
+        android:id="@+id/et_par_number"
         android:layout_width="180dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
@@ -149,7 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/register_asParent_tvDateofBirth"
-        app:layout_constraintTop_toBottomOf="@+id/et_child_number" />
+        app:layout_constraintTop_toBottomOf="@+id/et_par_number" />
 
     <TextView
         android:id="@+id/register_asParent_tvPincode"
