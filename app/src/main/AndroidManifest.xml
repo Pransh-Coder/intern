@@ -79,7 +79,6 @@
 			android:name=".auth.AuthActivity"
 			android:noHistory="true"
 			android:launchMode="singleTop" />
-		<activity android:name=".socialnetwork.SocialActivity" />
 		<activity android:name=".MedicalRecords.Vitals"/>
 		<activity android:name=".holiday_list" />
 		<activity android:name=".lifestyle_list" />
