@@ -35,6 +35,13 @@
                 android:textStyle="italic"
                 android:layout_below="@+id/occ"
                 android:text="Age"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_below="@id/age"
+                android:elevation="10dp"
+                android:background="#000" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
