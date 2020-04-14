@@ -60,6 +60,7 @@ public class RegisterAsChildFR extends Fragment {
 	private void updateLabel(){
 		hasSelectedDate = true;
 		 dateTimeStamp = Long.toString(calendar.getTimeInMillis());
+		 binding.etDOB.setText(calendar.get(Calendar.DAY_OF_MONTH) + " / " + calendar.get(Calendar.MONTH) + " / "  + calendar.get(Calendar.YEAR));
 	}
 	
 	public RegisterAsChildFR() {

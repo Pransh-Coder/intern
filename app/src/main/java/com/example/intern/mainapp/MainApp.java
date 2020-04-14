@@ -194,10 +194,11 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 										.setPositiveButton("OK", (dialog, which1) -> {
 											if(which1==AlertDialog.BUTTON_POSITIVE){
 												signInClient.revokeAccess().addOnSuccessListener(aVoid1 -> {
-													finishAndRemoveTask();
+													finish();
 												});
 											}
 										}).setCancelable(false).show();
+								finish();
 								}).addOnFailureListener(e -> {
 									progressDialog.dismiss();
 									new AlertDialog.Builder(context).setTitle("Cannot Connect to the Internet")
