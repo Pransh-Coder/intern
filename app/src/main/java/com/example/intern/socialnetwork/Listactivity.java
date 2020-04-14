@@ -1,8 +1,12 @@
 package com.example.intern.socialnetwork;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,6 +40,7 @@ public class Listactivity extends AppCompatActivity {
     FirebaseFirestore fstore;
     String uid;
     private ProgressDialog progressDialog;
+    private TextView findFriend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +57,26 @@ public class Listactivity extends AppCompatActivity {
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         progressDialog = new ProgressDialog(Listactivity.this);
         recyclerView = findViewById(R.id.recyclerView);
+        findFriend=findViewById(R.id.frnd);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
         listItems = new ArrayList<>();
         initializeField();
         retrivePincode();
+        findFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url="www.facebook.com/100048302199380/posts/103998251220248/?flite=scwspnss&extid=F4JcEbHahGEZ4dVu";
+                Uri u=Uri.parse("https://"+url);
+                Intent i =new Intent(Intent.ACTION_VIEW,u);
+                startActivity(i);
+
+
+
+            }
+        });
+
 
 
 
