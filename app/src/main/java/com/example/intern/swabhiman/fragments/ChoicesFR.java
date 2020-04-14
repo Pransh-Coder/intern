@@ -48,5 +48,11 @@ public class ChoicesFR extends Fragment {
 		}else{
 			viewModel.getNavController().navigate(R.id.action_choicesFR_to_tnCFR);
 		}
+		binding.ivBackButton.setOnClickListener(v->{
+			requireActivity().onBackPressed();
+		});
+		binding.ivHomeButton.setOnClickListener(v->{
+			requireActivity().onBackPressed();
+		});
 	}
 }

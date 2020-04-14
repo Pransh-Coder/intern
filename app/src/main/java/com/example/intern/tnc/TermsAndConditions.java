@@ -1,5 +1,6 @@
 package com.example.intern.tnc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.R;
+import com.example.intern.mainapp.MainApp;
 
 public class TermsAndConditions extends AppCompatActivity {
     private static String tnc = "<p><font size = \"20\">Terms and Conditions</font><br><br></p>\n" +
@@ -147,5 +149,13 @@ public class TermsAndConditions extends AppCompatActivity {
         setContentView(R.layout.activity_terms_and_conditions);
         TextView textView = findViewById(R.id.tv_termsnconditions);
         textView.setText(Html.fromHtml(tnc));
+        findViewById(R.id.iv_back_button).setOnClickListener(v->{
+            Intent intent = new Intent(this, MainApp.class);
+            startActivity(intent);
+            finish();
+        });
+        findViewById(R.id.iv_back_button).setOnClickListener(v->{
+            onBackPressed();
+        });
     }
 }

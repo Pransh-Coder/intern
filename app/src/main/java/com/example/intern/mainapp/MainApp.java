@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.intern.EditProfile.EditProfile;
+import com.example.intern.ExclusiveServices;
 import com.example.intern.FeedBackOrComplaintACT;
 import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.NewsAndUpdatesACT;
@@ -26,19 +27,18 @@ import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityMainAppBinding;
 import com.example.intern.databinding.HomeMenuHeaderBinding;
-import com.example.intern.fuel.FuelBPCLACT;
+import com.example.intern.fuel.FuelWithUsAct;
 import com.example.intern.payment.BecomeAMember;
 import com.example.intern.payment.auth.RazorPayAuthAPI;
 import com.example.intern.shopping.ActivityShopping;
 import com.example.intern.socialnetwork.Listactivity;
-import com.example.intern.socialnetwork.SocialActivity;
 import com.example.intern.swabhiman.SwabhimanActivity;
 import com.example.intern.tnc.TermsAndConditions;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -150,7 +150,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			startActivity(intent);
 		});
 		binding.bpclfuel.setOnClickListener(v->{
-			Intent intent = new Intent(this, FuelBPCLACT.class);
+			Intent intent = new Intent(this, FuelWithUsAct.class);
 			startActivity(intent);
 		});
 		binding.requestService.setOnClickListener(v->{
@@ -158,7 +158,8 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			startActivity(intent);
 		});
 		binding.exclusiveServices.setOnClickListener(v->{
-		
+			Intent intent = new Intent(this, ExclusiveServices.class);
+			startActivity(intent);
 		});
 	}
 	
@@ -167,25 +168,40 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			Intent intent = new Intent(MainApp.this, EditProfile.class);
 			startActivity(intent);
 		});
+		Context context = MainApp.this;
 		binding.duoMenu.getFooterView().findViewById(R.id.logout_button).setOnClickListener(v->{
 			new AlertDialog.Builder(this).setTitle("Log Out ?")
 					.setPositiveButton("Yes", (button, which)->{
 						if(which == AlertDialog.BUTTON_POSITIVE){
-							String currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-							Context context = MainApp.this;
-								prefUtil.getPreferences().edit().clear().apply();
+							ProgressDialog progressDialog = new ProgressDialog(this);
+							progressDialog.setTitle("Logging Out!");
+							progressDialog.show();
+							progressDialog.setCancelable(false);
+							FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+							String currentuserid;
+							if(user != null){
+								currentuserid = user.getUid();
+							}else{
+								currentuserid = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null);
+							}
+							Map<String, Object> updata = new HashMap<>();
+							updata.put("LS", "0");
+							FireStoreUtil.getUserDocumentReference(context, currentuserid).update(updata).addOnSuccessListener(aVoid -> {
+								prefUtil.getPreferences().edit().clear().commit();
 								FirebaseAuth.getInstance().signOut();
-								// Google revoke access
 								signInClient.revokeAccess().addOnSuccessListener(aVoid1 -> {
+									progressDialog.hide();
 									new AlertDialog.Builder(context).setTitle("You have been logged out!")
 											.setPositiveButton("OK", (dialog, which1) -> {
 												if(which1==AlertDialog.BUTTON_POSITIVE)finishAndRemoveTask();
-												finish();
-												
 											}).setCancelable(false).show();
 								});
-								finish();
-
+								// Google revoke access
+								}).addOnFailureListener(e -> {
+									progressDialog.hide();
+									new AlertDialog.Builder(context).setTitle("Cannot Connect to the Internet")
+											.setPositiveButton("OK", null).show();
+								});
 						}
 					}).setNegativeButton("No", null).show();
 		});

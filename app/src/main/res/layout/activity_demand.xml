@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/demand_button_back"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/back"
@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/demand_button_home"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="7dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/homeimg"
@@ -29,8 +29,8 @@
 
     <ImageView
         android:id="@+id/demand_notification"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:src="@drawable/notification"
@@ -139,8 +139,8 @@
 
     <ImageView
         android:id="@+id/ps_bottomLogo"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

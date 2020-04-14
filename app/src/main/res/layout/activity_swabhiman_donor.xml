@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/swabhiman_donor_button_back"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/back"
@@ -17,8 +17,8 @@
 
     <ImageView
         android:id="@+id/swabhiman_donor_button_home"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/homeimg"
@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/swabhiman_donor_button_notification"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:src="@drawable/notification"
@@ -37,8 +37,8 @@
 
     <ImageView
         android:id="@+id/swabhiman_donor_button_search"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="7dp"
         android:src="@drawable/search"
@@ -135,8 +135,8 @@
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

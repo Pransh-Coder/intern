@@ -1,6 +1,7 @@
 package com.example.intern.swabhiman.fragments;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.databinding.ActivitySwabhimanInvestorBinding;
 import com.example.intern.mailers.SwabhimanAutoMailer;
+import com.example.intern.mainapp.MainApp;
 import com.example.intern.swabhiman.SwabhimanVM;
 
 /**
@@ -55,6 +57,14 @@ public class InvestorFR extends Fragment {
 					Toast.makeText(requireContext(), "Don't you think it is too low?", Toast.LENGTH_LONG).show();
 				}
 			}
+		});
+		binding.ivBackButton.setOnClickListener(v->{
+			viewModel.getNavController().navigateUp();
+		});
+		binding.ivHomeButton.setOnClickListener(v->{
+			Intent intent = new Intent(requireContext(), MainApp.class);
+			startActivity(intent);
+			requireActivity().finish();
 		});
 	}
 }

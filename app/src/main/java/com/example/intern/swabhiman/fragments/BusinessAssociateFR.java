@@ -1,6 +1,7 @@
 package com.example.intern.swabhiman.fragments;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.databinding.ActivitySwabhimanBussinessAssociateBinding;
 import com.example.intern.mailers.SwabhimanAutoMailer;
+import com.example.intern.mainapp.MainApp;
 import com.example.intern.swabhiman.SwabhimanVM;
 
 public class BusinessAssociateFR extends Fragment {
@@ -43,6 +45,14 @@ public class BusinessAssociateFR extends Fragment {
 					viewModel.getNavController().navigateUp();
 						}).show();
 			}
+		});
+		binding.swabhimanBussinessAssociateButtonBack.setOnClickListener(v->{
+			viewModel.getNavController().navigateUp();
+		});
+		binding.swabhimanBussinessAssociateButtonHome.setOnClickListener(v->{
+			Intent intent = new Intent(requireContext(), MainApp.class);
+			startActivity(intent);
+			requireActivity().finish();
 		});
 	}
 }

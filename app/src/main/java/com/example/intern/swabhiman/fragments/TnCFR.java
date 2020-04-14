@@ -45,5 +45,11 @@ public class TnCFR extends Fragment {
 				Toast.makeText(requireContext(), "Please Accept T&C", Toast.LENGTH_SHORT).show();
 			}
 		});
+		binding.ivBackButton.setOnClickListener(v->{
+			requireActivity().onBackPressed();
+		});
+		binding.ivHomeButton.setOnClickListener(v->{
+			requireActivity().onBackPressed();
+		});
 	}
 }

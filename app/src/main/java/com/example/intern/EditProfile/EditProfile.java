@@ -51,6 +51,14 @@ public class EditProfile extends AppCompatActivity {
         binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         prefUtil = new SharedPrefUtil(this);
+        binding.back.setOnClickListener(v->{
+            onBackPressed();
+        });
+        binding.home.setOnClickListener(v->{
+            Intent intent = new Intent(this, MainApp.class);
+            startActivity(intent);
+            finish();
+        });
     }
     
     @Override

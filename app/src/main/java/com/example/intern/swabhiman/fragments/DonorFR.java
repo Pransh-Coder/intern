@@ -1,6 +1,7 @@
 package com.example.intern.swabhiman.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -9,16 +10,20 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.R;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivitySwabhimanDonorBinding;
+import com.example.intern.mainapp.MainApp;
+import com.example.intern.swabhiman.SwabhimanVM;
 import com.razorpay.Checkout;
 
 import org.json.JSONObject;
 
 public class DonorFR extends Fragment {
 	private ActivitySwabhimanDonorBinding binding;
+	private SwabhimanVM viewModel;
 	
 	public DonorFR() {
 		// Required empty public constructor
@@ -28,6 +33,7 @@ public class DonorFR extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
+		viewModel = new ViewModelProvider(requireActivity()).get(SwabhimanVM.class);
 		binding = ActivitySwabhimanDonorBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
 		return  view;
@@ -67,6 +73,14 @@ public class DonorFR extends Fragment {
 					Toast.makeText(context, "Something Went Wrong\nPlease Try Again", Toast.LENGTH_LONG).show();
 				}
 			}
+		});
+		binding.swabhimanDonorButtonBack.setOnClickListener(v->{
+			viewModel.getNavController().navigateUp();
+		});
+		binding.swabhimanDonorButtonHome.setOnClickListener(v->{
+			Intent intent = new Intent(requireContext(), MainApp.class);
+			startActivity(intent);
+			requireActivity().finish();
 		});
 	}
 }
