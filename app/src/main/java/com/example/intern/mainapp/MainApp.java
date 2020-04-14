@@ -172,11 +172,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 					.setPositiveButton("Yes", (button, which)->{
 						if(which == AlertDialog.BUTTON_POSITIVE){
 							String currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-							Map<String, Object> data = new HashMap<>();
-							data.put("LS","0");
 							Context context = MainApp.this;
-							FirebaseFirestore.getInstance().collection("Users").document(currentuserid)
-									.update(data).addOnSuccessListener(aVoid -> {
 								prefUtil.getPreferences().edit().clear().apply();
 								FirebaseAuth.getInstance().signOut();
 								// Google revoke access
@@ -189,7 +185,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 											}).setCancelable(false).show();
 								});
 								finish();
-							});
+
 						}
 					}).setNegativeButton("No", null).show();
 		});
@@ -320,7 +316,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 				intent = new Intent(this,MedicalRecord.class );
 				break;
 			case 4:
-				intent = new Intent(this, SocialActivity.class);
+				intent = new Intent(this, Listactivity.class);
 				break;
 			case 5:
 				intent = new Intent(this, NewsAndUpdatesACT.class);
