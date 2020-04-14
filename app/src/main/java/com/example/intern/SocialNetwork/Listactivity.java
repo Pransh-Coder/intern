@@ -67,11 +67,20 @@ public class Listactivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
+        listItems = new ArrayList<>();
+        initializeField();
         retrivePincode();
 
 
-        listItems = new ArrayList<>();
+
     }
+
+    private void initializeField() {
+        recyclerViewAdapter = new LocalRecycler(Listactivity.this,listItems);
+        recyclerView.setAdapter(recyclerViewAdapter);
+
+    }
+
     private void retrivePincode() {
         //Toast.makeText(SocialActivity.this,fstore.toString(),Toast.LENGTH_LONG).show();
         //Toast.makeText(SocialActivity.this,uid,Toast.LENGTH_LONG).show();
@@ -125,6 +134,7 @@ public class Listactivity extends AppCompatActivity {
                             //Toast.makeText(SocialActivity.this, user, Toast.LENGTH_LONG).show();
 
                         }
+
                         //Toast.makeText(Listactivity.this, "Goingtoputdata", Toast.LENGTH_LONG).show();
                         //recyclerViewAdapter = new LocalRecycler(Listactivity.this,listItems);
                         //recyclerView.setAdapter(recyclerViewAdapter);
@@ -159,9 +169,10 @@ public class Listactivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
                     //Toast.makeText(SocialActivity.this, "got in", Toast.LENGTH_LONG).show();
+
                     locallist = documentSnapshot.toObject(mLocalNetwork.class);
                    //String nm= locallist.getOcc();
-
+                    mlistItems=new mLocalNetwork();
                     mlistItems.setun(locallist.getun());
                     mlistItems.setOcc(locallist.getOcc());
                     mlistItems.setAge(locallist.getAge());
@@ -170,11 +181,12 @@ public class Listactivity extends AppCompatActivity {
                     Toast.makeText(Listactivity.this,nm , Toast.LENGTH_LONG).show();
 
                     Toast.makeText(Listactivity.this, "Goingtoputdata", Toast.LENGTH_LONG).show();
-                  //  recyclerViewAdapter = new LocalRecycler(Listactivity.this,listItems);
-                   // recyclerView.setAdapter(recyclerViewAdapter);
+
 
                     //recyclerView.setAdapter(new LocalRecycler(Listactivity.this, listItems));
-                    //recyclerViewAdapter.notifyDataSetChanged();
+                    recyclerViewAdapter.notifyDataSetChanged();
+
+
 
 
 
