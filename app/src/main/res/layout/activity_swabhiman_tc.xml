@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".swabhiman_tc">
 
     <ImageView
@@ -74,9 +75,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
-        android:letterSpacing="5"
+        android:letterSpacing="0.25"
         android:text="CONCEPT"
         android:textSize="17sp"
+        android:padding="10dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@id/tv_tc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -91,7 +94,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/tv_desc"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <TextView
         android:id="@+id/tv_desc"
