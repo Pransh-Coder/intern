@@ -182,29 +182,17 @@ public class LoginOptionFR extends Fragment {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.getResult().exists()) {
                     DocumentSnapshot document = task.getResult();
-                    String state = document.getString("LS");
-                //Toast.makeText(getContext(),"before"+state,Toast.LENGTH_LONG).show();
-                    if (state.equals("0")) {
+                  if(document.exists()){
                         //  Toast.makeText(getContext(),state,Toast.LENGTH_LONG).show();
-                        Map<String, Object> data = new HashMap<>();
-                        data.put("LS","1");
-                        FirebaseFirestore.getInstance().collection("Users").document(currentuserid)
-                                .update(data);
                         progressDialog.dismiss();
-                        Toast.makeText(getContext(),state,Toast.LENGTH_LONG).show();
                         viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
                         viewModel.getPrefUtil().updateSharedPrefsPostLogin(document);
                         Intent intent = new Intent(getContext(), MainApp.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
-                    } else if(state.equals("1")){
-                        progressDialog.dismiss();
-                        Toast.makeText(getContext(),"User already Logged in from another device...Logout First!!",Toast.LENGTH_LONG).show();
-                        signoutUser();
-                        viewModel.getNavController().navigate(R.id.action_LoginOptionFR_to_LoginResgister);
                     }
                     else
-                        Toast.makeText(getContext(),"inelse"+state,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),"Unable to fetch info...",Toast.LENGTH_LONG).show();
 
                 }else{
                     progressDialog.dismiss();

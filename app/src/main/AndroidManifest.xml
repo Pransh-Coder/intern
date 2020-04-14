@@ -70,6 +70,7 @@
 		<activity android:name=".TotalDiscountReceived.TotalDiscountReceived"/>
 		<activity android:name=".NewsAndUpdatesACT"/>
 		<activity android:name=".FeedBackOrComplaintACT"/>
+		<activity android:name=".socialnetwork.Listactivity"/>
 		
 		<activity
 			android:name=".auth.AuthActivity"
