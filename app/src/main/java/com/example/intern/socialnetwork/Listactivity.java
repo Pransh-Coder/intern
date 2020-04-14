@@ -67,7 +67,7 @@ public class Listactivity extends AppCompatActivity {
         findFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url="www.facebook.com/100048302199380/posts/103998251220248/?flite=scwspnss&extid=F4JcEbHahGEZ4dVu";
+                String url="www.facebook.com/PS-by-Prarambh-102589031363023/?modal=admin_todo_tour";
                 Uri u=Uri.parse("https://"+url);
                 Intent i =new Intent(Intent.ACTION_VIEW,u);
                 startActivity(i);
@@ -185,9 +185,9 @@ public class Listactivity extends AppCompatActivity {
                     mlistItems.setAge(locallist.getAge());
                     listItems.add(mlistItems);
                     String nm= mlistItems.getOcc();
-                    Toast.makeText(Listactivity.this,nm , Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Listactivity.this,nm , Toast.LENGTH_LONG).show();
 
-                    Toast.makeText(Listactivity.this, "Goingtoputdata", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Listactivity.this, "Goingtoputdata", Toast.LENGTH_LONG).show();
 
 
                     //recyclerView.setAdapter(new LocalRecycler(Listactivity.this, listItems));
@@ -198,7 +198,7 @@ public class Listactivity extends AppCompatActivity {
 
 
                 } else {
-                    Toast.makeText(Listactivity.this, "No such Document", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Listactivity.this, "No such Document", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -206,7 +206,7 @@ public class Listactivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                //Toast.makeText(SocialActivity.this, "No such document", Toast.LENGTH_LONG).show();
+                Toast.makeText(Listactivity.this, "No such document", Toast.LENGTH_LONG).show();
             }
         });
     }

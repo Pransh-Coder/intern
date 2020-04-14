@@ -48,41 +48,6 @@
 		android:orientation="horizontal"
 		app:layout_constraintGuide_percent="0.6"/>
 
-	<Button
-		android:id="@+id/login_button"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:background="@drawable/white_back_rounded_button"
-		android:fontFamily="@font/century_gothic_400"
-		android:paddingStart="20dp"
-		android:paddingTop="15dp"
-		android:paddingEnd="20dp"
-		android:paddingBottom="5dp"
-		android:text="LOGIN"
-		android:textSize="30dp"
-		android:textStyle="bold"
-		app:layout_constraintBottom_toTopOf="@id/registration_spin_Language"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/Signup"/>
-	<Button
-		android:id="@+id/Signup"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:background="@drawable/white_back_rounded_button"
-		android:fontFamily="@font/century_gothic_400"
-		android:paddingStart="20dp"
-		android:paddingTop="5dp"
-		android:paddingEnd="20dp"
-		android:paddingBottom="5dp"
-		android:text="REGISTER"
-		android:textSize="30dp"
-		android:textStyle="bold"
-		app:layout_constraintBottom_toTopOf="@id/login_button"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/guide_hor_70_per"/>
-	
 	<!--<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
@@ -127,6 +92,45 @@
 		
 		
 	</LinearLayout>-->
+	<Button
+		android:id="@+id/login_button"
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:background="@drawable/white_back_rounded_button"
+		android:fontFamily="@font/century_gothic_400"
+		android:paddingStart="20dp"
+		android:paddingTop="5dp"
+		android:paddingEnd="20dp"
+		android:paddingBottom="5dp"
+		android:text="LOGIN"
+		android:textSize="30dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@id/registration_spin_Language"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="@+id/guide_hor_70_per" />
+
+	<Button
+		android:id="@+id/Signup"
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:background="@drawable/white_back_rounded_button"
+		android:fontFamily="@font/century_gothic_400"
+		android:paddingStart="20dp"
+		android:paddingTop="5dp"
+		android:paddingEnd="20dp"
+		android:paddingBottom="5dp"
+		android:text="REGISTER"
+		android:textSize="30dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@id/registration_spin_Language"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_70_per"
+	 />
+
 	<Spinner
 		android:id="@+id/registration_spin_Language"
 		style="@style/Widget.AppCompat.Spinner.Underlined"
