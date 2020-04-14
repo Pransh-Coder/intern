@@ -1,6 +1,7 @@
 package com.example.intern.auth.fragments;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +33,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 public class RegisterAsParentFR extends Fragment {
@@ -39,9 +42,25 @@ public class RegisterAsParentFR extends Fragment {
     private AuthViewModel viewModel;
     private FusedLocationProviderClient locationProviderClient;
     private int LOCATION_REQUEST_CODE = 23;
-    private String password;
     private String pinCode;
     private FirebaseUser user;
+    private final Calendar calendar = Calendar.getInstance();
+    private boolean hasSelectedDate;
+    private String dateTimeStamp = null;
+    private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel();
+        }
+    };
+    
+    private void updateLabel(){
+        hasSelectedDate = true;
+        dateTimeStamp = Long.toString(calendar.getTimeInMillis());
+    }
 
     public RegisterAsParentFR() {
         // Required empty public constructor
@@ -88,25 +107,29 @@ public class RegisterAsParentFR extends Fragment {
                 }else return;
             }
         });
+        binding.etDOB.setOnClickListener(v->{
+            DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), dateSetListener, 2000, 1,1);
+            datePickerDialog.show();
+        });
     }
 
     private void setClickListeners(){
-        binding.btnRegisterasParentSignIn.setOnClickListener(v->{
+        binding.btnRegisterasChildSignIn.setOnClickListener(v->{
             String name = binding.etName.getText().toString();
             String DOB = binding.etDOB.getText().toString();
             if(name.isEmpty()){
                 binding.etName.setError("Name Cannot Be Empty");return;
             }
-            if(DOB.isEmpty()){
+            if(dateTimeStamp==null && !hasSelectedDate){
                 binding.etDOB.setError("DOB Cannot Be Empty");return;
             }
             if(pinCode != null && pinCode.length() == 6){
                 String nick_name = binding.etNickName.getText().toString();
                 String ps_nick_name = binding.etPsNickName.getText().toString();
+                String parent_number =binding.etParNumber.getText().toString();
                 String child_number =binding.etChildNumber.getText().toString();
-                String parent_number=binding.etYourNumber.getText().toString();
                 FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode, child_number)
+                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode,child_number,"1")
                         .addOnSuccessListener(success->{
                             FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
                             Log.d(TAG, "successfully made user");

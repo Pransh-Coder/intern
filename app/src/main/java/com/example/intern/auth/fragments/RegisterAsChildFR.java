@@ -1,6 +1,7 @@
 package com.example.intern.auth.fragments;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,24 +26,41 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.database.FireStoreUtil;
-import com.example.intern.databinding.FragmentRegisterAsChildFRBinding;
+import com.example.intern.databinding.FragmentRegisterAsChildBinding;
 import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 public class RegisterAsChildFR extends Fragment {
 	private static String TAG = RegisterAsChildFR.class.getSimpleName();
-	private FragmentRegisterAsChildFRBinding binding;
+	private final Calendar calendar = Calendar.getInstance();
 	private AuthViewModel viewModel;
 	private FusedLocationProviderClient locationProviderClient;
 	private int LOCATION_REQUEST_CODE = 23;
-	private String password;
 	private String pinCode;
 	private FirebaseUser user;
+	private FragmentRegisterAsChildBinding binding;
+	private boolean hasSelectedDate;
+	private String dateTimeStamp = null;
+	private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+		@Override
+		public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+			calendar.set(Calendar.YEAR, year);
+			calendar.set(Calendar.MONTH, month);
+			calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+			updateLabel();
+		}
+	};
+	
+	private void updateLabel(){
+		hasSelectedDate = true;
+		 dateTimeStamp = Long.toString(calendar.getTimeInMillis());
+	}
 	
 	public RegisterAsChildFR() {
 		// Required empty public constructor
@@ -52,7 +71,7 @@ public class RegisterAsChildFR extends Fragment {
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
-		binding = FragmentRegisterAsChildFRBinding.inflate(inflater, container, false);
+		binding = FragmentRegisterAsChildBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
 		return view;
 	}
@@ -88,25 +107,28 @@ public class RegisterAsChildFR extends Fragment {
 				}
 			}
 		});
+		binding.etDOB.setOnClickListener(v->{
+			DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), dateSetListener, 2000, 1,1);
+			datePickerDialog.show();
+		});
 	}
 	
 	private void setClickListeners(){
 		binding.btnRegisterasChildSignIn.setOnClickListener(v->{
 			String name = binding.etName.getText().toString();
-			String DOB = binding.etDOB.getText().toString();
 			if(name.isEmpty()){
 				binding.etName.setError("Name Cannot Be Empty");return;
 			}
-			if(DOB.isEmpty()){
+			if(dateTimeStamp==null && !hasSelectedDate){
 				binding.etDOB.setError("DOB Cannot Be Empty");return;
 			}
 			if(pinCode != null && pinCode.length() == 6){
 				String nick_name = binding.etNickName.getText().toString();
 				String ps_nick_name = binding.etPsNickName.getText().toString();
-				String parent_number =binding.etParentNumber.getText().toString();
+				String parent_number =binding.etParNumber.getText().toString();
 				String child_number = binding.etChildNumber.getText().toString();
 				FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-						,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode,child_number)
+						,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	dateTimeStamp, pinCode,parent_number,"1")
 						.addOnSuccessListener(success->{
 							FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
 							Log.d(TAG, "successfully made user");
@@ -115,7 +137,7 @@ public class RegisterAsChildFR extends Fragment {
 								FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
 							}
 							viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
-									DOB, pinCode, child_number, parent_number);
+									dateTimeStamp, pinCode, child_number, parent_number);
 							Intent intent = new Intent(requireContext(), MainApp.class);
 							intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 							startActivity(intent);

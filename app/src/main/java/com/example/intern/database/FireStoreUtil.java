@@ -154,8 +154,8 @@ public abstract class FireStoreUtil {
 	}
 	
 	//Methods to create new users or find existing ones
-	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String relative_number){
-		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode,relative_number);
+	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String relative_number, String logINStatus){
+		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode,relative_number, logINStatus);
 		return getUserDocumentReference(context, UID).set(user);
 	}
 	
@@ -283,7 +283,7 @@ public abstract class FireStoreUtil {
 		public PSUser(){}
 		
 		public PSUser(String name, String email, String nickName, String psNickName,
-		              String phoneNumber, String DOB , String pinCode, String relative_number){
+		              String phoneNumber, String DOB , String pinCode, String relative_number, String logINStatus){
 			this.un = name;
 			this.em = email;
 			this.nn = nickName;
@@ -293,6 +293,7 @@ public abstract class FireStoreUtil {
 			this.pc = pinCode;
 			this.pay = null;
 			this.rph = relative_number;
+			this.LS = logINStatus;
 		}
 	}
 	
