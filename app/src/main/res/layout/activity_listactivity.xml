@@ -12,7 +12,7 @@
         android:layout_height="75dp"
         android:background="@color/white"
         android:gravity="center"
-        android:text="Investor"
+        android:text="Local Networking"
         android:layout_marginStart="100dp"
         android:layout_marginTop="90dp"
         android:textSize="15sp"
