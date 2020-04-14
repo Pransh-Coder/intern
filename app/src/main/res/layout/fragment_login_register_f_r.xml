@@ -75,7 +75,7 @@
 		android:paddingTop="5dp"
 		android:paddingEnd="20dp"
 		android:paddingBottom="5dp"
-		android:text="SIGNUP"
+		android:text="REGISTER"
 		android:textSize="30dp"
 		android:textStyle="bold"
 		app:layout_constraintBottom_toTopOf="@id/login_button"
