@@ -1,6 +1,6 @@
 package save_money;
 
-import com.example.intern.SocialNetwork.PersonDetails_pojo;
+import com.example.intern.socialnetwork.PersonDetails_pojo;
 
 import java.util.ArrayList;
 

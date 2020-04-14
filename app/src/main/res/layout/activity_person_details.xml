@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/psbackground"
-    tools:context=".SocialNetwork.PersonDetails">
+    tools:context=".socialnetwork.PersonDetails">
 
     <ImageView
         android:id="@+id/back"

@@ -1,19 +1,11 @@
 package com.example.intern.socialnetwork;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,19 +16,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Listactivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -67,11 +55,20 @@ public class Listactivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
+        listItems = new ArrayList<>();
+        initializeField();
         retrivePincode();
 
 
-        listItems = new ArrayList<>();
+
     }
+
+    private void initializeField() {
+        recyclerViewAdapter = new LocalRecycler(Listactivity.this,listItems);
+        recyclerView.setAdapter(recyclerViewAdapter);
+
+    }
+
     private void retrivePincode() {
         //Toast.makeText(SocialActivity.this,fstore.toString(),Toast.LENGTH_LONG).show();
         //Toast.makeText(SocialActivity.this,uid,Toast.LENGTH_LONG).show();
@@ -125,6 +122,7 @@ public class Listactivity extends AppCompatActivity {
                             //Toast.makeText(SocialActivity.this, user, Toast.LENGTH_LONG).show();
 
                         }
+
                         //Toast.makeText(Listactivity.this, "Goingtoputdata", Toast.LENGTH_LONG).show();
                         //recyclerViewAdapter = new LocalRecycler(Listactivity.this,listItems);
                         //recyclerView.setAdapter(recyclerViewAdapter);
@@ -159,9 +157,10 @@ public class Listactivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
                     //Toast.makeText(SocialActivity.this, "got in", Toast.LENGTH_LONG).show();
+
                     locallist = documentSnapshot.toObject(mLocalNetwork.class);
                    //String nm= locallist.getOcc();
-
+                    mlistItems=new mLocalNetwork();
                     mlistItems.setun(locallist.getun());
                     mlistItems.setOcc(locallist.getOcc());
                     mlistItems.setAge(locallist.getAge());
@@ -170,11 +169,12 @@ public class Listactivity extends AppCompatActivity {
                     Toast.makeText(Listactivity.this,nm , Toast.LENGTH_LONG).show();
 
                     Toast.makeText(Listactivity.this, "Goingtoputdata", Toast.LENGTH_LONG).show();
-                  //  recyclerViewAdapter = new LocalRecycler(Listactivity.this,listItems);
-                   // recyclerView.setAdapter(recyclerViewAdapter);
+
 
                     //recyclerView.setAdapter(new LocalRecycler(Listactivity.this, listItems));
-                    //recyclerViewAdapter.notifyDataSetChanged();
+                    recyclerViewAdapter.notifyDataSetChanged();
+
+
 
 
 

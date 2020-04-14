@@ -1,4 +1,4 @@
-package com.example.intern.SocialNetwork;
+package com.example.intern.socialnetwork;
 
 import android.os.Bundle;
 
