@@ -11,6 +11,7 @@
         android:layout_width="200dp"
         android:layout_height="75dp"
         android:background="@color/white"
+        android:fontFamily="@font/century_gothic_400"
         android:gravity="center"
         android:text="Local Networking"
         android:layout_marginStart="100dp"
