@@ -170,11 +170,11 @@ public class Listactivity extends AppCompatActivity {
                     Toast.makeText(Listactivity.this,nm , Toast.LENGTH_LONG).show();
 
                     Toast.makeText(Listactivity.this, "Goingtoputdata", Toast.LENGTH_LONG).show();
-                    recyclerViewAdapter = new LocalRecycler(Listactivity.this,listItems);
-                    recyclerView.setAdapter(recyclerViewAdapter);
+                  //  recyclerViewAdapter = new LocalRecycler(Listactivity.this,listItems);
+                   // recyclerView.setAdapter(recyclerViewAdapter);
 
                     //recyclerView.setAdapter(new LocalRecycler(Listactivity.this, listItems));
-                    recyclerViewAdapter.notifyDataSetChanged();
+                    //recyclerViewAdapter.notifyDataSetChanged();
 
 
 
