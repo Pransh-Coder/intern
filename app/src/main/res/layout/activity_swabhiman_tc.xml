@@ -139,7 +139,7 @@
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor_guide_35_percent"
