@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import save_money.SaveMoney;
 
 import com.example.intern.EditProfile.EditProfile;
+import com.example.intern.ExclusiveServices.ExclusiveServices;
 import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.ReduceExpenses.ReduceExpenses;
 import com.example.intern.TotalDiscountReceived.TotalDiscountReceived;
@@ -25,12 +26,12 @@ import com.google.android.material.navigation.NavigationView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    LinearLayout save_money;
+    LinearLayout save_money,exclusive_services;
     //Navigation Drawer
      DrawerLayout drawerLayout;
      Toolbar toolbar;
      ActionBarDrawerToggle actionBarDrawerToggle;
-    NavigationView navigationView;
+     NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +42,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         save_money = findViewById(R.id.SaveMoneyLinear);
-
+        exclusive_services = findViewById(R.id.exclusive_services);
         //Navigation Drawer
         drawerLayout =(DrawerLayout)findViewById(R.id.drawer);
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
         actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);                                                           // we have to add icon to drawable
         actionBarDrawerToggle.syncState();
@@ -66,6 +67,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View view) {
                 Intent saveMoneyIntent = new Intent(getApplicationContext(), SaveMoney.class);
                 startActivity(saveMoneyIntent);
+            }
+        });
+        exclusive_services.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, ExclusiveServices.class);
+                startActivity(intent);
             }
         });
     }

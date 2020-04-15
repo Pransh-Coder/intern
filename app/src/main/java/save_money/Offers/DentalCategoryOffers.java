@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.intern.HomeActivity;
 import com.example.intern.R;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class DentalCategoryOffers extends AppCompatActivity {
 
     List<Offers_Pojo> offers_pojoList = new ArrayList<>();
 
-    ImageView chat;
+    ImageView chat,backimg,homeImg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,8 @@ public class DentalCategoryOffers extends AppCompatActivity {
         //ViewPager
         viewPager = findViewById(R.id.viewpager);
         chat = findViewById(R.id.chat);
+        backimg = findViewById(R.id.backimg);
+        homeImg = findViewById(R.id.home);
 
         //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
@@ -96,6 +99,20 @@ public class DentalCategoryOffers extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openWhatsApp();
+            }
+        });
+        backimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DentalCategoryOffers.this, Health.class);
+                startActivity(intent);
+            }
+        });
+        homeImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DentalCategoryOffers.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
     }

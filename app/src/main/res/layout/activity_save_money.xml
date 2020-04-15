@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/services_button_back"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/back"
@@ -17,8 +17,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:id="@+id/homeIMG"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/homeimg"
@@ -27,8 +28,8 @@
 
     <ImageView
         android:id="@+id/services_button_notification"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:src="@drawable/notification"
@@ -36,8 +37,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="7dp"
         android:src="@drawable/search"

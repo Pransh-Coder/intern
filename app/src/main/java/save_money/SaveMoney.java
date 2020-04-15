@@ -3,6 +3,7 @@ package save_money;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -11,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.intern.FoodActivity;
 import com.example.intern.Gifts;
 import com.example.intern.Holiday;
+import com.example.intern.HomeActivity;
 import com.example.intern.Lifestyle;
 import com.example.intern.R;
 import com.example.intern.ServicesActivity;
@@ -23,7 +25,7 @@ public class SaveMoney extends AppCompatActivity {
     //ViewPager
     ViewPager viewPager;
     CardView health, lifeStyle, food, services, gifs, holiday;
-
+    ImageView backImg,homeIMG;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,8 @@ public class SaveMoney extends AppCompatActivity {
         food = findViewById(R.id.food);
         holiday = findViewById(R.id.holiday);
         services = findViewById(R.id.services);
+        backImg = findViewById(R.id.services_button_back);
+        homeIMG = findViewById(R.id.homeIMG);
         //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
@@ -91,7 +95,20 @@ public class SaveMoney extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        backImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SaveMoney.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        homeIMG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SaveMoney.this,HomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.

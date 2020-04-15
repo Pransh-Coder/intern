@@ -20,6 +20,15 @@
         android:roundIcon="@mipmap/app_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ExclusiveServices.TiffinService">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ExclusiveServices.HomeModification">
+        </activity>
         <activity android:name=".swabhiman_tc" />
         <activity android:name=".fuel_with_us" />
         <activity android:name=".swabhiman_donar" />
@@ -36,13 +45,7 @@
         <activity android:name=".lifestyle_list" />
         <activity android:name=".food_list" />
         <activity android:name=".RegistrationChoice" />
-        <activity android:name=".qr.QRScanner">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".qr.QRScanner"></activity>
         <activity
             android:name="save_money.Health"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -63,8 +66,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="save_money.Offers.Patholgy_LaborartoryOffers"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <!--<activity android:name=".payment.StandardPaymentActivity" />-->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- <activity android:name=".payment.StandardPaymentActivity" /> -->
         <activity
             android:name="save_money.Offers.PhysiotherapyOffers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -73,19 +75,24 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".PhnRegistration" />
         <activity android:name=".Login_Register">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--<activity android:name=".payment.BecomeAMember" />-->
+            -->
+        </activity> <!-- <activity android:name=".payment.BecomeAMember" /> -->
         <activity android:name=".MainActivity">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity android:name=".Gifts" />
         <activity android:name=".HomeActivity" />

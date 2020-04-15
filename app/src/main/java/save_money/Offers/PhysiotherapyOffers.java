@@ -8,22 +8,40 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.intern.HomeActivity;
 import com.example.intern.R;
+
+import save_money.Health;
 
 public class PhysiotherapyOffers extends AppCompatActivity {
 
-    ImageView chat;
+    ImageView chat,backimg,homeImg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physiotherapy_offers);
 
         chat = findViewById(R.id.chat);
-
+        backimg = findViewById(R.id.backimg);
+        homeImg = findViewById(R.id.home);
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openWhatsApp();
+            }
+        });
+        backimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PhysiotherapyOffers.this, Health.class);
+                startActivity(intent);
+            }
+        });
+        homeImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PhysiotherapyOffers.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
     }

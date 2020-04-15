@@ -13,11 +13,13 @@ import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.example.intern.HomeActivity;
 import com.example.intern.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import save_money.Health;
 import save_money.RecyclerAdapterOffers;
 import save_money.ViewPagerAdapter;
 import save_money.giveMeFakeData;
@@ -31,7 +33,7 @@ public class DieticianOffers extends AppCompatActivity {
     //ViewPager
     ViewPager viewPager;
 
-    ImageView chat;
+    ImageView chat,backimg,homeImg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,8 @@ public class DieticianOffers extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager);
 
         chat = findViewById(R.id.chat);
+        backimg = findViewById(R.id.backimg);
+        homeImg = findViewById(R.id.home);
         //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
@@ -59,6 +63,21 @@ public class DieticianOffers extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openWhatsApp();
+            }
+        });
+
+        backimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DieticianOffers.this, Health.class);
+                startActivity(intent);
+            }
+        });
+        homeImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DieticianOffers.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
     }

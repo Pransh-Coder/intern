@@ -5,8 +5,7 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    tools:openDrawer="end">
+    tools:openDrawer="start">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,11 +13,14 @@
         android:background="@drawable/home_activity_background"
         tools:context=".HomeActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/drawer_pin_home"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/menu_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="140dp"
@@ -59,7 +61,7 @@
                     android:weightSum="2">
 
                     <LinearLayout
-                        android:id="@+id/SaveMoneyLinear"
+                        android:id="@+id/exclusive_services"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_marginEnd="30dp"
@@ -89,6 +91,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/swabhiman_main_choice"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_weight="1"
@@ -125,6 +128,7 @@
                     android:weightSum="2">
 
                     <LinearLayout
+                        android:id="@+id/shopping"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_marginEnd="30dp"
@@ -154,6 +158,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/bpclfuel"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:background="@drawable/home_activity_icon_background"
@@ -189,6 +194,7 @@
                     android:weightSum="2">
 
                     <LinearLayout
+                        android:id="@+id/requestService"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_marginEnd="30dp"
@@ -218,6 +224,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/SaveMoneyLinear"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:layout_weight="1"
@@ -237,7 +244,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="8dp"
                             android:fontFamily="@font/century_gothic_400"
                             android:text="@string/save_money"
                             android:textAlignment="center"

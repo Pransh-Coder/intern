@@ -3,11 +3,13 @@ package save_money;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.intern.HomeActivity;
 import com.example.intern.R;
 
 import java.util.Timer;
@@ -25,6 +27,7 @@ public class Health extends AppCompatActivity {
     //ViewPager
     ViewPager viewPager;
     LinearLayout dental, eyeClinic, homeopathy, dietician, pathology, physiotherapy;
+    ImageView backImg,homeImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class Health extends AppCompatActivity {
         dietician = findViewById(R.id.dietician);
         pathology = findViewById(R.id.pathology);
         physiotherapy = findViewById(R.id.physiotherapy);
+        backImg = findViewById(R.id.back);
+        homeImg = findViewById(R.id.homeImg);
 
         //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
@@ -86,6 +91,20 @@ public class Health extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Health.this, PhysiotherapyOffers.class);
+                startActivity(intent);
+            }
+        });
+        backImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Health.this,SaveMoney.class);
+                startActivity(intent);
+            }
+        });
+        homeImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Health.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
