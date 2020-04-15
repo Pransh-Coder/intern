@@ -39,6 +39,15 @@
         <item>Rate/Share App</item>
         <item>Terms And Conditions</item>
     </string-array>
+    
+    <string-array name="AskServicesOptions">
+        <item>Health Services</item>
+        <item>Legal Services</item>
+        <item>Finance and Consultant</item>
+        <item>Tiffin Services</item>
+        <item>Cab Services</item>
+        <item>Other Services …</item>
+    </string-array>
 
     <string name="more_about_special_offers">Tell us more about \nyour special offers</string>
     <string name="date_time">Date &amp; Time</string>
