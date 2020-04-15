@@ -9,6 +9,11 @@
     </style>
 
     <style name="MaterialAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="materialButtonStyle">@style/DefaultButton</item>
+    </style>
+    
+    <style name="DefaultButton" parent="Widget.MaterialComponents.Button">
+        <item name="background">@drawable/background_button_sign_in</item>
     </style>
 
     <style name="Divider">
