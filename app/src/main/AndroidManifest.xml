@@ -94,9 +94,7 @@
 		<activity android:name=".Rating"
 			android:launchMode="singleTop"
 			android:noHistory="true"/>
-		<activity android:name=".askservices.DemandActivity"
-			android:launchMode="singleTop"
-			android:noHistory="true"/>
+		<activity android:name=".askservices.DemandActivity"/>
 		<activity
 			android:name="save_money.Health"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

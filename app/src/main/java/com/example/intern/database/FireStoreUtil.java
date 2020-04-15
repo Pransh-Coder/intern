@@ -4,7 +4,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Environment;
 import android.provider.ContactsContract;
 
@@ -38,8 +37,8 @@ public abstract class FireStoreUtil {
 	public static String USER_COLLECTION_NAME = "Users";
 	public static String USER_CLUSTER_COLLECTION_NAME = "uclust";
 	private static String USER_PHONE_LIST_COLLECTION_NAME = "uph";
-	public static String QUERY_COLLECTION_NAME = "queries";
 	public static String USER_RELATIVE_PHONE_NUMBER = "rph";
+	
 	
 	//Field Names used
 	public static String USER_NAME = "un";
@@ -47,6 +46,8 @@ public abstract class FireStoreUtil {
 	public static String USER_NICK_NAME = "nn";
 	public static String USER_PS_NICK_NAME = "psnn";
 	public static String USER_PHONE_NUMBER = "pn";
+	//REQUEST TYPES
+	public static int REQUESTS_SERVICE = 2;
 	//Storage path names used
 	private static String USER_PROFILE_IMAGE_FILE_NAME = "pp.jpg";
 	public static String USER_DOB = "dob";
@@ -55,8 +56,6 @@ public abstract class FireStoreUtil {
 	public static String USER_STATE= "LS";
 	public static String USER_OCCUPATION = "occ";
 	public static String USER_ADDRESS = "add";
-	public static String USER_IS_A_MEMBER = "ums";
-	public static String USER_IS_BANK_USER = "bu";
 	
 	//References needs to be synchronised
 	private static volatile FirebaseApp firebaseApp;
@@ -67,7 +66,8 @@ public abstract class FireStoreUtil {
 	private static volatile  DocumentReference userClusterReference;
 	private static volatile StorageReference userStorageReference;
 	private static volatile CollectionReference userPhoneCollectionReference;
-	private static volatile CollectionReference queryCollectionReference;
+	public static int REQUESTS_PRODUCT = 1;
+	private static String ASK_THINGS_COLLECTION_NAME = "asked";
 	
 	private static FirebaseApp getFirebaseApp(Context context) {
 		if(FirebaseApp.getApps(context).isEmpty()){
@@ -109,6 +109,20 @@ public abstract class FireStoreUtil {
 		return firebaseStorage;
 	}
 	
+	public static Task<DocumentReference> uploadServiceRequest(String userUID, String serviceType, String description){
+		Map<String, Object> data = new HashMap<>();
+		data.put("type", "service");data.put("user", userUID);
+		data.put("cat", serviceType);data.put("desc", description);
+		return FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
+	}
+	
+	public static Task<DocumentReference> uploadProductRequest(String userUID, String productName, String productPathInFirebaseStorage){
+		Map<String, Object> data = new HashMap<>();
+		data.put("type", "product");data.put("user", userUID);
+		data.put("name", productName);data.put("image", productPathInFirebaseStorage);
+		return FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
+	}
+	
 	public static DocumentReference getUserDocumentReference(Context context, String userID){
 		if(userDocumentReference == null){
 			synchronized (FireStoreUtil.class){
@@ -135,7 +149,7 @@ public abstract class FireStoreUtil {
 		if(userStorageReference == null){
 			synchronized (FireStoreUtil.class){
 				if(userStorageReference == null){
-					userStorageReference = getFirebaseStorage(context).getReference(UID);
+					userStorageReference = FirebaseStorage.getInstance().getReference().child(UID);
 				}
 			}
 		}
@@ -227,17 +241,13 @@ public abstract class FireStoreUtil {
 	
 	
 	public static UploadTask uploadImage(Context context, String UID, Bitmap bitmap){
-		StorageReference imagePathRef = getUserImageStorageReference(context, UID).child(Long.toString(System.currentTimeMillis()));
+		StorageReference imagePathRef = getUserImageStorageReference(context, UID).child(System.currentTimeMillis() +".jpg");
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
 		byte[] data = outputStream.toByteArray();
 		return imagePathRef.putBytes(data);
 	}
 	
-	public static UploadTask uploadImage(Context context, String UID, Uri uri){
-		StorageReference imagePathRef = getUserImageStorageReference(context, UID).child(Long.toString(System.currentTimeMillis()));
-		return imagePathRef.putFile(uri);
-	}
 	
 	public static UploadTask uploadProfilePic(Context context, String UID, Bitmap bitmap){
 		StorageReference imagePathRef = getUserImageStorageReference(context, UID).child(USER_PROFILE_IMAGE_FILE_NAME);
