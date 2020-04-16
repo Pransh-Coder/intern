@@ -1,16 +1,17 @@
 package com.example.intern.ExclusiveServices;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.intern.HomeActivity;
 import com.example.intern.R;
 
-public class homeModificationServices extends AppCompatActivity {
+public class HomeModification extends AppCompatActivity {
+
     ImageView back,home_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class homeModificationServices extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(homeModificationServices.this,ExclusiveServices.class);
+                Intent intent = new Intent(HomeModification.this,ExclusiveServices.class);
                 startActivity(intent);
             }
         });
@@ -31,7 +32,7 @@ public class homeModificationServices extends AppCompatActivity {
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(homeModificationServices.this, HomeActivity.class);
+                Intent intent = new Intent(HomeModification.this, HomeActivity.class);
                 startActivity(intent);
             }
         });

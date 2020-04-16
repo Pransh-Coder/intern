@@ -1,7 +1,5 @@
 package com.example.intern.ExclusiveServices;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -9,10 +7,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.intern.HomeActivity;
 import com.example.intern.R;
 
-public class tiffinServices extends AppCompatActivity {
+public class TiffinService extends AppCompatActivity {
+
     ImageView back,home_btn;
     TextView secPara,thrPara,forPara;
 
@@ -41,7 +42,7 @@ public class tiffinServices extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tiffinServices.this,ExclusiveServices.class);
+                Intent intent = new Intent(TiffinService.this,ExclusiveServices.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +50,7 @@ public class tiffinServices extends AppCompatActivity {
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(tiffinServices.this, HomeActivity.class);
+                Intent intent = new Intent(TiffinService.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
