@@ -22,8 +22,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExclusiveServices.tiffinServices"></activity>
-        <activity android:name=".ExclusiveServices.homeModificationServices" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -135,6 +133,8 @@
             android:launchMode="singleTop"
             android:noHistory="true" />
         <activity android:name=".Gifts" />
+        <activity android:name=".ExclusiveServices.TiffinService"/>
+        <activity android:name=".ExclusiveServices.HomeModification"/>
     </application>
 
 </manifest>
