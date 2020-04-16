@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.intern.EditProfile.EditProfile;
-import com.example.intern.ExclusiveServices;
+import com.example.intern.ExclusiveServices.ExclusiveServices;
 import com.example.intern.FeedBackOrComplaintACT;
 import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.NewsAndUpdatesACT;

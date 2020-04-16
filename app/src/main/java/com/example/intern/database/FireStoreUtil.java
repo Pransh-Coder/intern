@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 import com.google.firebase.firestore.SetOptions;
@@ -23,15 +24,13 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public abstract class FireStoreUtil {
 	//Firebase provides concurrent running of their commands. So no need for concurrency
-	
-	public static String QUERY_TYPE_UNRESOLVED = "0";
-	public static String QUERY_TYPE_RESOLVED = "1";
 	
 	//Collection Names in the database
 	public static String USER_COLLECTION_NAME = "Users";
@@ -66,8 +65,14 @@ public abstract class FireStoreUtil {
 	private static volatile  DocumentReference userClusterReference;
 	private static volatile StorageReference userStorageReference;
 	private static volatile CollectionReference userPhoneCollectionReference;
-	public static int REQUESTS_PRODUCT = 1;
 	private static String ASK_THINGS_COLLECTION_NAME = "asked";
+	public static String PETROL_PRICE_KEY = "petropr";
+	private static String FUEL_REFUND_COLLECTION_NAME = "bpclref";
+	private static String STATIC_DATA_COLLECTION_NAME = "psdata";
+	
+	public static Task<DocumentSnapshot> getStaticDataSnapshot(){
+		return FirebaseFirestore.getInstance().collection(STATIC_DATA_COLLECTION_NAME).document("static").get();
+	}
 	
 	private static FirebaseApp getFirebaseApp(Context context) {
 		if(FirebaseApp.getApps(context).isEmpty()){
@@ -121,6 +126,13 @@ public abstract class FireStoreUtil {
 		data.put("type", "product");data.put("user", userUID);
 		data.put("name", productName);data.put("image", productPathInFirebaseStorage);
 		return FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
+	}
+	
+	public static Task<DocumentReference> uploadFuelRefundRequest(String UID, String invoiceNo, String firebaseStorageUrl){
+		Map<String, Object> data = new HashMap<>();
+		data.put("user", UID);data.put("inv", invoiceNo);
+		data.put("invimg",firebaseStorageUrl);
+		return FirebaseFirestore.getInstance().collection(FUEL_REFUND_COLLECTION_NAME).document(Integer.toString(Calendar.getInstance().get(Calendar.DATE))).collection(UID).add(data);
 	}
 	
 	public static DocumentReference getUserDocumentReference(Context context, String userID){
@@ -246,6 +258,14 @@ public abstract class FireStoreUtil {
 		bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
 		byte[] data = outputStream.toByteArray();
 		return imagePathRef.putBytes(data);
+	}
+	
+	public static UploadTask uploadFuelInvoice(Context context, String UID, String invoice, Bitmap bitmap){
+		StorageReference invoiceStRef = getUserImageStorageReference(context, UID).child("invoices").child(invoice+".jpg");
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream);
+		byte[] data = outputStream.toByteArray();
+		return invoiceStRef.putBytes(data);
 	}
 	
 	

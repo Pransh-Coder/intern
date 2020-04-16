@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -25,6 +24,8 @@ import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityDemandBinding;
 import com.example.intern.mainapp.MainApp;
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -39,8 +40,9 @@ public class DemandActivity extends AppCompatActivity {
     List<String> services;
     String service = null;
     String filePath=null;
+	SharedPrefUtil prefUtil;
     private boolean isProductPageVisible;
-    private boolean isServicesPageVisible;
+    private boolean isServicesPageVisible = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class DemandActivity extends AppCompatActivity {
         binding = ActivityDemandBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         checkPerms();
+        prefUtil = new SharedPrefUtil(this);
         services = Arrays.asList(getResources().getStringArray(R.array.AskServicesOptions));
         binding.demandButtonBack.setOnClickListener(v-> onBackPressed());
         binding.demandButtonHome.setOnClickListener(v->{
@@ -101,48 +104,44 @@ public class DemandActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        binding.ivProductImage.setOnClickListener(v -> {
-            ImagePicker.Companion.with(this)
-                    .maxResultSize(1080, 1080)
-                    .start();
-        });
+        binding.ivProductImage.setOnClickListener(v ->
+		        ImagePicker.Companion.with(this)
+                .maxResultSize(1080, 1080)
+                .start());
         binding.demandSubmit.setOnClickListener(v -> {
             ProgressDialog dialog = new ProgressDialog(this);
             dialog.setTitle("Please Wait");
             dialog.show();
-            SharedPrefUtil prefUtil = new SharedPrefUtil(this);
             final Context context = this;
+	        String UID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY,null);
+	        if(UID == null){
+		        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+		        if(user==null){
+                    Toast.makeText(context, "Not Connected", Toast.LENGTH_SHORT).show();
+                    finish();
+		        }else{
+			        UID = user.getUid();
+		        }
+	        }
             if(isServicesPageVisible){
                 String description = binding.etServiceDescription.getText().toString();
                 if(TextUtils.isEmpty(description)){
                     binding.etServiceDescription.setError("Describe the service");
                 }else{
-                    //TODO : Send the service to somewhere
-                    FireStoreUtil.uploadServiceRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY,null),service,description).addOnSuccessListener(documentReference -> {
+                    FireStoreUtil.uploadServiceRequest(UID,service,description).addOnSuccessListener(documentReference -> {
                         dialog.dismiss();
-                        new AlertDialog.Builder(context).setMessage("We will get back to you shortly").setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                onBackPressed();
-                            }
-                        })
+                        new AlertDialog.Builder(context).setMessage("We will get back to you shortly").setPositiveButton("OK", (dialog12, which) -> onBackPressed())
                                 .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
                     });
                 }
             }else if(isProductPageVisible){
                 String product = binding.etProductName.getText().toString();
-                //TODO : Do something with the image and the product name
                 if (filePath != null && !filePath.isEmpty()){
-                    FireStoreUtil.uploadImage(this, prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null),
+                    FireStoreUtil.uploadImage(this, UID,
                             BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot -> taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
                                 FireStoreUtil.uploadProductRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), product, uri.toString()).addOnSuccessListener(documentReference -> {
                                     dialog.dismiss();
-                                    new AlertDialog.Builder(context).setMessage("We will get back to you shortly").setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            onBackPressed();
-                                        }
-                                    })
+                                    new AlertDialog.Builder(context).setMessage("We will get back to you shortly").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
                                             .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
                                 });
                             }));
