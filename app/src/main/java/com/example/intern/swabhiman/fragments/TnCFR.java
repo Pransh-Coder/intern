@@ -29,6 +29,7 @@ public class TnCFR extends Fragment {
 		viewModel = new ViewModelProvider(requireActivity()).get((SwabhimanVM.class));
 		binding = ActivitySwabhimanTcBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
+
 		TextView tv_list = view.findViewById(R.id.tv_list_concept);
 		tv_list.setText(Html.fromHtml("&#8226; Opportunity for good cash flow<br>&#8226; Opportunities for starting a small business<br>" +
 				"&#8226; Option to become a consultant based on experience<br>&#8226; Part-time job option as appropriate"));
