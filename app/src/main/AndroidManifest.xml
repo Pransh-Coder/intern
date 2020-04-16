@@ -71,9 +71,7 @@
 		<activity android:name=".NewsAndUpdatesACT"/>
 		<activity android:name=".FeedBackOrComplaintACT"/>
 		<activity android:name=".socialnetwork.Listactivity"/>
-		<activity android:name=".fuel.FuelWithUsAct"
-			android:launchMode="singleTop"
-			android:noHistory="true"/>
+		<activity android:name=".fuel.FuelWithUsAct"/>
 		
 		<activity
 			android:name=".auth.AuthActivity"
@@ -88,7 +86,7 @@
 		<activity android:name=".EditProfile.EditProfile"
 			android:launchMode="singleTop"
 			android:theme="@style/MaterialAppTheme"/>
-		<activity android:name=".ExclusiveServices"
+		<activity android:name=".ExclusiveServices.ExclusiveServices"
 			android:launchMode="singleTop"
 			android:noHistory="true"/>
 		<activity android:name=".Rating"

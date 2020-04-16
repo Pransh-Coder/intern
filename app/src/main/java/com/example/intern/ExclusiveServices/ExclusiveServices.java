@@ -1,4 +1,4 @@
-package com.example.intern;
+package com.example.intern.ExclusiveServices;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.R;
 import com.example.intern.mainapp.MainApp;
 
 public class ExclusiveServices extends AppCompatActivity {
