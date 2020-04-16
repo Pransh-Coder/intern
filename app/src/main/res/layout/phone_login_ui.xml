@@ -15,19 +15,7 @@
 		android:src="@drawable/icons_mascot_44"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintTop_toTopOf="parent"/>
-	
-	<TextView
-		android:id="@+id/tvmascot"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:fontFamily="@font/century_gothic_400"
-		android:text="Login"
-		android:textColor="@color/black"
-		android:textSize="35dp"
-		app:layout_constraintLeft_toLeftOf="@id/iv_mascot"
-		app:layout_constraintRight_toRightOf="@id/iv_mascot"
-		app:layout_constraintTop_toBottomOf="@id/iv_mascot"/>
-	
+
 	<!--<Button
 		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintLeft_toRightOf="@id/guide_15_per_ver"
@@ -45,6 +33,20 @@
 		android:drawablePadding="10dp"
 		android:background="@drawable/button_rounded"
 		android:fontFamily="@font/century_gothic_400"/>-->
+
+	<TextView
+		android:id="@+id/tvmascot"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:fontFamily="@font/century_gothic_400"
+		android:text="Login"
+		android:textColor="@color/black"
+		android:textSize="35dp"
+		app:layout_constraintHorizontal_bias="0.325"
+		app:layout_constraintLeft_toLeftOf="@id/iv_mascot"
+		app:layout_constraintRight_toRightOf="@id/iv_mascot"
+		app:layout_constraintTop_toBottomOf="@id/iv_mascot" />
+
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/hor_guide_30_percent"
 		android:layout_width="match_parent"
@@ -101,7 +103,7 @@
 			android:text="Verify Mobile Number Via"
 			android:textAlignment="center"
 			android:textColor="@color/black"
-			android:textSize="25dp"/>
+			android:textSize="20dp"/>
 		<EditText
 			android:id="@+id/et_otp"
 			android:layout_width="match_parent"
