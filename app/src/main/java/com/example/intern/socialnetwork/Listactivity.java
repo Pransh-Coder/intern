@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +17,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.intern.ExclusiveServices.ExclusiveServices;
+import com.example.intern.ExclusiveServices.homeModificationServices;
+import com.example.intern.HomeActivity;
 import com.example.intern.R;
+import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,12 +47,14 @@ public class Listactivity extends AppCompatActivity {
     String uid;
     private ProgressDialog progressDialog;
     private TextView findFriend;
-
+    ImageView back,home_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listactivity);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        back = findViewById(R.id.back_btn);
+        home_btn = findViewById(R.id.home_button);
         setSupportActionBar(toolbar);
         //recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         //LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -62,6 +70,21 @@ public class Listactivity extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
         listItems = new ArrayList<>();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Listactivity.this,MainApp.class);
+                startActivity(intent);
+            }
+        });
+
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Listactivity.this, MainApp.class);
+                startActivity(intent);
+            }
+        });
         initializeField();
         retrivePincode();
         findFriend.setOnClickListener(new View.OnClickListener() {

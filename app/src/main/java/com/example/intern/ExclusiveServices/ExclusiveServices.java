@@ -12,34 +12,35 @@ import com.example.intern.mainapp.MainApp;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ExclusiveServices extends AppCompatActivity {
-    ImageView back,home;
-    CircleImageView home_mod,tifin;
+    ImageView back, home;
+    CircleImageView home_mod, tifin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exclusive_services);
+        setContentView(R.layout.activity_exclusive_service);
 
         back = findViewById(R.id.back);
         home = findViewById(R.id.homeIMG);
-        home_mod=findViewById(R.id.home_modImg);
-        tifin=findViewById(R.id.tiffinImg);
+        home_mod = findViewById(R.id.home_modImg);
+        tifin = findViewById(R.id.tiffinImg);
 
         back.setOnClickListener(view -> {
             Intent intent = new Intent(ExclusiveServices.this, MainApp.class);
             startActivity(intent);
             finish();
         });
-        home.setOnClickListener( view -> {
+        home.setOnClickListener(view -> {
             Intent intent = new Intent(ExclusiveServices.this, MainApp.class);
             startActivity(intent);
             finish();
         });
-        home_mod.setOnClickListener( view -> {
+        home_mod.setOnClickListener(view -> {
             Intent intent = new Intent(ExclusiveServices.this, HomeModification.class);
             startActivity(intent);
             finish();
         });
-        tifin.setOnClickListener( view -> {
+        tifin.setOnClickListener(view -> {
             Intent intent = new Intent(ExclusiveServices.this, TiffinService.class);
             startActivity(intent);
             finish();
