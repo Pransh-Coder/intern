@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/ps"
-    tools:context=".ExclusiveServices.homeModificationServices">
+    tools:context=".ExclusiveServices.HomeModification">
 
     <ImageView
         android:id="@+id/back"
@@ -205,8 +205,7 @@
                 android:fontFamily="@font/century_gothic"
                 android:padding="5dp"
                 android:layout_marginLeft="10dp"
-                android:text="Demarketion on floor for better
-                visibility when it's no light"
+                android:text="Demarketion on floor for \nbetter visibility when it's no light"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold"

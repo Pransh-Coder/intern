@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.intern.ExclusiveServices.ExclusiveServices;
-import com.example.intern.ExclusiveServices.homeModificationServices;
+import com.example.intern.ExclusiveServices.HomeModification;
 import com.example.intern.HomeActivity;
 import com.example.intern.R;
 import com.example.intern.mainapp.MainApp;
