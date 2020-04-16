@@ -13,7 +13,7 @@ public class ExclusiveServices extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exclusive_services);
+        setContentView(R.layout.activity_exclusive_service);
 
         back = findViewById(R.id.back);
         home = findViewById(R.id.homeIMG);
