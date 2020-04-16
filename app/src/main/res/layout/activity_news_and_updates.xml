@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="75dp"
         android:background="@drawable/banner_background"
         android:gravity="center"
