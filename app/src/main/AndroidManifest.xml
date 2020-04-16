@@ -21,11 +21,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ExclusiveServices.TiffinService">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ExclusiveServices.HomeModification">
         </activity>
@@ -96,6 +91,13 @@
         </activity>
         <activity android:name=".Gifts" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".ExclusiveServices.ExclusiveServices">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
