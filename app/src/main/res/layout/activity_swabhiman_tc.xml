@@ -109,7 +109,7 @@
         app:layout_constraintTop_toTopOf="@id/tv_desc1"
         android:id="@+id/tv_desc2"
         android:text="senior "
-        android:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/century_gothic_400"
         android:textStyle="bold"/>
 
     <TextView
@@ -120,7 +120,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_desc1"
         android:id="@+id/tv_desc3"
         android:text="citizen "
-        android:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/century_gothic_400"
         android:textStyle="bold"/>
 
     <TextView
@@ -145,7 +145,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/century_gothic_400"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_desc5"
