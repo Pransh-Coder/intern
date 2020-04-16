@@ -161,9 +161,9 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
         android:layout_marginTop="10dp"
+        android:text="To know more submit your request"
         android:paddingEnd="20dp"
         android:paddingLeft="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_list_concept" />
 
@@ -184,11 +184,12 @@
         android:layout_height="wrap_content"
         android:background="@drawable/background_button_sign_in"
         android:fontFamily="@font/century_gothic"
-        android:text="Agree"
+        android:text="Submit"
         android:layout_marginStart="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/chat"
         android:textSize="17sp"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
