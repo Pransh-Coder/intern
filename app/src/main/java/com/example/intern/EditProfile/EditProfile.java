@@ -40,7 +40,6 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 public class EditProfile extends AppCompatActivity {
@@ -89,7 +88,7 @@ public class EditProfile extends AppCompatActivity {
                             .error(R.drawable.edit_profile)
                             .into(binding.ivProfilePic);
                 });
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

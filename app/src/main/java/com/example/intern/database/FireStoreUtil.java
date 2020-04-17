@@ -24,7 +24,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -279,7 +278,7 @@ public abstract class FireStoreUtil {
 		return imagePathRef.putBytes(data);
 	}
 	
-	public static FileDownloadTask getProfilePicInLocal(Context context, String UID) throws IOException {
+	public static FileDownloadTask getProfilePicInLocal(Context context, String UID) throws Exception {
 		StorageReference ppRef = getUserImageStorageReference(context, UID).child(USER_PROFILE_IMAGE_FILE_NAME);
 		File rootPath = new File(Environment.getExternalStorageDirectory(), "PSData");
 		if(!rootPath.exists()){
