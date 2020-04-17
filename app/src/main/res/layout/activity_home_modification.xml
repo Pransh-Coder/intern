@@ -205,13 +205,13 @@
                 android:fontFamily="@font/century_gothic"
                 android:padding="5dp"
                 android:layout_marginLeft="10dp"
-                android:text="Demarketion on floor for better
-                visibility when it's no light"
+                android:text="Demarketion on floor for better visibility when it's no light"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="@+id/img4"
-                app:layout_constraintLeft_toRightOf="@+id/img4"
+                app:layout_constraintStart_toEndOf="@+id/img4"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="@+id/img4"
                 app:layout_constraintTop_toBottomOf="@+id/forthPara"/>
 
