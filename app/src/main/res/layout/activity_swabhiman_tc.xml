@@ -108,6 +108,8 @@
         android:fontFamily="@font/century_gothic_400"
         android:letterSpacing="0.25"
         android:text="CONCEPT"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:id="@+id/tv_concept"
         android:textSize="18sp"
         android:paddingTop="10dp"
@@ -135,7 +137,7 @@
         android:id="@+id/tv_desc2"
         android:text="senior "
         android:fontFamily="@font/century_gothic_400"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
