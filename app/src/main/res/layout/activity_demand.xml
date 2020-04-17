@@ -51,7 +51,7 @@
         android:id="@+id/txt_demand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DEMAND"
+        android:text="ASK SERVICES/PRODUCTS"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -111,20 +111,29 @@
         app:layout_constraintLeft_toLeftOf="@id/demand_button_service"
         app:layout_constraintRight_toRightOf="@id/demand_button_product"
         app:layout_constraintTop_toBottomOf="@id/demand_button_service">
+        <TextView
+            android:id="@+id/tv_useless3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Choose Type Of Service..."
+            android:textSize="12dp"
+            app:layout_constraintBottom_toTopOf="@id/spinner2"
+            app:layout_constraintLeft_toLeftOf="@id/spinner2"
+            app:layout_constraintTop_toTopOf="parent"/>
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner2"
-            android:dropDownSelector="@drawable/back"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:autofillHints="What Services Do You Want?"
-            android:background="@drawable/spin_back"
+            android:background="@drawable/spinner_boxed_back"
             android:dropDownWidth="wrap_content"
             android:spinnerMode="dropdown"
             android:entries="@array/AskServicesOptions"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tv_useless3"/>
         
         <EditText
             android:id="@+id/et_service_description"
