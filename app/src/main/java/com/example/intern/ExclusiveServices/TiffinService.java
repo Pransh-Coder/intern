@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +18,7 @@ public class TiffinService extends AppCompatActivity {
 
     ImageView back,home_btn;
     TextView secPara,thrPara,forPara;
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class TiffinService extends AppCompatActivity {
         secPara = findViewById(R.id.secPara);
         thrPara = findViewById(R.id.thrPara);
         forPara = findViewById(R.id.forPara);
+        submit=findViewById(R.id.submitTiffin);
 
 
         String sourceString ="<b>"+"1) "+"</b>"+ " Our Tiffin is prepared by "+"<b>" + "well trained and expert cook, "+ "</b>"+" with proper care of " +"<b>" + "hygiene." + "</b> ";
@@ -54,5 +58,18 @@ public class TiffinService extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TiffinService.this,"Will get back to you Shortly!!",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(TiffinService.this, ExclusiveServices.class));
+        finish();
+
     }
 }
