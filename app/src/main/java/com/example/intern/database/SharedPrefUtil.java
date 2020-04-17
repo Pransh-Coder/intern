@@ -2,8 +2,10 @@ package com.example.intern.database;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.text.TextUtils;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
@@ -53,6 +55,7 @@ public class SharedPrefUtil {
 	
 	public void updateSharedPrefsPostLogin(DocumentSnapshot snapshot){
 		SharedPreferences.Editor editor = preferences.edit();
+		editor.putString(USER_UID_KEY, FirebaseAuth.getInstance().getUid());
 		editor.putString(USER_NAME_KEY, snapshot.getString(FireStoreUtil.USER_NAME));
 		editor.putString(USER_NICK_NAME_KEY, snapshot.getString(FireStoreUtil.USER_NICK_NAME));
 		editor.putString(USER_PS_NICK_NAME_KEY, snapshot.getString(FireStoreUtil.USER_PS_NICK_NAME));
@@ -66,6 +69,11 @@ public class SharedPrefUtil {
 		editor.putString(USER_OCCUPATION_KEY, snapshot.getString(FireStoreUtil.USER_OCCUPATION));
 		editor.putString(USER_ADDRESS_KEY, snapshot.getString(FireStoreUtil.USER_ADDRESS));
 		editor.apply();
+		try{
+			FireStoreUtil.getProfilePicInLocal(context, FirebaseAuth.getInstance().getUid()).addOnSuccessListener(taskSnapshot -> {
+				editor.putString(USER_PROFILE_PIC_PATH_KEY, Environment.getExternalStorageDirectory()+"/PSData/pp.jpg");
+			});
+		}catch (Exception ignored){}
 	}
 	
 	public boolean getLoginStatus(){

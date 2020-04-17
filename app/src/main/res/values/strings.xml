@@ -48,6 +48,25 @@
         <item>Cab Services</item>
         <item>Other Services …</item>
     </string-array>
+    
+    <string-array name="SearchPredictions">
+        <item>Home Modification</item>
+        <item>Tiffin Services</item>
+        <item>Swabhiman</item>
+        <item>Shopping</item>
+        <item>Fuel With Us</item>
+        <item>Ask For Services</item>
+        <item>Save Money</item>
+        <item>Edit Profile</item>
+        <item>Reduce Expenses</item>
+        <item>Total Discount Received</item>
+        <item>Medical Records</item>
+        <item>Local Network</item>
+        <item>News And Updates</item>
+        <item>Feedback / Complaints</item>
+        <item>Rate / Share App</item>
+        <item>Terms and Conditions</item>
+    </string-array>
 
     <string name="more_about_special_offers">Tell us more about \nyour special offers</string>
     <string name="date_time">Date &amp; Time</string>
@@ -67,4 +86,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main_app">PsByPrarambh</string>
+	<string name="submit">SUBMIT</string>
 </resources>

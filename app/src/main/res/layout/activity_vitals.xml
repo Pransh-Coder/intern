@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/home"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="7dp"
@@ -40,19 +41,16 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="150dp" />
 
-    <TextView
-        android:id="@+id/heading"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_person_name"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/century_gothic"
-        android:text="Name"
+        android:hint="Name"
+        android:inputType="textPersonName"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/percent_30_Of_Screen"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/heading2"
@@ -66,7 +64,7 @@
         android:textSize="19dp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heading" />
+        app:layout_constraintTop_toBottomOf="@+id/et_person_name" />
 
     <TableLayout
         android:id="@+id/table"
@@ -97,15 +95,16 @@
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
-            <TextView
-                android:id="@+id/data3"
+            <EditText
+                android:id="@+id/et_blood_group"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:hint="Ex : B+"
                 android:padding="10dp"
-                android:text=""
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="14dp" />
+                android:inputType="textCapCharacters"
+                android:maxLength="3"
+                android:textColor="@color/cardview_dark_background" />
 
         </TableRow>
 
@@ -123,19 +122,20 @@
                 android:layout_weight="2"
                 android:background="@drawable/cell_shape"
                 android:padding="10dp"
-                android:text="Blood Group"
+                android:text="Blood Glucose"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
 
-            <TextView
-                android:id="@+id/data6"
+            <EditText
+                android:id="@+id/et_blood_glucose"
                 android:layout_width="0dp"
+                android:hint="Ex : 120"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:text=""
-                android:textSize="12dp" />
+                android:maxLength="3"
+                android:padding="10dp" />
 
         </TableRow>
 
@@ -159,14 +159,15 @@
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
-            <TextView
-                android:id="@+id/data9"
+            <EditText
+                android:id="@+id/et_blood_pressure"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:hint="Ex : 120/80"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:text=""
-                android:textSize="12dp" />
+                android:inputType="textCapCharacters"
+                android:maxLength="7"
+                android:padding="10dp" />
 
         </TableRow>
 
@@ -192,14 +193,15 @@
                 android:textSize="14dp" />
 
 
-            <TextView
-                android:id="@+id/data12"
+            <EditText
+                android:id="@+id/et_temperature"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:text=""
-                android:textSize="12dp" />
+                android:hint="Ex : 98.6"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:padding="10dp" />
 
         </TableRow>
 
@@ -217,19 +219,20 @@
                 android:layout_weight="2"
                 android:background="@drawable/cell_shape"
                 android:padding="10dp"
-                android:text="Height"
+                android:text="Height (in cm)"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
 
-            <TextView
-                android:id="@+id/data15"
+            <EditText
+                android:id="@+id/et_height"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:hint="Ex : 170"
+                android:inputType="number"
+                android:maxLength="3"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:text=""
-                android:textSize="12dp" />
+                android:padding="10dp" />
 
         </TableRow>
 
@@ -250,23 +253,36 @@
                 android:layout_weight="2"
                 android:background="@drawable/cell_shape"
                 android:padding="10dp"
-                android:text="Weight"
+                android:text="Weight (in kgs)"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
 
-            <TextView
-                android:id="@+id/data18"
+            <EditText
+                android:id="@+id/et_weight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:text=""
-                android:textSize="12dp" />
+                android:hint="Ex : 70"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:padding="10dp" />
 
         </TableRow>
 
     </TableLayout>
+    
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_gradient_vertical_button"
+        android:padding="10dp"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toTopOf="@id/pslogo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <ImageView
         android:id="@+id/pslogo"

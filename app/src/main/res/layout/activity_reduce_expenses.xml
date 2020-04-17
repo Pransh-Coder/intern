@@ -48,7 +48,7 @@
             app:layout_constraintGuide_begin="150dp" />
 
         <TextView
-            android:id="@+id/heading"
+            android:id="@+id/et_person_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/century_gothic"

@@ -112,7 +112,6 @@
         android:id="@+id/tv_invoice_number"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:layout_marginTop="20dp"
         android:background="@null"
         android:ems="10"
         android:paddingLeft="20dp"

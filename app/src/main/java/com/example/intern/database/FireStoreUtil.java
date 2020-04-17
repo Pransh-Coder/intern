@@ -17,12 +17,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -277,14 +279,14 @@ public abstract class FireStoreUtil {
 		return imagePathRef.putBytes(data);
 	}
 	
-	public static File getProfilePicInLocal(Context context, String UID){
+	public static FileDownloadTask getProfilePicInLocal(Context context, String UID) throws IOException {
 		StorageReference ppRef = getUserImageStorageReference(context, UID).child(USER_PROFILE_IMAGE_FILE_NAME);
-		File rootPath = new File(Environment.getDataDirectory(), "profile_pic.jpg");
-		ppRef.getFile(rootPath).addOnSuccessListener(taskSnapshot -> {
-			SharedPrefUtil prefUtil = new SharedPrefUtil(context);
-			prefUtil.getPreferences().edit().putString(SharedPrefUtil.USER_PROFILE_PIC_PATH_KEY, rootPath.getAbsolutePath()).apply();
-		});
-		return rootPath;
+		File rootPath = new File(Environment.getExternalStorageDirectory(), "PSData");
+		if(!rootPath.exists()){
+			rootPath.mkdirs();
+		}
+		final File file = new File(rootPath, "pp.jpg");
+		return ppRef.getFile(file);
 	}
 	
 	@IgnoreExtraProperties
