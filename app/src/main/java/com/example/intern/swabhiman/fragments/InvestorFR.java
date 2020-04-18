@@ -42,7 +42,7 @@ public class InvestorFR extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		binding.submitInvest.setOnClickListener(v->{
+		binding.swabhimanDonorButtonSubmit.setOnClickListener(v->{
 			Editable investAmt = binding.etInvest.getText();
 			if(investAmt != null){
 				String invest = investAmt.toString();
