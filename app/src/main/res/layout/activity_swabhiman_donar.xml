@@ -116,7 +116,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_donate" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/submit_donate"
         android:layout_width="0dp"
         android:layout_height="35dp"

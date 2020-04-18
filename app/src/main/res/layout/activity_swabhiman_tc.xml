@@ -177,7 +177,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_desc_all" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/submit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
