@@ -209,6 +209,7 @@
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:textStyle="bold"
+
                 app:layout_constraintTop_toTopOf="@+id/img4"
                 app:layout_constraintLeft_toRightOf="@+id/img4"
                 app:layout_constraintBottom_toBottomOf="@+id/img4"

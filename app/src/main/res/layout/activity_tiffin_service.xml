@@ -111,6 +111,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/arrow1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/next"
+                app:layout_constraintTop_toTopOf="@id/secPara"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
             <TextView
                 android:id="@+id/secPara"
@@ -118,13 +127,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:ellipsize="start"
-                android:fontFamily="@font/century_gothic"
+                android:fontFamily="@font/century_gothic_400"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/arrow1"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <ImageView
+                android:id="@+id/arrow2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/next"
+                app:layout_constraintEnd_toStartOf="@+id/secPara"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/thrPara"
+                app:layout_constraintTop_toBottomOf="@+id/secPara" />
 
             <TextView
                 android:id="@+id/thrPara"
@@ -132,13 +156,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:ellipsize="start"
-                android:fontFamily="@font/century_gothic"
+                android:fontFamily="@font/century_gothic_400"
                 android:padding="5dp"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/arrow2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/secPara"/>
+
+            <ImageView
+                android:id="@+id/arrow3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/next"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/thrPara"
+                app:layout_constraintTop_toTopOf="@id/forPara"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
             <TextView
                 android:id="@+id/forPara"
@@ -146,12 +184,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ellipsize="start"
-                android:fontFamily="@font/century_gothic"
+                android:textAlignment="textStart"
+                android:fontFamily="@font/century_gothic_400"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/arrow3"
                 app:layout_constraintTop_toBottomOf="@+id/thrPara"/>
 
             <TextView
