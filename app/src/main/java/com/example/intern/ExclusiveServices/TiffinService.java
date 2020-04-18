@@ -34,13 +34,13 @@ public class TiffinService extends AppCompatActivity {
         submit=findViewById(R.id.submitTiffin);
 
 
-        String sourceString ="<b>"+"1) "+"</b>"+ " Our Tiffin is prepared by "+"<b>" + "well trained and expert cook, "+ "</b>"+" with proper care of " +"<b>" + "hygiene." + "</b> ";
+        String sourceString ="<b>"+"&#8594"+"</b>"+ " Our Tiffin is prepared by "+"<b>" + "well trained and expert cook, "+ "</b>"+" with proper care of " +"<b>" + "hygiene." + "</b> ";
         secPara.setText(Html.fromHtml(sourceString));
 
-        String sourceString2 = "<b>"+"2) "+"</b>"+" Menu is designed in a way to provide "+"<b>" + "sufficient and balanced nutritions, "+"</b>"+ "for daily need.";
+        String sourceString2 ="<b>"+"&#8594 "+"</b>"+" Menu is designed in a way to provide "+"<b>" + "sufficient and balanced nutritions, "+"</b>"+ "for daily need.";
         thrPara.setText(Html.fromHtml(sourceString2));
 
-        String sourceString3 = "<b>"+"3) "+"</b>"+" Usesof oil and spices as per "+"<b>" + "dieticians guidance "+"</b>"+ "makes it a perfect meal.";
+        String sourceString3 = "<b>"+"&#8594 "+"</b>"+" Usesof oil and spices as per "+"<b>" + "dieticians guidance "+"</b>"+ "makes it a perfect meal.";
         forPara.setText(Html.fromHtml(sourceString3));
 
         back.setOnClickListener(view -> onBackPressed());

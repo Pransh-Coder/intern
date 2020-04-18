@@ -37,7 +37,7 @@
     <ImageView
         android:id="@+id/imgView_Food"
         android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:src="@drawable/exclusive"
         app:layout_constraintLeft_toLeftOf="parent"
