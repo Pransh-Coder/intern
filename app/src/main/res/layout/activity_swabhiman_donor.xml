@@ -116,7 +116,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_donation_amount_swabhiman_donor" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/swabhiman_donor_button_submit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

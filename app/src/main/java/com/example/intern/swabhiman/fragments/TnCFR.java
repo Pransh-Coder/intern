@@ -31,8 +31,10 @@ public class TnCFR extends Fragment {
 		View view = binding.getRoot();
 
 		TextView tv_list = view.findViewById(R.id.tv_list_concept);
-		tv_list.setText(Html.fromHtml("&nbsp &#8594; Opportunity for good cash flow<br>&nbsp &#8594; Opportunities for starting a small business<br>" +
-				"&nbsp &#8594; Option to become a consultant based on experience<br>&nbsp &#8594; Part-time job option as appropriate"));
+		tv_list.setText(Html.fromHtml("&#8594; Opportunity for good cash flow<br>&#8594; Opportunities for starting a small business<br>" +
+				"&#8594; Option to become a consultant based on experience<br>&#8594; Part-time job option as appropriate"));
+		TextView tv = view.findViewById(R.id.tv_desc1);
+		tv.setText(Html.fromHtml("A platform created specially for <b>senior citizens</b>, it will help them to explore new ways for growth in income or to contribute to the society as per their interest and experience, such as<br>"));
 		return view;
 	}
 	

@@ -1,16 +1,16 @@
 package com.example.intern.ExclusiveServices;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.intern.HomeActivity;
 import com.example.intern.R;
+import com.example.intern.mainapp.MainApp;
 
 public class HomeModification extends AppCompatActivity {
 
@@ -25,36 +25,19 @@ public class HomeModification extends AppCompatActivity {
         home_btn = findViewById(R.id.home_btn);
         submit=findViewById(R.id.submithm);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeModification.this,ExclusiveServices.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        back.setOnClickListener(view -> onBackPressed());
 
-        home_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeModification.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        home_btn.setOnClickListener(view -> {
+            Intent intent = new Intent(HomeModification.this, MainApp.class);
+            startActivity(intent);
+            finish();
         });
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(HomeModification.this,"Will get back to you Shortly!!",Toast.LENGTH_LONG).show();
-            }
+        final Context context = this;
+        submit.setOnClickListener(v -> {
+            //TODO :
+            new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
+                    .setMessage("We will get back to you shortly").setPositiveButton("OK", null)
+                    .setOnDismissListener(dialog -> onBackPressed()).show();
         });
-    }
-    @Override
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-        startActivity(new Intent(HomeModification.this, ExclusiveServices.class));
-        finish();
-
     }
 }

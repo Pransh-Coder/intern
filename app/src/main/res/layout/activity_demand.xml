@@ -58,26 +58,37 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/demand_imgView_Fuel" />
-
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/demand_viewPager_backgraound"
-        android:layout_width="361dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/banner_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_demand" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_guide_30_percent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.28" />
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/exclusive_services_banner"
+        app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_12_percent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_guide_12_percent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
 
     <Button
         android:id="@+id/demand_button_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_outlined_selected"
         android:fontFamily="@font/century_gothic_400"
         android:padding="10dp"
@@ -86,13 +97,13 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/demand_button_product"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/demand_viewPager_backgraound" />
+        app:layout_constraintTop_toBottomOf="@+id/hor_guide_30_percent" />
 
     <Button
         android:id="@+id/demand_button_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_oulined_not_selected"
         android:fontFamily="@font/century_gothic_400"
         android:padding="10dp"
@@ -102,7 +113,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/demand_button_service"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/demand_button_service"
-        app:layout_constraintTop_toBottomOf="@+id/demand_viewPager_backgraound" />
+        app:layout_constraintTop_toTopOf="@id/demand_button_service" />
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contraint_layout_services"

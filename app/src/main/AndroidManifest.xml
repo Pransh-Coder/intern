@@ -61,6 +61,7 @@
             android:name=".mainapp.MainApp"
             android:label="@string/title_activity_main_app"
             android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".swabhiman.SwabhimanActivity"
@@ -70,7 +71,8 @@
         <activity android:name=".fuel.FuelBPCLACT" />
         <activity android:name=".MedicalRecords.MedicalRecord" />
         <activity android:name=".tnc.TermsAndConditions" />
-        <activity android:name=".ReduceExpenses.ReduceExpenses" />
+        <activity android:name=".ReduceExpenses.ReduceExpenses"
+            android:windowSoftInputMode="adjustResize|adjustPan"/>
         <activity android:name=".TotalDiscountReceived.TotalDiscountReceived" />
         <activity android:name=".NewsAndUpdatesACT" />
         <activity android:name=".FeedBackOrComplaintACT" />
@@ -93,8 +95,7 @@
             android:theme="@style/MaterialAppTheme" />
         <activity
             android:name=".ExclusiveServices.ExclusiveServices"
-            android:launchMode="singleTop"
-            android:noHistory="true" />
+            android:launchMode="singleTop" />
         <activity
             android:name=".Rating"
             android:launchMode="singleTop"
@@ -123,15 +124,13 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".payment.StandardPaymentActivity"
-            android:launchMode="singleTop"
-            android:noHistory="true" />
+            android:launchMode="singleTop" />
         <activity
             android:name="save_money.Offers.PhysiotherapyOffers"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".payment.BecomeAMember"
-            android:launchMode="singleTop"
-            android:noHistory="true" />
+            android:launchMode="singleTop" />
         <activity android:name=".Gifts" />
         <activity android:name=".ExclusiveServices.TiffinService"/>
         <activity android:name=".ExclusiveServices.HomeModification"/>
