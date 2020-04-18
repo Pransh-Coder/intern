@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -31,7 +32,7 @@ public class InvestorFR extends Fragment {
 	
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		viewModel = new ViewModelProvider(requireActivity()).get(SwabhimanVM.class);
 		binding = ActivitySwabhimanInvestorBinding.inflate(inflater, container, false);
@@ -42,7 +43,7 @@ public class InvestorFR extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		binding.submitInvest.setOnClickListener(v->{
+		binding.submitInvestor.setOnClickListener(v->{
 			Editable investAmt = binding.etInvest.getText();
 			if(investAmt != null){
 				String invest = investAmt.toString();
@@ -50,17 +51,13 @@ public class InvestorFR extends Fragment {
 					SwabhimanAutoMailer.sendSwabhimanMail(SwabhimanAutoMailer.SWABHIMAN_INVESTOR_SUB_BASE + " Rs." +
 							invest, "User wants to Invest INR "+ invest,viewModel.getUserMail());
 					new AlertDialog.Builder(requireContext()).setTitle("THANK YOU !")
-							.setPositiveButton("OK", (button, which)->{
-								viewModel.getNavController().navigateUp();
-							});
+							.setPositiveButton("OK", (button, which)-> viewModel.getNavController().navigateUp());
 				}else{
 					Toast.makeText(requireContext(), "Don't you think it is too low?", Toast.LENGTH_LONG).show();
 				}
 			}
 		});
-		binding.ivBackButton.setOnClickListener(v->{
-			viewModel.getNavController().navigateUp();
-		});
+		binding.ivBackButton.setOnClickListener(v-> viewModel.getNavController().navigateUp());
 		binding.ivHomeButton.setOnClickListener(v->{
 			Intent intent = new Intent(requireContext(), MainApp.class);
 			startActivity(intent);

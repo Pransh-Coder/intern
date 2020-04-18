@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_invest" />
 
     <Button
-        android:id="@+id/swabhiman_donor_button_submit"
+        android:id="@+id/submit_investor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"

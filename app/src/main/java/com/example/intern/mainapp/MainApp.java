@@ -1,13 +1,17 @@
 package com.example.intern.mainapp;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -27,6 +31,7 @@ import com.example.intern.Rating;
 import com.example.intern.ReduceExpenses.ReduceExpenses;
 import com.example.intern.TotalDiscountReceived.TotalDiscountReceived;
 import com.example.intern.askservices.DemandActivity;
+import com.example.intern.auth.AuthActivity;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityMainAppBinding;
@@ -43,10 +48,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
@@ -73,6 +85,26 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		setContentView(binding.getRoot());
 		prefUtil = new SharedPrefUtil(this);
 		getWindow().setStatusBarColor(getResources().getColor(R.color.light_orange));
+	}
+	
+	private void checkPerms() {
+		final Context context = MainApp.this;
+		Dexter.withContext(this).withPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA).withListener(new MultiplePermissionsListener() {
+			@Override
+			public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
+				if(!multiplePermissionsReport.areAllPermissionsGranted() ||multiplePermissionsReport.isAnyPermissionPermanentlyDenied()){
+					new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Needs Your Permission")
+							.setMessage("To Deliver Its best for its consumers").setPositiveButton("OK", (dialog, which)->{
+								if(which == AlertDialog.BUTTON_POSITIVE){
+									checkPerms();
+								}
+					}).setNegativeButton("DISMISS", null)
+							.setCancelable(false).show();
+				}
+			}
+			@Override
+			public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {}
+		}).check();
 	}
 	
 	private void setUpSearchBar() {
@@ -160,6 +192,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		populateDrawer();
 		setClickListeners();
 		setDrawerClickListeners();
+		checkPerms();
 	}
 	
 	@SuppressLint("SetTextI18n")
@@ -189,7 +222,16 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	}
 	
 	private void setClickListeners(){
-		binding.drawerPinHome.setOnClickListener(v-> binding.drawerLayout.openDrawer());
+		binding.drawerPinHome.setOnClickListener(v-> {
+			binding.drawerLayout.openDrawer();
+			binding.searchBar.clearFocus();
+			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+			if (inputMethodManager != null) {
+				if(getCurrentFocus() != null){
+					inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+				}
+			}
+		});
 		binding.SaveMoneyLinear.setOnClickListener(v->{
 			//TODO : Change after pandemic stops
 			/*String userPayID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PAY_ID, null);
@@ -260,18 +302,23 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 						updata.put("LS", "0");
 						FireStoreUtil.getUserDocumentReference(context, currentuserid).update(updata).addOnSuccessListener(aVoid -> {
 							prefUtil.getPreferences().edit().clear().apply();
+							File  pp = new File(Environment.getExternalStorageDirectory() + "PSData/pp.jpg");
+							if(pp.exists()){
+								pp.delete();
+							}
 							FirebaseAuth.getInstance().signOut();
+							signInClient.revokeAccess();
 							progressDialog.dismiss();
 							new AlertDialog.Builder(context).setTitle("You have been logged out!")
-									.setPositiveButton("OK", (dialog, which1) -> {
-										if(which1==AlertDialog.BUTTON_POSITIVE){
-											signInClient.revokeAccess().addOnSuccessListener(aVoid1 -> finish());
-										}
-									}).setCancelable(false).show();
-							finish();
+									.setPositiveButton("OK", null)
+									.setOnDismissListener(dialog -> {
+										Intent intent = new Intent(MainApp.this, AuthActivity.class);
+										startActivity(intent);
+										finish();
+									}).show();
 							}).addOnFailureListener(e -> {
 								progressDialog.dismiss();
-								new AlertDialog.Builder(context).setTitle("Cannot Connect to the Internet")
+								new AlertDialog.Builder(context).setTitle("Cannot Connect to the Server")
 										.setPositiveButton("OK", null).show();
 							});
 					}
