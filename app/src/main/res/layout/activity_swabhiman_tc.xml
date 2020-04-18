@@ -185,6 +185,7 @@
         app:layout_constraintEnd_toStartOf="@id/chat"
         android:textSize="17sp"
         android:textAllCaps="false"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
