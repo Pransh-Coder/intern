@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/back"
@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/home_btn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/homeimg"
@@ -50,8 +50,8 @@
 
     <ImageView
         android:id="@+id/notifi"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:src="@drawable/notification"
@@ -173,7 +173,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/submit"
+        android:id="@+id/submitTiffin"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"

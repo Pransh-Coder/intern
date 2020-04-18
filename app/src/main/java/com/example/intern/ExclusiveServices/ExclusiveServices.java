@@ -38,12 +38,10 @@ public class ExclusiveServices extends AppCompatActivity {
         home_mod.setOnClickListener(view -> {
             Intent intent = new Intent(ExclusiveServices.this, HomeModification.class);
             startActivity(intent);
-            finish();
         });
         tifin.setOnClickListener(view -> {
             Intent intent = new Intent(ExclusiveServices.this, TiffinService.class);
             startActivity(intent);
-            finish();
         });
     }
 }

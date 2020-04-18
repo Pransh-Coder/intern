@@ -3,10 +3,12 @@ package com.example.intern.EditProfile;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -73,12 +75,22 @@ public class EditProfile extends AppCompatActivity {
         binding.address.setText(preferences.getString(SharedPrefUtil.USER_ADDRESS_KEY, null));
         String filePath = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PROFILE_PIC_PATH_KEY, null);
         if(filePath != null && !filePath.isEmpty()){
-            binding.ivProfilePic.setImageBitmap(BitmapFactory.decodeFile(filePath));
+            Glide.with(this).load(filePath).fallback(R.drawable.edit_profile).error(R.drawable.edit_profile).into(binding.ivProfilePic);
         }else{
-            File imageFile = FireStoreUtil.getProfilePicInLocal(this, FirebaseAuth.getInstance().getUid());
-            Glide.with(this).load(imageFile)
-                    .fallback(R.drawable.edit_profile)
-                    .into(binding.ivProfilePic);
+            final Context context = EditProfile.this;
+            try {
+                FireStoreUtil.getProfilePicInLocal(this, FirebaseAuth.getInstance().getUid()).addOnSuccessListener(taskSnapshot -> {
+                    SharedPrefUtil prefUtil1 = new SharedPrefUtil(context);
+                    File path = new File(Environment.getExternalStorageDirectory(), "PSData/pp.jpg");
+                    prefUtil1.getPreferences().edit().putString(SharedPrefUtil.USER_PROFILE_PIC_PATH_KEY, path.getPath()).apply();
+                    Glide.with(context).load(path)
+                            .fallback(R.drawable.edit_profile)
+                            .error(R.drawable.edit_profile)
+                            .into(binding.ivProfilePic);
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         binding.ivProfilePic.setOnClickListener(v->{
             //TODO : Get Image from user

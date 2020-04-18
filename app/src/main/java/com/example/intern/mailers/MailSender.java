@@ -1,5 +1,7 @@
 package com.example.intern.mailers;
 
+import com.example.intern.AppStaticData;
+
 import java.security.Security;
 import java.util.Properties;
 
@@ -51,8 +53,8 @@ public class MailSender extends javax.mail.Authenticator {
 		message.setSubject(subject);
 		message.setDataHandler(handler);
 		//TODO : Edit method body to fabricated needs
-		message.setRecipient(Message.RecipientType.TO, new InternetAddress("chandanrajsingh19@gmail.com"));
-		message.setRecipient(Message.RecipientType.BCC, new InternetAddress("chandanraj.official@gmail.com"));
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress(AppStaticData.VCURA_MAIL_ID));
+		message.setRecipient(Message.RecipientType.BCC, new InternetAddress(AppStaticData.PS_MAIL_ID));
 		Transport.send(message);
 	}
 	
@@ -63,14 +65,14 @@ public class MailSender extends javax.mail.Authenticator {
 		message.setSubject(subject);
 		message.setDataHandler(handler);
 		//TODO : Edit method body to fabricated needs
-		message.setRecipient(Message.RecipientType.TO, new InternetAddress("chandanrajsingh19@gmail.com"));
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress(AppStaticData.PS_MAIL_ID));
 		Transport.send(message);
 		sendConfirmationMail(sender, subject);
 	}
 	
 	public synchronized void sendConfirmationMail(String user_email, String subject) throws MessagingException {
 		MimeMessage message = new MimeMessage(session);
-		message.setSender(new InternetAddress("ps@prarambhlife.com"));
+		message.setSender(new InternetAddress(AppStaticData.PS_MAIL_ID));
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(user_email));
 		if(subject.contains(SwabhimanAutoMailer.SWABHIMAN_BUSS_ASSOCIATE_SUB)){
 			String body = "Thank you for showing interest in being a business associate.\nOur team will contact you shorty" +

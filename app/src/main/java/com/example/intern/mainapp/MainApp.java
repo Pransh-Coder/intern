@@ -1,12 +1,18 @@
 package com.example.intern.mainapp;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -15,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.intern.EditProfile.EditProfile;
 import com.example.intern.ExclusiveServices.ExclusiveServices;
+import com.example.intern.ExclusiveServices.HomeModification;
+import com.example.intern.ExclusiveServices.TiffinService;
 import com.example.intern.FeedBackOrComplaintACT;
 import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.NewsAndUpdatesACT;
@@ -23,6 +31,7 @@ import com.example.intern.Rating;
 import com.example.intern.ReduceExpenses.ReduceExpenses;
 import com.example.intern.TotalDiscountReceived.TotalDiscountReceived;
 import com.example.intern.askservices.DemandActivity;
+import com.example.intern.auth.AuthActivity;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityMainAppBinding;
@@ -39,11 +48,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
@@ -56,13 +71,12 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	private HomeMenuHeaderBinding headerBinding;
 	private SharedPrefUtil prefUtil;
 	private GoogleSignInClient signInClient;
-	private ArrayList<String> menuOptions = new ArrayList<>();
-	private MenuAdapter menuAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = ActivityMainAppBinding.inflate(getLayoutInflater());
+		setUpSearchBar();
 		GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 				.requestIdToken(getString(R.string.default_web_client_id))
 				.requestEmail()
@@ -73,11 +87,96 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		getWindow().setStatusBarColor(getResources().getColor(R.color.light_orange));
 	}
 	
+	private void checkPerms() {
+		final Context context = MainApp.this;
+		Dexter.withContext(this).withPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA).withListener(new MultiplePermissionsListener() {
+			@Override
+			public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
+				if(!multiplePermissionsReport.areAllPermissionsGranted() ||multiplePermissionsReport.isAnyPermissionPermanentlyDenied()){
+					new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Needs Your Permission")
+							.setMessage("To Deliver Its best for its consumers").setPositiveButton("OK", (dialog, which)->{
+								if(which == AlertDialog.BUTTON_POSITIVE){
+									checkPerms();
+								}
+					}).setNegativeButton("DISMISS", null)
+							.setCancelable(false).show();
+				}
+			}
+			@Override
+			public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {}
+		}).check();
+	}
+	
+	private void setUpSearchBar() {
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.SearchPredictions));
+		binding.searchBar.setAdapter(arrayAdapter);
+		binding.searchBar.setThreshold(0);
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		binding.searchBar.setDropDownWidth(metrics.widthPixels/2);
+		binding.searchBar.setOnItemClickListener((parent, view, position, id) -> {
+			Intent intent;
+			String keyWord = parent.getItemAtPosition(position).toString();
+			if(keyWord.contains("Home")){
+				intent= new Intent(MainApp.this, HomeModification.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Tiffin")){
+				intent = new Intent(MainApp.this, TiffinService.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Swabhiman")){
+				intent = new Intent(MainApp.this, SwabhimanActivity.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Shopping")){
+				intent = new Intent(MainApp.this, ActivityShopping.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Fuel")){
+				intent = new Intent(MainApp.this, FuelWithUsAct.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Ask")){
+				intent = new Intent(MainApp.this, DemandActivity.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Save")){
+				intent = new Intent(MainApp.this, SaveMoney.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Edit")){
+				intent = new Intent(MainApp.this, EditProfile.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Reduce")){
+				intent = new Intent(MainApp.this, ReduceExpenses.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Discount")){
+				intent = new Intent(MainApp.this, TotalDiscountReceived.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Medical")){
+				intent = new Intent(MainApp.this, MedicalRecord.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Network")){
+				intent = new Intent(MainApp.this, Listactivity.class);
+				startActivity(intent);
+			}else if(keyWord.contains("News")){
+				intent = new Intent(MainApp.this, NewsAndUpdatesACT.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Feedback")){
+				intent = new Intent(MainApp.this, FeedBackOrComplaintACT.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Rate")){
+				intent = new Intent(MainApp.this, Rating.class);
+				startActivity(intent);
+			}else if(keyWord.contains("Terms")){
+				intent = new Intent(MainApp.this, TermsAndConditions.class);
+				startActivity(intent);
+			}
+			binding.searchBar.dismissDropDown();
+			binding.searchBar.setText("");
+			binding.searchBar.clearFocus();
+		});
+	}
+	
 	private void setUpMenu(){
 		View headerView = binding.duoMenu.getHeaderView();
 		headerBinding =  HomeMenuHeaderBinding.bind(headerView);
-		menuOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.menu_main)));
-		menuAdapter = new MenuAdapter(menuOptions);
+		ArrayList<String> menuOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.menu_main)));
+		MenuAdapter menuAdapter = new MenuAdapter(menuOptions);
 		binding.duoMenu.setOnMenuClickListener(this);
 		binding.duoMenu.setAdapter(menuAdapter);
 		DuoDrawerToggle duoDrawerToggle = new DuoDrawerToggle(this,binding.drawerLayout,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -93,6 +192,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		populateDrawer();
 		setClickListeners();
 		setDrawerClickListeners();
+		checkPerms();
 	}
 	
 	@SuppressLint("SetTextI18n")
@@ -103,11 +203,16 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			Glide.with(this).load(ppFilePath)
 					.fallback(R.drawable.edit_profile).into(headerBinding.ivProfilePic);
 		} else {
+			final Context context = MainApp.this;
 			String UID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null);
 			if (UID != null && !UID.isEmpty()) {
-				File imageFile = FireStoreUtil.getProfilePicInLocal(this, UID);
-				Glide.with(this).load(imageFile)
-						.fallback(R.drawable.edit_profile).into(headerBinding.ivProfilePic);
+				try{
+					FireStoreUtil.getProfilePicInLocal(this, UID).addOnSuccessListener(taskSnapshot -> {
+						taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
+							Glide.with(context).load(uri.toString()).fallback(R.drawable.edit_profile).error(R.drawable.edit_profile).into(headerBinding.ivProfilePic);
+						});
+					});
+				}catch (Exception ignored){}
 			}
 		}
 		headerBinding.tvProfileUsername.setText(prefUtil.getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, "PS User"));
@@ -117,7 +222,16 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	}
 	
 	private void setClickListeners(){
-		binding.drawerPinHome.setOnClickListener(v-> binding.drawerLayout.openDrawer());
+		binding.drawerPinHome.setOnClickListener(v-> {
+			binding.drawerLayout.openDrawer();
+			binding.searchBar.clearFocus();
+			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+			if (inputMethodManager != null) {
+				if(getCurrentFocus() != null){
+					inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+				}
+			}
+		});
 		binding.SaveMoneyLinear.setOnClickListener(v->{
 			//TODO : Change after pandemic stops
 			/*String userPayID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PAY_ID, null);
@@ -169,44 +283,46 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			startActivity(intent);
 		});
 		Context context = MainApp.this;
-		binding.duoMenu.getFooterView().findViewById(R.id.logout_button).setOnClickListener(v->{
-			new AlertDialog.Builder(this).setTitle("Log Out ?")
-					.setPositiveButton("Yes", (button, which)->{
-						if(which == AlertDialog.BUTTON_POSITIVE){
-							ProgressDialog progressDialog = new ProgressDialog(this);
-							progressDialog.setTitle("Logging Out!");
-							progressDialog.show();
-							progressDialog.setCancelable(false);
-							FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-							String currentuserid;
-							if(user != null){
-								currentuserid = user.getUid();
-							}else{
-								currentuserid = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null);
-							}
-							Map<String, Object> updata = new HashMap<>();
-							updata.put("LS", "0");
-							FireStoreUtil.getUserDocumentReference(context, currentuserid).update(updata).addOnSuccessListener(aVoid -> {
-								prefUtil.getPreferences().edit().clear().apply();
-								FirebaseAuth.getInstance().signOut();
-								progressDialog.dismiss();
-								new AlertDialog.Builder(context).setTitle("You have been logged out!")
-										.setPositiveButton("OK", (dialog, which1) -> {
-											if(which1==AlertDialog.BUTTON_POSITIVE){
-												signInClient.revokeAccess().addOnSuccessListener(aVoid1 -> {
-													finish();
-												});
-											}
-										}).setCancelable(false).show();
-								finish();
-								}).addOnFailureListener(e -> {
-									progressDialog.dismiss();
-									new AlertDialog.Builder(context).setTitle("Cannot Connect to the Internet")
-											.setPositiveButton("OK", null).show();
-								});
+		binding.duoMenu.getFooterView().findViewById(R.id.logout_button).setOnClickListener(v->
+				new AlertDialog.Builder(this).setTitle("Log Out ?")
+				.setPositiveButton("Yes", (button, which)->{
+					if(which == AlertDialog.BUTTON_POSITIVE){
+						ProgressDialog progressDialog = new ProgressDialog(this);
+						progressDialog.setTitle("Logging Out!");
+						progressDialog.show();
+						progressDialog.setCancelable(false);
+						FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+						String currentuserid;
+						if(user != null){
+							currentuserid = user.getUid();
+						}else{
+							currentuserid = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null);
 						}
-					}).setNegativeButton("No", null).show();
-		});
+						Map<String, Object> updata = new HashMap<>();
+						updata.put("LS", "0");
+						FireStoreUtil.getUserDocumentReference(context, currentuserid).update(updata).addOnSuccessListener(aVoid -> {
+							prefUtil.getPreferences().edit().clear().apply();
+							File  pp = new File(Environment.getExternalStorageDirectory() + "PSData/pp.jpg");
+							if(pp.exists()){
+								pp.delete();
+							}
+							FirebaseAuth.getInstance().signOut();
+							signInClient.revokeAccess();
+							progressDialog.dismiss();
+							new AlertDialog.Builder(context).setTitle("You have been logged out!")
+									.setPositiveButton("OK", null)
+									.setOnDismissListener(dialog -> {
+										Intent intent = new Intent(MainApp.this, AuthActivity.class);
+										startActivity(intent);
+										finish();
+									}).show();
+							}).addOnFailureListener(e -> {
+								progressDialog.dismiss();
+								new AlertDialog.Builder(context).setTitle("Cannot Connect to the Server")
+										.setPositiveButton("OK", null).show();
+							});
+					}
+				}).setNegativeButton("No", null).show());
 		/*headerBinding.ivLogOut.setOnClickListener(v-> new AlertDialog.Builder(this).setTitle("Log Out ?")
 				.setPositiveButton("Yes", (button, which)->{
 					if(which == AlertDialog.BUTTON_POSITIVE){
@@ -319,7 +435,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	
 	@Override
 	public void onOptionClicked(int position, Object objectClicked) {
-		Intent intent = null;
+		Intent intent;
 		switch (position) {
 			case 0:
 				intent = new Intent(this, ReduceExpenses.class);

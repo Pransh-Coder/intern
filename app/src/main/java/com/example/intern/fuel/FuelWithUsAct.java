@@ -36,9 +36,9 @@ import java.util.List;
 public class FuelWithUsAct extends AppCompatActivity {
 	ActivityFuelWithUsBinding binding;
 	boolean hasChosenImage;
-	String filePath = null;
-	SharedPrefUtil prefUtil;
-	String UID = null;
+	private String filePath = null;
+	private SharedPrefUtil prefUtil;
+	private String UID;
 	Double petrolPrice = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -114,16 +114,16 @@ public class FuelWithUsAct extends AppCompatActivity {
 						dialog.setTitle("Please Wait");
 						dialog.setIcon(R.drawable.pslogotrimmed);
 						dialog.show();
-						FireStoreUtil.uploadFuelInvoice(this,UID,invoiceNo, BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot -> {
-							String url = taskSnapshot.getStorage().getDownloadUrl().toString();
-							FireStoreUtil.uploadFuelRefundRequest(UID, invoiceNo, url).addOnSuccessListener(documentReference -> {
-								dialog.dismiss();
-								new AlertDialog.Builder(context).setTitle("Request Received").setMessage("We have received the invoice number and picture of the invoice")
-										.setIcon(R.drawable.pslogotrimmed)
-										.setPositiveButton("OK", (dialog1, which) -> finish())
-										.setOnDismissListener(dialog12 -> finish()).show();
-							});
-						});
+						FireStoreUtil.uploadFuelInvoice(this,UID,invoiceNo, BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot ->
+								taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri ->
+										FireStoreUtil.uploadFuelRefundRequest(UID, invoiceNo, uri.toString()).addOnSuccessListener(documentReference -> {
+											dialog.dismiss();
+											new AlertDialog.Builder(context).setTitle("Request Received")
+													.setMessage("We have received the invoice number and picture of the invoice")
+													.setIcon(R.drawable.pslogotrimmed)
+													.setPositiveButton("OK", (dialog1, which) -> finish())
+													.setOnDismissListener(dialog12 -> finish()).show();
+						})));
 					}
 				}
 			}
