@@ -22,46 +22,46 @@ import com.example.intern.swabhiman.SwabhimanVM;
  * A simple {@link Fragment} subclass.
  */
 public class InvestorFR extends Fragment {
-	private static int INVEST_LIMIT = 1000;
-	private ActivitySwabhimanInvestorBinding binding;
-	private SwabhimanVM viewModel;
-	
-	public InvestorFR() {
-		// Required empty public constructor
-	}
-	
-	
-	@Override
-	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-	                         Bundle savedInstanceState) {
-		viewModel = new ViewModelProvider(requireActivity()).get(SwabhimanVM.class);
-		binding = ActivitySwabhimanInvestorBinding.inflate(inflater, container, false);
-		View view = binding.getRoot();
-		return view;
-	}
-	
-	@Override
-	public void onStart() {
-		super.onStart();
-		binding.submitInvestor.setOnClickListener(v->{
-			Editable investAmt = binding.etInvest.getText();
-			if(investAmt != null){
-				String invest = investAmt.toString();
-				if(Integer.parseInt(invest) >= INVEST_LIMIT){
-					SwabhimanAutoMailer.sendSwabhimanMail(SwabhimanAutoMailer.SWABHIMAN_INVESTOR_SUB_BASE + " Rs." +
-							invest, "User wants to Invest INR "+ invest,viewModel.getUserMail());
-					new AlertDialog.Builder(requireContext()).setTitle("THANK YOU !")
-							.setPositiveButton("OK", (button, which)-> viewModel.getNavController().navigateUp());
-				}else{
-					Toast.makeText(requireContext(), "Don't you think it is too low?", Toast.LENGTH_LONG).show();
-				}
-			}
-		});
-		binding.ivBackButton.setOnClickListener(v-> viewModel.getNavController().navigateUp());
-		binding.ivHomeButton.setOnClickListener(v->{
-			Intent intent = new Intent(requireContext(), MainApp.class);
-			startActivity(intent);
-			requireActivity().finish();
-		});
-	}
+    private static int INVEST_LIMIT = 1000;
+    private ActivitySwabhimanInvestorBinding binding;
+    private SwabhimanVM viewModel;
+
+    public InvestorFR() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        viewModel = new ViewModelProvider(requireActivity()).get(SwabhimanVM.class);
+        binding = ActivitySwabhimanInvestorBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        binding.submitInvest.setOnClickListener(v -> {
+            Editable investAmt = binding.etInvest.getText();
+            if (investAmt != null) {
+                String invest = investAmt.toString();
+                if (Integer.parseInt(invest) >= INVEST_LIMIT) {
+                    SwabhimanAutoMailer.sendSwabhimanMail(SwabhimanAutoMailer.SWABHIMAN_INVESTOR_SUB_BASE + " Rs." +
+                            invest, "User wants to Invest INR " + invest, viewModel.getUserMail());
+                    new AlertDialog.Builder(requireContext()).setTitle("THANK YOU !")
+                            .setPositiveButton("OK", (button, which) -> viewModel.getNavController().navigateUp());
+                } else {
+                    Toast.makeText(requireContext(), "Don't you think it is too low?", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        binding.ivBackButton.setOnClickListener(v -> viewModel.getNavController().navigateUp());
+        binding.ivHomeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), MainApp.class);
+            startActivity(intent);
+            requireActivity().finish();
+        });
+    }
 }
