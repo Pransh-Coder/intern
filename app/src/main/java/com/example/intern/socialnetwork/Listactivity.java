@@ -66,6 +66,7 @@ public class Listactivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(Listactivity.this);
         recyclerView = findViewById(R.id.recyclerView);
         findFriend=findViewById(R.id.frnd);
+        ImageView find_friend=findViewById(R.id.imageView13);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
@@ -88,6 +89,18 @@ public class Listactivity extends AppCompatActivity {
         initializeField();
         retrivePincode();
         findFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url="www.facebook.com/PS-by-Prarambh-102589031363023/?modal=admin_todo_tour";
+                Uri u=Uri.parse("https://"+url);
+                Intent i =new Intent(Intent.ACTION_VIEW,u);
+                startActivity(i);
+
+
+
+            }
+        });
+        find_friend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String url="www.facebook.com/PS-by-Prarambh-102589031363023/?modal=admin_todo_tour";
