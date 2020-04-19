@@ -35,15 +35,19 @@ public class ChoicesFR extends Fragment {
 			//TODO: Set on click listeners for choices
 			binding.donar.setOnClickListener(v -> {
 				viewModel.getNavController().navigate(R.id.action_choicesFR_to_donorFR);
+				viewModel.setFragmentOpen(true);
 			});
 			binding.employement.setOnClickListener(v -> {
 				viewModel.getNavController().navigate(R.id.action_choicesFR_to_employement);
+				viewModel.setFragmentOpen(true);
 			});
 			binding.investor.setOnClickListener(v -> {
 				viewModel.getNavController().navigate(R.id.action_choicesFR_to_investorFR);
+				viewModel.setFragmentOpen(true);
 			});
 			binding.businessAssociate.setOnClickListener(v -> {
 				viewModel.getNavController().navigate(R.id.action_choicesFR_to_businessAssociateFR);
+				viewModel.setFragmentOpen(true);
 			});
 		}else{
 			viewModel.getNavController().navigate(R.id.action_choicesFR_to_tnCFR);

@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.intern.FoodActivity;
 import com.example.intern.Gifts;
@@ -15,22 +14,16 @@ import com.example.intern.Lifestyle;
 import com.example.intern.R;
 import com.example.intern.ServicesActivity;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class SaveMoney extends AppCompatActivity {
 
     //ViewPager
-    ViewPager viewPager;
     CardView health, lifeStyle, food, services, gifs, holiday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_money);
-
-        //ViewPager
-        viewPager = findViewById(R.id.viewpager);
+        
 
         health = findViewById(R.id.health);
         gifs = findViewById(R.id.gifts);
@@ -39,11 +32,10 @@ public class SaveMoney extends AppCompatActivity {
         holiday = findViewById(R.id.holiday);
         services = findViewById(R.id.services);
         //Initialise ViewPager Adapter
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPager.setAdapter(viewPagerAdapter);
+/*        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
 
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);
+        timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);*/
 
         health.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +85,7 @@ public class SaveMoney extends AppCompatActivity {
         });
     }
 
-    public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
+   /* public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
         @Override
         public void run() {
             //Runs the specified action on the UI thread.  UI thread-The default, primary thread created anytime an Android application is launched. It is in charge of handling all user interface and activities, unless otherwise specified. Runnable is an interface meant to handle sharing code between threads.
@@ -110,5 +102,5 @@ public class SaveMoney extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
 }

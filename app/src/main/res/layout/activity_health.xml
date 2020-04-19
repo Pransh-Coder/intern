@@ -73,10 +73,12 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgView_Food" />
 
-            <androidx.viewpager.widget.ViewPager
+            <ImageView
                 android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/save_money_banner_new"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginRight="20dp"
