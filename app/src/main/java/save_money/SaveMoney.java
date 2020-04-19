@@ -91,7 +91,6 @@ public class SaveMoney extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.

@@ -70,6 +70,13 @@ public abstract class FireStoreUtil {
 	public static String PETROL_PRICE_KEY = "petropr";
 	private static String FUEL_REFUND_COLLECTION_NAME = "bpclref";
 	private static String STATIC_DATA_COLLECTION_NAME = "psdata";
+	public static String EXCLUSIVE_SERVICES_COLLECTION_NAME = "exserv";
+	public static String HOME_MODIFICATION_SERVICES = "homemod";
+	public static String TIFFIN_SERVICES_SERVICES = "tiffin";
+	public static String AUTO_SERVICES_SERVICES = "auto";
+	public static String EMERGENCY_CARE_SERVICES = "emerg";
+	public static String LEGAL_FINANCIAL_SERVICES = "legalnfinancial";
+	public static String EDUCATION_CLASSES_SERVICES = "edu";
 	
 	public static Task<DocumentSnapshot> getStaticDataSnapshot(){
 		return FirebaseFirestore.getInstance().collection(STATIC_DATA_COLLECTION_NAME).document("static").get();
@@ -162,7 +169,7 @@ public abstract class FireStoreUtil {
 		if(userStorageReference == null){
 			synchronized (FireStoreUtil.class){
 				if(userStorageReference == null){
-					userStorageReference = FirebaseStorage.getInstance().getReference().child(UID);
+					userStorageReference = FirebaseStorage.getInstance().getReference().child("users").child(UID);
 				}
 			}
 		}
