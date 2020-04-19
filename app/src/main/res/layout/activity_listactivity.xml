@@ -39,7 +39,7 @@
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="2dp"
         android:background="#000"
         android:elevation="20dp"
         android:outlineAmbientShadowColor="#808080"
@@ -51,7 +51,7 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="260dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,10 +72,10 @@
         android:background="@drawable/findfriend"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.598"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.215" />
+        app:layout_constraintVertical_bias="0.263" />
 
     <TextView
         android:id="@+id/frnd"
@@ -90,13 +90,13 @@
         app:layout_constraintHorizontal_bias="0.946"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.286" />
+        app:layout_constraintVertical_bias="0.275" />
 
 
     <View
         android:id="@+id/view3"
-        android:layout_width="150dp"
-        android:layout_height="3dp"
+        android:layout_width="110dp"
+        android:layout_height="2dp"
         android:background="#000"
         android:elevation="20dp"
         android:outlineAmbientShadowColor="#808080"

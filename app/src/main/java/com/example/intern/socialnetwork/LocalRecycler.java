@@ -40,8 +40,8 @@ public class LocalRecycler extends RecyclerView.Adapter<LocalRecycler.Viewholder
     if(listitem.isEmpty())
         Toast.makeText(context,"EMPTY",Toast.LENGTH_LONG).show();
         holder.un.setText("Name :"+localNetwork.getun());
-        holder.Occ.setText("Occ :"+localNetwork.getOcc());
-        holder.age.setText("Age :"+localNetwork.getAge());
+        holder.Occ.setText("Occupation :"+localNetwork.getOcc());
+        holder.age.setText("Age :"+localNetwork.getDob());
         Log.i("In Bind view holder","invoked");
 
     }

@@ -110,7 +110,7 @@
         android:layout_marginEnd="112dp"
         android:ems="10"
         android:hint="₹"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

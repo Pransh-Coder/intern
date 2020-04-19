@@ -3,6 +3,7 @@ package com.example.intern.socialnetwork;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,7 +33,13 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -208,6 +216,7 @@ public class Listactivity extends AppCompatActivity {
 
         DocumentReference docRef = fstore.collection("Users").document(user);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
@@ -218,9 +227,27 @@ public class Listactivity extends AppCompatActivity {
                     mlistItems=new mLocalNetwork();
                     mlistItems.setun(locallist.getun());
                     mlistItems.setOcc(locallist.getOcc());
-                    mlistItems.setAge(locallist.getAge());
+                    String s=locallist.getDob();
+                    //Toast.makeText(Listactivity.this,s,Toast.LENGTH_LONG).show();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+                    Date d = null;
+                    try {
+                        d = sdf.parse(s);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(d);
+                    int date = c.get(Calendar.DATE);
+                    int month = c.get(Calendar.MONTH) + 1;
+                    int year = c.get(Calendar.YEAR);
+
+                    LocalDate l1 = LocalDate.of(year, month, date);
+                    LocalDate now1 = LocalDate.now();
+                    Period diff1 = Period.between(l1, now1);
+                    System.out.println("age:" + diff1.getYears() + "years");                        //Today's date
+                    mlistItems.setDob(Integer.toString(diff1.getYears()));
                     listItems.add(mlistItems);
-                    String nm= mlistItems.getOcc();
                     //Toast.makeText(Listactivity.this,nm , Toast.LENGTH_LONG).show();
 
                     //Toast.makeText(Listactivity.this, "Goingtoputdata", Toast.LENGTH_LONG).show();
