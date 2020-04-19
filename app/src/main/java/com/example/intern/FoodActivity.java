@@ -1,9 +1,12 @@
 package com.example.intern;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.intern.mainapp.MainApp;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -13,6 +16,11 @@ public class FoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food);
         findViewById(R.id.food_imageView1).setOnClickListener(v -> {
             showWaitDialog();
+        });
+        findViewById(R.id.food_button_back).setOnClickListener(v -> onBackPressed());
+        findViewById(R.id.food_home_button).setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainApp.class);
+            startActivity(intent);finish();
         });
     }
     private void showWaitDialog(){

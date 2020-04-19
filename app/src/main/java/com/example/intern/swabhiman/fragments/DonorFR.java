@@ -40,6 +40,12 @@ public class DonorFR extends Fragment {
 	}
 	
 	@Override
+	public void onDetach() {
+		viewModel.setFragmentOpen(false);
+		super.onDetach();
+	}
+	
+	@Override
 	public void onStart() {
 		super.onStart();
 		binding.swabhimanDonorButtonSubmit.setOnClickListener(v->{

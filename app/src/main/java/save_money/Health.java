@@ -6,17 +6,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.intern.R;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class Health extends AppCompatActivity {
-
-    //ViewPager
-    ViewPager viewPager;
     LinearLayout dental, eyeClinic, homeopathy, dietician, pathology, physiotherapy;
 
     @Override
@@ -25,20 +18,13 @@ public class Health extends AppCompatActivity {
         setContentView(R.layout.activity_health);
 
         //ViewPager
-        viewPager = findViewById(R.id.viewpager);
         dental = findViewById(R.id.dental);
         eyeClinic = findViewById(R.id.eye);
         homeopathy = findViewById(R.id.homeopathy);
         dietician = findViewById(R.id.dietician);
         pathology = findViewById(R.id.pathology);
         physiotherapy = findViewById(R.id.physiotherapy);
-
-        //Initialise ViewPager Adapter
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPager.setAdapter(viewPagerAdapter);
-
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);
+        
 
         dental.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +76,7 @@ public class Health extends AppCompatActivity {
         });
     }
 
-    public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
+/*    public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
         @Override
         public void run() {
             //Runs the specified action on the UI thread.  UI thread-The default, primary thread created anytime an Android application is launched. It is in charge of handling all user interface and activities, unless otherwise specified. Runnable is an interface meant to handle sharing code between threads.
@@ -107,7 +93,7 @@ public class Health extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
     
     private void showWaitDialog(){
         new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
