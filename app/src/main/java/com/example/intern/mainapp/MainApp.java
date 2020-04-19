@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.intern.AppStaticData;
 import com.example.intern.EditProfile.EditProfile;
 import com.example.intern.ExclusiveServices.ExclusiveServices;
 import com.example.intern.ExclusiveServices.HomeModification;
@@ -114,6 +116,35 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		binding.searchBar.setDropDownWidth(metrics.widthPixels/2);
+		binding.searchBar.setText("");
+		binding.searchBar.setOnEditorActionListener((v, actionId, event) -> {
+			binding.searchBar.showDropDown();
+			if(actionId == EditorInfo.IME_ACTION_SEARCH){
+				String keyWord = v.getText().toString().toLowerCase();
+				Intent intent = null;
+				for(String demandTrigger : AppStaticData.demandTriggers){
+					if(keyWord.contains(demandTrigger)){
+						intent = new Intent(MainApp.this, DemandActivity.class);
+						break;
+					}
+				}
+				for (String saveMoneyTrigger : AppStaticData.saveMoneyTriggers){
+					if(keyWord.contains(saveMoneyTrigger)){
+						intent = new Intent(MainApp.this, SaveMoney.class);
+						break;
+					}
+				}
+				if(intent != null){
+					binding.searchBar.setText("");
+					binding.searchBar.clearFocus();
+					startActivity(intent);
+					return true;
+				}
+			}
+			binding.searchBar.setText("");
+			binding.searchBar.clearFocus();
+			return false;
+		});
 		binding.searchBar.setOnItemClickListener((parent, view, position, id) -> {
 			Intent intent;
 			String keyWord = parent.getItemAtPosition(position).toString();
@@ -193,6 +224,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		setClickListeners();
 		setDrawerClickListeners();
 		checkPerms();
+		binding.searchBar.setText("");
 	}
 	
 	@SuppressLint("SetTextI18n")
@@ -233,26 +265,8 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			}
 		});
 		binding.SaveMoneyLinear.setOnClickListener(v->{
-			//TODO : Change after pandemic stops
-			/*String userPayID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PAY_ID, null);
-			if(userPayID != null){
-				razorPayVerification(userPayID);
-			}else{
-				FireStoreUtil.getUserDocumentReference(this, FireStoreUtil.getFirebaseUser(this).getUid()).addSnapshotListener((snapshot, e) -> {
-					String payID = null;
-					if(snapshot!= null){
-						payID = snapshot.getString(FireStoreUtil.USER_PAY_ID);
-					}
-					if(payID != null){
-						razorPayVerification(payID);
-					}else{
-						Intent intent = new Intent(MainApp.this, BecomeAMember.class);
-						startActivityForResult(intent, BECOME_MEMBER_REQ_CODE);
-					}
-				});
-			}*/
-			new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
-					.setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
+			Intent intent = new Intent(MainApp.this, SaveMoney.class);
+			startActivity(intent);
 		});
 		//TODO : Setting click listeners for others
 		binding.swabhimanMainChoice.setOnClickListener(v->{

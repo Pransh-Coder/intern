@@ -61,16 +61,17 @@
 
 				<AutoCompleteTextView
 					android:id="@+id/search_bar"
-					android:layout_width="150dp"
+					android:layout_width="200dp"
 					android:layout_height="35dp"
 					android:layout_gravity="right"
 					android:layout_marginBottom="10dp"
 					android:inputType="textAutoComplete"
 					android:maxLines="1"
+					android:hint="What do you want?"
 					android:background="@drawable/home_activity_search_background"
 					android:drawableStart="@drawable/ic_search"
 					android:drawablePadding="5dp"
-					android:hint="Search..."
+					android:imeOptions="actionSearch"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toBottomOf="@id/hor_30" />
@@ -201,8 +202,10 @@
 							android:layout_height="wrap_content"
 							android:layout_gravity="center_horizontal"
 							android:layout_marginTop="15dp"
+							android:text="@string/discount_on_fuel"
+							android:textAlignment="center"
 							android:fontFamily="@font/century_gothic_400"
-							android:text="@string/fuel_with_us"
+							android:textSize="12dp"
 							android:textColor="@color/black" />
 					</LinearLayout>
 				
