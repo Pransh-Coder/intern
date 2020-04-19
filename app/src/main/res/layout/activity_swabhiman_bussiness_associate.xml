@@ -120,7 +120,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feedback_swabhiman_bussiness_associate" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/swabhiman_bussiness_associate_button_submit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
