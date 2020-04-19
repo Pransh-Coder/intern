@@ -32,9 +32,8 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="7dp"
+        app:layout_constraintStart_toEndOf="@id/back"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/homeimg" />
 
@@ -63,24 +62,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/search"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="7dp"
+        app:layout_constraintEnd_toStartOf="@id/notifi"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/search" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/notifi"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/notification" />
 

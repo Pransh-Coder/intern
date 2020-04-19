@@ -16,7 +16,7 @@ public class Lifestyle extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityScreen11Binding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_screen_11);
+        setContentView(binding.getRoot());
         //getSupportActionBar().hide();
         binding.salonLayout.setOnClickListener(v -> {
             showWaitDialog();
