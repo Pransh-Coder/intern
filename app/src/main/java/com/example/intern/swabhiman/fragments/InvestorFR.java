@@ -1,6 +1,7 @@
 package com.example.intern.swabhiman.fragments;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,10 +17,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.R;
+import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.ActivitySwabhimanInvestorBinding;
 import com.example.intern.mailers.SwabhimanAutoMailer;
 import com.example.intern.mainapp.MainApp;
 import com.example.intern.swabhiman.SwabhimanVM;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,26 +49,35 @@ public class InvestorFR extends Fragment {
 		binding = ActivitySwabhimanInvestorBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
 		TextView tv = view.findViewById(R.id.tv_desc1);
-		tv.setText(Html.fromHtml("Welcomes you to become a part of <b>PS</b> <br>A PS can start investing from 10,000 and can go up to any limit. He will get 10% of monthly interest on his investment For more info submit the request.<br>"));
+		tv.setText(Html.fromHtml("We Welcome you to become a part of <b>PS</b> <br>Anyone can start investing from 10,000 and can go up to any limit. He/She will get 10-12% of monthly interest on his investment For more info submit the request.<br>"));
 		return view;
 	}
 	
 	@Override
 	public void onStart() {
 		super.onStart();
-		binding.submitInvestor.setOnClickListener(v->{
-			Editable investAmt = binding.etInvest.getText();
-			if(investAmt != null){
-				String invest = investAmt.toString();
-				if(Integer.parseInt(invest) >= INVEST_LIMIT){
-					SwabhimanAutoMailer.sendSwabhimanMail(SwabhimanAutoMailer.SWABHIMAN_INVESTOR_SUB_BASE + " Rs." +
-							invest, "User wants to Invest INR "+ invest,viewModel.getUserMail());
-					new AlertDialog.Builder(requireContext()).setTitle("THANK YOU !")
-							.setPositiveButton("OK", (button, which)-> viewModel.getNavController().navigateUp());
-				}else{
-					Toast.makeText(requireContext(), "Don't you think it is too low?", Toast.LENGTH_LONG).show();
+		binding.submitInvestor.setOnClickListener(v -> {
+			//TODO :
+			ProgressDialog dialog = new ProgressDialog(getContext());
+			dialog.setTitle("Please wait");
+			dialog.setIcon(R.drawable.pslogotrimmed);
+			dialog.show();
+			Map<String, Object> data = new HashMap<>();
+			data.put("uid", FirebaseAuth.getInstance().getUid());
+			FirebaseFirestore.getInstance().collection(FireStoreUtil.SWABHIMAN_SERVICE)
+					.document(FireStoreUtil.INVESTOR)
+					.collection(FireStoreUtil.INVESTOR).add(data)
+					.addOnSuccessListener(documentReference -> {
+						dialog.dismiss();
+						new AlertDialog.Builder(getContext()).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
+								.setMessage("We will get back to you shortly").setPositiveButton("OK", null).show();
+
+					}).addOnFailureListener(new OnFailureListener() {
+				@Override
+				public void onFailure(@NonNull Exception e) {
+					Toast.makeText(getContext(),"Failed",Toast.LENGTH_LONG).show();
 				}
-			}
+			});
 		});
 		binding.ivBackButton.setOnClickListener(v-> viewModel.getNavController().navigateUp());
 		binding.ivHomeButton.setOnClickListener(v->{

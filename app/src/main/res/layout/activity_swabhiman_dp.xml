@@ -143,19 +143,19 @@
 
                         <ImageView
                             android:id="@+id/savemoney1"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
+                            android:layout_width="135dp"
+                            android:layout_height="95dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/ic_business_associate" />
+                            android:layout_marginTop="1dp"
+                            android:src="@drawable/business" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:gravity="center"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="0dp"
                             android:fontFamily="@font/century_gothic_400"
+                            android:gravity="center"
                             android:text="PS Partners"
                             android:textColor="@color/black" />
                     </LinearLayout>
@@ -212,7 +212,7 @@
                             android:layout_height="70dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/ic_donor_swabhiman" />
+                            android:src="@drawable/rupeedonor" />
 
                         <TextView
                             android:layout_width="wrap_content"

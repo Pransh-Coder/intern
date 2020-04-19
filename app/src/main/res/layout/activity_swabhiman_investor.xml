@@ -142,46 +142,21 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".35" />
 
-    <TextView
-        android:id="@+id/tv_invest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        android:text="How much can you Invest?"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_knowmore" />
-
-    <EditText
-        android:id="@+id/et_invest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Rs. 1,000"
-        android:inputType="number"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_invest" />
-
     <android.widget.Button
         android:id="@+id/submit_investor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="302dp"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/background_button_sign_in"
         android:padding="10dp"
+        android:text="Submit"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:background="@drawable/background_button_sign_in"
-        android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_invest" />
+        app:layout_constraintTop_toBottomOf="@id/tv_knowmore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

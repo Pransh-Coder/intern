@@ -1,5 +1,6 @@
 package com.example.intern.swabhiman.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,21 +12,31 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.R;
+import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivitySwabhimanDonorBinding;
 import com.example.intern.mainapp.MainApp;
 import com.example.intern.swabhiman.SwabhimanVM;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.razorpay.Checkout;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DonorFR extends Fragment {
 	private ActivitySwabhimanDonorBinding binding;
 	private SwabhimanVM viewModel;
+	TextView secPara,thrPara,forPara,sixpara;
 	
 	public DonorFR() {
 		// Required empty public constructor
@@ -38,9 +49,25 @@ public class DonorFR extends Fragment {
 		viewModel = new ViewModelProvider(requireActivity()).get(SwabhimanVM.class);
 		binding = ActivitySwabhimanDonorBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
-		TextView tv = view.findViewById(R.id.tv_desc1);
-		tv.setText(Html.fromHtml("PS thanks you to support  this social enterprise cause,It wasn't possible with your kind support.You can donate, money,time or your free space or anything.<br>"));
+		secPara = view.findViewById(R.id.secPara);
+		thrPara = view.findViewById(R.id.thrPara);
+		forPara = view.findViewById(R.id.forPara);
+		sixpara = view.findViewById(R.id.sixpara);
 
+		TextView tv = view.findViewById(R.id.tv_desc1);
+		tv.setText(Html.fromHtml("PS thanks you to support  this social enterprise cause,It wasn't possible with your kind support.You can donate:-<br>"));
+
+		//arrow1.setText("<b>"+"&#8594"+"</b>"+" ");
+		String sourceString =/*"<b>"+"&#8594"+"</b>"+*/ "<b>MONEY</b> ";
+		secPara.setText(Html.fromHtml(sourceString));
+
+		String sourceString2 =/*"<b>"+"&#8594 "+"</b>"+*/"<b>TIME</b>";
+		thrPara.setText(Html.fromHtml(sourceString2));
+
+		String sourceString3 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>FREE SPACE</b>";
+		forPara.setText(Html.fromHtml(sourceString3));
+		String sourceString4 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>ANYTHING</b>";
+		sixpara.setText(Html.fromHtml(sourceString4));
 		return  view;
 	}
 	
@@ -53,38 +80,31 @@ public class DonorFR extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		binding.swabhimanDonorButtonSubmit.setOnClickListener(v->{
-			Editable amount = binding.editTextDonationAmountSwabhimanDonor.getText();
-			if(amount != null){
-				final Context context = requireContext();
-				final Checkout checkout = new Checkout();
-				checkout.setKeyID("rzp_test_9SFxBSOfMFPxyk");
-				checkout.setImage(R.drawable.pslogotrimmed);
-				int donationAmt=  Integer.parseInt(amount.toString())*100;
-				String setAmt = Integer.toString(donationAmt);
-				try{
-					JSONObject options = new JSONObject();
-					options.put("name", "Prarambh PVT LTD");
-					options.put("description" ,"Donation to PS");
-					options.put("currency" , "INR");
-					options.put("amount" , setAmt);
-					SharedPrefUtil prefUtil = new SharedPrefUtil(requireContext());
-					String email = prefUtil.getPreferences().getString(SharedPrefUtil.USER_EMAIL_KEY,null);
-					String contact = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null);
-					JSONObject prefill = new JSONObject();
-					prefill.put("email" ,email);
-					prefill.put("contact" , contact);
-					//Theme options
-					JSONObject theme = new JSONObject();
-					theme.put("color" , "#FFEB00");
-					options.put("prefill" , prefill);
-					options.put("theme", theme);
-					checkout.open(requireActivity(), options);
-				}catch (Exception e){
-					Toast.makeText(context, "Something Went Wrong\nPlease Try Again", Toast.LENGTH_LONG).show();
+		binding.swabhimanDonorButtonSubmit.setOnClickListener(v -> {
+			//TODO :
+			ProgressDialog dialog = new ProgressDialog(getContext());
+			dialog.setTitle("Please wait");
+			dialog.setIcon(R.drawable.pslogotrimmed);
+			dialog.show();
+			Map<String, Object> data = new HashMap<>();
+			data.put("uid", FirebaseAuth.getInstance().getUid());
+			FirebaseFirestore.getInstance().collection(FireStoreUtil.SWABHIMAN_SERVICE)
+					.document(FireStoreUtil.DONOR)
+					.collection(FireStoreUtil.DONOR).add(data)
+					.addOnSuccessListener(documentReference -> {
+						dialog.dismiss();
+						new AlertDialog.Builder(getContext()).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
+								.setMessage("We will get back to you shortly").setPositiveButton("OK", null).show();
+
+					}).addOnFailureListener(new OnFailureListener() {
+				@Override
+				public void onFailure(@NonNull Exception e) {
+					Toast.makeText(getContext(),"Failed",Toast.LENGTH_LONG).show();
 				}
-			}
+			});
 		});
+
+
 		binding.swabhimanDonorButtonBack.setOnClickListener(v->{
 			viewModel.getNavController().navigateUp();
 		});

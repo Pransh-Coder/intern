@@ -71,6 +71,9 @@ public abstract class FireStoreUtil {
 	private static String FUEL_REFUND_COLLECTION_NAME = "bpclref";
 	private static String STATIC_DATA_COLLECTION_NAME = "psdata";
 	public static String EXCLUSIVE_SERVICES_COLLECTION_NAME = "exserv";
+	public static String SWABHIMAN_SERVICE = "swabhiman";
+	public static String DONOR = "donor";
+	public static String INVESTOR = "investor";
 	public static String HOME_MODIFICATION_SERVICES = "homemod";
 	public static String TIFFIN_SERVICES_SERVICES = "tiffin";
 	public static String AUTO_SERVICES_SERVICES = "auto";
