@@ -4,7 +4,18 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@drawable/common_background">
-
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ver_gui_4_per"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ver_gui_96_per"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.945"/>
     <ImageView
         android:id="@+id/swabhiman_donor_button_back"
         android:layout_width="40dp"
@@ -88,10 +99,40 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_swabhiman_donor" />
 
     <TextView
+        android:id="@+id/tv_desc1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textSwabhimanDonor" />
+
+    <TextView
+        android:id="@+id/tv_knowmore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:text="To know more submit your request!!"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_desc1" />
+
+    <TextView
         android:id="@+id/text_donation_amount_swabhiman_donor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/century_gothic_400"
         android:text="How much you can Donate"
         android:textAlignment="center"
@@ -99,7 +140,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSwabhimanDonor" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_knowmore" />
 
     <EditText
         android:id="@+id/editText_donation_amount_swabhiman_donor"

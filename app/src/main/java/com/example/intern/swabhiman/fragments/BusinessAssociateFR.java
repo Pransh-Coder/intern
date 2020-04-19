@@ -4,13 +4,16 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.intern.R;
 import com.example.intern.databinding.ActivitySwabhimanBussinessAssociateBinding;
 import com.example.intern.mailers.SwabhimanAutoMailer;
 import com.example.intern.mainapp.MainApp;
@@ -29,6 +32,9 @@ public class BusinessAssociateFR extends Fragment {
 		viewModel = new ViewModelProvider(requireActivity()).get(SwabhimanVM.class);
 		binding = ActivitySwabhimanBussinessAssociateBinding.inflate(inflater,container,false);
 		View view = binding.getRoot();
+		TextView tv = view.findViewById(R.id.tv_desc1);
+		tv.setText(Html.fromHtml("PS offerers Frenchisee ownersip of its <b>Prarambh Store</b> and <b>PS Desk</b> to the energetic and enthusiastic seniors,  It will give a chance to beocme an active part of this revolutionary social enterprise chain.<br>"));
+
 		return view;
 	}
 	

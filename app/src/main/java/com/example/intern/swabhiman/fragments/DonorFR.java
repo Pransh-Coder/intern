@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -36,6 +38,9 @@ public class DonorFR extends Fragment {
 		viewModel = new ViewModelProvider(requireActivity()).get(SwabhimanVM.class);
 		binding = ActivitySwabhimanDonorBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
+		TextView tv = view.findViewById(R.id.tv_desc1);
+		tv.setText(Html.fromHtml("PS thanks you to support  this social enterprise cause,It wasn't possible with your kind support.You can donate, money,time or your free space or anything.<br>"));
+
 		return  view;
 	}
 	
