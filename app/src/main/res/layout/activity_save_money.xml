@@ -7,9 +7,9 @@
     android:background="@drawable/ps">
 
     <ImageView
-        android:id="@+id/services_button_back"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:id="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/back"
@@ -17,18 +17,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:id="@+id/home"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/homeimg"
-        app:layout_constraintLeft_toRightOf="@+id/services_button_back"
+        app:layout_constraintLeft_toRightOf="@+id/back"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/services_button_notification"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:src="@drawable/notification"
@@ -36,8 +37,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="7dp"
         android:src="@drawable/search"
@@ -183,7 +184,7 @@
                     android:orientation="horizontal">
                     <!--For one Tab -->
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/resturant"
+                        android:id="@+id/lifestyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"

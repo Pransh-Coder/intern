@@ -31,5 +31,11 @@ public class ActivityShopping extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+        binding.medicineSite.setOnClickListener(v -> {
+            String url = "https://www.prarambhstore.com/beta/order_medicines";
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        });
     }
 }
