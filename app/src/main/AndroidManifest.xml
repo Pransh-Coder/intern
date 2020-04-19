@@ -134,6 +134,10 @@
         <activity android:name=".Gifts" />
         <activity android:name=".ExclusiveServices.TiffinService"/>
         <activity android:name=".ExclusiveServices.HomeModification"/>
+		<activity android:name=".Lifestyle"/>
+		<activity android:name=".FoodActivity"/>
+		<activity android:name=".Holiday"/>
+		<activity android:name=".ServicesActivity"/>
     </application>
 
 </manifest>

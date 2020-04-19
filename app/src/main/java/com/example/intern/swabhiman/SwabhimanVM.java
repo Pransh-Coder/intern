@@ -6,6 +6,7 @@ import androidx.navigation.NavController;
 public class SwabhimanVM extends ViewModel {
 	private NavController navController;
 	private boolean hasAcceptedTnC;
+	private boolean isFragmentOpen;
 	private String userMail;
 	
 	public NavController getNavController() {
@@ -30,5 +31,13 @@ public class SwabhimanVM extends ViewModel {
 	
 	public void setUserMail(String userMail) {
 		this.userMail = userMail;
+	}
+	
+	public boolean isFragmentOpen() {
+		return isFragmentOpen;
+	}
+	
+	public void setFragmentOpen(boolean fragmentOpen) {
+		isFragmentOpen = fragmentOpen;
 	}
 }
