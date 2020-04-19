@@ -3,12 +3,14 @@ package save_money;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.intern.R;
+import com.example.intern.mainapp.MainApp;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,13 +28,17 @@ public class Health extends AppCompatActivity {
     ViewPager viewPager;
     LinearLayout dental, eyeClinic, homeopathy, dietician, pathology, physiotherapy;
 
+    ImageView back,home;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health);
 
         //ViewPager
-        viewPager = findViewById(R.id.viewpager);
+        //viewPager = findViewById(R.id.viewpager);
+
+
         dental = findViewById(R.id.dental);
         eyeClinic = findViewById(R.id.eye);
         homeopathy = findViewById(R.id.homeopathy);
@@ -40,12 +46,15 @@ public class Health extends AppCompatActivity {
         pathology = findViewById(R.id.pathology);
         physiotherapy = findViewById(R.id.physiotherapy);
 
+        back = findViewById(R.id.back);
+        home = findViewById(R.id.home);
+/*
         //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
 
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);
+        timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);*/
 
         dental.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,9 +98,24 @@ public class Health extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Health.this, MainApp.class);
+                startActivity(intent);
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Health.this, SaveMoney.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
+/*    public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
         @Override
         public void run() {
             //Runs the specified action on the UI thread.  UI thread-The default, primary thread created anytime an Android application is launched. It is in charge of handling all user interface and activities, unless otherwise specified. Runnable is an interface meant to handle sharing code between threads.
@@ -108,5 +132,5 @@ public class Health extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
 }
