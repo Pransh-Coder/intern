@@ -106,5 +106,7 @@ dependencies {
     //Navigation Menu
     implementation 'nl.psdcompany:duo-navigation-drawer:3.0.0'
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:percent:22.2.0'
 
 }
