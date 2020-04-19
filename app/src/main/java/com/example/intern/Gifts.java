@@ -1,12 +1,14 @@
 package com.example.intern;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.databinding.ActivityScreen12Binding;
+import com.example.intern.mainapp.MainApp;
 
 public class Gifts extends AppCompatActivity {
     
@@ -34,6 +36,11 @@ public class Gifts extends AppCompatActivity {
         });
         binding.imageView9.setOnClickListener(v -> {
             showWaitDialog();
+        });
+        binding.back.setOnClickListener(v -> onBackPressed());
+        binding.home.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainApp.class);
+            startActivity(intent);finish();
         });
 
     }
