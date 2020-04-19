@@ -3,22 +3,16 @@ package save_money;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import com.example.intern.databinding.ActivitySaveMoneyBinding;
-import com.example.intern.mainapp.MainApp;
+
 import com.example.intern.FoodActivity;
 import com.example.intern.Gifts;
 import com.example.intern.Holiday;
 import com.example.intern.Lifestyle;
-import com.example.intern.R;
 import com.example.intern.ServicesActivity;
+import com.example.intern.databinding.ActivitySaveMoneyBinding;
 import com.example.intern.mainapp.MainApp;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class SaveMoney extends AppCompatActivity {
     ActivitySaveMoneyBinding binding;
@@ -113,18 +107,13 @@ public class SaveMoney extends AppCompatActivity {
             }
         });
 
-        binding.servicesButtonBack1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SaveMoney.this, MainApp.class);
-                startActivity(intent);
-            }
-        });
+        binding.servicesButtonBack1.setOnClickListener(v -> onBackPressed());
         binding.home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, MainApp.class);
                 startActivity(intent);
+                finish();
             }
         });
 

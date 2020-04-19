@@ -92,20 +92,12 @@ public class Health extends AppCompatActivity {
             }
         });
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Health.this, MainApp.class);
-                startActivity(intent);
-            }
+        home.setOnClickListener(view -> {
+            Intent intent = new Intent(Health.this, MainApp.class);
+            startActivity(intent);
+            finish();
         });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Health.this, SaveMoney.class);
-                startActivity(intent);
-            }
-        });
+        back.setOnClickListener(v -> onBackPressed());
     }
 
 /*    public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
