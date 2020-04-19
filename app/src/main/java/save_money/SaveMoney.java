@@ -3,6 +3,7 @@ package save_money;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -14,6 +15,7 @@ import com.example.intern.Holiday;
 import com.example.intern.Lifestyle;
 import com.example.intern.R;
 import com.example.intern.ServicesActivity;
+import com.example.intern.mainapp.MainApp;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,14 +25,14 @@ public class SaveMoney extends AppCompatActivity {
     //ViewPager
     ViewPager viewPager;
     CardView health, lifeStyle, food, services, gifs, holiday;
-
+    ImageView services_button_back,home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_money);
 
         //ViewPager
-        viewPager = findViewById(R.id.viewpager);
+       // viewPager = findViewById(R.id.viewpager);
 
         health = findViewById(R.id.health);
         gifs = findViewById(R.id.gifts);
@@ -38,12 +40,14 @@ public class SaveMoney extends AppCompatActivity {
         food = findViewById(R.id.food);
         holiday = findViewById(R.id.holiday);
         services = findViewById(R.id.services);
-        //Initialise ViewPager Adapter
+        services_button_back = findViewById(R.id.services_button_back);
+        home = findViewById(R.id.home);
+       /* //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setAdapter(viewPagerAdapter);*/
 
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);
+        /*Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);*/
 
         health.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,10 +95,24 @@ public class SaveMoney extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        services_button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SaveMoney.this, MainApp.class);
+                startActivity(intent);
+            }
+        });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SaveMoney.this, MainApp.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
-    public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
+/*    public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
         @Override
         public void run() {
             //Runs the specified action on the UI thread.  UI thread-The default, primary thread created anytime an Android application is launched. It is in charge of handling all user interface and activities, unless otherwise specified. Runnable is an interface meant to handle sharing code between threads.
@@ -111,5 +129,5 @@ public class SaveMoney extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
 }
