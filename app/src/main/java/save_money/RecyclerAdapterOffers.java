@@ -88,7 +88,7 @@ public class RecyclerAdapterOffers extends RecyclerView.Adapter<RecyclerAdapterO
                 public void onClick(View view) {
                     lastSelectedPosition = getAdapterPosition();
                     notifyDataSetChanged();
-                    listener.isSelected();
+                    //listener.isSelected();
                     Toast.makeText(context, ""+shopName.getText(),Toast.LENGTH_SHORT).show();
                 }
             });

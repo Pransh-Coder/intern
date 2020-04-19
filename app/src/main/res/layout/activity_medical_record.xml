@@ -100,6 +100,22 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
+	
+			<TextView
+				android:id="@+id/a"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="30dp"
+				android:ellipsize="start"
+				android:fontFamily="@font/century_gothic"
+				android:padding="10dp"
+				android:text="A) "
+				android:textColor="@color/black"
+				android:textSize="17dp"
+				android:textStyle="bold"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toLeftOf="@id/secPara"
+				app:layout_constraintTop_toBottomOf="@+id/fst_para"/>
     
             <TextView
                 android:id="@+id/secPara"
@@ -109,13 +125,29 @@
 				android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
                 android:padding="10dp"
-                android:text="A) Consolidating all Medical Records at one place"
+                android:text="Consolidating all Medical Records at one place"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/a"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fst_para"/>
+	
+			<TextView
+				android:id="@+id/b"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:ellipsize="start"
+				android:fontFamily="@font/century_gothic"
+				android:padding="10dp"
+				android:text="B) "
+				android:textColor="@color/black"
+				android:textSize="17dp"
+				android:textStyle="bold"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toLeftOf="@id/thrPara"
+				app:layout_constraintTop_toBottomOf="@+id/secPara"/>
     
             <TextView
                 android:id="@+id/thrPara"
@@ -125,13 +157,29 @@
 				android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
                 android:padding="10dp"
-                android:text="B) Ease of Access, Sharing and Analysis"
+                android:text="Ease of Access, Sharing and Analysis"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/b"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/secPara"/>
+	
+			<TextView
+				android:id="@+id/c"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:ellipsize="start"
+				android:fontFamily="@font/century_gothic"
+				android:padding="10dp"
+				android:text="C) "
+				android:textColor="@color/black"
+				android:textSize="17dp"
+				android:textStyle="bold"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toLeftOf="@id/forPara"
+				app:layout_constraintTop_toBottomOf="@+id/thrPara"/>
     
             <TextView
                 android:id="@+id/forPara"
@@ -141,11 +189,11 @@
 				android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
                 android:padding="10dp"
-                android:text="C) Reminder Services for Medicines"
+                android:text="Reminder Services for Medicines"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/c"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/thrPara"/>
 			<TextView

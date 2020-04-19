@@ -1,16 +1,21 @@
 package save_money;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.R;
+import com.example.intern.mainapp.MainApp;
 
 public class Health extends AppCompatActivity {
     LinearLayout dental, eyeClinic, homeopathy, dietician, pathology, physiotherapy;
+
+    ImageView back,home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,13 +23,25 @@ public class Health extends AppCompatActivity {
         setContentView(R.layout.activity_health);
 
         //ViewPager
+
+        //viewPager = findViewById(R.id.viewpager);
+
         dental = findViewById(R.id.dental);
         eyeClinic = findViewById(R.id.eye);
         homeopathy = findViewById(R.id.homeopathy);
         dietician = findViewById(R.id.dietician);
         pathology = findViewById(R.id.pathology);
         physiotherapy = findViewById(R.id.physiotherapy);
-        
+
+        back = findViewById(R.id.back);
+        home = findViewById(R.id.home);
+/*
+        //Initialise ViewPager Adapter
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+        viewPager.setAdapter(viewPagerAdapter);
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);*/
 
         dental.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +89,21 @@ public class Health extends AppCompatActivity {
                 /*Intent intent = new Intent(Health.this, PhysiotherapyOffers.class);
                 startActivity(intent);*/
                 showWaitDialog();
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Health.this, MainApp.class);
+                startActivity(intent);
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Health.this, SaveMoney.class);
+                startActivity(intent);
             }
         });
     }

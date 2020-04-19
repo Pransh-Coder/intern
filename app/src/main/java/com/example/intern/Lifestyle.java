@@ -1,11 +1,13 @@
 package com.example.intern;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.databinding.ActivityScreen11Binding;
+import com.example.intern.mainapp.MainApp;
 
 public class Lifestyle extends AppCompatActivity {
     ActivityScreen11Binding binding;
@@ -27,6 +29,11 @@ public class Lifestyle extends AppCompatActivity {
         });
         binding.parlorLayout.setOnClickListener(v -> {
             showWaitDialog();
+        });
+        binding.ivBackButton.setOnClickListener(v -> onBackPressed());
+        binding.ivHomeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainApp.class);
+            startActivity(intent);finish();
         });
     }
     

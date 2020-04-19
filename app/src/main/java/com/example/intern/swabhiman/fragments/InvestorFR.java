@@ -4,15 +4,18 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.intern.R;
 import com.example.intern.databinding.ActivitySwabhimanInvestorBinding;
 import com.example.intern.mailers.SwabhimanAutoMailer;
 import com.example.intern.mainapp.MainApp;
@@ -37,6 +40,8 @@ public class InvestorFR extends Fragment {
 		viewModel = new ViewModelProvider(requireActivity()).get(SwabhimanVM.class);
 		binding = ActivitySwabhimanInvestorBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
+		TextView tv = view.findViewById(R.id.tv_desc1);
+		tv.setText(Html.fromHtml("Welcomes you to become a part of <b>PS</b> <br>A PS can start investing from 10,000 and can go up to any limit. He will get 10% of monthly interest on his investment For more info submit the request.<br>"));
 		return view;
 	}
 	

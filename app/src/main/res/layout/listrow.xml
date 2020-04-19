@@ -42,7 +42,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="2dp"
                 android:layout_marginTop="5dp"
                 android:layout_below="@id/age"
                 android:elevation="20dp"
@@ -51,7 +51,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="3dp"
                 android:layout_below="@id/myview"
                 android:background="#eeeeee"/>
         </RelativeLayout>
