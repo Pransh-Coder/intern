@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background">
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06"/>
+        app:layout_constraintGuide_percent="0.06" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_96_per"
         android:layout_width="match_parent"
@@ -135,44 +136,168 @@
         android:id="@+id/tv_desc1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:fontFamily="@font/century_gothic"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@id/ver_gui_4_per"
         app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
+        app:layout_constraintStart_toStartOf="@+id/contstraint"
         app:layout_constraintTop_toBottomOf="@id/tv_concept" />
 
-    <TextView
-        android:layout_width="0dp"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contstraint"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/century_gothic_400"
-        app:layout_constraintStart_toStartOf="@id/tv_desc1"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@id/tv_desc1"
-        app:layout_constraintTop_toBottomOf="@id/tv_desc1"
-        android:layout_marginTop="5dp"
-        android:id="@+id/tv_list_concept"
-        android:textStyle="bold" />
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/fif_para"
+        app:layout_constraintStart_toEndOf="@id/ver_gui_4_per"
+        app:layout_constraintTop_toBottomOf="@+id/tv_desc1"
+        app:layout_constraintVertical_bias="0.183">
+
+        <ImageView
+            android:id="@+id/arrow1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:src="@drawable/next"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/secPara" />
+
+        <TextView
+            android:id="@+id/secPara"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/century_gothic_400"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/arrow1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/arrow2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:src="@drawable/next"
+            app:layout_constraintEnd_toStartOf="@+id/secPara"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/secPara"
+            app:layout_constraintTop_toTopOf="@id/thrPara" />
+
+        <TextView
+            android:id="@+id/thrPara"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/century_gothic_400"
+            android:padding="5dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/arrow2"
+            app:layout_constraintTop_toBottomOf="@+id/secPara" />
+
+        <ImageView
+            android:id="@+id/arrow3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:src="@drawable/next"
+            app:layout_constraintEnd_toStartOf="@+id/thrPara"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/forPara" />
+
+        <TextView
+            android:id="@+id/forPara"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/century_gothic_400"
+            android:padding="5dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/arrow3"
+            app:layout_constraintTop_toBottomOf="@+id/thrPara" />
+
+        <ImageView
+            android:id="@+id/arrow4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:src="@drawable/next"
+            app:layout_constraintEnd_toStartOf="@+id/forPara"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/sixpara" />
+
+        <TextView
+            android:id="@+id/sixpara"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/century_gothic_400"
+            android:padding="5dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/arrow4"
+            app:layout_constraintTop_toBottomOf="@+id/forPara" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/tv_desc_all"
-        android:layout_width="0dp"
+        android:id="@+id/fifth_para"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="start"
         android:fontFamily="@font/century_gothic"
-        android:layout_marginTop="10dp"
-        android:text="To know more submit your request"
-        app:layout_constraintStart_toStartOf="@id/tv_desc1"
-        app:layout_constraintEnd_toEndOf="@id/tv_desc1"
-        app:layout_constraintTop_toBottomOf="@id/tv_list_concept" />
+        android:padding="10dp"
+        android:text="To know more submit your request !!"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contstraint" />
 
     <CheckBox
         android:id="@+id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I Agree"
-        android:layout_marginTop="5dp"
         android:fontFamily="@font/century_gothic"
-        app:layout_constraintStart_toStartOf="@id/tv_desc1"
-        app:layout_constraintTop_toBottomOf="@id/tv_desc_all" />
+        android:text="I Agree"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/submit"
+        app:layout_constraintEnd_toStartOf="@+id/chat"
+        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fifth_para"
+        app:layout_constraintVertical_bias="0.0" />
 
     <android.widget.Button
         android:id="@+id/submit"
@@ -184,6 +309,7 @@
         android:layout_marginStart="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/chat"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
         android:textSize="17sp"
         android:textAllCaps="false"
         android:textColor="@color/black"

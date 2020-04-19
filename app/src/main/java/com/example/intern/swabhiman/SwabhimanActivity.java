@@ -57,4 +57,10 @@ public class SwabhimanActivity extends AppCompatActivity implements PaymentResul
 	public void onPaymentError(int i, String s) {
 		Toast.makeText(this, "There was an error processing payment!", Toast.LENGTH_SHORT).show();
 	}
+	
+	@Override
+	public void onBackPressed() {
+		if(viewModel.isFragmentOpen()) viewModel.getNavController().navigateUp();
+		else super.onBackPressed();
+	}
 }

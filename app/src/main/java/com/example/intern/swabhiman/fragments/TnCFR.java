@@ -5,6 +5,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class TnCFR extends Fragment {
 	boolean f = false;
 	private SwabhimanVM viewModel;
 	private ActivitySwabhimanTcBinding binding;
+	TextView secPara,thrPara,forPara,sixpara;
 	
 	public TnCFR() {}
 	
@@ -29,10 +31,22 @@ public class TnCFR extends Fragment {
 		viewModel = new ViewModelProvider(requireActivity()).get((SwabhimanVM.class));
 		binding = ActivitySwabhimanTcBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
+		secPara = view.findViewById(R.id.secPara);
+		thrPara = view.findViewById(R.id.thrPara);
+		forPara = view.findViewById(R.id.forPara);
+		sixpara = view.findViewById(R.id.sixpara);
 
-		TextView tv_list = view.findViewById(R.id.tv_list_concept);
-		tv_list.setText(Html.fromHtml("&#8594; Opportunity for good cash flow<br>&#8594; Opportunities for starting a small business<br>" +
-				"&#8594; Option to become a consultant based on experience<br>&#8594; Part-time job option as appropriate"));
+		//arrow1.setText("<b>"+"&#8594"+"</b>"+" ");
+		String sourceString =/*"<b>"+"&#8594"+"</b>"+*/ "<b>Opportunity for good cash flow</b> ";
+		secPara.setText(Html.fromHtml(sourceString));
+
+		String sourceString2 =/*"<b>"+"&#8594 "+"</b>"+*/"<b>Opportunities for starting a small business</b>";
+		thrPara.setText(Html.fromHtml(sourceString2));
+
+		String sourceString3 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>Option to become a consultant based on experience</b>";
+		forPara.setText(Html.fromHtml(sourceString3));
+		String sourceString4 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>Part-time job option as appropriate</b>";
+		sixpara.setText(Html.fromHtml(sourceString4));
 		TextView tv = view.findViewById(R.id.tv_desc1);
 		tv.setText(Html.fromHtml("A platform created specially for <b>senior citizens</b>, it will help them to explore new ways for growth in income or to contribute to the society as per their interest and experience, such as<br>"));
 		return view;

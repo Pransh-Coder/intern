@@ -3,7 +3,7 @@ package com.example.intern.socialnetwork;
 public class mLocalNetwork {
 private String un;
 private String occ;
-private String age;
+private String dob;
 
     public mLocalNetwork() {
     }
@@ -25,11 +25,11 @@ private String age;
         this.occ = occ;
     }
 
-    public String getAge() {
-        return age;
+    public String getDob() {
+        return dob;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 }

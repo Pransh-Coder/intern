@@ -1,30 +1,51 @@
 package com.example.intern;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Gifts extends AppCompatActivity {
+import com.example.intern.databinding.ActivityScreen12Binding;
+import com.example.intern.mainapp.MainApp;
 
-    ImageView imageView6;
+public class Gifts extends AppCompatActivity {
+    
+    ActivityScreen12Binding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_12);
-        imageView6 = findViewById(R.id.imageView6);
-//        getSupportActionBar().hide();
-
-        imageView6.setOnClickListener(new View.OnClickListener() {
+        binding = ActivityScreen12Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        
+        binding.imageView6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent services = new Intent(getApplicationContext(), GiftDetailsActivity.class);
-                startActivity(services);
+                /*Intent services = new Intent(getApplicationContext(), GiftDetailsActivity.class);
+                startActivity(services);*/
+                showWaitDialog();
             }
         });
+        binding.imageView8.setOnClickListener(v -> {
+            showWaitDialog();
+        });
+        binding.imageView7.setOnClickListener(v -> {
+            showWaitDialog();
+        });
+        binding.imageView9.setOnClickListener(v -> {
+            showWaitDialog();
+        });
+        binding.back.setOnClickListener(v -> onBackPressed());
+        binding.home.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainApp.class);
+            startActivity(intent);finish();
+        });
 
+    }
+    private void showWaitDialog(){
+        new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
+                .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
     }
 }

@@ -106,7 +106,7 @@
     
                     <LinearLayout
                         android:id="@+id/employement"
-                        android:layout_width="149dp"
+                        android:layout_width="160dp"
                         android:layout_height="150dp"
                         android:layout_marginEnd="20dp"
                         android:layout_weight="1"
@@ -134,7 +134,7 @@
 
                     <LinearLayout
                         android:id="@+id/businessAssociate"
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="150dp"
                         android:layout_weight="1"
                         android:background="@drawable/home_activity_icon_background"
@@ -153,6 +153,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:gravity="center"
                             android:layout_marginTop="15dp"
                             android:fontFamily="@font/century_gothic_400"
                             android:text="Business Associate"
@@ -171,7 +172,7 @@
 
                     <LinearLayout
                         android:id="@+id/investor"
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="150dp"
                         android:layout_marginEnd="20dp"
                         android:layout_weight="1"
@@ -191,17 +192,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="15dp"
                             android:fontFamily="@font/century_gothic_400"
                             android:text="Investor"
-                            android:textAlignment="center"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/donar"
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="150dp"
                         android:background="@drawable/home_activity_icon_background"
                         android:orientation="vertical"

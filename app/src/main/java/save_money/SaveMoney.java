@@ -7,8 +7,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.viewpager.widget.ViewPager;
-
+import com.example.intern.databinding.ActivitySaveMoneyBinding;
+import com.example.intern.mainapp.MainApp;
 import com.example.intern.FoodActivity;
 import com.example.intern.Gifts;
 import com.example.intern.Holiday;
@@ -21,35 +21,52 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SaveMoney extends AppCompatActivity {
+    ActivitySaveMoneyBinding binding;
 
-    //ViewPager
-    ViewPager viewPager;
-    CardView health, lifeStyle, food, services, gifs, holiday;
-    ImageView services_button_back,home;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_save_money);
+        binding = ActivitySaveMoneyBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
 
         //ViewPager
        // viewPager = findViewById(R.id.viewpager);
 
-        health = findViewById(R.id.health);
+/*        health = findViewById(R.id.health);
         gifs = findViewById(R.id.gifts);
         lifeStyle = findViewById(R.id.resturant);
         food = findViewById(R.id.food);
         holiday = findViewById(R.id.holiday);
         services = findViewById(R.id.services);
         services_button_back = findViewById(R.id.services_button_back);
-        home = findViewById(R.id.home);
-       /* //Initialise ViewPager Adapter
+        home = findViewById(R.id.home);*/
+
+        /* //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);*/
 
         /*Timer timer = new Timer();
+
+
+        public class SaveMoney extends AppCompatActivity {
+        ActivitySaveMoneyBinding binding;
+    
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivitySaveMoneyBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        //Initialise ViewPager Adapter
+/*        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+
+        Timer timer = new Timer();
+
         timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);*/
 
-        health.setOnClickListener(new View.OnClickListener() {
+        binding.health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, Health.class);
@@ -57,7 +74,7 @@ public class SaveMoney extends AppCompatActivity {
             }
         });
 
-        gifs.setOnClickListener(new View.OnClickListener() {
+        binding.gifts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, Gifts.class);
@@ -65,7 +82,7 @@ public class SaveMoney extends AppCompatActivity {
             }
         });
 
-        lifeStyle.setOnClickListener(new View.OnClickListener() {
+        binding.lifestyle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, Lifestyle.class);
@@ -73,14 +90,14 @@ public class SaveMoney extends AppCompatActivity {
             }
         });
 
-        food.setOnClickListener(new View.OnClickListener() {
+        binding.food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, FoodActivity.class);
                 startActivity(intent);
             }
         });
-        services.setOnClickListener(new View.OnClickListener() {
+        binding.services.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, ServicesActivity.class);
@@ -88,21 +105,22 @@ public class SaveMoney extends AppCompatActivity {
             }
         });
 
-        holiday.setOnClickListener(new View.OnClickListener() {
+        binding.holiday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, Holiday.class);
                 startActivity(intent);
             }
         });
-        services_button_back.setOnClickListener(new View.OnClickListener() {
+
+        binding.servicesButtonBack1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, MainApp.class);
                 startActivity(intent);
             }
         });
-        home.setOnClickListener(new View.OnClickListener() {
+        binding.home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SaveMoney.this, MainApp.class);
@@ -113,6 +131,19 @@ public class SaveMoney extends AppCompatActivity {
     }
 
 /*    public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
+    }
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        binding.home.setOnClickListener(v -> {
+            Intent intent = new Intent(SaveMoney.this, MainApp.class);
+            startActivity(intent);finish();
+        });
+        binding.back.setOnClickListener(v -> onBackPressed());
+    }
+    
+    /* public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
         @Override
         public void run() {
             //Runs the specified action on the UI thread.  UI thread-The default, primary thread created anytime an Android application is launched. It is in charge of handling all user interface and activities, unless otherwise specified. Runnable is an interface meant to handle sharing code between threads.

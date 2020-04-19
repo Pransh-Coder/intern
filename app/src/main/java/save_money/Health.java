@@ -1,5 +1,6 @@
 package save_money;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,25 +8,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.intern.R;
 import com.example.intern.mainapp.MainApp;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import save_money.Offers.DentalCategoryOffers;
-import save_money.Offers.DieticianOffers;
-import save_money.Offers.EyeClinicOffers;
-import save_money.Offers.HomeopathicOffers;
-import save_money.Offers.Patholgy_LaborartoryOffers;
-import save_money.Offers.PhysiotherapyOffers;
-
 public class Health extends AppCompatActivity {
-
-    //ViewPager
-    ViewPager viewPager;
     LinearLayout dental, eyeClinic, homeopathy, dietician, pathology, physiotherapy;
 
     ImageView back,home;
@@ -36,8 +23,8 @@ public class Health extends AppCompatActivity {
         setContentView(R.layout.activity_health);
 
         //ViewPager
-        //viewPager = findViewById(R.id.viewpager);
 
+        //viewPager = findViewById(R.id.viewpager);
 
         dental = findViewById(R.id.dental);
         eyeClinic = findViewById(R.id.eye);
@@ -59,43 +46,49 @@ public class Health extends AppCompatActivity {
         dental.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Health.this, DentalCategoryOffers.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(Health.this, DentalCategoryOffers.class);
+                startActivity(intent);*/
+                showWaitDialog();
             }
         });
         eyeClinic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Health.this, EyeClinicOffers.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(Health.this, EyeClinicOffers.class);
+                startActivity(intent);*/
+                showWaitDialog();
             }
         });
         homeopathy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Health.this, HomeopathicOffers.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(Health.this, HomeopathicOffers.class);
+                startActivity(intent);*/
+                showWaitDialog();
             }
         });
         dietician.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Health.this, DieticianOffers.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(Health.this, DieticianOffers.class);
+                startActivity(intent);*/
+                showWaitDialog();
             }
         });
         pathology.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Health.this, Patholgy_LaborartoryOffers.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(Health.this, Patholgy_LaborartoryOffers.class);
+                startActivity(intent);*/
+                showWaitDialog();
             }
         });
         physiotherapy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Health.this, PhysiotherapyOffers.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(Health.this, PhysiotherapyOffers.class);
+                startActivity(intent);*/
+                showWaitDialog();
             }
         });
 
@@ -133,4 +126,9 @@ public class Health extends AppCompatActivity {
             });
         }
     }*/
+    
+    private void showWaitDialog(){
+        new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
+                .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
+    }
 }
