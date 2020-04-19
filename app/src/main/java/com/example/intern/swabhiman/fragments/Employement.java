@@ -30,6 +30,11 @@ public class Employement extends Fragment {
 		View view = binding.getRoot();
 		return view;
 	}
+	@Override
+	public void onDetach() {
+		viewModel.setFragmentOpen(false);
+		super.onDetach();
+	}
 	
 	@Override
 	public void onStart() {

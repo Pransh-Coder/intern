@@ -55,4 +55,10 @@ public class BusinessAssociateFR extends Fragment {
 			requireActivity().finish();
 		});
 	}
+	
+	@Override
+	public void onDetach() {
+		viewModel.setFragmentOpen(false);
+		super.onDetach();
+	}
 }
