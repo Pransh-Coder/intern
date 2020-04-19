@@ -103,7 +103,7 @@
 	
 			<TextView
 				android:id="@+id/a"
-				android:layout_width="wrap_content"
+				android:layout_width="45dp"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="30dp"
 				android:ellipsize="start"
@@ -135,7 +135,7 @@
 	
 			<TextView
 				android:id="@+id/b"
-				android:layout_width="wrap_content"
+				android:layout_width="45dp"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="10dp"
 				android:ellipsize="start"
@@ -167,7 +167,7 @@
 	
 			<TextView
 				android:id="@+id/c"
-				android:layout_width="wrap_content"
+				android:layout_width="45dp"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="10dp"
 				android:ellipsize="start"
