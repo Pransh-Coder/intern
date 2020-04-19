@@ -101,9 +101,11 @@
         android:elevation="20dp"
         android:outlineAmbientShadowColor="#808080"
         app:layout_constraintBottom_toBottomOf="@id/frnd"
+        app:layout_constraintEnd_toEndOf="@+id/frnd"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="270dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView17"
