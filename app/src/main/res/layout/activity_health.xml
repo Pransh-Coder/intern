@@ -4,7 +4,7 @@
     android:id="@+id/constarint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/psbackground">
+    android:background="@drawable/ps">
 
     <ImageView
         android:id="@+id/back"
@@ -96,16 +96,6 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.305"/>
-
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/pr"
-        app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
-        app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
-        app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
-        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin"/>
 
     <ScrollView
         android:layout_width="0dp"
@@ -361,8 +351,8 @@
     </ScrollView>
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:baselineAlignBottom="true"

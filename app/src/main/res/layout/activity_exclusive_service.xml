@@ -71,14 +71,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.11" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:scaleType="fitXY"
         android:src="@drawable/exclusive_services_banner"
         app:layout_constraintBottom_toTopOf="@+id/hor_guide_30_percent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +91,7 @@
         android:layout_height="match_parent"
         android:background="@color/black"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.31" />
+        app:layout_constraintGuide_percent="0.30" />
 
     <LinearLayout
         android:id="@+id/home_modification"
@@ -165,7 +165,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/circular_border"
             android:src="@drawable/tiffin" />
-
+    
         <TextView
             android:id="@+id/tv_salon"
             android:layout_width="match_parent"
@@ -192,8 +192,7 @@
         android:layout_height="match_parent"
         android:background="@color/black"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.52"
-        app:layout_constraintTop_toBottomOf="@+id/hor_guide_30_percent" />
+        app:layout_constraintGuide_percent="0.52" />
 
     <LinearLayout
         android:id="@+id/auto"
@@ -377,7 +376,7 @@
     <ImageView
         android:id="@+id/logops"
         android:layout_width="50dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:src="@drawable/pslogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
