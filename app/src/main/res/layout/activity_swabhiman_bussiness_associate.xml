@@ -143,32 +143,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_knowmore" />
 
+
     <EditText
         android:id="@+id/editText_swabhiman_bussiness_associate_feedback"
         android:layout_width="0dp"
         android:layout_height="140dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/banner_background"
+        android:ellipsize="start"
         android:ems="10"
-		android:ellipsize="start"
         android:fontFamily="@font/century_gothic_400"
         android:gravity="start|top"
         android:hint="Type Here...."
         android:inputType="textMultiLine"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feedback_swabhiman_bussiness_associate" />
 
     <android.widget.Button
         android:id="@+id/swabhiman_bussiness_associate_button_submit"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="68dp"
         android:background="@drawable/background_button_sign_in"
         android:fontFamily="@font/century_gothic_400"
         android:text="Submit"
@@ -177,7 +178,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ps_bottomLogo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_swabhiman_bussiness_associate_feedback" />
 
     <ImageView
         android:id="@+id/ps_bottomLogo"

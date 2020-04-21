@@ -108,7 +108,7 @@ public class RegisterAsChildFR extends Fragment {
 				}
 			}
 		});
-		binding.etDOB.setOnClickListener(v->{
+		binding.calenderIcon.setOnClickListener(v->{
 			DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), dateSetListener, 2000, 1,1);
 			datePickerDialog.show();
 		});

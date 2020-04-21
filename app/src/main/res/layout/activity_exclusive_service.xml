@@ -30,8 +30,18 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="4dp"
         android:src="@drawable/search"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/notifi"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:src="@drawable/notification"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,12 +84,13 @@
         app:layout_constraintGuide_percent="0.12" />
 
     <ImageView
+        android:id="@+id/bannerexclusive"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:scaleType="fitXY"
-        android:src="@drawable/exclusive_services_banner"
+        android:src="@drawable/exclusive_service_banner"
         app:layout_constraintBottom_toTopOf="@+id/hor_guide_30_percent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
