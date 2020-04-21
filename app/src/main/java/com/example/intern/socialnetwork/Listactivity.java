@@ -210,7 +210,7 @@ public class Listactivity extends AppCompatActivity {
 
 
     private void getUsername(String user) {
-        //Toast.makeText(SocialActivity.this, user, Toast.LENGTH_LONG).show();
+       // Toast.makeText(Listactivity.this, user, Toast.LENGTH_LONG).show();
         //Toast.makeText(SocialActivity.this, uid, Toast.LENGTH_LONG).show();
         //if (user!=uid) {
 
@@ -228,11 +228,12 @@ public class Listactivity extends AppCompatActivity {
                     mlistItems.setun(locallist.getun());
                     mlistItems.setOcc(locallist.getOcc());
                     String s=locallist.getDob();
-                    //Toast.makeText(Listactivity.this,s,Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Listactivity.this,s+"user"+user,Toast.LENGTH_LONG).show();
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
                     Date d = null;
                     try {
                         d = sdf.parse(s);
+                        //Toast.makeText(Listactivity.this,d.toString()+user,Toast.LENGTH_LONG).show();
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
