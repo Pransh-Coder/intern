@@ -3,7 +3,9 @@ package com.example.intern.ExclusiveServices;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,15 @@ public class ExclusiveServices extends AppCompatActivity {
 	    binding = ActivityExclusiveServiceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         final Context context = ExclusiveServices.this;
+        binding.bannerexclusive.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String url="https://www.prarambhstore.com/PSbyPrarambh";
+				Uri u=Uri.parse("https://"+url);
+				Intent i =new Intent(Intent.ACTION_VIEW,u);
+				startActivity(i);
+			}
+		});
 
         binding.back.setOnClickListener(view -> {
             Intent intent = new Intent(ExclusiveServices.this, MainApp.class);
