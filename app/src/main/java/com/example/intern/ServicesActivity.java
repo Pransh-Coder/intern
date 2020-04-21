@@ -17,8 +17,9 @@ public class ServicesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityServicesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.serviceImageView1.setOnClickListener(v -> showWaitDialog());
-        binding.serviceImageView2.setOnClickListener(v -> showWaitDialog());
+        binding.linearLayoutMobileRepair.setOnClickListener(v -> showWaitDialog());
+        binding.linearLayoutRoRepair.setOnClickListener(v -> showWaitDialog());
+        binding.linearLayoutBikeRepair.setOnClickListener(v -> showMyDialog());
         binding.servicesButtonBack.setOnClickListener(v -> onBackPressed());
         binding.servicesButtonHome.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainApp.class);
@@ -28,5 +29,8 @@ public class ServicesActivity extends AppCompatActivity {
     private void showWaitDialog(){
         new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
+    }
+    private void showMyDialog(){
+        startActivity(new Intent(ServicesActivity.this,two_wheeler_repair_list.class));
     }
 }

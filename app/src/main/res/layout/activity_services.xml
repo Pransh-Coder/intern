@@ -71,82 +71,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgView_Services" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager_backgraound"
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/banner_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtServices" />
-
-    <TextView
-        android:id="@+id/services_textView_offer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/yellow"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="HeadsFree Free"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager_backgraound" />
-
-    <ImageView
-        android:id="@+id/service_imageView1"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/services_textView_offer1"
-        app:srcCompat="@drawable/mobile_repair" />
-
-    <TextView
-        android:id="@+id/services_textview_category1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="MOBILE"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/service_imageView1" />
-
-    <TextView
-        android:id="@+id/services_textView_offer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/yellow"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="HeadsFree Free"
-        app:layout_constraintStart_toEndOf="@id/services_textView_offer1"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager_backgraound" />
-
-    <ImageView
-        android:id="@+id/service_imageView2"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/service_imageView1"
-        app:layout_constraintTop_toBottomOf="@+id/services_textView_offer2"
-        app:srcCompat="@drawable/ro_repair" />
-
-    <TextView
-        android:id="@+id/services_textview_category2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="RO REPAIR"
-        app:layout_constraintStart_toEndOf="@+id/services_textview_category1"
-        app:layout_constraintTop_toBottomOf="@+id/service_imageView1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:id="@+id/hor_guide_35"
+        app:layout_constraintGuide_percent=".33"/>
 
     <ImageView
         android:id="@+id/imageView11"
@@ -157,5 +87,137 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/pslogo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_35">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="12dp"
+            android:id="@+id/linearLayout_mobile_repair">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Headsfree FREE"
+                android:fontFamily="@font/century_gothic"
+                android:background="@color/yellow"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/mobile_repair"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MOBILE"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:fontFamily="@font/century_gothic"
+                android:textColor="#000"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="@id/linearLayout_mobile_repair"
+            app:layout_constraintStart_toEndOf="@id/linearLayout_mobile_repair"
+            android:layout_marginStart="10dp"
+            android:id="@+id/linearLayout_ro_repair">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rs.100 OFF"
+                android:gravity="center"
+                android:fontFamily="@font/century_gothic"
+                android:background="@color/yellow"
+                android:textColor="#000"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ro_repair"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RO-REPAIR"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:fontFamily="@font/century_gothic"
+                android:textColor="#000"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="@id/linearLayout_mobile_repair"
+            app:layout_constraintStart_toEndOf="@id/linearLayout_mobile_repair"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:id="@+id/linearLayout_bike_repair"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="One FREE* Service"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:fontFamily="@font/century_gothic"
+                android:background="@color/yellow"
+                android:textColor="#000"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/bike_repair"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TWO WHEELER SERVICES"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:fontFamily="@font/century_gothic"
+                android:textColor="#000"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

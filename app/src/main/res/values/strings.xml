@@ -48,7 +48,7 @@
         <item>Cab Services</item>
         <item>Other Services …</item>
     </string-array>
-    
+
     <string-array name="SearchPredictions">
         <item>Home Modification</item>
         <item>Tiffin Services</item>
@@ -86,6 +86,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main_app">PsByPrarambh</string>
-	<string name="submit">SUBMIT</string>
-	<string name="discount_on_fuel">DISCOUNT ON FUEL</string>
+    <string name="submit">SUBMIT</string>
+    <string name="discount_on_fuel">DISCOUNT ON FUEL</string>
 </resources>

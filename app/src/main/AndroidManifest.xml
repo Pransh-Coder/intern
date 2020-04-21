@@ -22,6 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".two_wheeler_repair_list"></activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -61,8 +62,8 @@
             android:name=".mainapp.MainApp"
             android:label="@string/title_activity_main_app"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
         <activity
             android:name=".swabhiman.SwabhimanActivity"
             android:theme="@style/MaterialAppTheme" />
@@ -71,8 +72,9 @@
         <activity android:name=".fuel.FuelBPCLACT" />
         <activity android:name=".MedicalRecords.MedicalRecord" />
         <activity android:name=".tnc.TermsAndConditions" />
-        <activity android:name=".ReduceExpenses.ReduceExpenses"
-            android:windowSoftInputMode="adjustResize|adjustPan"/>
+        <activity
+            android:name=".ReduceExpenses.ReduceExpenses"
+            android:windowSoftInputMode="adjustResize|adjustPan" />
         <activity android:name=".TotalDiscountReceived.TotalDiscountReceived" />
         <activity android:name=".NewsAndUpdatesACT" />
         <activity android:name=".FeedBackOrComplaintACT" />
@@ -132,12 +134,12 @@
             android:name=".payment.BecomeAMember"
             android:launchMode="singleTop" />
         <activity android:name=".Gifts" />
-        <activity android:name=".ExclusiveServices.TiffinService"/>
-        <activity android:name=".ExclusiveServices.HomeModification"/>
-		<activity android:name=".Lifestyle"/>
-		<activity android:name=".FoodActivity"/>
-		<activity android:name=".Holiday"/>
-		<activity android:name=".ServicesActivity"/>
+        <activity android:name=".ExclusiveServices.TiffinService" />
+        <activity android:name=".ExclusiveServices.HomeModification" />
+        <activity android:name=".Lifestyle" />
+        <activity android:name=".FoodActivity" />
+        <activity android:name=".Holiday" />
+        <activity android:name=".ServicesActivity" />
     </application>
 
 </manifest>
