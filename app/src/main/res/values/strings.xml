@@ -1,91 +1,92 @@
 <resources>
-    <string name="app_name">intern</string>
-    <string name="facebook_app_id">1093410747698712</string>
-    <string name="fb_login_protocol_scheme">fb1093410747698712</string>
-    <string-array name="laguauge">
-        <item>Choose Your Language</item>
-        <item>English</item>
-        <item>हिन्दी</item>
-        <item>ગુજરાતી</item>
-    </string-array>
-    <string-array name="currentlaguauge">
-        <item>Current Language English</item>
-        <item>Current Language हिन्दी</item>
-        <item>Current Language ગુજરાતી</item>
-    </string-array>
-    <string-array name="available_service_array">
-        <item>Which Service you want?</item>
-        <item>Health Services</item>
-        <item>Legal Service</item>
-        <item>Finance and Consultant Services</item>
-        <item>Tiffin Services</item>
-        <item>Cab Services</item>
-        <item>Other</item>
-    </string-array>
-
-    <string-array name="volunteer_options">
-        <item>Select YES/NO</item>
-        <item>Yes</item>
-        <item>No</item>
-    </string-array>
-    <string-array name="menu_main">
-        <item>Reduce Your Expenses</item>
-        <item>Total Discount Received</item>
-        <item>Edit Profile</item>
-        <item>Medical Records</item>
-        <item>Local Network</item>
-        <item>News And Updates</item>
-        <item>Feedback/Complaints</item>
-        <item>Rate/Share App</item>
-        <item>Terms And Conditions</item>
-    </string-array>
-
-    <string-array name="AskServicesOptions">
-        <item>Health Services</item>
-        <item>Legal Services</item>
-        <item>Finance and Consultant</item>
-        <item>Tiffin Services</item>
-        <item>Cab Services</item>
-        <item>Other Services …</item>
-    </string-array>
-    
-    <string-array name="SearchPredictions">
-        <item>Home Modification</item>
-        <item>Tiffin Services</item>
-        <item>Swabhiman</item>
-        <item>Shopping</item>
-        <item>Fuel With Us</item>
-        <item>Ask For Services</item>
-        <item>Save Money</item>
-        <item>Edit Profile</item>
-        <item>Reduce Expenses</item>
-        <item>Total Discount Received</item>
-        <item>Medical Records</item>
-        <item>Local Network</item>
-        <item>News And Updates</item>
-        <item>Feedback / Complaints</item>
-        <item>Rate / Share App</item>
-        <item>Terms and Conditions</item>
-    </string-array>
-
-    <string name="more_about_special_offers">Tell us more about \nyour special offers</string>
-    <string name="date_time">Date &amp; Time</string>
-    <string name="save_money">SAVE MONEY</string>
-    <string name="swabhiman">SWABHIMAN</string>
-    <string name="shopping">SHOPPING/\nMEDICINE </string>
-    <string name="fuel_with_us">FUEL WITH US</string>
-    <string name="exclusive_services">EXCLUSIVE\nSERVICES</string>
-    <string name="ask_services">WHAT YOU WANT</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="edit_profile">Edit Profile</string>
-    <string name="menu_home">Home</string>
-    <string name="PSMailID">ps@prarambhlife.com</string>
-    <string name="VCuraMailID">wellness@vCura.in</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main_app">PsByPrarambh</string>
+	<string name="app_name">intern</string>
+	<string name="facebook_app_id">1093410747698712</string>
+	<string name="fb_login_protocol_scheme">fb1093410747698712</string>
+	<string-array name="laguauge">
+		<item>Choose Your Language</item>
+		<item>English</item>
+		<item>हिन्दी</item>
+		<item>ગુજરાતી</item>
+	</string-array>
+	<string-array name="currentlaguauge">
+		<item>Current Language English</item>
+		<item>Current Language हिन्दी</item>
+		<item>Current Language ગુજરાતી</item>
+	</string-array>
+	<string-array name="available_service_array">
+		<item>Which Service you want?</item>
+		<item>Health Services</item>
+		<item>Legal Service</item>
+		<item>Finance and Consultant Services</item>
+		<item>Tiffin Services</item>
+		<item>Cab Services</item>
+		<item>Other</item>
+	</string-array>
+	
+	<string-array name="volunteer_options">
+		<item>Select YES/NO</item>
+		<item>Yes</item>
+		<item>No</item>
+	</string-array>
+	<string-array name="menu_main">
+		<item>Reduce Your Expenses</item>
+		<item>Total Discount Received</item>
+		<item>Edit Profile</item>
+		<item>Medical Records</item>
+		<item>Local Network</item>
+		<item>News And Updates</item>
+		<item>Feedback/Complaints</item>
+		<item>Rate/Share App</item>
+		<item>Terms And Conditions</item>
+	</string-array>
+	
+	<string-array name="AskServicesOptions">
+		<item>Health Services</item>
+		<item>Legal Services</item>
+		<item>Finance and Consultant</item>
+		<item>Tiffin Services</item>
+		<item>Cab Services</item>
+		<item>Other Services …</item>
+	</string-array>
+	
+	<string-array name="SearchPredictions">
+		<item>Home Modification</item>
+		<item>Tiffin Services</item>
+		<item>Swabhiman</item>
+		<item>Shopping</item>
+		<item>Fuel With Us</item>
+		<item>Ask For Services</item>
+		<item>Save Money</item>
+		<item>Edit Profile</item>
+		<item>Reduce Expenses</item>
+		<item>Total Discount Received</item>
+		<item>Medical Records</item>
+		<item>Local Network</item>
+		<item>News And Updates</item>
+		<item>Feedback / Complaints</item>
+		<item>Rate / Share App</item>
+		<item>Terms and Conditions</item>
+	</string-array>
+	
+	<string name="more_about_special_offers">Tell us more about \nyour special offers</string>
+	<string name="date_time">Date &amp; Time</string>
+	<string name="save_money">SAVE MONEY</string>
+	<string name="swabhiman">SWABHIMAN</string>
+	<string name="shopping">SHOPPING/\nMEDICINE </string>
+	<string name="fuel_with_us">FUEL WITH US</string>
+	<string name="exclusive_services">EXCLUSIVE\nSERVICES</string>
+	<string name="ask_services">WHAT YOU WANT</string>
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+	<string name="edit_profile">Edit Profile</string>
+	<string name="menu_home">Home</string>
+	<string name="PSMailID">ps@prarambhlife.com</string>
+	<string name="VCuraMailID">wellness@vCura.in</string>
+	
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="title_activity_main_app">PsByPrarambh</string>
 	<string name="submit">SUBMIT</string>
 	<string name="discount_on_fuel">DISCOUNT ON FUEL</string>
+	<string name="title_activity_maps">Map</string>
 </resources>
