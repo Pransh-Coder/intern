@@ -30,7 +30,6 @@ public class two_wheeler_repair_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_wheeler_repair_list);
-        getSupportActionBar().hide();
         myrecycleview = findViewById(R.id.myrecycle);
         listener = (MyAdapter_services_bike.OnItemClickListener) this;
         MyAdapter_services_bike recycleadapter = new MyAdapter_services_bike(this, mname,listener);
