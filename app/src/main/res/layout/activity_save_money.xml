@@ -43,7 +43,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="7dp"
         android:src="@drawable/search"
-        app:layout_constraintRight_toLeftOf="@+id/services_button_notification"
+        app:layout_constraintRight_toLeftOf="@+id/notifi"
         app:layout_constraintTop_toTopOf="parent" />
 
 
