@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.mainapp.MainApp;
 
@@ -98,6 +99,10 @@ public class Health extends AppCompatActivity {
             finish();
         });
         back.setOnClickListener(v -> onBackPressed());
+        findViewById(R.id.notifi).setOnClickListener(v -> {
+            Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+            startActivity(intent);
+        });
     }
 
 /*    public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.

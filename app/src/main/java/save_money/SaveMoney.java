@@ -10,6 +10,7 @@ import com.example.intern.FoodActivity;
 import com.example.intern.Gifts;
 import com.example.intern.Holiday;
 import com.example.intern.Lifestyle;
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.ServicesActivity;
 import com.example.intern.databinding.ActivitySaveMoneyBinding;
 import com.example.intern.mainapp.MainApp;
@@ -23,7 +24,10 @@ public class SaveMoney extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySaveMoneyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        binding.notifi.setOnClickListener(v -> {
+            Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+            startActivity(intent);
+        });
 
         //ViewPager
        // viewPager = findViewById(R.id.viewpager);
