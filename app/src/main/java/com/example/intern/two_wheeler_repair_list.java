@@ -24,7 +24,7 @@ import android.widget.Toast;
 public class two_wheeler_repair_list extends AppCompatActivity {
 
     RecyclerView myrecycleview;
-    private MyAdapter_services.OnItemClickListener listener;
+    private MyAdapter_services_bike.OnItemClickListener listener;
     String[] mname = {"<b>Go serve Auto India LLP</b><br>Area : Ghatlodiya, Naranpura<br><b>Offer : One service free worth Rs.225*"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
