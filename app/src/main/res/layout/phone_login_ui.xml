@@ -52,19 +52,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.3"/>
-	<LinearLayout
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		app:layout_constraintBottom_toTopOf="@id/imageView12"
-		app:layout_constraintLeft_toRightOf="@id/guide_15_per_ver"
-		app:layout_constraintRight_toLeftOf="@id/guide_85_per_ver"
-		app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent">
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal">
+		app:layout_constraintGuide_percent="0.35"/>
 			<TextView
 				android:id="@+id/code91"
 				android:layout_width="wrap_content"
@@ -74,11 +62,13 @@
 				android:padding="10dp"
 				android:text="+91"
 				android:textColor="@color/black"
-				android:textSize="25dp"/>
+				android:textSize="25dp"
+				app:layout_constraintStart_toEndOf="@id/guide_15_per_ver"
+				app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent"/>
 			<EditText
 				android:id="@+id/et_phone_number"
 				android:layout_width="0dp"
-				android:layout_height="match_parent"
+				android:layout_height="60dp"
 				android:layout_marginLeft="10dp"
 				android:layout_weight="1"
 				android:hint="Your Mobile Number"
@@ -87,13 +77,11 @@
 				android:inputType="number"
 				android:maxLength="10"
 				android:padding="10dp"
-				android:textSize="25dp"></EditText>
+				android:textSize="25dp"
+				app:layout_constraintStart_toEndOf="@id/code91"
+				app:layout_constraintEnd_toStartOf="@id/guide_85_per_ver"
+				app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent"></EditText>
 
-		</LinearLayout>
-
-		<RelativeLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
 		<TextView
 			android:id="@+id/tvOTP"
 			android:layout_width="match_parent"
@@ -103,10 +91,11 @@
 			android:text="Verify Mobile Number Via"
 			android:textAlignment="center"
 			android:textColor="@color/black"
-			android:textSize="20dp"/>
+			android:textSize="20dp"
+			app:layout_constraintTop_toBottomOf="@id/code91"/>
 		<EditText
 			android:id="@+id/et_otp"
-			android:layout_width="match_parent"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:layout_marginTop="0dp"
@@ -117,7 +106,10 @@
 			android:maxLength="10"
 			android:padding="10dp"
 			android:visibility="invisible"
-			android:textSize="25dp"/>
+			android:textSize="25dp"
+			app:layout_constraintStart_toEndOf="@id/guide_15_per_ver"
+			app:layout_constraintTop_toBottomOf="@id/code91"
+			app:layout_constraintEnd_toStartOf="@id/guide_85_per_ver"/>
 		<Button
 			android:id="@+id/btn_otp"
 			android:layout_width="wrap_content"
@@ -132,12 +124,10 @@
 			android:text="OTP"
 			android:textAllCaps="false"
 			android:textSize="25dp"
-			android:textStyle="bold"/>
-		</RelativeLayout>
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:orientation="horizontal">
+			android:textStyle="bold"
+			app:layout_constraintTop_toBottomOf="@id/et_otp"
+			app:layout_constraintStart_toEndOf="@id/guide_45_per_ver"/>
+
 			<Button
 				android:id="@+id/btn_Cancel"
 				android:layout_width="150dp"
@@ -146,17 +136,22 @@
 				android:background="@drawable/rounded_gradient_vertical_button"
 				android:fontFamily="@font/century_gothic_400"
 				android:padding="10dp"
+				android:layout_marginTop="25dp"
 				android:layout_marginRight="10dp"
 				android:text="Cancel"
 				android:textAllCaps="false"
 				android:textSize="25dp"
 				android:visibility="invisible"
-				android:textStyle="bold"/>
+				android:textStyle="bold"
+				app:layout_constraintStart_toEndOf="@id/guide_15_per_ver"
+				app:layout_constraintTop_toBottomOf="@id/et_otp"
+				app:layout_constraintEnd_toStartOf="@id/guide_50_per_ver"/>
 			<Button
 				android:id="@+id/btn_login"
 				android:layout_width="150dp"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center"
+				android:layout_marginTop="25dp"
 				android:layout_marginLeft="10dp"
 				android:background="@drawable/rounded_gradient_vertical_button"
 				android:fontFamily="@font/century_gothic_400"
@@ -165,15 +160,16 @@
 				android:textAllCaps="false"
 				android:visibility="invisible"
 				android:textSize="25dp"
-				android:textStyle="bold"/>
-		</LinearLayout>
+				android:textStyle="bold"
+				app:layout_constraintStart_toEndOf="@id/guide_50_per_ver"
+				app:layout_constraintEnd_toStartOf="@id/guide_85_per_ver"
+				app:layout_constraintTop_toBottomOf="@id/et_otp"/>
 		<TextView
 			android:id="@+id/btn_resendotp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
-			android:layout_marginTop="10dp"
-			android:layout_marginLeft="10dp"
+			android:layout_marginTop="15dp"
 			android:textAlignment="center"
 			android:background="#FFFFFF"
 			android:fontFamily="@font/century_gothic_400"
@@ -183,8 +179,10 @@
 			android:visibility="invisible"
 			android:textSize="25dp"
 			android:textStyle="bold"
-			android:textColor="@color/black"/>
-	</LinearLayout>
+			android:textColor="@color/black"
+			app:layout_constraintTop_toBottomOf="@id/btn_Cancel"
+			app:layout_constraintStart_toEndOf="@id/guide_25_per_ver"/>
+
 	<!--<LinearLayout
 		android:id="@+id/google_sign_in"
 		android:layout_width="0dp"
@@ -246,6 +244,18 @@
 			android:textColor="@color/black"/>
 	</LinearLayout>-->
 	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_45_per_ver"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.40"/>
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_50_per_ver"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.50"/>
+	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/guide_15_per_ver"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
@@ -257,6 +267,13 @@
 		android:layout_height="match_parent"
 		android:orientation="vertical"
 		app:layout_constraintGuide_percent="0.9"/>
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_25_per_ver"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.30"/>
+
 	
 	<ImageView
 		android:id="@+id/imageView12"

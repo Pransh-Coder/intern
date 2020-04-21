@@ -1,6 +1,7 @@
 package com.example.intern;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,22 +10,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_services_bike.ViewHolder>{
+public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_services_bike.ViewHolder> {
     private String[] param;
     private Context context;
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClicked(View v);
     }
 
-    private OnItemClickListener listener;
 
-    public MyAdapter_services_bike(Context context, String[] param, OnItemClickListener listener) {
+    public MyAdapter_services_bike(Context context, String[] param) {
         this.param = param;
         this.context = context;
-        this.listener = listener;
     }
 
     @NonNull
@@ -47,6 +47,7 @@ public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_serv
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView recycle_services;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             recycle_services = itemView.findViewById(R.id.tv_recycle);
@@ -54,10 +55,18 @@ public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_serv
             ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onItemClicked(v);
+                    AlertDialog.Builder  dialogbuilder = new AlertDialog.Builder(context);
+                    View view =LayoutInflater.from(context).inflate(R.layout.dialog,null);
+                    dialogbuilder.setView(view);
+                    AlertDialog dialog=dialogbuilder.create();
+                    dialog.show();
+
+
                 }
             });
         }
     }
 }
+
+
 

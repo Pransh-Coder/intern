@@ -11,20 +11,28 @@
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
 		app:layout_constraintGuide_percent="0.29" />
+
 	
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/guide_ver_70_per"
 		android:layout_width="0dp"
 		android:layout_height="match_parent"
 		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.55" />
+		app:layout_constraintGuide_percent="0.45" />
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_ver_95_per"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.95" />
 	
 	<TextView
 		android:id="@+id/tv_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
-		android:text="Name"
+		android:text="Name :"
+		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
 	
@@ -34,18 +42,19 @@
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
-		android:hint="              "
+		android:hint="Name here"
 		android:inputType="textPersonName"
 		android:padding="10dp"
-		android:textColorHint="#000000"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_name" />
+		app:layout_constraintTop_toTopOf="@id/tv_name"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 	
 	<TextView
 		android:id="@+id/tv_nick_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
+		android:textColor="@color/black"
 		android:text="PS can call you"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_name" />
@@ -59,9 +68,9 @@
 		android:hint="(Chachu,Dadi,Chachi)"
 		android:inputType="textPersonName"
 		android:padding="10dp"
-		android:textColorHint="#000000"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_nick_name" />
+		app:layout_constraintTop_toTopOf="@id/tv_nick_name"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 	
 	<TextView
 		android:id="@+id/tv_child_number"
@@ -69,6 +78,7 @@
 		android:layout_height="wrap_content"
 		android:padding="10dp"
 		android:text="Your number : "
+		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
 	
@@ -78,19 +88,20 @@
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
-		android:hint="              "
+		android:hint="10 digit number here"
 		android:inputType="phone"
 		android:maxLength="10"
 		android:padding="10dp"
-		android:textColorHint="#000000"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_child_number" />
+		app:layout_constraintTop_toTopOf="@id/tv_child_number"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 	
 	<TextView
 		android:id="@+id/tv_parent_number"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
+		android:textColor="@color/black"
 		android:text="Child's number : "
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_child_number" />
@@ -101,19 +112,20 @@
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
-		android:hint="              "
+		android:hint="10 digit number here"
 		android:inputType="phone"
 		android:maxLength="10"
 		android:padding="10dp"
-		android:textColorHint="#000000"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_parent_number" />
+		app:layout_constraintTop_toTopOf="@id/tv_parent_number"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 	
 	<TextView
 		android:id="@+id/bt_dob"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
+		android:textColor="@color/black"
 		android:text="Date of birth : "
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_parent_number" />
@@ -125,11 +137,17 @@
 		android:drawableBottom="@drawable/backgroun_et"
 		android:focusable="false"
 		android:padding="10dp"
-		android:text="Pick A Date"
+		android:text="DD/MM/YYYY"
 		android:textColor="@color/black"
-		android:textColorHint="#000000"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
 		app:layout_constraintTop_toTopOf="@id/bt_dob" />
+	<ImageView
+		android:id="@+id/calender_icon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/calender"
+		app:layout_constraintStart_toEndOf="@id/et_DOB"
+		app:layout_constraintTop_toTopOf="@id/et_DOB"></ImageView>
 	
 	<TextView
 		android:id="@+id/tv_pin_code"
@@ -137,6 +155,7 @@
 		android:layout_height="wrap_content"
 		android:padding="10dp"
 		android:text="Area/Pincode : "
+		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/bt_dob" />
 	
@@ -146,13 +165,13 @@
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
-		android:hint="              "
+		android:hint="6 digit pincode here"
 		android:inputType="number"
 		android:maxLength="6"
 		android:padding="10dp"
-		android:textColorHint="#000000"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_pin_code" />
+		app:layout_constraintTop_toTopOf="@id/tv_pin_code"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 	
 	
 	<View
@@ -171,7 +190,8 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
-		android:text="What you want to call by PS : "
+		android:text="Ps can call you : "
+		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_pin_code" />
 	
@@ -181,19 +201,20 @@
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
-		android:hint="              "
+		android:hint="Type here.."
 		android:inputType="textPersonName"
 		android:padding="10dp"
-		android:textColorHint="#000000"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_ps_nick_name" />
+		app:layout_constraintTop_toTopOf="@id/tv_ps_nick_name"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 	
 	<TextView
 		android:id="@+id/tvVolunteer"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
-		android:text="Want to a Volunteer"
+		android:text="Be a Volunteer"
+		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_ps_nick_name" />
 	
@@ -206,7 +227,8 @@
 		android:inputType="textPersonName"
 		android:textColorHint="#000000"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tvVolunteer" />
+		app:layout_constraintTop_toTopOf="@id/tvVolunteer"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 	
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/guide_hor_75_per"
@@ -223,11 +245,11 @@
 		android:layout_marginEnd="8dp"
 		android:background="@drawable/background_button_sign_in"
 		android:text="CREATE YOUR PROFILE"
-		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
 		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/guide_hor_75_per"
-		app:layout_goneMarginTop="20dp" />
+	 />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
