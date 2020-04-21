@@ -107,7 +107,10 @@ public class SaveMoney extends AppCompatActivity {
             }
         });
 
-        binding.servicesButtonBack1.setOnClickListener(v -> onBackPressed());
+        binding.servicesButtonBack1.setOnClickListener(v -> {
+            Intent intent = new Intent(SaveMoney.this, MainApp.class);
+            startActivity(intent);finish();
+        });
         binding.home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
