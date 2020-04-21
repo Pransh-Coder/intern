@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.databinding.ActivitySwabhimanRegisterBinding;
 import com.example.intern.mainapp.MainApp;
 import com.example.intern.swabhiman.SwabhimanVM;
@@ -46,6 +47,10 @@ public class Employement extends Fragment {
 			Intent intent = new Intent(requireContext(), MainApp.class);
 			startActivity(intent);
 			requireActivity().finish();
+		});
+		binding.ivNotifButton.setOnClickListener(v -> {
+			Intent intent = new Intent(requireContext(), NewsAndUpdatesACT.class);
+			startActivity(intent);
 		});
 		//TODO : Submit Details via Email
 	}

@@ -1,5 +1,6 @@
 package com.example.intern.swabhiman.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.databinding.ActivitySwabhimanDpBinding;
 import com.example.intern.swabhiman.SwabhimanVM;
@@ -57,6 +59,10 @@ public class ChoicesFR extends Fragment {
 		});
 		binding.ivHomeButton.setOnClickListener(v->{
 			requireActivity().onBackPressed();
+		});
+		binding.ivNotifButton.setOnClickListener(v -> {
+			Intent intent = new Intent(requireContext(), NewsAndUpdatesACT.class);
+			startActivity(intent);
 		});
 	}
 }
