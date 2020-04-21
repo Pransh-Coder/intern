@@ -10,6 +10,7 @@ import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.ActivityExclusiveServiceBinding;
@@ -57,6 +58,10 @@ public class ExclusiveServices extends AppCompatActivity {
         binding.tiffin.setOnClickListener(view -> {
             Intent intent = new Intent(ExclusiveServices.this, TiffinService.class);
             startActivity(intent);
+        });
+        binding.notifi.setOnClickListener(v -> {
+	        Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+	        startActivity(intent);
         });
     }
 	

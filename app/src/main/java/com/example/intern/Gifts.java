@@ -42,6 +42,10 @@ public class Gifts extends AppCompatActivity {
             Intent intent = new Intent(this, MainApp.class);
             startActivity(intent);finish();
         });
+        binding.notifi.setOnClickListener(v -> {
+            Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+            startActivity(intent);
+        });
 
     }
     private void showWaitDialog(){

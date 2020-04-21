@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.databinding.ActivitySwabhimanBussinessAssociateBinding;
 import com.example.intern.mailers.SwabhimanAutoMailer;
@@ -59,6 +60,10 @@ public class BusinessAssociateFR extends Fragment {
 			Intent intent = new Intent(requireContext(), MainApp.class);
 			startActivity(intent);
 			requireActivity().finish();
+		});
+		binding.swabhimanBussinessAssociateButtonNotification.setOnClickListener(v -> {
+			Intent intent = new Intent(requireContext(), NewsAndUpdatesACT.class);
+			startActivity(intent);
 		});
 	}
 	

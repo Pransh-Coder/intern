@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.ActivitySwabhimanInvestorBinding;
-import com.example.intern.mailers.SwabhimanAutoMailer;
 import com.example.intern.mainapp.MainApp;
 import com.example.intern.swabhiman.SwabhimanVM;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -84,6 +83,10 @@ public class InvestorFR extends Fragment {
 			Intent intent = new Intent(requireContext(), MainApp.class);
 			startActivity(intent);
 			requireActivity().finish();
+		});
+		binding.ivNotifButton.setOnClickListener(v -> {
+			Intent intent = new Intent(requireContext(), NewsAndUpdatesACT.class);
+			startActivity(intent);
 		});
 	}
 	

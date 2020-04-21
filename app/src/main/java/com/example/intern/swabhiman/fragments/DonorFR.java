@@ -1,10 +1,8 @@
 package com.example.intern.swabhiman.fragments;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,18 +15,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.FireStoreUtil;
-import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivitySwabhimanDonorBinding;
 import com.example.intern.mainapp.MainApp;
 import com.example.intern.swabhiman.SwabhimanVM;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.razorpay.Checkout;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -112,6 +107,10 @@ public class DonorFR extends Fragment {
 			Intent intent = new Intent(requireContext(), MainApp.class);
 			startActivity(intent);
 			requireActivity().finish();
+		});
+		binding.swabhimanDonorButtonNotification.setOnClickListener(v -> {
+			Intent intent = new Intent(requireContext(), NewsAndUpdatesACT.class);
+			startActivity(intent);
 		});
 	}
 }

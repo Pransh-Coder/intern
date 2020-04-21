@@ -35,6 +35,10 @@ public class Lifestyle extends AppCompatActivity {
             Intent intent = new Intent(this, MainApp.class);
             startActivity(intent);finish();
         });
+        binding.ivNotifButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+            startActivity(intent);
+        });
     }
     
     private void showWaitDialog(){

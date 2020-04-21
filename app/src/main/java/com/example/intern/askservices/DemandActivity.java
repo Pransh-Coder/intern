@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
@@ -84,6 +85,10 @@ public class DemandActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
                 service = "other";
             }
+        });
+        binding.demandNotification.setOnClickListener(v -> {
+            Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+            startActivity(intent);
         });
     }
     

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.mainapp.MainApp;
@@ -77,6 +78,10 @@ public class TiffinService extends AppCompatActivity {
 						        .setMessage("We will get back to you shortly").setPositiveButton("OK", null)
 						        .setOnDismissListener(alertDialog -> onBackPressed()).show();
 			        });
+        });
+        findViewById(R.id.notifi).setOnClickListener(v -> {
+	        Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+	        startActivity(intent);
         });
     }
 }

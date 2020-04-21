@@ -21,6 +21,10 @@ public class Holiday extends AppCompatActivity {
             Intent intent = new Intent(this, MainApp.class);
             startActivity(intent);finish();
         });
+        findViewById(R.id.iv_notif_button).setOnClickListener(v -> {
+            Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+            startActivity(intent);
+        });
     }
     private void showWaitDialog(){
         new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")

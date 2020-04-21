@@ -1,11 +1,11 @@
 package com.example.intern.swabhiman.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.databinding.ActivitySwabhimanTcBinding;
 import com.example.intern.swabhiman.SwabhimanVM;
@@ -72,6 +73,10 @@ public class TnCFR extends Fragment {
 		});
 		binding.ivHomeButton.setOnClickListener(v->{
 			requireActivity().onBackPressed();
+		});
+		binding.ivNotifButton.setOnClickListener(v -> {
+			Intent intent = new Intent(requireContext(), NewsAndUpdatesACT.class);
+			startActivity(intent);
 		});
 	}
 }

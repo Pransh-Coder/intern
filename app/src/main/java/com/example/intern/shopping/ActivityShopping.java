@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.databinding.ActivityShoppingDescHBinding;
 import com.example.intern.mainapp.MainApp;
 
@@ -35,6 +36,10 @@ public class ActivityShopping extends AppCompatActivity {
             String url = "https://www.prarambhstore.com/beta/order_medicines";
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
+            startActivity(intent);
+        });
+        binding.ivNotifButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, NewsAndUpdatesACT.class);
             startActivity(intent);
         });
     }
