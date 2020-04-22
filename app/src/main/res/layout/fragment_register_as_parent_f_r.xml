@@ -10,7 +10,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.35" />
+		app:layout_constraintGuide_percent="0.30" />
 
 	
 	<androidx.constraintlayout.widget.Guideline
@@ -32,17 +32,20 @@
 		android:layout_height="wrap_content"
 		android:padding="10dp"
 		android:text="Name :"
+		android:textSize="20dp"
+		android:fontFamily="@font/calibri"
 		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
 	
 	<EditText
 		android:id="@+id/et_name"
-		android:layout_width="wrap_content"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
 		android:hint="Name here"
+		android:textSize="14dp"
 		android:inputType="textPersonName"
 		android:padding="10dp"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
@@ -54,18 +57,21 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
+		android:textSize="20dp"
 		android:textColor="@color/black"
-		android:text="PS can call you"
+		android:fontFamily="@font/calibri"
+		android:text="PS can call you :"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_name" />
 	
 	<EditText
 		android:id="@+id/et_nick_name"
-		android:layout_width="wrap_content"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
-		android:hint="(Chachu,Dadi,Chachi)"
+		android:textSize="14dp"
+		android:hint="Chachu/Dadi/Chachi"
 		android:inputType="textPersonName"
 		android:padding="10dp"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
@@ -77,17 +83,20 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
+		android:textSize="20dp"
 		android:text="Your number : "
+		android:fontFamily="@font/calibri"
 		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
 	
 	<EditText
 		android:id="@+id/et_par_number"
-		android:layout_width="wrap_content"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
+		android:textSize="14dp"
 		android:hint="10 digit number here"
 		android:inputType="phone"
 		android:maxLength="10"
@@ -101,6 +110,8 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
+		android:textSize="20dp"
+		android:fontFamily="@font/calibri"
 		android:textColor="@color/black"
 		android:text="Child's number : "
 		app:layout_constraintStart_toStartOf="parent"
@@ -108,10 +119,11 @@
 	
 	<EditText
 		android:id="@+id/et_child_number"
-		android:layout_width="wrap_content"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
+		android:textSize="14dp"
 		android:hint="10 digit number here"
 		android:inputType="phone"
 		android:maxLength="10"
@@ -125,8 +137,10 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
+		android:textSize="20dp"
 		android:textColor="@color/black"
 		android:text="Date of birth : "
+		android:fontFamily="@font/calibri"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_parent_number" />
 	
@@ -137,6 +151,7 @@
 		android:drawableBottom="@drawable/backgroun_et"
 		android:focusable="false"
 		android:padding="10dp"
+		android:textSize="14dp"
 		android:text="DD/MM/YYYY"
 		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
@@ -154,17 +169,20 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
+		android:textSize="20dp"
 		android:text="Area/Pincode : "
+		android:fontFamily="@font/calibri"
 		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/bt_dob" />
 	
 	<EditText
 		android:id="@+id/et_pin_code"
-		android:layout_width="wrap_content"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
+		android:textSize="14dp"
 		android:hint="6 digit pincode here"
 		android:inputType="number"
 		android:maxLength="6"
@@ -191,17 +209,20 @@
 		android:layout_height="wrap_content"
 		android:padding="10dp"
 		android:text="Name your PS : "
+		android:textSize="20dp"
+		android:fontFamily="@font/calibri"
 		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_pin_code" />
 	
 	<EditText
 		android:id="@+id/et_ps_nick_name"
-		android:layout_width="wrap_content"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+		android:textSize="14dp"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
-		android:hint="Type here.."
+		android:hint="Prukruti/Samay/...."
 		android:inputType="textPersonName"
 		android:padding="10dp"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
@@ -213,29 +234,31 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="10dp"
+		android:textSize="20dp"
 		android:text="Be a Volunteer"
+		android:fontFamily="@font/calibri"
 		android:textColor="@color/black"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/tv_ps_nick_name" />
-	
+
 	<Spinner
 		android:id="@+id/spin_volunteer"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="13dp"
+		android:layout_marginTop="12dp"
 		android:entries="@array/volunteer_options"
 		android:inputType="textPersonName"
-		android:textColorHint="#000000"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tvVolunteer"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
-	
+		app:layout_constraintTop_toTopOf="@id/tvVolunteer" />
+
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/guide_hor_75_per"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.79" />
+		app:layout_constraintGuide_percent="0.81" />
 
 	<Button
 		android:id="@+id/btnRegisterasChild_SignIn"
@@ -243,13 +266,12 @@
 		android:layout_height="35sp"
 		android:layout_marginStart="8dp"
 		android:layout_marginEnd="8dp"
-		android:layout_marginTop="12dp"
 		android:background="@drawable/background_button_sign_in"
 		android:text="CREATE YOUR PROFILE"
 		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
 		app:layout_constraintHorizontal_bias="0.554"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/spin_volunteer" />
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_75_per" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

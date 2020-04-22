@@ -21,7 +21,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:fontFamily="@font/century_gothic_400"
-		android:text="Login"
+		android:text="Continue"
 		android:textColor="@color/black"
 		android:textSize="35dp"
 		app:layout_constraintLeft_toLeftOf="@id/iv_mascot"
@@ -35,7 +35,7 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:text="Login With Google"
+		android:text="Continue With Google"
 		android:textAllCaps="false"
 		android:paddingEnd="15dp"
 		android:padding="10dp"
@@ -73,18 +73,12 @@
 				android:layout_weight="0.2"
 				android:padding="5dp"
 				android:src="@drawable/facebookicon"/>
-			<ImageView
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:scaleType="centerCrop"
-				android:src="@drawable/simple_line"/>
 			<TextView
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_weight="8"
 				android:fontFamily="@font/century_gothic_400"
-				android:text="Login With Facebook"
+				android:text="  Continue With Facebook"
 				android:textColor="@color/black"
 				android:textSize="20dp"/>
 		</LinearLayout>
@@ -92,7 +86,7 @@
 			android:id="@+id/google_sign_in"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="10dp"
+			android:layout_marginTop="15dp"
 			android:background="@drawable/button_rounded"
 			android:gravity="center|start"
 			android:orientation="horizontal"
@@ -103,18 +97,12 @@
 				android:layout_weight="0.2"
 				android:padding="5dp"
 				android:src="@drawable/gmailicon"/>
-			<ImageView
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:scaleType="centerCrop"
-				android:src="@drawable/simple_line"/>
 			<TextView
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_weight="8"
 				android:fontFamily="@font/century_gothic_400"
-				android:text="Login With Gmail"
+				android:text="  Continue With Gmail"
 				android:textColor="@color/black"
 				android:textSize="20dp"/>
 		</LinearLayout>
@@ -122,7 +110,7 @@
 			android:id="@+id/phone_sign_in"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="10dp"
+			android:layout_marginTop="15dp"
 			android:background="@drawable/button_rounded"
 			android:gravity="center|start"
 			android:orientation="horizontal"
@@ -133,18 +121,12 @@
 				android:layout_weight="0.2"
 				android:padding="5dp"
 				android:src="@drawable/phoneotp"/>
-			<ImageView
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:scaleType="centerCrop"
-				android:src="@drawable/simple_line"/>
 			<TextView
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_weight="8"
 				android:fontFamily="@font/century_gothic_400"
-				android:text="Login With Phone No."
+				android:text="  Continue With Phone No."
 				android:textColor="@color/black"
 				android:textSize="20dp"/>
 		</LinearLayout>
@@ -175,7 +157,7 @@
 			android:layout_weight="8"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:text="Login With Google"
+			android:text="Continue With Google"
 			android:textSize="17dp"
 			android:fontFamily="@font/century_gothic_400"
 			android:textColor="@color/black"/>
@@ -204,7 +186,7 @@
 			android:layout_width="130dp"
 			android:layout_height="wrap_content"
 			android:layout_marginRight="5dp"
-			android:text="Login With Phone No."
+			android:text="Continue With Phone No."
 			android:textSize="17dp"
 			android:fontFamily="@font/century_gothic_400"
 			android:textColor="@color/black"/>

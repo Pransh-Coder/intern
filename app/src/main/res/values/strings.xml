@@ -24,9 +24,10 @@
 	</string-array>
 	
 	<string-array name="volunteer_options">
-		<item>Select YES/NO</item>
+		<item>Select</item>
 		<item>Yes</item>
 		<item>No</item>
+		<item>DECIDE LATER</item>
 	</string-array>
 	<string-array name="menu_main">
 		<item>Reduce Your Expenses</item>
