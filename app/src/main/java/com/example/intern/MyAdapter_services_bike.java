@@ -68,6 +68,11 @@ public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_serv
             AlertDialog.Builder dialogbuilder = new AlertDialog.Builder(context);
             View view = LayoutInflater.from(context).inflate(R.layout.dialog, null);
             Button btn_pay=view.findViewById(R.id.bt_pop);
+            TextView tv = view.findViewById(R.id.tv_pop3);
+            tv.setText(Html.fromHtml("&#8226 4 services per year<br>&#8226 Free pick and drop service<br>&#8226 Roadside Assistance service<br>&#8226 Insurance Support"));
+            tv = view.findViewById(R.id.tv_pop7);
+            tv.setText(Html.fromHtml("&#8226 4 services per year<br>&#8226 Free pick and drop service<br>&#8226 Roadside Assistance service<br>&#8226 Insurance Support<br>&#8226 10% discount on labour<br>&#8226 2 Lubricants free"));
+
             dialogbuilder.setView(view);
             AlertDialog dialog = dialogbuilder.create();
             dialog.show();
