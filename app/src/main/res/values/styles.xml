@@ -34,7 +34,7 @@
     </style>
 
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">#bbb</item>
+        <item name="boxStrokeColor">#000</item>
         <item name="boxStrokeWidth">2dp</item>
         <item name="android:textColor">@color/grey</item>
         <item name="android:textAppearance">@color/grey</item>
