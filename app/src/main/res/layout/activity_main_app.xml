@@ -67,7 +67,7 @@
 					android:layout_marginBottom="10dp"
 					android:inputType="textAutoComplete"
 					android:maxLines="1"
-					android:hint="What do you want?"
+					android:hint="Search here..."
 					android:background="@drawable/home_activity_search_background"
 					android:drawableStart="@drawable/ic_search"
 					android:drawablePadding="5dp"

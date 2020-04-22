@@ -61,7 +61,7 @@ public class DonorFR extends Fragment {
 
 		String sourceString3 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>FREE SPACE</b>";
 		forPara.setText(Html.fromHtml(sourceString3));
-		String sourceString4 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>ANYTHING</b>";
+		String sourceString4 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>OTHERS</b>";
 		sixpara.setText(Html.fromHtml(sourceString4));
 		return  view;
 	}
