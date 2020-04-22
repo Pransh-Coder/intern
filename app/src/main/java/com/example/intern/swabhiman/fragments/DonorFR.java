@@ -50,7 +50,7 @@ public class DonorFR extends Fragment {
 		sixpara = view.findViewById(R.id.sixpara);
 
 		TextView tv = view.findViewById(R.id.tv_desc1);
-		tv.setText(Html.fromHtml("PS thanks you to support  this social enterprise cause,It wasn't possible with your kind support.You can donate:-<br>"));
+		tv.setText(Html.fromHtml("PS thanks you to support  this social enterprise cause,It wasn't possible without your kind support.You can donate:-<br>"));
 
 		//arrow1.setText("<b>"+"&#8594"+"</b>"+" ");
 		String sourceString =/*"<b>"+"&#8594"+"</b>"+*/ "<b>MONEY</b> ";
