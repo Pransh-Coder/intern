@@ -32,4 +32,9 @@
         <item name="textAllCaps">false</item>
         <item name="android:fontFamily">@font/century_gothic_400</item>
     </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">#000</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
 </resources>
