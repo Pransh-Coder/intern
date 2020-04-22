@@ -136,19 +136,18 @@
         android:id="@+id/tv_desc1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:fontFamily="@font/century_gothic"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
-        app:layout_constraintStart_toStartOf="@+id/contstraint"
+        app:layout_constraintStart_toStartOf="@id/ver_gui_4_per"
         app:layout_constraintTop_toBottomOf="@id/tv_concept" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contstraint"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
         app:layout_constraintBottom_toTopOf="@+id/fif_para"
         app:layout_constraintStart_toEndOf="@id/ver_gui_4_per"
         app:layout_constraintTop_toBottomOf="@+id/tv_desc1"
@@ -272,7 +271,6 @@
         android:id="@+id/fifth_para"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:ellipsize="start"
         android:fontFamily="@font/century_gothic"
         android:padding="10dp"
