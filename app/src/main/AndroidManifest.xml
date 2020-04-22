@@ -86,6 +86,7 @@
 			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
 		<activity
 			android:name=".swabhiman.SwabhimanActivity"
+			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
 			android:theme="@style/MaterialAppTheme" />
 		<activity android:name=".shopping.ActivityShopping" />
 		<activity android:name=".BPCL_Fuel_QR_ScannerActivity" />

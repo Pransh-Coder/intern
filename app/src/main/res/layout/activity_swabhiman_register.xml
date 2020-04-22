@@ -117,7 +117,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/TextInputLayoutStyle"
+                style="@style/TextInputLayoutStyle"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name :">
@@ -131,6 +134,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/exp"
                 android:theme="@style/TextInputLayoutStyle"
+                style="@style/TextInputLayoutStyle"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Years of experience in Job/others :"
@@ -143,7 +149,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/good"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/TextInputLayoutStyle"
+                style="@style/TextInputLayoutStyle"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="What you are good at :"
@@ -156,7 +165,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/hrs"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/TextInputLayoutStyle"
+                style="@style/TextInputLayoutStyle"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="How many Hrs. you can work daily :"
@@ -169,7 +181,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/condition"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/TextInputLayoutStyle"
+                style="@style/TextInputLayoutStyle"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Any specific condition :"
@@ -182,7 +197,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/currently"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:theme="@style/TextInputLayoutStyle"
+                style="@style/TextInputLayoutStyle"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Anything doing currently :"
