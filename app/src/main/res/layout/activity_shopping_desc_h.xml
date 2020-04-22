@@ -80,7 +80,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        android:text="Shop for Medicines"
+        android:text="Order Medicines Now"
         android:background="@drawable/background_button_sign_in"
         android:fontFamily="@font/century_gothic_400"
         android:padding="10dp"
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/background_button_sign_in"
         android:fontFamily="@font/century_gothic_400"
-        android:text="Go to Shopping"
+        android:text="Online Store"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:textAllCaps="false"
@@ -200,12 +200,14 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/century_gothic_400"
                     android:gravity="center_vertical"
-                    android:text="THOUSANDS OF"
+                    android:text="Thousands of"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/century_gothic"
                     android:text=" Product Range"
                     android:textSize="16sp"/>
@@ -233,10 +235,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:textColor="@color/black"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/century_gothic_400"
                     android:gravity="center_vertical"
-                    android:text="LOWEST PRICE* "
+                    android:text="Lowest price* "
                     android:textSize="16sp"
                     android:textStyle="bold"/>
                 <TextView
@@ -244,7 +247,8 @@
                     android:layout_height="40dp"
                     android:fontFamily="@font/century_gothic"
                     android:text="in all Categories"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
             </LinearLayout>
     
             <LinearLayout
@@ -272,7 +276,8 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/century_gothic_400"
                     android:gravity="center_vertical"
-                    android:text="GENUINE PRODUCTS"
+                    android:textColor="@color/black"
+                    android:text="Genuine products"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -299,6 +304,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:textColor="@color/black"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/century_gothic"
                     android:text="Medicine with "
@@ -306,9 +312,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/century_gothic_400"
                     android:gravity="center_vertical"
-                    android:text="UPTO 90% DISCOUNT*"
+                    android:text="Upto 90% discount*"
                     android:textSize="15sp"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -335,10 +342,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:textColor="@color/black"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/century_gothic_400"
                     android:gravity="center_vertical"
-                    android:text="OTHERS"
+                    android:text="Others"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
             </LinearLayout>
