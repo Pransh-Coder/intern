@@ -58,6 +58,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/demand_imgView_Fuel" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor_guide_30_percent"
         android:layout_width="match_parent"
@@ -65,6 +66,7 @@
         android:background="@color/black"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.29" />
+
     <ImageView
         android:id="@+id/banner"
         android:layout_width="0dp"
@@ -77,6 +79,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hor_guide_12_percent" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor_guide_12_percent"
         android:layout_width="match_parent"
@@ -114,7 +117,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/demand_button_service"
         app:layout_constraintTop_toTopOf="@id/demand_button_service" />
-    
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contraint_layout_services"
         android:layout_width="0dp"
@@ -124,6 +127,7 @@
         app:layout_constraintLeft_toLeftOf="@id/demand_button_service"
         app:layout_constraintRight_toRightOf="@id/demand_button_product"
         app:layout_constraintTop_toBottomOf="@id/demand_button_service">
+
         <TextView
             android:id="@+id/tv_useless3"
             android:layout_width="wrap_content"
@@ -133,7 +137,8 @@
             android:textSize="12dp"
             app:layout_constraintBottom_toTopOf="@id/spinner2"
             app:layout_constraintLeft_toLeftOf="@id/spinner2"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner2"
             android:layout_width="0dp"
@@ -141,37 +146,38 @@
             android:autofillHints="What Services Do You Want?"
             android:background="@drawable/spinner_boxed_back"
             android:dropDownWidth="wrap_content"
-            android:spinnerMode="dropdown"
             android:entries="@array/AskServicesOptions"
+            android:spinnerMode="dropdown"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_useless3"/>
-        
+            app:layout_constraintTop_toBottomOf="@id/tv_useless3" />
+
         <EditText
             android:id="@+id/et_service_description"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_marginTop="20dp"
-            android:ellipsize="start"
-            android:padding="10dp"
             android:background="@drawable/rectangle_outline"
+            android:ellipsize="start"
             android:hint="What do you want?..."
+            android:padding="10dp"
             app:layout_constraintLeft_toLeftOf="@id/spinner2"
             app:layout_constraintRight_toRightOf="@id/spinner2"
-            app:layout_constraintTop_toBottomOf="@id/spinner2"/>
+            app:layout_constraintTop_toBottomOf="@id/spinner2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_product"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="gone"
         android:layout_marginTop="20dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/demand_submit"
         app:layout_constraintLeft_toLeftOf="@id/demand_button_service"
         app:layout_constraintRight_toRightOf="@id/demand_button_product"
         app:layout_constraintTop_toBottomOf="@id/demand_button_service">
+
         <TextView
             android:id="@+id/tv_useless"
             android:layout_width="match_parent"
@@ -179,14 +185,16 @@
             android:text="What do you want?"
             android:textAlignment="center"
             android:textColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/et_product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Ex : Grocery Products"
-            app:layout_constraintTop_toBottomOf="@id/tv_useless"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_useless" />
+
         <TextView
             android:id="@+id/tv_useless2"
             android:layout_width="match_parent"
@@ -195,19 +203,20 @@
             android:text="Add Picture"
             android:textAlignment="center"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/et_product_name"/>
+            app:layout_constraintTop_toBottomOf="@id/et_product_name" />
+
         <ImageView
             android:id="@+id/iv_product_image"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="20dp"
             android:src="@drawable/ic_image_idol"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_useless2"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_useless2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
+
 
     <Button
         android:id="@+id/demand_submit"
