@@ -156,11 +156,12 @@
         <ImageView
             android:id="@+id/arrow1"
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="0dp"
             android:padding="5dp"
             android:src="@drawable/next"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/secPara" />
+            app:layout_constraintTop_toTopOf="@id/secPara"
+            app:layout_constraintBottom_toBottomOf="@id/secPara"/>
 
         <TextView
             android:id="@+id/secPara"
@@ -179,13 +180,14 @@
         <ImageView
             android:id="@+id/arrow2"
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="0dp"
             android:padding="5dp"
             android:src="@drawable/next"
             app:layout_constraintEnd_toStartOf="@+id/secPara"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/secPara"
-            app:layout_constraintTop_toTopOf="@id/thrPara" />
+            app:layout_constraintTop_toTopOf="@id/thrPara"
+            app:layout_constraintBottom_toBottomOf="@id/thrPara"/>
 
         <TextView
             android:id="@+id/thrPara"
@@ -211,7 +213,8 @@
             android:src="@drawable/next"
             app:layout_constraintEnd_toStartOf="@+id/thrPara"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/forPara" />
+            app:layout_constraintTop_toTopOf="@id/forPara"
+            app:layout_constraintBottom_toBottomOf="@id/forPara"/>
 
         <TextView
             android:id="@+id/forPara"
@@ -237,7 +240,8 @@
             android:src="@drawable/next"
             app:layout_constraintEnd_toStartOf="@+id/forPara"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/sixpara" />
+            app:layout_constraintTop_toTopOf="@id/sixpara"
+            app:layout_constraintBottom_toBottomOf="@id/sixpara"/>
 
         <TextView
             android:id="@+id/sixpara"
