@@ -124,7 +124,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/century_gothic"
         android:textColor="@color/black"
         android:textSize="15sp"
@@ -184,7 +184,7 @@
         app:layout_constraintBottom_toTopOf="@+id/ps_bottomLogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_swabhiman_bussiness_associate_feedback" />
+        app:layout_constraintTop_toBottomOf="@id/editText_swabhiman_bussiness_associate_feedback" />
 
     <ImageView
         android:id="@+id/ps_bottomLogo"
