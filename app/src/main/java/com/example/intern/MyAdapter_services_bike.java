@@ -2,16 +2,20 @@ package com.example.intern;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.intern.payment.BecomeAMember;
 
 public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_services_bike.ViewHolder> {
     private String[] param;
@@ -52,21 +56,35 @@ public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_serv
             super(itemView);
             recycle_services = itemView.findViewById(R.id.tv_recycle);
             LinearLayout ll = itemView.findViewById(R.id.ll_recycler);
-            ll.setOnClickListener(new View.OnClickListener() {
+            ll.setOnClickListener(v -> {
+                createPopup();
+
+
+            });
+        }
+
+        private void createPopup() {
+
+            AlertDialog.Builder dialogbuilder = new AlertDialog.Builder(context);
+            View view = LayoutInflater.from(context).inflate(R.layout.dialog, null);
+            Button btn_pay=view.findViewById(R.id.bt_pop);
+            dialogbuilder.setView(view);
+            AlertDialog dialog = dialogbuilder.create();
+            dialog.show();
+            btn_pay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder  dialogbuilder = new AlertDialog.Builder(context);
-                    View view =LayoutInflater.from(context).inflate(R.layout.dialog,null);
-                    dialogbuilder.setView(view);
-                    AlertDialog dialog=dialogbuilder.create();
-                    dialog.show();
-
-
+                    dialog.dismiss();
+                    Intent intent=new Intent(context,BecomeAMember.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    context.startActivity(intent);
                 }
             });
+
         }
     }
 }
+
 
 
 

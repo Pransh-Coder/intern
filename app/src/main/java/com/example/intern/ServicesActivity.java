@@ -3,11 +3,14 @@ package com.example.intern;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.databinding.ActivityServicesBinding;
 import com.example.intern.mainapp.MainApp;
+
+import save_money.SaveMoney;
 
 public class ServicesActivity extends AppCompatActivity {
     ActivityServicesBinding binding;
@@ -20,7 +23,11 @@ public class ServicesActivity extends AppCompatActivity {
         binding.linearLayoutMobileRepair.setOnClickListener(v -> showWaitDialog());
         binding.linearLayoutRoRepair.setOnClickListener(v -> showWaitDialog());
         binding.linearLayoutBikeRepair.setOnClickListener(v -> showMyDialog());
-        binding.servicesButtonBack.setOnClickListener(v -> onBackPressed());
+        binding.servicesButtonBack.setOnClickListener(v -> {
+            Intent intent = new Intent(ServicesActivity.this, SaveMoney.class);
+            startActivity(intent);
+
+        });
         binding.servicesButtonHome.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainApp.class);
             startActivity(intent);finish();
