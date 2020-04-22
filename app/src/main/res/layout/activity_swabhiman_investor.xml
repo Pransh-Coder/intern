@@ -82,22 +82,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView15"
+    <LinearLayout
         android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:background="@drawable/banner_background"
-        android:fontFamily="@font/century_gothic_400"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Investor "
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hor_20" />
+        app:layout_constraintTop_toBottomOf="@id/hor_20"
+        android:id="@+id/textView15"
+        android:elevation="50dp"
+        android:background="#f2f2f2">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/banner_background"
+            android:fontFamily="@font/century_gothic_400"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Investor "
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_desc1"

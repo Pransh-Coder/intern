@@ -51,20 +51,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_swabhiman_icon" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:background="@drawable/banner_background"
-        android:gravity="center"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="Employment"
-        android:textSize="20sp"
-        android:id="@+id/tv_employment"
-        android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hor_guide_14_percent" />
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_14_percent"
+        android:id="@+id/tv_employment"
+        android:background="#f2f2f2"
+        android:elevation="50dp">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/banner_background"
+            android:gravity="center"
+            android:fontFamily="@font/century_gothic_400"
+            android:text="Employment"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/iv_search_button"
@@ -139,7 +145,7 @@
                 app:hintTextColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Years of experience in Job/others :"
+                android:hint="Years of experience in Job/Others :"
                 app:layout_constraintTop_toBottomOf="@id/name">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -155,7 +161,7 @@
                 app:hintTextColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="What you are good at :"
+                android:hint="Your strength :"
                 app:layout_constraintTop_toBottomOf="@id/exp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -171,7 +177,7 @@
                 app:hintTextColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="How many Hrs. you can work daily :"
+                android:hint="How many Hours you can work daily :"
                 app:layout_constraintTop_toBottomOf="@id/good">
 
                 <com.google.android.material.textfield.TextInputEditText

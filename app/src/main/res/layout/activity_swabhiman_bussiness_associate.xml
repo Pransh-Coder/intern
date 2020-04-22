@@ -81,23 +81,28 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgView_swabhiman_bussiness_associate" />
 
-    <TextView
-        android:id="@+id/textBussinessAssociate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/banner_background"
-        android:fontFamily="@font/century_gothic_400"
-        android:padding="10dp"
-        android:text="PS Partners"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:elevation="50dp"
+        android:background="#f2f2f2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_swabhiman_bussiness_associate" />
-
+        app:layout_constraintTop_toBottomOf="@+id/txt_swabhiman_bussiness_associate"
+        android:id="@+id/textBussinessAssociate">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/banner_background"
+            android:fontFamily="@font/century_gothic_400"
+            android:padding="10dp"
+            android:text="PS Partners"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_desc1"
