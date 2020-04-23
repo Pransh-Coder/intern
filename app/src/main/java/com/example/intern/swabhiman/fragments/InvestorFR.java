@@ -48,7 +48,7 @@ public class InvestorFR extends Fragment {
 		binding = ActivitySwabhimanInvestorBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
 		TextView tv = view.findViewById(R.id.tv_desc1);
-		tv.setText(Html.fromHtml("We Welcome you to become a part of <b>PS</b>.<br>Anyone can start investing from &#8377; 10,000 and can go up to any limit. They will get 10-12% of monthly interest on the investment. For more info submit the request.<br>"));
+		tv.setText(Html.fromHtml("We Welcome you to become a part of <b>PS</b>.<br>Anyone can start investing from &#8377; 10,000 and can go up to any limit. They will get 10-12% of monthly interest on the investment.<br>"));
 		return view;
 	}
 	
