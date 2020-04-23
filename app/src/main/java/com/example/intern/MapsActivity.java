@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.databinding.ActivityMapsBinding;
+import com.example.intern.fuel.FuelWithUsAct;
+import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -45,6 +47,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 			//TODO :
 			String base = "https://www.google.com/maps/dir/?api=1&destination=23.005915,72.601313&travelmode=driving";
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(base));
+			startActivity(intent);
+		});
+		binding.buttonContinue.setOnClickListener(v -> {
+			Intent intent = new Intent(MapsActivity.this, FuelWithUsAct.class);
+			startActivity(intent);finish();
+		});
+		binding.back.setOnClickListener(v -> onBackPressed());
+		binding.home.setOnClickListener(v -> {
+			Intent intent = new Intent(MapsActivity.this, MainApp.class);
+			startActivity(intent);finish();
+		});
+		binding.notifi.setOnClickListener(v -> {
+			Intent intent = new Intent(MapsActivity.this, NewsAndUpdatesACT.class);
 			startActivity(intent);
 		});
 	}
