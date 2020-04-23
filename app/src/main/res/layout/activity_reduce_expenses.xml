@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
-        android:text="Share your monthly expenses in below "
+        android:text="Share your monthly expenses in below"
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="bold"
@@ -155,9 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/cardview_border"
-            
-                >
+                android:background="@drawable/cardview_border">
             
                 <TextView
                     android:id="@+id/data7"
@@ -311,7 +309,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint=" ₹"
-                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -381,7 +378,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint=" ₹"
-                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />

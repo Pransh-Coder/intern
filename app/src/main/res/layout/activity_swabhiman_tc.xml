@@ -156,11 +156,12 @@
         <ImageView
             android:id="@+id/arrow1"
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="0dp"
             android:padding="5dp"
             android:src="@drawable/next"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/secPara" />
+            app:layout_constraintTop_toTopOf="@id/secPara"
+            app:layout_constraintBottom_toBottomOf="@id/secPara"/>
 
         <TextView
             android:id="@+id/secPara"
@@ -170,7 +171,6 @@
             android:fontFamily="@font/century_gothic_400"
             android:padding="5dp"
             android:textColor="@color/black"
-            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -180,13 +180,14 @@
         <ImageView
             android:id="@+id/arrow2"
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="0dp"
             android:padding="5dp"
             android:src="@drawable/next"
             app:layout_constraintEnd_toStartOf="@+id/secPara"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/secPara"
-            app:layout_constraintTop_toTopOf="@id/thrPara" />
+            app:layout_constraintTop_toTopOf="@id/thrPara"
+            app:layout_constraintBottom_toBottomOf="@id/thrPara"/>
 
         <TextView
             android:id="@+id/thrPara"
@@ -197,7 +198,6 @@
             android:padding="5dp"
             android:textAlignment="textStart"
             android:textColor="@color/black"
-            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -213,7 +213,8 @@
             android:src="@drawable/next"
             app:layout_constraintEnd_toStartOf="@+id/thrPara"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/forPara" />
+            app:layout_constraintTop_toTopOf="@id/forPara"
+            app:layout_constraintBottom_toBottomOf="@id/forPara"/>
 
         <TextView
             android:id="@+id/forPara"
@@ -224,7 +225,6 @@
             android:padding="5dp"
             android:textAlignment="textStart"
             android:textColor="@color/black"
-            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -240,7 +240,8 @@
             android:src="@drawable/next"
             app:layout_constraintEnd_toStartOf="@+id/forPara"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/sixpara" />
+            app:layout_constraintTop_toTopOf="@id/sixpara"
+            app:layout_constraintBottom_toBottomOf="@id/sixpara"/>
 
         <TextView
             android:id="@+id/sixpara"
@@ -251,7 +252,6 @@
             android:padding="5dp"
             android:textAlignment="textStart"
             android:textColor="@color/black"
-            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -271,11 +271,9 @@
         android:layout_marginTop="5dp"
         android:text="To know more submit your request "
         android:textColor="@color/black"
-        android:textSize="16dp"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.247"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ver_gui_4_per"
         app:layout_constraintTop_toBottomOf="@+id/contstraint" />
 
     <CheckBox
@@ -285,10 +283,8 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/century_gothic"
         android:text="I Agree"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/chat"
-        app:layout_constraintHorizontal_bias="0.209"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@id/ver_gui_4_per"
         app:layout_constraintTop_toBottomOf="@+id/fifth_para" />
 
     <android.widget.Button

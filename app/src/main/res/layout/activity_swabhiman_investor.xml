@@ -50,6 +50,16 @@
         app:layout_constraintVertical_bias="0.2"
         app:srcCompat="@drawable/home_activity_swabhiman_icon" />
 
+        <ImageView
+        android:id="@+id/iv_search_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="7dp"
+        android:src="@drawable/search"
+        app:layout_constraintRight_toLeftOf="@+id/swabhiman_donor_button_notification"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_swabhiman"
         android:layout_width="100dp"
@@ -110,10 +120,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/century_gothic"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,8 +136,8 @@
         android:layout_marginTop="25dp"
         android:fontFamily="@font/century_gothic"
         android:textColor="@color/black"
-        android:textSize="15sp"
-        android:text="To know more submit your request!!"
+        android:textSize="16sp"
+        android:text="To know more submit your request"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
         app:layout_constraintHorizontal_bias="0.0"

@@ -83,7 +83,7 @@
 			android:label="@string/title_activity_main_app"
 			android:launchMode="singleTop"
 			android:theme="@style/AppTheme.NoActionBar"
-			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
+			android:windowSoftInputMode="adjustResize|adjustPan" />
 		<activity
 			android:name=".swabhiman.SwabhimanActivity"
 			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"

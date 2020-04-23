@@ -61,13 +61,13 @@
 
 				<AutoCompleteTextView
 					android:id="@+id/search_bar"
-					android:layout_width="200dp"
+					android:layout_width="145dp"
 					android:layout_height="35dp"
 					android:layout_gravity="right"
 					android:layout_marginBottom="10dp"
 					android:inputType="textAutoComplete"
 					android:maxLines="1"
-					android:hint="What do you want?"
+					android:hint="Search here..."
 					android:background="@drawable/home_activity_search_background"
 					android:drawableStart="@drawable/ic_search"
 					android:drawablePadding="5dp"

@@ -41,10 +41,10 @@ public class TnCFR extends Fragment {
 		String sourceString =/*"<b>"+"&#8594"+"</b>"+*/ "<b>Opportunity for good cash flow</b> ";
 		secPara.setText(Html.fromHtml(sourceString));
 
-		String sourceString2 =/*"<b>"+"&#8594 "+"</b>"+*/"<b>Opportunities for starting a small business</b>";
+		String sourceString2 =/*"<b>"+"&#8594 "+"</b>"+*/"<b>Opportunity for starting a small business</b>";
 		thrPara.setText(Html.fromHtml(sourceString2));
 
-		String sourceString3 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>Option to become a consultant based on experience</b>";
+		String sourceString3 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>Become a consultant based on experience</b>";
 		forPara.setText(Html.fromHtml(sourceString3));
 		String sourceString4 = /*"<b>"+"&#8594 "+"</b>"+*/"<b>Part-time job option as appropriate</b>";
 		sixpara.setText(Html.fromHtml(sourceString4));

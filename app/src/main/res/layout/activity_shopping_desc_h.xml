@@ -80,7 +80,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        android:text="Order Medicines Now"
+        android:text="Order Medicines"
         android:background="@drawable/background_button_sign_in"
         android:fontFamily="@font/century_gothic_400"
         android:padding="10dp"
