@@ -34,7 +34,7 @@ public class BusinessAssociateFR extends Fragment {
 		binding = ActivitySwabhimanBussinessAssociateBinding.inflate(inflater,container,false);
 		View view = binding.getRoot();
 		TextView tv = view.findViewById(R.id.tv_desc1);
-		tv.setText(Html.fromHtml("PS offers Franchise ownership of its <b>Prarambh Store</b> and <b>PS Desk</b> to the energetic and enthusiastic seniors.  It will give a chance to beocme an active part of this revolutionary social enterprise chain.<br>"));
+		tv.setText(Html.fromHtml("PS offers Franchise ownership of its <b>Prarambh Store</b> and <b>PS Desk</b> to the energetic and enthusiastic seniors. It will give a chance to become an active part of this revolutionary social enterprise chain."));
 
 		return view;
 	}

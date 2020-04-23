@@ -111,6 +111,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/century_gothic"
+        android:justificationMode="inter_word"
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
