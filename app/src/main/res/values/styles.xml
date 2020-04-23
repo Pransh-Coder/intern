@@ -9,6 +9,7 @@
     </style>
 
     <style name="MaterialAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#000</item>
         <item name="materialButtonStyle">@style/DefaultButton</item>
     </style>
     

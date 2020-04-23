@@ -107,6 +107,7 @@
         app:layout_constraintTop_toBottomOf="@id/guide_hor_banner_low">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -151,7 +152,7 @@
                 android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
                 android:padding="10dp"
-                android:text="Anti Skit Flooring"
+                android:text="Anti Skid Flooring"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:layout_marginLeft="10dp"
@@ -209,7 +210,6 @@
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:textStyle="bold"
-
                 app:layout_constraintTop_toTopOf="@+id/img4"
                 app:layout_constraintLeft_toRightOf="@+id/img4"
                 app:layout_constraintBottom_toBottomOf="@+id/img4"
@@ -232,11 +232,24 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fif_para"/>
 
+            <Button
+                android:id="@+id/submithm"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Submit"
+                android:background="@drawable/custom_button"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fifth_para"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <Button
+<!--    <Button
         android:id="@+id/submithm"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -244,10 +257,9 @@
         android:text="Submit"
         android:background="@drawable/custom_button"
         android:textSize="20dp"
-        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"/>-->
 
     <ImageView
         android:id="@+id/logo"
