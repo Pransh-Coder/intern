@@ -37,7 +37,7 @@
         android:layout_height="0dp"
         android:id="@+id/banner"
         android:scaleType="fitXY"
-        android:src="@drawable/swabhiman_yojna_gujarati_01"
+        android:src="@drawable/swabhiman"
         app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
