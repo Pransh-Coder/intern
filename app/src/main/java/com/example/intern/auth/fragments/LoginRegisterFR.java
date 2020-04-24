@@ -1,6 +1,8 @@
 package com.example.intern.auth.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,9 @@ import com.example.intern.R;
 import com.example.intern.auth.ViewPagerAdapter_for_Login_Register;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.databinding.FragmentLoginRegisterFRBinding;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import save_money.ViewPagerAdapter;
 
@@ -74,6 +79,27 @@ public class LoginRegisterFR extends Fragment {
 
 		});
 
+        // Auto start of viewpager
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            @Override
+            public void run() {
+                if (viewPager.getCurrentItem() == 0) {
+                    viewPager.setCurrentItem(1);
+                } else if (viewPager.getCurrentItem() == 1) {
+                    viewPager.setCurrentItem(0);
+                }
+            }
+        };
+
+        Timer timer2 = new Timer();
+        timer2.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Log.d("inside", "Timmer2 ");
+                handler.post(Update);
+            }
+        }, 1000,  3000);
 		return view;
 	}
 

@@ -76,7 +76,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginRight="22dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ask_services_banner"
+        android:src="@drawable/asksevicebanner"
         app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
