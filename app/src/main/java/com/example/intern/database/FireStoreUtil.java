@@ -139,10 +139,11 @@ public abstract class FireStoreUtil {
 		return FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
 	}
 	
-	public static Task<DocumentReference> uploadFuelRefundRequest(String UID, String invoiceNo, String firebaseStorageUrl){
+	public static Task<DocumentReference> uploadFuelRefundRequest(String UID, String invoiceNo, Double amountReq, String firebaseStorageUrl){
 		Map<String, Object> data = new HashMap<>();
 		data.put("user", UID);data.put("inv", invoiceNo);
-		data.put("invimg",firebaseStorageUrl);
+		data.put("discamt", amountReq);data.put("invimg",firebaseStorageUrl);
+		data.put("verstat", false);
 		return FirebaseFirestore.getInstance().collection(FUEL_REFUND_COLLECTION_NAME).document(Integer.toString(Calendar.getInstance().get(Calendar.DATE))).collection(UID).add(data);
 	}
 	
