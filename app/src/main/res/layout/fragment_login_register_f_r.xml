@@ -36,7 +36,7 @@
         app:layout_constraintLeft_toRightOf="@id/tv_useless"
         app:layout_constraintTop_toTopOf="@id/tv_useless" />
 
-    <ImageView
+<!--    <ImageView
         android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -44,7 +44,32 @@
         app:layout_constraintBottom_toTopOf="@id/guide_hor_70_per"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_fr"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/guide_hor_70_per"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/chngText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Samay"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/century_gothic_400"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/guide_hor_70_per"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewpager_fr"/>
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_hor_70_per"
@@ -152,6 +177,6 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/viewpager_fr"
         app:layout_constraintVertical_bias="0.84000003" />
 </androidx.constraintlayout.widget.ConstraintLayout>

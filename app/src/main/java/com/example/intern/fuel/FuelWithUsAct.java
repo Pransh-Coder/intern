@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
@@ -37,17 +38,16 @@ public class FuelWithUsAct extends AppCompatActivity {
 	ActivityFuelWithUsBinding binding;
 	boolean hasChosenImage;
 	private String filePath = null;
-	private SharedPrefUtil prefUtil;
 	private String UID;
 	Double petrolPrice = null;
+	Double discount = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = ActivityFuelWithUsBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
 		checkPerms();
-		getPetrolPrice();
-		prefUtil = new SharedPrefUtil(this);
+		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
 		UID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY,null);
 		if(UID == null){
 			FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -72,13 +72,35 @@ public class FuelWithUsAct extends AppCompatActivity {
 					//TODO : get petrol price from firebase
 					if(petrolPrice != null){
 						double qty = (double) Math.round(((amt / petrolPrice)*100.0)/100.0);
-						binding.tvPetrolQty.setText("Petrol quantity is "+ qty + " (approx)");
-					}else{
-						Toast.makeText(context, "Network error!", Toast.LENGTH_SHORT).show();
+						discount = qty;
+						binding.tvPetrolQty.setText("Petrol quantity is "+ qty +" L" +  " (approx)");
+						binding.tvDiscountReceived.setText("Discount (approx) : " + qty + "INR");
+					}else {
+						binding.tvPetrolQty.setText("Petrol quantity is 0 L");
+						binding.tvDiscountReceived.setText("Discount (approx) : 0 INR");
 					}
 				}
-				else{
-					binding.tvPetrolQty.setText("Petrol quantity is 0");
+			}
+		});
+		binding.etPetrolPrice.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+			
+			@SuppressLint("SetTextI18n")
+			@Override
+			public void afterTextChanged(Editable s) {
+				if(s.toString().length()>0){
+					petrolPrice = Double.parseDouble(s.toString());
+					double amt = Double.parseDouble(binding.etAmt.getText().toString());
+					double qty = (double) Math.round(((amt / petrolPrice)*100.0)/100.0);
+					discount = qty;
+					binding.tvPetrolQty.setText("Petrol quantity is "+ qty +" L" +  " (approx)");
+					binding.tvDiscountReceived.setText("Discount (approx) : " + qty + "INR");
 				}
 			}
 		});
@@ -90,6 +112,10 @@ public class FuelWithUsAct extends AppCompatActivity {
 			Intent intent = new Intent(this, MainApp.class);
 			startActivity(intent);
 			finish();
+		});
+		binding.ivNotifButton.setOnClickListener(v -> {
+			Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+			startActivity(intent);
 		});
 		binding.ivInvoice.setOnClickListener(v -> ImagePicker.Companion.with(this).maxResultSize(1080, 1080).crop().start());
 		binding.submitPetrol.setOnClickListener(v -> {
@@ -119,7 +145,7 @@ public class FuelWithUsAct extends AppCompatActivity {
 										FireStoreUtil.uploadFuelRefundRequest(UID, invoiceNo, uri.toString()).addOnSuccessListener(documentReference -> {
 											dialog.dismiss();
 											new AlertDialog.Builder(context).setTitle("Request Received")
-													.setMessage("We have received the invoice number and picture of the invoice")
+													.setMessage("We have received the invoice number and picture of the invoice \nDiscount : " + discount + " INR will be credited once the purchase is verified")
 													.setIcon(R.drawable.pslogotrimmed)
 													.setPositiveButton("OK", (dialog1, which) -> finish())
 													.setOnDismissListener(dialog12 -> finish()).show();
@@ -154,15 +180,5 @@ public class FuelWithUsAct extends AppCompatActivity {
 			
 			}
 		}).check();
-	}
-	
-	@SuppressLint("SetTextI18n")
-	private void getPetrolPrice(){
-		FireStoreUtil.getStaticDataSnapshot().addOnSuccessListener(snapshot -> {
-			if(snapshot!= null && snapshot.exists()){
-				petrolPrice = snapshot.getDouble(FireStoreUtil.PETROL_PRICE_KEY);
-				binding.tvPetrolPrice.setText("Today's Petrol Price is Rs." + petrolPrice);
-			}
-		});
 	}
 }

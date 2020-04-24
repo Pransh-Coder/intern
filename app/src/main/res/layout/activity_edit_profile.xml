@@ -219,7 +219,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:maxLength="100"/>
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

@@ -50,7 +50,7 @@ public class TiffinService extends AppCompatActivity {
         String sourceString2 =/*"<b>"+"&#8594 "+"</b>"+*/" Menu is designed in a way to provide "+"<b>" + "sufficient and balanced nutritions, "+"</b>"+ "for daily need.";
         thrPara.setText(Html.fromHtml(sourceString2));
 
-        String sourceString3 = /*"<b>"+"&#8594 "+"</b>"+*/" Uses of oil and spices as per "+"<b>" + "dieticians guidance "+"</b>"+ "makes it a perfect meal.";
+        String sourceString3 = /*"<b>"+"&#8594 "+"</b>"+*/" Use of oil and spices as per "+"<b>" + "dietician's guidance "+"</b>"+ "makes it a perfect meal.";
         forPara.setText(Html.fromHtml(sourceString3));
 
         back.setOnClickListener(view -> onBackPressed());

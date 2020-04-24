@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
-        android:text="Share your monthly expenses in below feild"
+        android:text="Share your monthly expenses in below"
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="bold"
@@ -66,6 +66,7 @@
         app:layout_constraintLeft_toLeftOf="@id/heading"
         app:layout_constraintRight_toRightOf="@id/heading"
         app:layout_constraintTop_toBottomOf="@+id/heading" />
+
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -108,7 +109,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Rs."
+                    android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp"
@@ -140,7 +142,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Rs."
+                    android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -152,9 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/cardview_border"
-            
-                >
+                android:background="@drawable/cardview_border">
             
                 <TextView
                     android:id="@+id/data7"
@@ -172,7 +173,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Rs."
+                    android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -206,7 +208,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Rs."
+                    android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -237,7 +240,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Rs."
+                    android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -271,7 +275,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Rs."
+                    android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -303,7 +308,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Rs."
+                    android:hint=" ₹"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -327,7 +332,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text="Your Utility Bills"
+                    android:text=" Utility Bills"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             
@@ -337,7 +342,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Rs."
+                    android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -371,7 +377,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Rs."
+                    android:hint=" ₹"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -404,5 +410,3 @@
     
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--
--->

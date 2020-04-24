@@ -26,6 +26,7 @@ import com.example.intern.ExclusiveServices.ExclusiveServices;
 import com.example.intern.ExclusiveServices.HomeModification;
 import com.example.intern.ExclusiveServices.TiffinService;
 import com.example.intern.FeedBackOrComplaintACT;
+import com.example.intern.MapsActivity;
 import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
@@ -278,7 +279,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			startActivity(intent);
 		});
 		binding.bpclfuel.setOnClickListener(v->{
-			Intent intent = new Intent(this, FuelWithUsAct.class);
+			Intent intent = new Intent(this, MapsActivity.class);
 			startActivity(intent);
 		});
 		binding.requestService.setOnClickListener(v->{

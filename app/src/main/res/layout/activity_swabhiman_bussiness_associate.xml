@@ -84,12 +84,11 @@
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
         android:elevation="50dp"
         android:background="#f2f2f2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_swabhiman_bussiness_associate"
+        app:layout_constraintTop_toBottomOf="@id/hor_20"
         android:id="@+id/textBussinessAssociate">
         <TextView
             android:layout_width="200dp"
@@ -104,6 +103,13 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_20"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".17" />
+
     <TextView
         android:id="@+id/tv_desc1"
         android:layout_width="0dp"
@@ -113,7 +119,7 @@
         android:fontFamily="@font/century_gothic"
         android:textColor="@color/black"
         android:justificationMode="inter_word"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,9 +132,8 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/century_gothic"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:text="To know more submit your request"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@id/ver_gui_96_per"
         app:layout_constraintStart_toStartOf="@id/ver_gui_4_per"
         app:layout_constraintTop_toBottomOf="@id/tv_desc1" />
@@ -140,7 +145,7 @@
         android:fontFamily="@font/century_gothic"
         android:text="Details about your past experience"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="@id/ver_gui_4_per"
