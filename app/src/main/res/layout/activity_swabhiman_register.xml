@@ -113,6 +113,8 @@
         android:layout_height="0dp"
         android:id="@+id/scrollview_m"
         android:layout_marginTop="30dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:layout_constraintTop_toBottomOf="@id/tv_employment"
         app:layout_constraintBottom_toTopOf="@id/btn_submit">
 
@@ -123,6 +125,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
                 android:theme="@style/TextInputLayoutStyle"
                 style="@style/TextInputLayoutStyle"
                 android:textColorHint="@color/grey"
@@ -133,12 +137,15 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/exp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
                 android:theme="@style/TextInputLayoutStyle"
                 style="@style/TextInputLayoutStyle"
                 android:textColorHint="@color/grey"
@@ -150,7 +157,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -158,6 +166,8 @@
                 android:theme="@style/TextInputLayoutStyle"
                 style="@style/TextInputLayoutStyle"
                 android:textColorHint="@color/grey"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
                 app:hintTextColor="@color/grey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,7 +176,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -174,6 +185,8 @@
                 android:theme="@style/TextInputLayoutStyle"
                 style="@style/TextInputLayoutStyle"
                 android:textColorHint="@color/grey"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
                 app:hintTextColor="@color/grey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -182,13 +195,16 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/condition"
                 android:theme="@style/TextInputLayoutStyle"
                 style="@style/TextInputLayoutStyle"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
                 android:textColorHint="@color/grey"
                 app:hintTextColor="@color/grey"
                 android:layout_width="match_parent"
@@ -198,7 +214,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -206,6 +223,8 @@
                 android:theme="@style/TextInputLayoutStyle"
                 style="@style/TextInputLayoutStyle"
                 android:textColorHint="@color/grey"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
                 app:hintTextColor="@color/grey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -214,7 +233,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </ScrollView>
