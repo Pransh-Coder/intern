@@ -189,13 +189,27 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner3"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:autofillHints="What Services Do You Want?"
+            android:background="@drawable/spinner_boxed_back"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/ProductsOptions"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_useless" />
+
         <EditText
             android:id="@+id/et_product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Ex : Grocery Products"
-            app:layout_constraintTop_toBottomOf="@id/tv_useless" />
+            app:layout_constraintTop_toBottomOf="@id/spinner3" />
 
         <TextView
             android:id="@+id/tv_useless2"
@@ -209,8 +223,8 @@
 
         <ImageView
             android:id="@+id/iv_product_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:src="@drawable/ic_image_idol"
             app:layout_constraintBottom_toBottomOf="parent"
