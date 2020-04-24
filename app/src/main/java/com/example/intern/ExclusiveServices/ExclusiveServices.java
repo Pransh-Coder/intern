@@ -30,7 +30,7 @@ public class ExclusiveServices extends AppCompatActivity {
 	    binding = ActivityExclusiveServiceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.bannerexclusive.setOnClickListener(v -> {
-	        String url="https://www.psbyprarambh.com";
+	        String url="https://www.prarambhstore.com/PSbyPrarambh";
 	        Intent i =new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 	        startActivity(i);
         });
