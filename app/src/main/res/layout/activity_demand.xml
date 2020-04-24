@@ -130,7 +130,7 @@
         app:layout_constraintRight_toRightOf="@id/demand_button_product"
         app:layout_constraintTop_toBottomOf="@id/demand_button_service">
 
-        <TextView
+        <!--<TextView
             android:id="@+id/tv_useless3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
             android:textSize="12dp"
             app:layout_constraintBottom_toTopOf="@id/spinner2"
             app:layout_constraintLeft_toLeftOf="@id/spinner2"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner2"
@@ -153,7 +153,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_useless3" />
+            app:layout_constraintTop_toTopOf="@id/contraint_layout_services" />
 
         <EditText
             android:id="@+id/et_service_description"
@@ -174,6 +174,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="4dp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/demand_submit"
         app:layout_constraintLeft_toLeftOf="@id/demand_button_service"
@@ -184,10 +185,13 @@
             android:id="@+id/tv_useless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What do you want?"
+            android:text="OR"
             android:textAlignment="center"
             android:textColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_product_name" />
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner3"
@@ -201,31 +205,36 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_useless" />
+            app:layout_constraintTop_toTopOf="@id/constraint_product" />
 
         <EditText
             android:id="@+id/et_product_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Ex : Grocery Products"
+            android:layout_height="75dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle_outline"
+            android:ellipsize="start"
+            android:hint=" Type here what you want"
+            android:paddingStart="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/spinner3" />
 
         <TextView
             android:id="@+id/tv_useless2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="Add Picture"
             android:textAlignment="center"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/et_product_name" />
+            app:layout_constraintTop_toBottomOf="@id/tv_useless" />
 
         <ImageView
             android:id="@+id/iv_product_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/cardview_border"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_image_idol"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -239,7 +248,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/background_button_sign_in"
@@ -250,8 +258,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ps_bottomLogo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contraint_layout_services" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ps_bottomLogo"
