@@ -309,6 +309,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -378,6 +379,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
