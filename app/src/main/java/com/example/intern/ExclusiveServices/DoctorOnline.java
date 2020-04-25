@@ -1,5 +1,6 @@
 package com.example.intern.ExclusiveServices;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -8,7 +9,6 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -45,14 +45,27 @@ public class DoctorOnline extends AppCompatActivity {
         });
     }
     
-    private void setDetailsVisibility(boolean b){
-        if(b){
-            binding.etOtherAge.setVisibility(View.VISIBLE);
-            binding.etOtherName.setVisibility(View.VISIBLE);
-        }else{
-            binding.etOtherName.setVisibility(View.GONE);
-            binding.etOtherAge.setVisibility(View.GONE);
-        }
+    @SuppressLint("SetTextI18n")
+    private void showDetail(boolean b){
+    	//Fill the name and age if true
+	    if(b){
+	    	binding.etOtherName.setText(prefUtil.getPreferences().getString(SharedPrefUtil.USER_NAME_KEY,null));
+	    	int age = 0;
+	    	try{
+	    		String dobTimestamp = prefUtil.getPreferences().getString(SharedPrefUtil.USER_DOB_KEY, null);
+	    		if(dobTimestamp != null){
+	    			Calendar calendar = Calendar.getInstance();
+	    			int currentYear = calendar.get(Calendar.YEAR);
+	    			calendar.setTimeInMillis(Long.parseLong(dobTimestamp));
+	    			int dobYear = calendar.get(Calendar.YEAR);
+	    			age = currentYear - dobYear;
+			    }
+		    }catch(Exception ignored){}
+	    	binding.etOtherAge.setText(Integer.toString(age));
+	    }else{
+	    	binding.etOtherAge.setText("");
+	    	binding.etOtherName.setText("");
+	    }
     }
     
     @Override
@@ -63,10 +76,10 @@ public class DoctorOnline extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0){
                     //Self choice
-                    setDetailsVisibility(false);
+                    showDetail(true);
                     askedForSelf = true;
                 }else{
-                    setDetailsVisibility(true);
+                    showDetail(false);
                     askedForSelf = false;
                 }
             }
@@ -75,50 +88,49 @@ public class DoctorOnline extends AppCompatActivity {
         });
         
         binding.demandSubmit.setOnClickListener(v -> {
-            ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setIcon(R.drawable.pslogotrimmed);
-            dialog.setTitle("Please Wait");
-            dialog.show();
-            final Context context = this;
-            String description = binding.etServiceDescription.getText().toString();
-            if(description.isEmpty()){
-                //did not enter description
-                binding.etServiceDescription.setError("Describe Your Problem");
-            }else{
-                if(askedForSelf){
-                    int age = -1;
-                    String ageTimeStamp = prefUtil.getPreferences().getString(SharedPrefUtil.USER_DOB_KEY, null);
-                    String user_name = prefUtil.getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, null);
-                    if(ageTimeStamp != null){
-                        Calendar calendar = Calendar.getInstance();
-                        int currentYear = calendar.get(Calendar.YEAR);
-                        try{calendar.setTimeInMillis(Long.parseLong(ageTimeStamp));}catch (Exception ignored){}
-                        int birthYear = calendar.get(Calendar.YEAR);
-                        age = currentYear-birthYear;
-                    }
-                    //TODO : Store data in backend
-                    FireStoreUtil.uploadDoctorRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null),user_name, Integer.toString(age),description).addOnSuccessListener(documentReference -> {
-                        dialog.dismiss();
-                        new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Request Received").setMessage("We have received your request ! ")
-                                .setPositiveButton("OK", null).show();
-                    });
-                }else{
-                    //Asked for others
-                    String name = binding.etOtherName.getText().toString();
-                    String age = binding.etOtherAge.getText().toString();
-                    if(name.isEmpty() || age.isEmpty()){
-                        Toast.makeText(this, "Enter Details ! ", Toast.LENGTH_SHORT).show();
-                    }else{
-                        //Got the Details
-                        //TODO : Store in backend
-                        FireStoreUtil.uploadDoctorRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null),name,age, description).addOnSuccessListener(documentReference -> {
-                            dialog.dismiss();
-                            new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Request Received").setMessage("We have received your request ! ")
-                                    .setPositiveButton("OK", null).show();
-                        });
-                    }
-                }
-            }
+	        ProgressDialog dialog = new ProgressDialog(this);
+	        dialog.setIcon(R.drawable.pslogotrimmed);
+	        dialog.setTitle("Please Wait");
+	        dialog.show();
+	        final Context context = this;
+	        String description = binding.etServiceDescription.getText().toString();
+	        if (description.isEmpty()) {
+		        //did not enter description
+		        binding.etServiceDescription.setError("Describe Your Problem");
+	        } else {
+		        if (askedForSelf) {
+			        String name = binding.etOtherName.getText().toString();
+			        String age = binding.etOtherAge.getText().toString();
+			        if (name.isEmpty()) {
+				        binding.etOtherName.setError("Enter name");
+			        } else if (age.isEmpty()) {
+				        binding.etOtherAge.setError("Enter age");
+			        } else {
+				        //TODO : Store data in backend
+				        FireStoreUtil.uploadDoctorRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), "self", name, age, description).addOnSuccessListener(documentReference -> {
+					        dialog.dismiss();
+					        new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Request Received").setMessage("We have received your request ! ")
+							        .setPositiveButton("OK", null).show();
+				        });
+			        }
+		        } else {
+			        //Asked for others
+			        String name = binding.etOtherName.getText().toString();
+			        String age = binding.etOtherAge.getText().toString();
+			        if (name.isEmpty()) {
+				        binding.etOtherName.setError("Enter name");
+			        } else if (age.isEmpty()) {
+				        binding.etOtherAge.setError("Enter age");
+			        } else {
+				        //TODO : Store data in backend
+				        FireStoreUtil.uploadDoctorRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), "other_mem", name, age, description).addOnSuccessListener(documentReference -> {
+					        dialog.dismiss();
+					        new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Request Received").setMessage("We have received your request ! ")
+							        .setPositiveButton("OK", null).show();
+				        });
+			        }
+		        }
+	        }
         });
     }
     

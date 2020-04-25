@@ -132,10 +132,10 @@ public abstract class FireStoreUtil {
 		return FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
 	}
 	
-	public static Task<DocumentReference> uploadDoctorRequest(String UID, String name, String age, String description){
+	public static Task<DocumentReference> uploadDoctorRequest(String UID, String type, String name, String age, String description){
 		Map<String, Object> data = new HashMap<>();
-		data.put("uid", UID);
-		data.put("type", "doctorserv");data.put("name", name);
+		data.put("uid", UID);data.put("cat", "doctoronline");
+		data.put("type", type);data.put("name", name);
 		data.put("age", age);data.put("desc", description);
 		return  FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
 	}
