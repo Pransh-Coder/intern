@@ -162,6 +162,8 @@
 		<activity android:name=".Holiday" />
 		<activity android:name=".ServicesActivity" />
 		<activity android:name=".two_wheeler_repair_list"/>
+		<activity android:name=".ExclusiveServices.DoctorOnline" />
+		
 		<meta-data
 			android:name="com.google.android.gms.version"
 			android:value="@integer/google_play_services_version" />

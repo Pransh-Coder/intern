@@ -115,7 +115,6 @@ public class RegisterAsParentFR extends Fragment {
     private void setClickListeners(){
         binding.btnRegisterasChildSignIn.setOnClickListener(v->{
             String name = binding.etName.getText().toString();
-            String DOB = binding.etDOB.getText().toString();
             if(name.isEmpty()){
                 binding.etName.setError("Name Cannot Be Empty");return;
             }
@@ -128,7 +127,7 @@ public class RegisterAsParentFR extends Fragment {
                 String parent_number =binding.etParentNumber.getText().toString();
                 String child_number =binding.etChildNumber.getText().toString();
                 FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	DOB, pinCode,child_number,"1")
+                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	dateTimeStamp, pinCode,child_number,"1")
                         .addOnSuccessListener(success->{
                             FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
                             Log.d(TAG, "successfully made user");
@@ -136,7 +135,7 @@ public class RegisterAsParentFR extends Fragment {
                                 FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
                             }
                             viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
-                                    DOB, pinCode,parent_number,child_number);
+                                    dateTimeStamp, pinCode,parent_number,child_number);
                             Intent intent = new Intent(requireContext(), MainApp.class);
                             startActivity(intent);
                         });
