@@ -3,7 +3,6 @@
     <string name="facebook_app_id">1093410747698712</string>
     <string name="fb_login_protocol_scheme">fb1093410747698712</string>
     <string-array name="laguauge">
-        <item>Choose Your Language</item>
         <item>English</item>
         <item>हिन्दी</item>
         <item>ગુજરાતી</item>
@@ -102,4 +101,6 @@
     <string name="submit">SUBMIT</string>
     <string name="discount_on_fuel">DISCOUNT ON FUEL</string>
     <string name="title_activity_maps">Map</string>
+	<string name="PSNotificationChannel">PS Notifications</string>
+    <string name="notifi_channel_descp">PSNotifications</string>
 </resources>

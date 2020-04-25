@@ -1,4 +1,4 @@
-package com.example.intern;
+package com.example.intern.fuel;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -17,8 +17,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.NewsAndUpdatesACT;
+import com.example.intern.R;
 import com.example.intern.databinding.ActivityMapsBinding;
-import com.example.intern.fuel.FuelWithUsAct;
 import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -141,10 +142,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 				}
 				//Set Icon
 				if(addresses.get(position).contains("IOCL")){
-					//TODO : Set IOCL Logo
+					//TODO : Set Logo
 					binding.fuelCompanyLogo.setImageDrawable(getResources().getDrawable(R.drawable.iocl_logo));
 				}else{
-					//TODO : Set BPCL LOGO
 					binding.fuelCompanyLogo.setImageDrawable(getResources().getDrawable(R.drawable.bpcl_logo));
 				}
 			}
@@ -152,11 +152,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 			public void onNothingSelected(AdapterView<?> parent) {}
 		});
 		binding.navigateButton.setOnClickListener(v -> {
+			Intent stopStaleService = new Intent(MapsActivity.this, BackNavService.class);
+			Intent serviceIntent = new Intent(MapsActivity.this, BackNavService.class);
+			serviceIntent.putExtra(BackNavService.KEY_LATITUDE_INTENT_EXTRA, chosenLat);
+			serviceIntent.putExtra(BackNavService.KEY_LONGITUDE_INTENT_EXTRA, chosenLong);
+			//Stop Already running service with stale target
+			try{stopService(stopStaleService);}catch (Exception ignored){}
+			startService(serviceIntent);
 			String base = "https://www.google.com/maps/dir/?api=1&destination="+ chosenLat + "," + chosenLong + "&travelmode=driving";
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(base));
 			startActivity(intent);
+			//TODO : Start a foreground service to track location
 		});
 		binding.continueCustom.setOnClickListener(v -> {
+			//TODO : Stop the service when user manually clicks I'm here
+			Intent stopStaleService = new Intent(MapsActivity.this, BackNavService.class);
+			stopService(stopStaleService);
 			preferences.edit().putInt("lastPos", chosenPosition).apply();
 			Intent intent = new Intent(this, FuelWithUsAct.class);
 			startActivity(intent);finish();
