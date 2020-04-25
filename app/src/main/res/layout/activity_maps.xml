@@ -44,31 +44,106 @@
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
 		map:layout_constraintGuide_percent="0.2"/>
+	
 	<TextView
-		android:id="@+id/text_address"
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-		android:gravity="center_vertical"
-		android:text="Sample address, Lorem Ipsum, Dolor Santio. Eff Vi bi zimingx"
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		map:layout_constraintBottom_toTopOf="@id/guide_30_percent_hor"
-		map:layout_constraintLeft_toLeftOf="parent"
-		map:layout_constraintRight_toLeftOf="@id/navigate_button"
-		map:layout_constraintTop_toBottomOf="@id/guide_20_percent_hor"/>
-	<Button
-		android:id="@+id/navigate_button"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_margin="10dp"
-		android:background="@drawable/background_button_sign_in"
-		android:fontFamily="@font/century_gothic_400"
-		android:text="Navigate"
-		android:textAllCaps="false"
-		map:layout_constraintBottom_toTopOf="@id/guide_30_percent_hor"
+		android:layout_marginBottom="5dp"
+		android:text="Choose Pump..."
+		map:layout_constraintBottom_toTopOf="@id/guide_20_percent_hor"
+		map:layout_constraintLeft_toLeftOf="parent"
 		map:layout_constraintRight_toRightOf="parent"/>
+	
+	<Spinner
+		android:id="@+id/address_spinner"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="25dp"
+		android:layout_marginRight="25dp"
+		android:layout_marginBottom="10dp"
+		android:spinnerMode="dialog"
+		android:visibility="invisible"
+		map:layout_constraintBottom_toTopOf="@id/guide_20_percent_hor"/>
+	<LinearLayout
+		android:id="@+id/linear_useless"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		map:layout_constraintBottom_toTopOf="@id/guide_30_percent_hor"
+		map:layout_constraintLeft_toLeftOf="parent"
+		map:layout_constraintRight_toLeftOf="@id/linear_useless2"
+		map:layout_constraintTop_toBottomOf="@id/guide_20_percent_hor">
+		<TextView
+			android:id="@+id/tv_distance"
+			android:layout_width="50dp"
+			android:layout_height="wrap_content"
+			android:ellipsize="middle"
+			android:gravity="center"
+			android:padding="5dp"
+			android:text="about XX KM"
+			android:textSize="15dp"/>
+		<ImageView
+			android:id="@+id/fuel_company_logo"
+			android:layout_width="40dp"
+			android:layout_height="match_parent"
+			android:paddingRight="5dp"
+			android:scaleType="fitCenter"
+			android:src="@drawable/ic_image_idol"/>
+		<!--<Spinner
+			android:id="@+id/address_spinner"
+			android:layout_weight="1"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:spinnerMode="dialog"/>-->
+		<TextView
+			android:id="@+id/text_address_custom"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/spinner_boxed_back"
+			android:gravity="center_vertical"
+			android:paddingLeft="5dp"
+			android:paddingTop="5dp"
+			android:paddingRight="35dp"
+			android:paddingBottom="5dp"
+			android:text="Sample address, Lorem Ipsum, Dolor Santio. Eff Vi bi zimingx"
+			android:textColor="@color/black"
+			android:textIsSelectable="true"
+			android:textSize="15dp" />
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/linear_useless2"
+		android:layout_width="wrap_content"
+		android:layout_height="0dp"
+		android:layout_marginLeft="5dp"
+		android:layout_marginRight="10dp"
+		android:orientation="vertical"
+		map:layout_constraintBottom_toTopOf="@id/guide_30_percent_hor"
+		map:layout_constraintLeft_toRightOf="@id/linear_useless"
+		map:layout_constraintRight_toRightOf="parent"
+		map:layout_constraintTop_toBottomOf="@id/guide_20_percent_hor">
+		<Button
+			android:id="@+id/navigate_button"
+			android:layout_width="wrap_content"
+			android:layout_height="0dp"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:background="@drawable/background_button_sign_in"
+			android:fontFamily="@font/century_gothic_400"
+			android:text="Navigate"
+			android:textAllCaps="false" />
+		<Button
+			android:id="@+id/continue_custom"
+			android:layout_width="wrap_content"
+			android:layout_height="0dp"
+			android:layout_margin="3dp"
+			android:layout_weight="1"
+			android:background="@drawable/background_button_sign_in"
+			android:fontFamily="@font/century_gothic_400"
+			android:text="I'm here"
+			android:textAllCaps="false" />
+	</LinearLayout>
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/guide_30_percent_hor"
 		android:layout_width="match_parent"
@@ -81,25 +156,61 @@
 		android:layout_width="0dp"
 		android:layout_height="0dp"
 		android:layout_margin="10dp"
-		map:layout_constraintBottom_toTopOf="@id/button_continue"
+		map:layout_constraintBottom_toTopOf="@id/linear_useless3"
 		map:layout_constraintLeft_toLeftOf="parent"
 		map:layout_constraintRight_toRightOf="parent"
 		map:layout_constraintTop_toBottomOf="@id/guide_30_percent_hor" />
 	
-	<Button
-		android:id="@+id/button_continue"
-		android:layout_width="wrap_content"
+	<LinearLayout
+		android:id="@+id/linear_useless3"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="20dp"
-		android:background="@drawable/background_button_sign_in"
-		android:fontFamily="@font/century_gothic_400"
-		android:padding="10dp"
-		android:text="I'm There, Continue"
-		android:textAlignment="center"
-		android:textAllCaps="false"
+		android:layout_margin="10dp"
+		android:orientation="horizontal"
 		map:layout_constraintBottom_toTopOf="@id/pslogo"
-		map:layout_constraintLeft_toLeftOf="parent"
-		map:layout_constraintRight_toRightOf="parent"/>
+		map:layout_constraintTop_toBottomOf="@id/map">
+		<TextView
+			android:id="@+id/address_last"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:layout_weight="1"
+			android:gravity="center_vertical"
+			android:padding="5dp"
+			android:selectAllOnFocus="true"
+			android:text="No last visited pump"
+			android:textColor="@color/black"
+			android:textIsSelectable="true"
+			android:textSize="18dp" />
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="5dp"
+			android:orientation="vertical"
+			map:layout_constraintBottom_toTopOf="@id/guide_30_percent_hor"
+			map:layout_constraintLeft_toRightOf="@id/linear_useless"
+			map:layout_constraintRight_toRightOf="parent"
+			map:layout_constraintTop_toBottomOf="@id/guide_20_percent_hor">
+			<Button
+				android:id="@+id/navigate_last"
+				android:layout_width="match_parent"
+				android:layout_height="35dp"
+				android:layout_margin="3dp"
+				android:background="@drawable/background_button_sign_in"
+				android:fontFamily="@font/century_gothic_400"
+				android:text="Navigate"
+				android:textAllCaps="false" />
+			<Button
+				android:id="@+id/continue_last"
+				android:layout_width="match_parent"
+				android:layout_height="35dp"
+				android:layout_margin="3dp"
+				android:background="@drawable/background_button_sign_in"
+				android:fontFamily="@font/century_gothic_400"
+				android:text="I'm here"
+				android:textAllCaps="false" />
+		</LinearLayout>
+	</LinearLayout>
 	
 	<ImageView
 		android:id="@+id/pslogo"

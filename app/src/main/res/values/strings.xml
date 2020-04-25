@@ -55,6 +55,13 @@
         <item>Other</item>
     </string-array>
 
+    <string-array name="ProductsOptions">
+        <item>Grocery Items</item>
+        <item>Vegetable</item>
+        <item>Drinking Water</item>
+        <item>Dairy Products</item>
+    </string-array>
+
     <string-array name="SearchPredictions">
         <item>Home Modification</item>
         <item>Tiffin Services</item>

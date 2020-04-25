@@ -101,6 +101,9 @@ public class FuelWithUsAct extends AppCompatActivity {
 					discount = qty;
 					binding.tvPetrolQty.setText("Petrol quantity is "+ qty +" L" +  " (approx)");
 					binding.tvDiscountReceived.setText("Discount (approx) : " + qty + "INR");
+				}else {
+					binding.tvPetrolQty.setText("Petrol quantity is 0 L");
+					binding.tvDiscountReceived.setText("Discount (approx) : 0 INR");
 				}
 			}
 		});
@@ -142,7 +145,7 @@ public class FuelWithUsAct extends AppCompatActivity {
 						dialog.show();
 						FireStoreUtil.uploadFuelInvoice(this,UID,invoiceNo, BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot ->
 								taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri ->
-										FireStoreUtil.uploadFuelRefundRequest(UID, invoiceNo, uri.toString()).addOnSuccessListener(documentReference -> {
+										FireStoreUtil.uploadFuelRefundRequest(UID, invoiceNo, discount, uri.toString()).addOnSuccessListener(documentReference -> {
 											dialog.dismiss();
 											new AlertDialog.Builder(context).setTitle("Request Received")
 													.setMessage("We have received the invoice number and picture of the invoice \nDiscount : " + discount + " INR will be credited once the purchase is verified")
