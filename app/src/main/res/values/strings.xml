@@ -27,7 +27,7 @@
         <item>Select</item>
         <item>Yes</item>
         <item>No</item>
-        <item>LATER</item>
+        <item>Later</item>
     </string-array>
     <string-array name="menu_main">
         <item>Reduce Your Expenses</item>
