@@ -57,6 +57,10 @@ public class ExclusiveServices extends AppCompatActivity {
 	        Intent intent = new Intent(this, NewsAndUpdatesACT.class);
 	        startActivity(intent);
         });
+		binding.doctor.setOnClickListener(v -> {
+			Intent intent = new Intent(this, DoctorOnline.class);
+			startActivity(intent);
+		});
     }
 	
 	@Override
