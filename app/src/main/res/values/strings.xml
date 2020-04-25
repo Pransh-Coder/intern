@@ -60,6 +60,7 @@
         <item>Vegetable</item>
         <item>Drinking Water</item>
         <item>Dairy Products</item>
+        <item>Other</item>
     </string-array>
 
     <string-array name="SearchPredictions">
@@ -81,6 +82,7 @@
         <item>Terms and Conditions</item>
     </string-array>
 
+    <string name="coming_soon">Coming Soon&#8230;</string>
     <string name="more_about_special_offers">Tell us more about \nyour special offers</string>
     <string name="date_time">Date &amp; Time</string>
     <string name="save_money">SAVE MONEY</string>
