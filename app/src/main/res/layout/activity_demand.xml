@@ -238,7 +238,6 @@
             android:id="@+id/iv_product_image"
             android:layout_width="0dp"
             android:layout_height="0dp"
-
             android:background="@drawable/cardview_border"
             android:scaleType="centerInside"
             android:src="@drawable/ic_image_idol"
@@ -247,7 +246,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_useless2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <Button
         android:id="@+id/demand_submit"
@@ -262,7 +260,7 @@
         android:textAllCaps="true"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ps_bottomLogo"
+        app:layout_constraintBottom_toTopOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
