@@ -73,6 +73,24 @@ public class DemandActivity extends AppCompatActivity {
 
            }
        });
+        binding.etProductName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                binding.charCount2.setText(String.valueOf(s.length())+"/200");
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                binding.charCount2.setText(String.valueOf(s.length())+"/200");
+
+            }
+        });
         binding.demandButtonBack.setOnClickListener(v-> onBackPressed());
         binding.demandButtonHome.setOnClickListener(v->{
             Intent intent = new Intent(this, MainApp.class);

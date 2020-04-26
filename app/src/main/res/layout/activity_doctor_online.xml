@@ -109,7 +109,8 @@
             android:layout_height="0dp"
             android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toTopOf="@id/tv_hint"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            >
             
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -193,6 +194,7 @@
             android:hint="Enter Age"
             android:inputType="number"
             android:maxLength="3"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/et_other_name"/>
         <EditText
             android:id="@+id/et_other_name"
@@ -200,6 +202,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="Enter Name"
+            android:textStyle="bold"
             android:inputType="textPersonName"
             android:maxLength="20"
             app:layout_constraintBottom_toTopOf="@id/et_service_description"/>
