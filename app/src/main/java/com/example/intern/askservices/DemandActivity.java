@@ -8,7 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,6 +55,24 @@ public class DemandActivity extends AppCompatActivity {
         checkPerms();
         prefUtil = new SharedPrefUtil(this);
         services = Arrays.asList(getResources().getStringArray(R.array.AskServicesOptions));
+       binding.etServiceDescription.addTextChangedListener(new TextWatcher() {
+           @Override
+           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+           }
+
+           @Override
+           public void onTextChanged(CharSequence s, int start, int before, int count) {
+               binding.charCount.setText(String.valueOf(s.length())+"/200");
+
+           }
+
+           @Override
+           public void afterTextChanged(Editable s) {
+               binding.charCount.setText(String.valueOf(s.length())+"/200");
+
+           }
+       });
         binding.demandButtonBack.setOnClickListener(v-> onBackPressed());
         binding.demandButtonHome.setOnClickListener(v->{
             Intent intent = new Intent(this, MainApp.class);
