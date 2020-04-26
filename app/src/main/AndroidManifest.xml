@@ -72,9 +72,8 @@
 			android:theme="@style/AppTheme.NoActionBar"
 			android:windowSoftInputMode="stateHidden" />
 		<activity
-			android:name=".Splash"
-			android:launchMode="singleTop"
-			android:noHistory="true">
+			android:name=".Splash">
+
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				
