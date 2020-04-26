@@ -32,6 +32,8 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,6 +55,26 @@ public class DemandActivity extends AppCompatActivity {
         checkPerms();
         prefUtil = new SharedPrefUtil(this);
         services = Arrays.asList(getResources().getStringArray(R.array.AskServicesOptions));
+        binding.etServiceDescription.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // String description = binding.etServiceDescription.getText().toString();
+                //int countchar=description.length();
+                binding.charCount.setText(String.valueOf(s.length())+"/200");
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                binding.charCount.setText(String.valueOf(s.length())+"/200");
+
+
+            }
+        });
         binding.demandButtonBack.setOnClickListener(v-> onBackPressed());
         binding.demandButtonHome.setOnClickListener(v->{
             Intent intent = new Intent(this, MainApp.class);
@@ -129,6 +151,8 @@ public class DemandActivity extends AppCompatActivity {
 		        }
 	        }
             if(isServicesPageVisible){
+                Toast.makeText(getApplicationContext(),"hi",Toast.LENGTH_LONG).show();
+
                 String description = binding.etServiceDescription.getText().toString();
                 if(TextUtils.isEmpty(description)){
                     binding.etServiceDescription.setError("Describe the service");

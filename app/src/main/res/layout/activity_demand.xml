@@ -76,7 +76,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginRight="22dp"
         android:scaleType="fitXY"
-        android:src="@drawable/asksevicebanner"
+        android:src="@drawable/whatyouwant"
         app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -154,7 +154,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_useless3" />
-
         <EditText
             android:id="@+id/et_service_description"
             android:layout_width="0dp"
@@ -164,9 +163,23 @@
             android:ellipsize="start"
             android:hint="What do you want?..."
             android:padding="10dp"
+            android:inputType="textMultiLine"
             app:layout_constraintLeft_toLeftOf="@id/spinner2"
             app:layout_constraintRight_toRightOf="@id/spinner2"
-            app:layout_constraintTop_toBottomOf="@id/spinner2" />
+            app:layout_constraintTop_toBottomOf="@id/spinner2"
+            android:maxLength="200"/>
+
+
+        <TextView
+            android:id="@+id/char_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/150"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.916"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_service_description"></TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

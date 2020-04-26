@@ -49,6 +49,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="260dp"
@@ -64,6 +65,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </ScrollView>
+
+    <TextView
+        android:id="@+id/nofrnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Friends Found ! :("
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        android:fontFamily="@font/century_gothic_400"
+        android:visibility="invisible"></TextView>
 
     <ImageView
         android:id="@+id/imageView13"
