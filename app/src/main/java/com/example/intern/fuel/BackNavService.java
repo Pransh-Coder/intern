@@ -120,6 +120,7 @@ public class BackNavService extends Service {
 	@Override
 	public void onDestroy() {
 		Log.d(TAG, "onDestroy: Stopped BackNavService");
+		locationProviderClient.removeLocationUpdates(locationCallback);
 		super.onDestroy();
 	}
 }

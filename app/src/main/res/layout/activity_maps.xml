@@ -46,15 +46,16 @@
 		map:layout_constraintGuide_percent="0.2"/>
 	
 	<TextView
+		android:id="@+id/chose_pump_hint"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="5dp"
 		android:text="Choose Pump..."
-		map:layout_constraintBottom_toTopOf="@id/guide_20_percent_hor"
+		map:layout_constraintBottom_toTopOf="@id/linear_useless3"
 		map:layout_constraintLeft_toLeftOf="parent"
 		map:layout_constraintRight_toRightOf="parent"/>
 	
-	<Spinner
+	<!--<Spinner
 		android:id="@+id/address_spinner"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -63,8 +64,8 @@
 		android:layout_marginBottom="10dp"
 		android:spinnerMode="dialog"
 		android:visibility="invisible"
-		map:layout_constraintBottom_toTopOf="@id/guide_20_percent_hor"/>
-	<LinearLayout
+		map:layout_constraintBottom_toTopOf="@id/guide_20_percent_hor"/>-->
+	<!--<LinearLayout
 		android:id="@+id/linear_useless"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
@@ -90,12 +91,12 @@
 			android:paddingRight="5dp"
 			android:scaleType="fitCenter"
 			android:src="@drawable/ic_image_idol"/>
-		<!--<Spinner
+		&lt;!&ndash;<Spinner
 			android:id="@+id/address_spinner"
 			android:layout_weight="1"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:spinnerMode="dialog"/>-->
+			android:spinnerMode="dialog"/>&ndash;&gt;
 		<TextView
 			android:id="@+id/text_address_custom"
 			android:layout_width="0dp"
@@ -143,7 +144,7 @@
 			android:fontFamily="@font/century_gothic_400"
 			android:text="I'm here"
 			android:textAllCaps="false" />
-	</LinearLayout>
+	</LinearLayout>-->
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/guide_30_percent_hor"
 		android:layout_width="match_parent"
@@ -156,7 +157,7 @@
 		android:layout_width="0dp"
 		android:layout_height="0dp"
 		android:layout_margin="10dp"
-		map:layout_constraintBottom_toTopOf="@id/linear_useless3"
+		map:layout_constraintBottom_toTopOf="@id/chose_pump_hint"
 		map:layout_constraintLeft_toLeftOf="parent"
 		map:layout_constraintRight_toRightOf="parent"
 		map:layout_constraintTop_toBottomOf="@id/guide_30_percent_hor" />
@@ -167,9 +168,8 @@
 		android:layout_height="wrap_content"
 		android:layout_margin="10dp"
 		android:orientation="horizontal"
-		map:layout_constraintBottom_toTopOf="@id/pslogo"
-		map:layout_constraintTop_toBottomOf="@id/map">
-		<TextView
+		map:layout_constraintBottom_toTopOf="@id/pslogo">
+		<!--<TextView
 			android:id="@+id/address_last"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
@@ -181,16 +181,21 @@
 			android:text="No last visited pump"
 			android:textColor="@color/black"
 			android:textIsSelectable="true"
-			android:textSize="18dp" />
+			android:textSize="18dp" />-->
+		<Spinner
+			android:id="@+id/spinner_custom"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:layout_weight="1"
+			android:background="@drawable/spinner_boxed_back"
+			android:padding="3dp"
+			android:spinnerMode="dialog"/>
 		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginLeft="5dp"
-			android:orientation="vertical"
-			map:layout_constraintBottom_toTopOf="@id/guide_30_percent_hor"
-			map:layout_constraintLeft_toRightOf="@id/linear_useless"
-			map:layout_constraintRight_toRightOf="parent"
-			map:layout_constraintTop_toBottomOf="@id/guide_20_percent_hor">
+			android:orientation="vertical">
 			<Button
 				android:id="@+id/navigate_last"
 				android:layout_width="match_parent"
