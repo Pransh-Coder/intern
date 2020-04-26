@@ -1,6 +1,7 @@
 package com.example.intern.auth.fragments;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -57,6 +58,7 @@ public class RegisterAsChildFR extends Fragment {
 		}
 	};
 	
+	@SuppressLint("SetTextI18n")
 	private void updateLabel(){
 		hasSelectedDate = true;
 		 dateTimeStamp = Long.toString(calendar.getTimeInMillis());

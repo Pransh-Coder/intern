@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
-        android:text="Share your monthly expenses in below"
+        android:text="Share your monthly expenses below"
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="bold"
@@ -309,6 +309,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -378,6 +379,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint=" ₹"
+                    android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -407,6 +409,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/girl_character"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/logo"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icons_mascot_51"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/logo"/>
     
 </androidx.constraintlayout.widget.ConstraintLayout>
 

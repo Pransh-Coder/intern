@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/common_background"
+    tools:context=".askservices.DemandActivity">
+
+    <ImageView
+        android:id="@+id/doctor_button_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/doctor_button_home"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/homeimg"
+        app:layout_constraintLeft_toRightOf="@+id/doctor_button_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/doctor_notification"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/notification"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/demand_imgView_Fuel"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/doctor"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_demand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DOCTOR ONLINE"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/hor_guide_12_percent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/demand_imgView_Fuel" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_guide_30_percent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.28" />
+
+    <ImageView
+        android:id="@+id/banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="22dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_12_percent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_guide_12_percent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contraint_layout_services"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/demand_submit"
+        app:layout_constraintTop_toBottomOf="@+id/hor_guide_30_percent">
+        
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_hint"
+            app:layout_constraintTop_toTopOf="parent">
+            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_doctor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/century_gothic_400"
+                    android:padding="5dp"
+                    android:text="Dr. RK Rishi,\nAyurvedacharya"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_doctor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/iv_doctor"/>
+                <TextView
+                    android:id="@+id/tv_doctor_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_doctor_name"
+                    android:fontFamily="@font/century_gothic_400"
+                    android:padding="5dp"
+                    android:text="asdfasfasdfasdf"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    app:layout_constraintTop_toBottomOf="@id/iv_doctor"/>
+                <ImageView
+                    android:id="@+id/iv_doctor"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/doctor_image_rk_rishi"
+                    app:layout_constraintLeft_toRightOf="@id/tv_doctor_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                    
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/et_service_description"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:background="@drawable/rectangle_outline"
+            android:ellipsize="start"
+            android:hint="Describe your problem here"
+            android:maxLength="200"
+            android:padding="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/century_gothic_400"
+            android:padding="5dp"
+            android:text="Patient Information"
+            app:layout_constraintBottom_toTopOf="@id/spinner_person_type"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_person_type"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="What Services Do You Want?"
+            android:background="@drawable/spinner_boxed_back"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/DoctorOnline"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/et_other_age"/>
+        <EditText
+            android:id="@+id/et_other_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Enter Age"
+            android:inputType="number"
+            android:maxLength="3"
+            app:layout_constraintBottom_toTopOf="@id/et_other_name"/>
+        <EditText
+            android:id="@+id/et_other_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Enter Name"
+            android:inputType="textPersonName"
+            android:maxLength="20"
+            app:layout_constraintBottom_toTopOf="@id/et_service_description"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Button
+        android:id="@+id/demand_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_button_sign_in"
+        android:fontFamily="@font/century_gothic_400"
+        android:text="Submit"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ps_bottomLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ps_bottomLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pslogo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

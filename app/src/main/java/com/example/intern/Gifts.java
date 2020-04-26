@@ -7,11 +7,12 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.ExclusiveServices.DoctorOnline;
 import com.example.intern.databinding.ActivityScreen12Binding;
 import com.example.intern.mainapp.MainApp;
 
 public class Gifts extends AppCompatActivity {
-    
+
     ActivityScreen12Binding binding;
 
     @Override
@@ -19,7 +20,7 @@ public class Gifts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityScreen12Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        
+
         binding.imageView6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,17 +31,21 @@ public class Gifts extends AppCompatActivity {
         });
         binding.imageView8.setOnClickListener(v -> {
             showWaitDialog();
+
         });
         binding.imageView7.setOnClickListener(v -> {
             showWaitDialog();
+
         });
         binding.imageView9.setOnClickListener(v -> {
             showWaitDialog();
+
         });
         binding.back.setOnClickListener(v -> onBackPressed());
         binding.home.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainApp.class);
-            startActivity(intent);finish();
+            startActivity(intent);
+            finish();
         });
         binding.notifi.setOnClickListener(v -> {
             Intent intent = new Intent(this, NewsAndUpdatesACT.class);
@@ -48,7 +53,8 @@ public class Gifts extends AppCompatActivity {
         });
 
     }
-    private void showWaitDialog(){
+
+    private void showWaitDialog() {
         new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
     }

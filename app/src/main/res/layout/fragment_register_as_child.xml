@@ -211,18 +211,6 @@
         app:layout_constraintTop_toBottomOf="@id/et_DOB"
         app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 
-
-    <View
-        android:id="@+id/view"
-        style="@style/Divider"
-        android:layout_width="200dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
-
     <TextView
         android:id="@+id/tv_ps_nick_name"
         android:layout_width="wrap_content"

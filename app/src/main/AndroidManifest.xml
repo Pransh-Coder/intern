@@ -5,6 +5,7 @@
 	package="com.example.intern">
 	
 	<uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+	
 	<!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -28,7 +29,10 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		
+		<service
+			android:name=".fuel.BackNavService"
+			android:enabled="true"
+			android:exported="false"></service>
 		<!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -41,8 +45,7 @@
 			android:name="com.google.android.geo.API_KEY"
 			android:value="@string/google_maps_key" />
 		
-		<activity
-			android:name=".MapsActivity"/>
+		<activity android:name=".fuel.MapsActivity" />
 		
 		<meta-data
 			android:name="com.facebook.sdk.ApplicationId"
@@ -83,11 +86,11 @@
 			android:label="@string/title_activity_main_app"
 			android:launchMode="singleTop"
 			android:theme="@style/AppTheme.NoActionBar"
-			android:windowSoftInputMode="adjustResize|adjustPan" />
+			android:windowSoftInputMode="stateVisible|adjustResize|adjustPan" />
 		<activity
 			android:name=".swabhiman.SwabhimanActivity"
-			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
-			android:theme="@style/MaterialAppTheme" />
+			android:theme="@style/MaterialAppTheme"
+			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
 		<activity android:name=".shopping.ActivityShopping" />
 		<activity android:name=".BPCL_Fuel_QR_ScannerActivity" />
 		<activity android:name=".fuel.FuelBPCLACT" />
@@ -161,7 +164,9 @@
 		<activity android:name=".FoodActivity" />
 		<activity android:name=".Holiday" />
 		<activity android:name=".ServicesActivity" />
-		<activity android:name=".two_wheeler_repair_list"/>
+		<activity android:name=".two_wheeler_repair_list" />
+		<activity android:name=".ExclusiveServices.DoctorOnline" />
+		
 		<meta-data
 			android:name="com.google.android.gms.version"
 			android:value="@integer/google_play_services_version" />

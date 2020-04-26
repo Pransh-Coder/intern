@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
+import com.example.intern.askservices.DemandActivity;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.ActivityExclusiveServiceBinding;
 import com.example.intern.mainapp.MainApp;
@@ -23,7 +24,11 @@ import java.util.Map;
 public class ExclusiveServices extends AppCompatActivity {
 
     ActivityExclusiveServiceBinding binding;
-
+    public static String FROM_EXCLUSIVE_SERVICES = "exclusiveredirect";
+    public static String DEMAND_GROCERY = "grocery";
+    public static String DEMAND_VEGETABLES = "veggies";
+    public static String DEMAND_DAIRY = "dairy";
+	public static String DEMAND_WATER = "water";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +62,30 @@ public class ExclusiveServices extends AppCompatActivity {
 	        Intent intent = new Intent(this, NewsAndUpdatesACT.class);
 	        startActivity(intent);
         });
+		binding.doctor.setOnClickListener(v -> {
+			Intent intent = new Intent(this, DoctorOnline.class);
+			startActivity(intent);
+		});
+		binding.grocery.setOnClickListener(v -> {
+			Intent intent = new Intent(this, DemandActivity.class);
+			intent.putExtra(FROM_EXCLUSIVE_SERVICES, DEMAND_GROCERY);
+			startActivity(intent);
+		});
+		binding.vegetables.setOnClickListener(v -> {
+			Intent intent = new Intent(this, DemandActivity.class);
+			intent.putExtra(FROM_EXCLUSIVE_SERVICES, DEMAND_VEGETABLES);
+			startActivity(intent);
+		});
+		binding.diary.setOnClickListener(v -> {
+			Intent intent = new Intent(this, DemandActivity.class);
+			intent.putExtra(FROM_EXCLUSIVE_SERVICES, DEMAND_DAIRY);
+			startActivity(intent);
+		});
+		binding.water.setOnClickListener(v -> {
+			Intent intent = new Intent(this, DemandActivity.class);
+			intent.putExtra(FROM_EXCLUSIVE_SERVICES, DEMAND_WATER);
+			startActivity(intent);
+		});
     }
 	
 	@Override

@@ -43,8 +43,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 public class LoginOptionFR extends Fragment {
 
 
@@ -210,7 +208,7 @@ public class LoginOptionFR extends Fragment {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso);
         // Firebase sign out
         FirebaseAuth.getInstance().signOut();
 

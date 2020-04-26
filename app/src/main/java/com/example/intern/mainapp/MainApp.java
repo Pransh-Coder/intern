@@ -2,7 +2,6 @@ package com.example.intern.mainapp;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,7 +11,6 @@ import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -26,7 +24,6 @@ import com.example.intern.ExclusiveServices.ExclusiveServices;
 import com.example.intern.ExclusiveServices.HomeModification;
 import com.example.intern.ExclusiveServices.TiffinService;
 import com.example.intern.FeedBackOrComplaintACT;
-import com.example.intern.MapsActivity;
 import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
@@ -40,6 +37,7 @@ import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityMainAppBinding;
 import com.example.intern.databinding.HomeMenuHeaderBinding;
 import com.example.intern.fuel.FuelWithUsAct;
+import com.example.intern.fuel.MapsActivity;
 import com.example.intern.payment.BecomeAMember;
 import com.example.intern.payment.auth.RazorPayAuthAPI;
 import com.example.intern.shopping.ActivityShopping;
@@ -258,12 +256,6 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		binding.drawerPinHome.setOnClickListener(v-> {
 			binding.drawerLayout.openDrawer();
 			binding.searchBar.clearFocus();
-			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-			if (inputMethodManager != null) {
-				if(getCurrentFocus() != null){
-					inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
-				}
-			}
 		});
 		binding.SaveMoneyLinear.setOnClickListener(v->{
 			Intent intent = new Intent(MainApp.this, SaveMoney.class);
