@@ -165,6 +165,7 @@
             android:gravity="start"
             android:hint="What do you want?..."
             android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/spinner2"
             app:layout_constraintRight_toRightOf="@id/spinner2"
             app:layout_constraintTop_toBottomOf="@id/spinner2" />
@@ -199,7 +200,7 @@
         <EditText
             android:id="@+id/et_product_name"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="120dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_outline"
             android:ellipsize="start"
@@ -236,7 +237,8 @@
         <ImageView
             android:id="@+id/iv_product_image"
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="0dp"
+
             android:background="@drawable/cardview_border"
             android:scaleType="centerInside"
             android:src="@drawable/ic_image_idol"
