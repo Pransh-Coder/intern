@@ -25,8 +25,40 @@
 		android:id="@+id/main_content"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:background="@drawable/home_activity_background"
+		android:background="@drawable/front_blank"
 		android:tag="content">
+
+		<ImageView
+			android:id="@+id/iv_mascot"
+			android:layout_width="88dp"
+			android:layout_height="88dp"
+			android:layout_marginTop="30dp"
+			android:background="@android:color/transparent"
+			android:src="@drawable/pslogotrimmed"
+			app:layout_constraintLeft_toRightOf="@id/drawer_pin_home"
+			app:layout_constraintTop_toTopOf="parent"/>
+
+		<TextView
+			android:id="@+id/tv_useless"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/century_gothic_400"
+			android:text="Your "
+			android:textColor="@color/black"
+			android:textSize="12dp"
+			app:layout_constraintLeft_toLeftOf="@id/iv_mascot"
+			app:layout_constraintTop_toBottomOf="@id/iv_mascot" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/century_gothic_400"
+			android:text="Personal Secretary"
+			android:textColor="@color/black"
+			android:textSize="12dp"
+			android:textStyle="bold"
+			app:layout_constraintLeft_toRightOf="@id/tv_useless"
+			app:layout_constraintTop_toTopOf="@id/tv_useless" />
 		
 		<ImageView
 			android:id="@+id/drawer_pin_home"

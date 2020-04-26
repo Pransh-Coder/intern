@@ -150,7 +150,6 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:padding="5dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
                     android:src="@drawable/grocery" />
@@ -183,7 +182,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:padding="5dp"
+
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
                     android:src="@drawable/vegetable" />
@@ -244,7 +243,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:padding="5dp"
+
                     android:background="@drawable/circular_border"
                     android:src="@drawable/diary" />
 
@@ -254,7 +253,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Diary Products"
+                    android:text="Dairy Products"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -285,7 +284,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:padding="5dp"
+
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
                     android:src="@drawable/tiffin" />
@@ -336,7 +335,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:padding="5dp"
+
                     android:background="@drawable/circular_border"
                     android:src="@drawable/home_modif" />
 
@@ -406,7 +405,7 @@
                 android:id="@+id/water"
                 android:layout_width="wrap_content"
                 android:layout_height="110dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 android:padding="5dp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -420,7 +419,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:padding="5dp"
+
                     android:background="@drawable/circular_border"
                     android:src="@drawable/water" />
 
@@ -439,7 +438,7 @@
                 android:id="@+id/auto"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
                 android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@+id/doctor"
@@ -460,7 +459,6 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:padding="5dp"
                     android:background="@drawable/circular_border"
                     android:src="@drawable/auto" />
 
@@ -489,11 +487,12 @@
                 android:id="@+id/emergency_care"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
-                android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:padding="5dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/water"
+                app:layout_constraintBottom_toTopOf="@id/view5"
                 app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent">
 
                 <TextView
@@ -510,7 +509,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:padding="5dp"
+
                     android:background="@drawable/circular_border"
                     android:src="@drawable/emergency_care" />
 
@@ -529,19 +528,19 @@
                 android:id="@+id/legal_financial"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@+id/auto"
+                app:layout_constraintBottom_toTopOf="@id/view5"
                 app:layout_constraintLeft_toRightOf="@+id/ver_guide_50_percent"
                 app:layout_constraintRight_toRightOf="parent">
 
                 <TextView
                     android:id="@+id/cmgsoon5"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/yellow"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:text="Coming Soon..." />
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -550,7 +549,8 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:padding="5dp"
+                    android:background="@drawable/circular_border"
+
                     android:src="@drawable/legal" />
 
                 <TextView
@@ -598,7 +598,6 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:padding="5dp"
                     android:background="@drawable/circular_border"
                     android:src="@drawable/education_classes" />
 
@@ -626,5 +625,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/girl_character"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/logo"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icons_mascot_51"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/logo"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
