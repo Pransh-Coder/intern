@@ -51,9 +51,9 @@
         android:id="@+id/txt_demand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WHAT DO YOU WANT?"
+        android:text="Ask for anything"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/hor_guide_12_percent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -76,7 +76,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginRight="22dp"
         android:scaleType="fitXY"
-        android:src="@drawable/asksevicebanner"
+        android:src="@drawable/whatyouwant"
         app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -162,7 +162,6 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_outline"
             android:ellipsize="start"
-            android:gravity="start"
             android:hint="What do you Want....."
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -177,8 +176,9 @@
             android:text="0/200"
             android:textSize="17dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.916"
+            app:layout_constraintHorizontal_bias="0.98"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/et_service_description"
             app:layout_constraintTop_toBottomOf="@id/et_service_description"></TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -212,12 +212,12 @@
         <EditText
             android:id="@+id/et_product_name"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="180dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_outline"
             android:ellipsize="start"
             android:gravity="start"
-            android:hint="bhindi 250gm \naaloo 2kg \nAmul good 4pkt \naata bread 1 pc"
+            android:hint="eg.\nbhindi 250gm \naaloo 2kg \nAmul Gold 4pkt \naata bread 1 pc"
             android:paddingStart="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -230,7 +230,7 @@
             android:text="0/200"
             android:textSize="17dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.916"
+            app:layout_constraintHorizontal_bias="0.980"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_product_name"></TextView>
 
@@ -244,6 +244,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_product_name" />
@@ -262,7 +263,7 @@
         <ImageView
             android:id="@+id/iv_product_image"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="100dp"
             android:background="@drawable/rectangle_outline"
             android:scaleType="centerInside"
             android:src="@drawable/ic_image_idol"
