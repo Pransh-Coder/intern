@@ -73,10 +73,10 @@ public class FuelWithUsAct extends AppCompatActivity {
 					if(petrolPrice != null){
 						double qty = (double) Math.round(((amt / petrolPrice)*100.0)/100.0);
 						discount = qty;
-						binding.tvPetrolQty.setText("Petrol quantity is "+ qty +" L" +  " (approx)");
-						binding.tvDiscountReceived.setText("Discount (approx) : " + qty + "INR");
+						binding.tvPetrolQty.setText("Petrol/Diesel quantity is "+ qty +" L" +  " (approx)");
+						binding.tvDiscountReceived.setText("Discount (approx) : " + qty + " INR");
 					}else {
-						binding.tvPetrolQty.setText("Petrol quantity is 0 L");
+						binding.tvPetrolQty.setText("Petrol/Diesel quantity is 0 L");
 						binding.tvDiscountReceived.setText("Discount (approx) : 0 INR");
 					}
 				}

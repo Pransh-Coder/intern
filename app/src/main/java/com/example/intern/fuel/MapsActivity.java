@@ -75,9 +75,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 			}
 		});*/
 		// Obtain the SupportMapFragment and get notified when the map is ready to be used.
-		 mapFragment = (SupportMapFragment) getSupportFragmentManager()
-				.findFragmentById(R.id.map);
-		if(mapFragment != null)mapFragment.getMapAsync(this);
+		 try{
+		 	mapFragment = (SupportMapFragment) getSupportFragmentManager()
+				 .findFragmentById(R.id.map);
+			 if(mapFragment != null)mapFragment.getMapAsync(this);
+		 }catch (Exception ignored){}
+		 
 		binding.back.setOnClickListener(v -> onBackPressed());
 		binding.home.setOnClickListener(v -> {
 			Intent intent = new Intent(MapsActivity.this, MainApp.class);

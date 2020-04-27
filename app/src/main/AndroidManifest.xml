@@ -12,6 +12,7 @@
          location permissions for the 'MyLocation' functionality.
     -->
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 	
 	<dist:module dist:instant="true" />
 	<dist:module dist:instant="true" />
@@ -19,8 +20,13 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-feature
+		android:glEsVersion="0x00020000"
+		android:required="false"/>
 	
 	<application
 		android:hardwareAccelerated="true"
@@ -32,7 +38,7 @@
 		<service
 			android:name=".fuel.BackNavService"
 			android:enabled="true"
-			android:exported="false"></service>
+			android:exported="false" />
 		<!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

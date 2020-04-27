@@ -137,12 +137,12 @@
             android:padding="5dp"
             android:text="Choose Type Of Service..."
             android:textSize="12dp"
-            app:layout_constraintBottom_toTopOf="@id/spinner2"
-            app:layout_constraintLeft_toLeftOf="@id/spinner2"
+            app:layout_constraintBottom_toTopOf="@id/services_spinner"
+            app:layout_constraintLeft_toLeftOf="@id/services_spinner"
             app:layout_constraintTop_toTopOf="parent" />-->
 
         <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinner2"
+            android:id="@+id/services_spinner"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:autofillHints="What Services Do You Want?"
@@ -166,9 +166,9 @@
             android:hint="What do you Want....."
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/spinner2"
-            app:layout_constraintRight_toRightOf="@id/spinner2"
-            app:layout_constraintTop_toBottomOf="@id/spinner2"
+            app:layout_constraintLeft_toLeftOf="@id/services_spinner"
+            app:layout_constraintRight_toRightOf="@id/services_spinner"
+            app:layout_constraintTop_toBottomOf="@id/services_spinner"
             android:maxLength="200"/>
         <TextView
             android:id="@+id/char_count"
