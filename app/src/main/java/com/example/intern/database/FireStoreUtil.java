@@ -69,7 +69,7 @@ public abstract class FireStoreUtil {
 	private static String ASK_THINGS_COLLECTION_NAME = "asked";
 	public static String PETROL_PRICE_KEY = "petropr";
 	private static String FUEL_REFUND_COLLECTION_NAME = "bpclref";
-	private static String STATIC_DATA_COLLECTION_NAME = "psdata";
+	public static String STATIC_DATA_COLLECTION_NAME = "psdata";
 	public static String EXCLUSIVE_SERVICES_COLLECTION_NAME = "exserv";
 	public static String SWABHIMAN_SERVICE = "swabhiman";
 	public static String DONOR = "donor";
@@ -200,8 +200,8 @@ public abstract class FireStoreUtil {
 	}
 	
 	//Methods to create new users or find existing ones
-	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String relative_number, String logINStatus){
-		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode,relative_number, logINStatus);
+	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String relative_number, String logINStatus, Double memberShipFee){
+		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode,relative_number, logINStatus, memberShipFee);
 		return getUserDocumentReference(context, UID).set(user);
 	}
 	
@@ -329,11 +329,16 @@ public abstract class FireStoreUtil {
 		public String LS;
 		//Relative Number
 		public String rph;
+		//Membership fee
+		public Double memfee;
+		//Wallet Balance
+		public Double wallet;
 		
 		public PSUser(){}
 		
 		public PSUser(String name, String email, String nickName, String psNickName,
-		              String phoneNumber, String DOB , String pinCode, String relative_number, String logINStatus){
+		              String phoneNumber, String DOB , String pinCode
+				, String relative_number, String logINStatus, Double membership_fee){
 			this.un = name;
 			this.em = email;
 			this.nn = nickName;
@@ -344,6 +349,8 @@ public abstract class FireStoreUtil {
 			this.pay = null;
 			this.rph = relative_number;
 			this.LS = logINStatus;
+			this.memfee = membership_fee;
+			this.wallet = Double.NaN;
 		}
 	}
 	

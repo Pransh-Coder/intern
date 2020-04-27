@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.intern.ExclusiveServices.ExclusiveServices;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.FireStoreUtil;
@@ -38,10 +39,14 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.view.View.GONE;
+
 public class DemandActivity extends AppCompatActivity {
     ActivityDemandBinding binding;
     List<String> services;
+    List<String> products;
     String service = null;
+    String product = null;
     String filePath=null;
 	SharedPrefUtil prefUtil;
     private boolean isProductPageVisible;
@@ -55,42 +60,44 @@ public class DemandActivity extends AppCompatActivity {
         checkPerms();
         prefUtil = new SharedPrefUtil(this);
         services = Arrays.asList(getResources().getStringArray(R.array.AskServicesOptions));
-       binding.etServiceDescription.addTextChangedListener(new TextWatcher() {
-           @Override
-           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-           }
-
-           @Override
-           public void onTextChanged(CharSequence s, int start, int before, int count) {
-               binding.charCount.setText(String.valueOf(s.length())+"/200");
-
-           }
-
-           @Override
-           public void afterTextChanged(Editable s) {
-               binding.charCount.setText(String.valueOf(s.length())+"/200");
-
-           }
-       });
-        binding.etProductName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                binding.charCount2.setText(String.valueOf(s.length())+"/200");
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                binding.charCount2.setText(String.valueOf(s.length())+"/200");
-
-            }
-        });
+        products = Arrays.asList(getResources().getStringArray(R.array.ProductsOptions));
+        handleIntent();
+	    binding.etServiceDescription.addTextChangedListener(new TextWatcher() {
+		    @Override
+		    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			
+		    }
+		
+		    @Override
+		    public void onTextChanged(CharSequence s, int start, int before, int count) {
+			    binding.charCount.setText(s.length() +"/200");
+			
+		    }
+		
+		    @Override
+		    public void afterTextChanged(Editable s) {
+			    binding.charCount.setText(s.length() +"/200");
+			
+		    }
+	    });
+	    binding.etProductName.addTextChangedListener(new TextWatcher() {
+		    @Override
+		    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			
+		    }
+		
+		    @Override
+		    public void onTextChanged(CharSequence s, int start, int before, int count) {
+			    binding.charCount2.setText(s.length() +"/200");
+			
+		    }
+		
+		    @Override
+		    public void afterTextChanged(Editable s) {
+			    binding.charCount2.setText(s.length() +"/200");
+			
+		    }
+	    });
         binding.demandButtonBack.setOnClickListener(v-> onBackPressed());
         binding.demandButtonHome.setOnClickListener(v->{
             Intent intent = new Intent(this, MainApp.class);
@@ -98,36 +105,77 @@ public class DemandActivity extends AppCompatActivity {
             finish();
         });
         binding.demandButtonProduct.setOnClickListener(v -> {
-            isProductPageVisible = true;
-            isServicesPageVisible = false;
-            binding.demandButtonService.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
-            binding.demandButtonProduct.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
-            binding.contraintLayoutServices.setVisibility(View.GONE);
-            binding.constraintProduct.setVisibility(View.VISIBLE);
+            toggleToProductPage();
         });
         binding.demandButtonService.setOnClickListener(v -> {
-            isProductPageVisible = false;
-            isServicesPageVisible = true;
-            binding.demandButtonProduct.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
-            binding.demandButtonService.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
-            binding.contraintLayoutServices.setVisibility(View.VISIBLE);
-            binding.constraintProduct.setVisibility(View.GONE);
+            toggleToServicesPage();
         });
-        binding.spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.servicesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 service = services.get(position);
             }
-    
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 service = "other";
             }
         });
+        binding.productspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                product = products.get(position);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
         binding.demandNotification.setOnClickListener(v -> {
             Intent intent = new Intent(this, NewsAndUpdatesACT.class);
             startActivity(intent);
         });
+    }
+    
+    private void handleIntent(){
+        Intent intent = getIntent();
+        if(intent.hasExtra(ExclusiveServices.FROM_EXCLUSIVE_SERVICES)){
+            toggleToProductPage();
+            String request = intent.getStringExtra(ExclusiveServices.FROM_EXCLUSIVE_SERVICES);
+            if(request !=null){
+                if(request.equals(ExclusiveServices.DEMAND_DAIRY)){
+                    //TODO : Dairy
+                    binding.productspinner.setSelection(3);
+                }else if(request.equals(ExclusiveServices.DEMAND_GROCERY)){
+                    //TODO : Grocery
+                    binding.productspinner.setSelection(0);
+                }else if(request.equals(ExclusiveServices.DEMAND_VEGETABLES)){
+                    binding.productspinner.setSelection(1);
+                }else if(request.equals(ExclusiveServices.DEMAND_WATER)){
+                    binding.productspinner.setSelection(2);
+                }
+                hideServicesPage();
+            }
+        }
+    }
+    
+    private void hideServicesPage(){
+        binding.demandButtonService.setEnabled(false);
+    }
+    
+    private void toggleToProductPage(){
+        isProductPageVisible = true;
+        isServicesPageVisible = false;
+        binding.demandButtonService.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
+        binding.demandButtonProduct.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
+        binding.contraintLayoutServices.setVisibility(GONE);
+        binding.constraintProduct.setVisibility(View.VISIBLE);
+    }
+    
+    private void toggleToServicesPage(){
+        isProductPageVisible = false;
+        isServicesPageVisible = true;
+        binding.demandButtonProduct.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
+        binding.demandButtonService.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
+        binding.contraintLayoutServices.setVisibility(View.VISIBLE);
+        binding.constraintProduct.setVisibility(GONE);
     }
     
     @Override
@@ -178,11 +226,11 @@ public class DemandActivity extends AppCompatActivity {
                     });
                 }
             }else if(isProductPageVisible){
-                String product = binding.etProductName.getText().toString();
+                String productRequest = product + " : " + binding.etProductName.getText().toString();
                 if (filePath != null && !filePath.isEmpty()){
                     FireStoreUtil.uploadImage(this, UID,
                             BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot -> taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
-                                FireStoreUtil.uploadProductRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), product, uri.toString()).addOnSuccessListener(documentReference -> {
+                                FireStoreUtil.uploadProductRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), productRequest, uri.toString()).addOnSuccessListener(documentReference -> {
                                     dialog.dismiss();
                                     new AlertDialog.Builder(context).setMessage("We will get back to you shortly").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
                                             .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();

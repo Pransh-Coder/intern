@@ -2,6 +2,7 @@ package com.example.intern.auth.fragments;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -31,6 +32,7 @@ import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -126,19 +128,29 @@ public class RegisterAsParentFR extends Fragment {
                 String ps_nick_name = binding.etPsNickName.getText().toString();
                 String parent_number =binding.etParentNumber.getText().toString();
                 String child_number =binding.etChildNumber.getText().toString();
-                FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-                        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	dateTimeStamp, pinCode,child_number,"1")
-                        .addOnSuccessListener(success->{
-                            FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
-                            Log.d(TAG, "successfully made user");
-                            if(user.getPhoneNumber() != null){
-                                FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
-                            }
-                            viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
-                                    dateTimeStamp, pinCode,parent_number,child_number);
-                            Intent intent = new Intent(requireContext(), MainApp.class);
-                            startActivity(intent);
-                        });
+                FirebaseFirestore.getInstance().collection(FireStoreUtil.STATIC_DATA_COLLECTION_NAME).document("static").get().addOnSuccessListener(snapshot -> {
+                    if(snapshot!=null && snapshot.exists()){
+                        try {
+                            Double membershipFee = snapshot.getDouble("memfee");
+                            FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
+                                    ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	dateTimeStamp, pinCode,child_number,"1", membershipFee)
+                                    .addOnSuccessListener(success->{
+                                        FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
+                                        Log.d(TAG, "successfully made user");
+                                        if(user.getPhoneNumber() != null){
+                                            FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
+                                        }
+                                        viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
+                                                dateTimeStamp, pinCode,parent_number,child_number);
+                                        new AlertDialog.Builder(requireContext()).setIcon(R.drawable.pslogotrimmed).setTitle("Congratulations")
+                                                .setMessage("Your 30 day free trial for Rs. 1/- discount on fuel is activated !")
+                                                .setPositiveButton("Great", null).show();
+                                        Intent intent = new Intent(requireContext(), MainApp.class);
+                                        startActivity(intent);
+                                    });
+                        }catch (Exception ignored){}
+                    }
+                });
             }else {
                 requirePinCode();
             }
