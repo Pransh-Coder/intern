@@ -138,6 +138,13 @@ public class LoginwithPhoneFR  extends Fragment {
                 signInWithPhoneAuthCredential(credential);
             }
         });
+        binding.btnCancel.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), LoginOptionFR.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+
+
+        });
     }
 
 
