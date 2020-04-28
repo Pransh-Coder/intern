@@ -48,24 +48,26 @@ public class MailSender extends javax.mail.Authenticator {
 	public synchronized void sendVCuraMail(String subject, String body,
 	                                       String sender) throws Exception {
 		MimeMessage message = new MimeMessage(session);
-		DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
-		message.setSender(new InternetAddress(sender));
+		String finalBody = "User mail ID - " + sender + "\n" + body;
+		DataHandler handler = new DataHandler(new ByteArrayDataSource(finalBody.getBytes(), "text/plain"));
+		message.setFrom(new InternetAddress(AppStaticData.PS_MAIL_ID));
 		message.setSubject(subject);
 		message.setDataHandler(handler);
 		//TODO : Edit method body to fabricated needs
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(AppStaticData.VCURA_MAIL_ID));
-		message.setRecipient(Message.RecipientType.BCC, new InternetAddress(AppStaticData.PS_MAIL_ID));
+		message.setRecipient(Message.RecipientType.BCC, new InternetAddress(AppStaticData.TEST_MAIL_ID));
 		Transport.send(message);
 	}
 	
 	public synchronized void sendSwabhimanMail(String subject, String body, String sender) throws Exception{
 		MimeMessage message = new MimeMessage(session);
-		DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
-		message.setSender(new InternetAddress(sender));
+		String finalBody = "User mail ID - " + sender + "\n" + body;
+		DataHandler handler = new DataHandler(new ByteArrayDataSource(finalBody.getBytes(), "text/plain"));
 		message.setSubject(subject);
 		message.setDataHandler(handler);
+		message.setFrom(new InternetAddress(AppStaticData.PS_MAIL_ID));
 		//TODO : Edit method body to fabricated needs
-		message.setRecipient(Message.RecipientType.TO, new InternetAddress(AppStaticData.PS_MAIL_ID));
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress(AppStaticData.TEST_MAIL_ID));
 		Transport.send(message);
 		sendConfirmationMail(sender, subject);
 	}

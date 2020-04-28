@@ -38,12 +38,24 @@
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 	
+	<ImageView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_marginLeft="22dp"
+		android:layout_marginRight="22dp"
+		android:scaleType="fitXY"
+		android:src="@drawable/fuel_discount_banner"
+		map:layout_constraintBottom_toTopOf="@id/guide_30_percent_hor"
+		map:layout_constraintLeft_toLeftOf="parent"
+		map:layout_constraintRight_toRightOf="parent"
+		map:layout_constraintTop_toBottomOf="@id/guide_12_percent_hor"/>
+	
 	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_20_percent_hor"
+		android:id="@+id/guide_12_percent_hor"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
-		map:layout_constraintGuide_percent="0.2"/>
+		map:layout_constraintGuide_percent="0.12"/>
 	
 	<TextView
 		android:id="@+id/chose_pump_hint"
