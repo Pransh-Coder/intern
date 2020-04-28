@@ -2,7 +2,6 @@ package com.example.intern.auth.fragments;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -142,10 +141,9 @@ public class RegisterAsParentFR extends Fragment {
                                         }
                                         viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
                                                 dateTimeStamp, pinCode,parent_number,child_number);
-                                        new AlertDialog.Builder(requireContext()).setIcon(R.drawable.pslogotrimmed).setTitle("Congratulations")
-                                                .setMessage("Your 30 day free trial for Rs. 1/- discount on fuel is activated !")
-                                                .setPositiveButton("Great", null).show();
                                         Intent intent = new Intent(requireContext(), MainApp.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        intent.putExtra(MainApp.IS_NEW_USER, true);
                                         startActivity(intent);
                                     });
                         }catch (Exception ignored){}

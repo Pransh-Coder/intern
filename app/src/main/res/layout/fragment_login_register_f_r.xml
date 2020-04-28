@@ -36,15 +36,15 @@
         app:layout_constraintLeft_toRightOf="@id/tv_useless"
         app:layout_constraintTop_toTopOf="@id/tv_useless" />
 
-<!--    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/icons_mascot_51"
-        app:layout_constraintBottom_toTopOf="@id/guide_hor_70_per"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--    <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/icons_mascot_51"
+            app:layout_constraintBottom_toTopOf="@id/guide_hor_70_per"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager_fr"
@@ -59,16 +59,15 @@
         android:id="@+id/chngText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:fontFamily="@font/century_gothic_400"
         android:text="Samay"
         android:textColor="@android:color/white"
-        android:fontFamily="@font/century_gothic_400"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/guide_hor_70_per"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewpager_fr"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/viewpager_fr" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -161,18 +160,31 @@
         app:layout_constraintRight_toLeftOf="@id/guide_50_per_ver"
         app:layout_constraintTop_toBottomOf="@id/guide_hor_70_per" />
 
+    <TextView
+        android:id="@+id/langtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Language"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/registration_spin_Language"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Signup" />
+
     <Spinner
         android:id="@+id/registration_spin_Language"
         style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginBottom="30dp"
         android:background="@drawable/spinner_boxed_back_light"
         android:entries="@array/laguauge"
+        android:gravity="center"
         android:padding="5dp"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/langtv" />
 </androidx.constraintlayout.widget.ConstraintLayout>
