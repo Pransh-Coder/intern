@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.provider.ContactsContract;
 
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -140,7 +142,7 @@ public abstract class FireStoreUtil {
 		return  FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
 	}
 	
-	public static Task<DocumentReference> uploadProductRequest(String userUID, String productName, String productPathInFirebaseStorage){
+	public static Task<DocumentReference> uploadProductRequest(String userUID, String productName, @Nullable String productPathInFirebaseStorage){
 		Map<String, Object> data = new HashMap<>();
 		data.put("type", "product");data.put("user", userUID);
 		data.put("name", productName);data.put("image", productPathInFirebaseStorage);

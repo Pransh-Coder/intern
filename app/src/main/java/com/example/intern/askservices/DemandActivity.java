@@ -200,9 +200,6 @@ public class DemandActivity extends AppCompatActivity {
                 .maxResultSize(1080, 1080)
                 .start());
         binding.demandSubmit.setOnClickListener(v -> {
-            ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setTitle("Please Wait");
-            dialog.show();
             final Context context = this;
 	        String UID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY,null);
 	        if(UID == null){
@@ -214,6 +211,9 @@ public class DemandActivity extends AppCompatActivity {
 			        UID = user.getUid();
 		        }
 	        }
+            ProgressDialog dialog = new ProgressDialog(this);
+            dialog.setTitle("Please Wait");
+            dialog.show();
             if(isServicesPageVisible){
                 String description = binding.etServiceDescription.getText().toString();
                 if(TextUtils.isEmpty(description)){
@@ -221,7 +221,7 @@ public class DemandActivity extends AppCompatActivity {
                 }else{
                     FireStoreUtil.uploadServiceRequest(UID,service,description).addOnSuccessListener(documentReference -> {
                         dialog.dismiss();
-                        new AlertDialog.Builder(context).setMessage("We will get back to you shortly").setPositiveButton("OK", (dialog12, which) -> onBackPressed())
+                        new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. \uD83D\uDE4F\uD83C\uDFFB").setPositiveButton("OK", (dialog12, which) -> onBackPressed())
                                 .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
                     });
                 }
@@ -232,10 +232,16 @@ public class DemandActivity extends AppCompatActivity {
                             BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot -> taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
                                 FireStoreUtil.uploadProductRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), productRequest, uri.toString()).addOnSuccessListener(documentReference -> {
                                     dialog.dismiss();
-                                    new AlertDialog.Builder(context).setMessage("We will get back to you shortly").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
+                                    new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. \uD83D\uDE4F\uD83C\uDFFB").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
                                             .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
                                 });
                             }));
+                }else{
+                    FireStoreUtil.uploadProductRequest(UID, productRequest, null).addOnSuccessListener(documentReference -> {
+                        dialog.dismiss();
+                        new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. \uD83D\uDE4F\uD83C\uDFFB").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
+                                .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
+                    });
                 }
             }
         });
