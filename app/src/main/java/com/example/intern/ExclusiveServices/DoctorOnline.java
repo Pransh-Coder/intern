@@ -141,9 +141,9 @@ public class DoctorOnline extends AppCompatActivity {
     
     private void populateDoctorDetails(){
         String detailHTML =
-                "<p><b>Age</b> - 75+ years<br>With experience of more than <b>45 years</b> in Ayurved.<br><br><b>Time</b> - Daily 4pm-5pm<br><br>" +
-                "<b>Mode of consultation</b> - Audio/Video call<br><br>\n" +
-                "<b>Charges</b> - Free for Senior Citizens<br><br>\n" +
+                "<p><b>Age</b> - 75+ years<br>With experience of more than <b>45 years</b> in Ayurved.<br><br><b>Time</b> - Daily 4pm-5pm<br>" +
+                "<b>Mode of consultation</b> - Audio/Video call<br>\n" +
+                "<b>Charges</b> - Free for Senior Citizens<br>\n" +
                 "₹300 for Others</p>";
         binding.tvDoctorDescription.setText(noTrailingwhiteLines(Html.fromHtml(detailHTML)));
     }
