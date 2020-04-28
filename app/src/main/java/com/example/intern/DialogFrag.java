@@ -14,9 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DialogFrag extends DialogFragment {
+    View view;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        View view = getActivity().getLayoutInflater().inflate(R.layout.dialog,new LinearLayout(getActivity()),false);
+        view = getActivity().getLayoutInflater().inflate(R.layout.dialog,new LinearLayout(getActivity()),false);
         TextView tv = view.findViewById(R.id.tv_pop3);
         tv.setText(Html.fromHtml("&#8226 4 services per year<br>&#8226 Free pick and drop service<br>&#8226 Roadside Assistance service<br>&#8226 Insurance Support"));
         tv = view.findViewById(R.id.tv_pop7);

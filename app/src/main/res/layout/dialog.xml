@@ -8,20 +8,47 @@
     android:paddingBottom="10dp"
     android:paddingTop="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#000"
-        android:text="Go First"
+        android:id="@+id/tv_pop1"
+        android:elevation="50dp"
+        android:background="#f2f2f2"
+        android:layout_marginTop="20dp"
+        app:layout_constraintVertical_bias="0.4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:fontFamily="@font/century_gothic"
-        android:textStyle="bold"
-        android:id="@+id/tv_pop1" />
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@drawable/banner_background"
+            android:textColor="#000"
+            android:text="Go First"
+            android:padding="10dp"
+            android:gravity="center"
+            android:fontFamily="@font/century_gothic"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:id="@+id/rb_1"
+        android:layout_marginStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_pop1"
+        app:layout_constraintTop_toTopOf="@id/tv_pop1"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:id="@+id/rb_2"
+        android:layout_marginStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_pop5"
+        app:layout_constraintTop_toTopOf="@id/tv_pop5"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,19 +99,28 @@
         android:text="*Buy Annual Package with 899 and get one additional service free"
         android:id="@+id/tv_pop4" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="16sp"
-        android:text="Go Prime"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_pop4"
+        android:elevation="50dp"
+        android:background="#f2f2f2"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/century_gothic"
-        android:id="@+id/tv_pop5" />
+        android:id="@+id/tv_pop5">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:padding="10dp"
+            android:background="@drawable/banner_background"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Go Prime"
+            android:textStyle="bold"
+            android:fontFamily="@font/century_gothic" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
