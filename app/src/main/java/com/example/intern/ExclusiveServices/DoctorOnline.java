@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,7 +50,7 @@ public class DoctorOnline extends AppCompatActivity {
     private void showDetail(boolean b){
     	//Fill the name and age if true
 	    if(b){
-	    	binding.etOtherName.setText(prefUtil.getPreferences().getString(SharedPrefUtil.USER_NAME_KEY,null));
+	    	binding.etName.setText(prefUtil.getPreferences().getString(SharedPrefUtil.USER_NAME_KEY,null));
 	    	int age = 0;
 	    	try{
 	    		String dobTimestamp = prefUtil.getPreferences().getString(SharedPrefUtil.USER_DOB_KEY, null);
@@ -61,10 +62,10 @@ public class DoctorOnline extends AppCompatActivity {
 	    			age = currentYear - dobYear;
 			    }
 		    }catch(Exception ignored){}
-	    	binding.etOtherAge.setText(Integer.toString(age));
+	    	binding.etAge.setText(Integer.toString(age));
 	    }else{
-	    	binding.etOtherAge.setText("");
-	    	binding.etOtherName.setText("");
+	    	binding.etAge.setText("");
+	    	binding.etName.setText("");
 	    }
     }
     
@@ -93,18 +94,22 @@ public class DoctorOnline extends AppCompatActivity {
 	        dialog.setTitle("Please Wait");
 	        dialog.show();
 	        final Context context = this;
-	        String description = binding.etServiceDescription.getText().toString();
+	        Editable descp = binding.etDescp.getText();
+	        String description = "";
+	        if(descp != null) {
+	        	description = descp.toString();
+	        }
 	        if (description.isEmpty()) {
 		        //did not enter description
-		        binding.etServiceDescription.setError("Describe Your Problem");
+		        binding.etDescp.setError("Describe Your Problem");
 	        } else {
 		        if (askedForSelf) {
-			        String name = binding.etOtherName.getText().toString();
-			        String age = binding.etOtherAge.getText().toString();
+			        String name = binding.etName.getText().toString();
+			        String age = binding.etAge.getText().toString();
 			        if (name.isEmpty()) {
-				        binding.etOtherName.setError("Enter name");
+				        binding.etName.setError("Enter name");
 			        } else if (age.isEmpty()) {
-				        binding.etOtherAge.setError("Enter age");
+				        binding.etAge.setError("Enter age");
 			        } else {
 				        //TODO : Store data in backend
 				        FireStoreUtil.uploadDoctorRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), "self", name, age, description).addOnSuccessListener(documentReference -> {
@@ -115,12 +120,12 @@ public class DoctorOnline extends AppCompatActivity {
 			        }
 		        } else {
 			        //Asked for others
-			        String name = binding.etOtherName.getText().toString();
-			        String age = binding.etOtherAge.getText().toString();
+			        String name = binding.etName.getText().toString();
+			        String age = binding.etAge.getText().toString();
 			        if (name.isEmpty()) {
-				        binding.etOtherName.setError("Enter name");
+				        binding.etName.setError("Enter name");
 			        } else if (age.isEmpty()) {
-				        binding.etOtherAge.setError("Enter age");
+				        binding.etAge.setError("Enter age");
 			        } else {
 				        //TODO : Store data in backend
 				        FireStoreUtil.uploadDoctorRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), "other_mem", name, age, description).addOnSuccessListener(documentReference -> {
@@ -140,6 +145,14 @@ public class DoctorOnline extends AppCompatActivity {
                 "<b>Mode of consultation</b> - Audio/Video call<br><br>\n" +
                 "<b>Charges</b> - Free for Senior Citizens<br><br>\n" +
                 "₹300 for Others</p>";
-        binding.tvDoctorDescription.setText(Html.fromHtml(detailHTML));
+        binding.tvDoctorDescription.setText(noTrailingwhiteLines(Html.fromHtml(detailHTML)));
     }
+	
+	private CharSequence noTrailingwhiteLines(CharSequence text) {
+		
+		while (text.charAt(text.length() - 1) == '\n') {
+			text = text.subSequence(0, text.length() - 1);
+		}
+		return text;
+	}
 }
