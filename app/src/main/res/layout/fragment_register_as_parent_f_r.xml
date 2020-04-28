@@ -242,7 +242,7 @@
 		android:layout_height="wrap_content"
 		android:drawableBottom="@drawable/backgroun_et"
 		android:ems="10"
-		android:hint="Type here"
+		android:hint="Prakruti,Samey.."
 		android:inputType="textPersonName"
 		android:padding="5dp"
 		android:textSize="18dp"
