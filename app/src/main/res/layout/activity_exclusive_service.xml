@@ -161,6 +161,7 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="Grocery"
+                    android:textSize="15sp"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -182,7 +183,6 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
                     android:src="@drawable/vegetable" />
@@ -193,6 +193,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textSize="15sp"
                     android:text="Vegetables"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -253,6 +254,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textSize="15sp"
                     android:text="Dairy Products"
                     android:textColor="@color/black" />
 
@@ -295,6 +297,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textSize="15sp"
                     android:text="Tiffin"
                     android:textColor="@color/black"/>
 
@@ -345,6 +348,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textSize="15sp"
                     android:text="Home Modification"
                     android:textColor="@color/black"/>
 
@@ -386,6 +390,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textSize="15sp"
                     android:text="Doctor Online"
                     android:textColor="@color/black"/>
 
@@ -428,6 +433,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textSize="15sp"
                     android:layout_gravity="center"
                     android:text="Drinking Water"
                     android:textColor="@color/black" />
@@ -468,6 +474,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textSize="15sp"
                     android:text="Auto"
                     android:textColor="@color/black" />
 
@@ -509,7 +516,6 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-
                     android:background="@drawable/circular_border"
                     android:src="@drawable/emergency_care" />
 
@@ -519,6 +525,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textSize="15sp"
                     android:text="Emergency Care"
                     android:textColor="@color/black" />
 
@@ -559,6 +566,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textSize="15sp"
                     android:text="Legal and Financial"
                     android:textColor="@color/black" />
 
@@ -607,6 +615,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textSize="15sp"
                     android:text="Emergency Care"
                     android:textColor="@color/black" />
 
