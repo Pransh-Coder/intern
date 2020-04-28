@@ -93,7 +93,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:src="@drawable/homemodbanner"
+        android:src="@drawable/homeservices"
         app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
@@ -102,6 +102,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/submithm"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
         app:layout_constraintTop_toBottomOf="@id/guide_hor_banner_low">
@@ -111,116 +112,140 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <ImageView
                 android:id="@+id/img1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="40dp"
                 android:src="@drawable/grab_bars"
-                android:layout_marginTop="30dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/secPara"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/century_gothic"
-                android:padding="10dp"
-                android:text="Grab Bars"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/century_gothic_400"
+                android:text="Grab Bar"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
-                app:layout_constraintLeft_toRightOf="@+id/img1"
-                app:layout_constraintTop_toTopOf="@+id/img1"
-                app:layout_constraintBottom_toBottomOf="@id/img1"/>
+                app:layout_constraintStart_toEndOf="@id/img1"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/secPara2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/century_gothic_400"
+                android:text="Stainless steel finish wall mounted toilet grab bar/rail, for independent living of the elderly."
+                android:textSize="12dp"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img1"
+                app:layout_constraintTop_toBottomOf="@id/secPara" />
 
             <ImageView
                 android:id="@+id/img2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="35dp"
                 android:src="@drawable/flooring"
-                android:layout_marginTop="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img1"/>
+                app:layout_constraintTop_toBottomOf="@+id/img1" />
 
             <TextView
                 android:id="@+id/thrPara"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:ellipsize="start"
-                android:fontFamily="@font/century_gothic"
-                android:padding="10dp"
-                android:text="Anti Skid Flooring"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/century_gothic_400"
+                android:text="Anti-Skid Tape"
                 android:textColor="@color/black"
                 android:textSize="17dp"
-                android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toRightOf="@+id/img2"
-                app:layout_constraintBottom_toBottomOf="@id/img2"
-                app:layout_constraintTop_toBottomOf="@+id/secPara"/>
+                app:layout_constraintStart_toEndOf="@id/img2"
+                app:layout_constraintTop_toBottomOf="@id/secPara2" />
+
+            <TextView
+                android:id="@+id/thrPara2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/century_gothic_400"
+                android:text="Anti-Skid Tape helps to reduce the risk of slips, falls, trips, particularly senior adults. It can be used on stairs, floors and ramps – smooth or dry surfaces, ladders."
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img2"
+                app:layout_constraintTop_toBottomOf="@id/thrPara" />
 
             <ImageView
                 android:id="@+id/img3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="36dp"
                 android:src="@drawable/wc"
-                android:layout_marginTop="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img2"/>
-
+                app:layout_constraintTop_toBottomOf="@+id/thrPara2" />
 
             <TextView
                 android:id="@+id/forthPara"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:ellipsize="start"
-                android:fontFamily="@font/century_gothic"
-                android:padding="10dp"
-                android:text="WC Riser"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/century_gothic_400"
+                android:text="Toilet Seat Riser"
                 android:textColor="@color/black"
                 android:textSize="17dp"
-                android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toRightOf="@+id/img3"
-                app:layout_constraintBottom_toBottomOf="@id/img3"
-                app:layout_constraintTop_toBottomOf="@+id/thrPara"/>
+                app:layout_constraintStart_toEndOf="@id/img3"
+                app:layout_constraintTop_toBottomOf="@id/thrPara2" />
+            <TextView
+                android:id="@+id/forthPara2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/century_gothic_400"
+                android:text="The toilet seat riser is designed to give you the elevation you need while still using your own toilet seat. The riser installs easily under your existing toilet seat."
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img3"
+                app:layout_constraintTop_toBottomOf="@id/forthPara" />
 
             <ImageView
                 android:id="@+id/img4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="24dp"
                 android:src="@drawable/zebra_cross"
-                android:layout_marginTop="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img3"/>
+                app:layout_constraintTop_toBottomOf="@+id/forthPara2" />
 
             <TextView
                 android:id="@+id/fif_para"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
                 android:padding="5dp"
-                android:layout_marginLeft="10dp"
                 android:text="Demarketion on floor for \nbetter visibility when it's no light"
                 android:textColor="@color/black"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="@+id/img4"
-                app:layout_constraintLeft_toRightOf="@+id/img4"
+                android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="@+id/img4"
-                app:layout_constraintTop_toBottomOf="@+id/forthPara"/>
-
+                app:layout_constraintLeft_toRightOf="@+id/img4"
+                app:layout_constraintTop_toBottomOf="@+id/forthPara"
+                app:layout_constraintTop_toTopOf="@+id/img4"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/fifth_para"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
                 android:padding="10dp"
@@ -232,34 +257,35 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fif_para"/>
 
-            <Button
-                android:id="@+id/submithm"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="Submit"
-                android:background="@drawable/custom_button"
-                android:textSize="20dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fifth_para"/>
+            <!--            <Button
+                            android:id="@+id/submithm"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:text="Submit"
+                            android:background="@drawable/custom_button"
+                            android:textSize="20dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/fifth_para"/>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-<!--    <Button
+    <Button
         android:id="@+id/submithm"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:text="Submit"
         android:background="@drawable/custom_button"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>-->
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <ImageView
         android:id="@+id/logo"

@@ -39,13 +39,13 @@
 
     <TextView
         android:id="@+id/tv_fuel"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Fuel with us"
+        android:text="Dicount on Fuel"
         android:textColor="@color/black"
         android:textAllCaps="true"
-        android:textSize="15dp"
+        android:textSize="17dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,36 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2"/>
+        app:layout_constraintGuide_percent="0.3"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_guide_30_percent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.29" />
+
+    <ImageView
+        android:id="@+id/banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="22dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/fuelbanner"
+        app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hor_guide_12_percent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_guide_12_percent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
 
     <TextView
         android:id="@+id/tv_amount"
@@ -84,7 +113,7 @@
         android:textColor="@color/black"
         android:textSize="18dp"
         android:background="@null"
-        android:text="Enter amount"
+        android:text="Amount :"
         android:paddingLeft="20dp"
         app:layout_constraintBottom_toBottomOf="@id/et_amt"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,6 +131,7 @@
         android:id="@+id/et_amt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
         android:hint="₹"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +145,7 @@
         android:background="@null"
         android:ems="10"
         android:paddingLeft="20dp"
-        android:text="Enter Petrol Price"
+        android:text="Petrol/Diesel Price :"
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@id/et_petrol_price"
@@ -129,6 +159,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="₹"
+        android:layout_marginRight="10dp"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ver_50"
@@ -142,7 +173,7 @@
         android:background="@null"
         android:ems="10"
         android:paddingLeft="20dp"
-        android:text="Enter Invoice number"
+        android:text="Invoice number :"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/et_invoice"
@@ -154,6 +185,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:hint="Invoice Number"
         android:inputType="textCapCharacters"
         app:layout_constraintEnd_toEndOf="parent"
@@ -181,7 +213,7 @@
         android:layout_marginTop="20dp"
         android:background="@null"
         android:ems="10"
-        android:text="Petrol in litres "
+        android:text="Petrol/Diesel in litres "
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="16dp"

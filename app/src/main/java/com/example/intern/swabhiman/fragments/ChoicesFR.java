@@ -19,17 +19,17 @@ public class ChoicesFR extends Fragment {
 	private SwabhimanVM viewModel;
 	public ChoicesFR() {
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	                         Bundle savedInstanceState) {
+							 Bundle savedInstanceState) {
 		viewModel = new ViewModelProvider(requireActivity()).get(SwabhimanVM.class);
 		binding = ActivitySwabhimanDpBinding.inflate(inflater, container,false);
 		View view = binding.getRoot();
 		return view;
 	}
-	
+
 	@Override
 	public void onStart() {
 		super.onStart();

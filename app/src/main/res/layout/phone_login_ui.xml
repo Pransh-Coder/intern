@@ -5,16 +5,6 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@drawable/front_blank">
-	
-	<ImageView
-		android:id="@+id/iv_mascot"
-		android:layout_width="100dp"
-		android:layout_height="100dp"
-		android:layout_marginTop="30dp"
-		android:background="@android:color/transparent"
-		android:src="@drawable/icons_mascot_44"
-		app:layout_constraintLeft_toRightOf="@id/guide_15_per_ver"
-		app:layout_constraintTop_toTopOf="parent"/>
 
 	<!--<Button
 		app:layout_constraintTop_toTopOf="parent"
@@ -33,6 +23,17 @@
 		android:drawablePadding="10dp"
 		android:background="@drawable/button_rounded"
 		android:fontFamily="@font/century_gothic_400"/>-->
+
+	<ImageView
+		android:id="@+id/iv_mascot"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="36dp"
+		android:background="@android:color/transparent"
+		android:src="@drawable/icons_mascot_44"
+		app:layout_constraintLeft_toRightOf="@id/guide_15_per_ver"
+		app:layout_constraintTop_toTopOf="parent" />
 
 	<TextView
 		android:id="@+id/tvmascot"
@@ -278,7 +279,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.35"/>
+		app:layout_constraintGuide_percent="0.40"/>
 
 	
 	<ImageView

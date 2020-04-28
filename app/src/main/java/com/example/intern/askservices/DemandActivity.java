@@ -8,7 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,6 +39,8 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.view.View.GONE;
+
 public class DemandActivity extends AppCompatActivity {
     ActivityDemandBinding binding;
     List<String> services;
@@ -58,6 +62,42 @@ public class DemandActivity extends AppCompatActivity {
         services = Arrays.asList(getResources().getStringArray(R.array.AskServicesOptions));
         products = Arrays.asList(getResources().getStringArray(R.array.ProductsOptions));
         handleIntent();
+	    binding.etServiceDescription.addTextChangedListener(new TextWatcher() {
+		    @Override
+		    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			
+		    }
+		
+		    @Override
+		    public void onTextChanged(CharSequence s, int start, int before, int count) {
+			    binding.charCount.setText(s.length() +"/200");
+			
+		    }
+		
+		    @Override
+		    public void afterTextChanged(Editable s) {
+			    binding.charCount.setText(s.length() +"/200");
+			
+		    }
+	    });
+	    binding.etProductName.addTextChangedListener(new TextWatcher() {
+		    @Override
+		    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			
+		    }
+		
+		    @Override
+		    public void onTextChanged(CharSequence s, int start, int before, int count) {
+			    binding.charCount2.setText(s.length() +"/200");
+			
+		    }
+		
+		    @Override
+		    public void afterTextChanged(Editable s) {
+			    binding.charCount2.setText(s.length() +"/200");
+			
+		    }
+	    });
         binding.demandButtonBack.setOnClickListener(v-> onBackPressed());
         binding.demandButtonHome.setOnClickListener(v->{
             Intent intent = new Intent(this, MainApp.class);
@@ -70,12 +110,11 @@ public class DemandActivity extends AppCompatActivity {
         binding.demandButtonService.setOnClickListener(v -> {
             toggleToServicesPage();
         });
-        binding.spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.servicesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 service = services.get(position);
             }
-    
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 service = "other";
@@ -86,7 +125,6 @@ public class DemandActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 product = products.get(position);
             }
-    
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
@@ -113,8 +151,13 @@ public class DemandActivity extends AppCompatActivity {
                 }else if(request.equals(ExclusiveServices.DEMAND_WATER)){
                     binding.productspinner.setSelection(2);
                 }
+                hideServicesPage();
             }
         }
+    }
+    
+    private void hideServicesPage(){
+        binding.demandButtonService.setEnabled(false);
     }
     
     private void toggleToProductPage(){
@@ -122,7 +165,7 @@ public class DemandActivity extends AppCompatActivity {
         isServicesPageVisible = false;
         binding.demandButtonService.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
         binding.demandButtonProduct.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
-        binding.contraintLayoutServices.setVisibility(View.GONE);
+        binding.contraintLayoutServices.setVisibility(GONE);
         binding.constraintProduct.setVisibility(View.VISIBLE);
     }
     
@@ -132,7 +175,7 @@ public class DemandActivity extends AppCompatActivity {
         binding.demandButtonProduct.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
         binding.demandButtonService.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
         binding.contraintLayoutServices.setVisibility(View.VISIBLE);
-        binding.constraintProduct.setVisibility(View.GONE);
+        binding.constraintProduct.setVisibility(GONE);
     }
     
     @Override
@@ -157,9 +200,6 @@ public class DemandActivity extends AppCompatActivity {
                 .maxResultSize(1080, 1080)
                 .start());
         binding.demandSubmit.setOnClickListener(v -> {
-            ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setTitle("Please Wait");
-            dialog.show();
             final Context context = this;
 	        String UID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY,null);
 	        if(UID == null){
@@ -171,6 +211,9 @@ public class DemandActivity extends AppCompatActivity {
 			        UID = user.getUid();
 		        }
 	        }
+            ProgressDialog dialog = new ProgressDialog(this);
+            dialog.setTitle("Please Wait");
+            dialog.show();
             if(isServicesPageVisible){
                 String description = binding.etServiceDescription.getText().toString();
                 if(TextUtils.isEmpty(description)){
@@ -178,7 +221,7 @@ public class DemandActivity extends AppCompatActivity {
                 }else{
                     FireStoreUtil.uploadServiceRequest(UID,service,description).addOnSuccessListener(documentReference -> {
                         dialog.dismiss();
-                        new AlertDialog.Builder(context).setMessage("We will get back to you shortly").setPositiveButton("OK", (dialog12, which) -> onBackPressed())
+                        new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. \uD83D\uDE4F\uD83C\uDFFB").setPositiveButton("OK", (dialog12, which) -> onBackPressed())
                                 .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
                     });
                 }
@@ -189,10 +232,16 @@ public class DemandActivity extends AppCompatActivity {
                             BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot -> taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
                                 FireStoreUtil.uploadProductRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), productRequest, uri.toString()).addOnSuccessListener(documentReference -> {
                                     dialog.dismiss();
-                                    new AlertDialog.Builder(context).setMessage("We will get back to you shortly").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
+                                    new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. \uD83D\uDE4F\uD83C\uDFFB").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
                                             .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
                                 });
                             }));
+                }else{
+                    FireStoreUtil.uploadProductRequest(UID, productRequest, null).addOnSuccessListener(documentReference -> {
+                        dialog.dismiss();
+                        new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. \uD83D\uDE4F\uD83C\uDFFB").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
+                                .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
+                    });
                 }
             }
         });

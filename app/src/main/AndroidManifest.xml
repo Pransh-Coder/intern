@@ -3,24 +3,32 @@
 	xmlns:dist="http://schemas.android.com/apk/distribution"
 	xmlns:tools="http://schemas.android.com/tools"
 	package="com.example.intern">
-
+	
 	<uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+	
 	<!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+	
 	<dist:module dist:instant="true" />
 	<dist:module dist:instant="true" />
-
+	
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
-
+	<uses-feature
+		android:glEsVersion="0x00020000"
+		android:required="false"/>
+	
 	<application
 		android:hardwareAccelerated="true"
 		android:icon="@mipmap/ic_launcher"
@@ -28,7 +36,10 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-
+		<service
+			android:name=".fuel.BackNavService"
+			android:enabled="true"
+			android:exported="false" />
 		<!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,14 +51,13 @@
 		<meta-data
 			android:name="com.google.android.geo.API_KEY"
 			android:value="@string/google_maps_key" />
-
-		<activity
-			android:name=".MapsActivity"/>
-
+		
+		<activity android:name=".fuel.MapsActivity" />
+		
 		<meta-data
 			android:name="com.facebook.sdk.ApplicationId"
 			android:value="@string/facebook_app_id" />
-
+		
 		<activity
 			android:name="com.facebook.FacebookActivity"
 			android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -57,10 +67,10 @@
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
-
+				
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
-
+				
 				<data android:scheme="@string/fb_login_protocol_scheme" />
 			</intent-filter>
 		</activity>
@@ -69,12 +79,11 @@
 			android:theme="@style/AppTheme.NoActionBar"
 			android:windowSoftInputMode="stateHidden" />
 		<activity
-			android:name=".Splash"
-			android:launchMode="singleTop"
-			android:noHistory="true">
+			android:name=".Splash">
+
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
-
+				
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
@@ -86,8 +95,8 @@
 			android:windowSoftInputMode="stateVisible|adjustResize|adjustPan" />
 		<activity
 			android:name=".swabhiman.SwabhimanActivity"
-			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
-			android:theme="@style/MaterialAppTheme" />
+			android:theme="@style/MaterialAppTheme"
+			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
 		<activity android:name=".shopping.ActivityShopping" />
 		<activity android:name=".BPCL_Fuel_QR_ScannerActivity" />
 		<activity android:name=".fuel.FuelBPCLACT" />
@@ -161,7 +170,7 @@
 		<activity android:name=".FoodActivity" />
 		<activity android:name=".Holiday" />
 		<activity android:name=".ServicesActivity" />
-		<activity android:name=".two_wheeler_repair_list"/>
+		<activity android:name=".two_wheeler_repair_list" />
 		<activity android:name=".ExclusiveServices.DoctorOnline" />
 		
 		<meta-data

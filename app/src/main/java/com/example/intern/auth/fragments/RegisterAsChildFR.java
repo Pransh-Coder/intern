@@ -32,6 +32,7 @@ import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -130,21 +131,28 @@ public class RegisterAsChildFR extends Fragment {
 				String ps_nick_name = binding.etPsNickName.getText().toString();
 				String parent_number =binding.etParNumber.getText().toString();
 				String child_number = binding.etChildNumber.getText().toString();
-				FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-						,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	dateTimeStamp, pinCode,parent_number,"1")
-						.addOnSuccessListener(success->{
-							FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
-							Log.d(TAG, "successfully made user");
-							//TODO : Store user info in shared preferences
-							if(user.getPhoneNumber() != null){
-								FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
-							}
-							viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
-									dateTimeStamp, pinCode, child_number, parent_number);
-							Intent intent = new Intent(requireContext(), MainApp.class);
-							intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-							startActivity(intent);
-						});
+				FirebaseFirestore.getInstance().collection(FireStoreUtil.STATIC_DATA_COLLECTION_NAME).document("static").get().addOnSuccessListener(snapshot -> {
+					if(snapshot != null && snapshot.exists()){
+						try{
+							Double membershipFee = snapshot.getDouble("memfee");
+							FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
+									,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	dateTimeStamp, pinCode,parent_number,"1", membershipFee)
+									.addOnSuccessListener(success->{
+										FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
+										Log.d(TAG, "successfully made user");
+										//TODO : Store user info in shared preferences
+										if(user.getPhoneNumber() != null){
+											FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
+										}
+										viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
+												dateTimeStamp, pinCode, child_number, parent_number);
+										Intent intent = new Intent(requireContext(), MainApp.class);
+										intent.putExtra(MainApp.IS_NEW_USER, true);
+										startActivity(intent);
+									});
+						}catch (Exception ignored){}
+					}
+				});
 			}else {
 				requirePinCode();
 			}

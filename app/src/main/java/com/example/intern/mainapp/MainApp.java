@@ -24,7 +24,6 @@ import com.example.intern.ExclusiveServices.ExclusiveServices;
 import com.example.intern.ExclusiveServices.HomeModification;
 import com.example.intern.ExclusiveServices.TiffinService;
 import com.example.intern.FeedBackOrComplaintACT;
-import com.example.intern.MapsActivity;
 import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
@@ -38,6 +37,7 @@ import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityMainAppBinding;
 import com.example.intern.databinding.HomeMenuHeaderBinding;
 import com.example.intern.fuel.FuelWithUsAct;
+import com.example.intern.fuel.MapsActivity;
 import com.example.intern.payment.BecomeAMember;
 import com.example.intern.payment.auth.RazorPayAuthAPI;
 import com.example.intern.shopping.ActivityShopping;
@@ -72,6 +72,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	private HomeMenuHeaderBinding headerBinding;
 	private SharedPrefUtil prefUtil;
 	private GoogleSignInClient signInClient;
+	public static final String IS_NEW_USER = "new";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -218,12 +219,22 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	@Override
 	protected void onStart() {
 		super.onStart();
+		newUserWelcome();
 		setUpMenu();
 		populateDrawer();
 		setClickListeners();
 		setDrawerClickListeners();
 		checkPerms();
 		binding.searchBar.setText("");
+	}
+	
+	private void newUserWelcome(){
+		if(getIntent().getBooleanExtra(IS_NEW_USER, false)){
+			new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Congratulations")
+					.setMessage("You have got free PS+ benefits for one month")
+					.setPositiveButton("Great", null)
+					.setCancelable(false).show();
+		}
 	}
 	
 	@SuppressLint("SetTextI18n")

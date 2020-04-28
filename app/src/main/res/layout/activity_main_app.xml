@@ -132,7 +132,7 @@
 							android:layout_height="60dp"
 							android:layout_gravity="center_horizontal"
 							android:layout_marginTop="10dp"
-							android:src="@drawable/icons_mascot_01" />
+							android:src="@drawable/exclusive_services_icon_color" />
 						
 						<TextView
 							android:layout_width="wrap_content"
@@ -147,7 +147,7 @@
 					</LinearLayout>
 					
 					<LinearLayout
-						android:id="@+id/swabhiman_main_choice"
+						android:id="@+id/shopping"
 						android:layout_width="130dp"
 						android:layout_height="130dp"
 						android:layout_weight="1"
@@ -156,21 +156,23 @@
 						android:padding="10dp">
 						
 						<ImageView
-							android:id="@+id/savemoney1"
+							android:id="@+id/savemoney10"
 							android:layout_width="60dp"
 							android:layout_height="60dp"
 							android:layout_gravity="center_horizontal"
 							android:layout_marginTop="10dp"
-							android:src="@drawable/home_activity_swabhiman_icon" />
+							android:src="@drawable/shopping_icon_color" />
 						
 						<TextView
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="15dp"
+							android:layout_marginTop="10dp"
 							android:fontFamily="@font/century_gothic_400"
-							android:text="@string/swabhiman"
-							android:textColor="@color/black" />
+							android:text="@string/shopping"
+							android:textAlignment="center"
+							android:textColor="@color/black"
+							android:textSize="12sp" />
 					</LinearLayout>
 				
 				</LinearLayout>
@@ -184,7 +186,7 @@
 					android:weightSum="2">
 					
 					<LinearLayout
-						android:id="@+id/shopping"
+						android:id="@+id/swabhiman_main_choice"
 						android:layout_width="130dp"
 						android:layout_height="130dp"
 						android:layout_marginEnd="30dp"
@@ -194,12 +196,12 @@
 						android:padding="10dp">
 						
 						<ImageView
-							android:id="@+id/savemoney10"
+							android:id="@+id/savemoney1"
 							android:layout_width="60dp"
 							android:layout_height="60dp"
 							android:layout_gravity="center_horizontal"
 							android:layout_marginTop="10dp"
-							android:src="@drawable/home_activity_shopping_icon" />
+							android:src="@drawable/swabhiman_icon_color" />
 						
 						<TextView
 							android:layout_width="wrap_content"
@@ -207,10 +209,8 @@
 							android:layout_gravity="center_horizontal"
 							android:layout_marginTop="10dp"
 							android:fontFamily="@font/century_gothic_400"
-							android:text="@string/shopping"
-							android:textAlignment="center"
-							android:textColor="@color/black"
-							android:textSize="12sp" />
+							android:text="@string/swabhiman"
+							android:textColor="@color/black" />
 					</LinearLayout>
 					
 					<LinearLayout
@@ -227,17 +227,17 @@
 							android:layout_height="60dp"
 							android:layout_gravity="center_horizontal"
 							android:layout_marginTop="10dp"
-							android:src="@drawable/home_activity_bpcl_fuel_icon" />
+							android:src="@drawable/fuel_icon_color" />
 						
 						<TextView
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="15dp"
+							android:layout_marginTop="10dp"
 							android:text="@string/discount_on_fuel"
 							android:textAlignment="center"
 							android:fontFamily="@font/century_gothic_400"
-							android:textSize="12dp"
+							android:textSize="12sp"
 							android:textColor="@color/black" />
 					</LinearLayout>
 				
@@ -267,7 +267,7 @@
 							android:layout_height="60dp"
 							android:layout_gravity="center_horizontal"
 							android:layout_marginTop="10dp"
-							android:src="@drawable/home_activity_request_icon" />
+							android:src="@drawable/ask_services_icon_color" />
 						
 						<TextView
 							android:layout_width="wrap_content"
@@ -296,7 +296,7 @@
 							android:layout_height="60dp"
 							android:layout_gravity="center_horizontal"
 							android:layout_marginTop="7dp"
-							android:src="@drawable/savemoney" />
+							android:src="@drawable/save_money_icon_color" />
 						
 						<TextView
 							android:layout_width="wrap_content"

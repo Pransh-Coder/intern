@@ -54,7 +54,7 @@ public class Listactivity extends AppCompatActivity {
     FirebaseFirestore fstore;
     String uid;
     private ProgressDialog progressDialog;
-    private TextView findFriend;
+    private TextView findFriend,nofrnd;
     ImageView back,home_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,7 @@ public class Listactivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         back = findViewById(R.id.back_btn);
         home_btn = findViewById(R.id.home_button);
+        nofrnd=findViewById(R.id.nofrnd);
         setSupportActionBar(toolbar);
         //recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         //LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -179,11 +180,17 @@ public class Listactivity extends AppCompatActivity {
                         Toast.makeText(Listactivity.this,"We got some Friends for you!! ", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                         mlistItems = new mLocalNetwork();
-                        for(String user:list)
+                        if(list.isEmpty())
                         {
-                            getUsername(user);
-                            //Toast.makeText(SocialActivity.this, user, Toast.LENGTH_LONG).show();
+                            nofrnd.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.INVISIBLE);
+                        }
+                        else {
+                            for (String user : list) {
+                                getUsername(user);
+                                //Toast.makeText(SocialActivity.this, user, Toast.LENGTH_LONG).show();
 
+                            }
                         }
 
                         //Toast.makeText(Listactivity.this, "Goingtoputdata", Toast.LENGTH_LONG).show();

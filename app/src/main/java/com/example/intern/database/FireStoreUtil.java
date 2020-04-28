@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.provider.ContactsContract;
 
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -69,7 +71,7 @@ public abstract class FireStoreUtil {
 	private static String ASK_THINGS_COLLECTION_NAME = "asked";
 	public static String PETROL_PRICE_KEY = "petropr";
 	private static String FUEL_REFUND_COLLECTION_NAME = "bpclref";
-	private static String STATIC_DATA_COLLECTION_NAME = "psdata";
+	public static String STATIC_DATA_COLLECTION_NAME = "psdata";
 	public static String EXCLUSIVE_SERVICES_COLLECTION_NAME = "exserv";
 	public static String SWABHIMAN_SERVICE = "swabhiman";
 	public static String DONOR = "donor";
@@ -132,15 +134,15 @@ public abstract class FireStoreUtil {
 		return FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
 	}
 	
-	public static Task<DocumentReference> uploadDoctorRequest(String UID, String name, String age, String description){
+	public static Task<DocumentReference> uploadDoctorRequest(String UID, String type, String name, String age, String description){
 		Map<String, Object> data = new HashMap<>();
-		data.put("uid", UID);
-		data.put("type", "doctorserv");data.put("name", name);
+		data.put("uid", UID);data.put("cat", "doctoronline");
+		data.put("type", type);data.put("name", name);
 		data.put("age", age);data.put("desc", description);
 		return  FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
 	}
 	
-	public static Task<DocumentReference> uploadProductRequest(String userUID, String productName, String productPathInFirebaseStorage){
+	public static Task<DocumentReference> uploadProductRequest(String userUID, String productName, @Nullable String productPathInFirebaseStorage){
 		Map<String, Object> data = new HashMap<>();
 		data.put("type", "product");data.put("user", userUID);
 		data.put("name", productName);data.put("image", productPathInFirebaseStorage);
@@ -200,8 +202,8 @@ public abstract class FireStoreUtil {
 	}
 	
 	//Methods to create new users or find existing ones
-	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String relative_number, String logINStatus){
-		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode,relative_number, logINStatus);
+	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String relative_number, String logINStatus, Double memberShipFee){
+		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode,relative_number, logINStatus, memberShipFee);
 		return getUserDocumentReference(context, UID).set(user);
 	}
 	
@@ -329,11 +331,16 @@ public abstract class FireStoreUtil {
 		public String LS;
 		//Relative Number
 		public String rph;
+		//Membership fee
+		public Double memfee;
+		//Wallet Balance
+		public Double wallet;
 		
 		public PSUser(){}
 		
 		public PSUser(String name, String email, String nickName, String psNickName,
-		              String phoneNumber, String DOB , String pinCode, String relative_number, String logINStatus){
+		              String phoneNumber, String DOB , String pinCode
+				, String relative_number, String logINStatus, Double membership_fee){
 			this.un = name;
 			this.em = email;
 			this.nn = nickName;
@@ -344,6 +351,8 @@ public abstract class FireStoreUtil {
 			this.pay = null;
 			this.rph = relative_number;
 			this.LS = logINStatus;
+			this.memfee = membership_fee;
+			this.wallet = Double.NaN;
 		}
 	}
 	

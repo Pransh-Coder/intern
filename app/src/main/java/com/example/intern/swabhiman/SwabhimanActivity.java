@@ -32,6 +32,11 @@ public class SwabhimanActivity extends AppCompatActivity implements PaymentResul
 		viewModel.setNavController(navController);
 		SharedPrefUtil prefUtil = new SharedPrefUtil(this);
 		viewModel.setUserMail(prefUtil.getPreferences().getString(SharedPrefUtil.USER_EMAIL_KEY, null));
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
 		if(viewModel.getUserMail() == null|| viewModel.getUserMail().equals("null") || viewModel.getUserMail().isEmpty() || TextUtils.isEmpty(viewModel.getUserMail())){
 			new AlertDialog.Builder(this).setTitle("Needs Your E-Mail")
 					.setMessage("Please Update your e-mail address and try again")

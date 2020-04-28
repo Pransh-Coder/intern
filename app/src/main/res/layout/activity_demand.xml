@@ -51,9 +51,9 @@
         android:id="@+id/txt_demand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WHAT DO YOU WANT?"
+        android:text="Ask for anything"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/hor_guide_12_percent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -76,7 +76,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginRight="22dp"
         android:scaleType="fitXY"
-        android:src="@drawable/asksevicebanner"
+        android:src="@drawable/whatyouwant"
         app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -137,12 +137,12 @@
             android:padding="5dp"
             android:text="Choose Type Of Service..."
             android:textSize="12dp"
-            app:layout_constraintBottom_toTopOf="@id/spinner2"
-            app:layout_constraintLeft_toLeftOf="@id/spinner2"
+            app:layout_constraintBottom_toTopOf="@id/services_spinner"
+            app:layout_constraintLeft_toLeftOf="@id/services_spinner"
             app:layout_constraintTop_toTopOf="parent" />-->
 
         <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinner2"
+            android:id="@+id/services_spinner"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:autofillHints="What Services Do You Want?"
@@ -162,13 +162,25 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_outline"
             android:ellipsize="start"
-            android:gravity="start"
-            android:hint="What do you want?..."
+            android:hint="What do you Want....."
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/spinner2"
-            app:layout_constraintRight_toRightOf="@id/spinner2"
-            app:layout_constraintTop_toBottomOf="@id/spinner2" />
+            app:layout_constraintLeft_toLeftOf="@id/services_spinner"
+            app:layout_constraintRight_toRightOf="@id/services_spinner"
+            app:layout_constraintTop_toBottomOf="@id/services_spinner"
+            android:maxLength="200"/>
+        <TextView
+            android:id="@+id/char_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/200"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/et_service_description"
+            app:layout_constraintTop_toBottomOf="@id/et_service_description"></TextView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -200,25 +212,39 @@
         <EditText
             android:id="@+id/et_product_name"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="180dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/rectangle_outline"
             android:ellipsize="start"
             android:gravity="start"
-            android:hint="Type here what you want (200 words max)"
+            android:hint="eg.\nbhindi 250gm \naaloo 2kg \nAmul Gold 4pkt \naata bread 1 pc"
             android:paddingStart="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productspinner" />
+            app:layout_constraintTop_toBottomOf="@id/productspinner"
+            android:maxLength="200"/>
+        <TextView
+            android:id="@+id/char_count2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/200"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.980"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_product_name"></TextView>
+
 
         <TextView
             android:id="@+id/tv_useless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="OR"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_product_name" />
@@ -237,9 +263,8 @@
         <ImageView
             android:id="@+id/iv_product_image"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-
-            android:background="@drawable/cardview_border"
+            android:layout_height="100dp"
+            android:background="@drawable/rectangle_outline"
             android:scaleType="centerInside"
             android:src="@drawable/ic_image_idol"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -247,7 +272,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_useless2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <Button
         android:id="@+id/demand_submit"
@@ -262,7 +286,7 @@
         android:textAllCaps="true"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ps_bottomLogo"
+        app:layout_constraintBottom_toTopOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
