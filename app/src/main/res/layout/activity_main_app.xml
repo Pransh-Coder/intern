@@ -147,47 +147,9 @@
 					</LinearLayout>
 					
 					<LinearLayout
-						android:id="@+id/swabhiman_main_choice"
-						android:layout_width="130dp"
-						android:layout_height="130dp"
-						android:layout_weight="1"
-						android:background="@drawable/home_activity_icon_background"
-						android:orientation="vertical"
-						android:padding="10dp">
-						
-						<ImageView
-							android:id="@+id/savemoney1"
-							android:layout_width="60dp"
-							android:layout_height="60dp"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:src="@drawable/home_activity_swabhiman_icon" />
-						
-						<TextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="15dp"
-							android:fontFamily="@font/century_gothic_400"
-							android:text="@string/swabhiman"
-							android:textColor="@color/black" />
-					</LinearLayout>
-				
-				</LinearLayout>
-				
-				<LinearLayout
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_gravity="center"
-					android:layout_marginTop="10dp"
-					android:orientation="horizontal"
-					android:weightSum="2">
-					
-					<LinearLayout
 						android:id="@+id/shopping"
 						android:layout_width="130dp"
 						android:layout_height="130dp"
-						android:layout_marginEnd="30dp"
 						android:layout_weight="1"
 						android:background="@drawable/home_activity_icon_background"
 						android:orientation="vertical"
@@ -212,6 +174,44 @@
 							android:textColor="@color/black"
 							android:textSize="12sp" />
 					</LinearLayout>
+				
+				</LinearLayout>
+				
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginTop="10dp"
+					android:orientation="horizontal"
+					android:weightSum="2">
+					
+					<LinearLayout
+						android:id="@+id/swabhiman_main_choice"
+						android:layout_width="130dp"
+						android:layout_height="130dp"
+						android:layout_marginEnd="30dp"
+						android:layout_weight="1"
+						android:background="@drawable/home_activity_icon_background"
+						android:orientation="vertical"
+						android:padding="10dp">
+						
+						<ImageView
+							android:id="@+id/savemoney1"
+							android:layout_width="60dp"
+							android:layout_height="60dp"
+							android:layout_gravity="center_horizontal"
+							android:layout_marginTop="10dp"
+							android:src="@drawable/home_activity_swabhiman_icon" />
+						
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_horizontal"
+							android:layout_marginTop="10dp"
+							android:fontFamily="@font/century_gothic_400"
+							android:text="@string/swabhiman"
+							android:textColor="@color/black" />
+					</LinearLayout>
 					
 					<LinearLayout
 						android:id="@+id/bpclfuel"
@@ -233,11 +233,11 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="15dp"
+							android:layout_marginTop="10dp"
 							android:text="@string/discount_on_fuel"
 							android:textAlignment="center"
 							android:fontFamily="@font/century_gothic_400"
-							android:textSize="12dp"
+							android:textSize="12sp"
 							android:textColor="@color/black" />
 					</LinearLayout>
 				

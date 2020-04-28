@@ -78,7 +78,6 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = ActivityMainAppBinding.inflate(getLayoutInflater());
-		newUserWelcome();
 		setUpSearchBar();
 		GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 				.requestIdToken(getString(R.string.default_web_client_id))
@@ -88,15 +87,6 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		setContentView(binding.getRoot());
 		prefUtil = new SharedPrefUtil(this);
 		getWindow().setStatusBarColor(getResources().getColor(R.color.light_orange));
-	}
-	
-	private void newUserWelcome(){
-		if(getIntent().getBooleanExtra(IS_NEW_USER, false)){
-			new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Congratulations")
-					.setMessage("You have got free PS+ benefits for one month")
-					.setPositiveButton("Great", null)
-					.setCancelable(false).show();
-		}
 	}
 	
 	private void checkPerms() {
@@ -229,12 +219,22 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	@Override
 	protected void onStart() {
 		super.onStart();
+		newUserWelcome();
 		setUpMenu();
 		populateDrawer();
 		setClickListeners();
 		setDrawerClickListeners();
 		checkPerms();
 		binding.searchBar.setText("");
+	}
+	
+	private void newUserWelcome(){
+		if(getIntent().getBooleanExtra(IS_NEW_USER, false)){
+			new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Congratulations")
+					.setMessage("You have got free PS+ benefits for one month")
+					.setPositiveButton("Great", null)
+					.setCancelable(false).show();
+		}
 	}
 	
 	@SuppressLint("SetTextI18n")

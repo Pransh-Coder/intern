@@ -142,7 +142,6 @@ public class RegisterAsParentFR extends Fragment {
                                         viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
                                                 dateTimeStamp, pinCode,parent_number,child_number);
                                         Intent intent = new Intent(requireContext(), MainApp.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         intent.putExtra(MainApp.IS_NEW_USER, true);
                                         startActivity(intent);
                                     });
