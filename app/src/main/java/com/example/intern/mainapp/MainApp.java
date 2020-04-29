@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -96,7 +95,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
 				if(!multiplePermissionsReport.areAllPermissionsGranted() ||multiplePermissionsReport.isAnyPermissionPermanentlyDenied()){
 					new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Needs Your Permission")
-							.setMessage("To Deliver Its best for its consumers").setPositiveButton("OK", (dialog, which)->{
+							.setMessage("To Deliver its best for its consumers").setPositiveButton("OK", (dialog, which)->{
 								if(which == AlertDialog.BUTTON_POSITIVE){
 									checkPerms();
 								}
@@ -118,34 +117,17 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		binding.searchBar.setDropDownWidth(metrics.widthPixels/2);
 		binding.searchBar.setText("");
 		binding.searchBar.setOnEditorActionListener((v, actionId, event) -> {
-			binding.searchBar.showDropDown();
-			if(actionId == EditorInfo.IME_ACTION_SEARCH){
-				String keyWord = v.getText().toString().toLowerCase();
-				Intent intent = null;
-				for(String demandTrigger : AppStaticData.demandTriggers){
-					if(keyWord.contains(demandTrigger)){
-						intent = new Intent(MainApp.this, DemandActivity.class);
-						break;
-					}
-				}
-				for (String saveMoneyTrigger : AppStaticData.saveMoneyTriggers){
-					if(keyWord.contains(saveMoneyTrigger)){
-						intent = new Intent(MainApp.this, SaveMoney.class);
-						break;
-					}
-				}
-				if(intent != null){
-					binding.searchBar.setText("");
-					binding.searchBar.clearFocus();
-					startActivity(intent);
-					return true;
-				}
+			String keyWord = v.getText().toString();
+			if(!keyWord.isEmpty()){
+				Intent foundIntent = AppStaticData.getSearchResultIntentFromMain(MainApp.this, keyWord);
+				if(foundIntent != null)startActivity(foundIntent);
 			}
 			binding.searchBar.setText("");
 			binding.searchBar.clearFocus();
 			return false;
 		});
 		binding.searchBar.setOnItemClickListener((parent, view, position, id) -> {
+			//TODO : Implement the same search as normal one
 			Intent intent;
 			String keyWord = parent.getItemAtPosition(position).toString();
 			if(keyWord.contains("Home")){
@@ -249,11 +231,9 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			String UID = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null);
 			if (UID != null && !UID.isEmpty()) {
 				try{
-					FireStoreUtil.getProfilePicInLocal(this, UID).addOnSuccessListener(taskSnapshot -> {
-						taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
-							Glide.with(context).load(uri.toString()).fallback(R.drawable.edit_profile).error(R.drawable.edit_profile).into(headerBinding.ivProfilePic);
-						});
-					});
+					FireStoreUtil.getProfilePicInLocal(this, UID).addOnSuccessListener(taskSnapshot ->
+							taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri ->
+							Glide.with(context).load(uri.toString()).fallback(R.drawable.edit_profile).error(R.drawable.edit_profile).into(headerBinding.ivProfilePic)));
 				}catch (Exception ignored){}
 			}
 		}
@@ -268,12 +248,11 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			binding.drawerLayout.openDrawer();
 			binding.searchBar.clearFocus();
 		});
-		binding.SaveMoneyLinear.setOnClickListener(v->{
+		binding.saveMoney.setOnClickListener(v->{
 			Intent intent = new Intent(MainApp.this, SaveMoney.class);
 			startActivity(intent);
 		});
-		//TODO : Setting click listeners for others
-		binding.swabhimanMainChoice.setOnClickListener(v->{
+		binding.swabhiman.setOnClickListener(v->{
 			Intent intent = new Intent(this, SwabhimanActivity.class);
 			startActivity(intent);
 		});
@@ -281,11 +260,11 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 			Intent intent = new Intent(this, ActivityShopping.class);
 			startActivity(intent);
 		});
-		binding.bpclfuel.setOnClickListener(v->{
+		binding.discountFuel.setOnClickListener(v->{
 			Intent intent = new Intent(this, MapsActivity.class);
 			startActivity(intent);
 		});
-		binding.requestService.setOnClickListener(v->{
+		binding.askServices.setOnClickListener(v->{
 			Intent intent = new Intent(this, DemandActivity.class);
 			startActivity(intent);
 		});
@@ -442,14 +421,10 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	}
 	
 	@Override
-	public void onFooterClicked() {
-	
-	}
+	public void onFooterClicked() {}
 	
 	@Override
-	public void onHeaderClicked() {
-	
-	}
+	public void onHeaderClicked() {}
 	
 	@Override
 	public void onOptionClicked(int position, Object objectClicked) {

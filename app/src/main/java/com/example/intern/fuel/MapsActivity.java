@@ -276,7 +276,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 				}
 				float[] distRes = new float[1];
 				Location.distanceBetween(currentLat, currentLong, latitudes.get(position), longitudes.get(position), distRes);
-				holder.mDistance.setText("about " + (int)distRes[0]/1000 + " KMs");
+				holder.mDistance.setText("aerial\ndist.\n " + (int)distRes[0]/1000 + "\nKMs");
 			}catch (Exception ignored){}
 			return convertView;
 		}

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -89,10 +90,6 @@ public class DoctorOnline extends AppCompatActivity {
         });
         
         binding.demandSubmit.setOnClickListener(v -> {
-	        ProgressDialog dialog = new ProgressDialog(this);
-	        dialog.setIcon(R.drawable.pslogotrimmed);
-	        dialog.setTitle("Please Wait");
-	        dialog.show();
 	        final Context context = this;
 	        Editable descp = binding.etDescp.getText();
 	        String description = "";
@@ -111,6 +108,10 @@ public class DoctorOnline extends AppCompatActivity {
 			        } else if (age.isEmpty()) {
 				        binding.etAge.setError("Enter age");
 			        } else {
+				        ProgressDialog dialog = new ProgressDialog(this);
+				        dialog.setIcon(R.drawable.pslogotrimmed);
+				        dialog.setTitle("Please Wait");
+				        dialog.show();
 				        //TODO : Store data in backend
 				        FireStoreUtil.uploadDoctorRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), "self", name, age, description).addOnSuccessListener(documentReference -> {
 					        dialog.dismiss();
@@ -120,19 +121,25 @@ public class DoctorOnline extends AppCompatActivity {
 			        }
 		        } else {
 			        //Asked for others
-			        String name = binding.etName.getText().toString();
-			        String age = binding.etAge.getText().toString();
-			        if (name.isEmpty()) {
-				        binding.etName.setError("Enter name");
-			        } else if (age.isEmpty()) {
-				        binding.etAge.setError("Enter age");
-			        } else {
-				        //TODO : Store data in backend
-				        FireStoreUtil.uploadDoctorRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), "other_mem", name, age, description).addOnSuccessListener(documentReference -> {
-					        dialog.dismiss();
-					        new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Request Received").setMessage("We have received your request ! ")
-							        .setPositiveButton("OK", null).show();
-				        });
+			        Editable nameEditable = binding.etName.getText();
+			        Editable ageEditable = binding.etAge.getText();
+			        if(nameEditable != null && ageEditable!= null){
+				        if (TextUtils.isEmpty(nameEditable.toString())) {
+					        binding.etName.setError("Enter name");
+				        } else if (ageEditable.toString().isEmpty()) {
+					        binding.etAge.setError("Enter age");
+				        } else {
+					        ProgressDialog dialog = new ProgressDialog(this);
+					        dialog.setIcon(R.drawable.pslogotrimmed);
+					        dialog.setTitle("Please Wait");
+					        dialog.show();
+					        //TODO : Store data in backend
+					        FireStoreUtil.uploadDoctorRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), "other_mem", nameEditable.toString(), ageEditable.toString(), description).addOnSuccessListener(documentReference -> {
+						        dialog.dismiss();
+						        new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Request Received").setMessage("We have received your request ! ")
+								        .setPositiveButton("OK", null).show();
+					        });
+				        }
 			        }
 		        }
 	        }
