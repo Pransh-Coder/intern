@@ -22,8 +22,9 @@ import java.util.Map;
 
 public class HomeModification extends AppCompatActivity {
 
-    ImageView back,home_btn;
+    ImageView back, home_btn;
     Button submit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class HomeModification extends AppCompatActivity {
 
         back = findViewById(R.id.back);
         home_btn = findViewById(R.id.home_btn);
-        submit=findViewById(R.id.submithm);
+        submit = findViewById(R.id.submithm);
 
         back.setOnClickListener(view -> onBackPressed());
 
@@ -43,25 +44,25 @@ public class HomeModification extends AppCompatActivity {
         final Context context = this;
         submit.setOnClickListener(v -> {
             //TODO :
-	        ProgressDialog dialog = new ProgressDialog(this);
-	        dialog.setTitle("Please wait");
-	        dialog.setIcon(R.drawable.pslogotrimmed);
-	        dialog.show();
-	        Map<String, Object> data = new HashMap<>();
-	        data.put("uid", FirebaseAuth.getInstance().getUid());
-	        FirebaseFirestore.getInstance().collection(FireStoreUtil.EXCLUSIVE_SERVICES_COLLECTION_NAME)
-			        .document(FireStoreUtil.HOME_MODIFICATION_SERVICES)
-			        .collection(FireStoreUtil.HOME_MODIFICATION_SERVICES).add(data)
-			        .addOnSuccessListener(documentReference -> {
-						dialog.dismiss();
-				        new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
-						        .setMessage("We will get back to you shortly").setPositiveButton("OK", null)
-						        .setOnDismissListener(alertDialog -> onBackPressed()).show();
-			        });
+            ProgressDialog dialog = new ProgressDialog(this);
+            dialog.setTitle("Please wait");
+            dialog.setIcon(R.drawable.pslogotrimmed);
+            dialog.show();
+            Map<String, Object> data = new HashMap<>();
+            data.put("uid", FirebaseAuth.getInstance().getUid());
+            FirebaseFirestore.getInstance().collection(FireStoreUtil.EXCLUSIVE_SERVICES_COLLECTION_NAME)
+                    .document(FireStoreUtil.HOME_MODIFICATION_SERVICES)
+                    .collection(FireStoreUtil.HOME_MODIFICATION_SERVICES).add(data)
+                    .addOnSuccessListener(documentReference -> {
+                        dialog.dismiss();
+                        new AlertDialog.Builder(context).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
+                                .setMessage("We will get back to you shortly").setPositiveButton("OK", null)
+                                .setOnDismissListener(alertDialog -> onBackPressed()).show();
+                    });
         });
         findViewById(R.id.notifi).setOnClickListener(v -> {
-	        Intent intent = new Intent(this, NewsAndUpdatesACT.class);
-	        startActivity(intent);
+            Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+            startActivity(intent);
         });
     }
 }
