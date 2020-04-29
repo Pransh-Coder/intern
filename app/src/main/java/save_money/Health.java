@@ -16,7 +16,7 @@ import com.example.intern.mainapp.MainApp;
 public class Health extends AppCompatActivity {
     LinearLayout dental, eyeClinic, homeopathy, dietician, pathology, physiotherapy;
 
-    ImageView back,home;
+    ImageView back, home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,8 +123,8 @@ public class Health extends AppCompatActivity {
             });
         }
     }*/
-    
-    private void showWaitDialog(){
+
+    private void showWaitDialog() {
         new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
     }

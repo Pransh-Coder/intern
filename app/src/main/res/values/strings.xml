@@ -7,6 +7,13 @@
         <item>हिन्दी</item>
         <item>ગુજરાતી</item>
     </string-array>
+    <string-array name="essential_services">
+        <item>Grocery Product</item>
+        <item>Vegetable</item>
+        <item>Drinking water</item>
+        <item>Dairy Product</item>
+        <item>Others</item>
+    </string-array>
     <string-array name="currentlaguauge">
         <item>Current Language English</item>
         <item>Current Language हिन्दी</item>
@@ -88,7 +95,7 @@
     <string name="swabhiman">SWABHIMAN</string>
     <string name="shopping">SHOPPING/\nMEDICINE </string>
     <string name="fuel_with_us">FUEL WITH US</string>
-    <string name="exclusive_services">EXCLUSIVE\nSERVICES</string>
+    <string name="exclusive_services">ESSENTIAL &amp;\nEXCLUSIVE</string>
     <string name="ask_services">ASK FOR ANYTHING</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -103,6 +110,6 @@
     <string name="submit">SUBMIT</string>
     <string name="discount_on_fuel">DISCOUNT ON FUEL</string>
     <string name="title_activity_maps">Map</string>
-	<string name="PSNotificationChannel">PS Notifications</string>
+    <string name="PSNotificationChannel">PS Notifications</string>
     <string name="notifi_channel_descp">PSNotifications</string>
 </resources>

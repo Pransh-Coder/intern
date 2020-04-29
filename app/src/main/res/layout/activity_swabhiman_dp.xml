@@ -108,6 +108,7 @@
                         android:id="@+id/employement"
                         android:layout_width="160dp"
                         android:layout_height="150dp"
+                        android:elevation="50dp"
                         android:layout_marginEnd="20dp"
                         android:layout_weight="1"
                         android:background="@drawable/home_activity_icon_background"
@@ -120,7 +121,7 @@
                             android:layout_height="70dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/ic_employement" />
+                            android:src="@drawable/employment_swabhiman" />
         
                         <TextView
                             android:layout_width="wrap_content"
@@ -136,6 +137,7 @@
                         android:id="@+id/businessAssociate"
                         android:layout_width="160dp"
                         android:layout_height="150dp"
+                        android:elevation="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/home_activity_icon_background"
                         android:orientation="vertical"
@@ -147,7 +149,7 @@
                             android:layout_height="95dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="1dp"
-                            android:src="@drawable/business" />
+                            android:src="@drawable/ps_partners_swabhiman" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -176,6 +178,7 @@
                         android:layout_height="150dp"
                         android:layout_marginEnd="20dp"
                         android:layout_weight="1"
+                        android:elevation="50dp"
                         android:background="@drawable/home_activity_icon_background"
                         android:orientation="vertical"
                         android:padding="10dp">
@@ -186,7 +189,7 @@
                             android:layout_height="70dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/home_activity_save_money_icon" />
+                            android:src="@drawable/investor_swabhiman" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -204,6 +207,7 @@
                         android:layout_height="150dp"
                         android:background="@drawable/home_activity_icon_background"
                         android:orientation="vertical"
+                        android:elevation="50dp"
                         android:padding="10dp">
 
                         <ImageView
@@ -212,7 +216,7 @@
                             android:layout_height="70dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/rupeedonor" />
+                            android:src="@drawable/donor_swabhiman" />
 
                         <TextView
                             android:layout_width="wrap_content"

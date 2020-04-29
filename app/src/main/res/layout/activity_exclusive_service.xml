@@ -637,7 +637,7 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:textSize="15sp"
-                    android:text="Emergency Care"
+                    android:text="Teaching Class"
                     android:textColor="@color/black" />
 
             </LinearLayout>
