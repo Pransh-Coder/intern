@@ -7,6 +7,13 @@
         <item>हिन्दी</item>
         <item>ગુજરાતી</item>
     </string-array>
+    <string-array name="essential_services">
+        <item>Grocery Product</item>
+        <item>Vegetable</item>
+        <item>Drinking water</item>
+        <item>Dairy Product</item>
+        <item>Others</item>
+    </string-array>
     <string-array name="currentlaguauge">
         <item>Current Language English</item>
         <item>Current Language हिन्दी</item>
