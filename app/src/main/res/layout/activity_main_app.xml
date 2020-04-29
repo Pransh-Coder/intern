@@ -74,244 +74,343 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:orientation="horizontal"
-			app:layout_constraintGuide_percent="0.3"/>
+			app:layout_constraintGuide_percent="0.35"/>
 		
-		<androidx.core.widget.NestedScrollView
-			android:id="@+id/nestedScrollView"
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/ver_50"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			app:layout_constraintGuide_percent="0.5"/>
+		
+		<AutoCompleteTextView
+			android:id="@+id/search_bar"
+			android:layout_width="0dp"
+			android:layout_height="35dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginBottom="5dp"
+			android:background="@drawable/home_activity_search_background"
+			android:drawableStart="@drawable/ic_search"
+			android:drawablePadding="5dp"
+			android:hint="Search here..."
+			android:imeOptions="actionSearch"
+			android:inputType="textAutoComplete"
+			android:maxLines="1"
+			app:layout_constraintBottom_toTopOf="@id/hor_30"
+			app:layout_constraintLeft_toRightOf="@id/ver_50"
+			app:layout_constraintRight_toRightOf="@id/constraint_main"/>
+		
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/constraint_main"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_marginLeft="40dp"
+			android:layout_marginRight="40dp"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHeight_default="wrap"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/hor_30">
 			
-			<LinearLayout
-				android:layout_width="wrap_content"
-				android:layout_gravity="center"
-				android:layout_height="wrap_content"
-				android:orientation="vertical">
-
-				<AutoCompleteTextView
-					android:id="@+id/search_bar"
-					android:layout_width="145dp"
-					android:layout_height="35dp"
-					android:layout_gravity="right"
-					android:layout_marginBottom="10dp"
-					android:inputType="textAutoComplete"
-					android:maxLines="1"
-					android:hint="Search here..."
-					android:background="@drawable/home_activity_search_background"
-					android:drawableStart="@drawable/ic_search"
-					android:drawablePadding="5dp"
-					android:imeOptions="actionSearch"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toBottomOf="@id/hor_30" />
-
-				<LinearLayout
-					android:id="@+id/top_row_linear"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_gravity="center"
-					android:orientation="horizontal"
-					android:weightSum="2">
-					
-					<LinearLayout
-						android:id="@+id/exclusive_services"
-						android:layout_width="130dp"
-						android:layout_height="130dp"
-						android:layout_marginEnd="30dp"
-						android:layout_weight="1"
-						android:background="@drawable/home_activity_icon_background"
-						android:orientation="vertical"
-						android:padding="10dp">
-						
-						<ImageView
-							android:id="@+id/savemoney"
-							android:layout_width="60dp"
-							android:layout_height="60dp"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:src="@drawable/exclusive_services_icon_color" />
-						
-						<TextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:fontFamily="@font/century_gothic_400"
-							android:text="@string/exclusive_services"
-							android:textAlignment="center"
-							android:textColor="@color/black"
-							android:textSize="12sp" />
-					</LinearLayout>
-					
-					<LinearLayout
-						android:id="@+id/shopping"
-						android:layout_width="130dp"
-						android:layout_height="130dp"
-						android:layout_weight="1"
-						android:background="@drawable/home_activity_icon_background"
-						android:orientation="vertical"
-						android:padding="10dp">
-						
-						<ImageView
-							android:id="@+id/savemoney10"
-							android:layout_width="60dp"
-							android:layout_height="60dp"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:src="@drawable/shopping_icon_color" />
-						
-						<TextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:fontFamily="@font/century_gothic_400"
-							android:text="@string/shopping"
-							android:textAlignment="center"
-							android:textColor="@color/black"
-							android:textSize="12sp" />
-					</LinearLayout>
+			<androidx.constraintlayout.widget.Guideline
+				android:id="@+id/guide_50_per_ver"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical"
+				app:layout_constraintGuide_percent="0.5"/>
+			
+			<androidx.constraintlayout.widget.Guideline
+				android:id="@+id/guide_33_per_ver"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="horizontal"
+				app:layout_constraintGuide_percent="0.33"/>
+			
+			<androidx.constraintlayout.widget.Guideline
+				android:id="@+id/guide_66_per_ver"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="horizontal"
+				app:layout_constraintGuide_percent="0.66"/>
+			
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/exclusive_services"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_margin="10dp"
+				android:background="@drawable/home_activity_icon_background"
+				android:orientation="vertical"
+				android:padding="10dp"
+				app:layout_constraintBottom_toTopOf="@id/swabhiman"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toLeftOf="@id/guide_50_per_ver"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_chainStyle="packed">
 				
-				</LinearLayout>
-				
-				<LinearLayout
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_gravity="center"
+				<ImageView
+					android:id="@+id/excl_serv_icon"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_gravity="center_horizontal"
 					android:layout_marginTop="10dp"
-					android:orientation="horizontal"
-					android:weightSum="2">
-					
-					<LinearLayout
-						android:id="@+id/swabhiman_main_choice"
-						android:layout_width="130dp"
-						android:layout_height="130dp"
-						android:layout_marginEnd="30dp"
-						android:layout_weight="1"
-						android:background="@drawable/home_activity_icon_background"
-						android:orientation="vertical"
-						android:padding="10dp">
-						
-						<ImageView
-							android:id="@+id/savemoney1"
-							android:layout_width="60dp"
-							android:layout_height="60dp"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:src="@drawable/swabhiman_icon_color" />
-						
-						<TextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:fontFamily="@font/century_gothic_400"
-							android:text="@string/swabhiman"
-							android:textColor="@color/black" />
-					</LinearLayout>
-					
-					<LinearLayout
-						android:id="@+id/bpclfuel"
-						android:layout_width="130dp"
-						android:layout_height="130dp"
-						android:background="@drawable/home_activity_icon_background"
-						android:orientation="vertical"
-						android:padding="10dp">
-						
-						<ImageView
-							android:id="@+id/savemoney11"
-							android:layout_width="60dp"
-							android:layout_height="60dp"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:src="@drawable/fuel_icon_color" />
-						
-						<TextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:text="@string/discount_on_fuel"
-							android:textAlignment="center"
-							android:fontFamily="@font/century_gothic_400"
-							android:textSize="12sp"
-							android:textColor="@color/black" />
-					</LinearLayout>
+					android:src="@drawable/exclusive_services_icon_color"
+					app:layout_constraintBottom_toTopOf="@id/tv_exc"
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
 				
-				</LinearLayout>
-				
-				<LinearLayout
-					android:layout_width="wrap_content"
+				<TextView
+					android:id="@+id/tv_exc"
+					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center"
+					android:layout_gravity="center_horizontal"
 					android:layout_marginTop="10dp"
-					android:orientation="horizontal"
-					android:weightSum="2">
-					
-					<LinearLayout
-						android:id="@+id/requestService"
-						android:layout_width="130dp"
-						android:layout_height="130dp"
-						android:layout_marginEnd="30dp"
-						android:layout_weight="1"
-						android:background="@drawable/home_activity_icon_background"
-						android:orientation="vertical"
-						android:padding="10dp">
-						
-						<ImageView
-							android:id="@+id/savemoney12"
-							android:layout_width="60dp"
-							android:layout_height="60dp"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:src="@drawable/ask_services_icon_color" />
-						
-						<TextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="10dp"
-							android:fontFamily="@font/century_gothic_400"
-							android:text="@string/ask_services"
-							android:textAlignment="center"
-							android:textColor="@color/black"
-							android:textSize="12sp" />
-					</LinearLayout>
-					
-					<LinearLayout
-						android:id="@+id/SaveMoneyLinear"
-						android:layout_width="130dp"
-						android:layout_height="130dp"
-						android:layout_weight="1"
-						android:background="@drawable/home_activity_icon_background"
-						android:orientation="vertical"
-						android:padding="10dp">
-						
-						<ImageView
-							android:id="@+id/savemoney13"
-							android:layout_width="60dp"
-							android:layout_height="60dp"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="7dp"
-							android:src="@drawable/save_money_icon_color" />
-						
-						<TextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center_horizontal"
-							android:layout_marginTop="8dp"
-							android:fontFamily="@font/century_gothic_400"
-							android:text="@string/save_money"
-							android:textAlignment="center"
-							android:textColor="@color/black" />
-					</LinearLayout>
-				</LinearLayout>
-			</LinearLayout>
-		</androidx.core.widget.NestedScrollView>
-	
+					android:fontFamily="@font/century_gothic_400"
+					android:gravity="center"
+					android:lines="2"
+					android:text="@string/exclusive_services"
+					android:textAlignment="center"
+					android:textColor="@color/black"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+			
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/swabhiman"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_margin="10dp"
+				android:background="@drawable/home_activity_icon_background"
+				android:orientation="vertical"
+				android:padding="10dp"
+				app:layout_constraintBottom_toTopOf="@id/ask_services"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toLeftOf="@id/guide_50_per_ver"
+				app:layout_constraintTop_toBottomOf="@id/exclusive_services"
+				app:layout_constraintVertical_chainStyle="packed">
+				
+				<ImageView
+					android:id="@+id/swabhiman_icon"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:src="@drawable/swabhiman_icon_color"
+					app:layout_constraintBottom_toTopOf="@id/tv_swabhiman"
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+				
+				<TextView
+					android:id="@+id/tv_swabhiman"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:fontFamily="@font/century_gothic_400"
+					android:gravity="center"
+					android:lines="2"
+					android:text="@string/swabhiman"
+					android:textAlignment="center"
+					android:textColor="@color/black"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+			
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/ask_services"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_margin="10dp"
+				android:background="@drawable/home_activity_icon_background"
+				android:orientation="vertical"
+				android:padding="10dp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toLeftOf="@id/guide_50_per_ver"
+				app:layout_constraintTop_toBottomOf="@id/swabhiman"
+				app:layout_constraintVertical_chainStyle="packed">
+				
+				<ImageView
+					android:id="@+id/ask_services_icon"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:src="@drawable/ask_services_icon_color"
+					app:layout_constraintBottom_toTopOf="@id/tv_ask"
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+				
+				<TextView
+					android:id="@+id/tv_ask"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:fontFamily="@font/century_gothic_400"
+					android:gravity="center"
+					android:lines="2"
+					android:text="@string/ask_services"
+					android:textAlignment="center"
+					android:textColor="@color/black"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+			
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/shopping"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_margin="10dp"
+				android:background="@drawable/home_activity_icon_background"
+				android:orientation="vertical"
+				android:padding="10dp"
+				app:layout_constraintBottom_toTopOf="@id/discount_fuel"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintLeft_toRightOf="@id/guide_50_per_ver"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_chainStyle="packed">
+				
+				<ImageView
+					android:id="@+id/shopping_icon"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:src="@drawable/shopping_icon_color"
+					app:layout_constraintBottom_toTopOf="@id/tv_shopping"
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+				
+				<TextView
+					android:id="@+id/tv_shopping"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:fontFamily="@font/century_gothic_400"
+					android:gravity="center"
+					android:lines="2"
+					android:text="@string/shopping"
+					android:textAlignment="center"
+					android:textColor="@color/black"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+			
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/discount_fuel"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_margin="10dp"
+				android:background="@drawable/home_activity_icon_background"
+				android:orientation="vertical"
+				android:padding="10dp"
+				app:layout_constraintBottom_toTopOf="@id/save_money"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintLeft_toRightOf="@id/guide_50_per_ver"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/shopping"
+				app:layout_constraintVertical_chainStyle="packed">
+				
+				<ImageView
+					android:id="@+id/fuel_icon"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:src="@drawable/fuel_icon_color"
+					app:layout_constraintBottom_toTopOf="@id/tv_fuel"
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+				
+				<TextView
+					android:id="@+id/tv_fuel"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:fontFamily="@font/century_gothic_400"
+					android:gravity="center"
+					android:lines="2"
+					android:text="@string/discount_on_fuel"
+					android:textAlignment="center"
+					android:textColor="@color/black"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+			
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/save_money"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_margin="10dp"
+				android:background="@drawable/home_activity_icon_background"
+				android:orientation="vertical"
+				android:padding="10dp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintLeft_toRightOf="@id/guide_50_per_ver"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/discount_fuel"
+				app:layout_constraintVertical_chainStyle="packed">
+				
+				<ImageView
+					android:id="@+id/save_money_icon"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:src="@drawable/save_money_icon_color"
+					app:layout_constraintBottom_toTopOf="@id/tv_save_money"
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+				
+				<TextView
+					android:id="@+id/tv_save_money"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:fontFamily="@font/century_gothic_400"
+					android:gravity="center"
+					android:lines="2"
+					android:text="@string/save_money"
+					android:textAlignment="center"
+					android:textColor="@color/black"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		
+		</androidx.constraintlayout.widget.ConstraintLayout>
+		
 	</androidx.constraintlayout.widget.ConstraintLayout>
 	
 </nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout>

@@ -40,12 +40,14 @@ public class SwabhimanActivity extends AppCompatActivity implements PaymentResul
 		if(viewModel.getUserMail() == null|| viewModel.getUserMail().equals("null") || viewModel.getUserMail().isEmpty() || TextUtils.isEmpty(viewModel.getUserMail())){
 			new AlertDialog.Builder(this).setTitle("Needs Your E-Mail")
 					.setMessage("Please Update your e-mail address and try again")
+					.setCancelable(false)
 					.setPositiveButton("OK", (dialog, which) -> {
 						if(which==DialogInterface.BUTTON_POSITIVE){
 							Intent intent = new Intent(SwabhimanActivity.this, EditProfile.class);
 							startActivity(intent);
 						}
 					}).setNegativeButton("Dismiss", (dialog, which) -> finish())
+					.setOnDismissListener(dialog -> finish())
 					.setIcon(getResources().getDrawable(R.drawable.pslogotrimmed)).show();
 		}
 	}

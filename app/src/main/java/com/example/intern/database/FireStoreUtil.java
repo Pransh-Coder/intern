@@ -139,7 +139,7 @@ public abstract class FireStoreUtil {
 		data.put("uid", UID);data.put("cat", "doctoronline");
 		data.put("type", type);data.put("name", name);
 		data.put("age", age);data.put("desc", description);
-		return  FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
+		return  FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).document("aaaaDoctorOnline").collection("DoctorOnlineReqs").add(data);
 	}
 	
 	public static Task<DocumentReference> uploadProductRequest(String userUID, String productName, @Nullable String productPathInFirebaseStorage){

@@ -127,6 +127,7 @@
 			android:theme="@style/MaterialAppTheme" />
 		<activity
 			android:name=".ExclusiveServices.ExclusiveServices"
+			android:windowSoftInputMode="stateVisible|adjustResize|adjustPan"
 			android:launchMode="singleTop" />
 		<activity
 			android:name=".Rating"
@@ -138,6 +139,7 @@
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		<activity
 			android:name="save_money.SaveMoney"
+			android:windowSoftInputMode="stateVisible"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		<activity
 			android:name="save_money.Offers.DentalCategoryOffers"

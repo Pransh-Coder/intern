@@ -6,13 +6,13 @@
 	android:padding="3dp">
 	<TextView
 		android:id="@+id/map_spinner_distance"
-		android:layout_width="45dp"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
 		android:fontFamily="@font/century_gothic_400"
 		android:gravity="center"
 		android:padding="2dp"
-		android:text="about XX KMs"
+		android:text="aerial\ndist.\nXX\nKMs"
 		android:textSize="14dp"/>
 	<ImageView
 		android:id="@+id/map_spinner_logo"

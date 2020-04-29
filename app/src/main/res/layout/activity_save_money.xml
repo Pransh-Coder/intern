@@ -36,8 +36,29 @@
         android:src="@drawable/notification"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    
+    <AutoCompleteTextView
+        android:id="@+id/search_bar"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/home_activity_search_background"
+        android:drawableStart="@drawable/ic_search_40dp"
+        android:drawablePadding="5dp"
+		android:hint="Search here..."
+        android:imeOptions="actionSearch"
+        android:inputType="textAutoComplete"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/home"
+        app:layout_constraintRight_toLeftOf="@id/notifi"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
+        android:id="@+id/search_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
@@ -48,7 +69,7 @@
 
 
     <ImageView
-        android:id="@+id/imgView_Food"
+        android:id="@+id/save_money_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
@@ -58,7 +79,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtFood"
+        android:id="@+id/text_save_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SAVE MONEY"
@@ -66,7 +87,7 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgView_Food" />
+        app:layout_constraintTop_toBottomOf="@+id/save_money_icon" />
 
 <!--            <androidx.viewpager.widget.ViewPager
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,7 +95,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imgView_Food"
+                android:id="@+id/save_money_icon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"
@@ -84,7 +105,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtFood"
+                android:id="@+id/text_save_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SAVE MONEY"
@@ -92,7 +113,7 @@
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgView_Food" />
+                app:layout_constraintTop_toBottomOf="@+id/save_money_icon" />
 
             <ImageView
 >>>>>>> cd677989c9e6fd05894855bb3f09648702fb1537
@@ -105,7 +126,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/save_money_banner_new"
                 app:layout_constraintBottom_toTopOf="@+id/LinearLayout"
-                app:layout_constraintTop_toBottomOf="@+id/txtFood" />-->
+                app:layout_constraintTop_toBottomOf="@+id/text_save_money" />-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_4_per"
         android:layout_width="match_parent"
