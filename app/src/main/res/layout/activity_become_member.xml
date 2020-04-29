@@ -97,25 +97,6 @@
                 app:layout_constraintRight_toRightOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
-    
-    <EditText
-        android:id="@+id/et_account_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Account Number"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@id/btn_check_bank_tr_st"/>
-    <Button
-        android:id="@+id/btn_check_bank_tr_st"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_gradient_vertical_button"
-        android:padding="10dp"
-        android:text="check bank transfer status"
-        app:layout_constraintBottom_toTopOf="@id/imageView3"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
 
     <ImageView
         android:id="@+id/imageView3"

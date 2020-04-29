@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -72,6 +74,8 @@ public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_serv
             tv.setText(Html.fromHtml("&#8226 4 services per year<br>&#8226 Free pick and drop service<br>&#8226 Roadside Assistance service<br>&#8226 Insurance Support"));
             tv = view.findViewById(R.id.tv_pop7);
             tv.setText(Html.fromHtml("&#8226 4 services per year<br>&#8226 Free pick and drop service<br>&#8226 Roadside Assistance service<br>&#8226 Insurance Support<br>&#8226 10% discount on labour<br>&#8226 2 Lubricants free"));
+            CheckBox cb1 = view.findViewById(R.id.rb_1);
+            CheckBox cb2 = view.findViewById(R.id.rb_2);
 
             dialogbuilder.setView(view);
             AlertDialog dialog = dialogbuilder.create();
@@ -79,10 +83,20 @@ public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_serv
             btn_pay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialog.dismiss();
-                    Intent intent=new Intent(context,BecomeAMember.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    context.startActivity(intent);
+                    if(!cb1.isChecked() && !cb2.isChecked()){
+                        Toast.makeText(context, "Please select any one plan", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(cb1.isChecked() && cb2.isChecked()){
+                        Toast.makeText(context, "Please select only one plan", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(context, "Directing you to the payment gateway", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                        Intent intent=new Intent(context,BecomeAMember.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        context.startActivity(intent);
+                    }
+
                 }
             });
 
