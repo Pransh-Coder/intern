@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -51,6 +52,7 @@ public class DemandActivity extends AppCompatActivity {
 	SharedPrefUtil prefUtil;
     private boolean isProductPageVisible;
     private boolean isServicesPageVisible = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -219,9 +221,9 @@ public class DemandActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(description)){
                     binding.etServiceDescription.setError("Describe the service");
                 }else{
-                    FireStoreUtil.uploadServiceRequest(UID,service,description).addOnSuccessListener(documentReference -> {
+                    FireStoreUtil.uploadServiceRequest(UID,service,description).addOnSuccessListener(documentReference -> {         // &#128522 \uD83D\uDE4F\uD83C\uDFFB"
                         dialog.dismiss();
-                        new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. \uD83D\uDE4F\uD83C\uDFFB").setPositiveButton("OK", (dialog12, which) -> onBackPressed())
+                        new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings."+ Html.fromHtml("&#128519")).setPositiveButton("OK", (dialog12, which) -> onBackPressed())
                                 .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
                     });
                 }
