@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/constarint"
     android:layout_width="match_parent"
@@ -17,7 +16,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ImageView
         android:id="@+id/homeIMG"
         android:layout_width="40dp"
@@ -29,12 +27,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/search_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginRight="7dp"
         android:src="@drawable/search"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/notifi"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/search_bar"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/home_activity_search_background"
+        android:drawableStart="@drawable/ic_search_40dp"
+        android:drawablePadding="5dp"
+        android:hint="Search here..."
+        android:imeOptions="actionSearch"
+        android:inputType="textAutoComplete"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/homeIMG"
+        app:layout_constraintRight_toLeftOf="@id/notifi"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -42,13 +61,13 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="10dp"
         android:src="@drawable/notification"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgView_Food"
+        android:id="@+id/excl_serv_icon_top"
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
@@ -67,49 +86,53 @@
         app:layout_constraintBottom_toTopOf="@+id/hor_guide_12_percent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgView_Food" />
+        app:layout_constraintTop_toBottomOf="@+id/excl_serv_icon_top" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_4_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06"/>
+        app:layout_constraintGuide_percent="0.06" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_96_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.945"/>
+        app:layout_constraintGuide_percent="0.945" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19"/>
+        app:layout_constraintGuide_percent="0.19" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_top_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12"/>
+        app:layout_constraintGuide_percent="0.12" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_hor_banner_low"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.305"/>
+        app:layout_constraintGuide_percent="0.305" />
 
     <ImageView
+        android:id="@+id/bannerexclusive"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:id="@+id/bannerexclusive"
         android:src="@drawable/volunteerbanner"
         app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
-        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin"/>
+        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin" />
 
     <View
         android:layout_width="0.5dp"
@@ -119,7 +142,7 @@
         app:layout_constraintBottom_toTopOf="@+id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guide_hor_banner_low"/>
+        app:layout_constraintTop_toBottomOf="@id/guide_hor_banner_low" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -140,10 +163,9 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent">
-
+                app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/groceryImg"
@@ -161,8 +183,8 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="Grocery"
-                    android:textSize="15sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -173,9 +195,9 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/ver_guide_50_percent"
-                app:layout_constraintRight_toRightOf="parent">
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -193,17 +215,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:textSize="15sp"
                     android:text="Vegetables"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/vegetables"/>
+                app:layout_constraintTop_toBottomOf="@+id/vegetables" />
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -220,9 +243,9 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
                 android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/vegetables"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vegetables" />
 
             <LinearLayout
                 android:id="@+id/diary"
@@ -236,15 +259,12 @@
                 app:layout_constraintRight_toLeftOf="@id/ver_guide_50_percent"
                 app:layout_constraintTop_toBottomOf="@+id/grocery">
 
-
-
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/diaryImg"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-
                     android:background="@drawable/circular_border"
                     android:src="@drawable/diary" />
 
@@ -254,9 +274,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:textSize="15sp"
                     android:text="Dairy Products"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -272,21 +292,20 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/vegetables">
 
-             <!--   <TextView
-                    android:id="@+id/tv_500_off"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/yellow"
-                    android:gravity="center"
-                    android:text="Coming Soon.."
-                    android:textAlignment="center" />-->
+                <!--   <TextView
+                       android:id="@+id/tv_500_off"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:background="@color/yellow"
+                       android:gravity="center"
+                       android:text="Coming Soon.."
+                       android:textAlignment="center" />-->
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/tiffinImg"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
                     android:src="@drawable/tiffin" />
@@ -297,10 +316,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:textSize="15sp"
                     android:text="Tiffin"
-                    android:textColor="@color/black"/>
-
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <View
@@ -310,27 +328,27 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/tiffin"/>
+                app:layout_constraintTop_toBottomOf="@+id/tiffin" />
 
             <LinearLayout
                 android:id="@+id/home_modification"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
-                android:layout_marginBottom="25dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
                 android:orientation="vertical"
                 android:padding="5dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/ver_guide_50_percent"
                 app:layout_constraintTop_toBottomOf="@+id/diary">
 
-              <!--  <TextView
-                    android:id="@+id/cmgsoon2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/yellow"
-                    android:gravity="center"
-                    android:text="Coming Soon..." />-->
+                <!--  <TextView
+                      android:id="@+id/cmgsoon2"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:background="@color/yellow"
+                      android:gravity="center"
+                      android:text="Coming Soon..." />-->
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/home_modImg"
@@ -348,9 +366,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:textSize="15sp"
                     android:text="Home Modification"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -358,30 +376,30 @@
                 android:id="@+id/doctor"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="25dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:layout_marginTop="10dp"
                 app:layout_constraintLeft_toRightOf="@+id/ver_guide_50_percent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tiffin">
 
-               <!-- <TextView
-                    android:id="@+id/cmgsoon3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/yellow"
-                    android:gravity="center"
-                    android:text="Coming Soon..." />-->
+                <!-- <TextView
+                     android:id="@+id/cmgsoon3"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="@color/yellow"
+                     android:gravity="center"
+                     android:text="Coming Soon..." />-->
 
                 <ImageView
                     android:id="@+id/docImg"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:padding="5dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
                     android:src="@drawable/doctor" />
 
                 <TextView
@@ -390,12 +408,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:textSize="15sp"
                     android:text="Doctor Online"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
             </LinearLayout>
-
 
             <View
                 android:id="@+id/view3"
@@ -404,7 +421,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/doctor"/>
+                app:layout_constraintTop_toBottomOf="@+id/doctor" />
 
             <LinearLayout
                 android:id="@+id/water"
@@ -414,8 +431,8 @@
                 android:orientation="vertical"
                 android:padding="5dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_modification"
-                app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent">
+                app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent"
+                app:layout_constraintTop_toBottomOf="@+id/home_modification">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -432,11 +449,11 @@
                     android:id="@+id/wattxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:textSize="15sp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
                     android:text="Drinking Water"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -444,12 +461,12 @@
                 android:id="@+id/auto"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
-               android:layout_marginBottom="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                app:layout_constraintTop_toBottomOf="@+id/doctor"
                 app:layout_constraintLeft_toRightOf="@+id/ver_guide_50_percent"
-                app:layout_constraintRight_toRightOf="parent">
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctor">
 
                 <TextView
                     android:id="@+id/cmgsoon3"
@@ -474,9 +491,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:textSize="15sp"
                     android:text="Auto"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -487,20 +504,20 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/auto"/>
+                app:layout_constraintTop_toBottomOf="@+id/auto" />
 
 
             <LinearLayout
                 android:id="@+id/emergency_care"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:layout_marginTop="5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/water"
                 app:layout_constraintBottom_toTopOf="@id/view5"
-                app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent">
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent"
+                app:layout_constraintTop_toBottomOf="@+id/water">
 
                 <TextView
                     android:id="@+id/cmgsoon4"
@@ -525,9 +542,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:textSize="15sp"
                     android:text="Emergency Care"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -537,17 +554,17 @@
                 android:layout_height="120dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                app:layout_constraintTop_toBottomOf="@+id/auto"
                 app:layout_constraintBottom_toTopOf="@id/view5"
                 app:layout_constraintLeft_toRightOf="@+id/ver_guide_50_percent"
-                app:layout_constraintRight_toRightOf="parent">
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/auto">
 
                 <TextView
                     android:id="@+id/cmgsoon5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/yellow"
                     android:layout_gravity="center"
+                    android:background="@color/yellow"
                     android:text="Coming Soon..." />
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -566,9 +583,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:textSize="15sp"
                     android:text="Legal and Financial"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -579,7 +596,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/legal_financial"/>
+                app:layout_constraintTop_toBottomOf="@+id/legal_financial" />
 
             <LinearLayout
                 android:id="@+id/edu_classes"
@@ -589,8 +606,8 @@
                 android:orientation="vertical"
                 android:padding="5dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emergency_care"
-                app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent">
+                app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent"
+                app:layout_constraintTop_toBottomOf="@+id/emergency_care">
 
                 <TextView
                     android:id="@+id/cmgsoon6"
@@ -615,10 +632,51 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:textSize="15sp"
                     android:text="Teaching Class"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:clickable="false"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:layout_constraintLeft_toLeftOf="@+id/ver_guide_50_percent"
+                app:layout_constraintRight_toRightOf="parent "
+                app:layout_constraintTop_toBottomOf="@+id/legal_financial">
+
+                <TextView
+                    android:id="@+id/tv_comingSoon_OtherServices"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/yellow"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="Coming Soon..." />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgOtherServices"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/circular_border"
+                    android:clickable="false"
+                    android:src="@drawable/other_icon" />
+
+                <TextView
+                    android:id="@+id/tv_otherServices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="Other Services"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -633,7 +691,7 @@
         android:src="@drawable/pslogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:layout_width="50dp"
@@ -641,7 +699,7 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/girl_character"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/logo"/>
+        app:layout_constraintEnd_toStartOf="@id/logo" />
 
     <ImageView
         android:layout_width="50dp"
@@ -649,6 +707,6 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/icons_mascot_51"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/logo"/>
+        app:layout_constraintStart_toEndOf="@id/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

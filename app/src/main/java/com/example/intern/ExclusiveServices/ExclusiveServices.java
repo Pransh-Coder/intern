@@ -5,10 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.AppStaticData;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.askservices.DemandActivity;
@@ -29,6 +32,7 @@ public class ExclusiveServices extends AppCompatActivity {
     public static String DEMAND_VEGETABLES = "veggies";
     public static String DEMAND_DAIRY = "dairy";
 	public static String DEMAND_WATER = "water";
+	private  boolean isSearchBarOpen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,71 +95,75 @@ public class ExclusiveServices extends AppCompatActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		final Context context = ExclusiveServices.this;
-		binding.auto.setOnClickListener(v -> {
-			//TODO :
-			ProgressDialog dialog = new ProgressDialog(context);
-			dialog.setTitle("Please wait");
-			dialog.setIcon(R.drawable.pslogotrimmed);
-			dialog.show();
-			Map<String, Object> data = new HashMap<>();
-			data.put("uid", FirebaseAuth.getInstance().getUid());
-			FirebaseFirestore.getInstance().collection(FireStoreUtil.EXCLUSIVE_SERVICES_COLLECTION_NAME)
-					.document(FireStoreUtil.AUTO_SERVICES_SERVICES)
-					.collection(FireStoreUtil.AUTO_SERVICES_SERVICES).add(data)
-					.addOnSuccessListener(documentReference -> {
-						dialog.dismiss();
-						new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
-								.setMessage("Thank you for showing interest. We will get back to you shortly").setPositiveButton("OK", null).show();
-					});
+		setUpSearchBar();
+		binding.auto.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.AUTO_SERVICES_SERVICES));
+		binding.emergencyCare.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.EMERGENCY_CARE_SERVICES));
+		binding.legalFinancial.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.LEGAL_FINANCIAL_SERVICES));
+		binding.eduClasses.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.EDUCATION_CLASSES_SERVICES));
+	}
+	
+	private void setUpSearchBar() {
+    	binding.searchIcon.setOnClickListener(v -> toggleSearchBar(true));
+		binding.searchBar.setOnEditorActionListener((v, actionId, event) -> {
+			String searchWord = v.getText().toString();
+			if(!searchWord.isEmpty()){
+				Intent foundIntent = AppStaticData.searchExclusiveServices(ExclusiveServices.this, searchWord);
+				if(foundIntent!=null){
+					startActivity(foundIntent);
+				}
+			}
+			binding.searchBar.setText("");
+			binding.searchBar.clearFocus();
+			return false;
 		});
-		binding.emergencyCare.setOnClickListener(v -> {
-			ProgressDialog dialog = new ProgressDialog(context);
-			dialog.setTitle("Please wait");
-			dialog.setIcon(R.drawable.pslogotrimmed);
-			dialog.show();
-			Map<String, Object> data = new HashMap<>();
-			data.put("uid", FirebaseAuth.getInstance().getUid());
-			FirebaseFirestore.getInstance().collection(FireStoreUtil.EXCLUSIVE_SERVICES_COLLECTION_NAME)
-					.document(FireStoreUtil.EMERGENCY_CARE_SERVICES)
-					.collection(FireStoreUtil.EMERGENCY_CARE_SERVICES).add(data)
-					.addOnSuccessListener(documentReference -> {
-						dialog.dismiss();
-						new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
-								.setMessage("Thank you for showing interest. We will get back to you shortly").setPositiveButton("OK", null).show();
-					});
-		});
-		binding.legalFinancial.setOnClickListener(v -> {
-			ProgressDialog dialog = new ProgressDialog(context);
-			dialog.setTitle("Please wait");
-			dialog.setIcon(R.drawable.pslogotrimmed);
-			dialog.show();
-			Map<String, Object> data = new HashMap<>();
-			data.put("uid", FirebaseAuth.getInstance().getUid());
-			FirebaseFirestore.getInstance().collection(FireStoreUtil.EXCLUSIVE_SERVICES_COLLECTION_NAME)
-					.document(FireStoreUtil.LEGAL_FINANCIAL_SERVICES)
-					.collection(FireStoreUtil.LEGAL_FINANCIAL_SERVICES).add(data)
-					.addOnSuccessListener(documentReference -> {
-						dialog.dismiss();
-						new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
-								.setMessage("Thank you for showing interest. We will get back to you shortly").setPositiveButton("OK", null).show();
-					});
-		});
-		binding.eduClasses.setOnClickListener(v -> {
-			ProgressDialog dialog = new ProgressDialog(context);
-			dialog.setTitle("Please wait");
-			dialog.setIcon(R.drawable.pslogotrimmed);
-			dialog.show();
-			Map<String, Object> data = new HashMap<>();
-			data.put("uid", FirebaseAuth.getInstance().getUid());
-			FirebaseFirestore.getInstance().collection(FireStoreUtil.EXCLUSIVE_SERVICES_COLLECTION_NAME)
-					.document(FireStoreUtil.EDUCATION_CLASSES_SERVICES)
-					.collection(FireStoreUtil.EDUCATION_CLASSES_SERVICES).add(data)
-					.addOnSuccessListener(documentReference -> {
-						dialog.dismiss();
-						new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
-								.setMessage("Thank you for showing interest. We will get back to you shortly").setPositiveButton("OK", null).show();
-					});
-		});
+	}
+	
+	private void toggleSearchBar(boolean b) {
+		if(b){
+			binding.searchIcon.setVisibility(View.GONE);
+			binding.exclServIconTop.setVisibility(View.GONE);
+			binding.txtExcusiveService.setVisibility(View.GONE);
+			binding.searchBar.setVisibility(View.VISIBLE);
+			binding.searchBar.requestFocus();
+			InputMethodManager inputMethodManager =
+					(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+			if(inputMethodManager != null){
+				View focus = getCurrentFocus();
+				if(focus != null) inputMethodManager.toggleSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken()
+						,InputMethodManager.SHOW_FORCED, 0);
+			}
+			isSearchBarOpen = true;
+		}else{
+			binding.searchBar.setText("");
+			binding.searchBar.clearFocus();
+			binding.searchIcon.setVisibility(View.VISIBLE);
+			binding.exclServIconTop.setVisibility(View.VISIBLE);
+			binding.txtExcusiveService.setVisibility(View.VISIBLE);
+			binding.searchBar.setVisibility(View.GONE);
+			isSearchBarOpen = false;
+		}
+	}
+	
+	private void sendFirebaseRequest(String type){
+		ProgressDialog dialog = new ProgressDialog(this);
+		dialog.setTitle("Please wait");
+		dialog.setIcon(R.drawable.pslogotrimmed);
+		dialog.show();
+		Map<String, Object> data = new HashMap<>();
+		data.put("uid", FirebaseAuth.getInstance().getUid());
+		FirebaseFirestore.getInstance().collection(FireStoreUtil.EXCLUSIVE_SERVICES_COLLECTION_NAME)
+				.document(type)
+				.collection(type).add(data)
+				.addOnSuccessListener(documentReference -> {
+					dialog.dismiss();
+					new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
+							.setMessage("Thank you for showing interest. We will get back to you shortly").setPositiveButton("OK", null).show();
+				});
+	}
+	
+	@Override
+	public void onBackPressed() {
+		if(isSearchBarOpen)toggleSearchBar(false);
+		else super.onBackPressed();
 	}
 }

@@ -1,11 +1,14 @@
 package save_money;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.AppStaticData;
 import com.example.intern.FoodActivity;
 import com.example.intern.Gifts;
 import com.example.intern.Holiday;
@@ -17,7 +20,7 @@ import com.example.intern.mainapp.MainApp;
 
 public class SaveMoney extends AppCompatActivity {
     ActivitySaveMoneyBinding binding;
-
+    private boolean isSearchBarOpen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,8 +128,60 @@ public class SaveMoney extends AppCompatActivity {
         });
 
     }
-
-/*    public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //Set up search bar
+        binding.searchIcon.setOnClickListener(v -> toggleSearchBar(true));
+        //Search item when search bar is open
+	    binding.searchBar.setOnEditorActionListener((v, actionId, event) -> {
+		    String searchWord = v.getText().toString();
+		    if(!searchWord.isEmpty()){
+			    Intent foundIntent = AppStaticData.searchSaveMoney(SaveMoney.this, searchWord);
+			    if(foundIntent!=null){
+				    startActivity(foundIntent);
+			    }
+		    }
+		    binding.searchBar.setText("");
+		    binding.searchBar.clearFocus();
+		    return false;
+	    });
+    }
+    
+    private void toggleSearchBar(boolean b) {
+        if(b){
+            binding.searchIcon.setVisibility(View.GONE);
+            binding.saveMoneyIcon.setVisibility(View.GONE);
+            binding.textSaveMoney.setVisibility(View.GONE);
+            binding.searchBar.setVisibility(View.VISIBLE);
+            binding.searchBar.requestFocus();
+	        InputMethodManager inputMethodManager =
+			        (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+	        if(inputMethodManager != null){
+	        	View focus = getCurrentFocus();
+	        	if(focus != null) inputMethodManager.toggleSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken()
+				        ,InputMethodManager.SHOW_FORCED, 0);
+	        }
+            isSearchBarOpen = true;
+        }else{
+	        binding.searchBar.setText("");
+	        binding.searchBar.clearFocus();
+            binding.searchIcon.setVisibility(View.VISIBLE);
+            binding.saveMoneyIcon.setVisibility(View.VISIBLE);
+            binding.textSaveMoney.setVisibility(View.VISIBLE);
+            binding.searchBar.setVisibility(View.GONE);
+            isSearchBarOpen = false;
+        }
+    }
+	
+	@Override
+	public void onBackPressed() {
+    	if(isSearchBarOpen)toggleSearchBar(false);
+    	else super.onBackPressed();
+	}
+    
+    /*    public class Autoslide extends TimerTask { //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
     }
     
     @Override
