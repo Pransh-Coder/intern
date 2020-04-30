@@ -2,6 +2,7 @@ package com.example.intern.auth.fragments;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -112,6 +113,20 @@ public class RegisterAsParentFR extends Fragment {
             datePickerDialog.show();
         });
     }
+    
+    private int getSeniorAge(){
+        Calendar today = Calendar.getInstance();
+        int age = today.get(Calendar.YEAR) - calendar.get(Calendar.YEAR);
+        if (today.get(Calendar.MONTH) < calendar.get(Calendar.MONTH)) {
+            age--;
+        } else {
+            if (today.get(Calendar.MONTH) == calendar.get(Calendar.MONTH)
+                    && today.get(Calendar.DAY_OF_MONTH) < calendar.get(Calendar.DAY_OF_MONTH)) {
+                age--;
+            }
+        }
+        return age;
+    }
 
     private void setClickListeners(){
         binding.btnRegisterasChildSignIn.setOnClickListener(v->{
@@ -121,6 +136,20 @@ public class RegisterAsParentFR extends Fragment {
             }
             if(dateTimeStamp==null && !hasSelectedDate){
                 binding.etDOB.setError("DOB Cannot Be Empty");return;
+            }
+            //Check age
+            if(hasSelectedDate && getSeniorAge() < 59){
+                new AlertDialog.Builder(requireContext()).setIcon(R.drawable.pslogotrimmed).setTitle("OOPS!")
+                        .setMessage("It seems that you are not old enough to qualify as a senior citizen")
+                        .setCancelable(false)
+                        .setPositiveButton("Go back", (dialog, which) -> {
+                            if(which==AlertDialog.BUTTON_POSITIVE){
+                                viewModel.getNavController().navigateUp();
+                            }
+                        })
+                        .setNegativeButton("Dismiss", null)
+                        .show();
+                return;
             }
             if(pinCode != null && pinCode.length() == 6){
                 String nick_name = binding.etNickName.getText().toString();
