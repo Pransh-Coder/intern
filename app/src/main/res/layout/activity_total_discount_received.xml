@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/cardview_border">
+                android:background="@drawable/cardview_border2">
 
 
                 <TextView
@@ -90,7 +90,7 @@
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:background="@drawable/cell_shape"
+                    android:background="@drawable/cell_shape2"
                     android:padding="10dp"
                     android:text="Categories"
                     android:textColor="@color/black"
@@ -102,7 +102,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
-                    android:background="@drawable/cell_shape"
+                    android:background="@drawable/cell_shape2"
                     android:padding="10dp"
                     android:text="Amount"
                     android:textColor="@color/black"

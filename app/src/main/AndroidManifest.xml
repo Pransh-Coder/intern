@@ -104,8 +104,10 @@
 		<activity android:name=".tnc.TermsAndConditions" />
 		<activity
 			android:name=".ReduceExpenses.ReduceExpenses"
+			android:theme="@style/MaterialAppTheme"
 			android:windowSoftInputMode="adjustResize|adjustPan" />
-		<activity android:name=".TotalDiscountReceived.TotalDiscountReceived" />
+		<activity android:name=".TotalDiscountReceived.TotalDiscountReceived"
+			android:theme="@style/MaterialAppTheme"/>
 		<activity android:name=".NewsAndUpdatesACT" />
 		<activity android:name=".FeedBackOrComplaintACT" />
 		<activity android:name=".socialnetwork.Listactivity" />

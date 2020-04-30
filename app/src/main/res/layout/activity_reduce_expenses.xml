@@ -110,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint=" ₹"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
@@ -143,6 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint=" ₹"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
@@ -174,6 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint=" ₹"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
@@ -212,6 +215,7 @@
                     android:background="@null"
                     android:inputType="number"
                     android:maxLength="7"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:padding="10dp" />
         
             </TableRow>
@@ -243,6 +247,7 @@
                     android:hint=" ₹"
                     android:background="@null"
                     android:inputType="number"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:maxLength="7"
                     android:padding="10dp" />
         
@@ -278,6 +283,7 @@
                     android:hint=" ₹"
                     android:background="@null"
                     android:inputType="number"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:maxLength="7"
                     android:padding="10dp" />
         
@@ -310,6 +316,7 @@
                     android:layout_weight="1"
                     android:hint=" ₹"
                     android:background="@null"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:inputType="number"
                     android:maxLength="7"
                     android:padding="10dp" />
@@ -346,6 +353,7 @@
                     android:hint=" ₹"
                     android:background="@null"
                     android:inputType="number"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:maxLength="7"
                     android:padding="10dp" />
         
@@ -381,6 +389,7 @@
                     android:hint=" ₹"
                     android:background="@null"
                     android:inputType="number"
+                    android:textCursorDrawable="@drawable/custom_cursor"
                     android:maxLength="7"
                     android:padding="10dp" />
         
@@ -389,7 +398,7 @@
         
     </ScrollView>
     
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
