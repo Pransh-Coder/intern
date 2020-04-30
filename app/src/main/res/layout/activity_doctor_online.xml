@@ -91,7 +91,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.305"/>
 
-<!--    <ImageView
+    <ImageView
         android:id="@+id/homeModifBanner"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -99,7 +99,7 @@
         app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
-        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin"/>-->
+        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin"/>
 
     <ScrollView
         android:id="@+id/scrollVieew"
@@ -108,7 +108,7 @@
         app:layout_constraintBottom_toTopOf="@+id/demand_submit"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
-        app:layout_constraintTop_toBottomOf="@id/guide_hor_banner_low">
+        app:layout_constraintTop_toBottomOf="@id/homeModifBanner">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -131,7 +131,7 @@
             <ImageView
                 android:id="@+id/iv_doctor"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/doctor_image_rk_rishi"
                 app:layout_constraintDimensionRatio="w,1:1"
