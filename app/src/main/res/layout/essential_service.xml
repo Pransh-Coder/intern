@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/common_background"
-    tools:context=".askservices.DemandActivity">
+    android:background="@drawable/common_background">
 
     <ImageView
         android:id="@+id/demand_button_back"
@@ -76,7 +74,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginRight="22dp"
         android:scaleType="fitXY"
-        android:src="@drawable/whatyouwant"
+        android:src="@drawable/ask_anything_other_services"
         app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -90,111 +88,17 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.12" />
 
-    <Button
-        android:id="@+id/demand_button_service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button_outlined_selected"
-        android:fontFamily="@font/century_gothic_400"
-        android:padding="10dp"
-        android:text="Services"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/demand_button_product"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner" />
-
-    <Button
-        android:id="@+id/demand_button_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_oulined_not_selected"
-        android:fontFamily="@font/century_gothic_400"
-        android:padding="10dp"
-        android:text="Products"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/demand_button_service"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/demand_button_service"
-        app:layout_constraintTop_toTopOf="@id/demand_button_service" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/contraint_layout_services"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="@id/demand_button_service"
-        app:layout_constraintRight_toRightOf="@id/demand_button_product"
-        app:layout_constraintTop_toBottomOf="@id/demand_button_service">
-
-        <!--<TextView
-            android:id="@+id/tv_useless3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="Choose Type Of Service..."
-            android:textSize="12dp"
-            app:layout_constraintBottom_toTopOf="@id/services_spinner"
-            app:layout_constraintLeft_toLeftOf="@id/services_spinner"
-            app:layout_constraintTop_toTopOf="parent" />-->
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/services_spinner"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:autofillHints="What Services Do You Want?"
-            android:background="@drawable/spinner_boxed_back"
-            android:dropDownWidth="wrap_content"
-            android:entries="@array/AskServicesOptions"
-            android:spinnerMode="dropdown"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/contraint_layout_services" />
-
-        <EditText
-            android:id="@+id/et_service_description"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rectangle_outline"
-            android:ellipsize="start"
-            android:gravity="start"
-            android:hint="What do you Want....."
-            android:maxLength="200"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/services_spinner"
-            app:layout_constraintRight_toRightOf="@id/services_spinner"
-            app:layout_constraintTop_toBottomOf="@id/services_spinner" />
-
-        <TextView
-            android:id="@+id/char_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0/200"
-            android:textSize="17dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.98"
-            app:layout_constraintStart_toEndOf="@id/et_service_description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_service_description" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollView_Product"
+        android:id="@+id/scrollView_otherServices"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="4dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@id/demand_submit"
-        app:layout_constraintLeft_toLeftOf="@id/demand_button_service"
-        app:layout_constraintRight_toRightOf="@id/demand_button_product"
-        app:layout_constraintTop_toBottomOf="@id/demand_button_service">
+        app:layout_constraintLeft_toLeftOf="@+id/banner"
+        app:layout_constraintRight_toRightOf="@+id/banner"
+        app:layout_constraintTop_toBottomOf="@+id/banner">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_product"
@@ -202,16 +106,30 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/scrollView_Product"
-            app:layout_constraintLeft_toLeftOf="@id/scrollView_Product"
-            app:layout_constraintRight_toRightOf="@id/scrollView_Product"
-            app:layout_constraintTop_toTopOf="@id/scrollView_Product">
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/scrollView_otherServices"
+            app:layout_constraintLeft_toLeftOf="@id/scrollView_otherServices"
+            app:layout_constraintRight_toRightOf="@id/scrollView_otherServices"
+            app:layout_constraintTop_toTopOf="@id/scrollView_otherServices">
+
+            <TextView
+                android:id="@+id/tv_selectHere"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Here"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/constraint_product" />
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/productspinner"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="4dp"
                 android:autofillHints="What Services Do You Want?"
                 android:background="@drawable/spinner_boxed_back"
                 android:dropDownWidth="wrap_content"
@@ -220,7 +138,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/constraint_product" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_selectHere"/>
 
             <EditText
                 android:id="@+id/et_product_name"
@@ -230,7 +148,7 @@
                 android:background="@drawable/rectangle_outline"
                 android:ellipsize="start"
                 android:gravity="start"
-                android:hint="eg.\nbhindi 250gm \naaloo 2kg"
+                android:hint="eg.\nbhindi 250gm \naaloo 2kg \nAmul Gold 4pkt "
                 android:maxLength="200"
                 android:paddingStart="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -255,7 +173,7 @@
                 android:text="OR"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -265,10 +183,9 @@
                 android:id="@+id/tv_useless2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Attach List/Product Image"
+                android:text="Add Picture"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/iv_product_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_useless" />
@@ -276,7 +193,7 @@
             <ImageView
                 android:id="@+id/iv_product_image"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:background="@drawable/rectangle_outline"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_image_idol"
@@ -293,7 +210,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginEnd="72dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/background_button_sign_in"
         android:fontFamily="@font/century_gothic_400"
         android:text="Submit"
