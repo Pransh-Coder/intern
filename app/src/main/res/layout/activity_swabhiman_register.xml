@@ -146,7 +146,7 @@
                 android:theme="@style/TextInputLayoutStyle"
                 style="@style/TextInputLayoutStyle"
                 android:textColorHint="@color/grey"
-                app:hintTextColor="@color/grey"
+                app:hintTextColor="@color/my"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name :">
