@@ -175,6 +175,7 @@
 		<activity android:name=".two_wheeler_repair_list" />
 		<activity android:name=".ExclusiveServices.DoctorOnline"
 			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"/>
+		<activity android:name=".askservices.EssentialServices" />
 		
 		<meta-data
 			android:name="com.google.android.gms.version"

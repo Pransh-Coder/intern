@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -21,7 +20,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.intern.ExclusiveServices.ExclusiveServices;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.FireStoreUtil;
@@ -45,9 +43,7 @@ import static android.view.View.GONE;
 public class DemandActivity extends AppCompatActivity {
     ActivityDemandBinding binding;
     List<String> services;
-    List<String> products;
     String service = null;
-    String product = null;
     String filePath=null;
 	SharedPrefUtil prefUtil;
     private boolean isProductPageVisible;
@@ -62,18 +58,13 @@ public class DemandActivity extends AppCompatActivity {
         checkPerms();
         prefUtil = new SharedPrefUtil(this);
         services = Arrays.asList(getResources().getStringArray(R.array.AskServicesOptions));
-        products = Arrays.asList(getResources().getStringArray(R.array.ProductsOptions));
-        handleIntent();
 	    binding.etServiceDescription.addTextChangedListener(new TextWatcher() {
 		    @Override
-		    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			
-		    }
+		    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 		
 		    @Override
 		    public void onTextChanged(CharSequence s, int start, int before, int count) {
 			    binding.charCount.setText(s.length() +"/200");
-			
 		    }
 		
 		    @Override
@@ -84,20 +75,16 @@ public class DemandActivity extends AppCompatActivity {
 	    });
 	    binding.etProductName.addTextChangedListener(new TextWatcher() {
 		    @Override
-		    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			
-		    }
+		    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 		
 		    @Override
 		    public void onTextChanged(CharSequence s, int start, int before, int count) {
 			    binding.charCount2.setText(s.length() +"/200");
-			
 		    }
 		
 		    @Override
 		    public void afterTextChanged(Editable s) {
 			    binding.charCount2.setText(s.length() +"/200");
-			
 		    }
 	    });
         binding.demandButtonBack.setOnClickListener(v-> onBackPressed());
@@ -122,44 +109,10 @@ public class DemandActivity extends AppCompatActivity {
                 service = "other";
             }
         });
-        binding.productspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                product = products.get(position);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
         binding.demandNotification.setOnClickListener(v -> {
             Intent intent = new Intent(this, NewsAndUpdatesACT.class);
             startActivity(intent);
         });
-    }
-    
-    private void handleIntent(){
-        Intent intent = getIntent();
-        if(intent.hasExtra(ExclusiveServices.FROM_EXCLUSIVE_SERVICES)){
-            toggleToProductPage();
-            String request = intent.getStringExtra(ExclusiveServices.FROM_EXCLUSIVE_SERVICES);
-            if(request !=null){
-                if(request.equals(ExclusiveServices.DEMAND_DAIRY)){
-                    //TODO : Dairy
-                    binding.productspinner.setSelection(3);
-                }else if(request.equals(ExclusiveServices.DEMAND_GROCERY)){
-                    //TODO : Grocery
-                    binding.productspinner.setSelection(0);
-                }else if(request.equals(ExclusiveServices.DEMAND_VEGETABLES)){
-                    binding.productspinner.setSelection(1);
-                }else if(request.equals(ExclusiveServices.DEMAND_WATER)){
-                    binding.productspinner.setSelection(2);
-                }
-                hideServicesPage();
-            }
-        }
-    }
-    
-    private void hideServicesPage(){
-        binding.demandButtonService.setEnabled(false);
     }
     
     private void toggleToProductPage(){
@@ -168,7 +121,7 @@ public class DemandActivity extends AppCompatActivity {
         binding.demandButtonService.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
         binding.demandButtonProduct.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
         binding.contraintLayoutServices.setVisibility(GONE);
-        binding.constraintProduct.setVisibility(View.VISIBLE);
+        binding.scrollViewProduct.setVisibility(View.VISIBLE);
     }
     
     private void toggleToServicesPage(){
@@ -177,7 +130,7 @@ public class DemandActivity extends AppCompatActivity {
         binding.demandButtonProduct.setBackground(getResources().getDrawable(R.drawable.button_oulined_not_selected));
         binding.demandButtonService.setBackground(getResources().getDrawable(R.drawable.button_outlined_selected));
         binding.contraintLayoutServices.setVisibility(View.VISIBLE);
-        binding.constraintProduct.setVisibility(GONE);
+        binding.scrollViewProduct.setVisibility(GONE);
     }
     
     @Override
@@ -214,36 +167,46 @@ public class DemandActivity extends AppCompatActivity {
 		        }
 	        }
             ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setTitle("Please Wait");
-            dialog.show();
+            dialog.setTitle(getString(R.string.please_wait));
+            dialog.setMessage(getString(R.string.uploading_request_message));
             if(isServicesPageVisible){
                 String description = binding.etServiceDescription.getText().toString();
                 if(TextUtils.isEmpty(description)){
-                    binding.etServiceDescription.setError("Describe the service");
+                    binding.etServiceDescription.setError(getString(R.string.describe_service_error));
                 }else{
+	                dialog.show();
                     FireStoreUtil.uploadServiceRequest(UID,service,description).addOnSuccessListener(documentReference -> {         // &#128522 \uD83D\uDE4F\uD83C\uDFFB"
                         dialog.dismiss();
-                        new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings."+ Html.fromHtml("&#128519")).setPositiveButton("OK", (dialog12, which) -> onBackPressed())
-                                .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
+	                    new AlertDialog.Builder(context).setMessage(R.string.request_submit_success_alert).setPositiveButton(R.string.ok, (dialog1, which) -> onBackPressed())
+			                    .setTitle(R.string.thank_you).setIcon(R.drawable.pslogotrimmed).show();
                     });
                 }
             }else if(isProductPageVisible){
-                String productRequest = product + " : " + binding.etProductName.getText().toString();
+            	//TODO : Fallback to previous settings
+                String productRequest = binding.etProductName.getText().toString();
                 if (filePath != null && !filePath.isEmpty()){
+                	//Image is provided
+	                dialog.show();
                     FireStoreUtil.uploadImage(this, UID,
                             BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot -> taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
                                 FireStoreUtil.uploadProductRequest(prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), productRequest, uri.toString()).addOnSuccessListener(documentReference -> {
                                     dialog.dismiss();
-                                    new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. \uD83D\uDE4F\uD83C\uDFFB").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
-                                            .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
+                                    new AlertDialog.Builder(context).setMessage(R.string.request_submit_success_alert).setPositiveButton(R.string.ok, (dialog1, which) -> onBackPressed())
+                                            .setTitle(R.string.thank_you).setIcon(R.drawable.pslogotrimmed).show();
                                 });
                             }));
                 }else{
-                    FireStoreUtil.uploadProductRequest(UID, productRequest, null).addOnSuccessListener(documentReference -> {
-                        dialog.dismiss();
-                        new AlertDialog.Builder(context).setMessage("Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. \uD83D\uDE4F\uD83C\uDFFB").setPositiveButton("OK", (dialog1, which) -> onBackPressed())
-                                .setTitle("Thank You").setIcon(R.drawable.pslogotrimmed).show();
-                    });
+                	//No Image provided by user
+                    if(productRequest.isEmpty()){
+                    	binding.etProductName.setError(getString(R.string.ask_product_error_message));
+                    }else{
+	                    dialog.show();
+	                    FireStoreUtil.uploadProductRequest(UID, productRequest, null).addOnSuccessListener(documentReference -> {
+		                    dialog.dismiss();
+		                    new AlertDialog.Builder(context).setMessage(R.string.request_submit_success_alert).setPositiveButton(R.string.ok, (dialog1, which) -> onBackPressed())
+				                    .setTitle(R.string.thank_you).setIcon(R.drawable.pslogotrimmed).show();
+	                    });
+                    }
                 }
             }
         });

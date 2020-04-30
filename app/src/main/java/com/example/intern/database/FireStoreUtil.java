@@ -69,6 +69,7 @@ public abstract class FireStoreUtil {
 	private static volatile StorageReference userStorageReference;
 	private static volatile CollectionReference userPhoneCollectionReference;
 	private static String ASK_THINGS_COLLECTION_NAME = "asked";
+	private static String ESSENTIAL_SERVICE_REQUEST_COLLECTION_NAME = "essential";
 	public static String PETROL_PRICE_KEY = "petropr";
 	private static String FUEL_REFUND_COLLECTION_NAME = "bpclref";
 	public static String STATIC_DATA_COLLECTION_NAME = "psdata";
@@ -147,6 +148,13 @@ public abstract class FireStoreUtil {
 		data.put("type", "product");data.put("user", userUID);
 		data.put("name", productName);data.put("image", productPathInFirebaseStorage);
 		return FirebaseFirestore.getInstance().collection(ASK_THINGS_COLLECTION_NAME).add(data);
+	}
+	
+	public static Task<DocumentReference> uploadEssentialServiceRequest(String UID, String needDetails, @Nullable String imagePath){
+		Map<String, Object> data = new HashMap<>();
+		data.put("user" , UID); data.put("need", needDetails);
+		data.put("list", imagePath);
+		return FirebaseFirestore.getInstance().collection(ESSENTIAL_SERVICE_REQUEST_COLLECTION_NAME).add(data);
 	}
 	
 	public static Task<DocumentReference> uploadFuelRefundRequest(String UID, String invoiceNo, Double amountReq, String firebaseStorageUrl){

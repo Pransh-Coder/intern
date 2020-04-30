@@ -112,4 +112,12 @@
     <string name="title_activity_maps">Map</string>
     <string name="PSNotificationChannel">PS Notifications</string>
     <string name="notifi_channel_descp">PSNotifications</string>
+	<string name="uploading_request_message">Uploading Your Request</string>
+	<string name="please_wait">Please Wait</string>
+    <string name="request_submit_success_alert">Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. 😇</string>
+    <string name="thank_you">Thank You</string>
+    <string name="ok">OK</string>
+    <string name="describe_service_error">Describe the service</string>
+    <string name="essential_service_description_error">Click a picture or enter list</string>
+    <string name="ask_product_error_message">Enter Product Description</string>
 </resources>
