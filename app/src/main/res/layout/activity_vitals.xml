@@ -238,7 +238,7 @@
                 android:layout_weight="2"
                 android:background="@drawable/cell_shape"
                 android:padding="10dp"
-                android:text="Height (in cm)"
+                android:text="Weight (in kg)"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
@@ -247,7 +247,7 @@
                 android:id="@+id/et_height"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Ex : 170"
+                android:hint="Ex : 70"
                 android:inputType="number"
                 android:background="@null"
                 android:textCursorDrawable="@drawable/custom_cursor"
@@ -274,7 +274,7 @@
                 android:layout_weight="2"
                 android:background="@drawable/cell_shape"
                 android:padding="10dp"
-                android:text="Weight (in kgs)"
+                android:text="Allergy"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp" />
 
@@ -284,11 +284,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Ex : 70"
+                android:hint="If any"
                 android:background="@null"
                 android:textCursorDrawable="@drawable/custom_cursor"
-                android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:inputType="text"
+                android:maxLength="50"
                 android:padding="10dp" />
 
         </TableRow>
