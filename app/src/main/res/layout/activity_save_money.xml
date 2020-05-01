@@ -201,7 +201,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/health" />
+                        android:src="@drawable/icon_healthh" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -230,7 +230,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/gifts" />
+                        android:src="@drawable/icon_giftsh" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -268,7 +268,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/lifestyle" />
+                        android:src="@drawable/icon_lifestyleh" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -296,7 +296,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/food" />
+                        android:src="@drawable/icon_foodh" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -336,7 +336,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/icon_services" />
+                        android:src="@drawable/icon_servicesh" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -365,7 +365,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="7dp"
-                        android:src="@drawable/holiday" />
+                        android:src="@drawable/icon_holidayh" />
 
                     <TextView
                         android:layout_width="wrap_content"
