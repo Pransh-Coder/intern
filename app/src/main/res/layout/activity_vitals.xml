@@ -66,6 +66,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_person_name" />
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@id/submit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heading2">
+
     <TableLayout
         android:id="@+id/table"
         android:layout_width="match_parent"
@@ -104,6 +115,7 @@
                 android:background="@null"
                 android:padding="10dp"
                 android:inputType="textCapCharacters"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:maxLength="3"
                 android:textColor="@color/cardview_dark_background" />
 
@@ -135,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:background="@null"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:layout_weight="1"
                 android:maxLength="3"
                 android:padding="10dp" />
@@ -168,6 +181,7 @@
                 android:hint="Ex : 120/80"
                 android:background="@null"
                 android:layout_weight="1"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:inputType="textCapCharacters"
                 android:maxLength="7"
                 android:padding="10dp" />
@@ -202,6 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Ex : 98.6"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:background="@null"
                 android:inputType="numberDecimal"
                 android:maxLength="4"
@@ -235,6 +250,7 @@
                 android:hint="Ex : 170"
                 android:inputType="number"
                 android:background="@null"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:maxLength="3"
                 android:layout_weight="1"
                 android:padding="10dp" />
@@ -270,14 +286,26 @@
                 android:layout_weight="1"
                 android:hint="Ex : 70"
                 android:background="@null"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:inputType="numberDecimal"
                 android:maxLength="5"
                 android:padding="10dp" />
 
         </TableRow>
-
     </TableLayout>
-    
+    </ScrollView>
+
+<!--    <android.widget.Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_button_sign_in"
+        android:padding="10dp"
+        android:text="SUBMIT"
+        app:layout_constraintBottom_toTopOf="@id/logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>-->
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
@@ -298,4 +326,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
