@@ -207,6 +207,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/img3"
                 app:layout_constraintTop_toBottomOf="@id/thrPara2" />
+
             <TextView
                 android:id="@+id/forthPara2"
                 android:layout_width="0dp"
@@ -223,7 +224,7 @@
                 android:id="@+id/img4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="36dp"
                 android:src="@drawable/zebra_cross"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/forthPara2" />
@@ -233,16 +234,31 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
-                android:fontFamily="@font/century_gothic"
-                android:padding="5dp"
-                android:text="Demarketion on floor for \nbetter visibility when it's no light"
+                android:fontFamily="@font/century_gothic_400"
+                android:layout_marginStart="8dp"
+                android:text="Anti-skid Tape"
                 android:textColor="@color/black"
-                android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="@+id/img4"
+                android:textSize="17dp"
+                android:layout_marginTop="28dp"
+                android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@+id/img4"
-                app:layout_constraintTop_toBottomOf="@+id/forthPara"
-                app:layout_constraintTop_toTopOf="@+id/img4"
+                app:layout_constraintTop_toBottomOf="@+id/forthPara2"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/fif_para2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:fontFamily="@font/century_gothic_400"
+                android:layout_marginStart="10dp"
+                android:textSize="12dp"
+                android:text="Anti-Skid Tape helps to reduce the risk of slips, falls, trips, particularly senior adults. It can be used on stairs, floors and ramps – smooth or dry surfaces, ladders."
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/fif_para"
+                app:layout_constraintStart_toEndOf="@id/img4"/>
+
 
             <TextView
                 android:id="@+id/fifth_para"
@@ -258,7 +274,7 @@
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fif_para"/>
+                app:layout_constraintTop_toBottomOf="@id/fif_para2"/>
 
 <!--                        <Button
                             android:id="@+id/submithm"
