@@ -116,7 +116,8 @@
 			android:name=".auth.AuthActivity"
 			android:launchMode="singleTop"
 			android:noHistory="true" />
-		<activity android:name=".MedicalRecords.Vitals" />
+		<activity android:name=".MedicalRecords.Vitals"
+			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"/>
 		<activity android:name=".holiday_list" />
 		<activity android:name=".lifestyle_list" />
 		<activity android:name=".food_list" />
