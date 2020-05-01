@@ -177,7 +177,7 @@
 		<activity android:name=".ServicesActivity" />
 		<activity android:name=".two_wheeler_repair_list" />
 		<activity android:name=".ExclusiveServices.DoctorOnline"
-			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"/>
+			android:windowSoftInputMode="adjustResize|stateHidden|adjustPan"/>
 		<activity android:name=".askservices.EssentialServices" />
 		
 		<meta-data

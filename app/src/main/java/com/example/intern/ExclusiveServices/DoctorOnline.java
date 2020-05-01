@@ -9,10 +9,19 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
@@ -28,12 +37,14 @@ public class DoctorOnline extends AppCompatActivity {
     ActivityDoctorOnlineBinding binding;
     SharedPrefUtil prefUtil;
     boolean askedForSelf = true;
+    String description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityDoctorOnlineBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.ps));
         populateDoctorDetails();
         prefUtil = new SharedPrefUtil(this);
         binding.doctorButtonBack.setOnClickListener(v-> onBackPressed());
@@ -45,6 +56,14 @@ public class DoctorOnline extends AppCompatActivity {
             Intent intent = new Intent(this, NewsAndUpdatesACT.class);
             startActivity(intent);
         });
+        //TEST
+	    binding.etDescp.setOnClickListener(v -> {
+	    	CustomDialog customDialog = new CustomDialog("Describe illness", "Enter here", text -> {
+				description = text;
+				binding.etDescp.setText(text);
+		    },description);
+	    	customDialog.show(getSupportFragmentManager(), "TEST");
+	    });
     }
     
     @SuppressLint("SetTextI18n")
@@ -91,12 +110,7 @@ public class DoctorOnline extends AppCompatActivity {
         
         binding.demandSubmit.setOnClickListener(v -> {
 	        final Context context = this;
-	        Editable descp = binding.etDescp.getText();
-	        String description = "";
-	        if(descp != null) {
-	        	description = descp.toString();
-	        }
-	        if (description.isEmpty()) {
+	        if (description == null || description.isEmpty()) {
 		        //did not enter description
 		        binding.etDescp.setError("Describe Your Problem");
 	        } else {
@@ -161,5 +175,65 @@ public class DoctorOnline extends AppCompatActivity {
 			text = text.subSequence(0, text.length() - 1);
 		}
 		return text;
+	}
+	
+	interface textListener{
+    	void setText(String text);
+	}
+
+	public static class CustomDialog extends DialogFragment{
+    	TextView mTitle;
+    	EditText mDetails;
+    	Button mOK;
+    	String title;
+    	String hint;
+    	String previousText;
+    	private textListener textListener;
+    	
+    	public CustomDialog(String title, String hint , textListener textListener, @Nullable String previousText){
+    		this.textListener = textListener;
+    		this.title = title;
+    		this.hint = hint;
+    		if(previousText != null)this.previousText = previousText;
+	    }
+    	
+		@Override
+		public void onCreate(@Nullable Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+		}
+		
+		@Nullable
+		@Override
+		public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+			View v = inflater.inflate(R.layout.enter_text_dialog, container, false);
+			return v;
+		}
+		
+		@Override
+		public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+			super.onViewCreated(view, savedInstanceState);
+			mTitle = view.findViewById(R.id.tv_title);
+			mDetails = view.findViewById(R.id.et_detail);
+			mOK = view.findViewById(R.id.ok_button);
+			mOK.setOnClickListener(v -> dismiss());
+			mTitle.setText(title);
+			mDetails.setHint(hint);
+			if(previousText != null)mDetails.setText(previousText);
+		}
+		
+		@Override
+		public void onStart() {
+			super.onStart();
+			mDetails.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {}
+				@Override
+				public void afterTextChanged(Editable s) {
+					textListener.setText(s.toString());
+				}
+			});
+		}
 	}
 }
