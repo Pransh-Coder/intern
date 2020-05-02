@@ -116,6 +116,19 @@ public class ExclusiveServices extends AppCompatActivity {
 					.setOnDismissListener(dialog -> finish())
 					.setIcon(getResources().getDrawable(R.drawable.pslogotrimmed)).show();
 		}
+		if(prefUtil.getPreferences().getString(SharedPrefUtil.USER_ADDRESS_KEY, null) == null){
+			new AlertDialog.Builder(this).setTitle("Needs Your Address")
+					.setMessage("Please update your address and try again")
+					.setCancelable(false)
+					.setPositiveButton("OK", (dialog, which) -> {
+						if(which== DialogInterface.BUTTON_POSITIVE){
+							Intent intent = new Intent(ExclusiveServices.this, EditProfile.class);
+							startActivity(intent);
+						}
+					}).setNegativeButton("Dismiss", (dialog, which) -> finish())
+					.setOnDismissListener(dialog -> finish())
+					.setIcon(getResources().getDrawable(R.drawable.pslogotrimmed)).show();
+		}
 		binding.auto.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.AUTO_SERVICES_SERVICES));
 		binding.emergencyCare.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.EMERGENCY_CARE_SERVICES));
 		binding.legalFinancial.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.LEGAL_FINANCIAL_SERVICES));

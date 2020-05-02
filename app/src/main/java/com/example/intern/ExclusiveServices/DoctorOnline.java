@@ -181,7 +181,7 @@ public class DoctorOnline extends AppCompatActivity {
     	void setText(String text);
 	}
 
-	public static class CustomDialog extends DialogFragment{
+	static class CustomDialog extends DialogFragment{
     	TextView mTitle;
     	EditText mDetails;
     	Button mOK;

@@ -243,15 +243,17 @@
                 android:textSize="14dp" />
 
 
-            <EditText
-                android:id="@+id/et_height"
+            <TextView
+                android:id="@+id/et_weight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Ex : 70"
                 android:inputType="number"
+                android:textColor="@color/black"
                 android:background="@null"
                 android:textCursorDrawable="@drawable/custom_cursor"
                 android:maxLength="3"
+                android:textSize="18sp"
                 android:layout_weight="1"
                 android:padding="10dp" />
 
@@ -279,13 +281,14 @@
                 android:textSize="14dp" />
 
 
-            <EditText
-                android:id="@+id/et_weight"
+            <TextView
+                android:id="@+id/et_allergy"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 android:hint="If any"
-                android:background="@null"
+                android:textSize="18sp"
                 android:textCursorDrawable="@drawable/custom_cursor"
                 android:inputType="text"
                 android:maxLength="50"
