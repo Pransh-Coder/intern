@@ -73,6 +73,8 @@ public class EditProfile extends AppCompatActivity {
         binding.email.setText(preferences.getString(SharedPrefUtil.USER_EMAIL_KEY, null));
         binding.occupation.setText(preferences.getString(SharedPrefUtil.USER_OCCUPATION_KEY, null ));
         binding.address.setText(preferences.getString(SharedPrefUtil.USER_ADDRESS_KEY, null));
+        binding.phone.setText(preferences.getString(SharedPrefUtil.USER_PHONE_NO, null));
+        binding.relativePhoneNumber.setText(preferences.getString(SharedPrefUtil.USER_RELATIVE_PHONE_NUMBER_KEY, null));
         String filePath = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PROFILE_PIC_PATH_KEY, null);
         if(filePath != null && !filePath.isEmpty()){
             Glide.with(this).load(filePath).fallback(R.drawable.edit_profile).error(R.drawable.edit_profile).into(binding.ivProfilePic);
@@ -139,37 +141,34 @@ public class EditProfile extends AppCompatActivity {
             if(hasDataEdited){
                 ProgressDialog dialog = new ProgressDialog(this);
                 dialog.setTitle("Updating Profile");
-                dialog.show();
+                dialog.setIcon(R.drawable.pslogotrimmed);
+                dialog.setMessage("Please make sure you are connected to the internet");
                 String u_name;
                 String email;
                 String occ = null;
                 String add = null;
+                String phone = null, relativePhone = null;
                 Editable name = binding.name.getText();
                 if(name != null){
                     u_name = name.toString();
                     if(TextUtils.isEmpty(u_name)){
-                        dialog.hide();
                         binding.name.setError("Cannot be empty");
                         return;
                     }
                 }else{
-                    dialog.hide();
                     return;
                 }
                 Editable mail = binding.email.getText();
                 if(mail != null){
                     email = mail.toString();
                     if(TextUtils.isEmpty(email)){
-                        dialog.hide();
                         binding.email.setError("Cannot be empty");
                         return;
                     }else if(!email.contains("@") && !email.contains(".")){
-                        dialog.hide();
                         binding.email.setError("Invalid e-mail");
                         return;
                     }
                 }else {
-                    dialog.hide();
                     return;
                 }
                 Editable occupation = binding.occupation.getText();
@@ -180,10 +179,27 @@ public class EditProfile extends AppCompatActivity {
                 if(address != null){
                     add = address.toString();
                 }
+                Editable phoneNo = binding.phone.getText();
+                if(phoneNo != null) {
+                    phone = phoneNo.toString();
+                    if(phone.length() < 10){
+                        binding.phone.setError("Invalid Phone Number");
+                        return;
+                    }
+                }
+                Editable relativePh = binding.relativePhoneNumber.getText();
+                if(relativePh != null) {
+                    relativePhone = relativePh.toString();
+                    if(relativePhone.length() < 10){
+                        binding.relativePhoneNumber.setError("Invalid Phone Number");
+                        return;
+                    }
+                }
                 SharedPrefUtil prefUtil = new SharedPrefUtil(this);
-                FireStoreUtil.uploadMeta(this,u_name,email,occ,add).addOnSuccessListener(aVoid -> {
+                dialog.show();
+                FireStoreUtil.uploadMeta(this,u_name,email,occ,add, phone, relativePhone).addOnSuccessListener(aVoid -> {
                     prefUtil.updateWithCloud(FireStoreUtil.getFirebaseUser(getApplicationContext()).getUid());
-                    dialog.hide();
+                    dialog.dismiss();
                     Intent intent = new Intent(EditProfile.this, MainApp.class);
                     finish();
                     startActivity(intent);
@@ -233,5 +249,7 @@ public class EditProfile extends AppCompatActivity {
         binding.address.addTextChangedListener(changeWatcher);
         binding.name.addTextChangedListener(changeWatcher);
         binding.occupation.addTextChangedListener(changeWatcher);
+        binding.phone.addTextChangedListener(changeWatcher);
+        binding.relativePhoneNumber.addTextChangedListener(changeWatcher);
     }
 }

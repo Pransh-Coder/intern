@@ -13,6 +13,7 @@ import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityVitalsBinding;
 import com.example.intern.mailers.VCuraAutoMailer;
 import com.example.intern.mainapp.MainApp;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Vitals extends AppCompatActivity {
     ActivityVitalsBinding binding;
@@ -47,9 +48,17 @@ public class Vitals extends AppCompatActivity {
                 String temperature = binding.etTemperature.getText().toString();
                 String height = binding.etHeight.getText().toString();
                 String weight = binding.etWeight.getText().toString();
-                String email_body = "Patient Name : " + name + "\n Shared Health Details : \n1. Blood Group - " + bloodGrp +
+                String phoneAdded = getIntent().getStringExtra("phoneAdded");
+                String phone = "";
+                if(phoneAdded.equals("true")){
+                    phone = getIntent().getStringExtra("phone");
+                }
+                else{
+                    phone = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+                }
+                String email_body = "Patient Name : " + name + " Patient Phone number : " + phone + "\n Shared Health Details : \n1. Blood Group - " + bloodGrp +
                         "\n2.Blood Glucose - " + bloodGlucose + "\n3.Blood Pressure - " + bloodPr + "\n4.Temperature - " +
-                        temperature + "\n5.Height - "+ height + "\n6.Weight - " + weight +
+                        temperature + "\n5.Weight - "+ height + "\n6.Allergy - " + weight +
                         "\nThis email is auto generated and the truth of above vitals depend upon the data submitted by the patient.";
                 VCuraAutoMailer.sendMail("Patient Request | PSByPrarambh",email_body,email);
                 new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed)

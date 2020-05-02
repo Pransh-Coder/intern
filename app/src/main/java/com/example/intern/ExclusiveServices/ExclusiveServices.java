@@ -2,6 +2,7 @@ package com.example.intern.ExclusiveServices;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,10 +13,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.AppStaticData;
+import com.example.intern.EditProfile.EditProfile;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.askservices.EssentialServices;
 import com.example.intern.database.FireStoreUtil;
+import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityExclusiveServiceBinding;
 import com.example.intern.mainapp.MainApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +30,7 @@ import java.util.Map;
 public class ExclusiveServices extends AppCompatActivity {
 
     ActivityExclusiveServiceBinding binding;
+    private SharedPrefUtil prefUtil;
     public static String FROM_EXCLUSIVE_SERVICES = "exclusiveredirect";
     public static String DEMAND_GROCERY = "grocery";
     public static String DEMAND_VEGETABLES = "veggies";
@@ -38,6 +42,8 @@ public class ExclusiveServices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 	    binding = ActivityExclusiveServiceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        prefUtil = new SharedPrefUtil(this);
+        
         binding.bannerexclusive.setOnClickListener(v -> {
 	        String url="https://www.prarambhstore.com/PSbyPrarambh";
 	        Intent i =new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -96,6 +102,20 @@ public class ExclusiveServices extends AppCompatActivity {
 	protected void onStart() {
 		super.onStart();
 		setUpSearchBar();
+		//Check if the user has entered phone no or relative phone no
+		if(!(prefUtil.getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null) != null || prefUtil.getPreferences().getString(SharedPrefUtil.USER_RELATIVE_PHONE_NUMBER_KEY, null) != null)){
+			new AlertDialog.Builder(this).setTitle("Needs Your Contact Details")
+					.setMessage("Please update your phone number try again")
+					.setCancelable(false)
+					.setPositiveButton("OK", (dialog, which) -> {
+						if(which== DialogInterface.BUTTON_POSITIVE){
+							Intent intent = new Intent(ExclusiveServices.this, EditProfile.class);
+							startActivity(intent);
+						}
+					}).setNegativeButton("Dismiss", (dialog, which) -> finish())
+					.setOnDismissListener(dialog -> finish())
+					.setIcon(getResources().getDrawable(R.drawable.pslogotrimmed)).show();
+		}
 		binding.auto.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.AUTO_SERVICES_SERVICES));
 		binding.emergencyCare.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.EMERGENCY_CARE_SERVICES));
 		binding.legalFinancial.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.LEGAL_FINANCIAL_SERVICES));

@@ -122,6 +122,7 @@ public class SharedPrefUtil {
 			editor.putString(USER_PS_NICK_NAME_KEY, snapshot.getString(FireStoreUtil.USER_PS_NICK_NAME));
 			editor.putString(USER_ADDRESS_KEY, snapshot.getString(FireStoreUtil.USER_ADDRESS));
 			editor.putString(USER_OCCUPATION_KEY, snapshot.getString(FireStoreUtil.USER_OCCUPATION));
+			editor.putString(USER_RELATIVE_PHONE_NUMBER_KEY, snapshot.getString(FireStoreUtil.USER_RELATIVE_PHONE_NUMBER));
 			editor.apply();
 		});
 	}

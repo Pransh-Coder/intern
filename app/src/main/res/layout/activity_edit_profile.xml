@@ -78,22 +78,17 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_edit_text"
         app:layout_constraintLeft_toLeftOf="@+id/txt_edit_text"
         app:layout_constraintRight_toRightOf="@+id/txt_edit_text"/>
-
-    <LinearLayout
+    
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/iv_profile_pic"
-        app:layout_constraintBottom_toBottomOf="parent">
-
+        android:layout_height="0dp"
+        android:layout_margin="15dp"
+        app:layout_constraintBottom_toTopOf="@id/logo"
+        app:layout_constraintTop_toBottomOf="@id/txt">
         <LinearLayout
-            android:id="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/heading">
-
+            android:orientation="vertical">
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -106,7 +101,7 @@
                 app:layout_constraintTop_toTopOf="@+id/namimg"
                 app:layout_constraintBottom_toBottomOf="@+id/namimg"
                 android:layout_marginTop="15dp">
-
+        
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/name"
                     android:layout_width="match_parent"
@@ -114,26 +109,6 @@
                     android:drawablePadding="5dp"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linear2"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/linear1">
-
-            <!--<ImageView
-                android:id="@+id/namemail"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/ic_email"
-                app:layout_constraintTop_toBottomOf="@+id/namimg"
-                app:layout_constraintLeft_toLeftOf="parent"/>-->
-
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -144,7 +119,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/namemail"
                 app:layout_constraintTop_toTopOf="@+id/namemail"
                 app:layout_constraintBottom_toBottomOf="@+id/namemail">
-
+        
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/occupation"
                     android:layout_width="match_parent"
@@ -155,26 +130,6 @@
                     app:layout_constraintTop_toTopOf="@+id/namemail"
                     app:layout_constraintBottom_toBottomOf="@+id/namemail"/>
             </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linear3"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/linear2">
-
-            <!--    <ImageView
-                    android:id="@+id/passimg"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/ic_lock"
-                    app:layout_constraintTop_toBottomOf="@+id/namemail"
-                    app:layout_constraintLeft_toLeftOf="parent"/>-->
-
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -185,7 +140,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/passimg"
                 app:layout_constraintTop_toTopOf="@+id/passimg"
                 app:layout_constraintBottom_toBottomOf="@+id/passimg">
-
+        
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
@@ -193,16 +148,6 @@
                     android:drawablePadding="5dp"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linear4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/linear3"
-            android:orientation="horizontal">
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -213,7 +158,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/phonimg"
                 app:layout_constraintTop_toTopOf="@+id/phonimg"
                 app:layout_constraintBottom_toBottomOf="@+id/phonimg">
-
+        
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/address"
                     android:layout_width="match_parent"
@@ -222,23 +167,52 @@
                     android:inputType="text"
                     android:maxLength="100"/>
             </com.google.android.material.textfield.TextInputLayout>
-
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Phone Number">
+        
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:inputType="number"
+                    android:maxLength="10"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Alternative Phone Number">
+        
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/relativePhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:inputType="number"
+                    android:maxLength="10"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <android.widget.Button
+                android:id="@+id/add_customer"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/custom_button"
+                android:text="SAVE"
+                android:textColor="#000"
+                app:layout_constraintLeft_toLeftOf="@+id/linear5"
+                app:layout_constraintRight_toRightOf="@+id/linear5"
+                app:layout_constraintTop_toBottomOf="@+id/linear5"/>
         </LinearLayout>
-
-        <android.widget.Button
-            android:id="@+id/add_customer"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="SAVE"
-            android:textColor="#000"
-            android:background="@drawable/custom_button"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center_horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/linear5"
-            app:layout_constraintRight_toRightOf="@+id/linear5"
-            app:layout_constraintLeft_toLeftOf="@+id/linear5"/>
-
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <ImageView
         android:layout_width="50dp"

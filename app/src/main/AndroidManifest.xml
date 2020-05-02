@@ -100,7 +100,8 @@
 		<activity android:name=".shopping.ActivityShopping" />
 		<activity android:name=".BPCL_Fuel_QR_ScannerActivity" />
 		<activity android:name=".fuel.FuelBPCLACT" />
-		<activity android:name=".MedicalRecords.MedicalRecord" />
+		<activity android:name=".MedicalRecords.MedicalRecord"
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
 		<activity android:name=".tnc.TermsAndConditions" />
 		<activity
 			android:name=".ReduceExpenses.ReduceExpenses"
@@ -177,7 +178,7 @@
 		<activity android:name=".ServicesActivity" />
 		<activity android:name=".two_wheeler_repair_list" />
 		<activity android:name=".ExclusiveServices.DoctorOnline"
-			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"/>
+			android:windowSoftInputMode="adjustResize|stateHidden|adjustPan"/>
 		<activity android:name=".askservices.EssentialServices" />
 		
 		<meta-data

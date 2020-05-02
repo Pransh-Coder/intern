@@ -42,7 +42,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/doctor"
+        android:src="@drawable/icon_doctor_online"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -227,7 +227,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_name">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
                     android:id="@+id/et_descp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
