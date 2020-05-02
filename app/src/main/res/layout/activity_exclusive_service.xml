@@ -71,7 +71,7 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:src="@drawable/exclusive"
+        android:src="@drawable/essential_icon"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -80,7 +80,7 @@
         android:id="@+id/txtExcusiveService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exclusive Services "
+        android:text="Essential Services "
         android:textColor="#000"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/hor_guide_12_percent"
@@ -400,7 +400,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
                     android:padding="5dp"
-                    android:src="@drawable/doctor" />
+                    android:src="@drawable/icon_doctor_online" />
 
                 <TextView
                     android:id="@+id/txt6"
