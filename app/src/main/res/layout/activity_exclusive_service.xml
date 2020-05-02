@@ -80,7 +80,7 @@
         android:id="@+id/txtExcusiveService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exclusive Services "
+        android:text="Essential Services "
         android:textColor="#000"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/hor_guide_12_percent"
