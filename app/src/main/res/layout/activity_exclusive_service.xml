@@ -71,7 +71,7 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:src="@drawable/exclusive"
+        android:src="@drawable/essential_icon"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
