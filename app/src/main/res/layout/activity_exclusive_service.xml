@@ -400,7 +400,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
                     android:padding="5dp"
-                    android:src="@drawable/doctor" />
+                    android:src="@drawable/icon_doctor_online" />
 
                 <TextView
                     android:id="@+id/txt6"
