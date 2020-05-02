@@ -116,7 +116,8 @@ public class ExclusiveServices extends AppCompatActivity {
 					.setOnDismissListener(dialog -> finish())
 					.setIcon(getResources().getDrawable(R.drawable.pslogotrimmed)).show();
 		}
-		if(prefUtil.getPreferences().getString(SharedPrefUtil.USER_ADDRESS_KEY, null) == null){
+		String address = prefUtil.getPreferences().getString(SharedPrefUtil.USER_ADDRESS_KEY, null);
+		if(address == null || address.isEmpty() || address.equals("null")){
 			new AlertDialog.Builder(this).setTitle("Needs Your Address")
 					.setMessage("Please update your address and try again")
 					.setCancelable(false)
