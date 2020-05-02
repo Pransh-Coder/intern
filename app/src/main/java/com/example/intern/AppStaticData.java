@@ -14,6 +14,7 @@ import com.example.intern.MedicalRecords.MedicalRecord;
 import com.example.intern.ReduceExpenses.ReduceExpenses;
 import com.example.intern.TotalDiscountReceived.TotalDiscountReceived;
 import com.example.intern.askservices.DemandActivity;
+import com.example.intern.askservices.EssentialServices;
 import com.example.intern.fuel.MapsActivity;
 import com.example.intern.shopping.ActivityShopping;
 import com.example.intern.socialnetwork.Listactivity;
@@ -65,8 +66,7 @@ public abstract class AppStaticData {
 		//TODO :
 		for(String word : demandProductTriggers){
 			if(keyWord.contains(word)) {
-				intent = new Intent(context, DemandActivity.class);
-				intent.putExtra(ExclusiveServices.FROM_EXCLUSIVE_SERVICES, "");
+				intent = new Intent(context, EssentialServices.class);
 				return intent;
 			}
 		}
@@ -289,7 +289,7 @@ public abstract class AppStaticData {
 		}
 		for(String word : demandProductTriggers){
 			if(keyWord.contains(word)) {
-				intent = new Intent(context, DemandActivity.class);
+				intent = new Intent(context, EssentialServices.class);
 				return intent;
 			}
 		}
