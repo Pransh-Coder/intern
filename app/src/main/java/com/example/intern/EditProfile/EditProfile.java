@@ -73,8 +73,15 @@ public class EditProfile extends AppCompatActivity {
         binding.email.setText(preferences.getString(SharedPrefUtil.USER_EMAIL_KEY, null));
         binding.occupation.setText(preferences.getString(SharedPrefUtil.USER_OCCUPATION_KEY, null ));
         binding.address.setText(preferences.getString(SharedPrefUtil.USER_ADDRESS_KEY, null));
-        binding.phone.setText(preferences.getString(SharedPrefUtil.USER_PHONE_NO, null));
-        binding.relativePhoneNumber.setText(preferences.getString(SharedPrefUtil.USER_RELATIVE_PHONE_NUMBER_KEY, null));
+        //REfine showing of phone numbers
+        String user_phone = preferences.getString(SharedPrefUtil.USER_PHONE_NO, null);
+        String alt_phone = preferences.getString(SharedPrefUtil.USER_RELATIVE_PHONE_NUMBER_KEY, null);
+        if(user_phone != null && !user_phone.isEmpty() && user_phone.length() >= 10 && user_phone.contains("+")){
+            binding.phone.setText(user_phone.substring(3));
+        }else binding.phone.setText(user_phone);
+        if(alt_phone != null && !alt_phone.isEmpty() && alt_phone.length() >=10 && alt_phone.contains("+")){
+            binding.relativePhoneNumber.setText(alt_phone.substring(3));
+        }else binding.relativePhoneNumber.setText(alt_phone);
         String filePath = prefUtil.getPreferences().getString(SharedPrefUtil.USER_PROFILE_PIC_PATH_KEY, null);
         if(filePath != null && !filePath.isEmpty()){
             Glide.with(this).load(filePath).fallback(R.drawable.edit_profile).error(R.drawable.edit_profile).into(binding.ivProfilePic);

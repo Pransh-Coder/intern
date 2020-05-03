@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -86,6 +87,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 		setContentView(binding.getRoot());
 		prefUtil = new SharedPrefUtil(this);
 		getWindow().setStatusBarColor(getResources().getColor(R.color.light_orange));
+		newUserWelcome();
 	}
 	
 	private void checkPerms() {
@@ -201,7 +203,6 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	@Override
 	protected void onStart() {
 		super.onStart();
-		newUserWelcome();
 		setUpMenu();
 		populateDrawer();
 		setClickListeners();
@@ -212,8 +213,9 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	
 	private void newUserWelcome(){
 		if(getIntent().getBooleanExtra(IS_NEW_USER, false)){
+			String message = "You are eligible for One month free benefit of discount on <b>Fuel</b> under PS+ membership.";
 			new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Congratulations")
-					.setMessage("You have got free PS+ benefits for one month")
+					.setMessage(Html.fromHtml(message))
 					.setPositiveButton("Great", null)
 					.setCancelable(false).show();
 		}
