@@ -1,5 +1,6 @@
 package com.example.intern.auth.fragments;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -85,7 +86,9 @@ public class LoginOptionFR extends Fragment {
             Navigation.findNavController(v).navigate(R.id.action_LoginOptionFR_to_LoginwithPhone);
         });
         binding.facebookSignIn.setOnClickListener(v->{
-            LoginManager.getInstance().logInWithReadPermissions(LoginOptionFR.this, Arrays.asList("email"));
+            new AlertDialog.Builder(getContext()).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
+                    .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
+            /*LoginManager.getInstance().logInWithReadPermissions(LoginOptionFR.this, Arrays.asList("email"));
             LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
@@ -105,6 +108,8 @@ public class LoginOptionFR extends Fragment {
                     // ...
                 }
             });
+
+             */
 
         });
     }

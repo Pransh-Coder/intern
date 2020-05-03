@@ -149,10 +149,10 @@ public class Listactivity extends AppCompatActivity {
 
 
                     } else {
-                        //Toast.makeText(SocialActivity.this, "No such document", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Listactivity.this, "No such document", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    //Toast.makeText(SocialActivity.this, "No such document", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Listactivity.this, "No such document unsuccessful", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -217,10 +217,10 @@ public class Listactivity extends AppCompatActivity {
 
 
     private void getUsername(String user) {
-       // Toast.makeText(Listactivity.this, user, Toast.LENGTH_LONG).show();
+        // Toast.makeText(Listactivity.this, user, Toast.LENGTH_LONG).show();
         //Toast.makeText(SocialActivity.this, uid, Toast.LENGTH_LONG).show();
         //if (user!=uid) {
-
+        Toast.makeText(Listactivity.this,user+"user"+user,Toast.LENGTH_LONG).show();
         DocumentReference docRef = fstore.collection("Users").document(user);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -230,30 +230,22 @@ public class Listactivity extends AppCompatActivity {
                     //Toast.makeText(SocialActivity.this, "got in", Toast.LENGTH_LONG).show();
 
                     locallist = documentSnapshot.toObject(mLocalNetwork.class);
-                   //String nm= locallist.getOcc();
+                    //String nm= locallist.getOcc();
                     mlistItems=new mLocalNetwork();
                     mlistItems.setun(locallist.getun());
                     mlistItems.setOcc(locallist.getOcc());
                     String s=locallist.getDob();
-                    //Toast.makeText(Listactivity.this,s+"user"+user,Toast.LENGTH_LONG).show();
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
-                    Date d = null;
-                    try {
-                        d = sdf.parse(s);
-                        //Toast.makeText(Listactivity.this,d.toString()+user,Toast.LENGTH_LONG).show();
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(d);
-                    int date = c.get(Calendar.DATE);
-                    int month = c.get(Calendar.MONTH) + 1;
-                    int year = c.get(Calendar.YEAR);
-
+                    Toast.makeText(Listactivity.this,s+"user"+user,Toast.LENGTH_LONG).show();
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTimeInMillis(Long.parseLong(s));
+                    int date = cal.get(Calendar.DATE);
+                    int month = cal.get(Calendar.MONTH) + 1;
+                    int year = cal.get(Calendar.YEAR);
                     LocalDate l1 = LocalDate.of(year, month, date);
                     LocalDate now1 = LocalDate.now();
                     Period diff1 = Period.between(l1, now1);
-                    System.out.println("age:" + diff1.getYears() + "years");                        //Today's date
+                    System.out.println("age:" + diff1.getYears() + "years");
+                    Toast.makeText(Listactivity.this,diff1.getYears()+"user"+user,Toast.LENGTH_LONG).show();
                     mlistItems.setDob(Integer.toString(diff1.getYears()));
                     listItems.add(mlistItems);
                     //Toast.makeText(Listactivity.this,nm , Toast.LENGTH_LONG).show();

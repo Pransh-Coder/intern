@@ -87,7 +87,8 @@ public class Holiday extends AppCompatActivity {
     }
     
     private void showWaitDialog(){
-        new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("These offers are for PS+ members @499र् only. Offers are unavailable during lockdown (COVID-19)")
+        new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("These offers are avail by PS+ members @ 499/- Rs only. \n" +
+                "Registration is not available during lock down (COVID-19).")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
     }
 }
