@@ -1,41 +1,33 @@
 package save_money;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.intern.AppStaticData;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
+import com.example.intern.databinding.ActivityHealthBinding;
 import com.example.intern.mainapp.MainApp;
 
 public class Health extends AppCompatActivity {
-    LinearLayout dental, eyeClinic, homeopathy, dietician, pathology, physiotherapy;
-
-    ImageView back, home;
+    ActivityHealthBinding binding;
+    boolean isSearchBarOpen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_health);
+        binding = ActivityHealthBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //ViewPager
 
         //viewPager = findViewById(R.id.viewpager);
-
-        dental = findViewById(R.id.dental);
-        eyeClinic = findViewById(R.id.eye);
-        homeopathy = findViewById(R.id.homeopathy);
-        dietician = findViewById(R.id.dietician);
-        pathology = findViewById(R.id.pathology);
-        physiotherapy = findViewById(R.id.physiotherapy);
-
-        back = findViewById(R.id.back);
-        home = findViewById(R.id.home);
 /*
         //Initialise ViewPager Adapter
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
@@ -44,7 +36,7 @@ public class Health extends AppCompatActivity {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new Autoslide(), 1000, 3000);*/
 
-        dental.setOnClickListener(new View.OnClickListener() {
+        binding.dental.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Intent intent = new Intent(Health.this, DentalCategoryOffers.class);
@@ -52,7 +44,7 @@ public class Health extends AppCompatActivity {
                 showWaitDialog();
             }
         });
-        eyeClinic.setOnClickListener(new View.OnClickListener() {
+        binding.eye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Intent intent = new Intent(Health.this, EyeClinicOffers.class);
@@ -60,7 +52,7 @@ public class Health extends AppCompatActivity {
                 showWaitDialog();
             }
         });
-        homeopathy.setOnClickListener(new View.OnClickListener() {
+        binding.homeopathy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Intent intent = new Intent(Health.this, HomeopathicOffers.class);
@@ -68,7 +60,7 @@ public class Health extends AppCompatActivity {
                 showWaitDialog();
             }
         });
-        dietician.setOnClickListener(new View.OnClickListener() {
+        binding.dietician.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Intent intent = new Intent(Health.this, DieticianOffers.class);
@@ -76,7 +68,7 @@ public class Health extends AppCompatActivity {
                 showWaitDialog();
             }
         });
-        pathology.setOnClickListener(new View.OnClickListener() {
+        binding.pathology.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Intent intent = new Intent(Health.this, Patholgy_LaborartoryOffers.class);
@@ -84,7 +76,7 @@ public class Health extends AppCompatActivity {
                 showWaitDialog();
             }
         });
-        physiotherapy.setOnClickListener(new View.OnClickListener() {
+        binding.physiotherapy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Intent intent = new Intent(Health.this, PhysiotherapyOffers.class);
@@ -93,37 +85,74 @@ public class Health extends AppCompatActivity {
             }
         });
 
-        home.setOnClickListener(view -> {
+        binding.home.setOnClickListener(view -> {
             Intent intent = new Intent(Health.this, MainApp.class);
             startActivity(intent);
             finish();
         });
-        back.setOnClickListener(v -> onBackPressed());
+        binding.back.setOnClickListener(v -> onBackPressed());
         findViewById(R.id.notifi).setOnClickListener(v -> {
             Intent intent = new Intent(this, NewsAndUpdatesACT.class);
             startActivity(intent);
         });
+        binding.notifi.setOnClickListener(v -> {
+            Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+            startActivity(intent);
+        });
     }
-
-/*    public class Autoslide extends TimerTask {              //TimerTask()-A task that can be scheduled for one-time or repeated execution by a Timer.
-        @Override
-        public void run() {
-            //Runs the specified action on the UI thread.  UI thread-The default, primary thread created anytime an Android application is launched. It is in charge of handling all user interface and activities, unless otherwise specified. Runnable is an interface meant to handle sharing code between threads.
-            Health.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (viewPager.getCurrentItem() == 0) {
-                        viewPager.setCurrentItem(1);
-                    } else if (viewPager.getCurrentItem() == 1) {
-                        viewPager.setCurrentItem(2);
-                    } else {
-                        viewPager.setCurrentItem(0);
-                    }
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        binding.searchIcon.setOnClickListener(v -> toggleSearchBar(true));
+        //Search item when search bar is open
+        binding.searchBar.setOnEditorActionListener((v, actionId, event) -> {
+            String searchWord = v.getText().toString();
+            if(!searchWord.isEmpty()){
+                Intent foundIntent = AppStaticData.searchSaveMoney(Health.this, searchWord);
+                if(foundIntent!=null){
+                    startActivity(foundIntent);
+                    finish();
                 }
-            });
+            }
+            binding.searchBar.setText("");
+            binding.searchBar.clearFocus();
+            return false;
+        });
+    }
+    
+    private void toggleSearchBar(boolean b) {
+        if(b){
+            binding.searchIcon.setVisibility(View.GONE);
+            binding.healthIconTop.setVisibility(View.GONE);
+            binding.tvHealth.setVisibility(View.GONE);
+            binding.searchBar.setVisibility(View.VISIBLE);
+            binding.searchBar.requestFocus();
+            InputMethodManager inputMethodManager =
+                    (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            if(inputMethodManager != null){
+                View focus = getCurrentFocus();
+                if(focus != null) inputMethodManager.toggleSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken()
+                        ,InputMethodManager.SHOW_FORCED, 0);
+            }
+            isSearchBarOpen = true;
+        }else{
+            binding.searchBar.setText("");
+            binding.searchBar.clearFocus();
+            binding.searchIcon.setVisibility(View.VISIBLE);
+            binding.healthIconTop.setVisibility(View.VISIBLE);
+            binding.tvHealth.setVisibility(View.VISIBLE);
+            binding.searchBar.setVisibility(View.GONE);
+            isSearchBarOpen = false;
         }
-    }*/
-
+    }
+    
+    @Override
+    public void onBackPressed() {
+        if(isSearchBarOpen)toggleSearchBar(false);
+        else super.onBackPressed();
+    }
+    
     private void showWaitDialog() {
         /*new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();*/

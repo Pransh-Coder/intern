@@ -9,7 +9,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -107,7 +106,7 @@ public class Vitals extends AppCompatActivity {
     public static class CustomVitalDialog extends DialogFragment {
         TextView mTitle;
         EditText mDetails;
-        Button mOK;
+        TextView mOK;
         String title;
         String hint;
         String previousText;

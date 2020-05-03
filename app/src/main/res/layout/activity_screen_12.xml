@@ -42,9 +42,29 @@
         app:layout_constraintStart_toEndOf="@id/back"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/homeimg" />
+    
+    <AutoCompleteTextView
+        android:id="@+id/search_bar"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/home_activity_search_background"
+        android:drawableStart="@drawable/ic_search_40dp"
+        android:drawablePadding="5dp"
+        android:hint="Search here..."
+        android:imeOptions="actionSearch"
+        android:inputType="textAutoComplete"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/home"
+        app:layout_constraintRight_toLeftOf="@id/notifi"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/gift_icon_top"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -55,7 +75,7 @@
         app:srcCompat="@drawable/icons_mascot_08" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_gift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
