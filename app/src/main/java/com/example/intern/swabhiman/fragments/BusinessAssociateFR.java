@@ -47,9 +47,11 @@ public class BusinessAssociateFR extends Fragment {
 			if(info != null){
 				//TODO : Mail this info to the company
 				SwabhimanAutoMailer.sendSwabhimanMail(SwabhimanAutoMailer.SWABHIMAN_BUSS_ASSOCIATE_SUB, info.toString(), viewModel.getUserMail());
-				new AlertDialog.Builder(requireContext()).setTitle("THANK YOU !").setPositiveButton("OK",
-						(button, which)->{
-					viewModel.getNavController().navigateUp();
+				new AlertDialog.Builder(requireContext()).setTitle("Thank You !")
+						.setMessage("Your request has been submitted")
+						.setPositiveButton("OK", null)
+						.setOnDismissListener(dialog -> {
+							viewModel.getNavController().navigateUp();
 						}).show();
 			}
 		});

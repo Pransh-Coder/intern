@@ -35,7 +35,7 @@ public abstract class AppStaticData {
 	public static final List<String> demandProductTriggers = Arrays.asList("grocer", "vegetable","drinking","water","dairy", "curd","milk");
 	public static final List<String> demandServicesTriggers = Arrays.asList("ask", "service","demand");
 	public static final List<String> saveMoneyTriggers = Arrays.asList("save", "money", "offer");
-	public static final List<String> healthTriggers = Arrays.asList("health", "dental", "teeth","pathology", "lab", "homeo", "diet", "eye", "physio");
+	public static final List<String> healthTriggers = Arrays.asList("health", "dent", "teeth","pathology", "lab", "homeo", "diet", "eye", "physio");
 	public static final List<String> giftTriggers = Arrays.asList("toy", "gift", "photo", "game");
 	public static final List<String> lifestyleTriggers = Arrays.asList("life", "salon","fitness", "spa", "beauty", "parlor");
 	public static final List<String> foodTriggers = Arrays.asList("food", "icecream");

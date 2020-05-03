@@ -225,12 +225,17 @@
                 app:hintTextColor="@color/grey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Any specific condition :"
                 app:layout_constraintTop_toBottomOf="@id/hrs">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
+                    android:id="@+id/tv_condition"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:hint="Any specific condition? :"
+                    android:textColor="@color/black"
+                    android:textColorHint="#808080"
+                    android:textSize="18sp"
                     android:drawablePadding="5dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -244,12 +249,17 @@
                 app:hintTextColor="@color/grey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Anything doing currently :"
                 app:layout_constraintTop_toBottomOf="@id/condition">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
+                    android:id="@+id/tv_currently"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:hint="Anything doing currently? :"
+                    android:textColor="@color/black"
+                    android:textColorHint="#808080"
+                    android:textSize="18sp"
                     android:drawablePadding="5dp"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>

@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -181,10 +180,10 @@ public class DoctorOnline extends AppCompatActivity {
     	void setText(String text);
 	}
 
-	static class CustomDialog extends DialogFragment{
+	public static class CustomDialog extends DialogFragment{
     	TextView mTitle;
     	EditText mDetails;
-    	Button mOK;
+    	TextView mOK;
     	String title;
     	String hint;
     	String previousText;
