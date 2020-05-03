@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
-        app:srcCompat="@drawable/home_activity_swabhiman_icon" />
+        app:srcCompat="@drawable/icon_swabhiman_updatedh" />
 
     <TextView
         android:id="@+id/tv_swabhiman"
@@ -71,16 +71,6 @@
             android:textStyle="bold"
             android:textColor="@color/black" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/iv_search_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintEnd_toStartOf="@id/iv_notif_button"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icons_mascot_50" />
 
     <ImageView
         android:id="@+id/iv_notif_button"

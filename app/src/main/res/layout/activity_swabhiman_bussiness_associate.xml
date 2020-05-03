@@ -48,21 +48,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/swabhiman_bussiness_associate_button_search"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="7dp"
-        android:src="@drawable/search"
-        app:layout_constraintRight_toLeftOf="@+id/swabhiman_bussiness_associate_button_notification"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
         android:id="@+id/imgView_swabhiman_bussiness_associate"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/home_activity_swabhiman_icon"
+        android:src="@drawable/icon_swabhiman_updatedh"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

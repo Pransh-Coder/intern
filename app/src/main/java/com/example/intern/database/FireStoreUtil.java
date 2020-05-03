@@ -362,7 +362,7 @@ public abstract class FireStoreUtil {
 			this.rph = relative_number;
 			this.LS = logINStatus;
 			this.memfee = membership_fee;
-			this.wallet = Double.NaN;
+			this.wallet = 0d;
 		}
 	}
 	
