@@ -83,12 +83,12 @@ public class Employement extends Fragment {
 					+ "\nStrength : " + binding.good.getEditText().getText().toString() + "\nWilling hours : " + binding.hrs.getEditText().getText().toString()
 					+ "\nCondition : " + condition + "\nDoing Currently : " + currently;
 			SwabhimanAutoMailer.sendSwabhimanMail("Interested in Employment", messageBody, viewModel.getUserMail());
+			new AlertDialog.Builder(requireContext()).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
+					.setMessage("Your Request has been submitted").setPositiveButton("OK", null)
+					.setOnDismissListener(dialog -> {
+						viewModel.getNavController().navigateUp();
+					}).show();
 		});
-		new AlertDialog.Builder(requireContext()).setIcon(R.drawable.pslogotrimmed).setTitle("Thank You")
-				.setMessage("Your Request has been submitted").setPositiveButton("OK", null)
-				.setOnDismissListener(dialog -> {
-					viewModel.getNavController().navigateUp();
-				}).show();
 	}
 	
 	interface textListener{
