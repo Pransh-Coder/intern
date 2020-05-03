@@ -78,7 +78,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textAlignment="center"
         android:fontFamily="@font/century_gothic_400"
-        android:visibility="invisible"></TextView>
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/imageView13"
@@ -108,7 +108,7 @@
         app:layout_constraintVertical_bias="0.275" />
 
 
-    <View
+<!--    <View
         android:id="@+id/view3"
         android:layout_width="110dp"
         android:layout_height="2dp"
@@ -120,7 +120,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0" />-->
 
     <TextView
         android:id="@+id/textView17"
