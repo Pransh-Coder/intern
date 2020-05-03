@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityBecomeMemberBinding;
+import com.example.intern.mainapp.MainApp;
 import com.example.intern.payment.auth.PaymentEntity;
 import com.example.intern.payment.auth.RazorPayAPI;
 import com.example.intern.payment.auth.RazorPayAuthAPI;
@@ -120,7 +121,9 @@ public class BecomeAMember extends AppCompatActivity {
 			finishPaymentProcess();
 		}else{
 			Toast.makeText(this, "Payment not complete", Toast.LENGTH_LONG).show();
-			super.onBackPressed();
+			Intent intent = new Intent(getApplicationContext(), MainApp.class);
+			startActivity(intent);
+			finish();
 		}
 	}
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">intern</string>
+    <string name="app_name">PS</string>
     <string name="facebook_app_id">1093410747698712</string>
     <string name="fb_login_protocol_scheme">fb1093410747698712</string>
     <string-array name="laguauge">
@@ -34,6 +34,12 @@
         <item>Yes</item>
         <item>No</item>
         <item>Later</item>
+    </string-array>
+    <string-array name="Gender_options">
+        <item>Select</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Rather not say</item>
     </string-array>
     <string-array name="menu_main">
         <item>Reduce Your Expenses</item>

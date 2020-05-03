@@ -1,5 +1,6 @@
 package com.example.intern.auth.fragments;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -101,6 +102,8 @@ public class RegistrationOptionsFR extends Fragment {
 
 				@Override
 				public void onError(FacebookException error) {
+					new AlertDialog.Builder(getContext()).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
+							.setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
 					Log.d("myfb", "facebook:onError", error);
 					// ...
 				}
@@ -150,9 +153,12 @@ public class RegistrationOptionsFR extends Fragment {
 
 								// ...
 							} else {
+								new AlertDialog.Builder(getContext()).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
+										.setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
 								Log.d(TAG, "firebaseAuthWithFacebook: dismissed");
 							}
 						});
+
 
 	}
 	private void checkExistence() {
