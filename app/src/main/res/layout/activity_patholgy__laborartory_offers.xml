@@ -93,13 +93,29 @@
         app:layout_constraintTop_toTopOf="@id/hor_guide_35_percent"/>
 
     <ImageView
-        android:id="@+id/lastlogo"
+        android:id="@+id/logo"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/pslogo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/girl_character"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/logo" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icons_mascot_51"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/logo" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor_guide_35_percent"
