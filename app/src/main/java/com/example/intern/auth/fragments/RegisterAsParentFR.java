@@ -157,6 +157,14 @@ public class RegisterAsParentFR extends Fragment {
                 String parent_number =binding.etParentNumber.getText().toString();
                 if(parent_number.isEmpty() || parent_number.equals("null"))parent_number = user.getPhoneNumber();
                 String child_number =binding.etChildNumber.getText().toString();
+                if(parent_number != null && parent_number.length() < 10){
+                    binding.etParentNumber.setError("Should be a valid Phone Number");
+                    return;
+                }
+                if(!child_number.isEmpty() && !child_number.equals("null") && child_number.length() < 10){
+                    binding.etChildNumber.setError("Should be a valid Phone Number");
+                    return;
+                }
                 String finalParent_number = parent_number;
                 FirebaseFirestore.getInstance().collection(FireStoreUtil.STATIC_DATA_COLLECTION_NAME).document("static").get().addOnSuccessListener(snapshot -> {
                     if(snapshot!=null && snapshot.exists()){
