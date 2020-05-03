@@ -19,15 +19,19 @@ public class Holiday extends AppCompatActivity {
         findViewById(R.id.iv_back_button).setOnClickListener(v -> onBackPressed());
         findViewById(R.id.iv_home_button).setOnClickListener(v -> {
             Intent intent = new Intent(this, MainApp.class);
-            startActivity(intent);finish();
+            startActivity(intent);
+            finish();
         });
         findViewById(R.id.iv_notif_button).setOnClickListener(v -> {
             Intent intent = new Intent(this, NewsAndUpdatesACT.class);
             startActivity(intent);
         });
     }
-    private void showWaitDialog(){
-        new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
-                .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
+
+    private void showWaitDialog() {
+        /*new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
+                .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();*/
+        new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("These offers are for PS+ members @499र् only. Offers are unavailable during lockdown (COVID-19)")
+                .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I Understand", null).show();
     }
 }
