@@ -242,6 +242,13 @@
 				android:fontFamily="@font/century_gothic_400"
 				android:text="Navigate"
 				android:textAllCaps="false" />
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:textColor="@color/black"
+				android:fontFamily="@font/century_gothic_400"
+				android:text="OR"/>
 			<Button
 				android:id="@+id/continue_last"
 				android:layout_width="match_parent"
