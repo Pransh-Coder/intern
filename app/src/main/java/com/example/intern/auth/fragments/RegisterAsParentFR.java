@@ -155,13 +155,15 @@ public class RegisterAsParentFR extends Fragment {
                 String nick_name = binding.etNickName.getText().toString();
                 String ps_nick_name = binding.etPsNickName.getText().toString();
                 String parent_number =binding.etParentNumber.getText().toString();
+                if(parent_number.isEmpty() || parent_number.equals("null"))parent_number = user.getPhoneNumber();
                 String child_number =binding.etChildNumber.getText().toString();
+                String finalParent_number = parent_number;
                 FirebaseFirestore.getInstance().collection(FireStoreUtil.STATIC_DATA_COLLECTION_NAME).document("static").get().addOnSuccessListener(snapshot -> {
                     if(snapshot!=null && snapshot.exists()){
                         try {
                             Double membershipFee = snapshot.getDouble("memfee");
                             FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
-                                    ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	dateTimeStamp, pinCode,child_number,"1", membershipFee)
+                                    ,name, user.getEmail(), nick_name,ps_nick_name, finalParent_number,	dateTimeStamp, pinCode,child_number,"1", membershipFee)
                                     .addOnSuccessListener(success->{
                                         FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
                                         Log.d(TAG, "successfully made user");
@@ -169,7 +171,7 @@ public class RegisterAsParentFR extends Fragment {
                                             FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
                                         }
                                         viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
-                                                dateTimeStamp, pinCode,parent_number,child_number);
+                                                dateTimeStamp, pinCode, finalParent_number,child_number);
                                         Intent intent = new Intent(requireContext(), MainApp.class);
                                         intent.putExtra(MainApp.IS_NEW_USER, true);
                                         startActivity(intent);
