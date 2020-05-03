@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/constarint"
     android:layout_width="match_parent"
@@ -36,6 +35,7 @@
         android:src="@drawable/notification"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <AutoCompleteTextView
         android:id="@+id/search_bar"
         android:layout_width="0dp"
@@ -54,7 +54,7 @@
         android:visibility="gone"
         app:layout_constraintLeft_toRightOf="@id/home"
         app:layout_constraintRight_toLeftOf="@id/notifi"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/search_icon"
@@ -88,68 +88,71 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/save_money_icon" />
 
-<!--            <androidx.viewpager.widget.ViewPager
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/save_money_icon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/savemoney"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/text_save_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SAVE MONEY"
-                android:textColor="#000"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/save_money_icon" />
-
-            <ImageView
->>>>>>> cd677989c9e6fd05894855bb3f09648702fb1537
-                android:id="@+id/viewpager"
+    <!--            <androidx.viewpager.widget.ViewPager
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginRight="20dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/save_money_banner_new"
-                app:layout_constraintBottom_toTopOf="@+id/LinearLayout"
-                app:layout_constraintTop_toBottomOf="@+id/text_save_money" />-->
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/save_money_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/savemoney"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_save_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SAVE MONEY"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/save_money_icon" />
+
+                <ImageView
+    >>>>>>> cd677989c9e6fd05894855bb3f09648702fb1537
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/save_money_banner_new"
+                    app:layout_constraintBottom_toTopOf="@+id/LinearLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/text_save_money" />-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_4_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06"/>
+        app:layout_constraintGuide_percent="0.06" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_96_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.945"/>
+        app:layout_constraintGuide_percent="0.945" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_top_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12"/>
+        app:layout_constraintGuide_percent="0.12" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_hor_banner_low"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.305"/>
+        app:layout_constraintGuide_percent="0.305" />
 
     <ImageView
         android:layout_width="0dp"
@@ -159,7 +162,7 @@
         app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
-        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin"/>
+        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -169,7 +172,6 @@
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
         app:layout_constraintTop_toBottomOf="@id/guide_hor_banner_low">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_main"
@@ -188,21 +190,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5"/>
+                app:layout_constraintGuide_percent="0.5" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_33_per_ver"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.33"/>
+                app:layout_constraintGuide_percent="0.33" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_66_per_ver"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.66"/>
+                app:layout_constraintGuide_percent="0.66" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/health"
@@ -258,10 +260,10 @@
                 android:background="@drawable/home_activity_icon_background"
                 android:orientation="vertical"
                 android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@id/services"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/guide_50_per_ver"
-                app:layout_constraintBottom_toTopOf="@id/services"
                 app:layout_constraintVertical_chainStyle="packed">
 
                 <ImageView
@@ -489,7 +491,7 @@
         android:src="@drawable/pslogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:layout_width="50dp"
@@ -497,7 +499,7 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/girl_character"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/logo"/>
+        app:layout_constraintEnd_toStartOf="@id/logo" />
 
     <ImageView
         android:layout_width="50dp"
@@ -505,6 +507,6 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/icons_mascot_51"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/logo"/>
+        app:layout_constraintStart_toEndOf="@id/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
