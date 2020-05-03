@@ -62,6 +62,9 @@ public class LoginwithPhoneFR  extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        binding.btnCancel.setOnClickListener(v -> {
+            viewModel.getNavController().navigate(R.id.action_LoginwithPhoneFR_toLoginOptionFR);
+        });
         loadingbar = new ProgressDialog(requireContext());
         callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
@@ -138,13 +141,7 @@ public class LoginwithPhoneFR  extends Fragment {
                 signInWithPhoneAuthCredential(credential);
             }
         });
-        binding.btnCancel.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), LoginOptionFR.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
 
-
-        });
     }
 
 

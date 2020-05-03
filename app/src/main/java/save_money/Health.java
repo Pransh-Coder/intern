@@ -156,7 +156,8 @@ public class Health extends AppCompatActivity {
     private void showWaitDialog() {
         /*new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();*/
+
         new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("These offers are for PS+ members @499र् only. Offers are unavailable during lockdown (COVID-19)")
-                .setIcon(R.drawable.pslogotrimmed).setPositiveButton("Apply for PS+", null).show();
+                .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I Understand", null).show();
     }
 }

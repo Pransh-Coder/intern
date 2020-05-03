@@ -64,6 +64,9 @@ public class PhoneRegistrationFR extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
+		binding.btnCancel.setOnClickListener(v -> {
+			viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_LoginOptionFR);
+		});
 		loadingbar = new ProgressDialog(requireContext());
 		callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 			@Override

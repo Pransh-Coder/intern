@@ -190,17 +190,43 @@
         app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per" />
 
     <TextView
+        android:id="@+id/tvGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="Gender :"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_DOB" />
+
+    <Spinner
+        android:id="@+id/spin_Gender"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:entries="@array/Gender_options"
+        android:inputType="textPersonName"
+        android:textColorHint="#000000"
+        app:layout_constraintBottom_toBottomOf="@id/tvGender"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toEndOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toBottomOf="@id/et_ps_nick_name"
+        app:layout_constraintTop_toTopOf="@id/tvGender"/>
+
+    <TextView
         android:id="@+id/tv_pin_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:padding="5dp"
-        android:textSize="18dp"
         android:text="Area/Pincode : "
         android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bt_dob" />
+        app:layout_constraintTop_toBottomOf="@id/tvGender" />
 
     <EditText
         android:id="@+id/et_pin_code"
@@ -209,17 +235,17 @@
         android:drawableBottom="@drawable/backgroun_et"
         android:ems="10"
         android:hint="6 digit Pincode here"
-        android:padding="5dp"
         android:inputType="number"
         android:maxLength="6"
+        android:padding="5dp"
         android:textSize="18dp"
         android:background="@null"
         android:textCursorDrawable="@drawable/custom_cursor"
         app:layout_constraintBottom_toBottomOf="@id/tv_pin_code"
-        app:layout_constraintTop_toTopOf="@id/tv_pin_code"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
         app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
         app:layout_constraintTop_toBottomOf="@id/et_DOB"
-        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
+        app:layout_constraintTop_toTopOf="@id/tv_pin_code"/>
 
     <TextView
         android:id="@+id/tv_ps_nick_name"

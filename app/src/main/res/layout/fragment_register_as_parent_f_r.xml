@@ -188,7 +188,32 @@
 		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
 		app:layout_constraintStart_toEndOf="@id/et_DOB"
 		app:layout_constraintTop_toTopOf="@id/et_DOB" />
-	
+	<TextView
+		android:id="@+id/tvGender"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="10dp"
+		android:layout_marginTop="5dp"
+		android:padding="5dp"
+		android:text="Gender :"
+		android:textColor="@color/black"
+		android:textSize="18dp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/et_DOB" />
+
+	<Spinner
+		android:id="@+id/spin_Gender"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:entries="@array/Gender_options"
+		android:inputType="textPersonName"
+		android:textColorHint="#000000"
+		app:layout_constraintBottom_toBottomOf="@id/tvGender"
+		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+		app:layout_constraintStart_toEndOf="@id/guide_ver_45_per"
+		app:layout_constraintTop_toBottomOf="@id/et_ps_nick_name"
+		app:layout_constraintTop_toTopOf="@id/tvGender"/>
+
 	<TextView
 		android:id="@+id/tv_pin_code"
 		android:layout_width="wrap_content"
@@ -200,8 +225,8 @@
 		android:textColor="@color/black"
 		android:textSize="18dp"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/bt_dob" />
-	
+		app:layout_constraintTop_toBottomOf="@id/tvGender" />
+
 	<EditText
 		android:id="@+id/et_pin_code"
 		android:layout_width="0dp"
