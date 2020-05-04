@@ -57,7 +57,9 @@ public abstract class FireStoreUtil {
 	public static String USER_PAY_ID = "pay";
 	public static String USER_STATE= "LS";
 	public static String USER_OCCUPATION = "occ";
-	public static String USER_ADDRESS = "add";
+	public static String USER_HOUSE_NO_KEY = "uhn";
+	public static String USER_STREET_KEY = "ustr";
+	public static String USER_AREA_KEY = "uarea";
 	
 	//References needs to be synchronised
 	private static volatile FirebaseApp firebaseApp;
@@ -272,12 +274,14 @@ public abstract class FireStoreUtil {
 		return getUserDocumentReference(context, getFirebaseUser(context).getUid()).update(updata);
 	}
 	
-	public static Task<Void> uploadMeta(Context context, String name, String email, String occupation, String address, String phoneNo, String relativePhoneNo){
+	public static Task<Void> uploadMeta(Context context, String name, String email, String occupation, String house_no, String street, String area , String phoneNo, String relativePhoneNo){
 		Map<String, Object> metadata = new HashMap<>();
 		metadata.put(USER_NAME, name);
 		metadata.put(USER_EMAIL, email);
 		metadata.put(USER_OCCUPATION, occupation);
-		metadata.put(USER_ADDRESS, address);
+		metadata.put(USER_HOUSE_NO_KEY, house_no);
+		metadata.put(USER_STREET_KEY, street);
+		metadata.put(USER_AREA_KEY, area);
 		metadata.put(USER_PHONE_NUMBER, phoneNo);
 		metadata.put(USER_RELATIVE_PHONE_NUMBER, relativePhoneNo);
 		return getUserDocumentReference(context, getFirebaseUser(context).getUid()).set(metadata, SetOptions.merge());

@@ -72,7 +72,10 @@ public class EditProfile extends AppCompatActivity {
         binding.name.setText(preferences.getString(SharedPrefUtil.USER_NAME_KEY, null));
         binding.email.setText(preferences.getString(SharedPrefUtil.USER_EMAIL_KEY, null));
         binding.occupation.setText(preferences.getString(SharedPrefUtil.USER_OCCUPATION_KEY, null ));
-        //binding.address.setText(preferences.getString(SharedPrefUtil.USER_ADDRESS_KEY, null));
+        //Prefetch Address
+        binding.addressHouse.setText(preferences.getString(SharedPrefUtil.USER_HOUSE_NUMBER, null));
+        binding.addressStreet.setText(preferences.getString(SharedPrefUtil.USER_STREET_KEY, null));
+        binding.addressArea.setText(preferences.getString(SharedPrefUtil.USER_AREA_KEY, null));
         //REfine showing of phone numbers
         String user_phone = preferences.getString(SharedPrefUtil.USER_PHONE_NO, null);
         String alt_phone = preferences.getString(SharedPrefUtil.USER_RELATIVE_PHONE_NUMBER_KEY, null);
@@ -153,8 +156,7 @@ public class EditProfile extends AppCompatActivity {
                 String u_name;
                 String email;
                 String occ = null;
-                String add = null;
-                String phone = null, relativePhone = null;
+                String phone = null;
                 Editable name = binding.name.getText();
                 if(name != null){
                     u_name = name.toString();
@@ -182,10 +184,6 @@ public class EditProfile extends AppCompatActivity {
                 if(occupation != null){
                     occ = occupation.toString();
                 }
-                /*Editable address = binding.address.getText();
-                if(address != null){
-                    add = address.toString();
-                }*/
                 Editable phoneNo = binding.phone.getText();
                 if(phoneNo != null) {
                     phone = phoneNo.toString();
@@ -194,17 +192,27 @@ public class EditProfile extends AppCompatActivity {
                         return;
                     }
                 }
+                //Refine Address
+                Editable houseEditable = binding.addressHouse.getText();
+                Editable streetEditable = binding.addressStreet.getText();
+                Editable areaEditable = binding.addressArea.getText();
+                if(houseEditable == null || TextUtils.isEmpty(houseEditable) || houseEditable.length() < 4){
+                    binding.addressHouse.setError("Enter House Number");return;
+                }
+                if(streetEditable == null || TextUtils.isEmpty(streetEditable) || streetEditable.length() < 4){
+                    binding.addressStreet.setError("Enter Street");return;
+                }
+                if(areaEditable == null || TextUtils.isEmpty(areaEditable) || areaEditable.length() < 4){
+                    binding.addressArea.setError("Enter Area");return;
+                }
                 Editable relativePh = binding.relativePhoneNumber.getText();
-                if(relativePh != null) {
-                    relativePhone = relativePh.toString();
-                    if(relativePhone.length() < 10){
-                        binding.relativePhoneNumber.setError("Invalid Phone Number");
-                        return;
-                    }
+                if(relativePh != null && !TextUtils.isEmpty(relativePh) && relativePh.length() < 10) {
+                    binding.relativePhoneNumber.setError("Invalid Phone Number");
+                    return;
                 }
                 SharedPrefUtil prefUtil = new SharedPrefUtil(this);
                 dialog.show();
-                FireStoreUtil.uploadMeta(this,u_name,email,occ,add, phone, relativePhone).addOnSuccessListener(aVoid -> {
+                FireStoreUtil.uploadMeta(this,u_name,email,occ,houseEditable.toString(),streetEditable.toString(),areaEditable.toString(), phone, relativePh.toString()).addOnSuccessListener(aVoid -> {
                     prefUtil.updateWithCloud(FireStoreUtil.getFirebaseUser(getApplicationContext()).getUid());
                     dialog.dismiss();
                     Intent intent = new Intent(EditProfile.this, MainApp.class);
@@ -253,10 +261,12 @@ public class EditProfile extends AppCompatActivity {
             }
         };
         binding.email.addTextChangedListener(changeWatcher);
-        //binding.address.addTextChangedListener(changeWatcher);
         binding.name.addTextChangedListener(changeWatcher);
         binding.occupation.addTextChangedListener(changeWatcher);
         binding.phone.addTextChangedListener(changeWatcher);
         binding.relativePhoneNumber.addTextChangedListener(changeWatcher);
+        binding.addressHouse.addTextChangedListener(changeWatcher);
+        binding.addressStreet.addTextChangedListener(changeWatcher);
+        binding.addressArea.addTextChangedListener(changeWatcher);
     }
 }

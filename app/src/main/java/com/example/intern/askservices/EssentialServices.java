@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.intern.EditProfile.EditProfile;
 import com.example.intern.ExclusiveServices.ExclusiveServices;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
@@ -52,6 +54,34 @@ public class EssentialServices extends AppCompatActivity {
 			Intent intent = new Intent(EssentialServices.this, NewsAndUpdatesACT.class);
 			startActivity(intent);
 		});
+		//Check if the user has entered phone no or relative phone no
+		if(!(prefUtil.getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null) != null || prefUtil.getPreferences().getString(SharedPrefUtil.USER_RELATIVE_PHONE_NUMBER_KEY, null) != null)){
+			new androidx.appcompat.app.AlertDialog.Builder(this).setTitle("Needs Your Contact Details")
+					.setMessage("Please update your phone number try again")
+					.setCancelable(false)
+					.setPositiveButton("OK", (dialog, which) -> {
+						if(which== DialogInterface.BUTTON_POSITIVE){
+							Intent intent = new Intent(EssentialServices.this, EditProfile.class);
+							startActivity(intent);
+						}
+					}).setNegativeButton("Dismiss", (dialog, which) -> finish())
+					.setOnDismissListener(dialog -> finish())
+					.setIcon(getResources().getDrawable(R.drawable.pslogotrimmed)).show();
+		}
+		String primitiveAddressCheck = prefUtil.getPreferences().getString(SharedPrefUtil.USER_AREA_KEY, null);
+		if(primitiveAddressCheck == null || primitiveAddressCheck.isEmpty() || primitiveAddressCheck.length() < 4){
+			new androidx.appcompat.app.AlertDialog.Builder(this).setTitle("Needs Your Address")
+					.setMessage("Please update your address and try again")
+					.setCancelable(false)
+					.setPositiveButton("OK", (dialog, which) -> {
+						if(which== DialogInterface.BUTTON_POSITIVE){
+							Intent intent = new Intent(EssentialServices.this, EditProfile.class);
+							startActivity(intent);
+						}
+					}).setNegativeButton("Dismiss", (dialog, which) -> finish())
+					.setOnDismissListener(dialog -> finish())
+					.setIcon(getResources().getDrawable(R.drawable.pslogotrimmed)).show();
+		}
 	}
 	
 	@Override

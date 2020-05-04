@@ -25,7 +25,9 @@ public class SharedPrefUtil {
 	public static String USER_RELATIVE_PHONE_NUMBER_KEY = "user_relative_ph_no";
 	public static String USER_PHONE_NO = "user_ph_no";
 	public static String USER_OCCUPATION_KEY = "user_occ";
-	public static String USER_ADDRESS_KEY = "user_add";
+	public static String USER_HOUSE_NUMBER = "house_number";
+	public static String USER_STREET_KEY = "user_street";
+	public static String USER_AREA_KEY = "user_area";
 	public static String USER_PROFILE_PIC_PATH_KEY = "profile_pic_path";
 	private Context context;
 	private SharedPreferences preferences;
@@ -48,7 +50,8 @@ public class SharedPrefUtil {
 				.putString(USER_DOB_KEY, DOB).putString(USER_RELATIVE_PHONE_NUMBER_KEY, relatives_number)
 				.putBoolean(USER_LOGGED_IN_STATUS_KEY, true).putString(USER_PAY_ID, null)
 				.putString(USER_PHONE_NO, phone_number)
-				.putString(USER_OCCUPATION_KEY, null).putString(USER_ADDRESS_KEY, null)
+				.putString(USER_HOUSE_NUMBER, null).putString(USER_STREET_KEY, null)
+				.putString(USER_OCCUPATION_KEY, null).putString(USER_AREA_KEY, null)
 				.putString(USER_PROFILE_PIC_PATH_KEY, null);
 		editor.apply();
 	}
@@ -67,7 +70,9 @@ public class SharedPrefUtil {
 		editor.putString(USER_EMAIL_KEY, snapshot.getString(FireStoreUtil.USER_EMAIL));
 		editor.putBoolean(USER_LOGGED_IN_STATUS_KEY, true);
 		editor.putString(USER_OCCUPATION_KEY, snapshot.getString(FireStoreUtil.USER_OCCUPATION));
-		editor.putString(USER_ADDRESS_KEY, snapshot.getString(FireStoreUtil.USER_ADDRESS));
+		editor.putString(USER_HOUSE_NUMBER, snapshot.getString(FireStoreUtil.USER_HOUSE_NO_KEY));
+		editor.putString(USER_STREET_KEY, snapshot.getString(FireStoreUtil.USER_STREET_KEY));
+		editor.putString(USER_AREA_KEY, snapshot.getString(FireStoreUtil.USER_AREA_KEY));
 		editor.apply();
 		try{
 			FireStoreUtil.getProfilePicInLocal(context, FirebaseAuth.getInstance().getUid()).addOnSuccessListener(taskSnapshot -> {
@@ -97,7 +102,7 @@ public class SharedPrefUtil {
 		String ph_no = preferences.getString(USER_PHONE_NO, null);
 		String rel_ph_no = preferences.getString(USER_RELATIVE_PHONE_NUMBER_KEY, null);
 		String occ = preferences.getString(USER_OCCUPATION_KEY, null);
-		String address = preferences.getString(USER_ADDRESS_KEY, null);
+		String address = preferences.getString(USER_AREA_KEY, null);
 		List<String> data = new ArrayList<>();
 		data.add(name);data.add(email);data.add(nick_name);data.add(ps_nick_name);data.add(pin_code);
 		data.add(dob);data.add(ph_no);data.add(rel_ph_no);data.add(occ);data.add(address);
@@ -120,7 +125,9 @@ public class SharedPrefUtil {
 			editor.putString(USER_PAY_ID, snapshot.getString(FireStoreUtil.USER_PAY_ID));
 			editor.putString(USER_NICK_NAME_KEY, snapshot.getString(FireStoreUtil.USER_NICK_NAME));
 			editor.putString(USER_PS_NICK_NAME_KEY, snapshot.getString(FireStoreUtil.USER_PS_NICK_NAME));
-			editor.putString(USER_ADDRESS_KEY, snapshot.getString(FireStoreUtil.USER_ADDRESS));
+			editor.putString(USER_HOUSE_NUMBER, snapshot.getString(FireStoreUtil.USER_HOUSE_NO_KEY));
+			editor.putString(USER_STREET_KEY, snapshot.getString(FireStoreUtil.USER_STREET_KEY));
+			editor.putString(USER_AREA_KEY, snapshot.getString(FireStoreUtil.USER_AREA_KEY));
 			editor.putString(USER_OCCUPATION_KEY, snapshot.getString(FireStoreUtil.USER_OCCUPATION));
 			editor.putString(USER_RELATIVE_PHONE_NUMBER_KEY, snapshot.getString(FireStoreUtil.USER_RELATIVE_PHONE_NUMBER));
 			editor.apply();

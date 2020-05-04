@@ -2,7 +2,6 @@ package com.example.intern.ExclusiveServices;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intern.AppStaticData;
-import com.example.intern.EditProfile.EditProfile;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.askservices.EssentialServices;
@@ -102,34 +100,6 @@ public class ExclusiveServices extends AppCompatActivity {
 	protected void onStart() {
 		super.onStart();
 		setUpSearchBar();
-		//Check if the user has entered phone no or relative phone no
-		if(!(prefUtil.getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null) != null || prefUtil.getPreferences().getString(SharedPrefUtil.USER_RELATIVE_PHONE_NUMBER_KEY, null) != null)){
-			new AlertDialog.Builder(this).setTitle("Needs Your Contact Details")
-					.setMessage("Please update your phone number try again")
-					.setCancelable(false)
-					.setPositiveButton("OK", (dialog, which) -> {
-						if(which== DialogInterface.BUTTON_POSITIVE){
-							Intent intent = new Intent(ExclusiveServices.this, EditProfile.class);
-							startActivity(intent);
-						}
-					}).setNegativeButton("Dismiss", (dialog, which) -> finish())
-					.setOnDismissListener(dialog -> finish())
-					.setIcon(getResources().getDrawable(R.drawable.pslogotrimmed)).show();
-		}
-		String address = prefUtil.getPreferences().getString(SharedPrefUtil.USER_ADDRESS_KEY, null);
-		if(address == null || address.isEmpty() || address.equals("null")){
-			new AlertDialog.Builder(this).setTitle("Needs Your Address")
-					.setMessage("Please update your address and try again")
-					.setCancelable(false)
-					.setPositiveButton("OK", (dialog, which) -> {
-						if(which== DialogInterface.BUTTON_POSITIVE){
-							Intent intent = new Intent(ExclusiveServices.this, EditProfile.class);
-							startActivity(intent);
-						}
-					}).setNegativeButton("Dismiss", (dialog, which) -> finish())
-					.setOnDismissListener(dialog -> finish())
-					.setIcon(getResources().getDrawable(R.drawable.pslogotrimmed)).show();
-		}
 		binding.auto.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.AUTO_SERVICES_SERVICES));
 		binding.emergencyCare.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.EMERGENCY_CARE_SERVICES));
 		binding.legalFinancial.setOnClickListener(v -> sendFirebaseRequest(FireStoreUtil.LEGAL_FINANCIAL_SERVICES));

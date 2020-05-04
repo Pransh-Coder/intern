@@ -163,7 +163,7 @@
                 app:layout_constraintTop_toTopOf="@+id/phonimg">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/address1"
+                    android:id="@+id/address_house"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
@@ -183,7 +183,7 @@
                 app:layout_constraintTop_toTopOf="@+id/phonimg">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/address2"
+                    android:id="@+id/address_street"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
@@ -203,7 +203,7 @@
                 app:layout_constraintTop_toTopOf="@+id/phonimg">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/address3"
+                    android:id="@+id/address_area"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
