@@ -1,7 +1,7 @@
 package com.example.intern.auth.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,18 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
-import com.example.intern.database.FireStoreUtil;
-import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.PhoneLoginUiBinding;
-import com.example.intern.mainapp.MainApp;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -34,8 +24,6 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class PhoneRegistrationFR extends Fragment {
@@ -50,6 +38,7 @@ public class PhoneRegistrationFR extends Fragment {
 		// Required empty public constructor
 	}
 	
+	@SuppressLint("SetTextI18n")
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
@@ -64,9 +53,7 @@ public class PhoneRegistrationFR extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		binding.btnCancel.setOnClickListener(v -> {
-			viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_LoginOptionFR);
-		});
+		binding.btnCancel.setOnClickListener(v -> viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_LoginOptionFR));
 		loadingbar = new ProgressDialog(requireContext());
 		callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 			@Override
@@ -147,42 +134,46 @@ public class PhoneRegistrationFR extends Fragment {
 
 	private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
 		viewModel.getFirebaseAuth().signInWithCredential(credential)
-				.addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
-					@Override
-					public void onComplete(@NonNull Task<AuthResult> task) {
-						if (task.isSuccessful()) {
-							loadingbar.dismiss();
-							checkExistence();
-						} else {
+				.addOnCompleteListener(requireActivity(), task -> {
+					if (task.isSuccessful()) {
+						loadingbar.dismiss();
+						checkExistence();
+					} else {
+						try{
 							String msg = task.getException().toString();
 							Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show();
-						}
+						}catch(Exception ignored){}
 					}
 				});
 	}
 	private void checkExistence() {
-		String currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+		FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+		if(user==null){
+			//User was not authenticated
+			Toast.makeText(requireContext(), "Cannot find account", Toast.LENGTH_SHORT).show();
+			viewModel.getNavController().navigateUp();
+			return;
+		}
+		String currentuserid = user.getUid();
 		progressDialog.setTitle("Please Wait");
 		progressDialog.setMessage("This will only take few Seconds...");
 		progressDialog.setCanceledOnTouchOutside(false);
 		progressDialog.show();
 		//Toast.makeText(getContext(), "No such user exists", Toast.LENGTH_LONG).show();
-		FirebaseFirestore.getInstance().collection("Users").document(currentuserid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-			@Override
-			public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-				if (task.getResult().exists()) {
-					progressDialog.dismiss();
-					Toast.makeText(getContext(),"User  already exists..Login instead",Toast.LENGTH_LONG).show();
-					viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_LoginRegister);
-				}
-				else {
-					progressDialog.dismiss();
-					viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
-					if (!viewModel.isRegChoiceisParent()) {
-						viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsChildFR);
-					} else {
-						viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsParentFR);
-					}
+		FirebaseFirestore.getInstance().collection("Users").document(currentuserid).get().addOnCompleteListener(task -> {
+			DocumentSnapshot snapshot = task.getResult();
+			if(snapshot != null && snapshot.exists()){
+				progressDialog.dismiss();
+				Toast.makeText(getContext(),"User  already exists..Login instead",Toast.LENGTH_LONG).show();
+				viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_LoginRegister);
+			}
+			else {
+				progressDialog.dismiss();
+				viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
+				if (!viewModel.isRegChoiceisParent()) {
+					viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsChildFR);
+				} else {
+					viewModel.getNavController().navigate(R.id.action_phoneRegistrationFR_to_registerAsParentFR);
 				}
 			}
 		});

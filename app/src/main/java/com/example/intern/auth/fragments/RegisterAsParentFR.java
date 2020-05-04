@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -27,7 +26,6 @@ import com.example.intern.R;
 import com.example.intern.auth.viewmodel.AuthViewModel;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.FragmentRegisterAsParentFRBinding;
-import com.example.intern.mainapp.MainApp;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,7 +56,7 @@ public class RegisterAsParentFR extends Fragment {
     private void updateLabel(){
         hasSelectedDate = true;
         dateTimeStamp = Long.toString(calendar.getTimeInMillis());
-        binding.etDOB.setText(calendar.get(Calendar.DAY_OF_MONTH) + " / " + calendar.get(Calendar.MONTH) + " / "  + calendar.get(Calendar.YEAR));
+        binding.etDOB.setText(calendar.get(Calendar.DAY_OF_MONTH) + " / " + (calendar.get(Calendar.MONTH) + 1) + " / "  + calendar.get(Calendar.YEAR));
     }
 
     public RegisterAsParentFR() {
@@ -94,6 +92,10 @@ public class RegisterAsParentFR extends Fragment {
             if(user_chosen_phone.contains("+"))binding.etParentNumber.setText(user_chosen_phone.substring(3));
             else binding.etParentNumber.setText(user_chosen_phone);
         }
+	    binding.calenderIcon.setOnClickListener(v->{
+		    DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), dateSetListener, 2000, 1,1);
+		    datePickerDialog.show();
+	    });
 	    checkPerms();
     }
     
@@ -158,10 +160,6 @@ public class RegisterAsParentFR extends Fragment {
 		binding.etPinCode.setText(pinCode);
 		//Check if pincode is set or not
 		if(binding.etPinCode.getText().toString().isEmpty())getPinCode();
-		binding.calenderIcon.setOnClickListener(v->{
-			DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), dateSetListener, 2000, 1,1);
-			datePickerDialog.show();
-		});
 		setClickListeners();
 	}
 
@@ -216,18 +214,24 @@ public class RegisterAsParentFR extends Fragment {
 				        Double membershipFee = snapshot.getDouble("memfee");
 				        FireStoreUtil.makeUserWithUID(requireContext(), user.getUid()
 						        ,name, user.getEmail(), nick_name,ps_nick_name, parent_number,	dateTimeStamp, pinCode,child_number,"1", membershipFee)
-						        .addOnSuccessListener(success->{
-							        FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid());
-							        Log.d(TAG, "successfully made user");
-							        if(user.getPhoneNumber() != null){
-								        FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
-							        }
-							        viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
-									        dateTimeStamp, pinCode, parent_number,child_number);
-							        Intent intent = new Intent(requireContext(), MainApp.class);
-							        intent.putExtra(MainApp.IS_NEW_USER, true);
-							        dialog.dismiss();
-							        startActivity(intent);
+						        .addOnSuccessListener(aVoid->{
+							        FireStoreUtil.addToCluster(requireContext(), pinCode, user.getUid()).addOnSuccessListener(anotherVoid->{
+								        Log.d(TAG, "successfully made user");
+								        if(user.getPhoneNumber() != null){
+									        FireStoreUtil.addToPhoneNumberList(requireContext() , user.getPhoneNumber(), user.getUid());
+								        }
+								        //Check if user document exists
+								        FirebaseFirestore.getInstance().collection(FireStoreUtil.USER_COLLECTION_NAME).document(user.getUid()).addSnapshotListener((userSnap, error)->{
+									        if(userSnap != null && userSnap.exists()){
+										        viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
+												        dateTimeStamp, pinCode, parent_number,child_number);
+										        dialog.dismiss();
+										        viewModel.getLoggedInListener().isLoggedIn(true);
+									        }else if (error != null){
+										        Log.d(TAG, "setClickListeners: " + error.getMessage());
+									        }
+								        });
+							        });
 						        });
 			        }catch (Exception ignored){}
 		        }

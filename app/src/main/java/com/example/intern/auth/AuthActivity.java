@@ -43,10 +43,10 @@ public class AuthActivity extends AppCompatActivity {
 		viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
 		viewModel.setLoggedInListener(isLoggedIn -> {
 			if(isLoggedIn){
-				viewModel.getPrefUtil().updateWithCloud(FirebaseAuth.getInstance().getUid());
-				finish();
 				Intent intent = new Intent(AuthActivity.this, MainApp.class);
+				intent.putExtra(MainApp.IS_NEW_USER, true);
 				startActivity(intent);
+				finish();
 			}
 		});
 	}

@@ -108,17 +108,6 @@ public abstract class FireStoreUtil {
 		return firebaseUser;
 	}
 	
-	public static FirebaseFirestore getDbReference(Context context){
-		if(dbReference == null){
-			synchronized (FireStoreUtil.class){
-				if(dbReference == null){
-					dbReference = FirebaseFirestore.getInstance();
-				}
-			}
-		}
-		return dbReference;
-	}
-	
 	private static FirebaseStorage getFirebaseStorage(Context context){
 		if(firebaseStorage == null){
 			synchronized (FireStoreUtil.class){
@@ -171,7 +160,7 @@ public abstract class FireStoreUtil {
 		if(userDocumentReference == null){
 			synchronized (FireStoreUtil.class){
 				if(userDocumentReference == null){
-					userDocumentReference = getDbReference(context).collection(USER_COLLECTION_NAME).document(userID);
+					userDocumentReference = FirebaseFirestore.getInstance().collection(USER_COLLECTION_NAME).document(userID);
 				}
 			}
 		}
@@ -182,7 +171,7 @@ public abstract class FireStoreUtil {
 		if(userClusterReference == null){
 			synchronized (FireStoreUtil.class){
 				if(userClusterReference == null){
-					userClusterReference = getDbReference(context).collection(USER_CLUSTER_COLLECTION_NAME).document(pinCode);
+					userClusterReference = FirebaseFirestore.getInstance().collection(USER_CLUSTER_COLLECTION_NAME).document(pinCode);
 				}
 			}
 		}
@@ -204,7 +193,7 @@ public abstract class FireStoreUtil {
 		if(userPhoneCollectionReference == null){
 			synchronized (FireStoreUtil.class){
 				if(userPhoneCollectionReference == null){
-					userPhoneCollectionReference = getDbReference(context).collection(USER_PHONE_LIST_COLLECTION_NAME);
+					userPhoneCollectionReference = FirebaseFirestore.getInstance().collection(USER_PHONE_LIST_COLLECTION_NAME);
 				}
 			}
 		}
@@ -214,7 +203,7 @@ public abstract class FireStoreUtil {
 	//Methods to create new users or find existing ones
 	public static Task<Void> makeUserWithUID(Context context, String UID, String userName, String eMail, String nickName, String psNickName, String phoneNumber, String DOB, String pinCode, String relative_number, String logINStatus, Double memberShipFee){
 		FireStoreUtil.PSUser user = new FireStoreUtil.PSUser(userName, eMail, nickName, psNickName, phoneNumber, DOB, pinCode,relative_number, logINStatus, memberShipFee);
-		return getUserDocumentReference(context, UID).set(user);
+		return FirebaseFirestore.getInstance().collection(USER_COLLECTION_NAME).document(UID).set(user);
 	}
 	
 /*	public static boolean findUserWithUID(Context context, String UID){
