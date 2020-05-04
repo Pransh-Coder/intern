@@ -89,7 +89,13 @@ public class RegisterAsChildFR extends Fragment {
 		if(user == null){
 			Toast.makeText(requireContext(), "Cannot find account", Toast.LENGTH_LONG).show();
 			viewModel.getNavController().navigate(R.id.action_registerAsChildFR_to_registrationChoiceFR);
-			onDetach();
+			return;
+		}
+		//Check for location permissions
+		String user_chosen_phone = user.getPhoneNumber();
+		if(user_chosen_phone != null && !user_chosen_phone.isEmpty()){
+			if(user_chosen_phone.contains("+"))binding.etChildNumber.setText(user_chosen_phone.substring(3));
+			else binding.etChildNumber.setText(user_chosen_phone);
 		}
 		setTextWatchers();
 		setClickListeners();
