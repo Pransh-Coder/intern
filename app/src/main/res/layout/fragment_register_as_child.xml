@@ -11,13 +11,14 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3" />
-
+    
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_ver_45_per"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.45" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_ver_95_per"
         android:layout_width="0dp"
@@ -29,11 +30,11 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="Name :"
         android:layout_marginStart="10dp"
         android:padding="5dp"
-        android:textSize="18dp"
+        android:text="Name :"
         android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
 
@@ -41,29 +42,29 @@
         android:id="@+id/et_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:drawableBottom="@drawable/backgroun_et"
         android:ems="10"
-        android:padding="5dp"
         android:hint="Name here"
-        android:background="@null"
-        android:textCursorDrawable="@drawable/custom_cursor"
         android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
         android:textSize="18dp"
-        app:layout_constraintTop_toTopOf="@id/tv_name"
         app:layout_constraintBottom_toBottomOf="@id/tv_name"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
         app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
         app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per"
-        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
+        app:layout_constraintTop_toTopOf="@id/tv_name" />
 
     <TextView
         android:id="@+id/tv_nick_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PS can call you :"
-        android:textColor="@color/black"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:padding="5dp"
+        android:text="PS can call you :"
+        android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_name" />
@@ -72,18 +73,18 @@
         android:id="@+id/et_nick_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:drawableBottom="@drawable/backgroun_et"
         android:ems="10"
-        android:padding="5dp"
-        android:background="@null"
-        android:textCursorDrawable="@drawable/custom_cursor"
         android:hint="(Kaka,Bhai,Bhabhi)"
         android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@id/tv_nick_name"
-        app:layout_constraintTop_toTopOf="@id/tv_nick_name"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
         app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
+        app:layout_constraintTop_toTopOf="@id/tv_nick_name" />
 
     <TextView
         android:id="@+id/tv_child_number"
@@ -92,9 +93,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:padding="5dp"
-        android:textSize="18dp"
         android:text="Your number : "
         android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
 
@@ -102,20 +103,20 @@
         android:id="@+id/et_child_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:drawableBottom="@drawable/backgroun_et"
         android:ems="10"
-        android:padding="5dp"
         android:hint="10 digit number here"
         android:inputType="phone"
-        android:background="@null"
-        android:textCursorDrawable="@drawable/custom_cursor"
         android:maxLength="10"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@id/tv_child_number"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
         app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-        app:layout_constraintTop_toTopOf="@id/tv_child_number"
         app:layout_constraintTop_toBottomOf="@id/et_nick_name"
-        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
+        app:layout_constraintTop_toTopOf="@id/tv_child_number" />
 
     <TextView
         android:id="@+id/tv_parent_number"
@@ -124,9 +125,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:padding="5dp"
-        android:textSize="18dp"
         android:text="Parent's number : "
         android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_child_number" />
 
@@ -134,20 +135,20 @@
         android:id="@+id/et_par_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:drawableBottom="@drawable/backgroun_et"
         android:ems="10"
-        android:padding="5dp"
         android:hint="10 digit number here"
-        android:background="@null"
-        android:textCursorDrawable="@drawable/custom_cursor"
         android:inputType="phone"
         android:maxLength="10"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@id/tv_parent_number"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
         app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-        app:layout_constraintTop_toTopOf="@id/tv_parent_number"
         app:layout_constraintTop_toBottomOf="@id/et_child_number"
-        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
+        app:layout_constraintTop_toTopOf="@id/tv_parent_number" />
 
     <TextView
         android:id="@+id/bt_dob"
@@ -156,38 +157,38 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:padding="5dp"
-        android:textSize="18dp"
         android:text="Date of birth : "
         android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_parent_number" />
 
     <TextView
         android:id="@+id/et_DOB"
-        android:focusable="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableBottom="@drawable/backgroun_et"
-        android:text="DD/MM/YYYY"
+        android:focusable="false"
         android:padding="5dp"
+        android:text="DD/MM/YYYY"
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@id/bt_dob"
         app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
         app:layout_constraintTop_toBottomOf="@id/et_par_number"
-        app:layout_constraintTop_toTopOf="@id/bt_dob"/>
-    
+        app:layout_constraintTop_toTopOf="@id/bt_dob" />
+
     <ImageView
         android:id="@+id/calender_icon"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:src="@drawable/calender"
         android:foregroundGravity="center"
         android:scaleType="centerInside"
-        app:layout_constraintStart_toEndOf="@id/et_DOB"
-        app:layout_constraintTop_toTopOf="@id/et_DOB"
+        android:src="@drawable/calender"
         app:layout_constraintBottom_toBottomOf="@id/et_DOB"
-        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per" />
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toEndOf="@id/et_DOB"
+        app:layout_constraintTop_toTopOf="@id/et_DOB" />
 
     <TextView
         android:id="@+id/tvGender"
@@ -213,7 +214,7 @@
         app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
         app:layout_constraintStart_toEndOf="@id/guide_ver_45_per"
         app:layout_constraintTop_toBottomOf="@id/et_ps_nick_name"
-        app:layout_constraintTop_toTopOf="@id/tvGender"/>
+        app:layout_constraintTop_toTopOf="@id/tvGender" />
 
     <TextView
         android:id="@+id/tv_pin_code"
@@ -232,20 +233,20 @@
         android:id="@+id/et_pin_code"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:drawableBottom="@drawable/backgroun_et"
         android:ems="10"
         android:hint="6 digit Pincode here"
         android:inputType="number"
         android:maxLength="6"
         android:padding="5dp"
-        android:textSize="18dp"
-        android:background="@null"
         android:textCursorDrawable="@drawable/custom_cursor"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@id/tv_pin_code"
         app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
         app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
         app:layout_constraintTop_toBottomOf="@id/et_DOB"
-        app:layout_constraintTop_toTopOf="@id/tv_pin_code"/>
+        app:layout_constraintTop_toTopOf="@id/tv_pin_code" />
 
     <TextView
         android:id="@+id/tv_ps_nick_name"
@@ -254,9 +255,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:padding="5dp"
-        android:textSize="18dp"
         android:text="Name your PS : "
         android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_pin_code" />
 
@@ -264,18 +265,18 @@
         android:id="@+id/et_ps_nick_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:drawableBottom="@drawable/backgroun_et"
         android:ems="10"
         android:hint="Prakruti,Samay.."
-        android:padding="5dp"
         android:inputType="textPersonName"
-        android:background="@null"
+        android:padding="5dp"
         android:textCursorDrawable="@drawable/custom_cursor"
         android:textSize="18dp"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
         app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
         app:layout_constraintTop_toBottomOf="@id/et_pin_code"
-        app:layout_constraintTop_toTopOf="@id/tv_ps_nick_name"
-        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
+        app:layout_constraintTop_toTopOf="@id/tv_ps_nick_name" />
 
     <TextView
         android:id="@+id/tvVolunteer"
@@ -284,9 +285,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:padding="5dp"
-        android:textSize="18dp"
         android:text="Be a Volunteer :"
         android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_ps_nick_name" />
 
@@ -298,10 +299,10 @@
         android:inputType="textPersonName"
         android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="@id/tvVolunteer"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
         app:layout_constraintStart_toEndOf="@id/guide_ver_45_per"
-        app:layout_constraintTop_toTopOf="@id/tvVolunteer"
         app:layout_constraintTop_toBottomOf="@id/et_ps_nick_name"
-        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
+        app:layout_constraintTop_toTopOf="@id/tvVolunteer" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_hor_75_per"

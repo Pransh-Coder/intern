@@ -72,7 +72,7 @@ public class EditProfile extends AppCompatActivity {
         binding.name.setText(preferences.getString(SharedPrefUtil.USER_NAME_KEY, null));
         binding.email.setText(preferences.getString(SharedPrefUtil.USER_EMAIL_KEY, null));
         binding.occupation.setText(preferences.getString(SharedPrefUtil.USER_OCCUPATION_KEY, null ));
-        binding.address.setText(preferences.getString(SharedPrefUtil.USER_ADDRESS_KEY, null));
+        //binding.address.setText(preferences.getString(SharedPrefUtil.USER_ADDRESS_KEY, null));
         //REfine showing of phone numbers
         String user_phone = preferences.getString(SharedPrefUtil.USER_PHONE_NO, null);
         String alt_phone = preferences.getString(SharedPrefUtil.USER_RELATIVE_PHONE_NUMBER_KEY, null);
@@ -182,10 +182,10 @@ public class EditProfile extends AppCompatActivity {
                 if(occupation != null){
                     occ = occupation.toString();
                 }
-                Editable address = binding.address.getText();
+                /*Editable address = binding.address.getText();
                 if(address != null){
                     add = address.toString();
-                }
+                }*/
                 Editable phoneNo = binding.phone.getText();
                 if(phoneNo != null) {
                     phone = phoneNo.toString();
@@ -253,7 +253,7 @@ public class EditProfile extends AppCompatActivity {
             }
         };
         binding.email.addTextChangedListener(changeWatcher);
-        binding.address.addTextChangedListener(changeWatcher);
+        //binding.address.addTextChangedListener(changeWatcher);
         binding.name.addTextChangedListener(changeWatcher);
         binding.occupation.addTextChangedListener(changeWatcher);
         binding.phone.addTextChangedListener(changeWatcher);
