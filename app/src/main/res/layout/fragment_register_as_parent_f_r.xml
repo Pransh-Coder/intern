@@ -1,1013 +1,1014 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@drawable/front_blank_with_logo">
-	
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_hor_30_per"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.3" />
-	
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_ver_45_per"
-		android:layout_width="0dp"
-		android:layout_height="match_parent"
-		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.45" />
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_ver_95_per"
-		android:layout_width="0dp"
-		android:layout_height="match_parent"
-		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.95" />
-	
-	<TextView
-		android:id="@+id/tv_name"
-		android:layout_width="wrap_content"
-		android:layout_height="0dp"
-		android:layout_marginStart="10dp"
-		android:padding="5dp"
-		android:text="Name :"
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
-	
-	<EditText
-		android:id="@+id/et_name"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="Name here"
-		android:inputType="textPersonName"
-		android:padding="5dp"
-		android:textSize="18dp"
-		android:background="@null"
-		android:textCursorDrawable="@drawable/custom_cursor"
-		app:layout_constraintBottom_toBottomOf="@id/tv_name"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-		app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per"
-		app:layout_constraintTop_toTopOf="@id/tv_name"/>
-	
-	<TextView
-		android:id="@+id/tv_nick_name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="10dp"
-		android:layout_marginTop="5dp"
-		android:padding="5dp"
-		android:text="PS can call you :"
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_name" />
-	
-	<EditText
-		android:id="@+id/et_nick_name"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="(Chachu,Dadi,Chachi)"
-		android:inputType="textPersonName"
-		android:padding="5dp"
-		android:textSize="18dp"
-		android:background="@null"
-		android:textCursorDrawable="@drawable/custom_cursor"
-		app:layout_constraintBottom_toBottomOf="@id/tv_nick_name"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-		app:layout_constraintTop_toTopOf="@id/tv_nick_name"/>
-	
-	<TextView
-		android:id="@+id/tv_child_number"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="10dp"
-		android:layout_marginTop="5dp"
-		android:padding="5dp"
-		android:text="Your number : "
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
-	
-	<EditText
-		android:id="@+id/et_parent_number"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="10 digit number here"
-		android:inputType="phone"
-		android:maxLength="10"
-		android:padding="5dp"
-		android:textSize="18dp"
-		android:background="@null"
-		android:textCursorDrawable="@drawable/custom_cursor"
-		app:layout_constraintBottom_toBottomOf="@id/tv_child_number"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-		app:layout_constraintTop_toBottomOf="@id/et_nick_name"
-		app:layout_constraintTop_toTopOf="@id/tv_child_number"/>
-	
-	<TextView
-		android:id="@+id/tv_parent_number"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="10dp"
-		android:layout_marginTop="5dp"
-		android:padding="5dp"
-		android:text="Child's number : "
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_child_number" />
-	
-	<EditText
-		android:id="@+id/et_child_number"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="10 digit number here"
-		android:inputType="phone"
-		android:maxLength="10"
-		android:padding="5dp"
-		android:textSize="18dp"
-		android:background="@null"
-		android:textCursorDrawable="@drawable/custom_cursor"
-		app:layout_constraintBottom_toBottomOf="@id/tv_parent_number"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-		app:layout_constraintTop_toBottomOf="@id/et_parent_number"
-		app:layout_constraintTop_toTopOf="@id/tv_parent_number"/>
-	
-	<TextView
-		android:id="@+id/bt_dob"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="10dp"
-		android:layout_marginTop="5dp"
-		android:padding="5dp"
-		android:text="Date of birth : "
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_parent_number" />
-	
-	<TextView
-		android:id="@+id/et_DOB"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:focusable="false"
-		android:padding="5dp"
-		android:text="DD/MM/YYYY"
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintBottom_toBottomOf="@id/bt_dob"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-		app:layout_constraintTop_toBottomOf="@id/et_child_number"
-		app:layout_constraintTop_toTopOf="@id/bt_dob"/>
-	
-	<ImageView
-		android:id="@+id/calender_icon"
-		android:layout_width="wrap_content"
-		android:layout_height="0dp"
-		android:foregroundGravity="center"
-		android:scaleType="centerInside"
-		android:src="@drawable/calender"
-		app:layout_constraintBottom_toBottomOf="@id/et_DOB"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintStart_toEndOf="@id/et_DOB"
-		app:layout_constraintTop_toTopOf="@id/et_DOB" />
-	<TextView
-		android:id="@+id/tvGender"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="10dp"
-		android:layout_marginTop="5dp"
-		android:padding="5dp"
-		android:text="Gender :"
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/et_DOB" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/front_blank_with_logo">
 
-	<Spinner
-		android:id="@+id/spin_Gender"
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		android:entries="@array/Gender_options"
-		android:inputType="textPersonName"
-		android:textColorHint="#000000"
-		app:layout_constraintBottom_toBottomOf="@id/tvGender"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintStart_toEndOf="@id/guide_ver_45_per"
-		app:layout_constraintTop_toBottomOf="@id/et_ps_nick_name"
-		app:layout_constraintTop_toTopOf="@id/tvGender"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_hor_30_per"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
 
-	<TextView
-		android:id="@+id/tv_pin_code"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="10dp"
-		android:layout_marginTop="5dp"
-		android:padding="5dp"
-		android:text="Area/Pincode : "
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tvGender" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_ver_45_per"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
 
-	<EditText
-		android:id="@+id/et_pin_code"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="6 digit Pincode here"
-		android:inputType="number"
-		android:maxLength="6"
-		android:padding="5dp"
-		android:textSize="18dp"
-		android:background="@null"
-		android:textCursorDrawable="@drawable/custom_cursor"
-		app:layout_constraintBottom_toBottomOf="@id/tv_pin_code"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-		app:layout_constraintTop_toBottomOf="@id/et_DOB"
-		app:layout_constraintTop_toTopOf="@id/tv_pin_code"/>
-	
-	
-	<View
-		android:id="@+id/view"
-		style="@style/Divider"
-		android:layout_width="200dp"
-		android:layout_height="2dp"
-		android:layout_marginTop="8dp"
-		android:background="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
-	
-	<TextView
-		android:id="@+id/tv_ps_nick_name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="10dp"
-		android:layout_marginTop="5dp"
-		android:padding="5dp"
-		android:text="Name your PS : "
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_pin_code" />
-	
-	<EditText
-		android:id="@+id/et_ps_nick_name"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="Prakruti,Samay.."
-		android:inputType="textPersonName"
-		android:padding="5dp"
-		android:textSize="18dp"
-		android:background="@null"
-		android:textCursorDrawable="@drawable/custom_cursor"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
-		app:layout_constraintTop_toBottomOf="@id/et_pin_code"
-		app:layout_constraintTop_toTopOf="@id/tv_ps_nick_name"/>
-	
-	<TextView
-		android:id="@+id/tvVolunteer"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="10dp"
-		android:layout_marginTop="5dp"
-		android:padding="5dp"
-		android:text="Be a Volunteer :"
-		android:textColor="@color/black"
-		android:textSize="18dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_ps_nick_name" />
-	
-	<Spinner
-		android:id="@+id/spin_volunteer"
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		android:entries="@array/volunteer_options"
-		android:inputType="textPersonName"
-		android:textColorHint="#000000"
-		app:layout_constraintBottom_toBottomOf="@id/tvVolunteer"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintStart_toEndOf="@id/guide_ver_45_per"
-		app:layout_constraintTop_toBottomOf="@id/et_ps_nick_name"
-		app:layout_constraintTop_toTopOf="@id/tvVolunteer"/>
-	
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_hor_75_per"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.79" />
-	
-	<Button
-		android:id="@+id/btnRegisterasChild_SignIn"
-		android:layout_width="0dp"
-		android:layout_height="35sp"
-		android:layout_marginStart="10dp"
-		android:layout_marginEnd="10dp"
-		android:background="@drawable/background_button_sign_in"
-		android:text="CREATE YOUR PROFILE"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/guide_hor_75_per"
-		app:layout_goneMarginTop="20dp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_ver_95_per"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:padding="5dp"
+        android:text="Name :"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableBottom="@drawable/backgroun_et"
+        android:ems="10"
+        android:hint="Name here"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_name"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per"
+        app:layout_constraintTop_toTopOf="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_nick_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="PS can call you :"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    <EditText
+        android:id="@+id/et_nick_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableBottom="@drawable/backgroun_et"
+        android:ems="10"
+        android:hint="(Chachu,Dadi,Chachi)"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_nick_name"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toTopOf="@id/tv_nick_name" />
+
+    <TextView
+        android:id="@+id/tv_child_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="Your number : "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
+
+    <EditText
+        android:id="@+id/et_parent_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableBottom="@drawable/backgroun_et"
+        android:ems="10"
+        android:hint="10 digit number here"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_child_number"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toBottomOf="@id/et_nick_name"
+        app:layout_constraintTop_toTopOf="@id/tv_child_number" />
+
+    <TextView
+        android:id="@+id/tv_parent_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="Child's number : "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_child_number" />
+
+    <EditText
+        android:id="@+id/et_child_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableBottom="@drawable/backgroun_et"
+        android:ems="10"
+        android:hint="10 digit number here"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_parent_number"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toBottomOf="@id/et_parent_number"
+        app:layout_constraintTop_toTopOf="@id/tv_parent_number" />
+
+    <TextView
+        android:id="@+id/bt_dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="Date of birth : "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_parent_number" />
+
+    <TextView
+        android:id="@+id/et_DOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableBottom="@drawable/backgroun_et"
+        android:focusable="false"
+        android:padding="5dp"
+        android:text="DD/MM/YYYY"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/bt_dob"
+        app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toBottomOf="@id/et_child_number"
+        app:layout_constraintTop_toTopOf="@id/bt_dob" />
+
+    <ImageView
+        android:id="@+id/calender_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:foregroundGravity="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/calender"
+        app:layout_constraintBottom_toBottomOf="@id/et_DOB"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toEndOf="@id/et_DOB"
+        app:layout_constraintTop_toTopOf="@id/et_DOB" />
+
+    <TextView
+        android:id="@+id/tvGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="Gender :"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_DOB" />
+
+    <Spinner
+        android:id="@+id/spin_Gender"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:entries="@array/Gender_options"
+        android:inputType="textPersonName"
+        android:textColorHint="#000000"
+        app:layout_constraintBottom_toBottomOf="@id/tvGender"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toEndOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toBottomOf="@id/et_ps_nick_name"
+        app:layout_constraintTop_toTopOf="@id/tvGender" />
+
+    <TextView
+        android:id="@+id/tv_pin_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="Area/Pincode : "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvGender" />
+
+    <EditText
+        android:id="@+id/et_pin_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableBottom="@drawable/backgroun_et"
+        android:ems="10"
+        android:hint="6 digit Pincode here"
+        android:inputType="number"
+        android:maxLength="6"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_pin_code"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toBottomOf="@id/et_DOB"
+        app:layout_constraintTop_toTopOf="@id/tv_pin_code" />
+
+
+    <View
+        android:id="@+id/view"
+        style="@style/Divider"
+        android:layout_width="200dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
+
+    <TextView
+        android:id="@+id/tv_ps_nick_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="Name your PS : "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_pin_code" />
+
+    <EditText
+        android:id="@+id/et_ps_nick_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableBottom="@drawable/backgroun_et"
+        android:ems="10"
+        android:hint="Prakruti,Samay.."
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toStartOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toBottomOf="@id/et_pin_code"
+        app:layout_constraintTop_toTopOf="@id/tv_ps_nick_name" />
+
+    <TextView
+        android:id="@+id/tvVolunteer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="Be a Volunteer :"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_ps_nick_name" />
+
+    <Spinner
+        android:id="@+id/spin_volunteer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:entries="@array/volunteer_options"
+        android:inputType="textPersonName"
+        android:textColorHint="#000000"
+        app:layout_constraintBottom_toBottomOf="@id/tvVolunteer"
+        app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+        app:layout_constraintStart_toEndOf="@id/guide_ver_45_per"
+        app:layout_constraintTop_toBottomOf="@id/et_ps_nick_name"
+        app:layout_constraintTop_toTopOf="@id/tvVolunteer" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_hor_75_per"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.79" />
+
+    <Button
+        android:id="@+id/btnRegisterasChild_SignIn"
+        android:layout_width="0dp"
+        android:layout_height="35sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/background_button_sign_in"
+        android:text="CREATE YOUR PROFILE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guide_hor_75_per"
+        app:layout_goneMarginTop="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-<!--<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@drawable/front_blank_with_logo">
-	
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_hor_30_per"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.3" />
+    <!--<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/front_blank_with_logo">
 
-	
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_ver_70_per"
-		android:layout_width="0dp"
-		android:layout_height="match_parent"
-		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.45" />
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_ver_95_per"
-		android:layout_width="0dp"
-		android:layout_height="match_parent"
-		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.95" />
-	
-	<TextView
-		android:id="@+id/tv_name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:padding="10dp"
-		android:text="Name :"
-		android:textColor="@color/black"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
-	
-	<EditText
-		android:id="@+id/et_name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="Name here"
-		android:inputType="textPersonName"
-		android:padding="10dp"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_name"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
-	
-	<TextView
-		android:id="@+id/tv_nick_name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:padding="10dp"
-		android:textColor="@color/black"
-		android:text="PS can call you"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_name" />
-	
-	<EditText
-		android:id="@+id/et_nick_name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="(Chachu,Dadi,Chachi)"
-		android:inputType="textPersonName"
-		android:padding="10dp"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_nick_name"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
-	
-	<TextView
-		android:id="@+id/tv_child_number"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:padding="10dp"
-		android:text="Your number : "
-		android:textColor="@color/black"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
-	
-	<EditText
-		android:id="@+id/et_par_number"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="10 digit number here"
-		android:inputType="phone"
-		android:maxLength="10"
-		android:padding="10dp"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_child_number"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
-	
-	<TextView
-		android:id="@+id/tv_parent_number"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:padding="10dp"
-		android:textColor="@color/black"
-		android:text="Child's number : "
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_child_number" />
-	
-	<EditText
-		android:id="@+id/et_child_number"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="10 digit number here"
-		android:inputType="phone"
-		android:maxLength="10"
-		android:padding="10dp"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_parent_number"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
-	
-	<TextView
-		android:id="@+id/bt_dob"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:padding="10dp"
-		android:textColor="@color/black"
-		android:text="Date of birth : "
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_parent_number" />
-	
-	<TextView
-		android:id="@+id/et_DOB"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:focusable="false"
-		android:padding="10dp"
-		android:text="DD/MM/YYYY"
-		android:textColor="@color/black"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/bt_dob" />
-	<ImageView
-		android:id="@+id/calender_icon"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:src="@drawable/calender"
-		app:layout_constraintStart_toEndOf="@id/et_DOB"
-		app:layout_constraintTop_toTopOf="@id/et_DOB"></ImageView>
-	
-	<TextView
-		android:id="@+id/tv_pin_code"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:padding="10dp"
-		android:text="Area/Pincode : "
-		android:textColor="@color/black"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/bt_dob" />
-	
-	<EditText
-		android:id="@+id/et_pin_code"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="6 digit pincode here"
-		android:inputType="number"
-		android:maxLength="6"
-		android:padding="10dp"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_pin_code"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
-	
-	
-	<View
-		android:id="@+id/view"
-		style="@style/Divider"
-		android:layout_width="200dp"
-		android:layout_height="2dp"
-		android:layout_marginTop="8dp"
-		android:background="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
-	
-	<TextView
-		android:id="@+id/tv_ps_nick_name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:padding="10dp"
-		android:text="Name your PS : "
-		android:textColor="@color/black"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_pin_code" />
-	
-	<EditText
-		android:id="@+id/et_ps_nick_name"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:drawableBottom="@drawable/backgroun_et"
-		android:ems="10"
-		android:hint="Type here.."
-		android:inputType="textPersonName"
-		android:padding="10dp"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tv_ps_nick_name"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
-	
-	<TextView
-		android:id="@+id/tvVolunteer"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:padding="10dp"
-		android:text="Be a Volunteer"
-		android:textColor="@color/black"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_ps_nick_name" />
-	
-	<Spinner
-		android:id="@+id/spin_volunteer"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="13dp"
-		android:entries="@array/volunteer_options"
-		android:inputType="textPersonName"
-		android:textColorHint="#000000"
-		app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
-		app:layout_constraintTop_toTopOf="@id/tvVolunteer"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
-	
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_hor_75_per"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.79" />
-	
-	<Button
-		android:id="@+id/btnRegisterasChild_SignIn"
-		android:layout_width="0dp"
-		android:layout_height="35sp"
-		android:layout_marginStart="8dp"
-		android:layout_marginEnd="8dp"
-		android:background="@drawable/background_button_sign_in"
-		android:text="CREATE YOUR PROFILE"
-		app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/guide_hor_75_per"
-	 />
-
-</androidx.constraintlayout.widget.ConstraintLayout>-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_30_per"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
 
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_ver_70_per"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_ver_95_per"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
 
-<!--
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/front_blank_with_logo">
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Name :"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
 
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_hor_30_per"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.31" />
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/backgroun_et"
+            android:ems="10"
+            android:hint="Name here"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
+            app:layout_constraintTop_toTopOf="@id/tv_name"
+            app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 
-	<TextView
-		android:id="@+id/register_asParent_tvName"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:layout_marginTop="8dp"
-		android:fontFamily="@font/century_gothic_400"
-		android:text="*Name:"
-		android:textColor="@android:color/black"
-		android:textStyle="bold"
-		app:layout_constraintBottom_toBottomOf="@+id/et_name"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="@+id/guide_hor_30_per" />
+        <TextView
+            android:id="@+id/tv_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="PS can call you"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
-	<EditText
-		android:id="@+id/et_name"
-		android:layout_width="wrap_content"
-		android:layout_height="30dp"
-		android:layout_marginTop="8dp"
-		android:layout_marginEnd="8dp"
-		android:background="@null"
-		android:ems="10"
-		android:inputType="textPersonName"
-		android:textColor="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.68"
-		app:layout_constraintStart_toEndOf="@+id/register_asParent_tvName"
-		app:layout_constraintTop_toTopOf="@+id/guide_hor_30_per" />
+        <EditText
+            android:id="@+id/et_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/backgroun_et"
+            android:ems="10"
+            android:hint="(Chachu,Dadi,Chachi)"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
+            app:layout_constraintTop_toTopOf="@id/tv_nick_name"
+            app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 
-    <TextView
-        android:id="@+id/register_asParent_tvPetName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="PS will call you:"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/et_nick_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_nick_name"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/tv_child_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Your number : "
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
 
-    <EditText
-        android:id="@+id/et_nick_name"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@null"
-        android:ems="10"
-        android:fontFamily="@font/century_gothic_400"
-        android:hint="(Dadu,Chachu..)"
-        android:inputType="textPersonName"
-        android:textColorHint="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
-        app:layout_constraintStart_toEndOf="@+id/register_asParent_tvPetName"
-        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+        <EditText
+            android:id="@+id/et_par_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/backgroun_et"
+            android:ems="10"
+            android:hint="10 digit number here"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
+            app:layout_constraintTop_toTopOf="@id/tv_child_number"
+            app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 
-    <TextView
-        android:id="@+id/register_asParent_tvYourNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="*Your Number:"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/et_your_number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_your_number"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/tv_parent_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="Child's number : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_child_number" />
 
-    <EditText
-        android:id="@+id/et_your_number"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toEndOf="@+id/register_asParent_tvYourNumber"
-        app:layout_constraintTop_toBottomOf="@+id/et_nick_name" />
+        <EditText
+            android:id="@+id/et_child_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/backgroun_et"
+            android:ems="10"
+            android:hint="10 digit number here"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
+            app:layout_constraintTop_toTopOf="@id/tv_parent_number"
+            app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 
-    <TextView
-        android:id="@+id/register_asParent_tvChildNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="*Your Child Number:"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/et_child_number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_child_number"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/bt_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="Date of birth : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_parent_number" />
 
-    <EditText
-        android:id="@+id/et_child_number"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@null"
-        android:ems="10"
-        android:inputType="number"
-        android:textColorHint="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/register_asParent_tvChildNumber"
-        app:layout_constraintTop_toBottomOf="@+id/et_your_number" />
+        <TextView
+            android:id="@+id/et_DOB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/backgroun_et"
+            android:focusable="false"
+            android:padding="10dp"
+            android:text="DD/MM/YYYY"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
+            app:layout_constraintTop_toTopOf="@id/bt_dob" />
+        <ImageView
+            android:id="@+id/calender_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/calender"
+            app:layout_constraintStart_toEndOf="@id/et_DOB"
+            app:layout_constraintTop_toTopOf="@id/et_DOB"></ImageView>
 
-    <TextView
-        android:id="@+id/register_asParent_tvDateofBirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="*Date of Birth:"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/et_DOB"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_DOB"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/tv_pin_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Area/Pincode : "
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bt_dob" />
 
-    <EditText
-        android:id="@+id/et_DOB"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@null"
-        android:ems="10"
-        android:inputType="date"
-        android:textColorHint="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/register_asParent_tvDateofBirth"
-        app:layout_constraintTop_toBottomOf="@+id/et_child_number" />
-
-    <TextView
-        android:id="@+id/register_asParent_tvPincode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="*Area/Pincode : "
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/et_pin_code"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_pin_code"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/et_pin_code"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@null"
-        android:ems="10"
-        android:inputType="number"
-        android:textColorHint="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/register_asParent_tvPincode"
-        app:layout_constraintTop_toBottomOf="@+id/et_DOB" />
-
-    <TextView
-        android:id="@+id/register_asParent_tvPS_PetName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="*Your will call PS :"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/et_ps_nick_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_ps_nick_name"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/et_ps_nick_name"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@null"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColorHint="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/register_asParent_tvPS_PetName"
-        app:layout_constraintTop_toBottomOf="@+id/et_pin_code" />
-
-    <Button
-        android:id="@+id/btnRegisterasParent_SignIn"
-        android:layout_width="0dp"
-        android:layout_height="35sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="82dp"
-        android:background="@drawable/background_button_sign_in"
-        android:fontFamily="@font/century_gothic_400"
-        android:text="Create your Profile"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_ps_nick_name" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>&lt;!&ndash;
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@drawable/front_blank_with_logo">
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_hor_30_per"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.33"/>
-	
-	<EditText
-		android:id="@+id/et_name"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Name"
-		android:inputType="textPersonName"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.255"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
-	
-	<EditText
-		android:id="@+id/et_nick_name"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="What we called you:(Chachu,Dadu,Chachi)"
-		android:inputType="textPersonName"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_name" />
-	<EditText
-		android:id="@+id/et_child_number"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Your Number : "
-		android:inputType="number"
-		android:maxLength="10"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_nick_name" />
-	
-	<EditText
-		android:id="@+id/et_parent_number"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Child's Number : "
-		android:inputType="number"
-		android:maxLength="10"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_child_number" />
-	
-	<EditText
-		android:id="@+id/et_DOB"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Date of Birth : "
-		android:inputType="date"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_parent_number" />
-	
-	<EditText
-		android:id="@+id/et_pin_code"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:maxLength="6"
-		android:hint="Area/Pincode : "
-		android:inputType="number"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_DOB" />
-	
-	<EditText
-		android:id="@+id/et_ps_nick_name"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="What you call to PS : "
-		android:inputType="textPersonName"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_pin_code" />
-	
-	<EditText
-		android:id="@+id/et_password"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Password : "
-		android:inputType="textWebPassword"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_ps_nick_name" />
-	
-	<EditText
-		android:id="@+id/et_confirm_password"
-		android:layout_width="0dp"
-		android:layout_height="30dp"
-		android:background="@null"
-		android:ems="10"
-		android:hint="Confirm Password : "
-		android:inputType="textWebPassword"
-		android:paddingLeft="20dp"
-		android:textColorHint="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.25"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_password" />
-	
-	<View
-		android:id="@+id/view"
-		style="@style/Divider"
-		android:layout_width="200dp"
-		android:layout_height="2dp"
-		android:layout_marginTop="8dp"
-		android:background="@android:color/black"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
-	
-	<Button
-		android:id="@+id/btnRegisterasChild_SignIn"
-		android:layout_width="0dp"
-		android:layout_height="35sp"
-		android:layout_marginStart="8dp"
-		android:layout_marginTop="5dp"
-		android:layout_marginEnd="8dp"
-		android:background="@drawable/background_button_sign_in"
-		android:text="CREATE YOUR PROFILE"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="0.53"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_confirm_password" />
+        <EditText
+            android:id="@+id/et_pin_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/backgroun_et"
+            android:ems="10"
+            android:hint="6 digit pincode here"
+            android:inputType="number"
+            android:maxLength="6"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
+            app:layout_constraintTop_toTopOf="@id/tv_pin_code"
+            app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;
--->
+        <View
+            android:id="@+id/view"
+            style="@style/Divider"
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
+
+        <TextView
+            android:id="@+id/tv_ps_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Name your PS : "
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_pin_code" />
+
+        <EditText
+            android:id="@+id/et_ps_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/backgroun_et"
+            android:ems="10"
+            android:hint="Type here.."
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
+            app:layout_constraintTop_toTopOf="@id/tv_ps_nick_name"
+            app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
+
+        <TextView
+            android:id="@+id/tvVolunteer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Be a Volunteer"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_ps_nick_name" />
+
+        <Spinner
+            android:id="@+id/spin_volunteer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:entries="@array/volunteer_options"
+            android:inputType="textPersonName"
+            android:textColorHint="#000000"
+            app:layout_constraintStart_toStartOf="@id/guide_ver_70_per"
+            app:layout_constraintTop_toTopOf="@id/tvVolunteer"
+            app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_75_per"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.79" />
+
+        <Button
+            android:id="@+id/btnRegisterasChild_SignIn"
+            android:layout_width="0dp"
+            android:layout_height="35sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/background_button_sign_in"
+            android:text="CREATE YOUR PROFILE"
+            app:layout_constraintEnd_toStartOf="@id/guide_ver_95_per"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guide_hor_75_per"
+         />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/front_blank_with_logo">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_30_per"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.31" />
+
+        <TextView
+            android:id="@+id/register_asParent_tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/century_gothic_400"
+            android:text="*Name:"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/et_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guide_hor_30_per" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.68"
+            app:layout_constraintStart_toEndOf="@+id/register_asParent_tvName"
+            app:layout_constraintTop_toTopOf="@+id/guide_hor_30_per" />
+
+        <TextView
+            android:id="@+id/register_asParent_tvPetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/century_gothic_400"
+            android:text="PS will call you:"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/et_nick_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_nick_name"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/et_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:ems="10"
+            android:fontFamily="@font/century_gothic_400"
+            android:hint="(Dadu,Chachu..)"
+            android:inputType="textPersonName"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.625"
+            app:layout_constraintStart_toEndOf="@+id/register_asParent_tvPetName"
+            app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+        <TextView
+            android:id="@+id/register_asParent_tvYourNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/century_gothic_400"
+            android:text="*Your Number:"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/et_your_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_your_number"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/et_your_number"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toEndOf="@+id/register_asParent_tvYourNumber"
+            app:layout_constraintTop_toBottomOf="@+id/et_nick_name" />
+
+        <TextView
+            android:id="@+id/register_asParent_tvChildNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/century_gothic_400"
+            android:text="*Your Child Number:"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/et_child_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_child_number"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/et_child_number"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:ems="10"
+            android:inputType="number"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/register_asParent_tvChildNumber"
+            app:layout_constraintTop_toBottomOf="@+id/et_your_number" />
+
+        <TextView
+            android:id="@+id/register_asParent_tvDateofBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/century_gothic_400"
+            android:text="*Date of Birth:"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/et_DOB"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_DOB"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/et_DOB"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:ems="10"
+            android:inputType="date"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/register_asParent_tvDateofBirth"
+            app:layout_constraintTop_toBottomOf="@+id/et_child_number" />
+
+        <TextView
+            android:id="@+id/register_asParent_tvPincode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/century_gothic_400"
+            android:text="*Area/Pincode : "
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/et_pin_code"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_pin_code"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/et_pin_code"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:ems="10"
+            android:inputType="number"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/register_asParent_tvPincode"
+            app:layout_constraintTop_toBottomOf="@+id/et_DOB" />
+
+        <TextView
+            android:id="@+id/register_asParent_tvPS_PetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/century_gothic_400"
+            android:text="*Your will call PS :"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/et_ps_nick_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_ps_nick_name"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/et_ps_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/register_asParent_tvPS_PetName"
+            app:layout_constraintTop_toBottomOf="@+id/et_pin_code" />
+
+        <Button
+            android:id="@+id/btnRegisterasParent_SignIn"
+            android:layout_width="0dp"
+            android:layout_height="35sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="82dp"
+            android:background="@drawable/background_button_sign_in"
+            android:fontFamily="@font/century_gothic_400"
+            android:text="Create your Profile"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_ps_nick_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>&lt;!&ndash;
+    <?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/front_blank_with_logo">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_30_per"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.33"/>
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.255"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guide_hor_30_per" />
+
+        <EditText
+            android:id="@+id/et_nick_name"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="What we called you:(Chachu,Dadu,Chachi)"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_name" />
+        <EditText
+            android:id="@+id/et_child_number"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="Your Number : "
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingLeft="20dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_nick_name" />
+
+        <EditText
+            android:id="@+id/et_parent_number"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="Child's Number : "
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingLeft="20dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_child_number" />
+
+        <EditText
+            android:id="@+id/et_DOB"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="Date of Birth : "
+            android:inputType="date"
+            android:paddingLeft="20dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_parent_number" />
+
+        <EditText
+            android:id="@+id/et_pin_code"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:ems="10"
+            android:maxLength="6"
+            android:hint="Area/Pincode : "
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_DOB" />
+
+        <EditText
+            android:id="@+id/et_ps_nick_name"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="What you call to PS : "
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_pin_code" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="Password : "
+            android:inputType="textWebPassword"
+            android:paddingLeft="20dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_ps_nick_name" />
+
+        <EditText
+            android:id="@+id/et_confirm_password"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="Confirm Password : "
+            android:inputType="textWebPassword"
+            android:paddingLeft="20dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+        <View
+            android:id="@+id/view"
+            style="@style/Divider"
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegisterasChild_SignIn" />
+
+        <Button
+            android:id="@+id/btnRegisterasChild_SignIn"
+            android:layout_width="0dp"
+            android:layout_height="35sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/background_button_sign_in"
+            android:text="CREATE YOUR PROFILE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_confirm_password" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;
+    -->

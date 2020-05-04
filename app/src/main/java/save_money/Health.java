@@ -100,7 +100,7 @@ public class Health extends AppCompatActivity {
             startActivity(intent);
         });
     }
-    
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -108,9 +108,9 @@ public class Health extends AppCompatActivity {
         //Search item when search bar is open
         binding.searchBar.setOnEditorActionListener((v, actionId, event) -> {
             String searchWord = v.getText().toString();
-            if(!searchWord.isEmpty()){
+            if (!searchWord.isEmpty()) {
                 Intent foundIntent = AppStaticData.searchSaveMoney(Health.this, searchWord);
-                if(foundIntent!=null){
+                if (foundIntent != null) {
                     startActivity(foundIntent);
                     finish();
                 }
@@ -120,23 +120,24 @@ public class Health extends AppCompatActivity {
             return false;
         });
     }
-    
+
     private void toggleSearchBar(boolean b) {
-        if(b){
+        if (b) {
             binding.searchIcon.setVisibility(View.GONE);
             binding.healthIconTop.setVisibility(View.GONE);
             binding.tvHealth.setVisibility(View.GONE);
             binding.searchBar.setVisibility(View.VISIBLE);
             binding.searchBar.requestFocus();
             InputMethodManager inputMethodManager =
-                    (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            if(inputMethodManager != null){
+                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null) {
                 View focus = getCurrentFocus();
-                if(focus != null) inputMethodManager.toggleSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken()
-                        ,InputMethodManager.SHOW_FORCED, 0);
+                if (focus != null)
+                    inputMethodManager.toggleSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken()
+                            , InputMethodManager.SHOW_FORCED, 0);
             }
             isSearchBarOpen = true;
-        }else{
+        } else {
             binding.searchBar.setText("");
             binding.searchBar.clearFocus();
             binding.searchIcon.setVisibility(View.VISIBLE);
@@ -146,13 +147,13 @@ public class Health extends AppCompatActivity {
             isSearchBarOpen = false;
         }
     }
-    
+
     @Override
     public void onBackPressed() {
-        if(isSearchBarOpen)toggleSearchBar(false);
+        if (isSearchBarOpen) toggleSearchBar(false);
         else super.onBackPressed();
     }
-    
+
     private void showWaitDialog() {
         /*new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();*/
