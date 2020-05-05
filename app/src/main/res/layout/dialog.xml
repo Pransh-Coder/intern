@@ -73,6 +73,87 @@
         android:textSize="16sp"
         android:id="@+id/tv_pop3" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_pop3"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop2"
+        android:layout_marginTop="10dp"
+        android:text=" 4 services per year"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:id="@+id/tv_new_pop3"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tv_pop3"
+        app:layout_constraintTop_toBottomOf="@id/tv_new_pop3"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:id="@+id/tv_new_pop31"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_new_pop31"
+        app:layout_constraintTop_toBottomOf="@id/tv_new_pop3"
+        android:layout_marginTop="3dp"
+        android:text=" Free pick and drop service"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:id="@+id/tv_new_pop32"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tv_pop3"
+        app:layout_constraintTop_toBottomOf="@id/tv_new_pop32"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:id="@+id/tv_new_pop33"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_new_pop33"
+        app:layout_constraintTop_toBottomOf="@id/tv_new_pop32"
+        android:layout_marginTop="3dp"
+        android:text=" Roadside Assistance service"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:id="@+id/tv_new_pop34"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tv_pop3"
+        app:layout_constraintTop_toBottomOf="@id/tv_new_pop34"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:id="@+id/tv_new_pop35"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_new_pop35"
+        app:layout_constraintTop_toBottomOf="@id/tv_new_pop34"
+        android:layout_marginTop="3dp"
+        android:text=" Insurance Support"
+        android:fontFamily="@font/century_gothic"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:id="@+id/tv_new_pop36"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -90,7 +171,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_pop3"
+        app:layout_constraintTop_toBottomOf="@id/tv_new_pop36"
         android:textColor="#000"
         app:layout_constraintEnd_toEndOf="@id/ver_95"
         app:layout_constraintStart_toStartOf="@id/ver_5"
@@ -143,14 +224,141 @@
         app:layout_constraintTop_toBottomOf="@id/tv_pop6"
         android:fontFamily="@font/century_gothic"
         android:textSize="16sp"
-        android:id="@+id/tv_pop7" />
+        android:id="@+id/tv_pop71" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:text=" 4 services per year"
+        app:layout_constraintStart_toEndOf="@id/tv_pop71"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop6"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:id="@+id/tv_pop72" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop72"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:id="@+id/tv_pop73" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/tv_pop73"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop72"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:text=" Free pick and drop service"
+        android:id="@+id/tv_pop74" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop74"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:id="@+id/tv_pop75" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/tv_pop75"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop74"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:text=" Roadside Assistance service"
+        android:id="@+id/tv_pop76" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop76"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:id="@+id/tv_pop77" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/tv_pop77"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop76"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:text=" Insurance Support"
+        android:id="@+id/tv_pop78" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop78"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:id="@+id/tv_pop79" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/tv_pop79"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop78"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:text=" 10% discount on labour"
+        android:id="@+id/tv_pop710" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop710"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:id="@+id/tv_pop711" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/tv_pop711"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop710"
+        android:fontFamily="@font/century_gothic"
+        android:textSize="16sp"
+        android:text=" 2 Lubricants free"
+        android:id="@+id/tv_pop712" />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
         android:textColor="#000"
-        app:layout_constraintTop_toBottomOf="@id/tv_pop7"
+        app:layout_constraintTop_toBottomOf="@id/tv_pop712"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@id/ver_5"
         app:layout_constraintEnd_toEndOf="@id/ver_95"

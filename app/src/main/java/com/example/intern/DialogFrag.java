@@ -21,7 +21,7 @@ public class DialogFrag extends DialogFragment {
         view = getActivity().getLayoutInflater().inflate(R.layout.dialog,new LinearLayout(getActivity()),false);
         TextView tv = view.findViewById(R.id.tv_pop3);
         tv.setText(Html.fromHtml("&#8226 4 services per year<br>&#8226 Free pick and drop service<br>&#8226 Roadside Assistance service<br>&#8226 Insurance Support"));
-        tv = view.findViewById(R.id.tv_pop7);
+        tv = view.findViewById(R.id.tv_pop71);
         tv.setText(Html.fromHtml("&#8226 4 services per year<br>&#8226 Free pick and drop service<br>&#8226 Roadside Assistance service<br>&#8226 Insurance Support<br>&#8226 10% discount on labour<br>&#8226 2 Lubricants free"));
 
         CheckBox cb1 = view.findViewById(R.id.rb_1);
