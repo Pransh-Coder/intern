@@ -1,6 +1,5 @@
 package com.example.intern.auth.fragments;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -79,13 +77,16 @@ public class RegistrationOptionsFR extends Fragment {
 		//TODO:
 
 		binding.googleSignIn.setOnClickListener(v->{
+			viewModel.setHasOptedPhoneVerification(false);
 			Intent intent = viewModel.getGoogleSignInClient().getSignInIntent();
 			startActivityForResult(intent, G_SIGN_IN_REQ_CODE);
 		});
 		binding.phoneSignIn.setOnClickListener(v->{
+			viewModel.setHasOptedPhoneVerification(true);
 			Navigation.findNavController(v).navigate(R.id.action_registrationOptionsFR_to_phoneRegistrationFR);
 		});
 		binding.facebookSignIn.setOnClickListener(v->{
+			viewModel.setHasOptedPhoneVerification(false);
 			LoginManager.getInstance().logInWithReadPermissions(RegistrationOptionsFR.this, Arrays.asList("email"));
 			LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
 				@Override

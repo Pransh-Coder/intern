@@ -5,14 +5,19 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,12 +33,17 @@ import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.FragmentRegisterAsChildBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class RegisterAsChildFR extends Fragment {
 	private static String TAG = RegisterAsChildFR.class.getSimpleName();
@@ -42,6 +52,7 @@ public class RegisterAsChildFR extends Fragment {
 	private FusedLocationProviderClient locationProviderClient;
 	private FirebaseUser user;
 	private String pinCode;
+	private boolean hasVerifiedPH;
 	private FragmentRegisterAsChildBinding binding;
 	private boolean hasSelectedDate;
 	private String dateTimeStamp = null;
@@ -201,9 +212,17 @@ public class RegisterAsChildFR extends Fragment {
 				//Wrong child number
 				binding.etChildNumber.setError("Enter a valid number");
 				return;
+			}else if(TextUtils.isEmpty(child_number)){
+				binding.etChildNumber.setError("Enter Phone Number");
+				return;
 			}
 			if(!parent_number.isEmpty() && !parent_number.equals("null")  && parent_number.length() != 10){
 				binding.etParNumber.setError("Should be a valid Phone Number");
+				return;
+			}
+			//Show a dialog to verify the phone number
+			if(!viewModel.isHasOptedPhoneVerification() && !hasVerifiedPH){
+				verifyPhoneNumber(child_number);
 				return;
 			}
 			ProgressDialog dialog = new ProgressDialog(requireContext());
@@ -237,5 +256,64 @@ public class RegisterAsChildFR extends Fragment {
 				}
 			});
 		});
+	}
+	
+	private void verifyPhoneNumber(String phoneNumber){
+		//Phone verification callback
+		PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+			@Override
+			public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+				try{
+					FirebaseAuth.getInstance().getCurrentUser().linkWithCredential(phoneAuthCredential).addOnSuccessListener(authResult -> {
+						hasVerifiedPH = true;
+						Toast.makeText(requireContext(),  "Phone Number Verified!", Toast.LENGTH_SHORT).show();
+					});
+				}catch (Exception ignored){}
+			}
+			@Override
+			public void onVerificationFailed(@NonNull FirebaseException e) {
+				Toast.makeText(requireContext(), "Invalid Phone Number", Toast.LENGTH_LONG).show();
+			}
+			
+			public void onCodeSent(@NonNull String verificationId,
+			                       @NonNull PhoneAuthProvider.ForceResendingToken token) {
+				// Save verification ID and resending token so we can use them later
+				//Build a dialog box for verification of Phone Number
+				final AlertDialog.Builder otpGetterDialog = new AlertDialog.Builder(requireContext());
+				final EditText otpEditText = new EditText(requireContext());
+				otpEditText.setHint("OTP");
+				otpEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
+				otpEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
+				otpGetterDialog.setMessage("Enter OTP");
+				otpGetterDialog.setView(otpEditText);
+				otpGetterDialog.setIcon(R.drawable.pslogotrimmed);
+				otpGetterDialog.setCancelable(false);
+				otpGetterDialog.setPositiveButton("Verify", (dialog, which) -> {
+					if(which==DialogInterface.BUTTON_POSITIVE){/*Do stuff*/}else return;
+					//TODO : Get the OTP and Verify
+					String otp = otpEditText.getText().toString();
+					if(otp.length() != 6)otpEditText.setError("Invalid OTP");
+					else{
+						PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, otp);
+						try{
+							FirebaseAuth.getInstance().getCurrentUser().linkWithCredential(credential).addOnSuccessListener(authResult -> {
+								hasVerifiedPH = true;
+								Log.d(TAG, "onCodeSent: linked the account");
+								Toast.makeText(requireContext(),  "Phone Number Verified!", Toast.LENGTH_SHORT).show();
+								dialog.dismiss();
+							});
+						}catch (Exception ignored){}
+					}
+				});
+				otpGetterDialog.setNegativeButton("DISMISS", (dialog, which) -> dialog.dismiss());
+				otpGetterDialog.setNeutralButton("RESEND OTP", (dialog, which) -> {
+					PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + phoneNumber, 60 , TimeUnit.SECONDS, requireActivity(), this,token);
+				});
+				otpGetterDialog.show();
+				Toast.makeText(requireContext(), "Code sent", Toast.LENGTH_LONG).show();
+			}
+		};
+		//Make an instance of Phone verifier
+		PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + phoneNumber, 60, TimeUnit.SECONDS,requireActivity(), callbacks);
 	}
 }

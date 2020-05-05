@@ -33,7 +33,7 @@ public class ActivityShopping extends AppCompatActivity {
             finish();
         });
         binding.medicineSite.setOnClickListener(v -> {
-            String url = "https://www.prarambhstore.com/beta/order_medicines";
+            String url = "https://wa.me/919023728047?text=Hi,%20I%20want%20to%20order%20Some%20Medicine";
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
             startActivity(intent);

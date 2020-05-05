@@ -18,6 +18,7 @@ public class AuthViewModel extends ViewModel {
 	private boolean regChoiceisParent;
 	private IsLoggedInListener loggedInListener;
 	private SharedPrefUtil prefUtil;
+	private boolean hasOptedPhoneVerification;
 	
 	public IsLoggedInListener getLoggedInListener() {
 		return loggedInListener;
@@ -33,6 +34,14 @@ public class AuthViewModel extends ViewModel {
 	
 	public void setPrefUtil(SharedPrefUtil prefUtil) {
 		this.prefUtil = prefUtil;
+	}
+	
+	public boolean isHasOptedPhoneVerification() {
+		return hasOptedPhoneVerification;
+	}
+	
+	public void setHasOptedPhoneVerification(boolean hasOptedPhoneVerification) {
+		this.hasOptedPhoneVerification = hasOptedPhoneVerification;
 	}
 	
 	public interface IsLoggedInListener{
