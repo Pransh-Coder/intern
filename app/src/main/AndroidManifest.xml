@@ -140,11 +140,11 @@
 		<activity android:name=".askservices.DemandActivity" />
 		<activity
 			android:name="save_money.Health"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateVisible"
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		<activity
 			android:name="save_money.SaveMoney"
-			android:windowSoftInputMode="stateVisible|adjustPan|adjustResize"
+			android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		<activity
 			android:name="save_money.Offers.DentalCategoryOffers"
@@ -171,17 +171,17 @@
 			android:name=".payment.BecomeAMember"
 			android:launchMode="singleTop" />
 		<activity android:name=".Gifts"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateVisible"/>
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
 		<activity android:name=".ExclusiveServices.TiffinService" />
 		<activity android:name=".ExclusiveServices.HomeModification" />
 		<activity android:name=".Lifestyle"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateVisible"/>
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
 		<activity android:name=".FoodActivity"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateVisible"/>
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
 		<activity android:name=".Holiday"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateVisible"/>
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
 		<activity android:name=".ServicesActivity"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateVisible"/>
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
 		<activity android:name=".two_wheeler_repair_list" />
 		<activity android:name=".ExclusiveServices.DoctorOnline"
 			android:windowSoftInputMode="adjustResize|stateHidden|adjustPan"/>
