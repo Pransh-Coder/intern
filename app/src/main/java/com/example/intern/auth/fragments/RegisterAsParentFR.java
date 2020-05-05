@@ -215,10 +215,10 @@ public class RegisterAsParentFR extends Fragment {
 		        return;
 	        }
 	        //Show a dialog to verify the phone number
-	        if(!viewModel.isHasOptedPhoneVerification() && !hasVerifiedPH){
+	        /*if(!viewModel.isHasOptedPhoneVerification() && !hasVerifiedPH){
 		        verifyPhoneNumber(child_number);
 		        return;
-	        }
+	        }*/
 	        ProgressDialog dialog = new ProgressDialog(requireContext());
 	        dialog.setIcon(R.drawable.pslogotrimmed);
 	        dialog.setMessage("Please Wait");
