@@ -220,11 +220,6 @@ public class RegisterAsChildFR extends Fragment {
 				binding.etParNumber.setError("Should be a valid Phone Number");
 				return;
 			}
-			//Show a dialog to verify the phone number
-			if(!viewModel.isHasOptedPhoneVerification() && !hasVerifiedPH){
-				verifyPhoneNumber(child_number);
-				return;
-			}
 			ProgressDialog dialog = new ProgressDialog(requireContext());
 			dialog.setIcon(R.drawable.pslogotrimmed);
 			dialog.setMessage("Please Wait");
@@ -266,9 +261,12 @@ public class RegisterAsChildFR extends Fragment {
 				try{
 					FirebaseAuth.getInstance().getCurrentUser().linkWithCredential(phoneAuthCredential).addOnSuccessListener(authResult -> {
 						hasVerifiedPH = true;
+						Log.d(TAG, "onVerificationCompleted: Verified");
 						Toast.makeText(requireContext(),  "Phone Number Verified!", Toast.LENGTH_SHORT).show();
 					});
-				}catch (Exception ignored){}
+				}catch (Exception ignored){
+					Log.d(TAG, "onVerificationCompleted: Cannot update phone number");
+				}
 			}
 			@Override
 			public void onVerificationFailed(@NonNull FirebaseException e) {
@@ -285,8 +283,8 @@ public class RegisterAsChildFR extends Fragment {
 				otpEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
 				otpEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
 				otpGetterDialog.setMessage("Enter OTP");
-				otpGetterDialog.setView(otpEditText);
 				otpGetterDialog.setIcon(R.drawable.pslogotrimmed);
+				otpGetterDialog.setView(otpEditText);
 				otpGetterDialog.setCancelable(false);
 				otpGetterDialog.setPositiveButton("Verify", (dialog, which) -> {
 					if(which==DialogInterface.BUTTON_POSITIVE){/*Do stuff*/}else return;
@@ -302,18 +300,20 @@ public class RegisterAsChildFR extends Fragment {
 								Toast.makeText(requireContext(),  "Phone Number Verified!", Toast.LENGTH_SHORT).show();
 								dialog.dismiss();
 							});
-						}catch (Exception ignored){}
+						}catch (Exception ignored){
+							Log.d(TAG, "onCodeSent: Cannot verify number");
+						}
 					}
 				});
 				otpGetterDialog.setNegativeButton("DISMISS", (dialog, which) -> dialog.dismiss());
 				otpGetterDialog.setNeutralButton("RESEND OTP", (dialog, which) -> {
-					PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + phoneNumber, 60 , TimeUnit.SECONDS, requireActivity(), this,token);
+					PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + phoneNumber, 5 , TimeUnit.SECONDS, requireActivity(), this,token);
 				});
 				otpGetterDialog.show();
 				Toast.makeText(requireContext(), "Code sent", Toast.LENGTH_LONG).show();
 			}
 		};
 		//Make an instance of Phone verifier
-		PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + phoneNumber, 60, TimeUnit.SECONDS,requireActivity(), callbacks);
+		PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + phoneNumber, 5, TimeUnit.SECONDS,requireActivity(), callbacks);
 	}
 }
