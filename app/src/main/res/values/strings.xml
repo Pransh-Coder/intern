@@ -98,7 +98,6 @@
 	<string name="coming_soon">Coming Soon&#8230;</string>
 	<string name="more_about_special_offers">Tell us more about \nyour special offers</string>
 	<string name="date_time">Date &amp; Time</string>
-	<string name="save_money">SAVE MONEY</string>
 	<string name="swabhiman">SWABHIMAN</string>
 	<string name="shopping">SHOPPING/\nMEDICINE </string>
 	<string name="fuel_with_us">FUEL WITH US</string>
@@ -134,7 +133,6 @@
 	<string name="vegetables">Vegetables</string>
 	<string name="dairy_products">Dairy Products</string>
 	<string name="tiffin">Tiffin</string>
-	<string name="home_modification">Home Modification</string>
 	<string name="doctor_online">Doctor Online</string>
 	<string name="drinking_water">Drinking Water</string>
 	<string name="auto">Auto</string>
@@ -142,7 +140,6 @@
 	<string name="legal_and_financial">Legal and Financial</string>
 	<string name="teaching_class">Teaching Class</string>
 	<string name="other_services">Other Services</string>
-	<string name="health">HEALTH</string>
 	<string name="gifts">GIFTS</string>
 	<string name="food">FOOD</string>
 	<string name="services">SERVICES</string>
@@ -154,10 +151,8 @@
 	<string name="dietician">DIETICIAN</string>
 	<string name="eyecare">EYECARE</string>
 	<string name="physiotherapy">PHYSIOTHERAPY</string>
-	<string name="consultation_free">Consultation Free</string>
 	<string name="sample_pickup_and_drop">Sample Pickup and Drop</string>
 	<string name="rs_350_off">Rs. 350 Off</string>
-	<string name="consultation_free">Consultation Free</string>
 	<string name="rs_200_off">Rs. 200 Off</string>
 	<string name="consultation_free">Consultation Free</string>
 	<string name="grab_bar">Grab Bar</string>
@@ -168,7 +163,6 @@
 	<string name="stainless_steel_finish_wall_mounted_toilet_grab_bar_rail_for_independent_living_of_the_elderly">Stainless steel finish wall mounted toilet grab bar/rail, for independent living of the elderly.</string>
 	<string name="the_toilet_seat_riser_is_designed_to_give_you_the_elevation_you_need_while_still_using_your_own_toilet_seat_the_riser_installs_easily_under_your_existing_toilet_seat">The toilet seat riser is designed to give you the elevation you need while still using your own toilet seat. The riser installs easily under your existing toilet seat.</string>
 	<string name="anti_skid_tape_helps_to_reduce_the_risk_of_slips_falls_trips_particularly_senior_adults_it_can_be_used_on_stairs_floors_and_ramps_smooth_or_dry_surfaces_ladders">Anti-Skid Tape helps to reduce the risk of slips, falls, trips, particularly senior adults. It can be used on stairs, floors and ramps – smooth or dry surfaces, ladders.</string>
-	<string name="to_know_more_submit_your_request">To know more submit your request</string>
 	<string name="home_modification">Home Modification</string>
 	<string name="save_money">SAVE MONEY</string>
 	<string name="health">HEALTH</string>
