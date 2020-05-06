@@ -5,20 +5,16 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.text.InputFilter;
-import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,17 +30,18 @@ import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.FragmentRegisterAsChildBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -54,7 +51,6 @@ public class RegisterAsChildFR extends Fragment {
 	private AuthViewModel viewModel;
 	private FirebaseUser user;
 	private String pinCode;
-	private boolean hasVerifiedPH;
 	private FragmentRegisterAsChildBinding binding;
 	public static  final String Shared_pref="sharedPrefs";
 	private boolean hasSelectedDate;
@@ -107,23 +103,45 @@ public class RegisterAsChildFR extends Fragment {
 			DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), dateSetListener, 2000, 1,1);
 			datePickerDialog.show();
 		});
+		//todo:
 		checkPerms();
 	}
 	
 	private void checkPerms(){
-		if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-			ActivityCompat.requestPermissions(requireActivity(), new String[] {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 122);
-		}else{
+		try{
+			if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+				ActivityCompat.requestPermissions(requireActivity(), new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, 122);
+			}else{
+				try{
+					getPinCode();
+				}catch (Exception ignored){}
+			}
+		}catch(SecurityException e){
 			try{
-				getPinCode();
+				Dexter.withContext(requireContext()).withPermission(Manifest.permission.ACCESS_COARSE_LOCATION).withListener(new PermissionListener() {
+					@Override
+					public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+						getPinCode();
+					}
+					
+					@Override
+					public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+					
+					}
+					
+					@Override
+					public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+					
+					}
+				}).check();
 			}catch (Exception ignored){}
-		}
+		}catch (Exception ignored){}
 	}
 	
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		if(requestCode == 122){
-			if(grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+			if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
 				try{
 					getPinCode();
 				}catch (Exception ignored){}
@@ -274,14 +292,13 @@ public class RegisterAsChildFR extends Fragment {
 		});
 	}
 	
-	private void verifyPhoneNumber(String phoneNumber){
+	/*private void verifyPhoneNumber(String phoneNumber){
 		//Phone verification callback
 		PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 			@Override
 			public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 				try{
 					FirebaseAuth.getInstance().getCurrentUser().linkWithCredential(phoneAuthCredential).addOnSuccessListener(authResult -> {
-						hasVerifiedPH = true;
 						Log.d(TAG, "onVerificationCompleted: Verified");
 						Toast.makeText(requireContext(),  "Phone Number Verified!", Toast.LENGTH_SHORT).show();
 					});
@@ -308,7 +325,7 @@ public class RegisterAsChildFR extends Fragment {
 				otpGetterDialog.setView(otpEditText);
 				otpGetterDialog.setCancelable(false);
 				otpGetterDialog.setPositiveButton("Verify", (dialog, which) -> {
-					if(which==DialogInterface.BUTTON_POSITIVE){/*Do stuff*/}else return;
+					if(which==DialogInterface.BUTTON_POSITIVE){*//*Do stuff*//*}else return;
 					//TODO : Get the OTP and Verify
 					String otp = otpEditText.getText().toString();
 					if(otp.length() != 6)otpEditText.setError("Invalid OTP");
@@ -316,7 +333,6 @@ public class RegisterAsChildFR extends Fragment {
 						PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, otp);
 						try{
 							FirebaseAuth.getInstance().getCurrentUser().linkWithCredential(credential).addOnSuccessListener(authResult -> {
-								hasVerifiedPH = true;
 								Log.d(TAG, "onCodeSent: linked the account");
 								Toast.makeText(requireContext(),  "Phone Number Verified!", Toast.LENGTH_SHORT).show();
 								dialog.dismiss();
@@ -336,5 +352,5 @@ public class RegisterAsChildFR extends Fragment {
 		};
 		//Make an instance of Phone verifier
 		PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + phoneNumber, 5, TimeUnit.SECONDS,requireActivity(), callbacks);
-	}
+	}*/
 }
