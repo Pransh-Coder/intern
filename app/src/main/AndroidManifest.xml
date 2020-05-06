@@ -5,15 +5,14 @@
 	package="com.example.intern">
 	
 	<uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
-	
 	<!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 	
 	<dist:module dist:instant="true" />
 	<dist:module dist:instant="true" />
@@ -21,13 +20,14 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	
 	<uses-feature
 		android:glEsVersion="0x00020000"
-		android:required="false"/>
+		android:required="false" />
 	
 	<application
 		android:hardwareAccelerated="true"
@@ -36,6 +36,8 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
+		<activity android:name=".fuel.RewardsOnFuel"></activity>
+		
 		<service
 			android:name=".fuel.BackNavService"
 			android:enabled="true"
@@ -81,7 +83,6 @@
 		<activity
 			android:name=".Splash"
 			android:launchMode="singleTop">
-
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				
@@ -101,24 +102,27 @@
 		<activity android:name=".shopping.ActivityShopping" />
 		<activity android:name=".BPCL_Fuel_QR_ScannerActivity" />
 		<activity android:name=".fuel.FuelBPCLACT" />
-		<activity android:name=".MedicalRecords.MedicalRecord"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
+		<activity
+			android:name=".MedicalRecords.MedicalRecord"
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
 		<activity android:name=".tnc.TermsAndConditions" />
 		<activity
 			android:name=".ReduceExpenses.ReduceExpenses"
 			android:theme="@style/MaterialAppTheme"
 			android:windowSoftInputMode="adjustResize|adjustPan" />
-		<activity android:name=".TotalDiscountReceived.TotalDiscountReceived"
-			android:theme="@style/MaterialAppTheme"/>
+		<activity
+			android:name=".TotalDiscountReceived.TotalDiscountReceived"
+			android:theme="@style/MaterialAppTheme" />
 		<activity android:name=".NewsAndUpdatesACT" />
 		<activity android:name=".FeedBackOrComplaintACT" />
 		<activity android:name=".socialnetwork.Listactivity" />
 		<activity android:name=".fuel.FuelWithUsAct" />
 		<activity
 			android:name=".auth.AuthActivity"
-			android:launchMode="singleTop"/>
-		<activity android:name=".MedicalRecords.Vitals"
-			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"/>
+			android:launchMode="singleTop" />
+		<activity
+			android:name=".MedicalRecords.Vitals"
+			android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
 		<activity android:name=".holiday_list" />
 		<activity android:name=".lifestyle_list" />
 		<activity android:name=".food_list" />
@@ -131,8 +135,8 @@
 			android:theme="@style/MaterialAppTheme" />
 		<activity
 			android:name=".ExclusiveServices.ExclusiveServices"
-			android:windowSoftInputMode="stateVisible|adjustResize|adjustPan"
-			android:launchMode="singleTop" />
+			android:launchMode="singleTop"
+			android:windowSoftInputMode="stateVisible|adjustResize|adjustPan" />
 		<activity
 			android:name=".Rating"
 			android:launchMode="singleTop"
@@ -140,12 +144,12 @@
 		<activity android:name=".askservices.DemandActivity" />
 		<activity
 			android:name="save_money.Health"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"
-			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+			android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
 		<activity
 			android:name="save_money.SaveMoney"
-			android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
-			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+			android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+			android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
 		<activity
 			android:name="save_money.Offers.DentalCategoryOffers"
 			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -170,21 +174,27 @@
 		<activity
 			android:name=".payment.BecomeAMember"
 			android:launchMode="singleTop" />
-		<activity android:name=".Gifts"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
+		<activity
+			android:name=".Gifts"
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
 		<activity android:name=".ExclusiveServices.TiffinService" />
 		<activity android:name=".ExclusiveServices.HomeModification" />
-		<activity android:name=".Lifestyle"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
-		<activity android:name=".FoodActivity"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
-		<activity android:name=".Holiday"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
-		<activity android:name=".ServicesActivity"
-			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"/>
+		<activity
+			android:name=".Lifestyle"
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
+		<activity
+			android:name=".FoodActivity"
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
+		<activity
+			android:name=".Holiday"
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
+		<activity
+			android:name=".ServicesActivity"
+			android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
 		<activity android:name=".two_wheeler_repair_list" />
-		<activity android:name=".ExclusiveServices.DoctorOnline"
-			android:windowSoftInputMode="adjustResize|stateHidden|adjustPan"/>
+		<activity
+			android:name=".ExclusiveServices.DoctorOnline"
+			android:windowSoftInputMode="adjustResize|stateHidden|adjustPan" />
 		<activity android:name=".askservices.EssentialServices" />
 		
 		<meta-data
