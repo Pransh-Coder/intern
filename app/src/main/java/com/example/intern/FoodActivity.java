@@ -88,8 +88,8 @@ public class FoodActivity extends AppCompatActivity {
     }
     
     private void showWaitDialog(){
-        new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("These offers are avail by <b>PS</b>+ members @ <b>499</b>/- Rs only. \n" +
-                "Registration is not available during <b>lock down</b> (COVID-19).")
+        new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Offer is for <b>PS+</b> members only. Buy membership @<b>499</b>/- Rs. \n" +
+                "But services will be available after<b>LockDown</b>.")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();
     }
 }
