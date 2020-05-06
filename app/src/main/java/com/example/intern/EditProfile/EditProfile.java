@@ -64,9 +64,13 @@ public class EditProfile extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
         String value = sharedPreferences.getString("role", "");
         if(value.equals("1"))
+        {
             binding.hintNumber.setHint("Child's Number");
+            binding.relativePhoneNumber.setHint("Child's Number");}
         else if(value.equals("2"))
+        {
             binding.hintNumber.setHint("Parent's Number");
+            binding.relativePhoneNumber.setHint("Parent's Number");}
     }
     
     @Override

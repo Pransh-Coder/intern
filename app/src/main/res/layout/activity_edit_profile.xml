@@ -177,13 +177,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="8dp"
-                android:hint="Street/colony name"
+                android:hint="Street/Landmark Area"
                 app:layout_constraintBottom_toBottomOf="@+id/phonimg"
                 app:layout_constraintLeft_toRightOf="@+id/phonimg"
                 app:layout_constraintTop_toTopOf="@+id/phonimg">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/address_street"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:inputType="text"
+                    android:maxLength="100" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Area,City"
+                app:layout_constraintBottom_toBottomOf="@+id/phonimg"
+                app:layout_constraintLeft_toRightOf="@+id/phonimg"
+                app:layout_constraintTop_toTopOf="@+id/phonimg">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/address_area"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
@@ -216,26 +237,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="8dp"
-                android:hint="Area, near by landmark"
-                app:layout_constraintBottom_toBottomOf="@+id/phonimg"
-                app:layout_constraintLeft_toRightOf="@+id/phonimg"
-                app:layout_constraintTop_toTopOf="@+id/phonimg">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/address_area"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="5dp"
-                    android:inputType="text"
-                    android:maxLength="100" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="8dp"
                 android:hint="Phone Number">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -253,8 +254,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginBottom="8dp"
-                android:hint="Alternative Phone Number">
+                android:layout_marginBottom="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/relativePhoneNumber"
