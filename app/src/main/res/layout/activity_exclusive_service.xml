@@ -80,7 +80,7 @@
         android:id="@+id/txtExcusiveService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Essential Services "
+        android:text="@string/essential_services"
         android:textColor="#000"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/hor_guide_12_percent"
@@ -182,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_gravity="center"
-                    android:text="Grocery"
+                    android:text="@string/grocery"
                     android:textSize="13sp"
                     android:textColor="@color/black" />
 
@@ -215,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Vegetables"
+                    android:text="@string/vegetables"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -274,7 +274,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Dairy Products"
+                    android:text="@string/dairy_products"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
@@ -316,7 +316,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Tiffin"
+                    android:text="@string/tiffin"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -366,7 +366,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Home Modification"
+                    android:text="@string/home_modification"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
@@ -408,7 +408,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Doctor Online"
+                    android:text="@string/doctor_online"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
@@ -451,7 +451,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="7dp"
-                    android:text="Drinking Water"
+                    android:text="@string/drinking_water"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
@@ -493,7 +493,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Auto"
+                    android:text="@string/auto"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
@@ -546,7 +546,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Emergency Care"
+                    android:text="@string/emergency_care"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
@@ -589,7 +589,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Legal and Financial"
+                    android:text="@string/legal_and_financial"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
@@ -640,7 +640,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Teaching Class"
+                    android:text="@string/teaching_class"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -684,7 +684,7 @@
                     android:layout_marginTop="5dp"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="Other Services"
+                    android:text="@string/other_services"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
             </LinearLayout>

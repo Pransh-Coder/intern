@@ -47,7 +47,7 @@ public class RecyclerAdapterOffers extends RecyclerView.Adapter<RecyclerAdapterO
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         holder.shopName.setText(offers_pojoList.get(position).getShopName());
-        holder.area.setText("Area: "+offers_pojoList.get(position).getArea());
+        holder.area.setText(context.getString(R.string.area)+offers_pojoList.get(position).getArea());
         holder.offer.setText("Offer: "+offers_pojoList.get(position).getOffers());
 
         //since only one radio button is allowed to be selected,

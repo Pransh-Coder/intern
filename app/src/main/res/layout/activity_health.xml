@@ -80,7 +80,7 @@
         android:id="@+id/tv_health"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HEALTH"
+        android:text="@string/health"
         android:textColor="#000"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -160,7 +160,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#FFFF00"
-                            android:text="Consultation Free"
+                            android:text="@string/consultation_free"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="11dp" />
@@ -175,7 +175,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
-                            android:text="DENTAL"
+                            android:text="@string/dental"
                             android:textAlignment="center"
                             android:textColor="#000000"
                             android:textSize="12dp" />
@@ -195,7 +195,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#FFFF00"
-                            android:text="Sample Pickup and Drop"
+                            android:text="@string/sample_pickup_and_drop"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="10dp" />
@@ -208,7 +208,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="PATHALOGY LABORARTY"
+                            android:text="@string/pathalogy_laborarty"
                             android:textAlignment="center"
                             android:textColor="#000000"
                             android:textSize="12dp" />
@@ -228,7 +228,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#FFFF00"
-                            android:text="Rs. 350 Off"
+                            android:text="@string/rs_350_off"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="11dp" />
@@ -243,7 +243,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
-                            android:text="HOMEOPATHY"
+                            android:text="@string/homeopathy"
                             android:textColor="#000000"
                             android:textSize="12dp" />
 
@@ -272,7 +272,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#FFFF00"
-                            android:text="Consultation Free"
+                            android:text="@string/consultation_free"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="11dp" />
@@ -287,7 +287,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
-                            android:text="DIETICIAN"
+                            android:text="@string/dietician"
                             android:textColor="#000000"
                             android:textSize="12dp" />
 
@@ -307,7 +307,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#FFFF00"
-                            android:text="Rs. 200 Off"
+                            android:text="@string/rs_200_off"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="11dp" />
@@ -322,7 +322,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
-                            android:text="EYECARE"
+                            android:text="@string/eyecare"
                             android:textColor="#000000"
                             android:textSize="12dp" />
 
@@ -342,7 +342,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:background="#FFFF00"
-                            android:text="Consultation Free"
+                            android:text="@string/consultation_free"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="11dp" />
@@ -357,7 +357,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
-                            android:text="PHYSIOTHERAPY"
+                            android:text="@string/physiotherapy"
                             android:textColor="#000000"
                             android:textSize="12dp" />
 
