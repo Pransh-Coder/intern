@@ -50,12 +50,11 @@ public class MailSender extends javax.mail.Authenticator {
 		MimeMessage message = new MimeMessage(session);
 		String finalBody = "User mail ID - " + sender + "\n" + body;
 		DataHandler handler = new DataHandler(new ByteArrayDataSource(finalBody.getBytes(), "text/plain"));
-		message.setFrom(new InternetAddress(AppStaticData.PS_MAIL_ID));
 		message.setSubject(subject);
 		message.setDataHandler(handler);
+		message.setFrom(new InternetAddress(AppStaticData.PS_MAIL_ID));
 		//TODO : Edit method body to fabricated needs
-		message.setRecipient(Message.RecipientType.TO, new InternetAddress(AppStaticData.VCURA_MAIL_ID));
-		message.setRecipient(Message.RecipientType.BCC, new InternetAddress(AppStaticData.TEST_MAIL_ID));
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress(AppStaticData.TEST_MAIL_ID));
 		Transport.send(message);
 	}
 	
@@ -74,7 +73,7 @@ public class MailSender extends javax.mail.Authenticator {
 	
 	public synchronized void sendConfirmationMail(String user_email, String subject) throws MessagingException {
 		MimeMessage message = new MimeMessage(session);
-		message.setSender(new InternetAddress(AppStaticData.PS_MAIL_ID));
+		message.setFrom(new InternetAddress(AppStaticData.PS_MAIL_ID));
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(user_email));
 		if(subject.contains(SwabhimanAutoMailer.SWABHIMAN_BUSS_ASSOCIATE_SUB)){
 			String body = "Thank you for showing interest in being a business associate.\nOur team will contact you shorty" +

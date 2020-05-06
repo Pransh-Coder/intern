@@ -140,6 +140,15 @@ public class SaveMoney extends AppCompatActivity {
 		    if(!searchWord.isEmpty()){
 			    Intent foundIntent = AppStaticData.searchSaveMoney(SaveMoney.this, searchWord);
 			    if(foundIntent!=null){
+			    	//Hide Keyboard
+				    InputMethodManager inputMethodManager =
+						    (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+				    if(inputMethodManager != null){
+					    View focus = getCurrentFocus();
+					    if(focus != null){
+					    	inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken(), 0);
+					    }
+				    }
 				    startActivity(foundIntent);
 			    }
 		    }
@@ -156,6 +165,7 @@ public class SaveMoney extends AppCompatActivity {
             binding.textSaveMoney.setVisibility(View.GONE);
             binding.searchBar.setVisibility(View.VISIBLE);
             binding.searchBar.requestFocus();
+            //Popup keyboard
 	        InputMethodManager inputMethodManager =
 			        (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 	        if(inputMethodManager != null){

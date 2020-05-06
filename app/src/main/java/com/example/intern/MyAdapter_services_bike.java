@@ -71,9 +71,25 @@ public class MyAdapter_services_bike extends RecyclerView.Adapter<MyAdapter_serv
             View view = LayoutInflater.from(context).inflate(R.layout.dialog, null);
             Button btn_pay=view.findViewById(R.id.bt_pop);
             TextView tv = view.findViewById(R.id.tv_pop3);
-            tv.setText(Html.fromHtml("&#8226 4 services per year<br>&#8226 Free pick and drop service<br>&#8226 Roadside Assistance service<br>&#8226 Insurance Support"));
-            tv = view.findViewById(R.id.tv_pop7);
-            tv.setText(Html.fromHtml("&#8226 4 services per year<br>&#8226 Free pick and drop service<br>&#8226 Roadside Assistance service<br>&#8226 Insurance Support<br>&#8226 10% discount on labour<br>&#8226 2 Lubricants free"));
+            tv.setText(Html.fromHtml("&#8226"));
+            tv = view.findViewById(R.id.tv_new_pop31);
+            tv.setText(Html.fromHtml("&#8226"));
+            tv = view.findViewById(R.id.tv_new_pop33);
+            tv.setText(Html.fromHtml("&#8226"));
+            tv = view.findViewById(R.id.tv_new_pop35);
+            tv.setText(Html.fromHtml("&#8226"));
+            tv = view.findViewById(R.id.tv_pop71);
+            tv.setText(Html.fromHtml("&#8226"));
+            tv = view.findViewById(R.id.tv_pop73);
+            tv.setText(Html.fromHtml("&#8226"));
+            tv = view.findViewById(R.id.tv_pop75);
+            tv.setText(Html.fromHtml("&#8226"));
+            tv = view.findViewById(R.id.tv_pop77);
+            tv.setText(Html.fromHtml("&#8226"));
+            tv = view.findViewById(R.id.tv_pop79);
+            tv.setText(Html.fromHtml("&#8226"));
+            tv = view.findViewById(R.id.tv_pop711);
+            tv.setText(Html.fromHtml("&#8226"));
             CheckBox cb1 = view.findViewById(R.id.rb_1);
             CheckBox cb2 = view.findViewById(R.id.rb_2);
 

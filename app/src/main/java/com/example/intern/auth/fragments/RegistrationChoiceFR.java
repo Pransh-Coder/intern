@@ -1,15 +1,14 @@
 package com.example.intern.auth.fragments;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -23,8 +22,6 @@ import com.example.intern.databinding.FragmentRegistrationChoiceFRBinding;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import save_money.Offers.DentalCategoryOffers;
-
 public class RegistrationChoiceFR extends Fragment {
 	private FragmentRegistrationChoiceFRBinding binding;
 	private AuthViewModel viewModel;
@@ -37,13 +34,11 @@ public class RegistrationChoiceFR extends Fragment {
 	ViewPager viewPager;
 	TextView chngText;
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
         binding = FragmentRegistrationChoiceFRBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
-
         //ViewPager
         viewPager = view.findViewById(R.id.viewpager_fr);
         chngText = view.findViewById(R.id.chngText);

@@ -213,7 +213,7 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	
 	private void newUserWelcome(){
 		if(getIntent().getBooleanExtra(IS_NEW_USER, false)){
-			String message = "You are eligible for One month free benefit of discount on <b>Fuel</b> under PS+ membership.";
+			String message = "You are eligible for One month free benefit of discount on <b>Fuel</b> under <b>PS+</b> membership.";
 			new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed).setTitle("Congratulations")
 					.setMessage(Html.fromHtml(message))
 					.setPositiveButton("Great", null)
