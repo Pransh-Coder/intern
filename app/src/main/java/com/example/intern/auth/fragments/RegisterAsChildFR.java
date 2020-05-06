@@ -52,7 +52,6 @@ public class RegisterAsChildFR extends Fragment {
 	private static String TAG = RegisterAsChildFR.class.getSimpleName();
 	private final Calendar calendar = Calendar.getInstance();
 	private AuthViewModel viewModel;
-	private FusedLocationProviderClient locationProviderClient;
 	private FirebaseUser user;
 	private String pinCode;
 	private boolean hasVerifiedPH;
@@ -139,24 +138,26 @@ public class RegisterAsChildFR extends Fragment {
 	}
 	
 	private void getPinCode(){
-		locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
-		locationProviderClient.getLastLocation().addOnSuccessListener(requireActivity(), location -> {
-			Geocoder geocoder = new Geocoder(requireContext());
-			try {
-				List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude() , 1);
-				if(addresses != null && addresses.size() > 0 ){
-					pinCode = addresses.get(0).getPostalCode();
-					binding.etPinCode.setText(pinCode);
-					Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);
-				}else{
-					try{
-						getPinCode();
-					}catch (Exception ignored){}
+		try{
+			FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
+			locationProviderClient.getLastLocation().addOnSuccessListener(requireActivity(), location -> {
+				Geocoder geocoder = new Geocoder(requireContext());
+				try {
+					List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude() , 1);
+					if(addresses != null && addresses.size() > 0 ){
+						pinCode = addresses.get(0).getPostalCode();
+						binding.etPinCode.setText(pinCode);
+						Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);
+					}else{
+						try{
+							getPinCode();
+						}catch (Exception ignored){}
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
+			});
+		}catch (Exception ignored){}
 	}
 	
 	private int getAge(){

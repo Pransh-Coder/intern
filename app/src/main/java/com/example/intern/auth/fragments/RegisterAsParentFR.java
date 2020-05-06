@@ -51,8 +51,7 @@ public class RegisterAsParentFR extends Fragment {
     private static String TAG = RegisterAsParentFR.class.getSimpleName();
     private FragmentRegisterAsParentFRBinding binding;
     private AuthViewModel viewModel;
-    private FusedLocationProviderClient locationProviderClient;
-    private String pinCode;
+	private String pinCode;
     private FirebaseUser user;
     private final Calendar calendar = Calendar.getInstance();
     private boolean hasSelectedDate;
@@ -86,7 +85,6 @@ public class RegisterAsParentFR extends Fragment {
         View view = binding.getRoot();
 	    viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
 	    user = viewModel.getFirebaseUser();
-	    locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
         return view;
     }
 
@@ -137,21 +135,24 @@ public class RegisterAsParentFR extends Fragment {
 	}
 	
 	private void getPinCode(){
-		locationProviderClient.getLastLocation().addOnSuccessListener(requireActivity(), location -> {
-			Geocoder geocoder = new Geocoder(requireContext());
-			try {
-				List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude() , 1);
-				if(addresses != null && addresses.size() > 0 ){
-					pinCode = addresses.get(0).getPostalCode();
-					binding.etPinCode.setText(pinCode);
-					Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);
-				}else{
-					getPinCode();
+		try{
+			FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
+			locationProviderClient.getLastLocation().addOnSuccessListener(requireActivity(), location -> {
+				Geocoder geocoder = new Geocoder(requireContext());
+				try {
+					List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude() , 1);
+					if(addresses != null && addresses.size() > 0 ){
+						pinCode = addresses.get(0).getPostalCode();
+						binding.etPinCode.setText(pinCode);
+						Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);
+					}else{
+						getPinCode();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
+			});
+		}catch (Exception ignored){}
 	}
     
     private int getSeniorAge(){
