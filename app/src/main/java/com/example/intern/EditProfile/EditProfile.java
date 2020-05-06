@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,9 @@ import com.example.intern.mainapp.MainApp;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -40,12 +44,16 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EditProfile extends AppCompatActivity {
+    private static final String TAG = "EditProfile";
     private ActivityEditProfileBinding binding;
     private boolean hasDataEdited = false;
     private SharedPrefUtil prefUtil;
+    private String prevPin;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +90,9 @@ public class EditProfile extends AppCompatActivity {
         binding.name.setText(preferences.getString(SharedPrefUtil.USER_NAME_KEY, null));
         binding.email.setText(preferences.getString(SharedPrefUtil.USER_EMAIL_KEY, null));
         binding.occupation.setText(preferences.getString(SharedPrefUtil.USER_OCCUPATION_KEY, null ));
-        binding.addressPin.setText(preferences.getString(SharedPrefUtil.USER_PIN_CODE_KEY, null ));
+        //Fetch the previous pin code of user
+        prevPin = preferences.getString(SharedPrefUtil.USER_PIN_CODE_KEY, null );
+        binding.addressPin.setText(prevPin);
         //Prefetch Address
         binding.addressHouse.setText(preferences.getString(SharedPrefUtil.USER_HOUSE_NUMBER, null));
         binding.addressStreet.setText(preferences.getString(SharedPrefUtil.USER_STREET_KEY, null));
@@ -164,21 +174,23 @@ public class EditProfile extends AppCompatActivity {
                 dialog.setTitle("Updating Profile");
                 dialog.setIcon(R.drawable.pslogotrimmed);
                 dialog.setMessage("Please make sure you are connected to the internet");
+                //Non Nullable fields
                 String u_name;
                 String email;
+                String phone;
+                String areapin;
+                //Nullable fields
                 String occ = null;
-                String phone = null;
-                String areapin=null;
+                String relative_phone = null;
+                //Refine fields
                 Editable name = binding.name.getText();
                 if(name != null){
-                    u_name = name.toString();
-                    if(TextUtils.isEmpty(u_name)){
+                    if(TextUtils.isEmpty(name)){
                         binding.name.setError("Cannot be empty");
                         return;
                     }
-                }else{
-                    return;
-                }
+                    u_name = name.toString();
+                }else return;
                 Editable mail = binding.email.getText();
                 if(mail != null){
                     email = mail.toString();
@@ -189,31 +201,36 @@ public class EditProfile extends AppCompatActivity {
                         binding.email.setError("Invalid e-mail");
                         return;
                     }
-                }else {
-                    return;
-                }
+                }else return;
                 Editable occupation = binding.occupation.getText();
                 if(occupation != null){
                     occ = occupation.toString();
                 }
                 Editable phoneNo = binding.phone.getText();
                 if(phoneNo != null) {
-                    phone = phoneNo.toString();
                     //Toast.makeText(getApplicationContext(),phone.length(),Toast.LENGTH_LONG).show();
-                    if(phone.length() < 10){
+                    if(phoneNo.length() != 10){
                         binding.phone.setError("Invalid Phone Number");
                         return;
                     }
-                }
+                    phone = phoneNo.toString();
+                }else return;
                 Editable pin = binding.addressPin.getText();
-                if(occupation != null){
-                    areapin = occupation.toString();
-                    if(areapin.length()<6){
-                        binding.phone.setError("Invalid Phone Number");
+                if(pin != null){
+                    if(pin.length() != 6){
+                        binding.addressPin.setError("Invalid Pin Code");
                     return;
+                    }
+                    areapin = pin.toString();
+                }else return;
+                Editable relativePh = binding.relativePhoneNumber.getText();
+                if(relativePh != null){
+                    if(!TextUtils.isEmpty(relativePh) && relativePh.length() != 10){
+                        binding.relativePhoneNumber.setError("Enter a valid phone number");
+                        return;
+                    }
+                    relative_phone = relativePh.toString();
                 }
-                }
-
                 //Refine Address
                 Editable houseEditable = binding.addressHouse.getText();
                 Editable streetEditable = binding.addressStreet.getText();
@@ -227,20 +244,34 @@ public class EditProfile extends AppCompatActivity {
                 if(areaEditable == null || TextUtils.isEmpty(areaEditable) || areaEditable.length() < 4){
                     binding.addressArea.setError("Enter Area");return;
                 }
-
-                Editable relativePh = binding.relativePhoneNumber.getText();
-                if(relativePh != null && !TextUtils.isEmpty(relativePh) && relativePh.length() < 10) {
-                    binding.relativePhoneNumber.setError("Invalid Phone Number");
-                    return;
-                }
                 SharedPrefUtil prefUtil = new SharedPrefUtil(this);
+                //Initiate update here
+                //Change user cluster
+                String user_uid = prefUtil.getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null);
+                DocumentReference prevUserClustRef = FirebaseFirestore.getInstance().collection(FireStoreUtil.USER_CLUSTER_COLLECTION_NAME).document(prevPin);
+                Map<String, Object> deleteUser = new HashMap<>();
+                deleteUser.put(user_uid, FieldValue.delete());
+                //Final values to be used for updating the user data
+                String finalAreapin = areapin;
+                String finalOcc = occ;
+                String finalPhone = phone;
+                String finalRelative_phone = relative_phone;
                 dialog.show();
-                FireStoreUtil.uploadMeta(this,u_name,email,occ,houseEditable.toString(),streetEditable.toString(),areaEditable.toString(), phone, relativePh.toString()).addOnSuccessListener(aVoid -> {
-                    prefUtil.updateWithCloud(FireStoreUtil.getFirebaseUser(getApplicationContext()).getUid());
-                    dialog.dismiss();
-                    Intent intent = new Intent(EditProfile.this, MainApp.class);
-                    finish();
-                    startActivity(intent);
+                prevUserClustRef.update(deleteUser).addOnSuccessListener(aVoid -> {
+                    Log.d(TAG, "update: Deleted user from the cluster");
+                    //Add user to the new cluster
+                    FireStoreUtil.addToCluster(this, finalAreapin,user_uid).addOnSuccessListener(voidThing->{
+                        Log.d(TAG, "update: added to the new cluster");
+                        //Upload the new data onto the storage
+                        FireStoreUtil.uploadMeta(this,u_name,email, finalOcc,houseEditable.toString(),streetEditable.toString(),areaEditable.toString(), finalPhone, finalRelative_phone, finalAreapin).addOnSuccessListener(anotherVoid -> {
+                            prefUtil.updateWithCloud(FireStoreUtil.getFirebaseUser(getApplicationContext()).getUid());
+                            dialog.dismiss();
+                            Log.d(TAG, "update: Updated user data");
+                            Intent intent = new Intent(EditProfile.this, MainApp.class);
+                            finish();
+                            startActivity(intent);
+                        });
+                    });
                 });
             }else{
                 Intent intent = new Intent(EditProfile.this, MainApp.class);
@@ -266,10 +297,10 @@ public class EditProfile extends AppCompatActivity {
     
     private void setDataChangeListeners(){
         TextWatcher changeWatcher = new TextWatcher() {
-            String afterText, beforeText;
+            CharSequence afterText, beforeText;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                beforeText = s.toString();
+                beforeText = s;
             }
     
             @Override
@@ -277,7 +308,7 @@ public class EditProfile extends AppCompatActivity {
     
             @Override
             public void afterTextChanged(Editable s) {
-                afterText = s.toString();
+                afterText = s;
                 if(!afterText.equals(beforeText)){
                     hasDataEdited = true;
                 }

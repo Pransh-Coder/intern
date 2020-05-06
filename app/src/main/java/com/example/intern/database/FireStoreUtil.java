@@ -263,7 +263,7 @@ public abstract class FireStoreUtil {
 		return getUserDocumentReference(context, getFirebaseUser(context).getUid()).update(updata);
 	}
 	
-	public static Task<Void> uploadMeta(Context context, String name, String email, String occupation, String house_no, String street, String area , String phoneNo, String relativePhoneNo){
+	public static Task<Void> uploadMeta(Context context, String name, String email, String occupation, String house_no, String street, String area , String phoneNo, String relativePhoneNo, String pinCode){
 		Map<String, Object> metadata = new HashMap<>();
 		metadata.put(USER_NAME, name);
 		metadata.put(USER_EMAIL, email);
@@ -271,6 +271,7 @@ public abstract class FireStoreUtil {
 		metadata.put(USER_HOUSE_NO_KEY, house_no);
 		metadata.put(USER_STREET_KEY, street);
 		metadata.put(USER_AREA_KEY, area);
+		metadata.put(USER_PIN_CODE, pinCode);
 		metadata.put(USER_PHONE_NUMBER, phoneNo);
 		metadata.put(USER_RELATIVE_PHONE_NUMBER, relativePhoneNo);
 		return getUserDocumentReference(context, getFirebaseUser(context).getUid()).set(metadata, SetOptions.merge());
