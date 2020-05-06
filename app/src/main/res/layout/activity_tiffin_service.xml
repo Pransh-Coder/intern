@@ -203,7 +203,7 @@
                 android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
                 android:padding="10dp"
-                android:text="To know more submit your request"
+                android:text="@string/to_know_more_submit_your_request"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:textStyle="bold"
