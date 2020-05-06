@@ -19,6 +19,7 @@ public class AuthViewModel extends ViewModel {
 	private IsLoggedInListener loggedInListener;
 	private SharedPrefUtil prefUtil;
 	private boolean hasOptedPhoneVerification;
+	private changeLanguageListener languageListener;
 	
 	public IsLoggedInListener getLoggedInListener() {
 		return loggedInListener;
@@ -26,6 +27,18 @@ public class AuthViewModel extends ViewModel {
 	
 	public void setLoggedInListener(IsLoggedInListener loggedInListener) {
 		this.loggedInListener = loggedInListener;
+	}
+	
+	public changeLanguageListener getLanguageListener() {
+		return languageListener;
+	}
+	
+	public void setLanguageListener(changeLanguageListener languageListener) {
+		this.languageListener = languageListener;
+	}
+	
+	public interface changeLanguageListener{
+		void newLang(String locale);
 	}
 	
 	public SharedPrefUtil getPrefUtil() {

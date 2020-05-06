@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -20,8 +21,6 @@ import com.example.intern.databinding.FragmentLoginRegisterFRBinding;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-import save_money.ViewPagerAdapter;
 
 public class LoginRegisterFR extends Fragment {
 	private FragmentLoginRegisterFRBinding binding;
@@ -114,5 +113,27 @@ public class LoginRegisterFR extends Fragment {
 					Navigation.findNavController(v).navigate(R.id.action_loginRegisterFR_to_LoginOptionFR);
 				}
 		);
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		binding.registrationSpinLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				if(position==0){
+					viewModel.getLanguageListener().newLang("en");
+				}
+				if(position==1){
+					//HINDI is selected
+					viewModel.getLanguageListener().newLang("hi");
+				}
+			}
+			
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+			
+			}
+		});
 	}
 }

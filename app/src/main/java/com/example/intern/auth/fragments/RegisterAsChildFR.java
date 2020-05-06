@@ -87,7 +87,6 @@ public class RegisterAsChildFR extends Fragment {
 		View view = binding.getRoot();
 		viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
 		user = viewModel.getFirebaseUser();
-		locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
 		return view;
 	}
 	
@@ -116,7 +115,9 @@ public class RegisterAsChildFR extends Fragment {
 		if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
 			ActivityCompat.requestPermissions(requireActivity(), new String[] {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 122);
 		}else{
-			getPinCode();
+			try{
+				getPinCode();
+			}catch (Exception ignored){}
 		}
 	}
 	
@@ -124,18 +125,21 @@ public class RegisterAsChildFR extends Fragment {
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		if(requestCode == 122){
 			if(grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
-				getPinCode();
+				try{
+					getPinCode();
+				}catch (Exception ignored){}
 			}else{
 				new AlertDialog.Builder(requireContext()).setIcon(R.drawable.pslogotrimmed)
-						.setTitle("Needs Location Permission")
-						.setPositiveButton("OK", null)
-						.setMessage("To serve you better and to get PinCode")
+						.setTitle(getResources().getString(R.string.need_location_perm_title))
+						.setPositiveButton(getResources().getString(R.string.ok), null)
+						.setMessage(getResources().getString(R.string.pincode_prompt_message))
 						.setOnDismissListener(dialog -> checkPerms()).show();
 			}
 		}
 	}
 	
 	private void getPinCode(){
+		locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
 		locationProviderClient.getLastLocation().addOnSuccessListener(requireActivity(), location -> {
 			Geocoder geocoder = new Geocoder(requireContext());
 			try {
@@ -145,7 +149,9 @@ public class RegisterAsChildFR extends Fragment {
 					binding.etPinCode.setText(pinCode);
 					Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);
 				}else{
-					getPinCode();
+					try{
+						getPinCode();
+					}catch (Exception ignored){}
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -172,7 +178,11 @@ public class RegisterAsChildFR extends Fragment {
 		super.onResume();
 		binding.etPinCode.setText(pinCode);
 		//Check if pincode is set or not
-		if(binding.etPinCode.getText().toString().isEmpty())getPinCode();
+		if(binding.etPinCode.getText().toString().isEmpty()){
+			try{
+				getPinCode();
+			}catch (Exception ignored){}
+		}
 		setClickListeners();
 	}
 	
@@ -204,7 +214,9 @@ public class RegisterAsChildFR extends Fragment {
 			String pinCode = binding.etPinCode.getText().toString();
 			if(pinCode.length() != 6){
 				binding.etPinCode.setError("Enter a valid pin code");
-				getPinCode();
+				try{
+					getPinCode();
+				}catch (Exception ignored){}
 				return;
 			}
 			String nick_name = binding.etNickName.getText().toString();

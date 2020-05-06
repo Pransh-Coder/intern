@@ -152,7 +152,7 @@
         android:background="@drawable/white_back_rounded_button"
         android:fontFamily="@font/century_gothic_400"
         android:padding="10dp"
-        android:text="REGISTER"
+        android:text="@string/register"
         android:textSize="27dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/registration_spin_Language"

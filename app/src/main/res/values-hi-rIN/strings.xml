@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="register">रजिस्टर</string>
 	<string name="app_name">PS</string>
-	<string name="register">Register</string>
 	<string name="facebook_app_id">1093410747698712</string>
 	<string name="fb_login_protocol_scheme">fb1093410747698712</string>
 	<string-array name="laguauge">

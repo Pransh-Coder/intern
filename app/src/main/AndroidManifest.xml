@@ -119,6 +119,7 @@
 		<activity android:name=".fuel.FuelWithUsAct" />
 		<activity
 			android:name=".auth.AuthActivity"
+			android:configChanges="locale"
 			android:launchMode="singleTop" />
 		<activity
 			android:name=".MedicalRecords.Vitals"

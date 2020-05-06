@@ -1,7 +1,11 @@
 package com.example.intern.auth;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,10 +22,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Locale;
+
 public class AuthActivity extends AppCompatActivity {
 	private static String TAG = AuthActivity.class.getSimpleName();
 	private ActivityAuthBinding binding;
 	private AuthViewModel viewModel;
+	private boolean hasRecreated;
+	private SharedPreferences langPrefs;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,6 +56,15 @@ public class AuthActivity extends AppCompatActivity {
 				startActivity(intent);
 				finish();
 			}
+		});
+		viewModel.setLanguageListener(locale -> {
+			Resources resources = getResources();
+			DisplayMetrics dm = resources.getDisplayMetrics();
+			Configuration configuration = resources.getConfiguration();
+			configuration.setLocale(new Locale(locale.toLowerCase()));
+			resources.updateConfiguration(configuration, dm);
+			langPrefs = getSharedPreferences("lang", MODE_PRIVATE);
+			langPrefs.edit().putString("lang", locale).apply();
 		});
 	}
 }
