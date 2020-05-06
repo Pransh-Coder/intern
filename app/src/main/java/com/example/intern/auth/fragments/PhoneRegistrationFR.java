@@ -30,6 +30,7 @@ public class PhoneRegistrationFR extends Fragment {
 	private String mVerificationId;
 	private ProgressDialog loadingbar;
 	private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
+	private PhoneAuthProvider.ForceResendingToken forceResendingToken = null;
 	private PhoneLoginUiBinding binding;
 	private AuthViewModel viewModel;
 	private String phnno;
@@ -58,14 +59,17 @@ public class PhoneRegistrationFR extends Fragment {
 		callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 			@Override
 			public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-				signInWithPhoneAuthCredential(phoneAuthCredential);
-				
+				try{
+					signInWithPhoneAuthCredential(phoneAuthCredential);
+				}catch (Exception e ){
+					Toast.makeText(requireContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
+				}
 			}
 			
 			@Override
 			public void onVerificationFailed(@NonNull FirebaseException e) {
 				loadingbar.dismiss();
-				Toast.makeText(requireContext(), "Invalid please enter correct phone number with your country code", Toast.LENGTH_LONG).show();
+				Toast.makeText(requireContext(), "Invalid please enter correct phone number", Toast.LENGTH_LONG).show();
 			}
 			
 			public void onCodeSent(@NonNull String verificationId,
@@ -73,6 +77,7 @@ public class PhoneRegistrationFR extends Fragment {
 				
 				// Save verification ID and resending token so we can use them later
 				mVerificationId = verificationId;
+				forceResendingToken = token;
 				loadingbar.dismiss();
 				Toast.makeText(requireContext(), "Code sent", Toast.LENGTH_LONG).show();
 				binding.etPhoneNumber.setVisibility(View.INVISIBLE);
@@ -105,16 +110,18 @@ public class PhoneRegistrationFR extends Fragment {
 		});
 		binding.btnResendotp.setOnClickListener(v ->
 		{
-			loadingbar.setTitle("Phone Verification");
-			loadingbar.setMessage("Resending code...");
-			loadingbar.setCanceledOnTouchOutside(false);
-			loadingbar.show();
-			PhoneAuthProvider.getInstance().verifyPhoneNumber(
-					"+91" + phnno,        // Phone number to verify
-					60,                 // Timeout duration
-					TimeUnit.SECONDS,   // Unit of timeout
-					requireActivity(),               // Activity (for callback binding)
-					callbacks);
+			if(forceResendingToken != null){
+				loadingbar.setTitle("Phone Verification");
+				loadingbar.setMessage("Resending code...");
+				loadingbar.setCanceledOnTouchOutside(false);
+				loadingbar.show();
+				PhoneAuthProvider.getInstance().verifyPhoneNumber(
+						"+91" + phnno,        // Phone number to verify
+						60,                 // Timeout duration
+						TimeUnit.SECONDS,   // Unit of timeout
+						requireActivity(),               // Activity (for callback binding)
+						callbacks, forceResendingToken);
+			}
 		});
 		binding.btnLogin.setOnClickListener(v -> {
 			String code = binding.etOtp.getText().toString();
@@ -126,7 +133,11 @@ public class PhoneRegistrationFR extends Fragment {
 				loadingbar.setCanceledOnTouchOutside(false);
 				loadingbar.show();
 				PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
-				signInWithPhoneAuthCredential(credential);
+				try{
+					signInWithPhoneAuthCredential(credential);
+				}catch (Exception e){
+					Toast.makeText(requireContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 	}
