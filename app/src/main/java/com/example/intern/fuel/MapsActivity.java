@@ -83,6 +83,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 			Intent intent = new Intent(MapsActivity.this, NewsAndUpdatesACT.class);
 			startActivity(intent);
 		});
+		binding.rewardRedirect.setOnClickListener(v -> {
+			Intent intent = new Intent(this, RewardsOnFuel.class);
+			startActivity(intent);
+		});
 	}
 	
 	@Override

@@ -38,6 +38,12 @@ public class ActivityShopping extends AppCompatActivity {
             intent.setData(Uri.parse(url));
             startActivity(intent);
         });
+        binding.chatButton.setOnClickListener(v -> {
+	        String url = "https://wa.me/919909906065?text=Hi%20PS,%20I%20have%20some%20queries";
+	        Intent intent = new Intent(Intent.ACTION_VIEW);
+	        intent.setData(Uri.parse(url));
+	        startActivity(intent);
+        });
         binding.ivNotifButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, NewsAndUpdatesACT.class);
             startActivity(intent);
