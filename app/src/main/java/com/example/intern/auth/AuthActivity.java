@@ -1,5 +1,6 @@
 package com.example.intern.auth;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -58,13 +59,15 @@ public class AuthActivity extends AppCompatActivity {
 			}
 		});
 		viewModel.setLanguageListener(locale -> {
+			String currentLocale = getSharedPreferences("lang", Context.MODE_PRIVATE).getString("lang", null);
 			Resources resources = getResources();
 			DisplayMetrics dm = resources.getDisplayMetrics();
 			Configuration configuration = resources.getConfiguration();
 			configuration.setLocale(new Locale(locale.toLowerCase()));
 			resources.updateConfiguration(configuration, dm);
+			if(currentLocale!= null && !currentLocale.equals(locale))recreate();
 			langPrefs = getSharedPreferences("lang", MODE_PRIVATE);
-			langPrefs.edit().putString("lang", locale).apply();
+			langPrefs.edit().putString("lang", locale).commit();
 		});
 	}
 }
