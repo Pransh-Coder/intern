@@ -140,8 +140,7 @@ public class PhoneRegistrationFR extends Fragment {
 						checkExistence();
 					} else {
 						try{
-							String msg = task.getException().toString();
-							Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show();
+							Toast.makeText(requireContext(), "Error", Toast.LENGTH_LONG).show();
 						}catch(Exception ignored){}
 					}
 				});

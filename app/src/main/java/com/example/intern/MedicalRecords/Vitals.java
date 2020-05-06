@@ -92,7 +92,7 @@ public class Vitals extends AppCompatActivity {
                 VCuraAutoMailer.sendMail("Patient Request | PSByPrarambh", email_body, email);
                 new AlertDialog.Builder(this).setIcon(R.drawable.pslogotrimmed)
                         .setTitle("Request sent").setMessage("Your Request to connect to VCura has been sent. They might contact you shortly\n" +
-                        "PS holds no responsibility for any delay in service. Check your internet connection if problem persists")
+                        "Note : PS holds no responsibility for any delay in service. You must be connected to the internet")
                         .setPositiveButton("OK", null).show();
             }
         });
