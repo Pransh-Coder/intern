@@ -105,8 +105,8 @@ public class Gifts extends AppCompatActivity {
         /*new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("Due to COVID-19 global pandemic and nationwide lock-downs, our vendors are not available. Stay tuned for further updates")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();*/
 
-        new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage("These offers are avail by PS+ members @ 499/- Rs only. \n" +
-                "Registration is not available during lock down (COVID-19).")
+        new AlertDialog.Builder(this).setTitle("These offers are avail by <b>PS</b>+ members @ <b>499</b>/- Rs only. \n" +
+                "Registration is not available during <b>lock down</b> (COVID-19).")
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I Understand", null).show();
     }
     

@@ -61,6 +61,12 @@ public class EditProfile extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        String value = sharedPreferences.getString("role", "");
+        if(value.equals("1"))
+            binding.hintNumber.setHint("Child's Number");
+        else if(value.equals("2"))
+            binding.hintNumber.setHint("Parent's Number");
     }
     
     @Override
@@ -72,6 +78,7 @@ public class EditProfile extends AppCompatActivity {
         binding.name.setText(preferences.getString(SharedPrefUtil.USER_NAME_KEY, null));
         binding.email.setText(preferences.getString(SharedPrefUtil.USER_EMAIL_KEY, null));
         binding.occupation.setText(preferences.getString(SharedPrefUtil.USER_OCCUPATION_KEY, null ));
+        binding.addressPin.setText(preferences.getString(SharedPrefUtil.USER_PIN_CODE_KEY, null ));
         //Prefetch Address
         binding.addressHouse.setText(preferences.getString(SharedPrefUtil.USER_HOUSE_NUMBER, null));
         binding.addressStreet.setText(preferences.getString(SharedPrefUtil.USER_STREET_KEY, null));
@@ -157,6 +164,7 @@ public class EditProfile extends AppCompatActivity {
                 String email;
                 String occ = null;
                 String phone = null;
+                String areapin=null;
                 Editable name = binding.name.getText();
                 if(name != null){
                     u_name = name.toString();
@@ -187,11 +195,21 @@ public class EditProfile extends AppCompatActivity {
                 Editable phoneNo = binding.phone.getText();
                 if(phoneNo != null) {
                     phone = phoneNo.toString();
+                    //Toast.makeText(getApplicationContext(),phone.length(),Toast.LENGTH_LONG).show();
                     if(phone.length() < 10){
                         binding.phone.setError("Invalid Phone Number");
                         return;
                     }
                 }
+                Editable pin = binding.addressPin.getText();
+                if(occupation != null){
+                    areapin = occupation.toString();
+                    if(areapin.length()<6){
+                        binding.phone.setError("Invalid Phone Number");
+                    return;
+                }
+                }
+
                 //Refine Address
                 Editable houseEditable = binding.addressHouse.getText();
                 Editable streetEditable = binding.addressStreet.getText();
@@ -205,6 +223,7 @@ public class EditProfile extends AppCompatActivity {
                 if(areaEditable == null || TextUtils.isEmpty(areaEditable) || areaEditable.length() < 4){
                     binding.addressArea.setError("Enter Area");return;
                 }
+
                 Editable relativePh = binding.relativePhoneNumber.getText();
                 if(relativePh != null && !TextUtils.isEmpty(relativePh) && relativePh.length() < 10) {
                     binding.relativePhoneNumber.setError("Invalid Phone Number");
@@ -268,5 +287,6 @@ public class EditProfile extends AppCompatActivity {
         binding.addressHouse.addTextChangedListener(changeWatcher);
         binding.addressStreet.addTextChangedListener(changeWatcher);
         binding.addressArea.addTextChangedListener(changeWatcher);
+        binding.addressPin.addTextChangedListener(changeWatcher);
     }
 }

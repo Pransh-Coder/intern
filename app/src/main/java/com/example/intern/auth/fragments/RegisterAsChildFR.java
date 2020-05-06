@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -45,6 +46,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class RegisterAsChildFR extends Fragment {
 	private static String TAG = RegisterAsChildFR.class.getSimpleName();
 	private final Calendar calendar = Calendar.getInstance();
@@ -54,6 +57,7 @@ public class RegisterAsChildFR extends Fragment {
 	private String pinCode;
 	private boolean hasVerifiedPH;
 	private FragmentRegisterAsChildBinding binding;
+	public static  final String Shared_pref="sharedPrefs";
 	private boolean hasSelectedDate;
 	private String dateTimeStamp = null;
 	private DatePickerDialog.OnDateSetListener dateSetListener = (view, year, month, dayOfMonth) -> {
@@ -242,6 +246,10 @@ public class RegisterAsChildFR extends Fragment {
 												viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
 														dateTimeStamp, pinCode, child_number, parent_number);
 												dialog.dismiss();
+												SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(Shared_pref, MODE_PRIVATE);
+												SharedPreferences.Editor editor = sharedPreferences.edit();
+												editor.putString("role", "2");
+												editor.apply();
 												viewModel.getLoggedInListener().isLoggedIn(true);
 											}
 										});

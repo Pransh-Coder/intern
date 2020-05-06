@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -44,6 +45,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class RegisterAsParentFR extends Fragment {
     private static String TAG = RegisterAsParentFR.class.getSimpleName();
     private FragmentRegisterAsParentFRBinding binding;
@@ -53,6 +56,7 @@ public class RegisterAsParentFR extends Fragment {
     private FirebaseUser user;
     private final Calendar calendar = Calendar.getInstance();
     private boolean hasSelectedDate;
+	public static  final String Shared_pref="sharedPrefs";
 	private boolean hasVerifiedPH;
     private String dateTimeStamp = null;
     private DatePickerDialog.OnDateSetListener dateSetListener = (view, year, month, dayOfMonth) -> {
@@ -240,6 +244,10 @@ public class RegisterAsParentFR extends Fragment {
 									        if(userSnap != null && userSnap.exists()){
 										        viewModel.getPrefUtil().updateSharedPreferencesPostRegister(user.getUid(), name, user.getEmail(), nick_name, ps_nick_name,
 												        dateTimeStamp, pinCode, parent_number,child_number);
+												SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(Shared_pref, MODE_PRIVATE);
+												SharedPreferences.Editor editor = sharedPreferences.edit();
+												editor.putString("role", "1");
+												editor.apply();
 										        dialog.dismiss();
 										        viewModel.getLoggedInListener().isLoggedIn(true);
 									        }else if (error != null){
