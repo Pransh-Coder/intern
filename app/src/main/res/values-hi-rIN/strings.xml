@@ -96,14 +96,14 @@
 		<item>Terms and Conditions</item>
 	</string-array>
 	
-	<string name="coming_soon">Coming Soon&#8230;</string>
+	<string name="coming_soon">coming soon&#8230;</string>
 	<string name="more_about_special_offers">Tell us more about \nyour special offers</string>
 	<string name="date_time">Date &amp; Time</string>
-	<string name="save_money">SAVE MONEY</string>
+	<string name="save_money">मुफ्त  सौदे</string>
 	<string name="swabhiman">SWABHIMAN</string>
 	<string name="shopping">SHOPPING/\nMEDICINE </string>
 	<string name="fuel_with_us">FUEL WITH US</string>
-	<string name="exclusive_services">ESSENTIAL \nSERVICES</string>
+	<string name="exclusive_services">अत्यावश्यक  \nसेवाएं</string>
 	<string name="Sr_citizen">Sr. CITIZEN \nSTORE</string>
 	<string name="ask_services">ASK FOR ANYTHING</string>
 	<string name="navigation_drawer_open">Open navigation drawer</string>
@@ -170,4 +170,9 @@
 	<string name="essential_services">अत्यावश्यक सेवाएं</string>
 	<string name="area"> क्षेत्र:"</string>
 	<string name="to_know_more_submit_your_request">अधिक जानने के लिए अपना अनुरोध प्रस्तुत करें</string>
+	<string name="coming_soon2">जल्द आ रहा है..</string>
+	<string name="coming_soon3">जल्द आ रहा है..</string>
+	<string name="coming_soon4">जल्द आ रहा है..</string>
+	<string name="coming_soon5">जल्द आ रहा है..</string>
+	<string name="coming_soon6">जल्द आ रहा है..</string>
 </resources>

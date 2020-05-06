@@ -214,7 +214,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:text="@string/vegetables"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
@@ -476,7 +476,7 @@
                     android:background="@color/yellow"
                     android:gravity="center"
                     android:textSize="12.5sp"
-                    android:text="Coming Soon..." />
+                    android:text="@string/coming_soon3" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/autoImg"
@@ -524,12 +524,12 @@
 
                 <TextView
                     android:id="@+id/cmgsoon4"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/yellow"
                     android:gravity="center"
                     android:textSize="12.5sp"
-                    android:text="Coming Soon..." />
+                    android:text="@string/coming_soon4" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/emergency_careImg"
@@ -571,7 +571,7 @@
                     android:layout_gravity="center"
                     android:textSize="12.5sp"
                     android:background="@color/yellow"
-                    android:text="Coming Soon..." />
+                    android:text="@string/coming_soon5" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/legalImg"
@@ -618,12 +618,12 @@
 
                 <TextView
                     android:id="@+id/cmgsoon6"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/yellow"
                     android:gravity="center"
                     android:textSize="12.5sp"
-                    android:text="Coming Soon..." />
+                    android:text="@string/coming_soon6" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/eduImg"
@@ -659,13 +659,13 @@
 
                 <TextView
                     android:id="@+id/tv_comingSoon_OtherServices"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/yellow"
                     android:clickable="false"
                     android:textSize="12.5sp"
                     android:gravity="center"
-                    android:text="Coming Soon..." />
+                    android:text="@string/coming_soon2" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgOtherServices"
