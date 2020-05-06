@@ -105,6 +105,14 @@
         android:src="@drawable/icons_mascot_51"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/logo" />
+    <ImageView
+        android:id="@+id/chat_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toTopOf="@id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/chat"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor_guide_35_percent"
