@@ -50,7 +50,7 @@ public class RegisterAsChildFR extends Fragment {
 	private final Calendar calendar = Calendar.getInstance();
 	private AuthViewModel viewModel;
 	private FirebaseUser user;
-	private String pinCode;
+	//private String pinCode;
 	private FragmentRegisterAsChildBinding binding;
 	public static  final String Shared_pref="sharedPrefs";
 	private boolean hasSelectedDate;
@@ -104,7 +104,7 @@ public class RegisterAsChildFR extends Fragment {
 			datePickerDialog.show();
 		});
 		//todo:
-		checkPerms();
+		//checkPerms();
 	}
 	
 	private void checkPerms(){
@@ -163,9 +163,9 @@ public class RegisterAsChildFR extends Fragment {
 				try {
 					List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude() , 1);
 					if(addresses != null && addresses.size() > 0 ){
-						pinCode = addresses.get(0).getPostalCode();
+						/*pinCode = addresses.get(0).getPostalCode();
 						binding.etPinCode.setText(pinCode);
-						Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);
+						Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);*/
 					}else{
 						try{
 							getPinCode();
@@ -195,13 +195,13 @@ public class RegisterAsChildFR extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		binding.etPinCode.setText(pinCode);
+		/*binding.etPinCode.setText(pinCode);
 		//Check if pincode is set or not
 		if(binding.etPinCode.getText().toString().isEmpty()){
 			try{
 				getPinCode();
 			}catch (Exception ignored){}
-		}
+		}*/
 		setClickListeners();
 	}
 	
@@ -233,9 +233,6 @@ public class RegisterAsChildFR extends Fragment {
 			String pinCode = binding.etPinCode.getText().toString();
 			if(pinCode.length() != 6){
 				binding.etPinCode.setError("Enter a valid pin code");
-				try{
-					getPinCode();
-				}catch (Exception ignored){}
 				return;
 			}
 			String nick_name = binding.etNickName.getText().toString();

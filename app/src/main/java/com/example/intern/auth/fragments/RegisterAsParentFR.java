@@ -42,7 +42,7 @@ public class RegisterAsParentFR extends Fragment {
     private static String TAG = RegisterAsParentFR.class.getSimpleName();
     private FragmentRegisterAsParentFRBinding binding;
     private AuthViewModel viewModel;
-	private String pinCode;
+	//private String pinCode;
     private FirebaseUser user;
     private final Calendar calendar = Calendar.getInstance();
     private boolean hasSelectedDate;
@@ -99,7 +99,7 @@ public class RegisterAsParentFR extends Fragment {
 		    DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), dateSetListener, 2000, 1,1);
 		    datePickerDialog.show();
 	    });
-	    checkPerms();
+	    //checkPerms();
     }
     
 	private void checkPerms(){
@@ -135,9 +135,9 @@ public class RegisterAsParentFR extends Fragment {
 				try {
 					List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude() , 1);
 					if(addresses != null && addresses.size() > 0 ){
-						pinCode = addresses.get(0).getPostalCode();
+						/*pinCode = addresses.get(0).getPostalCode();
 						binding.etPinCode.setText(pinCode);
-						Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);
+						Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);*/
 					}else{
 						getPinCode();
 					}
@@ -165,9 +165,9 @@ public class RegisterAsParentFR extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		binding.etPinCode.setText(pinCode);
+		/*binding.etPinCode.setText(pinCode);
 		//Check if pincode is set or not
-		if(binding.etPinCode.getText().toString().isEmpty())getPinCode();
+		if(binding.etPinCode.getText().toString().isEmpty())getPinCode();*/
 		setClickListeners();
 	}
 
@@ -198,9 +198,10 @@ public class RegisterAsParentFR extends Fragment {
 	        String ps_nick_name = binding.etPsNickName.getText().toString();
 	        String parent_number =binding.etParentNumber.getText().toString();
 	        String child_number = binding.etChildNumber.getText().toString();
+	        String pinCode = binding.etPinCode.getText().toString();
 	        if(pinCode.length() != 6){
 		        binding.etPinCode.setError("Enter a valid pin code");
-		        getPinCode();
+		        //getPinCode();
 		        return;
 	        }
 	        if(!parent_number.isEmpty() && parent_number.length() != 10){
