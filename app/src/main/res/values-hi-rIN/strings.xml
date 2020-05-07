@@ -187,4 +187,8 @@
 	<string name="dietician_guidance">\उपयोग डाइटीशियन के सुझाव अनुसार \</string>
 	<string name="makes_it_perfect">\ किया जाता है ।</string>
 	<string name="submit2">प्रस्तुत</string>
+
+	<!-- swabhiman_business_associate -->
+	<string name="ps_partners">पी ऐस पार्टनर्स</string>
+	<string name="details_about_your_past_experience">अपने पिछले अनुभव के बारे में विवरण</string>
 </resources>
