@@ -30,7 +30,7 @@
             android:layout_marginEnd="24dp"
             android:background="@drawable/home_activity_search_background"
             android:drawableEnd="@drawable/ic_search"
-            android:hint="Search Categories..."
+            android:hint="@string/search_categories"
             android:paddingStart="10dp"
             android:textAlignment="viewStart"
             android:textSize="10sp"
