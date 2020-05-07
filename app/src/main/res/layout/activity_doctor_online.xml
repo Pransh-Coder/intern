@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/ps"
     tools:context=".ExclusiveServices.HomeModification">
 
@@ -65,31 +65,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06"/>
+        app:layout_constraintGuide_percent="0.06" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_96_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.945"/>
+        app:layout_constraintGuide_percent="0.945" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19"/>
+        app:layout_constraintGuide_percent="0.19" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_top_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12"/>
+        app:layout_constraintGuide_percent="0.12" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_hor_banner_low"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.305"/>
+        app:layout_constraintGuide_percent="0.305" />
 
     <ImageView
         android:id="@+id/homeModifBanner"
@@ -99,7 +103,7 @@
         app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
-        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin"/>
+        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin" />
 
     <ScrollView
         android:id="@+id/scrollVieew"
@@ -120,9 +124,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/century_gothic_400"
                 android:padding="5dp"
-                android:text="Dr. RK Rishi,\nAyurvedacharya"
+                android:text="@string/dr_rk_rishi"
                 android:textColor="@color/black"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/iv_doctor"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -146,7 +150,7 @@
                 android:fontFamily="@font/century_gothic_400"
                 android:padding="5dp"
                 android:textColor="@color/black"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@id/tv_hint"
                 app:layout_constraintTop_toBottomOf="@id/iv_doctor" />
 
@@ -189,7 +193,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:hint="Enter Age"
+                    android:hint="@string/enter_age"
                     android:inputType="number"
                     android:maxLength="3"
                     android:textColorHint="@color/black"
@@ -209,7 +213,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:hint="Enter Name"
+                    android:hint="@string/enter_name"
                     android:inputType="textPersonName"
                     android:maxLength="20"
                     android:textColorHint="@color/black"
@@ -233,67 +237,67 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@android:color/transparent"
                     android:ellipsize="start"
-                    android:hint="Describe your problem here"
+                    android:hint="@string/problem_description"
                     android:maxLength="200"
                     android:padding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-<!--            <Button
-                android:id="@+id/demand_submit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="92dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="92dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/background_button_sign_in"
-                android:fontFamily="@font/century_gothic_400"
-                android:text="Submit"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_descp" />-->
+            <!--            <Button
+                            android:id="@+id/demand_submit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="92dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="92dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/background_button_sign_in"
+                            android:fontFamily="@font/century_gothic_400"
+                            android:text="Submit"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/til_descp" />-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-<!--    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_descp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/rectangle_outline"
-        app:hintEnabled="false"
-        app:layout_constraintBottom_toTopOf="@id/demand_submit"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scrollVieew">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_descp"
+    <!--    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_descp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@android:color/transparent"
-            android:ellipsize="start"
-            android:hint="Describe your problem here"
-            android:maxLength="200"
-            android:padding="10dp" />
-    </com.google.android.material.textfield.TextInputLayout>-->
+            android:layout_height="70dp"
+            android:background="@drawable/rectangle_outline"
+            app:hintEnabled="false"
+            app:layout_constraintBottom_toTopOf="@id/demand_submit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scrollVieew">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_descp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                android:ellipsize="start"
+                android:hint="Describe your problem here"
+                android:maxLength="200"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>-->
     <Button
         android:id="@+id/demand_submit"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Submit"
         android:background="@drawable/custom_button"
+        android:text="Submit"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@id/logo"
-        app:layout_constraintTop_toBottomOf="@+id/scrollVieew"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollVieew" />
 
     <ImageView
         android:id="@+id/logo"
@@ -303,7 +307,7 @@
         android:src="@drawable/pslogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

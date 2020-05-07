@@ -25,7 +25,7 @@
         android:src="@drawable/homeimg"
         app:layout_constraintLeft_toRightOf="@+id/back"
         app:layout_constraintTop_toTopOf="parent" />
-    
+
     <AutoCompleteTextView
         android:id="@+id/search_bar"
         android:layout_width="0dp"
@@ -44,7 +44,7 @@
         android:visibility="gone"
         app:layout_constraintLeft_toRightOf="@id/home"
         app:layout_constraintRight_toLeftOf="@id/notifi"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/notifi"
@@ -92,31 +92,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06"/>
+        app:layout_constraintGuide_percent="0.06" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_96_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.945"/>
+        app:layout_constraintGuide_percent="0.945" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19"/>
+        app:layout_constraintGuide_percent="0.19" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_top_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12"/>
+        app:layout_constraintGuide_percent="0.12" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_hor_banner_low"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.305"/>
+        app:layout_constraintGuide_percent="0.305" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -133,19 +137,19 @@
                 android:id="@+id/dental"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:padding="5dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:orientation="vertical">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:background="#FFFF00"
                     android:text="@string/consultation_free"
                     android:textAlignment="center"
-                    android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:textSize="11dp" />
 
@@ -158,15 +162,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:text="@string/dental"
-                    android:layout_gravity="center"
                     android:textAlignment="center"
                     android:textColor="#000000"
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
-             </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/pathology"
@@ -174,9 +178,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="5dp"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/dental"
-                app:layout_constraintRight_toLeftOf="@+id/homeopathy">
+                app:layout_constraintRight_toLeftOf="@+id/homeopathy"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -186,7 +190,7 @@
                     android:text="@string/sample_pickup_and_drop"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="11dp" />
+                    android:textSize="11sp" />
 
                 <ImageView
                     android:layout_width="90dp"
@@ -197,13 +201,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pathalogy_laborarty"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
-                    android:textSize="12dp" />
+                    android:text="@string/pathalogy_laborarty"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -225,7 +229,7 @@
                     android:text="@string/rs_350_off"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="11dp" />
+                    android:textSize="11sp" />
 
                 <ImageView
                     android:layout_width="90dp"
@@ -236,21 +240,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:text="@string/homeopathy"
-                    android:layout_gravity="center"
                     android:textColor="#000000"
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/dietician"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:layout_marginTop="5dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pathology">
 
@@ -263,7 +267,7 @@
                     android:textAlignment="center"
                     android:layout_gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="11dp" />
+                    android:textSize="11sp" />
 
                 <ImageView
                     android:layout_width="90dp"
@@ -274,20 +278,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:text="@string/dietician"
-                    android:layout_gravity="center"
                     android:textColor="#000000"
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/eye"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:layout_marginTop="5dp"
                 app:layout_constraintLeft_toRightOf="@+id/dietician"
                 app:layout_constraintRight_toLeftOf="@+id/physiotherapy"
                 app:layout_constraintTop_toBottomOf="@+id/pathology">
@@ -300,7 +305,7 @@
                     android:text="@string/rs_200_off"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="11dp" />
+                    android:textSize="11sp" />
 
                 <ImageView
                     android:layout_width="90dp"
@@ -311,21 +316,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_gravity="center"
                     android:text="@string/eyecare"
                     android:textColor="#000000"
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/physiotherapy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:layout_marginTop="5dp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pathology">
 
@@ -337,7 +343,7 @@
                     android:text="@string/consultation_free"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="11dp" />
+                    android:textSize="11sp" />
 
                 <ImageView
                     android:layout_width="90dp"
@@ -348,12 +354,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_gravity="center"
                     android:text="@string/physiotherapy"
                     android:textColor="#000000"
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
 
             </LinearLayout>
@@ -362,13 +368,13 @@
     </ScrollView>
 
     <ImageView
+        android:id="@+id/pslogo"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:baselineAlignBottom="true"
         android:src="@drawable/pslogo"
-        android:id="@+id/pslogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

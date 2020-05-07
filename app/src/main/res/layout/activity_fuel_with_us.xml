@@ -42,10 +42,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Discount on Fuel"
-        android:textColor="@color/black"
+        android:text="@string/discount_on_fuel"
         android:textAllCaps="true"
-        android:textSize="17dp"
+        android:textColor="@color/black"
+        android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +76,7 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/girl_character"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/logo"/>
+        app:layout_constraintEnd_toStartOf="@id/logo" />
 
     <ImageView
         android:layout_width="50dp"
@@ -84,14 +84,15 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/icons_mascot_51"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/logo"/>
+        app:layout_constraintStart_toEndOf="@id/logo" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor_55"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3"/>
+        app:layout_constraintGuide_percent="0.3" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hor_guide_30_percent"
         android:layout_width="match_parent"
@@ -125,22 +126,22 @@
         android:id="@+id/tv_amount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="18dp"
         android:background="@null"
-        android:text="Amount :"
         android:paddingLeft="20dp"
+        android:text="@string/amount"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/et_amt"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/ver_50"
-        app:layout_constraintTop_toTopOf="@id/et_amt"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/et_amt" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_50"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.5" />
 
     <EditText
         android:id="@+id/et_amt"
@@ -160,9 +161,9 @@
         android:background="@null"
         android:ems="10"
         android:paddingLeft="20dp"
-        android:text="Petrol/Diesel Price :"
+        android:text="@string/petrol_diesel_price"
         android:textColor="@color/black"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/et_petrol_price"
         app:layout_constraintEnd_toStartOf="@id/ver_50"
         app:layout_constraintStart_toStartOf="parent"
@@ -173,26 +174,26 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="₹"
         android:layout_marginRight="10dp"
+        android:hint="₹"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ver_50"
         app:layout_constraintTop_toBottomOf="@id/et_amt" />
 
     <TextView
-        android:layout_width="0dp"
         android:id="@+id/tv_invoice_number"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:background="@null"
         android:ems="10"
         android:paddingLeft="20dp"
-        android:text="Invoice number :"
-        android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/invoice_number"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/et_invoice"
         app:layout_constraintEnd_toStartOf="@id/ver_50"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/et_invoice" />
 
     <EditText
@@ -201,7 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:hint="Invoice Number"
+        android:hint="@string/invoice_number"
         android:inputType="textCapCharacters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ver_50"
@@ -228,13 +229,13 @@
         android:layout_marginTop="15dp"
         android:background="@null"
         android:ems="10"
-        android:text="Petrol/Diesel (in litres) approx :"
         android:gravity="center"
+        android:text="@string/petrol_diesel_in_liters"
         android:textColor="@color/black"
         android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_discount_received"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_discount_received"
         app:layout_constraintTop_toBottomOf="@+id/et_invoice" />
 
     <TextView
@@ -245,26 +246,26 @@
         android:background="@null"
         android:ems="10"
         android:gravity="center"
-        android:text="Discount (approx):  "
+        android:text="@string/discount_approx"
         android:textColor="@color/black"
         android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_add_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_add_image"
         app:layout_constraintTop_toBottomOf="@+id/tv_petrol_qty" />
-    
+
     <TextView
         android:id="@+id/tv_add_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:text="Add Invoice"
+        android:text="@string/add_invoice"
         app:layout_constraintBottom_toTopOf="@id/iv_invoice"
         app:layout_constraintLeft_toLeftOf="@id/iv_invoice"
         app:layout_constraintRight_toRightOf="@id/iv_invoice"
         app:layout_constraintTop_toBottomOf="@id/tv_discount_received"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
         android:id="@+id/iv_invoice"
@@ -274,14 +275,14 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/rectangle_outline"
         android:padding="10dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/tv_add_image"
         android:scaleType="centerInside"
         android:src="@drawable/ic_image_idol"
         app:layout_constraintBottom_toTopOf="@id/submit_petrol"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_add_image"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
         android:id="@+id/submit_petrol"
@@ -289,11 +290,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginEnd="72dp"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:background="@drawable/background_button_sign_in"
-        android:text="Submit"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/background_button_sign_in"
+        android:text="@string/submit"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

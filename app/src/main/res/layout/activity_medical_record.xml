@@ -1,92 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@drawable/ps">
-	
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ps">
+
     <ImageView
         android:id="@+id/back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="10dp"
-		android:layout_marginTop="10dp"
-		android:src="@drawable/back"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/back"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
-		android:id="@+id/home_btn"
+        android:id="@+id/home_btn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-		android:layout_marginLeft="7dp"
+        android:layout_marginLeft="7dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/homeimg"
         app:layout_constraintLeft_toRightOf="@+id/back"
-        app:layout_constraintTop_toTopOf="parent"/>
-    
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/notifi"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-		android:src="@drawable/notification"
+        android:src="@drawable/notification"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-	
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_4_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06"/>
+        app:layout_constraintGuide_percent="0.06" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_96_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.93"/>
+        app:layout_constraintGuide_percent="0.93" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19"/>
+        app:layout_constraintGuide_percent="0.19" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_top_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.13"/>
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/guide_hor_banner_low"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.3"/>
-	
-	<ImageView
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		android:scaleType="fitCenter"
-		android:src="@drawable/vcura_banner"
-		app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
-		app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
-		app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
-		app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin"/>
-    
+        app:layout_constraintGuide_percent="0.13" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_hor_banner_low"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/vcura_banner"
+        app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
+        app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
+        app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
+        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin" />
+
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
         app:layout_constraintTop_toBottomOf="@id/guide_hor_banner_low">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-			
-    
+
             <TextView
                 android:id="@+id/fst_para"
                 android:layout_width="0dp"
@@ -94,147 +98,148 @@
                 android:layout_marginTop="10dp"
                 android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
-				android:paddingTop="10dp"
-				android:paddingBottom="5dp"
-				android:justificationMode="inter_word"
+                android:justificationMode="inter_word"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-	
-			<TextView
-				android:id="@+id/a"
-				android:layout_width="30dp"
-				android:layout_height="wrap_content"
-				android:ellipsize="start"
-				android:fontFamily="@font/century_gothic"
-				android:padding="5dp"
-				android:text="A) "
-				android:textColor="@color/black"
-				android:textSize="17sp"
-				android:textStyle="bold"
-				app:layout_constraintLeft_toLeftOf="parent"
-				app:layout_constraintRight_toLeftOf="@id/secPara"
-				app:layout_constraintTop_toBottomOf="@+id/fst_para"/>
-    
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/a"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:fontFamily="@font/century_gothic"
+                android:padding="5dp"
+                android:text="A) "
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/secPara"
+                app:layout_constraintTop_toBottomOf="@+id/fst_para" />
+
             <TextView
                 android:id="@+id/secPara"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-				android:ellipsize="start"
+                android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
+                android:paddingStart="0dp"
                 android:paddingTop="5dp"
-				android:paddingBottom="5dp"
-				android:paddingEnd="5dp"
-				android:paddingStart="0dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
                 android:text="Consolidating all Medical Records at one place"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/a"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fst_para"/>
-	
-			<TextView
-				android:id="@+id/b"
-				android:layout_width="30dp"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="10dp"
-				android:ellipsize="start"
-				android:fontFamily="@font/century_gothic"
-				android:padding="5dp"
-				android:text="B) "
-				android:textColor="@color/black"
-				android:textSize="17sp"
-				android:textStyle="bold"
-				app:layout_constraintLeft_toLeftOf="parent"
-				app:layout_constraintRight_toLeftOf="@id/thrPara"
-				app:layout_constraintTop_toBottomOf="@+id/secPara"/>
-    
+                app:layout_constraintTop_toBottomOf="@+id/fst_para" />
+
+            <TextView
+                android:id="@+id/b"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="start"
+                android:fontFamily="@font/century_gothic"
+                android:padding="5dp"
+                android:text="B) "
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/thrPara"
+                app:layout_constraintTop_toBottomOf="@+id/secPara" />
+
             <TextView
                 android:id="@+id/thrPara"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-				android:ellipsize="start"
+                android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
-				android:paddingTop="5dp"
-				android:paddingBottom="5dp"
-				android:paddingEnd="5dp"
-				android:paddingStart="0dp"
+                android:paddingStart="0dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
                 android:text="Easy to use, share, and analyse"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/b"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/secPara"/>
-	
-			<TextView
-				android:id="@+id/c"
-				android:layout_width="35dp"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="10dp"
-				android:ellipsize="start"
-				android:fontFamily="@font/century_gothic"
-				android:padding="5dp"
-				android:text="C) "
-				android:textColor="@color/black"
-				android:textSize="17sp"
-				android:textStyle="bold"
-				app:layout_constraintLeft_toLeftOf="parent"
-				app:layout_constraintRight_toLeftOf="@id/forPara"
-				app:layout_constraintTop_toBottomOf="@+id/thrPara"/>
-    
+                app:layout_constraintTop_toBottomOf="@+id/secPara" />
+
+            <TextView
+                android:id="@+id/c"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="start"
+                android:fontFamily="@font/century_gothic"
+                android:padding="5dp"
+                android:text="C) "
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/forPara"
+                app:layout_constraintTop_toBottomOf="@+id/thrPara" />
+
             <TextView
                 android:id="@+id/forPara"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-				android:ellipsize="start"
+                android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
-				android:paddingTop="5dp"
-				android:paddingBottom="5dp"
-				android:paddingEnd="5dp"
-				android:paddingStart="0dp"
+                android:paddingStart="0dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
                 android:text="Reminder for Medicines"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/c"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/thrPara"/>
-			<TextView
-				android:id="@+id/fifth_para"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="10dp"
-				android:ellipsize="start"
-				android:fontFamily="@font/century_gothic"
-				android:padding="10dp"
-				android:text="*PS is providing a platform to Vcura to serve our clients, the sole responsibility of services will be theirs."
-				android:textColor="@color/black"
-				android:textSize="13sp"
-				app:layout_constraintLeft_toLeftOf="parent"
-				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/forPara"/>
+                app:layout_constraintTop_toBottomOf="@+id/thrPara" />
+
+            <TextView
+                android:id="@+id/fifth_para"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="start"
+                android:fontFamily="@font/century_gothic"
+                android:padding="10dp"
+                android:text="*PS is providing a platform to Vcura to serve our clients, the sole responsibility of services will be theirs."
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/forPara" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-    
+
     <Button
         android:id="@+id/agree"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="AGREE"
-        android:background="@drawable/background_button_sign_in"
-        android:textSize="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_button_sign_in"
+        android:text="@string/agree"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-    
+        app:layout_constraintRight_toRightOf="parent" />
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="50dp"
@@ -243,31 +248,32 @@
         android:src="@drawable/pslogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
-	<ImageView
-		android:layout_width="50dp"
-		android:layout_height="50dp"
-		android:layout_marginTop="20dp"
-		android:src="@drawable/girl_character"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toStartOf="@id/logo"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/girl_character"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/logo" />
 
-	<ImageView
-		android:layout_width="50dp"
-		android:layout_height="50dp"
-		android:layout_marginTop="20dp"
-		android:src="@drawable/icons_mascot_51"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintStart_toEndOf="@id/logo"/>
-	<ImageView
-		android:id="@+id/chat_button"
-		android:layout_width="60dp"
-		android:layout_height="60dp"
-		app:layout_constraintBottom_toTopOf="@id/logo"
-		app:layout_constraintEnd_toEndOf="parent"
-		android:layout_marginEnd="20dp"
-		android:src="@drawable/chat"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icons_mascot_51"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/logo" />
+
+    <ImageView
+        android:id="@+id/chat_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/chat"
+        app:layout_constraintBottom_toTopOf="@id/logo"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

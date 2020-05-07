@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/ps"
     tools:context=".ExclusiveServices.HomeModification">
 
@@ -15,7 +15,7 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/back"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/home_btn"
@@ -25,7 +25,7 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/homeimg"
         app:layout_constraintLeft_toRightOf="@+id/back"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgView_Food"
@@ -56,38 +56,42 @@
         android:layout_marginRight="10dp"
         android:src="@drawable/notification"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_4_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06"/>
+        app:layout_constraintGuide_percent="0.06" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ver_gui_96_per"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.945"/>
+        app:layout_constraintGuide_percent="0.945" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19"/>
+        app:layout_constraintGuide_percent="0.19" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/def_top_hor_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12"/>
+        app:layout_constraintGuide_percent="0.12" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_hor_banner_low"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.305"/>
+        app:layout_constraintGuide_percent="0.305" />
 
     <ImageView
         android:id="@+id/homeModifBanner"
@@ -98,7 +102,7 @@
         app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
-        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin"/>
+        app:layout_constraintTop_toBottomOf="@id/def_top_hor_margin" />
 
     <ScrollView
         android:id="@+id/scrollVieew"
@@ -114,13 +118,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
-
-        <ImageView
+            <ImageView
                 android:id="@+id/img1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-
                 android:src="@drawable/grab_bars"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -129,23 +130,24 @@
                 android:id="@+id/secPara"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:fontFamily="@font/century_gothic_400"
                 android:text="@string/grab_bar"
                 android:textColor="@color/black"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
                 app:layout_constraintStart_toEndOf="@id/img1"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/secPara2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/century_gothic_400"
                 android:text="@string/stainless_steel_finish_wall_mounted_toilet_grab_bar_rail_for_independent_living_of_the_elderly"
-                android:textSize="12dp"
-                android:layout_marginLeft="10dp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img1"
                 app:layout_constraintTop_toBottomOf="@id/secPara" />
@@ -168,7 +170,7 @@
                 android:fontFamily="@font/century_gothic_400"
                 android:text="@string/flooring_with_anti_skid_tiles"
                 android:textColor="@color/black"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/img2"
                 app:layout_constraintTop_toBottomOf="@id/secPara2" />
@@ -180,7 +182,7 @@
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/century_gothic_400"
                 android:text="@string/specially_coated_tiles_are_used_to_avoid_slips_in_senior_age_in_case_of_imbalance_in_bathroom_or_any_room_the_service_comes_with_material_labour_and_all_charges"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img2"
                 app:layout_constraintTop_toBottomOf="@id/thrPara" />
@@ -203,7 +205,7 @@
                 android:fontFamily="@font/century_gothic_400"
                 android:text="@string/toilet_seat_riser"
                 android:textColor="@color/black"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/img3"
                 app:layout_constraintTop_toBottomOf="@id/thrPara2" />
@@ -215,7 +217,7 @@
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/century_gothic_400"
                 android:text="@string/the_toilet_seat_riser_is_designed_to_give_you_the_elevation_you_need_while_still_using_your_own_toilet_seat_the_riser_installs_easily_under_your_existing_toilet_seat"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img3"
                 app:layout_constraintTop_toBottomOf="@id/forthPara" />
@@ -233,13 +235,13 @@
                 android:id="@+id/fif_para"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
                 android:ellipsize="start"
                 android:fontFamily="@font/century_gothic_400"
-                android:layout_marginStart="8dp"
                 android:text="@string/anti_skid_tape"
                 android:textColor="@color/black"
-                android:textSize="17dp"
-                android:layout_marginTop="28dp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@+id/img4"
                 app:layout_constraintTop_toBottomOf="@+id/forthPara2"
@@ -249,45 +251,45 @@
                 android:id="@+id/fif_para2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:ellipsize="start"
                 android:fontFamily="@font/century_gothic_400"
-                android:layout_marginStart="10dp"
-                android:textSize="12dp"
                 android:text="@string/anti_skid_tape_helps_to_reduce_the_risk_of_slips_falls_trips_particularly_senior_adults_it_can_be_used_on_stairs_floors_and_ramps_smooth_or_dry_surfaces_ladders"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
 
-                app:layout_constraintTop_toBottomOf="@+id/fif_para"
-                app:layout_constraintStart_toEndOf="@id/img4"/>
+                app:layout_constraintStart_toEndOf="@id/img4"
+                app:layout_constraintTop_toBottomOf="@+id/fif_para" />
 
 
             <TextView
                 android:id="@+id/fifth_para"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:ellipsize="start"
                 android:fontFamily="@font/century_gothic"
                 android:padding="10dp"
-                android:layout_marginTop="10dp"
                 android:text="@string/to_know_more_submit_your_request"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fif_para2"/>
+                app:layout_constraintTop_toBottomOf="@id/fif_para2" />
 
-<!--                        <Button
-                            android:id="@+id/submithm"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="20dp"
-                            android:text="Submit"
-                            android:background="@drawable/custom_button"
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/fifth_para"/>-->
+            <!--                        <Button
+                                        android:id="@+id/submithm"
+                                        android:layout_width="150dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="20dp"
+                                        android:text="Submit"
+                                        android:background="@drawable/custom_button"
+                                        android:textSize="20dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintLeft_toLeftOf="parent"
+                                        app:layout_constraintRight_toRightOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@id/fifth_para"/>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -298,13 +300,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/submit2"
         android:background="@drawable/custom_button"
-        android:textSize="20dp"
+        android:text="@string/submit"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/logo"
-        app:layout_constraintTop_toBottomOf="@+id/scrollVieew"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollVieew" />
 
     <ImageView
         android:id="@+id/logo"
@@ -314,7 +316,7 @@
         android:src="@drawable/pslogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -1,195 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="register">रजिस्टर</string>
-	<string name="app_name">PS</string>
-	<string name="facebook_app_id">1093410747698712</string>
-	<string name="fb_login_protocol_scheme">fb1093410747698712</string>
-	<string-array name="laguauge">
-		<item>English</item>
-		<item>हिन्दी</item>
-		<item>ગુજરાતી</item>
-	</string-array>
-	<string-array name="essential_services">
-		<item>Grocery Product</item>
-		<item>Vegetable</item>
-		<item>Drinking water</item>
-		<item>Dairy Product</item>
-		<item>Others</item>
-	</string-array>
-	<string-array name="currentlaguauge">
-		<item>Current Language English</item>
-		<item>Current Language हिन्दी</item>
-		<item>Current Language ગુજરાતી</item>
-	</string-array>
-	<string-array name="available_service_array">
-		<item>Which Service you want?</item>
-		<item>Health Services</item>
-		<item>Legal Service</item>
-		<item>Finance and Consultant Services</item>
-		<item>Tiffin Services</item>
-		<item>Cab Services</item>
-		<item>Other</item>
-	</string-array>
-	
-	<string-array name="volunteer_options">
-		<item>Select</item>
-		<item>Yes</item>
-		<item>No</item>
-		<item>Later</item>
-	</string-array>
-	<string-array name="Gender_options">
-		<item>Select</item>
-		<item>Male</item>
-		<item>Female</item>
-		<item>Rather not say</item>
-	</string-array>
-	<string-array name="menu_main">
-		<item>Reduce Your Expenses</item>
-		<item>Total Discount Received</item>
-		<item>Edit Profile</item>
-		<item>Medical Records</item>
-		<item>Local Network</item>
-		<item>News And Updates</item>
-		<item>Feedback/Complaints</item>
-		<item>Rate/Share App</item>
-		<item>Terms And Conditions</item>
-	</string-array>
-	
-	<string-array name="AskServicesOptions">
-		<item>Health Services</item>
-		<item>Legal Services</item>
-		<item>Finance and Consultant</item>
-		<item>Tiffin Services</item>
-		<item>Cab Services</item>
-		<item>Other Services …</item>
-	</string-array>
-	
-	<string-array name="DoctorOnline">
-		<item>Self</item>
-		<item>Other</item>
-	</string-array>
-	
-	<string-array name="ProductsOptions">
-		<item>Grocery Items</item>
-		<item>Vegetable</item>
-		<item>Drinking Water</item>
-		<item>Dairy Products</item>
-		<item>Other</item>
-	</string-array>
-	
-	<string-array name="SearchPredictions">
-		<item>Home Modification</item>
-		<item>Tiffin Services</item>
-		<item>Swabhiman</item>
-		<item>Shopping</item>
-		<item>Fuel With Us</item>
-		<item>Ask For Services</item>
-		<item>Save Money</item>
-		<item>Edit Profile</item>
-		<item>Reduce Expenses</item>
-		<item>Total Discount Received</item>
-		<item>Medical Records</item>
-		<item>Local Network</item>
-		<item>News And Updates</item>
-		<item>Feedback / Complaints</item>
-		<item>Rate / Share App</item>
-		<item>Terms and Conditions</item>
-	</string-array>
-	
-	<string name="coming_soon">coming soon&#8230;</string>
-	<string name="more_about_special_offers">Tell us more about \nyour special offers</string>
-	<string name="date_time">Date &amp; Time</string>
-	<string name="save_money">पैसे बचाएं</string>
-	<string name="swabhiman">स्वाभिमान</string>
-	<string name="shopping">SHOPPING/\nMEDICINE </string>
-	<string name="fuel_with_us">FUEL WITH US</string>
-	<string name="exclusive_services">अत्यावश्यक  \nसेवाएं</string>
-	<string name="Sr_citizen">वरिष्ठ.नागरिक \nदुकान</string>
-	<string name="ask_services">कुछ भी करने के लिए पूछें</string>
-	<string name="navigation_drawer_open">Open navigation drawer</string>
-	<string name="navigation_drawer_close">Close navigation drawer</string>
-	<string name="edit_profile">Edit Profile</string>
-	<string name="menu_home">Home</string>
-	<string name="PSMailID">ps@prarambhlife.com</string>
-	<string name="VCuraMailID">wellness@vCura.in</string>
-	
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
-	<string name="title_activity_main_app">PsByPrarambh</string>
-	<string name="submit">प्रस्तुत</string>
-	<string name="discount_on_fuel">ईंधन पर छूट</string>
-	<string name="title_activity_maps">Map</string>
-	<string name="PSNotificationChannel">PS Notifications</string>
-	<string name="notifi_channel_descp">PSNotifications</string>
-	<string name="uploading_request_message">Uploading Your Request</string>
-	<string name="please_wait">Please Wait</string>
-	<string name="request_submit_success_alert">Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. 😇</string>
-	<string name="thank_you">Thank You</string>
-	<string name="ok">OK</string>
-	<string name="describe_service_error">Describe the service</string>
-	<string name="essential_service_description_error">Click a picture or enter list</string>
-	<string name="ask_product_error_message">Enter Product Description</string>
-	<string name="need_location_perm_title">Needs Location Permission</string>
-	<string name="pincode_prompt_message">To serve you better and to get PinCode of your area</string>
-	<string name="grocery">किराना</string>
-	<string name="vegetables">सब्जियां</string>
-	<string name="dairy_products">दुग्ध उत्पाद</string>
-	<string name="tiffin">टिफिन</string>
-	<string name="home_modification">घर संशोधन</string>
-	<string name="doctor_online">डॉक्टर ऑनलाइन</string>
-	<string name="drinking_water">पीने का पानी</string>
-	<string name="auto">ऑटो</string>
-	<string name="emergency_care">आपातकालीन देखभाल</string>
-	<string name="legal_and_financial">कानूनी और वित्तीय</string>
-	<string name="teaching_class">शिक्षण वर्ग</string>
-	<string name="other_services">अन्य सेवाएं</string>
-	<string name="health">स्वास्थ्य</string>
-	<string name="gifts">उपहार</string>
-	<string name="food">खाना</string>
-	<string name="services">सेवाएं</string>
-	<string name="holiday">छुट्टी का दिन</string>
-	<string name="lifestyle">जीवन शैली</string>
-	<string name="dental">दंत चिकित्सा</string>
-	<string name="pathalogy_laborarty">पैथोलॉजी और प्रयोगशाला</string>
-	<string name="homeopathy">होम्योपैथी</string>
-	<string name="dietician">आहार विशेषज्ञ</string>
-	<string name="eyecare">आंख की देखभाल</string>
-	<string name="physiotherapy">भौतिक चिकित्सा</string>
-	<string name="consultation_free">परामर्श शुल्क</string>
-	<string name="sample_pickup_and_drop">नमूना पिक और ड्रॉप</string>
-	<string name="rs_350_off"> ₹ 350 की छूट</string>
-	<string name="rs_200_off"> ₹ 200 की छूट</string>
-	<string name="grab_bar">बार पकड़ो</string>
-	<string name="flooring_with_anti_skid_tiles">फर्श एंटी स्किड टाइल्स के साथ</string>
-	<string name="toilet_seat_riser">टॉयलेट सीट राइजर</string>
-	<string name="anti_skid_tape">एंटी स्किड टेप</string>
-	<string name="specially_coated_tiles_are_used_to_avoid_slips_in_senior_age_in_case_of_imbalance_in_bathroom_or_any_room_the_service_comes_with_material_labour_and_all_charges">विशेषतः बाथरूम या अन्य जगहों पर, संतुलन खो जाने की परिस्थिति में आपके स्लिप हो जाने के खतरे को कम करने के लिए। </string>
-	<string name="stainless_steel_finish_wall_mounted_toilet_grab_bar_rail_for_independent_living_of_the_elderly">साइड की दीवाल पर स्थित  स्टेनलेस स्टील की बनी ग्रैब बार, आपकी पकड़ को मजबूत बनाने के लिए। </string>
-	<string name="the_toilet_seat_riser_is_designed_to_give_you_the_elevation_you_need_while_still_using_your_own_toilet_seat_the_riser_installs_easily_under_your_existing_toilet_seat"> ये आपकी पुरानी टॉयलेट सीट के नीचे आसानी से फिट हो जाता है, जिससे आप अपनी सीट को अपनी सुविधा अनुसार एडजस्ट कर सकते हैं ।</string>
-	<string name="anti_skid_tape_helps_to_reduce_the_risk_of_slips_falls_trips_particularly_senior_adults_it_can_be_used_on_stairs_floors_and_ramps_smooth_or_dry_surfaces_ladders">Anti-Skid Tape helps to reduce the risk of slips, falls, trips, particularly senior adults. It can be used on stairs, floors and ramps – smooth or dry surfaces, ladders.</string>
-	<string name="essential_services">अत्यावश्यक सेवाएं</string>
-	<string name="area"> क्षेत्र:"</string>
-	<string name="to_know_more_submit_your_request">अधिक जानने के लिए अपना अनुरोध प्रस्तुत करें</string>
-	<string name="coming_soon2">जल्द आ रहा है..</string>
-	<string name="coming_soon3">जल्द आ रहा है..</string>
-	<string name="coming_soon4">जल्द आ रहा है..</string>
-	<string name="coming_soon5">जल्द आ रहा है..</string>
-	<string name="coming_soon6">जल्द आ रहा है..</string>
-    <string name="free_deals">मुफ्त  सौदे</string>
-	<string name="our_tiffin_is_prepared">ये टिफिन   </string>
-	<string name="well_trained_cook"> \ विशेष रसोइयों द्वारा साफ सफाई का पूरा ध्यान रख के\</string>
-	<string name="with_proper_care">\ तैयार किए जाते हैं ।\ </string>
-	<string name="hygiene"></string>
-	<string name="menu_is_designed_in_a_way">\ मीनू का चुनाव रोज़ की \</string>
-	<string name="sufficeint_and_balanced_nutrition">\पर्याप्त और संतुलित पोषण की जरूरत को ध्यान में रखकर\</string>
-	<string name="for_daily_need">\ किया जाता है । \</string>
-	<string name="use_of_oil_and_spices">\तेल व मसालों की मात्रा का \</string>
-	<string name="dietician_guidance">\उपयोग डाइटीशियन के सुझाव अनुसार \</string>
-	<string name="makes_it_perfect">\ किया जाता है ।</string>
-	<string name="submit2">प्रस्तुत</string>
+    <string name="register">रजिस्टर</string>
+    <string name="app_name">PS</string>
+    <string name="facebook_app_id">1093410747698712</string>
+    <string name="fb_login_protocol_scheme">fb1093410747698712</string>
+    <string-array name="laguauge">
+        <item>English</item>
+        <item>हिन्दी</item>
+        <item>ગુજરાતી</item>
+    </string-array>
+    <string-array name="essential_services">
+        <item>Grocery Product</item>
+        <item>Vegetable</item>
+        <item>Drinking water</item>
+        <item>Dairy Product</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="currentlaguauge">
+        <item>Current Language English</item>
+        <item>Current Language हिन्दी</item>
+        <item>Current Language ગુજરાતી</item>
+    </string-array>
+    <string-array name="available_service_array">
+        <item>Which Service you want?</item>
+        <item>Health Services</item>
+        <item>Legal Service</item>
+        <item>Finance and Consultant Services</item>
+        <item>Tiffin Services</item>
+        <item>Cab Services</item>
+        <item>Other</item>
+    </string-array>
 
-	<!-- swabhiman_business_associate -->
-	<string name="ps_partners">पी ऐस पार्टनर्स</string>
-	<string name="details_about_your_past_experience">अपने पिछले अनुभव के बारे में विवरण</string>
-	<!-- Work in progress (Harsh) -->
+    <string-array name="volunteer_options">
+        <item>Select</item>
+        <item>Yes</item>
+        <item>No</item>
+        <item>Later</item>
+    </string-array>
+    <string-array name="Gender_options">
+        <item>Select</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Rather not say</item>
+    </string-array>
+    <string-array name="menu_main">
+        <item>Reduce Your Expenses</item>
+        <item>Total Discount Received</item>
+        <item>Edit Profile</item>
+        <item>Medical Records</item>
+        <item>Local Network</item>
+        <item>News And Updates</item>
+        <item>Feedback/Complaints</item>
+        <item>Rate/Share App</item>
+        <item>Terms And Conditions</item>
+    </string-array>
+
+    <string-array name="AskServicesOptions">
+        <item>Health Services</item>
+        <item>Legal Services</item>
+        <item>Finance and Consultant</item>
+        <item>Tiffin Services</item>
+        <item>Cab Services</item>
+        <item>Other Services …</item>
+    </string-array>
+
+    <string-array name="DoctorOnline">
+        <item>Self</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="ProductsOptions">
+        <item>Grocery Items</item>
+        <item>Vegetable</item>
+        <item>Drinking Water</item>
+        <item>Dairy Products</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="SearchPredictions">
+        <item>Home Modification</item>
+        <item>Tiffin Services</item>
+        <item>Swabhiman</item>
+        <item>Shopping</item>
+        <item>Fuel With Us</item>
+        <item>Ask For Services</item>
+        <item>Save Money</item>
+        <item>Edit Profile</item>
+        <item>Reduce Expenses</item>
+        <item>Total Discount Received</item>
+        <item>Medical Records</item>
+        <item>Local Network</item>
+        <item>News And Updates</item>
+        <item>Feedback / Complaints</item>
+        <item>Rate / Share App</item>
+        <item>Terms and Conditions</item>
+    </string-array>
+
+    <string name="coming_soon">coming soon&#8230;</string>
+    <string name="more_about_special_offers">Tell us more about \nyour special offers</string>
+    <string name="date_time">Date &amp; Time</string>
+    <string name="save_money">पैसे बचाएं</string>
+    <string name="swabhiman">स्वाभिमान</string>
+    <string name="shopping">SHOPPING/\nMEDICINE </string>
+    <string name="fuel_with_us">FUEL WITH US</string>
+    <string name="exclusive_services">अत्यावश्यक  \nसेवाएं</string>
+    <string name="Sr_citizen">वरिष्ठ.नागरिक \nदुकान</string>
+    <string name="ask_services">कुछ भी करने के लिए पूछें</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="menu_home">Home</string>
+    <string name="PSMailID">ps@prarambhlife.com</string>
+    <string name="VCuraMailID">wellness@vCura.in</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main_app">PsByPrarambh</string>
+    <string name="submit">प्रस्तुत</string>
+    <string name="discount_on_fuel">ईंधन पर छूट</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="PSNotificationChannel">PS Notifications</string>
+    <string name="notifi_channel_descp">PSNotifications</string>
+    <string name="uploading_request_message">Uploading Your Request</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="request_submit_success_alert">Each order is a blessing to PS, we are grateful for your Love, Trust and Blessings. 😇</string>
+    <string name="thank_you">Thank You</string>
+    <string name="ok">OK</string>
+    <string name="describe_service_error">Describe the service</string>
+    <string name="essential_service_description_error">Click a picture or enter list</string>
+    <string name="ask_product_error_message">Enter Product Description</string>
+    <string name="need_location_perm_title">Needs Location Permission</string>
+    <string name="pincode_prompt_message">To serve you better and to get PinCode of your area</string>
+    <string name="grocery">किराना</string>
+    <string name="vegetables">सब्जियां</string>
+    <string name="dairy_products">दुग्ध उत्पाद</string>
+    <string name="tiffin">टिफिन</string>
+    <string name="home_modification">घर संशोधन</string>
+    <string name="doctor_online">डॉक्टर ऑनलाइन</string>
+    <string name="drinking_water">पीने का पानी</string>
+    <string name="auto">ऑटो</string>
+    <string name="emergency_care">आपातकालीन देखभाल</string>
+    <string name="legal_and_financial">कानूनी और वित्तीय</string>
+    <string name="teaching_class">शिक्षण वर्ग</string>
+    <string name="other_services">अन्य सेवाएं</string>
+    <string name="health">स्वास्थ्य</string>
+    <string name="gifts">उपहार</string>
+    <string name="food">खाना</string>
+    <string name="services">सेवाएं</string>
+    <string name="holiday">छुट्टी का दिन</string>
+    <string name="lifestyle">जीवन शैली</string>
+    <string name="dental">दंत चिकित्सा</string>
+    <string name="pathalogy_laborarty">पैथोलॉजी और प्रयोगशाला</string>
+    <string name="homeopathy">होम्योपैथी</string>
+    <string name="dietician">आहार विशेषज्ञ</string>
+    <string name="eyecare">आंख की देखभाल</string>
+    <string name="physiotherapy">भौतिक चिकित्सा</string>
+    <string name="consultation_free">परामर्श शुल्क</string>
+    <string name="sample_pickup_and_drop">नमूना पिक और ड्रॉप</string>
+    <string name="rs_350_off"> ₹ 350 की छूट</string>
+    <string name="rs_200_off"> ₹ 200 की छूट</string>
+    <string name="grab_bar">बार पकड़ो</string>
+    <string name="flooring_with_anti_skid_tiles">फर्श एंटी स्किड टाइल्स के साथ</string>
+    <string name="toilet_seat_riser">टॉयलेट सीट राइजर</string>
+    <string name="anti_skid_tape">एंटी स्किड टेप</string>
+    <string name="specially_coated_tiles_are_used_to_avoid_slips_in_senior_age_in_case_of_imbalance_in_bathroom_or_any_room_the_service_comes_with_material_labour_and_all_charges">Specially coated tiles are used to avoid slips in senior age in case of imbalance, in Bathroom or any room. The service comes with Material, labour and all charges.</string>
+    <string name="stainless_steel_finish_wall_mounted_toilet_grab_bar_rail_for_independent_living_of_the_elderly">Stainless steel finish wall mounted toilet grab bar/rail, for independent living of the elderly.</string>
+    <string name="the_toilet_seat_riser_is_designed_to_give_you_the_elevation_you_need_while_still_using_your_own_toilet_seat_the_riser_installs_easily_under_your_existing_toilet_seat">The toilet seat riser is designed to give you the elevation you need while still using your own toilet seat. The riser installs easily under your existing toilet seat.</string>
+    <string name="anti_skid_tape_helps_to_reduce_the_risk_of_slips_falls_trips_particularly_senior_adults_it_can_be_used_on_stairs_floors_and_ramps_smooth_or_dry_surfaces_ladders">Anti-Skid Tape helps to reduce the risk of slips, falls, trips, particularly senior adults. It can be used on stairs, floors and ramps – smooth or dry surfaces, ladders.</string>
+    <string name="essential_services">अत्यावश्यक सेवाएं</string>
+    <string name="area"> क्षेत्र:"</string>
+    <string name="to_know_more_submit_your_request">अधिक जानने के लिए अपना अनुरोध प्रस्तुत करें</string>
+    <string name="coming_soon2">जल्द आ रहा है..</string>
+    <string name="coming_soon3">जल्द आ रहा है..</string>
+    <string name="coming_soon4">जल्द आ रहा है..</string>
+    <string name="coming_soon5">जल्द आ रहा है..</string>
+    <string name="coming_soon6">जल्द आ रहा है..</string>
+    <string name="free_deals">मुफ्त सौदे</string>
+    <string name="become_member">सदस्य बनें</string>
+    <string name="not_a_member">आप सदस्य नहीं हैं \nउपलब्ध लाभ के लिए एक सदस्य बनें</string>
+    <string name="now_a_member">अभिनंदन,\n अब आप पीएस सदस्य हैं</string>
+    <string name="products">उत्पाद</string>
+    <string name="what_do_you_want">आप क्या चाहते हो? वो लिखो</string>
+    <string name="product_description">उत्पाद विवरण</string>
+    <string name="OR">अथवा</string>
+    <string name="add_picture">चित्र जोड़ें</string>
+    <string name="dr_rk_rishi">डॉ. आर.के. ऋषि \nआयुर्वेदाचार्य</string>
+    <string name="enter_age">आयु लिखें</string>
+    <string name="enter_name">नाम लिखें</string>
+    <string name="problem_description">यहां अपनी समस्या लिखें</string>
+    <string name="change_profile_picture">प्रोफ़ाइल चित्र बदलें</string>
+    <string name="name">नाम</string>
+    <string name="occupation">व्यवसाय</string>
+    <string name="email">ईमेल</string>
+    <string name="house_name">घर/फ्लैट नं, सोेेसाईटी/घर का नाम,</string>
+    <string name="landmark">सड़क/सीमाचिन्ह(लैंडमार्क), क्षेत्र</string>
+    <string name="area_city">क्षेत्र, शहर</string>
+    <string name="pincode">पिनकोड</string>
+    <string name="save">सेव करे</string>
+    <string name="feedback_complaint">प्रतिक्रिया/शिकायत</string>
+    <string name="send_us_feedback">अपनी प्रतिक्रिया हमें भेजें!</string>
+    <string name="any_suggetsion">क्या आपके पास कोई सुझाव है या कुछ बग पाए गए हैं?\nनीचे दिए गए फ़ील्ड में हमें बताएं</string>
+    <string name="describe_experience">अपना अनुभव बताएं&#8230;</string>
+    <string name="scoop_free">एक स्कूप फ्री</string>
+    <string name="ice_cream">आइसक्रीम</string>
+    <string name="amount">राशि :</string>
+    <string name="petrol_diesel_price">पेट्रोल/डीजल की कीमत :</string>
+    <string name="invoice_number">बिल नंबर :</string>
+    <string name="petrol_diesel_in_liters">पेट्रोल/डीजल(लीटर में)लगभग :</string>
+    <string name="discount_approx">छूट(लगभग):</string>
+    <string name="add_invoice">बिल जोड़ें</string>
+    <string name="search_categories">श्रेणियाँ खोजें</string>
+    <string name="choose_pump">पंप चुनें&#8230;</string>
+    <string name="navigate">नेविगेट</string>
+    <string name="i_am_here">मैं यहाँ हुं</string>
+	<string name="see_your_rewards">अपने पुरस्कार देखें</string>
+	<string name="agree">सहमत</string>
+
 </resources>
