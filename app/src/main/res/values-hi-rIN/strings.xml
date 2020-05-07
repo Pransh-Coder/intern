@@ -163,9 +163,9 @@
 	<string name="flooring_with_anti_skid_tiles">फर्श एंटी स्किड टाइल्स के साथ</string>
 	<string name="toilet_seat_riser">टॉयलेट सीट राइजर</string>
 	<string name="anti_skid_tape">एंटी स्किड टेप</string>
-	<string name="specially_coated_tiles_are_used_to_avoid_slips_in_senior_age_in_case_of_imbalance_in_bathroom_or_any_room_the_service_comes_with_material_labour_and_all_charges">Specially coated tiles are used to avoid slips in senior age in case of imbalance, in Bathroom or any room. The service comes with Material, labour and all charges.</string>
-	<string name="stainless_steel_finish_wall_mounted_toilet_grab_bar_rail_for_independent_living_of_the_elderly">Stainless steel finish wall mounted toilet grab bar/rail, for independent living of the elderly.</string>
-	<string name="the_toilet_seat_riser_is_designed_to_give_you_the_elevation_you_need_while_still_using_your_own_toilet_seat_the_riser_installs_easily_under_your_existing_toilet_seat">The toilet seat riser is designed to give you the elevation you need while still using your own toilet seat. The riser installs easily under your existing toilet seat.</string>
+	<string name="specially_coated_tiles_are_used_to_avoid_slips_in_senior_age_in_case_of_imbalance_in_bathroom_or_any_room_the_service_comes_with_material_labour_and_all_charges">विशेषतः बाथरूम या अन्य जगहों पर, संतुलन खो जाने की परिस्थिति में आपके स्लिप हो जाने के खतरे को कम करने के लिए। </string>
+	<string name="stainless_steel_finish_wall_mounted_toilet_grab_bar_rail_for_independent_living_of_the_elderly">साइड की दीवाल पर स्थित  स्टेनलेस स्टील की बनी ग्रैब बार, आपकी पकड़ को मजबूत बनाने के लिए। </string>
+	<string name="the_toilet_seat_riser_is_designed_to_give_you_the_elevation_you_need_while_still_using_your_own_toilet_seat_the_riser_installs_easily_under_your_existing_toilet_seat"> ये आपकी पुरानी टॉयलेट सीट के नीचे आसानी से फिट हो जाता है, जिससे आप अपनी सीट को अपनी सुविधा अनुसार एडजस्ट कर सकते हैं ।</string>
 	<string name="anti_skid_tape_helps_to_reduce_the_risk_of_slips_falls_trips_particularly_senior_adults_it_can_be_used_on_stairs_floors_and_ramps_smooth_or_dry_surfaces_ladders">Anti-Skid Tape helps to reduce the risk of slips, falls, trips, particularly senior adults. It can be used on stairs, floors and ramps – smooth or dry surfaces, ladders.</string>
 	<string name="essential_services">अत्यावश्यक सेवाएं</string>
 	<string name="area"> क्षेत्र:"</string>
@@ -176,4 +176,14 @@
 	<string name="coming_soon5">जल्द आ रहा है..</string>
 	<string name="coming_soon6">जल्द आ रहा है..</string>
     <string name="free_deals">मुफ्त  सौदे</string>
+	<string name="our_tiffin_is_prepared">ये टिफिन   </string>
+	<string name="well_trained_cook"> \ विशेष रसोइयों द्वारा साफ सफाई का पूरा ध्यान रख के\</string>
+	<string name="with_proper_care">\ तैयार किए जाते हैं ।\ </string>
+	<string name="hygiene"></string>
+	<string name="menu_is_designed_in_a_way">\ मीनू का चुनाव रोज़ की \</string>
+	<string name="sufficeint_and_balanced_nutrition">\पर्याप्त और संतुलित पोषण की जरूरत को ध्यान में रखकर\</string>
+	<string name="for_daily_need">\ किया जाता है । \</string>
+	<string name="use_of_oil_and_spices">\तेल व मसालों की मात्रा का \</string>
+	<string name="dietician_guidance">\उपयोग डाइटीशियन के सुझाव अनुसार \</string>
+	<string name="makes_it_perfect">\ किया जाता है ।</string>
 </resources>

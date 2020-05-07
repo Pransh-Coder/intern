@@ -261,6 +261,7 @@
                     android:background="#FFFF00"
                     android:text="@string/consultation_free"
                     android:textAlignment="center"
+                    android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:textSize="11dp" />
 

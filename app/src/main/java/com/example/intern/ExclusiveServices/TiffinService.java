@@ -44,13 +44,13 @@ public class TiffinService extends AppCompatActivity {
         arrow1 = findViewById(R.id.arrow1);
 
         //arrow1.setText("<b>"+"&#8594"+"</b>"+" ");
-        String sourceString =/*"<b>"+"&#8594"+"</b>"+*/ " Our Tiffin is prepared by "+"<b>" + "well trained and expert cook, "+ "</b>"+" with proper care of " +"<b>" + "hygiene." + "</b> ";
+        String sourceString =/*"<b>"+"&#8594"+"</b>"+*/ getString(R.string.our_tiffin_is_prepared)+"<b>" + getString(R.string.well_trained_cook)+ "</b>"+getString(R.string.with_proper_care) +"<b>" + getString(R.string.hygiene) + "</b> ";
         secPara.setText(Html.fromHtml(sourceString));
 
-        String sourceString2 =/*"<b>"+"&#8594 "+"</b>"+*/" Menu is designed in a way to provide "+"<b>" + "sufficient and balanced nutritions, "+"</b>"+ "for daily need.";
+        String sourceString2 =/*"<b>"+"&#8594 "+"</b>"+*/getString(R.string.menu_is_designed_in_a_way)+"<b>" + getString(R.string.sufficeint_and_balanced_nutrition)+"</b>"+ getString(R.string.for_daily_need);
         thrPara.setText(Html.fromHtml(sourceString2));
 
-        String sourceString3 = /*"<b>"+"&#8594 "+"</b>"+*/" Use of oil and spices as per "+"<b>" + "dietician's guidance "+"</b>"+ "makes it a perfect meal.";
+        String sourceString3 = /*"<b>"+"&#8594 "+"</b>"+*/getString(R.string.use_of_oil_and_spices)+"<b>" + getString(R.string.dietician_guidance)+"</b>"+ getString(R.string.makes_it_perfect);
         forPara.setText(Html.fromHtml(sourceString3));
 
         back.setOnClickListener(view -> onBackPressed());
