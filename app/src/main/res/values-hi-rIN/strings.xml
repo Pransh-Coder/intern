@@ -100,12 +100,12 @@
 	<string name="more_about_special_offers">Tell us more about \nyour special offers</string>
 	<string name="date_time">Date &amp; Time</string>
 	<string name="save_money">पैसे बचाएं</string>
-	<string name="swabhiman">SWABHIMAN</string>
+	<string name="swabhiman">स्वाभिमान</string>
 	<string name="shopping">SHOPPING/\nMEDICINE </string>
 	<string name="fuel_with_us">FUEL WITH US</string>
 	<string name="exclusive_services">अत्यावश्यक  \nसेवाएं</string>
-	<string name="Sr_citizen">Sr. CITIZEN \nSTORE</string>
-	<string name="ask_services">ASK FOR ANYTHING</string>
+	<string name="Sr_citizen">वरिष्ठ.नागरिक \nदुकान</string>
+	<string name="ask_services">कुछ भी करने के लिए पूछें</string>
 	<string name="navigation_drawer_open">Open navigation drawer</string>
 	<string name="navigation_drawer_close">Close navigation drawer</string>
 	<string name="edit_profile">Edit Profile</string>
@@ -117,7 +117,7 @@
 	<string name="hello_blank_fragment">Hello blank fragment</string>
 	<string name="title_activity_main_app">PsByPrarambh</string>
 	<string name="submit">प्रस्तुत</string>
-	<string name="discount_on_fuel">DISCOUNT ON FUEL</string>
+	<string name="discount_on_fuel">ईंधन पर छूट</string>
 	<string name="title_activity_maps">Map</string>
 	<string name="PSNotificationChannel">PS Notifications</string>
 	<string name="notifi_channel_descp">PSNotifications</string>
@@ -150,7 +150,7 @@
 	<string name="holiday">छुट्टी का दिन</string>
 	<string name="lifestyle">जीवन शैली</string>
 	<string name="dental">दंत चिकित्सा</string>
-	<string name="pathalogy_laborarty">पैथोलॉजी प्रयोगशाला</string>
+	<string name="pathalogy_laborarty">पैथोलॉजी और प्रयोगशाला</string>
 	<string name="homeopathy">होम्योपैथी</string>
 	<string name="dietician">आहार विशेषज्ञ</string>
 	<string name="eyecare">आंख की देखभाल</string>
