@@ -99,7 +99,7 @@
 	<string name="coming_soon">coming soon&#8230;</string>
 	<string name="more_about_special_offers">Tell us more about \nyour special offers</string>
 	<string name="date_time">Date &amp; Time</string>
-	<string name="save_money">मुफ्त  सौदे</string>
+	<string name="save_money">पैसे बचाएं</string>
 	<string name="swabhiman">SWABHIMAN</string>
 	<string name="shopping">SHOPPING/\nMEDICINE </string>
 	<string name="fuel_with_us">FUEL WITH US</string>
@@ -146,7 +146,7 @@
 	<string name="health">स्वास्थ्य</string>
 	<string name="gifts">उपहार</string>
 	<string name="food">खाना</string>
-	<string name="services">SERVICES</string>
+	<string name="services">सेवाएं</string>
 	<string name="holiday">छुट्टी का दिन</string>
 	<string name="lifestyle">जीवन शैली</string>
 	<string name="dental">दंत चिकित्सा</string>
@@ -157,8 +157,8 @@
 	<string name="physiotherapy">भौतिक चिकित्सा</string>
 	<string name="consultation_free">परामर्श शुल्क</string>
 	<string name="sample_pickup_and_drop">नमूना पिक और ड्रॉप</string>
-	<string name="rs_350_off"> ₹ 350 छूट</string>
-	<string name="rs_200_off"> ₹ 200 छूट</string>
+	<string name="rs_350_off"> ₹ 350 की छूट</string>
+	<string name="rs_200_off"> ₹ 200 की छूट</string>
 	<string name="grab_bar">बार पकड़ो</string>
 	<string name="flooring_with_anti_skid_tiles">फर्श एंटी स्किड टाइल्स के साथ</string>
 	<string name="toilet_seat_riser">टॉयलेट सीट राइजर</string>
@@ -175,4 +175,5 @@
 	<string name="coming_soon4">जल्द आ रहा है..</string>
 	<string name="coming_soon5">जल्द आ रहा है..</string>
 	<string name="coming_soon6">जल्द आ रहा है..</string>
+    <string name="free_deals">मुफ्त  सौदे</string>
 </resources>

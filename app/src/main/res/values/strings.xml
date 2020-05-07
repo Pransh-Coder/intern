@@ -146,7 +146,7 @@
 	<string name="holiday">HOLIDAY</string>
 	<string name="lifestyle">LIFESTYLE</string>
 	<string name="dental">DENTAL</string>
-	<string name="pathalogy_laborarty">PATHALOGY LABORARTY</string>
+	<string name="pathalogy_laborarty">PATHALOGY AND\nLABORARTY</string>
 	<string name="homeopathy">HOMEOPATHY</string>
 	<string name="dietician">DIETICIAN</string>
 	<string name="eyecare">EYECARE</string>
@@ -174,4 +174,5 @@
 	<string name="coming_soon4">Coming Soon...</string>
 	<string name="coming_soon5">Coming Soon...</string>
 	<string name="coming_soon6">Coming Soon...</string>
+    <string name="free_deals">FREE DEALS</string>
 </resources>
