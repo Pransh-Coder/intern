@@ -179,7 +179,7 @@
     <string name="our_tiffin_is_prepared">ये टिफिन   </string>
     <string name="well_trained_cook"> \ विशेष रसोइयों द्वारा साफ सफाई का पूरा ध्यान रख के\</string>
     <string name="with_proper_care">\ तैयार किए जाते हैं ।\ </string>
-    <string name="hygiene"></string>
+    <string name="hygiene" />
     <string name="menu_is_designed_in_a_way">\ मीनू का चुनाव रोज़ की \</string>
     <string name="sufficeint_and_balanced_nutrition">\पर्याप्त और संतुलित पोषण की जरूरत को ध्यान में रखकर\</string>
     <string name="for_daily_need">\ किया जाता है । \</string>
@@ -224,7 +224,7 @@
     <string name="choose_pump">पंप चुनें&#8230;</string>
     <string name="navigate">नेविगेट</string>
     <string name="i_am_here">मैं यहाँ हुं</string>
-	<string name="see_your_rewards">अपने पुरस्कार देखें</string>
-	<string name="agree">सहमत</string>
+    <string name="see_your_rewards">अपने पुरस्कार देखें</string>
+    <string name="agree">सहमत</string>
 
 </resources>
