@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SharedPrefUtil {
+	private static String TAG = SharedPrefUtil.class.getSimpleName();
 	public static String SHARED_PREF_NAME = "user_prefs";
 	public static String USER_UID_KEY = "user_uid";
 	public static String USER_NAME_KEY = "user_name";
@@ -92,7 +94,6 @@ public class SharedPrefUtil {
 	}
 	
 	public int getProfileCompletionPercent(){
-		int percent = 0;
 		String name = preferences.getString(USER_NAME_KEY, null);
 		String email = preferences.getString(USER_EMAIL_KEY, null);
 		String nick_name = preferences.getString(USER_NICK_NAME_KEY, null);
@@ -102,16 +103,23 @@ public class SharedPrefUtil {
 		String ph_no = preferences.getString(USER_PHONE_NO, null);
 		String rel_ph_no = preferences.getString(USER_RELATIVE_PHONE_NUMBER_KEY, null);
 		String occ = preferences.getString(USER_OCCUPATION_KEY, null);
-		String address = preferences.getString(USER_AREA_KEY, null);
+		String area = preferences.getString(USER_AREA_KEY, null);
+		String house_no = preferences.getString(USER_HOUSE_NUMBER, null);
+		String street = preferences.getString(USER_STREET_KEY, null);
+		String prof_pic_path = preferences.getString(USER_PROFILE_PIC_PATH_KEY, null);
 		List<String> data = new ArrayList<>();
 		data.add(name);data.add(email);data.add(nick_name);data.add(ps_nick_name);data.add(pin_code);
-		data.add(dob);data.add(ph_no);data.add(rel_ph_no);data.add(occ);data.add(address);
+		data.add(dob);data.add(ph_no);data.add(rel_ph_no);data.add(occ);data.add(area);data.add(house_no);
+		data.add(street);data.add(prof_pic_path);
+		int total = 0; int found =0 ;
 		for(String field : data){
-			if(field != null && !TextUtils.isEmpty(field) && !field.isEmpty()){
-				percent+=10;
+			total++;
+			if(field != null  && !TextUtils.isEmpty(field) && !field.equals("null")){
+				found ++;
 			}
 		}
-		return percent;
+		Log.d(TAG, "getProfileCompletionPercent: TOTAL " + total + "FOUND : " + found);
+		return (found*100)/total;
 	}
 	
 	public void updateWithCloud(String UID){

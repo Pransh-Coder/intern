@@ -5,19 +5,15 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.text.InputFilter;
-import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,17 +29,12 @@ import com.example.intern.database.FireStoreUtil;
 import com.example.intern.databinding.FragmentRegisterAsParentFRBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -51,8 +42,7 @@ public class RegisterAsParentFR extends Fragment {
     private static String TAG = RegisterAsParentFR.class.getSimpleName();
     private FragmentRegisterAsParentFRBinding binding;
     private AuthViewModel viewModel;
-    private FusedLocationProviderClient locationProviderClient;
-    private String pinCode;
+	//private String pinCode;
     private FirebaseUser user;
     private final Calendar calendar = Calendar.getInstance();
     private boolean hasSelectedDate;
@@ -86,7 +76,6 @@ public class RegisterAsParentFR extends Fragment {
         View view = binding.getRoot();
 	    viewModel.setFirebaseUser(viewModel.getFirebaseAuth().getCurrentUser());
 	    user = viewModel.getFirebaseUser();
-	    locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
         return view;
     }
 
@@ -110,15 +99,17 @@ public class RegisterAsParentFR extends Fragment {
 		    DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), dateSetListener, 2000, 1,1);
 		    datePickerDialog.show();
 	    });
-	    checkPerms();
+	    //checkPerms();
     }
     
 	private void checkPerms(){
-		if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-			ActivityCompat.requestPermissions(requireActivity(), new String[] {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 122);
-		}else{
-			getPinCode();
-		}
+		try{
+			if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+				ActivityCompat.requestPermissions(requireActivity(), new String[] {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 122);
+			}else{
+				getPinCode();
+			}
+		}catch (Exception ignored){}
 	}
 	
 	@Override
@@ -137,21 +128,24 @@ public class RegisterAsParentFR extends Fragment {
 	}
 	
 	private void getPinCode(){
-		locationProviderClient.getLastLocation().addOnSuccessListener(requireActivity(), location -> {
-			Geocoder geocoder = new Geocoder(requireContext());
-			try {
-				List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude() , 1);
-				if(addresses != null && addresses.size() > 0 ){
-					pinCode = addresses.get(0).getPostalCode();
-					binding.etPinCode.setText(pinCode);
-					Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);
-				}else{
-					getPinCode();
+		try{
+			FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
+			locationProviderClient.getLastLocation().addOnSuccessListener(requireActivity(), location -> {
+				Geocoder geocoder = new Geocoder(requireContext());
+				try {
+					List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude() , 1);
+					if(addresses != null && addresses.size() > 0 ){
+						/*pinCode = addresses.get(0).getPostalCode();
+						binding.etPinCode.setText(pinCode);
+						Log.d(TAG, "proceedWithLocationPermissions: Found PinCode" + pinCode);*/
+					}else{
+						getPinCode();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
+			});
+		}catch (Exception ignored){}
 	}
     
     private int getSeniorAge(){
@@ -171,9 +165,9 @@ public class RegisterAsParentFR extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		binding.etPinCode.setText(pinCode);
+		/*binding.etPinCode.setText(pinCode);
 		//Check if pincode is set or not
-		if(binding.etPinCode.getText().toString().isEmpty())getPinCode();
+		if(binding.etPinCode.getText().toString().isEmpty())getPinCode();*/
 		setClickListeners();
 	}
 
@@ -204,9 +198,10 @@ public class RegisterAsParentFR extends Fragment {
 	        String ps_nick_name = binding.etPsNickName.getText().toString();
 	        String parent_number =binding.etParentNumber.getText().toString();
 	        String child_number = binding.etChildNumber.getText().toString();
+	        String pinCode = binding.etPinCode.getText().toString();
 	        if(pinCode.length() != 6){
 		        binding.etPinCode.setError("Enter a valid pin code");
-		        getPinCode();
+		        //getPinCode();
 		        return;
 	        }
 	        if(!parent_number.isEmpty() && parent_number.length() != 10){
@@ -262,7 +257,7 @@ public class RegisterAsParentFR extends Fragment {
         });
     }
 	
-	private void verifyPhoneNumber(String phoneNumber){
+	/*private void verifyPhoneNumber(String phoneNumber){
 		//Phone verification callback
 		PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 			@Override
@@ -293,7 +288,7 @@ public class RegisterAsParentFR extends Fragment {
 				otpGetterDialog.setView(otpEditText);
 				otpGetterDialog.setCancelable(false);
 				otpGetterDialog.setPositiveButton("Verify", (dialog, which) -> {
-					if(which== DialogInterface.BUTTON_POSITIVE){/*Do stuff*/}else return;
+					if(which== DialogInterface.BUTTON_POSITIVE){*//*Do stuff*//*}else return;
 					//TODO : Get the OTP and Verify
 					String otp = otpEditText.getText().toString();
 					if(otp.length() != 6)otpEditText.setError("Invalid OTP");
@@ -319,6 +314,6 @@ public class RegisterAsParentFR extends Fragment {
 		};
 		//Make an instance of Phone verifier
 		PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + phoneNumber, 60, TimeUnit.SECONDS,requireActivity(), callbacks);
-	}
+	}*/
 }
 
