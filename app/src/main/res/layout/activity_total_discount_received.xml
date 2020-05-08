@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ps"
-    tools:context=".TotalDiscountReceived.TotalDiscountReceived"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".TotalDiscountReceived.TotalDiscountReceived">
 
     <ImageView
         android:id="@+id/back"
@@ -15,7 +15,8 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/back"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/home"
         android:layout_width="40dp"
@@ -24,7 +25,7 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/homeimg"
         app:layout_constraintLeft_toRightOf="@+id/back"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
@@ -35,7 +36,7 @@
         android:layout_marginRight="10dp"
         android:src="@drawable/notification"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/percent_30_Of_Screen"
@@ -43,12 +44,13 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2" />
+
     <TextView
         android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/century_gothic"
-        android:text="Total Discount Received"
+        android:text="@string/total_discount_received"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -76,14 +78,12 @@
             android:stretchColumns="0,1,2,3"
             app:layout_constraintTop_toBottomOf="@+id/percent_30_Of_Screen">
 
-
             <TableRow
                 android:id="@+id/row1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/cardview_border2">
-
 
                 <TextView
                     android:id="@+id/data1"
@@ -92,9 +92,10 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape2"
                     android:padding="10dp"
-                    android:text="Categories"
+                    android:text="@string/categories"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -104,9 +105,10 @@
                     android:layout_weight="0.75"
                     android:background="@drawable/cell_shape2"
                     android:padding="10dp"
-                    android:text="Amount"
+                    android:text="@string/amount_without_colon"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -115,9 +117,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
                     android:padding="10dp"
-                    android:text="Discount"
+                    android:text="@string/discount"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </TableRow>
@@ -139,7 +142,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data5"
@@ -149,7 +152,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data6"
@@ -158,7 +161,7 @@
                     android:layout_weight="0.75"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -179,7 +182,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data8"
@@ -189,7 +192,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data9"
@@ -198,7 +201,7 @@
                     android:layout_weight="0.75"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -220,7 +223,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data11"
@@ -230,7 +233,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data12"
@@ -239,7 +242,7 @@
                     android:layout_weight="0.75"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -260,7 +263,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data14"
@@ -270,7 +273,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data15"
@@ -279,7 +282,7 @@
                     android:layout_weight="0.75"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -301,7 +304,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data17"
@@ -311,7 +314,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data18"
@@ -320,7 +323,7 @@
                     android:layout_weight="0.75"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -340,7 +343,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data50"
@@ -350,7 +353,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data20"
@@ -359,7 +362,7 @@
                     android:layout_weight="0.75"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -381,7 +384,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data22"
@@ -391,7 +394,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data23"
@@ -400,7 +403,7 @@
                     android:layout_weight="0.75"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -422,7 +425,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data25"
@@ -432,7 +435,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/data26"
@@ -441,7 +444,7 @@
                     android:layout_weight="0.75"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -461,7 +464,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/traningprogram_textView_mondeyheadingWeekName"
@@ -471,7 +474,7 @@
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/traningprogram_textView_mondeyheadingWeek"
@@ -480,24 +483,24 @@
                     android:layout_weight="0.75"
                     android:padding="10dp"
                     android:text=""
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
             </TableRow>
         </TableLayout>
 
     </ScrollView>
 
-<!--    <Button
-        android:id="@+id/btn_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/background_button_sign_in"
-        android:padding="10dp"
-        android:text="SUBMIT"
-        app:layout_constraintBottom_toTopOf="@id/logo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>-->
+    <!--    <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/background_button_sign_in"
+            android:padding="10dp"
+            android:text="SUBMIT"
+            app:layout_constraintBottom_toTopOf="@id/logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>-->
 
     <ImageView
         android:id="@+id/logo"
@@ -506,7 +509,7 @@
         android:src="@drawable/pslogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

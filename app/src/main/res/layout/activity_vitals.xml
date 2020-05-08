@@ -45,7 +45,7 @@
         android:id="@+id/et_person_name"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/percent_30_Of_Screen"
@@ -61,7 +61,7 @@
         android:fontFamily="@font/century_gothic"
         android:text="Vitals"
         android:textColor="@color/black"
-        android:textSize="19dp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_person_name" />
@@ -77,238 +77,234 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/heading2">
 
-    <TableLayout
-        android:id="@+id/table"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"
-        android:stretchColumns="0,1,2,3"
-        app:layout_constraintTop_toBottomOf="@+id/heading2">
-
-
-        <TableRow
-            android:id="@+id/row1"
-            android:layout_width="wrap_content"
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/cardview_border">
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
+            android:stretchColumns="0,1,2,3"
+            app:layout_constraintTop_toBottomOf="@+id/heading2">
 
 
-            <TextView
-                android:id="@+id/data1"
-                android:layout_width="0dip"
+            <TableRow
+                android:id="@+id/row1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@drawable/cell_shape"
-                android:padding="10dp"
-                android:text="Blood Group"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="14dp" />
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border">
 
-            <EditText
-                android:id="@+id/et_blood_group"
-                android:layout_width="0dp"
+
+                <TextView
+                    android:id="@+id/data1"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text="@string/blood_group"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/et_blood_group"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Ex : B+"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="3"
+                    android:padding="10dp"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Ex : B+"
-                android:background="@null"
-                android:padding="10dp"
-                android:inputType="textCapCharacters"
-                android:textCursorDrawable="@drawable/custom_cursor"
-                android:maxLength="3"
-                android:textColor="@color/cardview_dark_background" />
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border">
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/data4"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text="@string/blood_glucose"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="14sp" />
 
-        <TableRow
-            android:id="@+id/row2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/cardview_border">
 
-            <TextView
-                android:id="@+id/data4"
-                android:layout_width="0dip"
+                <EditText
+                    android:id="@+id/et_blood_glucose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Ex : 120"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@drawable/cell_shape"
-                android:padding="10dp"
-                android:text="Blood Glucose"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="14dp" />
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border"
+
+                >
+
+                <TextView
+                    android:id="@+id/data7"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text="@string/blood_pressure"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/et_blood_pressure"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Ex : 120/80"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="7"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
+
+            </TableRow>
 
 
-            <EditText
-                android:id="@+id/et_blood_glucose"
-                android:layout_width="0dp"
-                android:hint="Ex : 120"
+            <TableRow
+                android:id="@+id/row4"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:background="@null"
-                android:textCursorDrawable="@drawable/custom_cursor"
-                android:layout_weight="1"
-                android:maxLength="3"
-                android:padding="10dp" />
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border">
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/data10"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text="@string/temperature"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="14sp" />
 
-        <TableRow
-            android:id="@+id/row3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/cardview_border"
 
-            >
+                <EditText
+                    android:id="@+id/et_temperature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Ex : 98.6"
+                    android:inputType="numberDecimal"
+                    android:maxLength="4"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@drawable/custom_cursor" />
 
-            <TextView
-                android:id="@+id/data7"
-                android:layout_width="0dip"
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row5"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@drawable/cell_shape"
-                android:padding="10dp"
-                android:text="Blood Pressure"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="14dp" />
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border">
 
-            <EditText
-                android:id="@+id/et_blood_pressure"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/data13"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text="@string/weight"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/et_weight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Ex : 70"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/row6"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Ex : 120/80"
-                android:background="@null"
-                android:layout_weight="1"
-                android:textCursorDrawable="@drawable/custom_cursor"
-                android:inputType="textCapCharacters"
-                android:maxLength="7"
-                android:padding="10dp" />
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cardview_border">
 
-        </TableRow>
-
-
-        <TableRow
-            android:id="@+id/row4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/cardview_border"
-
-            >
-
-            <TextView
-                android:id="@+id/data10"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@drawable/cell_shape"
-                android:padding="10dp"
-                android:text="Temperature"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="14dp" />
+                <TextView
+                    android:id="@+id/data16"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@drawable/cell_shape"
+                    android:padding="10dp"
+                    android:text="@string/allergy"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="14sp" />
 
 
-            <EditText
-                android:id="@+id/et_temperature"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Ex : 98.6"
-                android:textCursorDrawable="@drawable/custom_cursor"
-                android:background="@null"
-                android:inputType="numberDecimal"
-                android:maxLength="4"
-                android:padding="10dp" />
+                <TextView
+                    android:id="@+id/et_allergy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/if_any"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textSize="18sp" />
 
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/row5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/cardview_border">
-
-            <TextView
-                android:id="@+id/data13"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@drawable/cell_shape"
-                android:padding="10dp"
-                android:text="Weight (in kg)"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="14dp" />
-
-
-            <TextView
-                android:id="@+id/et_weight"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Ex : 70"
-                android:inputType="number"
-                android:textColor="@color/black"
-                android:background="@null"
-                android:textCursorDrawable="@drawable/custom_cursor"
-                android:maxLength="3"
-                android:textSize="18sp"
-                android:layout_weight="1"
-                android:padding="10dp" />
-
-        </TableRow>
-
-
-        <TableRow
-            android:id="@+id/row6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/cardview_border"
-
-            >
-
-            <TextView
-                android:id="@+id/data16"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@drawable/cell_shape"
-                android:padding="10dp"
-                android:text="Allergy"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="14dp" />
-
-
-            <TextView
-                android:id="@+id/et_allergy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:hint="If any"
-                android:textSize="18sp"
-                android:textCursorDrawable="@drawable/custom_cursor"
-                android:inputType="text"
-                android:maxLength="50"
-                android:padding="10dp" />
-
-        </TableRow>
-    </TableLayout>
+            </TableRow>
+        </TableLayout>
     </ScrollView>
 
-<!--    <android.widget.Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/background_button_sign_in"
-        android:padding="10dp"
-        android:text="SUBMIT"
-        app:layout_constraintBottom_toTopOf="@id/logo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>-->
+    <!--    <android.widget.Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/background_button_sign_in"
+            android:padding="10dp"
+            android:text="SUBMIT"
+            app:layout_constraintBottom_toTopOf="@id/logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>-->
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
@@ -319,7 +315,7 @@
         android:text="@string/submit"
         app:layout_constraintBottom_toTopOf="@id/pslogo"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:id="@+id/pslogo"

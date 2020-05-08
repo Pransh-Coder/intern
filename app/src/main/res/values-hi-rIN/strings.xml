@@ -179,7 +179,7 @@
     <string name="our_tiffin_is_prepared">ये टिफिन   </string>
     <string name="well_trained_cook"> \ विशेष रसोइयों द्वारा साफ सफाई का पूरा ध्यान रख के\</string>
     <string name="with_proper_care">\ तैयार किए जाते हैं ।\ </string>
-    <string name="hygiene"/>
+    <string name="hygiene" />
     <string name="menu_is_designed_in_a_way">\ मीनू का चुनाव रोज़ की \</string>
     <string name="sufficeint_and_balanced_nutrition">\पर्याप्त और संतुलित पोषण की जरूरत को ध्यान में रखकर\</string>
     <string name="for_daily_need">\ किया जाता है । \</string>
@@ -226,25 +226,42 @@
     <string name="i_am_here">मैं यहाँ हुं</string>
     <string name="see_your_rewards">अपने पुरस्कार देखें</string>
     <string name="agree">सहमत</string>
-    <string name="details_about_your_past_experience">अपने पिछले अनुभव के बारे में विवरण</string>
-    <string name="donor">दाता</string>
-    <string name="donor_description">PS इस सामाजिक उद्यम कारण का समर्थन करने के लिए धन्यवाद, यह आपकी तरह के समर्थन के बिना संभव नहीं था। आप दान कर सकते हैं: -</string>
-    <string name="money">पैसे</string>
-    <string name="time">समय</string>
-    <string name="free_space">खाली जगह</string>
-    <string name="others">अन्य</string>
-    <string name="investor_description">हम आपका स्वागत है कि आप <b>PS</b> का हिस्सा बनें। कोई भी ₹10000 से निवेश शुरू कर सकता है और किसी भी सीमा तक जा सकते हैं। उन्हें निवेश पर मासिक ब्याज का १०-१२% मिलेगा।</string>
-    <string name="opportunity_for_good_cash_flow"><b>अच्छे नकदी प्रवाह के लिए अवसर</b></string>
-    <string name="opportunity_for_starting_a_small_business"><b>एक छोटा सा व्यवसाय शुरू करने का अवसर</b></string>
-    <string name="become_a_consultant_based_on_experience"><b>अनुभव के आधार पर एक सलाहकार बनें</b></string>
-    <string name="part_time_job_option_as_appropriate"><b>उपयुक्त के रूप में अंशकालिक नौकरी का विकल्प</b></string>
-    <string name="a_platform_created">एक मंच विशेष रूप से <b> वरिष्ठ नागरिकों </b> के लिए बनाया गया है, यह उन्हें आय में वृद्धि के लिए नए तरीके तलाशने या उनकी रुचि और अनुभव के अनुसार समाज में योगदान करने में मदद करेगा, जैसे कि</string>
-    <string name="investor">निवेशक</string>
-    <string name="ps_partners">PS भागीदार</string>
-    <string name="employment">रोज़गार</string>
-    <string name="years_of_experience">नौकरी में अनुभव के वर्ष / अन्य:</string>
-    <string name="your_strength">आपका मजबूत पक्ष :</string>
-    <string name="how_many_hours">आप रोजाना कितने घंटे काम कर सकते हैं:</string>
-    <string name="any_specific_condition">कोई खास शर्त? :</string>
-    <string name="anything_doing_currently">वर्तमान में कुछ भी कर रहे हैं? :</string>
+
+    <string name="total_discount_received">कुल छूट प्राप्त</string>
+    <string name="categories">श्रेणियाँ</string>
+    <string name="amount_without_colon">राशि</string>
+    <string name="discount">छूट</string>
+    <string name="transaction_history">पिछला लेन-देन</string>
+    <string name="monthly">मासिक</string>
+    <string name="yearly">वार्षिक</string>
+    <string name="total_customers">कुल ग्राहक संख्या</string>
+    <string name="blood_group">रक्त वर्ग</string>
+    <string name="blood_glucose">ग्लूकोज की मात्रा</string>
+    <string name="blood_pressure">रक्त-दाब</string>
+    <string name="temperature">शरीर का तापमान</string>
+    <string name="weight">वजन</string>
+    <string name="allergy">एलर्जी</string>
+    <string name="if_any">अगर कोई है</string>
+    <string name="essential_services_hint">उदा. \n भिन्डी 250 ग्राम \n आलू 2 किग्रा। \n अमूल गोल्ड 4 पैक \n ब्रेड 2 पैक</string>
+    <string name="name_with_colon">नाम :</string>
+    <string name="name_here">नाम लिखें :</string>
+    <string name="ps_can_you">PS आपका उल्लेख कर सकता है :</string>
+    <string name="ps_can_you_hint">(काका, भाई, भाभी)</string>
+    <string name="your_number">आपका संपर्क क्रमांक</string>
+    <string name="ten_digit_number_here">10 अंकी संपर्क क्रमांक</string>
+    <string name="parents_number">माता-पिता का संपर्क क्रमांक</string>
+    <string name="date_of_birth">जन्म तिथि :</string>
+    <string name="dd_mm_yy">दिन/महीना/वर्ष</string>
+    <string name="gender">लिंग :</string>
+    <string name="area_pincode">क्षेत्र/पिनकोड</string>
+    <string name="six_digit_Pincode_here">6 अंकी पिनकोड</string>
+    <string name="name_your_ps">अपने PS को नाम दें :</string>
+    <string name="prakruti_samay">प्रकृति,समय..</string>
+    <string name="become_volunteer">स्वयंसेवक बनें :</string>
+    <string name="create_your_profile">अपना प्रोफ़ाइल बनाए</string>
+    <string name="chachu_dadi_chachi">(चाचु, दादी, चाची)</string>
+    <string name="childs_number">बेटा/बेटी का संपर्क :</string>
+
+
+
 </resources>
