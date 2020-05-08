@@ -160,7 +160,7 @@ public class Health extends AppCompatActivity {
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I understand", null).show();*/
 
         new AlertDialog.Builder(this).setTitle("Sorry for inconvenience").setMessage(Html.fromHtml("Offer is for <b>PS+</b> members only. Buy membership @<b>499</b>/- Rs. \n" +
-                "But services will be available after<b>LockDown</b>."))
+                "But services will be available after<b> LockDown</b>."))
                 .setIcon(R.drawable.pslogotrimmed).setPositiveButton("I Understand", null).show();
     }
 }
