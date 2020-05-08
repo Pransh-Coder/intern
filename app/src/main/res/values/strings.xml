@@ -225,4 +225,26 @@
     <string name="i_am_here">I\'m here</string>
     <string name="see_your_rewards">See Your Rewards</string>
     <string name="agree">Agree</string>
+
+    <string name="details_about_your_past_experience">Details about your past experience</string>
+    <string name="donor">Donor</string>
+    <string name="investor">Investor</string>
+    <string name="ps_partners">PS Partners</string>
+    <string name="employment">Employment</string>
+    <string name="donor_description">PS thanks you to support  this social enterprise cause,It wasn\'t possible without your kind support.You can donate:-<br/> </string>
+    <string name="money"><b>MONEY</b></string>
+    <string name="time"><b>TIME</b></string>
+    <string name="free_space"><b>FREE SPACE</b></string>
+    <string name="others"><b>OTHERS</b></string>
+    <string name="investor_description">We Welcome you to become a part of <b>PS</b>. Anyone can start investing from ₹10,000 and can go up to any limit. They will get 10–12% of monthly interest on the investment.<br/></string>
+    <string name="opportunity_for_good_cash_flow"><b>Opportunity for good cash flow</b></string>
+    <string name="opportunity_for_starting_a_small_business"><b>Opportunity for starting a small business</b></string>
+    <string name="become_a_consultant_based_on_experience"><b>Become a consultant based on experience</b></string>
+    <string name="part_time_job_option_as_appropriate"><b>Part-time job option as appropriate</b></string>
+    <string name="a_platform_created">A platform created specially for <b>senior citizens</b>, it will help them to explore new ways for growth in income or to contribute to the society as per their interest and experience, such as<br/></string>
+    <string name="years_of_experience">Years of experience in Job/Others :</string>
+    <string name="your_strength">Your strength :</string>
+    <string name="how_many_hours">How many Hours you can work daily :</string>
+    <string name="any_specific_condition">Any specific condition? :</string>
+    <string name="anything_doing_currently">Anything doing currently? :</string>
 </resources>

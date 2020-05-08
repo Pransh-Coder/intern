@@ -226,5 +226,25 @@
     <string name="i_am_here">मैं यहाँ हुं</string>
     <string name="see_your_rewards">अपने पुरस्कार देखें</string>
     <string name="agree">सहमत</string>
-
+    <string name="details_about_your_past_experience"></string>
+    <string name="donor"></string>
+    <string name="donor_description"></string>
+    <string name="money"></string>
+    <string name="time"></string>
+    <string name="free_space"></string>
+    <string name="others"></string>
+    <string name="investor_description"></string>
+    <string name="opportunity_for_good_cash_flow"></string>
+    <string name="opportunity_for_starting_a_small_business"></string>
+    <string name="become_a_consultant_based_on_experience"></string>
+    <string name="part_time_job_option_as_appropriate"></string>
+    <string name="a_platform_created"></string>
+    <string name="investor"></string>
+    <string name="ps_partners"></string>
+    <string name="employment"></string>
+    <string name="years_of_experience"></string>
+    <string name="your_strength"></string>
+    <string name="how_many_hours"></string>
+    <string name="any_specific_condition"></string>
+    <string name="anything_doing_currently"></string>
 </resources>
