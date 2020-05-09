@@ -252,6 +252,8 @@
                 android:layout_height="15dp"
                 android:fontFamily="@font/century_gothic_400"
                 android:gravity="center"
+                android:autoSizeTextType="uniform"
+                android:textSize="12dp"
                 android:text="@string/OR"
                 android:textColor="@color/black" />
 
