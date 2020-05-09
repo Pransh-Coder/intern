@@ -27,7 +27,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +47,8 @@ public abstract class FireStoreUtil {
 	public static String USER_NICK_NAME = "nn";
 	public static String USER_PS_NICK_NAME = "psnn";
 	public static String USER_PHONE_NUMBER = "pn";
+	public static String USER_PENDING_FUEL_REF_AMT_KEY = "fuelpend";
+	public static String USER_APPROVED_FUEL_REF_AMT_KEY = "fuelappr";
 	//REQUEST TYPES
 	public static int REQUESTS_SERVICE = 2;
 	//Storage path names used
@@ -152,8 +153,8 @@ public abstract class FireStoreUtil {
 		Map<String, Object> data = new HashMap<>();
 		data.put("user", UID);data.put("inv", invoiceNo);
 		data.put("discamt", amountReq);data.put("invimg",firebaseStorageUrl);
-		data.put("verstat", false);
-		return FirebaseFirestore.getInstance().collection(FUEL_REFUND_COLLECTION_NAME).document(Integer.toString(Calendar.getInstance().get(Calendar.DATE))).collection(UID).add(data);
+		data.put("verstat", false);data.put("time", System.currentTimeMillis());
+		return FirebaseFirestore.getInstance().collection(FUEL_REFUND_COLLECTION_NAME).add(data);
 	}
 	
 	public static DocumentReference getUserDocumentReference(Context context, String userID){
