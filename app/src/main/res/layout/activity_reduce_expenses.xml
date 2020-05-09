@@ -100,7 +100,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text="Medicine"
+                    android:text="@string/medicine"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             
@@ -133,7 +133,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text="Grocery"
+                    android:text="@string/grocery2"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             
@@ -166,7 +166,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text="Travelling"
+                    android:text="@string/travelling"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             
@@ -201,7 +201,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text="Entertainment"
+                    android:text="@string/entertainment"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             
@@ -234,7 +234,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text="Food"
+                    android:text="@string/food2"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             
@@ -270,7 +270,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text="Lifestyle"
+                    android:text="@string/lifestyle2"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             
@@ -304,7 +304,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text="Health Insurance"
+                    android:text="@string/health_insurance"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             
@@ -342,7 +342,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text=" Utility Bills"
+                    android:text="@string/utility_bills"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             
@@ -380,7 +380,7 @@
                     android:layout_weight="1.5"
                     android:background="@drawable/cell_shape"
                     android:padding="10dp"
-                    android:text="Others"
+                    android:text="@string/others"
                     android:textColor="@color/cardview_dark_background"
                     android:textSize="14dp" />
             

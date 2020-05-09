@@ -261,7 +261,15 @@
     <string name="create_your_profile">अपना प्रोफ़ाइल बनाए</string>
     <string name="chachu_dadi_chachi">(चाचु, दादी, चाची)</string>
     <string name="childs_number">बेटा/बेटी का संपर्क :</string>
-
+    <string name="medicine">दवा</string>
+    <string name="travelling">यात्रा</string>
+    <string name="entertainment">मनोरंजन</string>
+    <string name="health_insurance">स्वास्थ्य बीमा</string>
+    <string name="utility_bills">उपयोगिता बिल</string>
+    <string name="others">अन्य</string>
+    <string name="grocery2">किराना</string>
+    <string name="food2">खाना</string>
+    <string name="lifestyle2">जीवन शैली</string>
 
 
 </resources>

@@ -260,4 +260,13 @@
     <string name="create_your_profile">CREATE YOUR PROFILE</string>
     <string name="chachu_dadi_chachi">(Chachu,Dadi,Chachi)</string>
     <string name="childs_number">Child\'s Number :</string>
+    <string name="medicine">Medicine</string>
+    <string name="travelling">Travelling</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="health_insurance">Health Insurance</string>
+    <string name="utility_bills">Utility Bills</string>
+    <string name="others">Others</string>
+    <string name="grocery2">Grocery</string>
+    <string name="food2">Food</string>
+    <string name="lifestyle2">Lifestyle</string>
 </resources>
