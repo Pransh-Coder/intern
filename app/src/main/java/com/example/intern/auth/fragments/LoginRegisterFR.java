@@ -103,8 +103,8 @@ public class LoginRegisterFR extends Fragment {
 		String currentLocale = requireActivity().getSharedPreferences("lang", Context.MODE_PRIVATE).getString("lang", null);
 		if(currentLocale != null){
 			if(currentLocale.equals("en"))binding.registrationSpinLanguage.setSelection(0);
-			if(currentLocale.equals("hi_IN"))binding.registrationSpinLanguage.setSelection(1);
-			if(currentLocale.equals("gu_IN"))binding.registrationSpinLanguage.setSelection(2);
+			if(currentLocale.contains("hi"))binding.registrationSpinLanguage.setSelection(1);
+			if(currentLocale.contains("gu"))binding.registrationSpinLanguage.setSelection(2);
 		}
 		return view;
 	}
@@ -132,10 +132,10 @@ public class LoginRegisterFR extends Fragment {
 					viewModel.getLanguageListener().newLang("en");
 				}
 				if(position==1){
-					viewModel.getLanguageListener().newLang("hi_IN");
+					viewModel.getLanguageListener().newLang("hi");
 				}
 				if(position ==2){
-					viewModel.getLanguageListener().newLang("gu_IN");
+					viewModel.getLanguageListener().newLang("gu");
 				}
 			}
 			
