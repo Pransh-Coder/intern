@@ -54,6 +54,21 @@ public class EssentialServices extends AppCompatActivity {
 			Intent intent = new Intent(EssentialServices.this, NewsAndUpdatesACT.class);
 			startActivity(intent);
 		});
+		binding.etProductName.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				binding.charCount2.setText(s.length() +"/200");
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				binding.charCount2.setText(s.length() +"/200");
+
+			}
+		});
 		//Check if the user has entered phone no or relative phone no
 		if(!(prefUtil.getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null) != null || prefUtil.getPreferences().getString(SharedPrefUtil.USER_RELATIVE_PHONE_NUMBER_KEY, null) != null)){
 			new androidx.appcompat.app.AlertDialog.Builder(this).setTitle("Needs Your Contact Details")
