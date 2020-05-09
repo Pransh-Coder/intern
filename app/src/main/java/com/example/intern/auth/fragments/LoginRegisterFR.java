@@ -103,8 +103,8 @@ public class LoginRegisterFR extends Fragment {
 		String currentLocale = requireActivity().getSharedPreferences("lang", Context.MODE_PRIVATE).getString("lang", null);
 		if(currentLocale != null){
 			if(currentLocale.equals("en"))binding.registrationSpinLanguage.setSelection(0);
-			if(currentLocale.equals("hi"))binding.registrationSpinLanguage.setSelection(1);
-			//TODO: For Gujrati
+			if(currentLocale.equals("hi_IN"))binding.registrationSpinLanguage.setSelection(1);
+			if(currentLocale.equals("gu_IN"))binding.registrationSpinLanguage.setSelection(2);
 		}
 		return view;
 	}
@@ -130,14 +130,13 @@ public class LoginRegisterFR extends Fragment {
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				if(position==0){
 					viewModel.getLanguageListener().newLang("en");
-					//TODO : Update this layout
 				}
 				if(position==1){
-					//HINDI is selected
-					viewModel.getLanguageListener().newLang("hi");
-					//TODO : update this layout
+					viewModel.getLanguageListener().newLang("hi_IN");
 				}
-				//TODO : For Gujrati
+				if(position ==2){
+					viewModel.getLanguageListener().newLang("gu_IN");
+				}
 			}
 			
 			@Override

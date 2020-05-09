@@ -110,9 +110,6 @@
     <string name="menu_home">Home</string>
     <string name="PSMailID">ps@prarambhlife.com</string>
     <string name="VCuraMailID">wellness@vCura.in</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main_app">PsByPrarambh</string>
     <string name="submit">SUBMIT</string>
     <string name="discount_on_fuel">DISCOUNT ON FUEL</string>
@@ -169,11 +166,6 @@
     <string name="essential_services">Essential Services</string>
     <string name="area">\"Area: \"</string>
     <string name="to_know_more_submit_your_request">To know more submit your request</string>
-    <string name="coming_soon2">Coming Soon...</string>
-    <string name="coming_soon3">Coming Soon...</string>
-    <string name="coming_soon4">Coming Soon...</string>
-    <string name="coming_soon5">Coming Soon...</string>
-    <string name="coming_soon6">Coming Soon...</string>
     <string name="free_deals">FREE DEALS</string>
     <string name="our_tiffin_is_prepared">\ Our Tiffin is prepared by \</string>
     <string name="well_trained_cook">\well trained and expert cook, \</string>
@@ -269,4 +261,6 @@
     <string name="grocery2">Grocery</string>
     <string name="food2">Food</string>
     <string name="lifestyle2">Lifestyle</string>
+    <string name="reduce_your_expenses_title">Reduce Your Expenses</string>
+    <string name="share_your_monthly_expenses_below_subtitle">Share your monthly expenses below</string>
 </resources>

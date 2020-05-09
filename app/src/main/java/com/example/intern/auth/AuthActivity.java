@@ -67,7 +67,7 @@ public class AuthActivity extends AppCompatActivity {
 			resources.updateConfiguration(configuration, dm);
 			if(currentLocale!= null && !currentLocale.equals(locale))recreate();
 			langPrefs = getSharedPreferences("lang", MODE_PRIVATE);
-			langPrefs.edit().putString("lang", locale).commit();
+			langPrefs.edit().putString("lang", locale).apply();
 		});
 	}
 }
