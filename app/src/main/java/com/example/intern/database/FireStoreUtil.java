@@ -154,7 +154,8 @@ public abstract class FireStoreUtil {
 		data.put("user", UID);data.put("inv", invoiceNo);
 		data.put("discamt", amountReq);data.put("invimg",firebaseStorageUrl);
 		data.put("verstat", false);data.put("time", System.currentTimeMillis());
-		return FirebaseFirestore.getInstance().collection(FUEL_REFUND_COLLECTION_NAME).add(data);
+		return FirebaseFirestore.getInstance().collection(FUEL_REFUND_COLLECTION_NAME).document("ufcoll")
+				.collection(UID).add(data);
 	}
 	
 	public static DocumentReference getUserDocumentReference(Context context, String userID){

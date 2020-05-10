@@ -27,6 +27,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -147,25 +148,29 @@ public class FuelWithUsAct extends AppCompatActivity {
 						dialog.setIcon(R.drawable.pslogotrimmed);
 						dialog.setCancelable(false);
 						dialog.show();
-						FireStoreUtil.uploadFuelInvoice(this,UID,invoiceNo, BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot ->
-								taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri ->
-										//TODO : Add this amount to pending amount in user profile
-										FireStoreUtil.uploadFuelRefundRequest(UID, invoiceNo, discount, uri.toString()).addOnSuccessListener(documentReference -> {
-											FireStoreUtil.getUserDocumentReference(this, UID).get().addOnSuccessListener(snapshot->{
-												if(snapshot != null && snapshot.exists()){
-													try{
-														synchronized (FuelWithUsAct.class){
-															double pendingAmt = 0d;
+						Map<String, Object> mergeUser = new HashMap<>();
+						mergeUser.put(UID, false);
+						FirebaseFirestore.getInstance().collection("bpclref").document("ufcoll")
+								.set(mergeUser, SetOptions.merge()).addOnSuccessListener(bbVoid ->
+								FireStoreUtil.uploadFuelInvoice(this,UID,invoiceNo, BitmapFactory.decodeFile(filePath)).addOnSuccessListener(taskSnapshot ->
+										taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri ->
+												//TODO : Add this amount to pending amount in user profile
+												FireStoreUtil.uploadFuelRefundRequest(UID, invoiceNo, discount, uri.toString()).addOnSuccessListener(documentReference -> {
+													FireStoreUtil.getUserDocumentReference(this, UID).get().addOnSuccessListener(snapshot->{
+														if(snapshot != null && snapshot.exists()){
 															try{
-																pendingAmt = snapshot.getDouble(FireStoreUtil.USER_PENDING_FUEL_REF_AMT_KEY);
-															}catch (NullPointerException e){
-																//This means that user still doesn't have the new schema, so initialise it with 0
-															}
-															double newAmt = pendingAmt + discount;
-															Map<String, Object> data = new HashMap<>();
-															data.put(FireStoreUtil.USER_PENDING_FUEL_REF_AMT_KEY, newAmt);
-															FirebaseFirestore.getInstance().collection(FireStoreUtil.USER_COLLECTION_NAME).document(UID)
-																	.update(data).addOnSuccessListener(aVoid -> {
+																synchronized (FuelWithUsAct.class){
+																	double pendingAmt = 0d;
+																	try{
+																		pendingAmt = snapshot.getDouble(FireStoreUtil.USER_PENDING_FUEL_REF_AMT_KEY);
+																	}catch (NullPointerException e){
+																		//This means that user still doesn't have the new schema, so initialise it with 0
+																	}
+																	double newAmt = pendingAmt + discount;
+																	Map<String, Object> data = new HashMap<>();
+																	data.put(FireStoreUtil.USER_PENDING_FUEL_REF_AMT_KEY, newAmt);
+																	FirebaseFirestore.getInstance().collection(FireStoreUtil.USER_COLLECTION_NAME).document(UID)
+																			.update(data).addOnSuccessListener(aVoid -> {
 																		dialog.dismiss();
 																		new AlertDialog.Builder(context).setTitle("Request Received")
 																				.setMessage("We have received the invoice number and picture of the invoice \nDiscount : " + discount + " INR will be credited once the purchase is verified")
@@ -173,11 +178,11 @@ public class FuelWithUsAct extends AppCompatActivity {
 																				.setPositiveButton("OK", (dialog1, which) -> finish())
 																				.setOnDismissListener(dialog12 -> finish()).show();
 																	});
+																}
+															}catch(Exception ignored){}
 														}
-													}catch(Exception ignored){}
-												}
-											});
-						})));
+													});
+												}))));
 					}
 				}
 			}

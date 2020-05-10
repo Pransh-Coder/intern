@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -35,8 +36,8 @@ public class LoginRegisterFR extends Fragment {
 	ViewPager viewPager;
 	TextView chngText;
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+	                         Bundle savedInstanceState) {
 		viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
 		binding = FragmentLoginRegisterFRBinding.inflate(inflater, container, false);
 		View view = binding.getRoot();
