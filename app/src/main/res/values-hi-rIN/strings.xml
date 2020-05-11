@@ -262,7 +262,7 @@
     <string name="grocery2">किराना</string>
     <string name="food2">खाना</string>
     <string name="lifestyle2">जीवन शैली</string>
-    <string name="reduce_your_expenses_title">Reduce Your Expenses</string>
-    <string name="share_your_monthly_expenses_below_subtitle">Share your monthly expenses below</string>
+    <string name="reduce_your_expenses_title">अपने खर्चों को कम करें</string>
+    <string name="share_your_monthly_expenses_below_subtitle">अपने मासिक खर्चों को नीचे साझा करें</string>
 
 </resources>
