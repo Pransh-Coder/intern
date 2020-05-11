@@ -6,6 +6,8 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Html;
@@ -60,6 +62,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
@@ -77,6 +80,15 @@ public class MainApp extends AppCompatActivity implements DuoMenuView.OnMenuClic
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//Get Locale
+		String locale= getSharedPreferences("lang", MODE_PRIVATE).getString("lang", null);
+		if(locale != null){
+			Resources resources = getResources();
+			DisplayMetrics dm = resources.getDisplayMetrics();
+			Configuration configuration = resources.getConfiguration();
+			configuration.setLocale(new Locale(locale.toLowerCase()));
+			resources.updateConfiguration(configuration, dm);
+		}
 		binding = ActivityMainAppBinding.inflate(getLayoutInflater());
 		setUpSearchBar();
 		GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

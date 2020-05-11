@@ -49,6 +49,17 @@
 		app:srcCompat="@drawable/icons_mascot_47" />
 	
 	<TextView
+		android:id="@+id/tv_verified_requests"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:fontFamily="@font/century_gothic"
+		android:text="Your verified requests >"
+		android:textColor="@color/black"
+		app:layout_constraintBottom_toTopOf="@id/hor_guide_29_per"
+		app:layout_constraintLeft_toRightOf="@id/guide_ver_50_per"
+		app:layout_constraintRight_toRightOf="parent"/>
+	
+	<TextView
 		android:id="@+id/tv_amt_req"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
