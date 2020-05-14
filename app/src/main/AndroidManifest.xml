@@ -10,7 +10,6 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
-	
 	<dist:module dist:instant="true" />
 	<dist:module dist:instant="true" />
 	
@@ -35,7 +34,9 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".fuel.RewardsOnFuel"></activity>
+		<activity android:name=".ExclusiveServices.VendorChosingAct"></activity>
+		<activity android:name=".ExclusiveServices.OrderActivity" />
+		<activity android:name=".fuel.RewardsOnFuel" />
 		
 		<service
 			android:name=".fuel.BackNavService"
@@ -72,7 +73,8 @@
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
 				
-				<data android:scheme="@string/fb_login_protocol_scheme"
+				<data
+					android:scheme="@string/fb_login_protocol_scheme"
 					tools:ignore="ManifestResource" />
 			</intent-filter>
 		</activity>
