@@ -73,9 +73,9 @@ public class OrderActivity extends AppCompatActivity {
 		
 		//Getting a formatted address for delivery
 		SharedPreferences preferences = prefUtil.getPreferences();
-		String userAddress = preferences.getString(SharedPrefUtil.USER_HOUSE_NUMBER, null)
-				+ preferences.getString(SharedPrefUtil.USER_STREET_KEY, null)
-				+ preferences.getString(SharedPrefUtil.USER_AREA_KEY, null)
+		String userAddress = preferences.getString(SharedPrefUtil.USER_HOUSE_NUMBER, null) + ", "
+				+ preferences.getString(SharedPrefUtil.USER_STREET_KEY, null) + ", "
+				+ preferences.getString(SharedPrefUtil.USER_AREA_KEY, null) + ", "
 				+ preferences.getString(SharedPrefUtil.USER_PIN_CODE_KEY, null);
 		binding.btnSubmit.setOnClickListener(v -> {
 			List<String> items = recyclerAdapter.items;
@@ -171,8 +171,11 @@ public class OrderActivity extends AppCompatActivity {
 				public void onTextChanged(CharSequence s, int start, int before, int count) {}
 				@Override
 				public void afterTextChanged(Editable s) {
-					items.remove(position);
-					items.add(position, s.toString());
+					if(items.isEmpty()){
+						items.add(s.toString());
+					}else{
+						items.set(position, s.toString());
+					}
 					Log.d(TAG, "afterTextChanged: Added" + s.toString() + " at " + position);
 				}
 			});
@@ -183,9 +186,11 @@ public class OrderActivity extends AppCompatActivity {
 				public void onTextChanged(CharSequence s, int start, int before, int count) {}
 				@Override
 				public void afterTextChanged(Editable s) {
-					quants.remove(position);
-					quants.add(position, s.toString());
-					Log.d(TAG, "afterTextChanged: Added quant at same pos");
+					if(quants.isEmpty()){
+						quants.add(s.toString());
+					}else {
+						quants.set(position, s.toString());
+					}
 				}
 			});
 		}

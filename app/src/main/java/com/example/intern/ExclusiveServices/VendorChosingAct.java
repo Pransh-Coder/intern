@@ -53,6 +53,10 @@ public class VendorChosingAct extends AppCompatActivity {
 				binding.recyclerVendorList.setAdapter(adapter);
 			}
 		});
+		binding.btnYourOrders.setOnClickListener(v -> {
+			Intent intent = new Intent(VendorChosingAct.this, AllOrders.class);
+			startActivity(intent);
+		});
 	}
 	
 	class VendorListRecyclerAdapter extends RecyclerView.Adapter<VendorListRecyclerAdapter.VendorVH>{
