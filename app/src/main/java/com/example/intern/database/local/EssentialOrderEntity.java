@@ -1,23 +1,31 @@
 package com.example.intern.database.local;
 
-import androidx.room.ColumnInfo;
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
-import androidx.room.Fts4;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import java.util.List;
-
-@Fts4(languageId = "lid")
-@Entity
+@Entity(tableName = "orders")
 public class EssentialOrderEntity {
-	@PrimaryKey
+	@Ignore
 	public String user_ID;
-	public String vendor_ID;
+	@PrimaryKey
+	@NonNull
 	public String order_ID;
+	public String items;
+	public String vendor_ID;
+	public String quantities;
 	public Long timestamp;
-	public List<String> items;
-	public List<Integer> quantities;
-	public List<Integer> prices;
-	@ColumnInfo(name = "lid")
-	public int languageID;
+	public String prices;
+	public EssentialOrderEntity(){}
+	//Constructor
+	public EssentialOrderEntity(String user_ID, String vendor_ID, String order_ID, Long timestamp,
+	                            String items, String quantities){
+		this.user_ID = user_ID;
+		this.vendor_ID = vendor_ID;
+		this.items = items;
+		this.quantities = quantities;
+		this.timestamp = timestamp;
+		this.order_ID = order_ID;
+	}
 }
