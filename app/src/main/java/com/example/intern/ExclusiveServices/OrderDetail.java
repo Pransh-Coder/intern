@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.intern.R;
 import com.example.intern.databinding.ActivityOrderDetailBinding;
 import com.example.intern.databinding.RecyclerItemOrderDetailBinding;
@@ -41,6 +42,29 @@ public class OrderDetail extends AppCompatActivity {
 		}
 		FirebaseFirestore.getInstance().collection("vendors").document(vendorID).collection("orders")
 				.document(documentID).get().addOnSuccessListener(snapshot -> {
+					try{
+						boolean vendorStat = snapshot.getBoolean("vendorstat");
+						if(vendorStat){
+							binding.tvStatus.setText("Status : Order Accepted");
+							//TODO : Show bill if there
+							try {
+								String billUrl = snapshot.getString("billpic");
+								Glide.with(binding.ivBill).load(billUrl).placeholder(android.R.drawable.progress_indeterminate_horizontal)
+										.into(binding.ivBill);
+							}catch (Exception e){
+								//No bill found !
+								binding.ivBill.setVisibility(View.GONE);
+							}
+						}else{
+							binding.tvStatus.setText("Status : Order Rejected");
+							binding.ivBill.setVisibility(View.GONE);
+						}
+					}catch (Exception ignored){
+						//Vendor status cannot be found
+						binding.tvStatus.setText("Status : Awaiting Vendor Response");
+						binding.ivBill.setVisibility(View.GONE);
+					}
+					//Pass snapshot to the adapter to do the processing of data
 					OrderDetailAdapter adapter = new OrderDetailAdapter(snapshot);
 					binding.recyclerItems.setAdapter(adapter);
 				});
@@ -70,7 +94,10 @@ public class OrderDetail extends AppCompatActivity {
 				items = (List<String>)snapshot.get("items");
 				quants = (List<String>)snapshot.get("quants");
 				prices = (List<String>)snapshot.get("prices");
-			}catch (Exception ignored){}
+			}catch (Exception ignored){
+				//Prices cannot be found
+				holder.binding.tvPrice.setText("-");
+			}
 			if(prices == null || prices.isEmpty()){
 				Toast.makeText(OrderDetail.this, "Not yet accepted!", Toast.LENGTH_SHORT).show();
 			}else {

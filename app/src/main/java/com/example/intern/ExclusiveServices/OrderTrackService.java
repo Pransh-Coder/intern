@@ -50,17 +50,23 @@ public class OrderTrackService extends JobIntentService {
 				.addSnapshotListener((snapshot, e) -> {
 					if(snapshot != null && snapshot.exists()){
 						//Access the newer states from the snapshot
-						if(snapshot.getBoolean("vendorstat")){
-							List<String> prices = (List<String>) snapshot.get("prices");
-							if(prices != null && !prices.isEmpty()){
-								OrderDB.getInstance(context).insertPrices(new Gson().toJson(prices));
-								//TODO : create a pending intent to go to show the order details
-								showNotification("Order Accepted!", "Click here to see the details", null);
+						try{
+							if(snapshot.getBoolean("vendorstat")){
+								List<String> prices = (List<String>) snapshot.get("prices");
+								if(prices != null && !prices.isEmpty()){
+									OrderDB.getInstance(context).insertPrices(new Gson().toJson(prices));
+									//TODO : create a pending intent to go to show the order details
+									Intent intent1 = new Intent(context, OrderDetail.class);
+									intent1.putExtra(OrderDetail.EXTRA_DOCUMENT_ID_KEY, orderID);
+									intent1.putExtra(OrderDetail.EXTRA_VENDOR_ID_KEY, vendorID);
+									PendingIntent pendingIntent = PendingIntent.getActivity(context, 23,intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+									showNotification("Order Accepted!", "Click here to see the details", pendingIntent);
+								}
+							}else{
+								showNotification("Order denied!", "Sorry but the order " + orderID + " cannot be fulfilled by the vendor", null);
+								onStopCurrentWork();
 							}
-						}else{
-							showNotification("Order denied!", "Sorry but the order " + orderID + " cannot be fulfilled by the vendor", null);
-							stopSelf();
-						}
+						}catch (Exception ignored){}
 					}
 				});
 	}

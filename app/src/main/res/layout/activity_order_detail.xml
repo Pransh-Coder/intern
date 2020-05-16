@@ -29,6 +29,19 @@
 		app:layout_constraintGuide_percent="0.7"/>
 	
 	<TextView
+		android:id="@+id/tv_status"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="5dp"
+		android:fontFamily="@font/century_gothic"
+		android:text="Status : "
+		android:textColor="@color/black"
+		android:textSize="18sp"
+		app:layout_constraintBottom_toTopOf="@id/per_hor_29_per"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"/>
+	
+	<TextView
 		android:id="@+id/tv_item"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -36,7 +49,7 @@
 		android:text="Item"
 		android:textColor="@color/black"
 		android:textSize="16sp"
-		app:layout_constraintBottom_toTopOf="@id/per_hor_29_per"
+		app:layout_constraintTop_toBottomOf="@id/per_hor_29_per"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toLeftOf="@id/ver_33"/>
 	
@@ -48,7 +61,7 @@
 		android:text="Quantity"
 		android:textColor="@color/black"
 		android:textSize="16sp"
-		app:layout_constraintBottom_toTopOf="@id/per_hor_29_per"
+		app:layout_constraintTop_toBottomOf="@id/per_hor_29_per"
 		app:layout_constraintLeft_toRightOf="@id/ver_33"
 		app:layout_constraintRight_toLeftOf="@id/ver_66"/>
 	
@@ -60,7 +73,7 @@
 		android:text="Price"
 		android:textColor="@color/black"
 		android:textSize="16sp"
-		app:layout_constraintBottom_toTopOf="@id/per_hor_29_per"
+		app:layout_constraintTop_toBottomOf="@id/per_hor_29_per"
 		app:layout_constraintLeft_toRightOf="@id/ver_66"
 		app:layout_constraintRight_toRightOf="parent"/>
 	
@@ -69,7 +82,7 @@
 		android:layout_height="wrap_content"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/per_hor_29_per">
+		app:layout_constraintTop_toBottomOf="@id/tv_item">
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
@@ -81,6 +94,14 @@
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toTopOf="parent"/>
+			<ImageView
+				android:id="@+id/iv_bill"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginTop="20dp"
+				android:src="@drawable/pslogotrimmed"
+				app:layout_constraintDimensionRatio="1:0.6"
+				app:layout_constraintTop_toBottomOf="@id/recycler_items"/>
 			<TextView
 				android:id="@+id/tv_total"
 				android:layout_width="wrap_content"
@@ -92,7 +113,7 @@
 				android:textSize="20sp"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/recycler_items"/>
+				app:layout_constraintTop_toBottomOf="@id/iv_bill"/>
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.core.widget.NestedScrollView>
 	
