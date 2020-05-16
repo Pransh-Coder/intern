@@ -73,20 +73,28 @@ public class OrderActivity extends AppCompatActivity {
 		
 		//Getting a formatted address for delivery
 		SharedPreferences preferences = prefUtil.getPreferences();
-		String userAddress = preferences.getString(SharedPrefUtil.USER_HOUSE_NUMBER, null) + ", "
+		String userAddress = preferences.getString(SharedPrefUtil.USER_NAME_KEY, null) + ", "
+				+ preferences.getString(SharedPrefUtil.USER_HOUSE_NUMBER, null) + ", "
 				+ preferences.getString(SharedPrefUtil.USER_STREET_KEY, null) + ", "
 				+ preferences.getString(SharedPrefUtil.USER_AREA_KEY, null) + ", "
-				+ preferences.getString(SharedPrefUtil.USER_PIN_CODE_KEY, null);
+				+ preferences.getString(SharedPrefUtil.USER_PIN_CODE_KEY, null) + ", Ph. No. : "
+				+ preferences.getString(SharedPrefUtil.USER_PHONE_NO, null);
 		binding.btnSubmit.setOnClickListener(v -> {
 			List<String> items = recyclerAdapter.items;
 			List<String> quantities = recyclerAdapter.quants;
 			Map<String, Object> order = new HashMap<>();
-			//Used for vendor accepting or rejecting
-			order.put("vendorstat", true);
-			//Used for user accepting or rejecting
-			order.put("userstat", true);
-			//Used when the bill is uploaded
-			order.put("finalstat", false);
+			if(binding.radioDeliveryTypes.getCheckedRadioButtonId() == -1){
+				//Hasn't checked anything
+				Toast.makeText(context, "Choose A Delivery Type !", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			if(binding.radioDeliveryTypes.getCheckedRadioButtonId() == R.id.rad_btn_cod){
+				//Cash on delivery opted
+				order.put("homedel", true);
+			}else{
+				//Takeaway opted
+				order.put("homedel", false);
+			}
 			//Delivery address
 			order.put("deliveradd", userAddress);
 			order.put("items", items);
@@ -100,6 +108,8 @@ public class OrderActivity extends AppCompatActivity {
 							,System.currentTimeMillis(), new Gson().toJson(items), new Gson().toJson(quantities));
 							OrderDB.getInstance(context).insertOrder(orderEntity);
 							Log.d(TAG, "onCreate: Created an entity in the local DB");
+							Toast.makeText(context, "Order made successfully", Toast.LENGTH_SHORT).show();
+							finish();
 						}
 					});
 		});
@@ -147,10 +157,9 @@ public class OrderActivity extends AppCompatActivity {
 		super.onDestroy();
 	}
 	
-	static class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>{
+	class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>{
 		private final String TAG = ItemRecyclerAdapter.class.getSimpleName();
 		List<String> items, quants;
-		
 		ItemRecyclerAdapter(){
 			items = new ArrayList<>();
 			quants = new ArrayList<>();
@@ -159,7 +168,8 @@ public class OrderActivity extends AppCompatActivity {
 		@NonNull
 		@Override
 		public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-			return new ItemViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_vendor_single_item, parent, false));
+			View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_vendor_single_item, parent, false);
+			return new ItemViewHolder(view);
 		}
 		
 		@Override
@@ -176,7 +186,6 @@ public class OrderActivity extends AppCompatActivity {
 					}else{
 						items.set(position, s.toString());
 					}
-					Log.d(TAG, "afterTextChanged: Added" + s.toString() + " at " + position);
 				}
 			});
 			holder.binding.etQuantity.addTextChangedListener(new TextWatcher() {
@@ -200,7 +209,7 @@ public class OrderActivity extends AppCompatActivity {
 			return items.size();
 		}
 		
-		static class ItemViewHolder extends RecyclerView.ViewHolder{
+		class ItemViewHolder extends RecyclerView.ViewHolder{
 			RecyclerItemVendorSingleItemBinding binding;
 			
 			ItemViewHolder(@NonNull View itemView) {

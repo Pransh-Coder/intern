@@ -24,7 +24,7 @@
 		android:textSize="16sp"
 		app:layout_constraintBottom_toTopOf="@id/per_hor_29_per"
 		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toLeftOf="@id/ver_33"/>
+		app:layout_constraintRight_toLeftOf="@id/ver_50"/>
 	
 	<TextView
 		android:id="@+id/tv_quant"
@@ -35,34 +35,15 @@
 		android:textColor="@color/black"
 		android:textSize="16sp"
 		app:layout_constraintBottom_toTopOf="@id/per_hor_29_per"
-		app:layout_constraintLeft_toRightOf="@id/ver_33"
-		app:layout_constraintRight_toLeftOf="@id/ver_66"/>
-	
-	<TextView
-		android:id="@+id/tv_price"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:fontFamily="@font/century_gothic"
-		android:text="Price"
-		android:textColor="@color/black"
-		android:textSize="16sp"
-		app:layout_constraintBottom_toTopOf="@id/per_hor_29_per"
-		app:layout_constraintLeft_toRightOf="@id/ver_66"
+		app:layout_constraintLeft_toRightOf="@id/ver_50"
 		app:layout_constraintRight_toRightOf="parent"/>
 	
 	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/ver_33"
+		android:id="@+id/ver_50"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.45" />
-	
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/ver_66"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.7"/>
+		app:layout_constraintGuide_percent="0.5"/>
 	
 	<androidx.core.widget.NestedScrollView
 		android:layout_width="0dp"
@@ -90,10 +71,48 @@
 				android:background="@drawable/background_button_sign_in"
 				android:fontFamily="@font/century_gothic"
 				android:text="Add Item"
-				app:layout_constraintBottom_toTopOf="@id/btn_submit"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/recycler_items" />
+			<TextView
+				android:id="@+id/tv_useless_del"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="10dp"
+				android:layout_marginTop="10dp"
+				android:fontFamily="@font/century_gothic"
+				android:padding="5dp"
+				android:text="Delivery type : "
+				android:textColor="@color/black"
+				android:textSize="16sp"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/btn_add_item"/>
+			
+			<RadioGroup
+				android:id="@+id/radio_delivery_types"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="10dp"
+				android:orientation="horizontal"
+				app:layout_constraintBottom_toBottomOf="@id/tv_useless_del"
+				app:layout_constraintLeft_toRightOf="@id/tv_useless_del"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="@id/tv_useless_del">
+				<RadioButton
+					android:id="@+id/rad_btn_takeaway"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/century_gothic"
+					android:padding="5dp"
+					android:text="Take Away"/>
+				<RadioButton
+					android:id="@+id/rad_btn_cod"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/century_gothic"
+					android:padding="5dp"
+					android:text="COD"/>
+			</RadioGroup>
 			<Button
 				android:id="@+id/btn_submit"
 				android:layout_width="wrap_content"
@@ -102,6 +121,8 @@
 				android:background="@drawable/background_button_sign_in"
 				android:fontFamily="@font/century_gothic"
 				android:text="Submit"
+				android:layout_marginTop="20dp"
+				app:layout_constraintTop_toBottomOf="@id/tv_useless_del"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"/>

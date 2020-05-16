@@ -6,12 +6,11 @@
 	android:padding="5dp">
 	
 	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/ver_33"
+		android:id="@+id/ver_50"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="vertical"
-		app:layout_constraintGuide_percent="0.45"/>
-	
+		app:layout_constraintGuide_percent="0.5"/>
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/ver_66"
 		android:layout_width="match_parent"
@@ -32,7 +31,7 @@
 		android:textSize="16sp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toLeftOf="@id/ver_33"
+		app:layout_constraintRight_toLeftOf="@id/ver_50"
 		app:layout_constraintTop_toTopOf="parent"/>
 	
 	<EditText
@@ -46,21 +45,7 @@
 		android:textColor="@color/black"
 		android:textSize="16sp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintLeft_toRightOf="@id/ver_33"
-		app:layout_constraintRight_toLeftOf="@id/ver_66"
-		app:layout_constraintTop_toTopOf="parent"/>
-	
-	<TextView
-		android:id="@+id/tv_price"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:fontFamily="@font/century_gothic"
-		android:hint="TBD"
-		android:textAlignment="center"
-		android:textColor="@color/black"
-		android:textSize="16sp"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintLeft_toRightOf="@id/ver_66"
+		app:layout_constraintLeft_toRightOf="@id/ver_50"
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toTopOf="parent"/>
 
