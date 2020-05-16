@@ -263,4 +263,8 @@
     <string name="lifestyle2">Lifestyle</string>
     <string name="reduce_your_expenses_title">Reduce Your Expenses</string>
     <string name="share_your_monthly_expenses_below_subtitle">Share your monthly expenses below</string>
+    <string name="back_to_home">Back To Home</string>
+    <string name="thank_you_for_order">Thank you for order!</string>
+    <string name="order_ready">Order Ready</string>
+    <string name="thank_you_for_accepting_order">Thank you for\n Accepting order!</string>
 </resources>
