@@ -49,8 +49,13 @@ public class OrderDetail extends AppCompatActivity {
 							//TODO : Show bill if there
 							try {
 								String billUrl = snapshot.getString("billpic");
-								Glide.with(binding.ivBill).load(billUrl).placeholder(android.R.drawable.progress_indeterminate_horizontal)
-										.into(binding.ivBill);
+								if(billUrl==null){
+									binding.ivBill.setVisibility(View.GONE);
+								}else{
+									Glide.with(this).load(billUrl).placeholder(android.R.drawable.progress_indeterminate_horizontal)
+											.into(binding.ivBill);
+									binding.ivBill.setVisibility(View.VISIBLE);
+								}
 							}catch (Exception e){
 								//No bill found !
 								binding.ivBill.setVisibility(View.GONE);

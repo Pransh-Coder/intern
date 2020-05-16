@@ -80,12 +80,17 @@
 	<androidx.core.widget.NestedScrollView
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
+		app:layout_constraintBottom_toTopOf="@id/pslogo"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_item">
+		app:layout_constraintTop_toBottomOf="@id/tv_item"
+		app:layout_constraintVertical_bias="0">
+		
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
+			
 			<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/recycler_items"
 				android:layout_width="0dp"
@@ -93,15 +98,29 @@
 				android:layout_margin="10dp"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toTopOf="parent"/>
-			<ImageView
+				app:layout_constraintTop_toTopOf="parent" />
+			
+			<com.jsibbold.zoomage.ZoomageView
 				android:id="@+id/iv_bill"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
-				android:layout_marginTop="20dp"
+				android:layout_marginTop="10dp"
+				android:padding="10dp"
 				android:src="@drawable/pslogotrimmed"
-				app:layout_constraintDimensionRatio="1:0.6"
-				app:layout_constraintTop_toBottomOf="@id/recycler_items"/>
+				android:visibility="gone"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintTop_toBottomOf="@id/tv_total"
+				app:zoomage_animateOnReset="true"
+				app:zoomage_autoCenter="true"
+				app:zoomage_autoResetMode="UNDER"
+				app:zoomage_doubleTapToZoom="true"
+				app:zoomage_doubleTapToZoomScaleFactor="2"
+				app:zoomage_maxScale="10"
+				app:zoomage_minScale="0.5"
+				app:zoomage_restrictBounds="false"
+				app:zoomage_translatable="true"
+				app:zoomage_zoomable="true" />
+			
 			<TextView
 				android:id="@+id/tv_total"
 				android:layout_width="wrap_content"
@@ -113,7 +132,7 @@
 				android:textSize="20sp"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/iv_bill"/>
+				app:layout_constraintTop_toBottomOf="@id/recycler_items" />
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.core.widget.NestedScrollView>
 	
