@@ -11,5 +11,6 @@
     <color name="green_default">#364900</color>
     <color name="grey">#000</color>
     <color name="my">#d3d3d3</color>
+    <color name="green_border">#00A651</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#d3d3d3</color>
 </resources>

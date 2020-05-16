@@ -263,4 +263,9 @@
 	<string name="lifestyle2">જીવનશૈલી</string>
 	<string name="reduce_your_expenses_title">તમારો ખર્ચ ઘટાડો</string>
 	<string name="share_your_monthly_expenses_below_subtitle">તમારા માસિક ખર્ચ ની વિગત નીચે શેર કરો</string>
+	<string name="back_to_home">મુખ્ય સ્ક્રીન પર જાઓ</string>
+	<string name="thank_you_for_order">ઓર્ડર બદલ આભાર!</string>
+	<string name="order_ready">ઓર્ડર તૈયાર છે</string>
+	<string name="thank_you_for_accepting_order">ઓર્ડર સ્વીકારવા બદલ આભાર!</string>
+
 </resources>
