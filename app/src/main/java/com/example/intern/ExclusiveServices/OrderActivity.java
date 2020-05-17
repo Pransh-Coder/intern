@@ -146,41 +146,31 @@ public class OrderActivity extends AppCompatActivity {
 							,System.currentTimeMillis(), new Gson().toJson(items), new Gson().toJson(quantities));
 							OrderDB.getInstance(context).insertOrder(orderEntity);
 							Log.d(TAG, "onCreate: Created an entity in the local DB");
-							Toast.makeText(context, "Order made successfully", Toast.LENGTH_SHORT).show();
-							finish();
+							//Change the value of toggle first
+							DocumentReference vendorDocRef = FirebaseFirestore.getInstance().collection("vendors").document(vendorID);
+							vendorDocRef.get().addOnSuccessListener(snapshot -> {
+								try{
+									boolean toggleVal = snapshot.getBoolean("toggle");
+									toggleVal = !toggleVal;
+									Map<String, Object> updateToggle = new HashMap<>();
+									updateToggle.put("toggle", toggleVal);
+									vendorDocRef.update(updateToggle).addOnSuccessListener(voiD->{
+										Toast.makeText(context, "Order made successfully", Toast.LENGTH_SHORT).show();
+										finish();
+									});
+								}catch (Exception e){
+									//toggle field not there, make one
+									Map<String, Object> updateToggle = new HashMap<>();
+									updateToggle.put("toggle", true);
+									vendorDocRef.update(updateToggle).addOnSuccessListener(VoiD->{
+										Toast.makeText(context, "Order made successfully", Toast.LENGTH_SHORT).show();
+										finish();
+									});
+								}
+							});
 						}
 					});
 		});
-		/*binding.btnSubmit.setOnClickListener(v -> {
-			*//*String item1 = binding.etItem1.getText().toString();
-			String item2 = binding.etItem2.getText().toString();*//*
-			*//*String quantity1 = binding.etQuant1.getText().toString();
-			String quantity2 = binding.etQuant2.getText().toString();*//*
-			Map<String, Object> request = new HashMap<>();
-			request.put("items", items);
-//			request.put("quants", quantities);
-			//Start with ideal situation where both accept the transaction
-			request.put("userStat", true);
-			request.put("vendorStat", true);
-			//Final flag to tell vendor that user accepted the order
-			request.put("deliver", false);
-			FirebaseFirestore.getInstance().collection("vendors").document(vendorID)
-					.collection("orders").add(request).addOnSuccessListener(documentReference -> {
-						thisRequestDocRef = documentReference;
-						//Add a listener to listen for events
-						documentReference.addSnapshotListener((snapshot, e) -> {
-							if(snapshot!= null && snapshot.getBoolean("vendorStat")){
-								//Vendor accepted the request, show prices
-								List<String> prices = (List<String>) snapshot.get("prices");
-								if(prices != null && !prices.isEmpty()){
-									*//*binding.etPrice1.setText(prices.get(0));
-									binding.etPrice2.setText(prices.get(1));*//*
-									binding.btnSubmit.setVisibility(View.GONE);
-								}
-							}
-						});
-					});
-		});*/
 	}
 	
 	@Override

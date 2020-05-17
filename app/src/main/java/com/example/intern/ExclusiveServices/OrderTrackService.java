@@ -15,10 +15,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.intern.R;
-import com.example.intern.database.local.OrderDB;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -54,7 +52,6 @@ public class OrderTrackService extends JobIntentService {
 							if(snapshot.getBoolean("vendorstat")){
 								List<String> prices = (List<String>) snapshot.get("prices");
 								if(prices != null && !prices.isEmpty()){
-									OrderDB.getInstance(context).insertPrices(new Gson().toJson(prices));
 									//TODO : create a pending intent to go to show the order details
 									Intent intent1 = new Intent(context, OrderDetail.class);
 									intent1.putExtra(OrderDetail.EXTRA_DOCUMENT_ID_KEY, orderID);
