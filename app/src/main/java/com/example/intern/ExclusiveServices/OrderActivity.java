@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,7 @@ public class OrderActivity extends AppCompatActivity {
 	SharedPrefUtil prefUtil;
 	private DocumentReference thisRequestDocRef;
 	private boolean hasSubmitted;
+	String timeSlot = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,23 @@ public class OrderActivity extends AppCompatActivity {
 				recyclerAdapter.notifyItemInserted(recyclerAdapter.items.size()-1);
 			}
 		});
+		//Get the time slot
+		binding.spinnerTimeSlot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				if(position > 0){
+					timeSlot = getResources().getStringArray(R.array.timeslots)[position];
+				}else{
+					//Ignore the first entry
+					timeSlot = null;
+				}
+			}
+			
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				timeSlot = null;
+			}
+		});
 		
 		//Getting a formatted address for delivery
 		SharedPreferences preferences = prefUtil.getPreferences();
@@ -95,6 +114,12 @@ public class OrderActivity extends AppCompatActivity {
 				//Takeaway opted
 				order.put("homedel", false);
 			}
+			if(timeSlot == null){
+				//Hasn't choosen a timeslot
+				Toast.makeText(context, "Pick a preferred delivery time", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			order.put("time", timeSlot);
 			//Delivery address
 			order.put("deliveradd", userAddress);
 			order.put("items", items);
