@@ -42,6 +42,7 @@ public class OrderActivity extends AppCompatActivity {
 	private DocumentReference thisRequestDocRef;
 	private boolean hasSubmitted;
 	String timeSlot = null;
+	boolean hasOptedHomeDelivery;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +90,18 @@ public class OrderActivity extends AppCompatActivity {
 				timeSlot = null;
 			}
 		});
+		//Show the spinner only in case of home delivery
+		binding.radBtnCod.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			if(isChecked){
+				hasOptedHomeDelivery = true;
+				binding.tvUselessTime.setVisibility(View.VISIBLE);
+				binding.spinnerTimeSlot.setVisibility(View.VISIBLE);
+			}else{
+				hasOptedHomeDelivery = false;
+				binding.tvUselessTime.setVisibility(View.GONE);
+				binding.spinnerTimeSlot.setVisibility(View.GONE);
+			}
+		});
 		
 		//Getting a formatted address for delivery
 		SharedPreferences preferences = prefUtil.getPreferences();
@@ -114,7 +127,7 @@ public class OrderActivity extends AppCompatActivity {
 				//Takeaway opted
 				order.put("homedel", false);
 			}
-			if(timeSlot == null){
+			if(timeSlot == null && hasOptedHomeDelivery){
 				//Hasn't choosen a timeslot
 				Toast.makeText(context, "Pick a preferred delivery time", Toast.LENGTH_SHORT).show();
 				return;
@@ -182,8 +195,7 @@ public class OrderActivity extends AppCompatActivity {
 		super.onDestroy();
 	}
 	
-	class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>{
-		private final String TAG = ItemRecyclerAdapter.class.getSimpleName();
+	static class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapter.ItemViewHolder>{
 		List<String> items, quants;
 		ItemRecyclerAdapter(){
 			items = new ArrayList<>();
@@ -234,7 +246,7 @@ public class OrderActivity extends AppCompatActivity {
 			return items.size();
 		}
 		
-		class ItemViewHolder extends RecyclerView.ViewHolder{
+		static class ItemViewHolder extends RecyclerView.ViewHolder{
 			RecyclerItemVendorSingleItemBinding binding;
 			
 			ItemViewHolder(@NonNull View itemView) {
