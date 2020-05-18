@@ -15,11 +15,14 @@ import com.bumptech.glide.Glide;
 import com.example.intern.R;
 import com.example.intern.databinding.ActivityOrderDetailBinding;
 import com.example.intern.databinding.RecyclerItemOrderDetailBinding;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderDetail extends AppCompatActivity {
 	
@@ -59,6 +62,43 @@ public class OrderDetail extends AppCompatActivity {
 							}catch (Exception e){
 								//No bill found !
 								binding.ivBill.setVisibility(View.GONE);
+							}
+							//Check the delivery status
+							try{
+								boolean hasDelivered = snapshot.getBoolean("deliverstat");
+								if(hasDelivered){
+									binding.tvStatus.setText("Status : Order delivered");
+									//Show and provide click listeners for paid and not paid buttons
+									DocumentReference orderRef = snapshot.getReference();
+									//Update paidstat if not already there
+									try{
+										boolean hasPaid = snapshot.getBoolean("paystat");
+										if(hasPaid){
+											binding.tvStatus.setText("Status : Paid for order");
+										}else binding.tvStatus.setText("Status : Didn't pay for order");
+									}catch (Exception e){
+										binding.btnPaid.setVisibility(View.VISIBLE);
+										binding.btnNotPaid.setVisibility(View.VISIBLE);
+										binding.btnPaid.setOnClickListener(v -> {
+											Map<String, Object> update = new HashMap<>();
+											update.put("paystat", true);
+											orderRef.update(update).addOnSuccessListener(aVoid -> {
+												Toast.makeText(this, "Updated pay status", Toast.LENGTH_SHORT).show();
+												finish();
+											});
+										});
+										binding.btnNotPaid.setOnClickListener(v -> {
+											Map<String, Object> update = new HashMap<>();
+											update.put("paystat", false);
+											orderRef.update(update).addOnSuccessListener(aVoid -> {
+												Toast.makeText(this, "Updated pay status", Toast.LENGTH_SHORT).show();
+												finish();
+											});
+										});
+									}
+								}
+							}catch (Exception e){
+								//No delivery status yet
 							}
 						}else{
 							binding.tvStatus.setText("Status : Order Rejected");

@@ -133,6 +133,29 @@
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/recycler_items" />
+			<Button
+				android:id="@+id/btn_paid"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
+				android:background="@drawable/background_button_sign_in"
+				android:fontFamily="@font/century_gothic"
+				android:text="Paid"
+				android:visibility="gone"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toLeftOf="@id/btn_not_paid"
+				app:layout_constraintTop_toBottomOf="@id/iv_bill"/>
+			<Button
+				android:id="@+id/btn_not_paid"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/background_button_sign_in"
+				android:fontFamily="@font/century_gothic"
+				android:text="Pay Later"
+				android:visibility="gone"
+				app:layout_constraintLeft_toRightOf="@id/btn_paid"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="@id/btn_paid"/>
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.core.widget.NestedScrollView>
 	
