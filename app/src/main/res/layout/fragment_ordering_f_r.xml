@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/common_background">
+	
+	<ImageView
+		android:id="@+id/demand_button_back"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginStart="10dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/back"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<ImageView
+		android:id="@+id/demand_button_home"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginStart="7dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/homeimg"
+		app:layout_constraintLeft_toRightOf="@+id/demand_button_back"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<ImageView
+		android:id="@+id/demand_notification"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginTop="10dp"
+		android:layout_marginEnd="10dp"
+		android:src="@drawable/notification"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<ImageView
+		android:id="@+id/demand_imgView_Fuel"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/essential_icon"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<TextView
+		android:id="@+id/txt_demand"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:autoSizeTextType="uniform"
+		android:text="Create Order"
+		android:textColor="@color/black"
+		android:textSize="17sp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@+id/hor_guide_12_percent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/demand_imgView_Fuel" />
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/hor_guide_30_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/black"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.29" />
+	
+	<ImageView
+		android:id="@+id/banner"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_marginLeft="22dp"
+		android:layout_marginTop="3dp"
+		android:layout_marginRight="22dp"
+		android:scaleType="fitXY"
+		android:src="@drawable/ask_anything_other_services"
+		app:layout_constraintBottom_toTopOf="@id/hor_guide_30_percent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/hor_guide_12_percent" />
+	
+	<Button
+		android:id="@+id/btn_your_orders"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:height="35dp"
+		android:autoSizeTextType="uniform"
+		android:background="@drawable/background_button_sign_in"
+		android:fontFamily="@font/century_gothic"
+		android:padding="5dp"
+		android:text="Your orders >"
+		app:layout_constraintBottom_toBottomOf="@id/banner"
+		app:layout_constraintRight_toRightOf="parent"/>
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/hor_guide_12_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/black"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.12" />
+	
+	<androidx.core.widget.NestedScrollView
+		android:id="@+id/scrollView_otherServices"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginBottom="4dp"
+		android:visibility="visible"
+		app:layout_constraintBottom_toTopOf="@id/btn_submit"
+		app:layout_constraintLeft_toLeftOf="@+id/banner"
+		app:layout_constraintRight_toRightOf="@+id/banner"
+		app:layout_constraintTop_toBottomOf="@+id/banner">
+		
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/constraint_product"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:layout_marginBottom="4dp"
+			android:visibility="visible"
+			app:layout_constraintBottom_toBottomOf="@id/scrollView_otherServices"
+			app:layout_constraintLeft_toLeftOf="@id/scrollView_otherServices"
+			app:layout_constraintRight_toRightOf="@id/scrollView_otherServices"
+			app:layout_constraintTop_toTopOf="@id/scrollView_otherServices">
+			
+			<TextView
+				android:id="@+id/tv_selectHere"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="10dp"
+				android:text="Select Vendor"
+				android:textAlignment="viewStart"
+				android:textColor="@color/black"
+				android:textSize="15sp"
+				android:textStyle="bold"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="@id/constraint_product" />
+			
+			<androidx.appcompat.widget.AppCompatSpinner
+				android:id="@+id/vendor_spinner"
+				android:layout_width="0dp"
+				android:layout_height="40dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginTop="4dp"
+				android:layout_marginEnd="10dp"
+				android:autofillHints="What Services Do You Want?"
+				android:background="@drawable/spinner_boxed_back"
+				android:dropDownWidth="wrap_content"
+				android:spinnerMode="dropdown"
+				android:textColor="@color/black"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/tv_selectHere" />
+			
+			<EditText
+				android:id="@+id/et_order_detail"
+				android:layout_width="match_parent"
+				android:layout_height="150dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginEnd="10dp"
+				android:background="@drawable/rectangle_outline"
+				android:ellipsize="start"
+				android:gravity="start"
+				android:hint="@string/essential_services_hint"
+				android:maxLength="200"
+				android:paddingStart="10dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/vendor_spinner" />
+			
+			<TextView
+				android:id="@+id/char_count2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="10dp"
+				android:layout_marginEnd="10dp"
+				android:maxLength="200"
+				android:text="0/200"
+				android:textSize="17sp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.980"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/et_order_detail" />
+			
+			<TextView
+				android:id="@+id/tv_useless"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="10dp"
+				android:layout_marginEnd="10dp"
+				android:text="@string/OR"
+				android:textAlignment="center"
+				android:textColor="@color/black"
+				android:textSize="15sp"
+				android:textStyle="bold"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/et_order_detail" />
+			
+			<TextView
+				android:id="@+id/tv_useless2"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/add_picture"
+				android:textAlignment="center"
+				android:textColor="@color/black"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/tv_useless" />
+			
+			<ImageView
+				android:id="@+id/iv_order_list"
+				android:layout_width="0dp"
+				android:layout_height="150dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginEnd="10dp"
+				android:background="@drawable/rectangle_outline"
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_image_idol"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/tv_useless2" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.core.widget.NestedScrollView>
+	
+	<Button
+		android:id="@+id/btn_submit"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="72dp"
+		android:layout_marginEnd="72dp"
+		android:layout_marginBottom="16dp"
+		android:background="@drawable/background_button_sign_in"
+		android:fontFamily="@font/century_gothic_400"
+		android:text="@string/submit"
+		android:textAllCaps="true"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@+id/logo"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+	
+	<ImageView
+		android:id="@+id/logo"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_marginTop="32dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:srcCompat="@drawable/pslogo" />
+	
+	<ImageView
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_marginTop="20dp"
+		android:src="@drawable/girl_character"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@id/logo" />
+	
+	<ImageView
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_marginTop="20dp"
+		android:src="@drawable/icons_mascot_51"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toEndOf="@id/logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

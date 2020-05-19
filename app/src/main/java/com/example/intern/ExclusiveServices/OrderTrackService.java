@@ -18,8 +18,6 @@ import com.example.intern.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
 
-import java.util.List;
-
 public class OrderTrackService extends JobIntentService {
 	public static final String EXTRA_ORDER_DOCUMENT_ID = "doc_id";
 	public static final String EXTRA_VENDOR_ID = "vendor_id";
@@ -50,8 +48,8 @@ public class OrderTrackService extends JobIntentService {
 						//Access the newer states from the snapshot
 						try{
 							if(snapshot.getBoolean("vendorstat")){
-								List<String> prices = (List<String>) snapshot.get("prices");
-								if(prices != null && !prices.isEmpty()){
+								String total = snapshot.getString("total");
+								if(total != null && !total.isEmpty()){
 									//TODO : create a pending intent to go to show the order details
 									Intent intent1 = new Intent(context, OrderDetail.class);
 									intent1.putExtra(OrderDetail.EXTRA_DOCUMENT_ID_KEY, orderID);
@@ -63,7 +61,7 @@ public class OrderTrackService extends JobIntentService {
 								showNotification("Order denied!", "Sorry but the order " + orderID + " cannot be fulfilled by the vendor", null);
 								onStopCurrentWork();
 							}
-						}catch (Exception ignored){}
+						}catch (Exception ignored){	}
 					}
 				});
 	}
@@ -72,6 +70,7 @@ public class OrderTrackService extends JobIntentService {
 		createNotificationChannel();
 		NotificationCompat.Builder orderNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
 				.setSmallIcon(R.drawable.pslogotrimmed).setContentTitle(title).setContentText(content)
+				.setAutoCancel(true)
 				.setPriority(NotificationCompat.PRIORITY_HIGH).setContentIntent(pendingIntent);
 		NotificationManagerCompat.from(this).notify(1003, orderNotification.build());
 	}

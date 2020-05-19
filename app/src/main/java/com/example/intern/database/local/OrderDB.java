@@ -41,8 +41,4 @@ public abstract class OrderDB extends RoomDatabase {
 	public void insertOrder(EssentialOrderEntity orderEntity){
 		databaseExecutor.execute(() -> INSTANCE.orderDAO().insertOrder(orderEntity));
 	}
-	
-	public void insertPrices(String priceList){
-		databaseExecutor.execute(()-> INSTANCE.orderDAO().insertPrices(priceList));
-	}
 }

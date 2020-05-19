@@ -75,7 +75,7 @@ public class ExclusiveServices extends AppCompatActivity {
 			startActivity(intent);
 		});
 		binding.grocery.setOnClickListener(v -> {
-			Intent intent = new Intent(this, VendorChosingAct.class);
+			Intent intent = new Intent(this, OrderActivity.class);
 			intent.putExtra(FROM_EXCLUSIVE_SERVICES, DEMAND_GROCERY);
 			startActivity(intent);
 		});

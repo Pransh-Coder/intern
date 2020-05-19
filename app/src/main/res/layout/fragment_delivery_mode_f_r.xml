@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ExclusiveServices.orderfragments.DeliveryModeFR">
+	
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_hor_29"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.29"/>
+	
+	<TextView
+		android:id="@+id/tv_takeaway"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:fontFamily="@font/century_gothic"
+		android:text="Take Away"
+		android:textColor="@color/black"
+		android:textSize="18sp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_29"/>
+	
+	<TextView
+		android:id="@+id/tv_home_del"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		android:fontFamily="@font/century_gothic"
+		android:text="Home Delivery"
+		android:textColor="@color/black"
+		android:textSize="18sp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_takeaway"/>
+	
+	<EditText
+		android:id="@+id/et_address"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_margin="20dp"
+		android:hint="Enter address"
+		android:visibility="gone"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_home_del"/>
+	
+	<Spinner
+		android:id="@+id/spinner_time_slot"
+		android:layout_width="wrap_content"
+		android:layout_height="0dp"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="20dp"
+		android:entries="@array/timeslots"
+		android:visibility="gone"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/et_address"/>
+	
+	<Button
+		android:id="@+id/btn_submit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		android:background="@drawable/background_button_sign_in"
+		android:fontFamily="@font/century_gothic"
+		android:text="@string/submit"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/spinner_time_slot"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,50 +1,52 @@
 package com.example.intern.ExclusiveServices;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.example.intern.ExclusiveServices.orderfragments.OrderingVM;
 import com.example.intern.R;
 import com.example.intern.database.SharedPrefUtil;
-import com.example.intern.database.local.EssentialOrderEntity;
-import com.example.intern.database.local.OrderDB;
 import com.example.intern.databinding.ActivityOrderBinding;
-import com.example.intern.databinding.RecyclerItemVendorSingleItemBinding;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 
 public class OrderActivity extends AppCompatActivity {
-	private static final String TAG = OrderActivity.class.getSimpleName();
 	public static final String EXTRA_VENDOR_ID = "vend_id";
 	ActivityOrderBinding binding;
-	ItemRecyclerAdapter recyclerAdapter;
+	OrderingVM viewModel;
 	SharedPrefUtil prefUtil;
-	private DocumentReference thisRequestDocRef;
-	private boolean hasSubmitted;
-	String timeSlot = null;
-	boolean hasOptedHomeDelivery;
+	@Override
+	protected void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		viewModel = new ViewModelProvider(this).get(OrderingVM.class);
+		binding = ActivityOrderBinding.inflate(getLayoutInflater());
+		prefUtil = new SharedPrefUtil(this);
+		viewModel.setPrefUtil(prefUtil);
+		setContentView(binding.getRoot());
+		NavController navController = Navigation.findNavController(this, R.id.ordering_nav_host);
+		viewModel.setNavController(navController);
+	}
 	
 	@Override
+	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(resultCode == Activity.RESULT_OK){
+			//Got the image
+			Bitmap orderBitmap = BitmapFactory.decodeFile(ImagePicker.Companion.getFilePath(data));
+			viewModel.setOrderImageBitmap(orderBitmap);
+			viewModel.getImageReceivedListener().hasReceivedImage(true);
+		}
+	}
+	
+	/*@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = ActivityOrderBinding.inflate(getLayoutInflater());
@@ -244,5 +246,5 @@ public class OrderActivity extends AppCompatActivity {
 				binding = RecyclerItemVendorSingleItemBinding.bind(itemView);
 			}
 		}
-	}
+	}*/
 }

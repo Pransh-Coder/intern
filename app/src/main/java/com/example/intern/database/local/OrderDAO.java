@@ -13,9 +13,7 @@ public interface OrderDAO{
 	@Insert(onConflict = OnConflictStrategy.IGNORE)
 	void insertOrder(EssentialOrderEntity orderEntity);
 	
-	@Query("SELECT * FROM orders")
+	@Query("SELECT * FROM orders_v2")
 	List<EssentialOrderEntity> getAllOrders();
 	
-	@Query("INSERT INTO orders(prices) VALUES(:priceList)")
-	void insertPrices(String priceList);
 }

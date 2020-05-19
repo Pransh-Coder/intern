@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/nav_ordering"
+	app:startDestination="@id/orderingFR">
+	
+	<fragment
+		android:id="@+id/orderingFR"
+		android:name="com.example.intern.ExclusiveServices.orderfragments.OrderingFR"
+		android:label="OrderingFR" >
+		<action
+			android:id="@+id/action_orderingFR_to_deliveryModeFR"
+			app:destination="@id/deliveryModeFR" />
+	</fragment>
+	<fragment
+		android:id="@+id/deliveryModeFR"
+		android:name="com.example.intern.ExclusiveServices.orderfragments.DeliveryModeFR"
+		android:label="fragment_delivery_mode_f_r"
+		tools:layout="@layout/fragment_delivery_mode_f_r" />
+</navigation>

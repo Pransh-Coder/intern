@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,11 @@ public class AllOrders extends AppCompatActivity {
 		binding = ActivityAllOrdersBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
 		orderEntityList = OrderDB.getInstance(this).getOrders();
+		if(orderEntityList == null || orderEntityList.isEmpty()){
+			Toast.makeText(this, "Never placed any order !", Toast.LENGTH_SHORT).show();
+			finish();
+			return;
+		}
 		OrderRecyclerAdapter adapter = new OrderRecyclerAdapter(this, orderEntityList);
 		binding.recyclerUserOrders.setLayoutManager(new LinearLayoutManager(this));
 		binding.recyclerUserOrders.setAdapter(adapter);
