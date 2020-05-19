@@ -4,9 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -32,17 +34,15 @@ public class OrderingFR extends Fragment {
 	private FragmentOrderingFRBinding binding;
 	private SharedPrefUtil prefUtil;
 	private OrderingVM viewModel;
-	private List<String> vendorShopNames;
-	private List<String> vendorPhoneNumbers;
 	private List<String> vendorIDS;
+	List<VendorPOJO> vendorPOJOS;
 	public OrderingFR() {}
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
-		vendorShopNames = new ArrayList<>();
+		vendorPOJOS = new ArrayList<>();
 		vendorIDS = new ArrayList<>();
-		vendorPhoneNumbers = new ArrayList<>();
 		binding = FragmentOrderingFRBinding.inflate(inflater);
 		viewModel = new ViewModelProvider(requireActivity()).get(OrderingVM.class);
 		viewModel.setImageReceivedListener(b -> {
@@ -78,13 +78,11 @@ public class OrderingFR extends Fragment {
 							.get().addOnSuccessListener(vendorDataSnap -> {
 						String name = vendorDataSnap.getString("stName");
 						String phoneNumber = vendorDataSnap.getString("phNo");
-						if(name != null)vendorShopNames.add(name);
-						if(phoneNumber!=null)vendorPhoneNumbers.add(phoneNumber);
+						VendorPOJO vendorPOJO = new VendorPOJO(vendorId.toString(), name, phoneNumber);
+						vendorPOJOS.add(vendorPOJO);
 						if(vendorId.equals(vendorIDs[vendorIDs.length-1])){
 							//Last one
 							loadingDialog.dismiss();
-							ArrayAdapter<String> vendorNamesAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, vendorShopNames);
-							binding.vendorSpinner.setAdapter(vendorNamesAdapter);
 							proceedNow();
 						}
 					});
@@ -102,9 +100,22 @@ public class OrderingFR extends Fragment {
 	
 	
 	public void proceedNow() {
+		//Set an item selected listener after all vendorIDS are added
+		List<String> shopNames = new ArrayList<>();
+		for(VendorPOJO pojo : vendorPOJOS){
+			shopNames.add(pojo.vendorShopName);
+		}
+		ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, shopNames);
+		binding.vendorSpinner.setAdapter(adapter);
+		binding.vendorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				viewModel.setChosenVendorID(vendorPOJOS.get(position).vendorID);
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {}
+		});
 		//Do all things here
-		String vendorID = vendorIDS.get(binding.vendorSpinner.getSelectedItemPosition());
-		viewModel.setChosenVendorID(vendorID);
 		binding.ivOrderList.setOnClickListener(v -> ImagePicker.Companion.with(requireActivity()).crop().compress(1024).start());
 		binding.btnSubmit.setOnClickListener(v -> {
 			//Forward with collected data
@@ -118,8 +129,21 @@ public class OrderingFR extends Fragment {
 					viewModel.getNavController().navigate(R.id.action_orderingFR_to_deliveryModeFR);
 				}
 			}else{
+				String orderDetail = binding.etOrderDetail.getText().toString();
+				if(!TextUtils.isEmpty(orderDetail))viewModel.setOrderDetailString(orderDetail);
 				viewModel.getNavController().navigate(R.id.action_orderingFR_to_deliveryModeFR);
 			}
 		});
+	}
+	
+	class VendorPOJO{
+		public String vendorID;
+		public String vendorShopName;
+		public String vendorPhoneNumber;
+		public VendorPOJO(String id, String name, String phone){
+			this.vendorID = id;
+			this.vendorShopName = name;
+			this.vendorPhoneNumber = phone;
+		}
 	}
 }

@@ -1,28 +1,15 @@
 package com.example.intern.ExclusiveServices;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.intern.R;
 import com.example.intern.databinding.ActivityOrderDetailBinding;
-import com.example.intern.databinding.RecyclerItemOrderDetailBinding;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class OrderDetail extends AppCompatActivity {
 	
@@ -35,7 +22,6 @@ public class OrderDetail extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		binding = ActivityOrderDetailBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
-		binding.recyclerItems.setLayoutManager(new LinearLayoutManager(this));
 		String vendorID = getIntent().getStringExtra(EXTRA_VENDOR_ID_KEY);
 		String documentID = getIntent().getStringExtra(EXTRA_DOCUMENT_ID_KEY);
 		if (vendorID == null || documentID == null){
@@ -45,11 +31,27 @@ public class OrderDetail extends AppCompatActivity {
 		}
 		FirebaseFirestore.getInstance().collection("vendors").document(vendorID).collection("orders")
 				.document(documentID).get().addOnSuccessListener(snapshot -> {
+					//Show the basic details
+					try{
+						String orderDetails = snapshot.getString("orderDet");
+						if(orderDetails != null && !TextUtils.isEmpty(orderDetails)){
+							binding.tvOrderDetail.setVisibility(View.VISIBLE);
+							binding.tvOrderDetail.setText(orderDetails);
+						}
+						String imgURL = snapshot.getString("orderimg");
+						if(imgURL != null && !imgURL.isEmpty()){
+							binding.ivOrderList.setVisibility(View.VISIBLE);
+							Glide.with(this).load(imgURL).placeholder(android.R.drawable.progress_indeterminate_horizontal)
+									.into(binding.ivOrderList);
+						}
+					}catch (Exception ignored){}
+		});
+		/*FirebaseFirestore.getInstance().collection("vendors").document(vendorID).collection("orders")
+				.document(documentID).get().addOnSuccessListener(snapshot -> {
 					try{
 						boolean vendorStat = snapshot.getBoolean("vendorstat");
 						if(vendorStat){
 							binding.tvStatus.setText("Status : Order Accepted");
-							//TODO : Show bill if there
 							try {
 								String billUrl = snapshot.getString("billpic");
 								if(billUrl==null){
@@ -112,10 +114,10 @@ public class OrderDetail extends AppCompatActivity {
 					//Pass snapshot to the adapter to do the processing of data
 					OrderDetailAdapter adapter = new OrderDetailAdapter(snapshot);
 					binding.recyclerItems.setAdapter(adapter);
-				});
+				});*/
 	}
 	
-	class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.DetailsViewHolder>{
+	/*class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.DetailsViewHolder>{
 		DocumentSnapshot snapshot;
 		List<String> items;
 		List<String> quants;
@@ -169,5 +171,5 @@ public class OrderDetail extends AppCompatActivity {
 				binding = RecyclerItemOrderDetailBinding.bind(itemView);
 			}
 		}
-	}
+	}*/
 }
