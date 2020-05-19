@@ -75,6 +75,12 @@
         <item>Dairy Products</item>
         <item>Other</item>
     </string-array>
+    <string-array name="vendorsList">
+        <item>Select Your Vendor</item>
+    </string-array>
+    <string-array name="deliveryTime">
+        <item>Select your Delivery Time</item>
+    </string-array>
 
     <string-array name="SearchPredictions">
         <item>Home Modification</item>
@@ -273,4 +279,8 @@
         <item>12PM-2PM</item>
         <item>4PM-6PM</item>
     </string-array>
+    <string-array name="order_summary">
+        <item>Order Summary</item>
+    </string-array>
+
 </resources>
