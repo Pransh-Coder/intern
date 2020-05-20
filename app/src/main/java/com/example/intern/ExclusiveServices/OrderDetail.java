@@ -11,6 +11,9 @@ import com.bumptech.glide.Glide;
 import com.example.intern.databinding.ActivityOrderDetailBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class OrderDetail extends AppCompatActivity {
 	
 	public static final String EXTRA_DOCUMENT_ID_KEY = "doc_id";
@@ -40,11 +43,75 @@ public class OrderDetail extends AppCompatActivity {
 						}
 						String imgURL = snapshot.getString("orderimg");
 						if(imgURL != null && !imgURL.isEmpty()){
-							binding.ivOrderList.setVisibility(View.VISIBLE);
 							Glide.with(this).load(imgURL).placeholder(android.R.drawable.progress_indeterminate_horizontal)
 									.into(binding.ivOrderList);
+							binding.ivOrderList.setVisibility(View.VISIBLE);
 						}
 					}catch (Exception ignored){}
+					//Loaded basic details...check for vendorstat
+					try{
+						boolean vendorStatus = snapshot.getBoolean("vendorstat");
+						if(vendorStatus){
+							//TODO : Flow goes where vendor accepted order
+							binding.tvStatus.setText("Status : Accepted");
+							//CHeck for billpic and total independently
+							try{
+								String billURL = snapshot.getString("billpic");
+								String total = snapshot.getString("total");
+								if(billURL != null && !TextUtils.isEmpty(billURL)){
+									Glide.with(this).load(billURL).placeholder(android.R.drawable.progress_indeterminate_horizontal)
+											.into(binding.ivBill);
+									binding.ivBill.setVisibility(View.VISIBLE);
+								}
+								binding.tvTotal.setText("Total : " + total + " INR");
+							}catch (Exception ignored){}
+							//Check for delivery status
+							try{
+								boolean deliverStatus = snapshot.getBoolean("deliverstat");
+								if(deliverStatus){
+									//Delivered, prompt user to pay or pay later
+									binding.tvStatus.setText("Status : Delivered");
+									//Check if paystat is there
+									try{
+										boolean payStat = snapshot.getBoolean("paystat");
+										if(payStat){
+											binding.tvStatus.setText("Status : Paid");
+										}else binding.tvStatus.setText("Status : Pay Later");
+									}catch (Exception e){
+										//No pay status
+										binding.btnPaid.setVisibility(View.VISIBLE);
+										binding.btnNotPaid.setVisibility(View.VISIBLE);
+										binding.btnPaid.setOnClickListener(v -> {
+											Map<String, Object> update = new HashMap<>();
+											update.put("paystat", true);
+											snapshot.getReference().update(update).addOnSuccessListener(aVoid -> {
+												Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+												finish();
+											});
+										});
+										binding.btnNotPaid.setOnClickListener(v -> {
+											Map<String, Object> update = new HashMap<>();
+											update.put("paystat", false);
+											snapshot.getReference().update(update).addOnSuccessListener(aVoid -> {
+												Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+												finish();
+											});
+										});
+									}
+								}else{
+									//FOR future
+								}
+							}catch (Exception e){
+								//Not yet delivered, ignore
+							}
+						}else{
+							//TODO : Vendor rejected the order
+							binding.tvStatus.setText("Status : Rejected");
+						}
+					}catch (Exception e){
+						//Not yet accepted
+						binding.tvStatus.setText("Status : Awaiting response");
+					}
 		});
 		/*FirebaseFirestore.getInstance().collection("vendors").document(vendorID).collection("orders")
 				.document(documentID).get().addOnSuccessListener(snapshot -> {
