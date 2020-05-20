@@ -128,7 +128,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:src="@drawable/exclus"
+        android:src="@drawable/exclusive_services_banner_english"
         app:layout_constraintBottom_toTopOf="@id/guide_hor_banner_low"
         app:layout_constraintLeft_toRightOf="@id/ver_gui_4_per"
         app:layout_constraintRight_toLeftOf="@id/ver_gui_96_per"
@@ -162,29 +162,30 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/view1"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent"
-                app:layout_constraintBottom_toTopOf="@+id/view1"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/groceryImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
                     android:src="@drawable/grocery" />
 
                 <TextView
                     android:id="@+id/txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
                     android:text="@string/grocery"
-                    android:textSize="13sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -194,27 +195,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/view1"
                 app:layout_constraintLeft_toRightOf="@+id/ver_guide_50_percent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/view1"
                 app:layout_constraintTop_toTopOf="parent">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/vegeImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
                     android:src="@drawable/vegetable" />
 
                 <TextView
                     android:id="@+id/tv_salon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
                     android:text="@string/vegetables"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
@@ -261,11 +263,12 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/diaryImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
                     android:src="@drawable/diary" />
 
                 <TextView
@@ -303,11 +306,12 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/tiffinImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
                     android:src="@drawable/tiffin" />
 
                 <TextView
@@ -337,9 +341,9 @@
 
                 android:orientation="vertical"
                 android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/view3"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/ver_guide_50_percent"
-                app:layout_constraintBottom_toTopOf="@+id/view3"
                 app:layout_constraintTop_toBottomOf="@+id/view2">
 
                 <!--  <TextView
@@ -352,12 +356,12 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/home_modImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
                     android:src="@drawable/home_modif" />
 
                 <TextView
@@ -379,9 +383,9 @@
 
                 android:orientation="vertical"
                 android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/view3"
                 app:layout_constraintLeft_toRightOf="@+id/ver_guide_50_percent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/view3"
                 app:layout_constraintTop_toBottomOf="@+id/view2">
 
                 <!-- <TextView
@@ -394,8 +398,8 @@
 
                 <ImageView
                     android:id="@+id/docImg"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
@@ -430,20 +434,21 @@
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
                 android:padding="5dp"
+                app:layout_constraintBottom_toTopOf="@id/view4"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="@+id/ver_guide_50_percent"
-                app:layout_constraintBottom_toTopOf="@id/view4"
                 app:layout_constraintTop_toBottomOf="@+id/view3">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/watImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:src="@drawable/water"
-                    android:background="@drawable/circular_border" />
+                    android:background="@drawable/circular_border"
+                    android:padding="5dp"
+                    android:src="@drawable/water" />
 
                 <TextView
                     android:id="@+id/wattxt"
@@ -461,12 +466,12 @@
                 android:id="@+id/auto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="20dp"
                 android:orientation="vertical"
                 android:padding="5dp"
+                android:paddingBottom="20dp"
+                app:layout_constraintBottom_toTopOf="@id/view4"
                 app:layout_constraintLeft_toRightOf="@+id/ver_guide_50_percent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/view4"
                 app:layout_constraintTop_toBottomOf="@+id/view3">
 
                 <TextView
@@ -475,16 +480,17 @@
                     android:layout_height="wrap_content"
                     android:background="@color/yellow"
                     android:gravity="center"
-                    android:textSize="12.5sp"
-                    android:text="@string/coming_soon"/>
+                    android:text="@string/coming_soon"
+                    android:textSize="12.5sp" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/autoImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
                     android:src="@drawable/auto" />
 
                 <TextView
@@ -526,19 +532,20 @@
                     android:id="@+id/cmgsoon4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/yellow"
                     android:layout_gravity="center"
+                    android:background="@color/yellow"
                     android:gravity="center"
-                    android:textSize="12.5sp"
-                    android:text="@string/coming_soon"/>
+                    android:text="@string/coming_soon"
+                    android:textSize="12.5sp" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/emergency_careImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
                     android:src="@drawable/emergency_care" />
 
                 <TextView
@@ -557,9 +564,9 @@
                 android:id="@+id/legal_financial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toTopOf="@id/view5"
                 app:layout_constraintLeft_toRightOf="@+id/ver_guide_50_percent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -570,17 +577,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textSize="12.5sp"
                     android:background="@color/yellow"
-                    android:text="@string/coming_soon"/>
+                    android:text="@string/coming_soon"
+                    android:textSize="12.5sp" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/legalImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
 
                     android:src="@drawable/legal" />
 
@@ -623,24 +631,25 @@
                     android:layout_height="wrap_content"
                     android:background="@color/yellow"
                     android:gravity="center"
-                    android:textSize="12.5sp"
-                    android:text="@string/coming_soon"/>
+                    android:text="@string/coming_soon"
+                    android:textSize="12.5sp" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/eduImg"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
+                    android:padding="5dp"
                     android:src="@drawable/education_classes" />
 
                 <TextView
                     android:id="@+id/eduTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
                     android:text="@string/teaching_class"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
@@ -652,8 +661,8 @@
                 android:layout_marginTop="10dp"
                 android:clickable="false"
                 android:orientation="vertical"
-                android:paddingBottom="20dp"
                 android:padding="5dp"
+                android:paddingBottom="20dp"
                 app:layout_constraintLeft_toLeftOf="@+id/ver_guide_50_percent"
                 app:layout_constraintRight_toRightOf="parent "
                 app:layout_constraintTop_toBottomOf="@+id/legal_financial">
@@ -664,27 +673,28 @@
                     android:layout_height="wrap_content"
                     android:background="@color/yellow"
                     android:clickable="false"
-                    android:textSize="12.5sp"
                     android:gravity="center"
-                    android:text="@string/coming_soon" />
+                    android:text="@string/coming_soon"
+                    android:textSize="12.5sp" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgOtherServices"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/circular_border"
                     android:clickable="false"
+                    android:padding="5dp"
                     android:src="@drawable/other_icon" />
 
                 <TextView
                     android:id="@+id/tv_otherServices"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:clickable="false"
-                    android:layout_gravity="center"
                     android:text="@string/other_services"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
