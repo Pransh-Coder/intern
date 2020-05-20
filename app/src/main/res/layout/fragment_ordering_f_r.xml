@@ -80,20 +80,21 @@
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/hor_guide_12_percent" />
-	
+
 	<Button
 		android:id="@+id/btn_your_orders"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_marginRight="36dp"
 		android:height="35dp"
 		android:autoSizeTextType="uniform"
 		android:background="@drawable/background_button_sign_in"
 		android:fontFamily="@font/century_gothic"
 		android:padding="5dp"
 		android:text="Your orders >"
-		app:layout_constraintBottom_toBottomOf="@id/banner"
-		app:layout_constraintRight_toRightOf="parent"/>
-	
+		app:layout_constraintBottom_toTopOf="@id/scrollView_otherServices"
+		app:layout_constraintRight_toRightOf="parent" />
+
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/hor_guide_12_percent"
 		android:layout_width="match_parent"
@@ -106,7 +107,7 @@
 		android:id="@+id/scrollView_otherServices"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
-		android:layout_marginTop="8dp"
+		android:layout_marginTop="50dp"
 		android:layout_marginBottom="4dp"
 		android:visibility="visible"
 		app:layout_constraintBottom_toTopOf="@id/btn_submit"
@@ -118,7 +119,6 @@
 			android:id="@+id/constraint_product"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
 			android:layout_marginBottom="4dp"
 			android:visibility="visible"
 			app:layout_constraintBottom_toBottomOf="@id/scrollView_otherServices"
