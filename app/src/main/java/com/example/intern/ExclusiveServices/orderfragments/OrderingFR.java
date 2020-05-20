@@ -2,6 +2,7 @@ package com.example.intern.ExclusiveServices.orderfragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -34,15 +35,14 @@ public class OrderingFR extends Fragment {
 	private FragmentOrderingFRBinding binding;
 	private SharedPrefUtil prefUtil;
 	private OrderingVM viewModel;
-	private List<String> vendorIDS;
-	List<VendorPOJO> vendorPOJOS;
+	private List<VendorPOJO> vendorPOJOS;
+	private VendorPOJO vendorPOJO;
 	public OrderingFR() {}
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		vendorPOJOS = new ArrayList<>();
-		vendorIDS = new ArrayList<>();
 		binding = FragmentOrderingFRBinding.inflate(inflater);
 		viewModel = new ViewModelProvider(requireActivity()).get(OrderingVM.class);
 		viewModel.setImageReceivedListener(b -> {
@@ -51,8 +51,7 @@ public class OrderingFR extends Fragment {
 			}
 		});
 		prefUtil = new SharedPrefUtil(requireContext());
-		View view = binding.getRoot();
-		return view;
+		return binding.getRoot();
 	}
 	
 	@Override
@@ -72,8 +71,6 @@ public class OrderingFR extends Fragment {
 				Set<String> vendorIdSet = data.keySet();
 				Object[] vendorIDs = vendorIdSet.toArray();
 				for(Object vendorId : vendorIDs){
-					//Add the vendor to list
-					vendorIDS.add(vendorId.toString());
 					FirebaseFirestore.getInstance().collection("vendors").document(vendorId.toString())
 							.get().addOnSuccessListener(vendorDataSnap -> {
 						String name = vendorDataSnap.getString("stName");
@@ -99,7 +96,7 @@ public class OrderingFR extends Fragment {
 	}
 	
 	
-	public void proceedNow() {
+	private void proceedNow() {
 		//Set an item selected listener after all vendorIDS are added
 		List<String> shopNames = new ArrayList<>();
 		for(VendorPOJO pojo : vendorPOJOS){
@@ -107,9 +104,15 @@ public class OrderingFR extends Fragment {
 		}
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, shopNames);
 		binding.vendorSpinner.setAdapter(adapter);
+		//Set a click listener for call button
+		binding.btnCallVendor.setOnClickListener(v -> {
+			Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + this.vendorPOJO.vendorPhoneNumber));
+			startActivity(intent);
+		});
 		binding.vendorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				vendorPOJO = vendorPOJOS.get(position);
 				viewModel.setChosenVendorID(vendorPOJOS.get(position).vendorID);
 			}
 			@Override
@@ -137,10 +140,10 @@ public class OrderingFR extends Fragment {
 	}
 	
 	class VendorPOJO{
-		public String vendorID;
-		public String vendorShopName;
-		public String vendorPhoneNumber;
-		public VendorPOJO(String id, String name, String phone){
+		String vendorID;
+		String vendorShopName;
+		String vendorPhoneNumber;
+		VendorPOJO(String id, String name, String phone){
 			this.vendorID = id;
 			this.vendorShopName = name;
 			this.vendorPhoneNumber = phone;
