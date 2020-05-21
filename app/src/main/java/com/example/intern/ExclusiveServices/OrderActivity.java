@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,6 +44,15 @@ public class OrderActivity extends AppCompatActivity {
 			Bitmap orderBitmap = BitmapFactory.decodeFile(ImagePicker.Companion.getFilePath(data));
 			viewModel.setOrderImageBitmap(orderBitmap);
 			viewModel.getImageReceivedListener().hasReceivedImage(true);
+		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+		if(viewModel.getNavController().navigateUp()){
+			Log.i("OrderActivity", "onBackPressed: popped fragment");
+		}else{
+			super.onBackPressed();
 		}
 	}
 	

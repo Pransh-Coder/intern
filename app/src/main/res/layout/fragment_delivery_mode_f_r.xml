@@ -4,6 +4,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@drawable/ps"
 	tools:context=".ExclusiveServices.orderfragments.DeliveryModeFR">
 	
 	<androidx.constraintlayout.widget.Guideline
@@ -13,7 +14,27 @@
 		android:orientation="horizontal"
 		app:layout_constraintGuide_percent="0.29"/>
 	
-	<Button
+	<ImageView
+		android:id="@+id/back"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/back"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<ImageView
+		android:id="@+id/home"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginLeft="7dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/homeimg"
+		app:layout_constraintLeft_toRightOf="@+id/back"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<!--<Button
 		android:id="@+id/tv_takeaway"
 		android:layout_width="wrap_content"
 		android:layout_height="40dp"
@@ -39,41 +60,242 @@
 		android:textSize="18sp"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_takeaway"/>
+		app:layout_constraintTop_toBottomOf="@id/tv_takeaway"/>-->
 	
-	<EditText
-		android:id="@+id/et_address"
+	<androidx.core.widget.NestedScrollView
 		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_margin="20dp"
-		android:hint="Enter address"
-		android:visibility="gone"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/tv_home_del"/>
-	
-	<Spinner
-		android:id="@+id/spinner_time_slot"
-		android:layout_width="wrap_content"
 		android:layout_height="0dp"
-		android:layout_marginLeft="20dp"
-		android:layout_marginTop="20dp"
-		android:entries="@array/timeslots"
-		android:visibility="gone"
+		android:layout_marginBottom="10dp"
+		app:layout_constraintBottom_toTopOf="@id/guide_logo_top"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/et_address"/>
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_29">
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			
+			<TextView
+				android:id="@+id/tv_useless_hint"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+				android:fontFamily="@font/century_gothic"
+				android:text="Tap to select one of the delivery modes"
+				android:textColor="@color/black"
+				app:layout_constraintTop_toTopOf="parent"/>
+			
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/constraint_takeaway"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="20dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginRight="20dp"
+				android:background="@drawable/rectangle_outline"
+				app:layout_constraintBottom_toTopOf="@id/tv_useless_or"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/tv_useless_hint">
+				
+				<TextView
+					android:id="@+id/tv_useless_ta"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="5dp"
+					android:layout_marginTop="5dp"
+					android:fontFamily="@font/century_gothic"
+					android:text="TAKE AWAY"
+					android:textColor="@color/black"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintTop_toTopOf="parent"/>
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/century_gothic"
+					android:gravity="center_vertical"
+					android:padding="5dp"
+					android:text="Collect the order from the shop."
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					app:layout_constraintBottom_toTopOf="@id/tv_useless_del"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toLeftOf="@id/ver_in_75"
+					app:layout_constraintTop_toBottomOf="@id/tv_useless_ta"/>
+				
+				<TextView
+					android:id="@+id/tv_useless_del"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="5dp"
+					android:layout_marginBottom="5dp"
+					android:fontFamily="@font/century_gothic"
+					android:text="NO DELIVERY CHARGES"
+					android:textColor="@color/black"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"/>
+				
+				<androidx.constraintlayout.widget.Guideline
+					android:id="@+id/ver_in_75"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="vertical"
+					app:layout_constraintGuide_percent="0.75"/>
+				
+				<ImageView
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:src="@drawable/pslogotrimmed"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintLeft_toRightOf="@id/ver_in_75"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"/>
+				<!--TODO :-->
+			</androidx.constraintlayout.widget.ConstraintLayout>
+			
+			<TextView
+				android:id="@+id/tv_useless_or"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				android:fontFamily="@font/century_gothic"
+				android:text="OR"
+				app:layout_constraintBottom_toTopOf="@id/constraint_home_delivery"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/constraint_takeaway"/>
+			
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/constraint_home_delivery"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="20dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginRight="20dp"
+				android:background="@drawable/rectangle_outline"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/tv_useless_or">
+				<!--TODO : -->
+				<TextView
+					android:id="@+id/tv_useless_hd"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="5dp"
+					android:layout_marginTop="5dp"
+					android:fontFamily="@font/century_gothic"
+					android:text="HOME DELIVERY"
+					android:textColor="@color/black"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintTop_toTopOf="parent"/>
+				
+				<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/century_gothic"
+					android:gravity="center_vertical"
+					android:padding="5dp"
+					android:text="Get the order delivered on your doorstep."
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					app:layout_constraintBottom_toTopOf="@id/tv_useless_del_cahrge"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toLeftOf="@id/ver_inner_box_75"
+					app:layout_constraintTop_toBottomOf="@id/tv_useless_hd"/>
+				
+				<TextView
+					android:id="@+id/tv_useless_del_cahrge"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="5dp"
+					android:layout_marginBottom="5dp"
+					android:fontFamily="@font/century_gothic"
+					android:text="DELIVERY CHARGES"
+					android:textColor="@color/black"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"/>
+				
+				<ImageView
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:src="@drawable/pslogotrimmed"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintLeft_toRightOf="@id/ver_inner_box_75"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"/>
+				
+				<androidx.constraintlayout.widget.Guideline
+					android:id="@+id/ver_inner_box_75"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="vertical"
+					app:layout_constraintGuide_percent="0.75"/>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+			
+			<EditText
+				android:id="@+id/et_address"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_margin="20dp"
+				android:hint="Enter address"
+				android:visibility="gone"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/constraint_home_delivery"/>
+			
+			<Spinner
+				android:id="@+id/spinner_time_slot"
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"
+				android:layout_marginTop="10dp"
+				android:entries="@array/timeslots"
+				android:visibility="gone"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/et_address"/>
+			
+			<Button
+				android:id="@+id/btn_submit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
+				android:background="@drawable/background_button_sign_in"
+				android:fontFamily="@font/century_gothic"
+				android:text="@string/submit"
+				android:visibility="gone"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/spinner_time_slot"/>
+			
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.core.widget.NestedScrollView>
 	
-	<Button
-		android:id="@+id/btn_submit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="20dp"
-		android:background="@drawable/background_button_sign_in"
-		android:fontFamily="@font/century_gothic"
-		android:text="@string/submit"
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_logo_top"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_end="50dp"/>
+	
+	<ImageView
+		android:id="@+id/pslogo"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:src="@drawable/pslogotrimmed"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/spinner_time_slot"/>
+		app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

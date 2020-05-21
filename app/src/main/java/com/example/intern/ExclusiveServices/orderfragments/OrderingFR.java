@@ -2,7 +2,6 @@ package com.example.intern.ExclusiveServices.orderfragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -19,9 +18,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.ExclusiveServices.AllOrders;
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.FragmentOrderingFRBinding;
+import com.example.intern.mainapp.MainApp;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -33,7 +34,6 @@ import java.util.Set;
 public class OrderingFR extends Fragment {
 	
 	private FragmentOrderingFRBinding binding;
-	private SharedPrefUtil prefUtil;
 	private OrderingVM viewModel;
 	private List<VendorPOJO> vendorPOJOS;
 	private VendorPOJO vendorPOJO;
@@ -50,7 +50,6 @@ public class OrderingFR extends Fragment {
 				binding.ivOrderList.setImageBitmap(viewModel.getOrderImageBitmap());
 			}
 		});
-		prefUtil = new SharedPrefUtil(requireContext());
 		return binding.getRoot();
 	}
 	
@@ -63,7 +62,13 @@ public class OrderingFR extends Fragment {
 		//Dismiss this dialog as soon as the vendor list is loaded
 		loadingDialog.show();
 		//Fetch the list of vendors in the pin code
-		FirebaseFirestore.getInstance().collection("vendorcluster").document(prefUtil.getPreferences().getString(SharedPrefUtil.USER_PIN_CODE_KEY, null))
+		String pinCode = viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_PIN_CODE_KEY, null);
+		if(pinCode==null){
+			Toast.makeText(requireContext(), "Illegal state", Toast.LENGTH_SHORT).show();
+			requireActivity().finish();
+			return;
+		}
+		FirebaseFirestore.getInstance().collection("vendorcluster").document(pinCode)
 				.get().addOnSuccessListener(snapshot -> {
 			Map<String, Object> data = snapshot.getData();
 			if(data != null){
@@ -93,6 +98,16 @@ public class OrderingFR extends Fragment {
 			Intent intent = new Intent(requireContext(), AllOrders.class);
 			startActivity(intent);
 		});
+		binding.back.setOnClickListener(v -> viewModel.getNavController().navigateUp());
+		binding.home.setOnClickListener(v -> {
+			Intent intent = new Intent(requireContext(), MainApp.class);
+			startActivity(intent);
+			requireActivity().finish();
+		});
+		binding.notofi.setOnClickListener(v -> {
+			Intent intent = new Intent(requireContext(), NewsAndUpdatesACT.class);
+			startActivity(intent);
+		});
 	}
 	
 	
@@ -104,11 +119,6 @@ public class OrderingFR extends Fragment {
 		}
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, shopNames);
 		binding.vendorSpinner.setAdapter(adapter);
-		//Set a click listener for call button
-		binding.btnCallVendor.setOnClickListener(v -> {
-			Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + this.vendorPOJO.vendorPhoneNumber));
-			startActivity(intent);
-		});
 		binding.vendorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -139,7 +149,7 @@ public class OrderingFR extends Fragment {
 		});
 	}
 	
-	class VendorPOJO{
+	static class VendorPOJO{
 		String vendorID;
 		String vendorShopName;
 		String vendorPhoneNumber;

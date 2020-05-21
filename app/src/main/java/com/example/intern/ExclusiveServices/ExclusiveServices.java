@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.intern.AppStaticData;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
-import com.example.intern.askservices.EssentialServices;
 import com.example.intern.database.FireStoreUtil;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.ActivityExclusiveServiceBinding;
@@ -80,17 +79,17 @@ public class ExclusiveServices extends AppCompatActivity {
 			startActivity(intent);
 		});
 		binding.vegetables.setOnClickListener(v -> {
-			Intent intent = new Intent(this, EssentialServices.class);
+			Intent intent = new Intent(this, OrderActivity.class);
 			intent.putExtra(FROM_EXCLUSIVE_SERVICES, DEMAND_VEGETABLES);
 			startActivity(intent);
 		});
 		binding.diary.setOnClickListener(v -> {
-			Intent intent = new Intent(this, EssentialServices.class);
+			Intent intent = new Intent(this, OrderActivity.class);
 			intent.putExtra(FROM_EXCLUSIVE_SERVICES, DEMAND_DAIRY);
 			startActivity(intent);
 		});
 		binding.water.setOnClickListener(v -> {
-			Intent intent = new Intent(this, EssentialServices.class);
+			Intent intent = new Intent(this, OrderActivity.class);
 			intent.putExtra(FROM_EXCLUSIVE_SERVICES, DEMAND_WATER);
 			startActivity(intent);
 		});

@@ -6,7 +6,7 @@
 	android:background="@drawable/common_background">
 	
 	<ImageView
-		android:id="@+id/demand_button_back"
+		android:id="@+id/back"
 		android:layout_width="40dp"
 		android:layout_height="40dp"
 		android:layout_marginStart="10dp"
@@ -16,17 +16,17 @@
 		app:layout_constraintTop_toTopOf="parent" />
 	
 	<ImageView
-		android:id="@+id/demand_button_home"
+		android:id="@+id/home"
 		android:layout_width="40dp"
 		android:layout_height="40dp"
 		android:layout_marginStart="7dp"
 		android:layout_marginTop="10dp"
 		android:src="@drawable/homeimg"
-		app:layout_constraintLeft_toRightOf="@+id/demand_button_back"
+		app:layout_constraintLeft_toRightOf="@+id/back"
 		app:layout_constraintTop_toTopOf="parent" />
 	
 	<ImageView
-		android:id="@+id/demand_notification"
+		android:id="@+id/notofi"
 		android:layout_width="40dp"
 		android:layout_height="40dp"
 		android:layout_marginTop="10dp"
@@ -84,16 +84,15 @@
 	<Button
 		android:id="@+id/btn_your_orders"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginRight="36dp"
-		android:height="35dp"
+		android:layout_height="35dp"
 		android:autoSizeTextType="uniform"
 		android:background="@drawable/background_button_sign_in"
 		android:fontFamily="@font/century_gothic"
 		android:padding="5dp"
 		android:text="Your orders >"
+		app:layout_constraintRight_toRightOf="@id/scrollView_otherServices"
 		app:layout_constraintBottom_toTopOf="@id/scrollView_otherServices"
-		app:layout_constraintRight_toRightOf="parent" />
+		app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent" />
 
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/hor_guide_12_percent"
@@ -152,24 +151,9 @@
 				android:dropDownWidth="wrap_content"
 				android:spinnerMode="dropdown"
 				android:textColor="@color/black"
-				app:layout_constraintEnd_toStartOf="@id/btn_call_vendor"
+				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/tv_selectHere" />
-			
-			<Button
-				android:id="@+id/btn_call_vendor"
-				android:layout_width="wrap_content"
-				android:layout_height="0dp"
-				android:layout_margin="3dp"
-				android:autoSizeTextType="uniform"
-				android:background="@drawable/background_button_sign_in"
-				android:fontFamily="@font/century_gothic"
-				android:padding="5dp"
-				android:text="Call"
-				app:layout_constraintBottom_toBottomOf="@id/vendor_spinner"
-				app:layout_constraintLeft_toRightOf="@id/vendor_spinner"
-				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toTopOf="@id/vendor_spinner"/>
 			
 			<EditText
 				android:id="@+id/et_order_detail"

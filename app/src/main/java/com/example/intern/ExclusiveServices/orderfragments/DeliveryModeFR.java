@@ -1,9 +1,9 @@
 package com.example.intern.ExclusiveServices.orderfragments;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -22,6 +22,7 @@ import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.database.local.EssentialOrderEntity;
 import com.example.intern.database.local.OrderDB;
 import com.example.intern.databinding.FragmentDeliveryModeFRBinding;
+import com.example.intern.mainapp.MainApp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -58,22 +59,32 @@ public class DeliveryModeFR extends Fragment {
 				+ preferences.getString(SharedPrefUtil.USER_PIN_CODE_KEY, null) + ", Ph. No. : "
 				+ preferences.getString(SharedPrefUtil.USER_PHONE_NO, null);
 		binding.etAddress.setText(userAddress);
+		binding.back.setOnClickListener(v -> viewModel.getNavController().navigateUp());
+		binding.home.setOnClickListener(v -> {
+			Intent intent = new Intent(requireContext(), MainApp.class);
+			startActivity(intent);
+			requireActivity().finish();
+		});
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
 		//Set click listeners
-		binding.tvTakeaway.setOnClickListener(v -> {
+		binding.constraintTakeaway.setOnClickListener(v -> {
+			binding.btnSubmit.setVisibility(View.VISIBLE);
 			binding.spinnerTimeSlot.setVisibility(View.GONE);
 			binding.etAddress.setVisibility(View.GONE);
-			binding.tvTakeaway.setBackgroundColor(Color.GREEN);
+			binding.constraintTakeaway.setBackground(requireActivity().getDrawable(R.drawable.rectangle_green_outline));
+			binding.constraintHomeDelivery.setBackground(requireActivity().getDrawable(R.drawable.rectangle_outline));
 			viewModel.setHasChosenHomeDelivery(false);
 		});
-		binding.tvHomeDel.setOnClickListener(v -> {
+		binding.constraintHomeDelivery.setOnClickListener(v -> {
+			binding.btnSubmit.setVisibility(View.VISIBLE);
 			binding.spinnerTimeSlot.setVisibility(View.VISIBLE);
 			binding.etAddress.setVisibility(View.VISIBLE);
-			binding.tvHomeDel.setBackgroundColor(Color.GREEN);
+			binding.constraintHomeDelivery.setBackground(requireActivity().getDrawable(R.drawable.rectangle_green_outline));
+			binding.constraintTakeaway.setBackground(requireActivity().getDrawable(R.drawable.rectangle_outline));
 			viewModel.setHasChosenHomeDelivery(true);
 		});
 		binding.btnSubmit.setOnClickListener(v -> {
@@ -171,8 +182,10 @@ public class DeliveryModeFR extends Fragment {
 			intent.putExtra(OrderTrackService.EXTRA_VENDOR_ID, viewModel.getChosenVendorID());
 			intent.putExtra(OrderTrackService.EXTRA_ORDER_DOCUMENT_ID, documentReference.getId());
 			OrderTrackService.enqueueWork(requireContext(), intent);
-			Toast.makeText(requireContext(), "Order made", Toast.LENGTH_SHORT).show();
-			requireActivity().finish();
+			new AlertDialog.Builder(requireContext()).setTitle(getString(R.string.thank_you))
+					.setMessage("Your order has been placed").setPositiveButton("OK", null)
+					.setOnDismissListener(dialog -> requireActivity().finish())
+					.setCancelable(false).setIcon(R.drawable.pslogotrimmed).show();
 		});
 	}
 }
