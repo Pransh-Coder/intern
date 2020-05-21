@@ -4,30 +4,43 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@drawable/ps"
 	tools:context=".ExclusiveServices.OrderDetail">
-	
+	<TextView
+		android:id="@+id/tvOrderRequests"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:background="@drawable/background_welcome"
+		android:fontFamily="@font/century_gothic_400"
+		android:padding="10dp"
+		android:text="Order Details"
+		android:textAlignment="center"
+		android:textColor="@color/black"
+		android:textSize="25sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/per_hor_29_per"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.29"/>
-	
+		app:layout_constraintGuide_percent="0.19"/>
+
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/ver_33"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="vertical"
 		app:layout_constraintGuide_percent="0.45" />
-	
+
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/ver_66"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="vertical"
 		app:layout_constraintGuide_percent="0.7"/>
-	
+
 	<TextView
 		android:id="@+id/tv_status"
 		android:layout_width="wrap_content"
@@ -40,7 +53,7 @@
 		app:layout_constraintBottom_toTopOf="@id/per_hor_29_per"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"/>
-	
+
 	<androidx.core.widget.NestedScrollView
 		android:layout_width="0dp"
 		android:layout_height="0dp"
@@ -50,11 +63,12 @@
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/per_hor_29_per"
 		app:layout_constraintVertical_bias="0">
-		
+
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
-			
+			android:layout_height="wrap_content"
+			android:background="@drawable/banner_background">
+
 			<TextView
 				android:id="@+id/tv_order_detail"
 				android:layout_width="0dp"
@@ -68,7 +82,7 @@
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toTopOf="parent"/>
-			
+
 			<com.jsibbold.zoomage.ZoomageView
 				android:id="@+id/iv_order_list"
 				android:layout_width="0dp"
@@ -90,7 +104,7 @@
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
 				app:zoomage_zoomable="true" />
-			
+
 			<TextView
 				android:id="@+id/tv_total"
 				android:layout_width="wrap_content"
@@ -100,10 +114,11 @@
 				android:text="TOTAL : 0 INR"
 				android:textColor="@color/black"
 				android:textSize="20sp"
+				android:textStyle="bold"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/iv_order_list" />
-			
+
 			<com.jsibbold.zoomage.ZoomageView
 				android:id="@+id/iv_bill"
 				android:layout_width="0dp"
@@ -125,16 +140,17 @@
 				app:zoomage_restrictBounds="false"
 				app:zoomage_translatable="true"
 				app:zoomage_zoomable="true" />
-			
+
 			<Button
 				android:id="@+id/btn_paid"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="20dp"
-				android:background="@drawable/background_button_sign_in"
+				android:background="@drawable/button_outlined_selected"
 				android:fontFamily="@font/century_gothic"
 				android:text="Paid"
 				android:visibility="gone"
+				android:textStyle="bold"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toLeftOf="@id/btn_not_paid"
 				app:layout_constraintTop_toBottomOf="@id/iv_bill"/>
@@ -142,16 +158,17 @@
 				android:id="@+id/btn_not_paid"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:background="@drawable/background_button_sign_in"
+				android:background="@drawable/button_outlined_selected"
 				android:fontFamily="@font/century_gothic"
 				android:text="Pay Later"
 				android:visibility="gone"
+				android:textStyle="bold"
 				app:layout_constraintLeft_toRightOf="@id/btn_paid"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toTopOf="@id/btn_paid"/>
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.core.widget.NestedScrollView>
-	
+
 	<ImageView
 		android:id="@+id/pslogo"
 		android:layout_width="50dp"
