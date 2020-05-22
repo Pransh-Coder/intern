@@ -27,6 +27,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -73,17 +74,18 @@ public class OrderingFR extends Fragment {
 			Map<String, Object> data = snapshot.getData();
 			if(data != null){
 				//Found some vendors
-				Set<String> vendorIdSet = data.keySet();
-				Object[] vendorIDs = vendorIdSet.toArray();
-				for(Object vendorId : vendorIDs){
-					FirebaseFirestore.getInstance().collection("vendors").document(vendorId.toString())
+				Set<String> vendorIDs = data.keySet();
+				Iterator<String> iterator = vendorIDs.iterator();
+				while(iterator.hasNext()){
+					String thisVendID = iterator.next();
+					FirebaseFirestore.getInstance().collection("vendors").document(thisVendID)
 							.get().addOnSuccessListener(vendorDataSnap -> {
 						String name = vendorDataSnap.getString("stName");
 						String phoneNumber = vendorDataSnap.getString("phNo");
-						VendorPOJO vendorPOJO = new VendorPOJO(vendorId.toString(), name, phoneNumber);
+						VendorPOJO vendorPOJO = new VendorPOJO(thisVendID, name, phoneNumber);
 						vendorPOJOS.add(vendorPOJO);
-						if(vendorId.equals(vendorIDs[vendorIDs.length-1])){
-							//Last one
+						//Last one
+						if(!iterator.hasNext()){
 							loadingDialog.dismiss();
 							proceedNow();
 						}
@@ -98,7 +100,7 @@ public class OrderingFR extends Fragment {
 			Intent intent = new Intent(requireContext(), AllOrders.class);
 			startActivity(intent);
 		});
-		binding.back.setOnClickListener(v -> viewModel.getNavController().navigateUp());
+		binding.back.setOnClickListener(v -> requireActivity().finish());
 		binding.home.setOnClickListener(v -> {
 			Intent intent = new Intent(requireContext(), MainApp.class);
 			startActivity(intent);
@@ -149,7 +151,7 @@ public class OrderingFR extends Fragment {
 		});
 	}
 	
-	static class VendorPOJO{
+	class VendorPOJO{
 		String vendorID;
 		String vendorShopName;
 		String vendorPhoneNumber;

@@ -1,6 +1,7 @@
 package com.example.intern.ExclusiveServices.orderfragments;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -118,6 +119,13 @@ public class DeliveryModeFR extends Fragment {
 				order.put("address", address);
 				order.put("time", timeSlot);
 			}
+			//Wait dialog
+			ProgressDialog dialog = new ProgressDialog(requireContext());
+			dialog.setTitle(R.string.please_wait);
+			dialog.setMessage("Uploading your request");
+			dialog.setIcon(R.drawable.pslogotrimmed);
+			dialog.setCancelable(false);
+			dialog.show();
 			if(viewModel.getOrderImageBitmap()!= null){
 				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 				viewModel.getOrderImageBitmap().compress(Bitmap.CompressFormat.PNG, 100, outputStream);
@@ -135,7 +143,7 @@ public class DeliveryModeFR extends Fragment {
 								Map<String, Object> updateToggle = new HashMap<>();
 								updateToggle.put("toggle", toggle);
 								snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
-									uploadOrder(order, snapshot.getReference());
+									uploadOrder(order, snapshot.getReference(), dialog);
 								});
 							}catch (Exception e){
 								//Did not find toggle, make one
@@ -143,7 +151,7 @@ public class DeliveryModeFR extends Fragment {
 								Map<String, Object> updateToggle = new HashMap<>();
 								updateToggle.put("toggle", toggle);
 								snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
-									uploadOrder(order, snapshot.getReference());
+									uploadOrder(order, snapshot.getReference(), dialog);
 								});
 							}
 						});
@@ -158,7 +166,7 @@ public class DeliveryModeFR extends Fragment {
 						Map<String, Object> updateToggle = new HashMap<>();
 						updateToggle.put("toggle", toggle);
 						snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
-							uploadOrder(order, snapshot.getReference());
+							uploadOrder(order, snapshot.getReference(), dialog);
 						});
 					}catch (Exception e){
 						//Did not find toggle, make one
@@ -166,7 +174,7 @@ public class DeliveryModeFR extends Fragment {
 						Map<String, Object> updateToggle = new HashMap<>();
 						updateToggle.put("toggle", toggle);
 						snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
-							uploadOrder(order, snapshot.getReference());
+							uploadOrder(order, snapshot.getReference(), dialog);
 						});
 					}
 				});
@@ -174,7 +182,7 @@ public class DeliveryModeFR extends Fragment {
 		});
 	}
 	
-	private void uploadOrder(Map<String, Object> order, DocumentReference reference) {
+	private void uploadOrder(Map<String, Object> order, DocumentReference reference, ProgressDialog waitDialog) {
 		reference.collection("orders").add(order).addOnSuccessListener(documentReference -> {
 			EssentialOrderEntity orderEntity = new EssentialOrderEntity(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), viewModel.getChosenVendorID(), documentReference.getId(), System.currentTimeMillis());
 			OrderDB.getInstance(requireContext()).insertOrder(orderEntity);
@@ -182,6 +190,7 @@ public class DeliveryModeFR extends Fragment {
 			intent.putExtra(OrderTrackService.EXTRA_VENDOR_ID, viewModel.getChosenVendorID());
 			intent.putExtra(OrderTrackService.EXTRA_ORDER_DOCUMENT_ID, documentReference.getId());
 			OrderTrackService.enqueueWork(requireContext(), intent);
+			waitDialog.dismiss();
 			new AlertDialog.Builder(requireContext()).setTitle(getString(R.string.thank_you))
 					.setMessage("Your order has been placed").setPositiveButton("OK", null)
 					.setOnDismissListener(dialog -> requireActivity().finish())

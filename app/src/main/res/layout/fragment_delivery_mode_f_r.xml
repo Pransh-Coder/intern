@@ -150,7 +150,9 @@
 				<ImageView
 					android:layout_width="0dp"
 					android:layout_height="0dp"
-					android:src="@drawable/pslogotrimmed"
+					android:layout_margin="5dp"
+					android:scaleType="fitCenter"
+					android:src="@drawable/shop_icon"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintDimensionRatio="1:1"
 					app:layout_constraintLeft_toRightOf="@id/ver_in_75"
@@ -229,7 +231,9 @@
 				<ImageView
 					android:layout_width="0dp"
 					android:layout_height="0dp"
-					android:src="@drawable/pslogotrimmed"
+					android:layout_margin="5dp"
+					android:scaleType="fitCenter"
+					android:src="@drawable/home_icon"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintDimensionRatio="1:1"
 					app:layout_constraintLeft_toRightOf="@id/ver_inner_box_75"
