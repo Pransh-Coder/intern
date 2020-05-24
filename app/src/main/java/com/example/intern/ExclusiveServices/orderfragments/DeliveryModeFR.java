@@ -138,18 +138,18 @@ public class DeliveryModeFR extends Fragment {
 						//TODO : upload the order on vendor side toggling first
 						FirebaseFirestore.getInstance().collection("vendors").document(viewModel.getChosenVendorID()).get().addOnSuccessListener(snapshot -> {
 							try{
-								boolean toggle = snapshot.getBoolean("toggle");
-								toggle = !toggle;
+								long ordercount = snapshot.getLong("total_orders");
+								ordercount++;
 								Map<String, Object> updateToggle = new HashMap<>();
-								updateToggle.put("toggle", toggle);
+								updateToggle.put("total_orders", ordercount);
 								snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
 									uploadOrder(order, snapshot.getReference(), dialog);
 								});
 							}catch (Exception e){
 								//Did not find toggle, make one
-								boolean toggle = false;
+								long ordercount = 0L;
 								Map<String, Object> updateToggle = new HashMap<>();
-								updateToggle.put("toggle", toggle);
+								updateToggle.put("total_orders", ordercount);
 								snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
 									uploadOrder(order, snapshot.getReference(), dialog);
 								});
@@ -161,18 +161,18 @@ public class DeliveryModeFR extends Fragment {
 				//No Image provided, no need for uri
 				FirebaseFirestore.getInstance().collection("vendors").document(viewModel.getChosenVendorID()).get().addOnSuccessListener(snapshot -> {
 					try{
-						boolean toggle = snapshot.getBoolean("toggle");
-						toggle = !toggle;
+						long ordercount = snapshot.getLong("total_orders");
+						ordercount++;
 						Map<String, Object> updateToggle = new HashMap<>();
-						updateToggle.put("toggle", toggle);
+						updateToggle.put("total_orders", ordercount);
 						snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
 							uploadOrder(order, snapshot.getReference(), dialog);
 						});
 					}catch (Exception e){
 						//Did not find toggle, make one
-						boolean toggle = false;
+						long ordercount = 0L;
 						Map<String, Object> updateToggle = new HashMap<>();
-						updateToggle.put("toggle", toggle);
+						updateToggle.put("total_orders", ordercount);
 						snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
 							uploadOrder(order, snapshot.getReference(), dialog);
 						});
