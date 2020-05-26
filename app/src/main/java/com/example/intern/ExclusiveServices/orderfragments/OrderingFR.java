@@ -24,7 +24,14 @@ import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.FragmentOrderingFRBinding;
 import com.example.intern.mainapp.MainApp;
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -110,6 +117,26 @@ public class OrderingFR extends Fragment {
 			Intent intent = new Intent(requireContext(), NewsAndUpdatesACT.class);
 			startActivity(intent);
 		});
+		binding.searchVendor.setOnClickListener(v -> {
+			String vendorPhone=binding.searchVendor.getText().toString();
+			// Create a reference to the cities collection
+			CollectionReference vendor = FirebaseFirestore.getInstance().collection("vendors");
+// Create a query against the collection.
+			Query query = vendor.whereEqualTo("phNo", vendorPhone);
+// retrieve  query results asynchronously using query.get()
+			query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+				@Override
+				public void onComplete(@NonNull Task<QuerySnapshot> task) {
+					if (task.isSuccessful()) {
+						for (QueryDocumentSnapshot document : task.getResult()) {
+							viewModel.setChosenVendorID(document.getId());
+						}
+					}
+				}
+			});
+		});
+
 	}
 	
 	
