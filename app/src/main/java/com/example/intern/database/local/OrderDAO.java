@@ -15,5 +15,10 @@ public interface OrderDAO{
 	
 	@Query("SELECT * FROM orders_v2")
 	List<EssentialOrderEntity> getAllOrders();
+	@Query("SELECT vendor_ID FROM orders_v2")
+	List<String>getAllVid();
+	@Query("SELECT * FROM orders_v2 WHERE vendor_ID LIKE :vid")
+	List<EssentialOrderEntity> get_VidOrders(String vid);
+
 	
 }

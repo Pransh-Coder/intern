@@ -41,4 +41,15 @@ public abstract class OrderDB extends RoomDatabase {
 	public void insertOrder(EssentialOrderEntity orderEntity){
 		databaseExecutor.execute(() -> INSTANCE.orderDAO().insertOrder(orderEntity));
 	}
+	public List<String> getVid() {
+		Callable<List<String>> callable = () -> INSTANCE.orderDAO().getAllVid();
+		Future<List<String>> result = databaseExecutor.submit(callable);
+		try{return result.get();}catch (Exception ignored){return null;}
+	}
+	public List<EssentialOrderEntity> getVidOrders(String vid) {
+		Callable<List<EssentialOrderEntity>> callable = () -> INSTANCE.orderDAO().get_VidOrders(vid);
+		Future<List<EssentialOrderEntity>> result = databaseExecutor.submit(callable);
+		try{return result.get();}catch (Exception ignored){return null;}
+	}
+
 }
