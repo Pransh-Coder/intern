@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -136,6 +137,19 @@ public class OrderingFR extends Fragment {
 				}
 			});
 		});
+		final TextWatcher mTextEditorWatcher = new TextWatcher() {
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				//This sets a textview to the current length
+				binding.charCount2.setText(String.valueOf(s.length())+"/200");
+			}
+
+			public void afterTextChanged(Editable s) {
+			}
+		};
+		binding.etOrderDetail.addTextChangedListener(mTextEditorWatcher);
 
 	}
 	
@@ -143,6 +157,7 @@ public class OrderingFR extends Fragment {
 	private void proceedNow() {
 		//Set an item selected listener after all vendorIDS are added
 		List<String> shopNames = new ArrayList<>();
+		shopNames.add(0,"Select Vendor Id");
 		for(VendorPOJO pojo : vendorPOJOS){
 			shopNames.add(pojo.vendorShopName);
 		}
@@ -151,8 +166,10 @@ public class OrderingFR extends Fragment {
 		binding.vendorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				vendorPOJO = vendorPOJOS.get(position);
-				viewModel.setChosenVendorID(vendorPOJOS.get(position).vendorID);
+				if(position>0) {
+					vendorPOJO = vendorPOJOS.get(position);
+					viewModel.setChosenVendorID(vendorPOJOS.get(position).vendorID);
+				}
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}

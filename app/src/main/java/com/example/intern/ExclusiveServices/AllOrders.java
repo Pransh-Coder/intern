@@ -31,7 +31,7 @@ public class AllOrders extends AppCompatActivity {
 	ActivityAllOrdersBinding binding;
 	List<EssentialOrderEntity> orderEntityList;
 	ArrayAdapter<String> adapterspinner;
-	List<String> spinnerDataList;
+	ArrayList<String> spinnerDataList;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,32 +50,40 @@ public class AllOrders extends AppCompatActivity {
 		binding.recyclerUserOrders.setLayoutManager(new LinearLayoutManager(this));
 		binding.recyclerUserOrders.setAdapter(adapter);
 		spinnerDataList=new ArrayList<>();
-		spinnerDataList=OrderDB.getInstance(this).getVid();
+		spinnerDataList.add(0,"Select Vendor Id");
+		spinnerDataList.addAll(OrderDB.getInstance(this).getVid());
 		adapterspinner=new ArrayAdapter<String>(AllOrders.this,android.R.layout.simple_spinner_dropdown_item,spinnerDataList);
 		binding.orderspinner.setAdapter(adapterspinner);
 
 		binding.orderspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				String vid= null;
-				if(binding.orderspinner != null && binding.orderspinner.getSelectedItem() !=null ) {
-					vid = (String)binding.orderspinner.getSelectedItem();
-					Toast.makeText(getApplicationContext(),vid,Toast.LENGTH_LONG).show();
-					orderEntityList = OrderDB.getInstance(getApplicationContext()).getVidOrders(vid);
-					if(orderEntityList == null || orderEntityList.isEmpty()){
-						Toast.makeText(getApplicationContext(), "Never placed any order !", Toast.LENGTH_SHORT).show();
-						finish();
-						return;
+				if(position==0)
+					orderEntityList = OrderDB.getInstance(getApplicationContext()).getOrders();
+				else {
+					String vid = null;
+					if (binding.orderspinner != null && binding.orderspinner.getSelectedItem() != null) {
+						vid = (String) binding.orderspinner.getSelectedItem();
+						Toast.makeText(getApplicationContext(), vid, Toast.LENGTH_LONG).show();
+						orderEntityList = OrderDB.getInstance(getApplicationContext()).getVidOrders(vid);
 					}
-					OrderRecyclerAdapter adapter;
-					adapter = new OrderRecyclerAdapter(getApplicationContext(), orderEntityList);
-					binding.recyclerUserOrders.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-					binding.recyclerUserOrders.setAdapter(adapter);
-				} else  {
-
 				}
+						if (orderEntityList == null || orderEntityList.isEmpty()) {
+							Toast.makeText(getApplicationContext(), "Never placed any order !", Toast.LENGTH_SHORT).show();
+							finish();
+							return;
+						}
+						else {
 
-			}
+						}
+
+						OrderRecyclerAdapter adapter;
+						adapter = new OrderRecyclerAdapter(getApplicationContext(), orderEntityList);
+						binding.recyclerUserOrders.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+						binding.recyclerUserOrders.setAdapter(adapter);
+					}
+
+
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}
 		});
