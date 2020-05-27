@@ -94,6 +94,8 @@ public class DeliveryModeFR extends Fragment {
 			order.put("timestamp", System.currentTimeMillis());
 			//add user phone number
 			order.put("userphone", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null));
+			//Add user UID
+			order.put("useruid", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null));
 			//add order details if there
 			if(viewModel.getOrderDetailString()!= null){
 				//Upload order string if there
