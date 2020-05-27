@@ -96,6 +96,8 @@ public class DeliveryModeFR extends Fragment {
 			order.put("userphone", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null));
 			//Add user UID
 			order.put("useruid", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null));
+			//Send user name explicitly
+			order.put("username", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, null));
 			//add order details if there
 			if(viewModel.getOrderDetailString()!= null){
 				//Upload order string if there
