@@ -80,7 +80,23 @@
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/hor_guide_12_percent" />
-
+	<EditText
+		android:id="@+id/search_vendor"
+		android:layout_width="0dp"
+		android:layout_height="35dp"
+		android:layout_marginTop="7dp"
+		android:layout_marginRight="10dp"
+		android:layout_marginBottom="5dp"
+		android:background="@drawable/home_activity_search_background"
+		android:drawableStart="@drawable/ic_search"
+		android:drawablePadding="5dp"
+		android:hint="Search Vendor..."
+		android:imeOptions="actionSearch"
+		android:inputType="textAutoComplete"
+		android:maxLines="1"
+		app:layout_constraintStart_toEndOf="@id/hor_guide_08_percent"
+		app:layout_constraintBottom_toTopOf="@id/scrollView_otherServices"
+		app:layout_constraintTop_toBottomOf="@id/hor_guide_30_percent"></EditText>
 	<Button
 		android:id="@+id/btn_your_orders"
 		android:layout_width="wrap_content"
@@ -101,6 +117,13 @@
 		android:background="@color/black"
 		android:orientation="horizontal"
 		app:layout_constraintGuide_percent="0.12" />
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/hor_guide_08_percent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/black"
+		android:orientation="vertical"
+		app:layout_constraintGuide_percent="0.08" />
 	
 	<androidx.core.widget.NestedScrollView
 		android:id="@+id/scrollView_otherServices"
@@ -141,22 +164,7 @@
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="@id/constraint_product" />
 
-			<EditText
-				android:id="@+id/search_vendor"
-				android:layout_width="0dp"
-				android:layout_height="35dp"
-				android:layout_marginTop="7dp"
-				android:layout_marginRight="10dp"
-				android:layout_marginBottom="5dp"
-				android:background="@drawable/home_activity_search_background"
-				android:drawableStart="@drawable/ic_search"
-				android:drawablePadding="5dp"
-				android:hint="Search Vendor..."
-				android:imeOptions="actionSearch"
-				android:inputType="textAutoComplete"
-				android:maxLines="1"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintTop_toTopOf="parent"></EditText>
+
 			<androidx.appcompat.widget.AppCompatSpinner
 				android:id="@+id/vendor_spinner"
 				android:layout_width="0dp"
@@ -171,7 +179,7 @@
 				android:textColor="@color/black"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/search_vendor" />
+				app:layout_constraintTop_toBottomOf="@id/tv_selectHere"/>
 			
 			<EditText
 				android:id="@+id/et_order_detail"

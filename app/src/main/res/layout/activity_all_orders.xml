@@ -4,21 +4,34 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@drawable/ps"
 	tools:context=".ExclusiveServices.AllOrders">
+	<TextView
+		android:id="@+id/tvOrderRequests"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:background="@drawable/background_welcome"
+		android:fontFamily="@font/century_gothic_400"
+		android:padding="10dp"
+		android:text="Orders List"
+		android:textAlignment="center"
+		android:textColor="@color/black"
+		android:textSize="25sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
 	
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/per_hor_29_per"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.29"/>
+		app:layout_constraintGuide_percent="0.20"/>
+
 	<androidx.appcompat.widget.AppCompatSpinner
 		android:id="@+id/orderspinner"
 		android:layout_width="0dp"
 		android:layout_height="40dp"
 		android:layout_marginStart="10dp"
-		android:layout_marginTop="4dp"
 		android:layout_marginEnd="10dp"
 		android:autofillHints="Your Order List with this Vendor"
 		android:background="@drawable/spinner_boxed_back"
@@ -26,16 +39,28 @@
 		android:spinnerMode="dropdown"
 		android:textColor="@color/black"
 		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="1.0"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/per_hor_29_per" />
+	<ScrollView
+		android:id="@+id/scrollView2"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		android:layout_marginTop="20dp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintBottom_toTopOf="@id/pslogo"
+		app:layout_constraintTop_toBottomOf="@id/orderspinner">
 
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/recycler_user_orders"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_margin="10dp"
-		app:layout_constraintBottom_toTopOf="@id/pslogo"
-		app:layout_constraintTop_toBottomOf="@id/orderspinner"/>
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	</ScrollView>
 	
 	<ImageView
 		android:id="@+id/pslogo"
