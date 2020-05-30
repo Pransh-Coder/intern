@@ -40,6 +40,7 @@ public class AllOrders extends AppCompatActivity {
 	ArrayList<String> spinnerDataList;
 	ArrayAdapter<String> adapterMonthspinner;
 	ArrayList<String> spinnerMonthList;
+	public static int state;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class AllOrders extends AppCompatActivity {
 			finish();
 			return;
 		}
+		state=0;
 		OrderRecyclerAdapter adapter = new OrderRecyclerAdapter(this, orderEntityList);
 		binding.recyclerUserOrders.setLayoutManager(new LinearLayoutManager(this));
 		binding.recyclerUserOrders.setAdapter(adapter);
@@ -80,10 +82,16 @@ public class AllOrders extends AppCompatActivity {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				if(position==0)
+				{
 					orderEntityList = OrderDB.getInstance(getApplicationContext()).getOrders();
+					state=0;
+
+				}
+
 				else {
 					String vid = null;
 					if (binding.orderspinner != null && binding.orderspinner.getSelectedItem() != null) {
+						state=1;
 						vid = (String) binding.orderspinner.getSelectedItem();
 						Toast.makeText(getApplicationContext(), vid, Toast.LENGTH_LONG).show();
 						orderEntityList = OrderDB.getInstance(getApplicationContext()).getVidOrders(vid);
@@ -111,6 +119,7 @@ public class AllOrders extends AppCompatActivity {
 		binding.monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				state=0;
 				if(position==0)
 					orderEntityList = OrderDB.getInstance(getApplicationContext()).getOrders();
 				else {
@@ -174,6 +183,22 @@ public class AllOrders extends AppCompatActivity {
 									catch(Exception ignored){
 									}
 					});
+			if(state==0) {
+				FirebaseFirestore.getInstance().collection("vendors").document(essentialOrderEntities.get(position).vendor_ID).get().addOnSuccessListener(snapshot -> {
+					//Show the basic details
+
+					try {
+						String name = snapshot.getString("stName");
+						holder.binding.tvVendorName.setText(name);
+					} catch (Exception ignored) {
+					}
+				});
+			}
+			else if (state==1)
+			{
+				holder.binding.title2.setVisibility(View.INVISIBLE);
+				holder.binding.tvVendorName.setVisibility(View.INVISIBLE);
+			}
 			holder.binding.tvTimestamp.setText(essentialOrderEntities.get(position).order_ID);
             binding.total.setText("Total Orders:"+essentialOrderEntities.size());
 			holder.binding.getRoot().setOnClickListener(v -> {

@@ -76,7 +76,7 @@ public class OrderingFR extends Fragment {
 		String orderList = sharedPreferences.getString("list", "");
 		//Toast.makeText(getContext(),orderList,Toast.LENGTH_LONG).show();
 		if(!orderList.isEmpty()) {
-			Toast.makeText(getContext(),"in here"+orderList,Toast.LENGTH_LONG).show();
+			//Toast.makeText(getContext(),"in here"+orderList,Toast.LENGTH_LONG).show();
 			binding.etOrderDetail.setText(orderList);
 		}
 		//Dismiss this dialog as soon as the vendor list is loaded
