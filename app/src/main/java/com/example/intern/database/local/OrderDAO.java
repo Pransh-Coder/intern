@@ -19,6 +19,8 @@ public interface OrderDAO{
 	List<String>getAllVid();
 	@Query("SELECT * FROM orders_v2 WHERE vendor_ID LIKE :vid")
 	List<EssentialOrderEntity> get_VidOrders(String vid);
-
-	
+	@Query("SELECT timestamp FROM orders_v2")
+	List<String>getAllMonth();
+	@Query("SELECT * FROM orders_v2 WHERE timestamp LIKE :timestamp")
+	List<EssentialOrderEntity> get_timeOrders(String timestamp);
 }

@@ -239,7 +239,7 @@
     <string name="weight">Weight</string>
     <string name="allergy">Allergy</string>
     <string name="if_any">If Any</string>
-    <string name="essential_services_hint">eg.\nbhindi 250gm \nAalu 2kg \nAmul Gold 4 pack \nBread 2 pack</string>
+    <string name="essential_services_hint">Press enter after each item eg.\nbhindi 250gm \nAalu 2kg \nAmul Gold 4 pack \nBread 2 pack</string>
     <string name="name_with_colon">Name : </string>
     <string name="name_here">Name Here : </string>
     <string name="ps_can_you">PS can call you  : </string>

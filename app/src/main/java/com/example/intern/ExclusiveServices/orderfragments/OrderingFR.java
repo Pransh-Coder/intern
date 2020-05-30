@@ -2,6 +2,7 @@ package com.example.intern.ExclusiveServices.orderfragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -24,6 +25,7 @@ import com.example.intern.R;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.FragmentOrderingFRBinding;
 import com.example.intern.mainapp.MainApp;
+import com.facebook.share.Share;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,6 +41,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class OrderingFR extends Fragment {
 	
@@ -68,6 +72,13 @@ public class OrderingFR extends Fragment {
 		ProgressDialog loadingDialog = new ProgressDialog(requireContext());
 		loadingDialog.setMessage("Looking for vendors in your area");
 		loadingDialog.setCancelable(false);
+		SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
+		String orderList = sharedPreferences.getString("list", "");
+		//Toast.makeText(getContext(),orderList,Toast.LENGTH_LONG).show();
+		if(!orderList.isEmpty()) {
+			Toast.makeText(getContext(),"in here"+orderList,Toast.LENGTH_LONG).show();
+			binding.etOrderDetail.setText(orderList);
+		}
 		//Dismiss this dialog as soon as the vendor list is loaded
 		loadingDialog.show();
 		//Fetch the list of vendors in the pin code
@@ -167,8 +178,8 @@ public class OrderingFR extends Fragment {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				if(position>0) {
-					vendorPOJO = vendorPOJOS.get(position);
-					viewModel.setChosenVendorID(vendorPOJOS.get(position).vendorID);
+					vendorPOJO = vendorPOJOS.get(position-1);
+					viewModel.setChosenVendorID(vendorPOJOS.get(position-1).vendorID);
 				}
 			}
 			@Override
@@ -184,13 +195,24 @@ public class OrderingFR extends Fragment {
 					//Need one of the things
 					binding.etOrderDetail.setError("Please place order");
 				}else{
+					//String orderDetail = binding.etOrderDetail.getText().toString();
+					SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
+					SharedPreferences.Editor editor = sharedPreferences.edit();
+					editor.putString("list",orderDetailEditable.toString());
+					Boolean t=editor.commit();
 					viewModel.setOrderDetailString(orderDetailEditable.toString());
 					viewModel.getNavController().navigate(R.id.action_orderingFR_to_deliveryModeFR);
 				}
 			}else{
 				String orderDetail = binding.etOrderDetail.getText().toString();
 				if(!TextUtils.isEmpty(orderDetail))viewModel.setOrderDetailString(orderDetail);
-				viewModel.getNavController().navigate(R.id.action_orderingFR_to_deliveryModeFR);
+				{
+					SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
+					SharedPreferences.Editor editor = sharedPreferences.edit();
+					editor.putString("list",orderDetail);
+					Boolean t=editor.commit();
+					viewModel.getNavController().navigate(R.id.action_orderingFR_to_deliveryModeFR);
+				}
 			}
 		});
 	}

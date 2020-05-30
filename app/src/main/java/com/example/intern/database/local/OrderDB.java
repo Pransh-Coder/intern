@@ -6,6 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -41,6 +42,11 @@ public abstract class OrderDB extends RoomDatabase {
 	public void insertOrder(EssentialOrderEntity orderEntity){
 		databaseExecutor.execute(() -> INSTANCE.orderDAO().insertOrder(orderEntity));
 	}
+	public Collection<? extends String> getMonth() {
+		Callable<List<String>> callable = () -> INSTANCE.orderDAO().getAllMonth();
+		Future<List<String>> result = databaseExecutor.submit(callable);
+		try{return result.get();}catch (Exception ignored){return null;}
+	}
 	public List<String> getVid() {
 		Callable<List<String>> callable = () -> INSTANCE.orderDAO().getAllVid();
 		Future<List<String>> result = databaseExecutor.submit(callable);
@@ -48,6 +54,11 @@ public abstract class OrderDB extends RoomDatabase {
 	}
 	public List<EssentialOrderEntity> getVidOrders(String vid) {
 		Callable<List<EssentialOrderEntity>> callable = () -> INSTANCE.orderDAO().get_VidOrders(vid);
+		Future<List<EssentialOrderEntity>> result = databaseExecutor.submit(callable);
+		try{return result.get();}catch (Exception ignored){return null;}
+	}
+	public List<EssentialOrderEntity> getMonthOrders(String timestamp) {
+		Callable<List<EssentialOrderEntity>> callable = () -> INSTANCE.orderDAO().get_timeOrders(timestamp);
 		Future<List<EssentialOrderEntity>> result = databaseExecutor.submit(callable);
 		try{return result.get();}catch (Exception ignored){return null;}
 	}

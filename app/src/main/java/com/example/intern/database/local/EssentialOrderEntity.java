@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.time.Month;
+
 @Entity(tableName = "orders_v2")
 public class EssentialOrderEntity {
 	@Ignore
@@ -13,10 +15,10 @@ public class EssentialOrderEntity {
 	@NonNull
 	public String order_ID;
 	public String vendor_ID;
-	public Long timestamp;
+	public String timestamp;
 	public EssentialOrderEntity(){}
 	//Constructor
-	public EssentialOrderEntity(String user_ID, String vendor_ID, @NonNull String order_ID, Long timestamp){
+	public EssentialOrderEntity(String user_ID, String vendor_ID, @NonNull String order_ID, String timestamp){
 		this.user_ID = user_ID;
 		this.vendor_ID = vendor_ID;
 		this.timestamp = timestamp;

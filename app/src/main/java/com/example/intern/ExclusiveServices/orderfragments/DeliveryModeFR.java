@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -29,6 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.ByteArrayOutputStream;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,6 +71,7 @@ public class DeliveryModeFR extends Fragment {
 		});
 	}
 	
+	@RequiresApi(api = Build.VERSION_CODES.O)
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -186,9 +190,10 @@ public class DeliveryModeFR extends Fragment {
 		});
 	}
 	
+	@RequiresApi(api = Build.VERSION_CODES.O)
 	private void uploadOrder(Map<String, Object> order, DocumentReference reference, ProgressDialog waitDialog) {
 		reference.collection("orders").add(order).addOnSuccessListener(documentReference -> {
-			EssentialOrderEntity orderEntity = new EssentialOrderEntity(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), viewModel.getChosenVendorID(), documentReference.getId(), System.currentTimeMillis());
+			EssentialOrderEntity orderEntity = new EssentialOrderEntity(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), viewModel.getChosenVendorID(), documentReference.getId(), LocalDate.now().getMonth().toString());
 			OrderDB.getInstance(requireContext()).insertOrder(orderEntity);
 			Intent intent = new Intent(requireContext(), OrderTrackService.class);
 			intent.putExtra(OrderTrackService.EXTRA_VENDOR_ID, viewModel.getChosenVendorID());
