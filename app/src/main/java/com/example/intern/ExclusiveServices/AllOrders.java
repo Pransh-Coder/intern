@@ -187,7 +187,7 @@ public class AllOrders extends AppCompatActivity {
 									}
 					});
 			if(state==0) {
-				FirebaseFirestore.getInstance().collection("vendors").document(essentialOrderEntities.get(position).vendor_ID).get().addOnSuccessListener(snapshot -> {
+				FirebaseFirestore.getInstance().collection("vendors").document(essentialOrderEntities.get(position).v_ID).get().addOnSuccessListener(snapshot -> {
 					//Show the basic details
 
 					try {

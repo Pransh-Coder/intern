@@ -7,6 +7,8 @@ import androidx.navigation.NavController;
 
 import com.example.intern.database.SharedPrefUtil;
 
+import java.sql.Struct;
+
 public class OrderingVM extends ViewModel {
 	private SharedPrefUtil prefUtil;
 	private NavController navController;
@@ -15,6 +17,7 @@ public class OrderingVM extends ViewModel {
 	private ImageReceivedListener imageReceivedListener;
 	private boolean hasChosenHomeDelivery;
 	private String chosenVendorID;
+	private String uid;
 	
 	public NavController getNavController() {
 		return navController;
@@ -71,7 +74,17 @@ public class OrderingVM extends ViewModel {
 	public void setChosenVendorID(String chosenVendorID) {
 		this.chosenVendorID = chosenVendorID;
 	}
-	
+
+
+	public String getuID() {
+		return uid;
+
+	}
+	public void setuID(String uid) {
+		this.uid=uid;
+
+	}
+
 	public interface ImageReceivedListener{
 		void hasReceivedImage(boolean b);
 	}

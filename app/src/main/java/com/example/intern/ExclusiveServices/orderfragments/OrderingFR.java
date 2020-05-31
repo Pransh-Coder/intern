@@ -101,7 +101,8 @@ public class OrderingFR extends Fragment {
 							.get().addOnSuccessListener(vendorDataSnap -> {
 						String name = vendorDataSnap.getString("stName");
 						String phoneNumber = vendorDataSnap.getString("phNo");
-						VendorPOJO vendorPOJO = new VendorPOJO(thisVendID, name, phoneNumber);
+						String uid=vendorDataSnap.getString("unique_id");
+						VendorPOJO vendorPOJO = new VendorPOJO(thisVendID, name, phoneNumber,uid);
 						vendorPOJOS.add(vendorPOJO);
 						//Last one
 						if(!iterator.hasNext()){
@@ -170,7 +171,7 @@ public class OrderingFR extends Fragment {
 		List<String> shopNames = new ArrayList<>();
 		shopNames.add(0,"Select Vendor Id");
 		for(VendorPOJO pojo : vendorPOJOS){
-			shopNames.add(pojo.vendorShopName);
+			shopNames.add(pojo.uid);
 		}
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, shopNames);
 		binding.vendorSpinner.setAdapter(adapter);
@@ -180,6 +181,7 @@ public class OrderingFR extends Fragment {
 				if(position>0) {
 					vendorPOJO = vendorPOJOS.get(position-1);
 					viewModel.setChosenVendorID(vendorPOJOS.get(position-1).vendorID);
+					viewModel.setuID(vendorPOJOS.get(position-1).uid);
 				}
 			}
 			@Override
@@ -221,10 +223,12 @@ public class OrderingFR extends Fragment {
 		String vendorID;
 		String vendorShopName;
 		String vendorPhoneNumber;
-		VendorPOJO(String id, String name, String phone){
+		String uid;
+		VendorPOJO(String id, String name, String phone,String thisVendID){
 			this.vendorID = id;
 			this.vendorShopName = name;
 			this.vendorPhoneNumber = phone;
+			this.uid=thisVendID;
 		}
 	}
 }

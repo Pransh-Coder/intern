@@ -193,7 +193,7 @@ public class DeliveryModeFR extends Fragment {
 	@RequiresApi(api = Build.VERSION_CODES.O)
 	private void uploadOrder(Map<String, Object> order, DocumentReference reference, ProgressDialog waitDialog) {
 		reference.collection("orders").add(order).addOnSuccessListener(documentReference -> {
-			EssentialOrderEntity orderEntity = new EssentialOrderEntity(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), viewModel.getChosenVendorID(), documentReference.getId(), LocalDate.now().getMonth().toString(),System.currentTimeMillis());
+			EssentialOrderEntity orderEntity = new EssentialOrderEntity(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), viewModel.getuID(), documentReference.getId(), LocalDate.now().getMonth().toString(),System.currentTimeMillis(),viewModel.getChosenVendorID());
 			OrderDB.getInstance(requireContext()).insertOrder(orderEntity);
 			Intent intent = new Intent(requireContext(), OrderTrackService.class);
 			intent.putExtra(OrderTrackService.EXTRA_VENDOR_ID, viewModel.getChosenVendorID());

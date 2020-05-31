@@ -15,13 +15,16 @@ public class EssentialOrderEntity {
 	public String vendor_ID;
 	public String timestamp;
 	public Long l;
+	public String v_ID;
 	public EssentialOrderEntity(){}
 	//Constructor
-	public EssentialOrderEntity(String user_ID, String vendor_ID, @NonNull String order_ID, String timestamp,Long l){
+	public EssentialOrderEntity(String user_ID, String vendor_ID, @NonNull String order_ID, String timestamp,Long l,String v_id){
 		this.user_ID = user_ID;
 		this.vendor_ID = vendor_ID;
 		this.timestamp = timestamp;
 		this.order_ID = order_ID;
 		this.l=l;
+		this.v_ID=v_id;
+
 	}
 }
