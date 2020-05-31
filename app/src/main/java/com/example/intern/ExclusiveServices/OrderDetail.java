@@ -1,117 +1,138 @@
 package com.example.intern.ExclusiveServices;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.Scroller;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.intern.R;
 import com.example.intern.databinding.ActivityOrderDetailBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class OrderDetail extends AppCompatActivity {
-	
+
 	public static final String EXTRA_DOCUMENT_ID_KEY = "doc_id";
 	public static final String EXTRA_VENDOR_ID_KEY = "vend_id";
 	ActivityOrderDetailBinding binding;
-	
+	String vendorID,documentID;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = ActivityOrderDetailBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
-		String vendorID = getIntent().getStringExtra(EXTRA_VENDOR_ID_KEY);
-		String documentID = getIntent().getStringExtra(EXTRA_DOCUMENT_ID_KEY);
-		if (vendorID == null || documentID == null){
+		binding.etOrderDetail.setMovementMethod(new ScrollingMovementMethod());
+		vendorID = getIntent().getStringExtra(EXTRA_VENDOR_ID_KEY);
+		 documentID = getIntent().getStringExtra(EXTRA_DOCUMENT_ID_KEY);
+		if (vendorID == null || documentID == null) {
 			Toast.makeText(this, "Illegal Entry!", Toast.LENGTH_SHORT).show();
 			finish();
 			return;
 		}
 		FirebaseFirestore.getInstance().collection("vendors").document(vendorID).collection("orders")
 				.document(documentID).get().addOnSuccessListener(snapshot -> {
-					//Show the basic details
-					try{
-						String orderDetails = snapshot.getString("orderDet");
-						if(orderDetails != null && !TextUtils.isEmpty(orderDetails)){
-							binding.tvOrderDetail.setVisibility(View.VISIBLE);
-							binding.tvOrderDetail.setText(orderDetails);
+			//Show the basic details
+			try {
+				String orderDetails = snapshot.getString("orderDet");
+				if (orderDetails != null && !TextUtils.isEmpty(orderDetails)) {
+					binding.tvOrderDetail.setVisibility(View.VISIBLE);
+					binding.tvOrderDetail.setText(orderDetails);
+				}
+				String imgURL = snapshot.getString("orderimg");
+				if (imgURL != null && !imgURL.isEmpty()) {
+					Glide.with(this).load(imgURL).placeholder(android.R.drawable.progress_indeterminate_horizontal)
+							.into(binding.ivOrderList);
+					binding.ivOrderList.setVisibility(View.VISIBLE);
+				}
+			} catch (Exception ignored) {
+			}
+			//Loaded basic details...check for vendorstat
+			try {
+				boolean vendorStatus = snapshot.getBoolean("vendorstat");
+				if (vendorStatus) {
+					//TODO : Flow goes where vendor accepted order
+					binding.tvStatus.setText("Status : Accepted");
+					//CHeck for billpic and total independently
+					try {
+						String billURL = snapshot.getString("billpic");
+						String total = snapshot.getString("total");
+						if (billURL != null && !TextUtils.isEmpty(billURL)) {
+							Glide.with(this).load(billURL).placeholder(android.R.drawable.progress_indeterminate_horizontal)
+									.into(binding.ivBill);
+							binding.ivBill.setVisibility(View.VISIBLE);
 						}
-						String imgURL = snapshot.getString("orderimg");
-						if(imgURL != null && !imgURL.isEmpty()){
-							Glide.with(this).load(imgURL).placeholder(android.R.drawable.progress_indeterminate_horizontal)
-									.into(binding.ivOrderList);
-							binding.ivOrderList.setVisibility(View.VISIBLE);
-						}
-					}catch (Exception ignored){}
-					//Loaded basic details...check for vendorstat
-					try{
-						boolean vendorStatus = snapshot.getBoolean("vendorstat");
-						if(vendorStatus){
-							//TODO : Flow goes where vendor accepted order
-							binding.tvStatus.setText("Status : Accepted");
-							//CHeck for billpic and total independently
-							try{
-								String billURL = snapshot.getString("billpic");
-								String total = snapshot.getString("total");
-								if(billURL != null && !TextUtils.isEmpty(billURL)){
-									Glide.with(this).load(billURL).placeholder(android.R.drawable.progress_indeterminate_horizontal)
-											.into(binding.ivBill);
-									binding.ivBill.setVisibility(View.VISIBLE);
-								}
-								binding.tvTotal.setText("Total : " + total + " INR");
-							}catch (Exception ignored){}
-							//Check for delivery status
-							try{
-								boolean deliverStatus = snapshot.getBoolean("deliverstat");
-								if(deliverStatus){
-									//Delivered, prompt user to pay or pay later
-									binding.tvStatus.setText("Status : Delivered");
-									//Check if paystat is there
-									try{
-										boolean payStat = snapshot.getBoolean("paystat");
-										if(payStat){
-											binding.tvStatus.setText("Status : Paid");
-										}else binding.tvStatus.setText("Status : Pay Later");
-									}catch (Exception e){
-										//No pay status
-										binding.btnPaid.setVisibility(View.VISIBLE);
-										binding.btnNotPaid.setVisibility(View.VISIBLE);
-										binding.btnPaid.setOnClickListener(v -> {
-											Map<String, Object> update = new HashMap<>();
-											update.put("paystat", true);
-											snapshot.getReference().update(update).addOnSuccessListener(aVoid -> {
-												Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
-												finish();
-											});
-										});
-										binding.btnNotPaid.setOnClickListener(v -> {
-											Map<String, Object> update = new HashMap<>();
-											update.put("paystat", false);
-											snapshot.getReference().update(update).addOnSuccessListener(aVoid -> {
-												Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
-												finish();
-											});
-										});
-									}
-								}else{
-									//FOR future
-								}
-							}catch (Exception e){
-								//Not yet delivered, ignore
-							}
-						}else{
-							//TODO : Vendor rejected the order
-							binding.tvStatus.setText("Status : Rejected");
-						}
-					}catch (Exception e){
-						//Not yet accepted
-						binding.tvStatus.setText("Status : Awaiting response");
+						binding.tvTotal.setText("Total : " + total + " INR");
+					} catch (Exception ignored) {
 					}
+					//Check for delivery status
+					try {
+						boolean deliverStatus = snapshot.getBoolean("deliverstat");
+						if (deliverStatus) {
+							//Delivered, prompt user to pay or pay later
+							binding.tvStatus.setText("Status : Delivered");
+							//Check if paystat is there
+							try {
+								boolean payStat = snapshot.getBoolean("paystat");
+								if (payStat) {
+									binding.tvStatus.setText("Status : Paid");
+								} else binding.tvStatus.setText("Status : Pay Later");
+							} catch (Exception e) {
+								//No pay status
+								binding.btnPaid.setVisibility(View.VISIBLE);
+								binding.btnNotPaid.setVisibility(View.VISIBLE);
+								binding.btnPaid.setOnClickListener(v -> {
+									Map<String, Object> update = new HashMap<>();
+									update.put("paystat", true);
+									snapshot.getReference().update(update).addOnSuccessListener(aVoid -> {
+										Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+										finish();
+									});
+								});
+								binding.btnNotPaid.setOnClickListener(v -> {
+									Map<String, Object> update = new HashMap<>();
+									update.put("paystat", false);
+									snapshot.getReference().update(update).addOnSuccessListener(aVoid -> {
+										Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+										finish();
+									});
+								});
+							}
+						} else {
+							//FOR future
+						}
+					} catch (Exception e) {
+						//Not yet delivered, ignore
+					}
+				} else {
+					//TODO : Vendor rejected the order
+					binding.tvStatus.setText("Status : Rejected");
+				}
+			} catch (Exception e) {
+				//Not yet accepted
+				binding.edit.setVisibility(View.VISIBLE);
+				binding.tvStatus.setText("Status : Awaiting response");
+				binding.edit.setOnClickListener(v -> {
+					binding.tvOrderDetail.setVisibility(View.INVISIBLE);
+					binding.tvTotal.setVisibility(View.INVISIBLE);
+					binding.edit.setVisibility(View.INVISIBLE);
+					binding.update.setVisibility(View.VISIBLE);
+					editOrders(snapshot);
+				});
+			}
 		});
 		/*FirebaseFirestore.getInstance().collection("vendors").document(vendorID).collection("orders")
 				.document(documentID).get().addOnSuccessListener(snapshot -> {
@@ -183,6 +204,48 @@ public class OrderDetail extends AppCompatActivity {
 					binding.recyclerItems.setAdapter(adapter);
 				});*/
 	}
+
+	private void editOrders(DocumentSnapshot snapshot) {
+		String orderDetails = snapshot.getString("orderDet");
+		if (orderDetails != null && !TextUtils.isEmpty(orderDetails)) {
+			binding.etOrderDetail.setVisibility(View.VISIBLE);
+			binding.etOrderDetail.setText(orderDetails);
+			binding.update.setOnClickListener(v -> {
+				String editList=binding.etOrderDetail.getText().toString();
+				FirebaseFirestore.getInstance().collection("vendors").document(vendorID).collection("orders")
+						.document(documentID).update("orderDet",editList).addOnSuccessListener(new OnSuccessListener<Void>() {
+					@Override
+					public void onSuccess(Void aVoid) {
+						new AlertDialog.Builder(OrderDetail.this).setTitle("Updated").setMessage(Html.fromHtml("Your Order has been Upddated Successfully.View all your orders in the order list."))
+								.setIcon(R.drawable.pslogotrimmed).setPositiveButton("Ok", null).show();
+						binding.tvOrderDetail.setVisibility(View.VISIBLE);
+						binding.etOrderDetail.setVisibility(View.INVISIBLE);
+						binding.tvOrderDetail.setText(editList);
+						binding.redit.setVisibility(View.VISIBLE);
+						binding.update.setVisibility(View.INVISIBLE);
+						binding.redit.setOnClickListener(v1 -> {
+							binding.tvOrderDetail.setVisibility(View.INVISIBLE);
+							binding.etOrderDetail.setVisibility(View.VISIBLE);
+							binding.etOrderDetail.setText(editList);
+							binding.redit.setVisibility(View.INVISIBLE);
+							binding.update.setVisibility(View.VISIBLE);
+
+						});
+
+					}
+				}).addOnFailureListener(new OnFailureListener() {
+					@Override
+					public void onFailure(@NonNull Exception e) {
+
+					}
+				});
+			});
+
+
+
+		}
+	}
+
 	
 	/*class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.DetailsViewHolder>{
 		DocumentSnapshot snapshot;

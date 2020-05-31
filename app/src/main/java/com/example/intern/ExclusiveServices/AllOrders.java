@@ -26,8 +26,11 @@ import com.example.intern.databinding.RecyclerOrderDetailItemBinding;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -199,6 +202,13 @@ public class AllOrders extends AppCompatActivity {
 				holder.binding.title2.setVisibility(View.INVISIBLE);
 				holder.binding.tvVendorName.setVisibility(View.INVISIBLE);
 			}
+			Date date=new Date(essentialOrderEntities.get(position).l);
+			SimpleDateFormat currentdateformat = new SimpleDateFormat(" dd MMM,yyyy");
+			String currentdate = currentdateformat.format(date.getTime());
+			SimpleDateFormat currenttimeformat = new SimpleDateFormat("hh:mm a");
+			String currenttime = currenttimeformat.format(date.getTime());
+			holder.binding.tvDate.setText(currentdate+" "+currenttime);
+
 			holder.binding.tvTimestamp.setText(essentialOrderEntities.get(position).order_ID);
             binding.total.setText("Total Orders:"+essentialOrderEntities.size());
 			holder.binding.getRoot().setOnClickListener(v -> {

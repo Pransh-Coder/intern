@@ -55,10 +55,11 @@
 		app:layout_constraintRight_toRightOf="parent"/>
 
 	<androidx.core.widget.NestedScrollView
+		android:id="@+id/scroll"
 		android:layout_width="0dp"
-		android:layout_height="0dp"
+		android:layout_height="wrap_content"
 		android:layout_marginBottom="20dp"
-		app:layout_constraintBottom_toTopOf="@id/pslogo"
+		app:layout_constraintBottom_toTopOf="@id/edit"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/per_hor_29_per"
@@ -82,6 +83,24 @@
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toTopOf="parent"/>
+
+			<EditText
+				android:id="@+id/et_order_detail"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="10dp"
+				android:layout_marginTop="8dp"
+				android:background="@drawable/rectangle_outline"
+				android:ellipsize="start"
+				android:visibility="gone"
+				android:scrollbars="horizontal"
+				android:hint="@string/essential_services_hint"
+				android:maxLength="200"
+				android:paddingStart="10dp"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
 
 			<com.jsibbold.zoomage.ZoomageView
 				android:id="@+id/iv_order_list"
@@ -169,11 +188,46 @@
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.core.widget.NestedScrollView>
 
+	<Button
+		android:id="@+id/edit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Edit Orders"
+		android:background="@drawable/button_outlined_selected"
+		android:visibility="invisible"
+		app:layout_constraintTop_toBottomOf="@id/scroll"
+		app:layout_constraintBottom_toTopOf="@id/pslogo"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"></Button>
+	<Button
+		android:id="@+id/update"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Update Orders"
+		android:background="@drawable/button_outlined_selected"
+		android:visibility="invisible"
+		app:layout_constraintTop_toBottomOf="@id/scroll"
+		app:layout_constraintBottom_toTopOf="@id/pslogo"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"></Button>
+	<Button
+		android:id="@+id/redit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Redit Orders"
+		android:background="@drawable/button_outlined_selected"
+		android:visibility="invisible"
+		app:layout_constraintTop_toBottomOf="@id/scroll"
+		app:layout_constraintBottom_toTopOf="@id/pslogo"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"></Button>
+
 	<ImageView
 		android:id="@+id/pslogo"
 		android:layout_width="50dp"
 		android:layout_height="50dp"
 		android:src="@drawable/pslogotrimmed"
+		app:layout_constraintTop_toBottomOf="@id/edit"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"/>
