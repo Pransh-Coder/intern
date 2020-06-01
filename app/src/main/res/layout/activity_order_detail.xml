@@ -4,11 +4,14 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".ExclusiveServices.OrderDetail">
+	tools:context=".ExclusiveServices.OrderDetail"
+	android:background="@drawable/ps">
+
 	<TextView
 		android:id="@+id/tvOrderRequests"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+		android:layout_marginTop="76dp"
 		android:background="@drawable/background_welcome"
 		android:fontFamily="@font/century_gothic_400"
 		android:padding="10dp"
@@ -17,6 +20,7 @@
 		android:textColor="@color/black"
 		android:textSize="25sp"
 		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,14 +49,14 @@
 		android:id="@+id/tv_status"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="5dp"
 		android:fontFamily="@font/century_gothic"
 		android:text="Status : "
 		android:textColor="@color/black"
 		android:textSize="18sp"
-		app:layout_constraintBottom_toTopOf="@id/per_hor_29_per"
+		app:layout_constraintBottom_toTopOf="@+id/scroll"
+		app:layout_constraintHorizontal_bias="0.468"
 		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"/>
+		app:layout_constraintRight_toRightOf="parent" />
 
 	<androidx.core.widget.NestedScrollView
 		android:id="@+id/scroll"
