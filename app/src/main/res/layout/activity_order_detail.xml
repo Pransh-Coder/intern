@@ -6,13 +6,23 @@
 	android:layout_height="match_parent"
 	tools:context=".ExclusiveServices.OrderDetail"
 	android:background="@drawable/ps">
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/ver_23"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.12" />
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guide_hor_banner_low"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_begin="201dp" />
 
 	<TextView
 		android:id="@+id/tvOrderRequests"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="76dp"
-		android:background="@drawable/background_welcome"
 		android:fontFamily="@font/century_gothic_400"
 		android:padding="10dp"
 		android:text="Order Details"
@@ -22,7 +32,7 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toBottomOf="@id/ver_23" />
 
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/per_hor_29_per"
@@ -51,8 +61,10 @@
 		android:layout_height="wrap_content"
 		android:fontFamily="@font/century_gothic"
 		android:text="Status : "
+		android:layout_marginTop="35dp"
 		android:textColor="@color/black"
 		android:textSize="18sp"
+		app:layout_constraintTop_toBottomOf="@id/guide_hor_banner_low"
 		app:layout_constraintBottom_toTopOf="@+id/scroll"
 		app:layout_constraintHorizontal_bias="0.468"
 		app:layout_constraintLeft_toLeftOf="parent"
@@ -66,7 +78,7 @@
 		app:layout_constraintBottom_toTopOf="@id/edit"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/per_hor_29_per"
+		app:layout_constraintTop_toBottomOf="@id/tv_status"
 		app:layout_constraintVertical_bias="0">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
@@ -205,7 +217,7 @@
 		android:id="@+id/edit"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Edit Orders"
+		android:text="   Edit Orders   "
 		android:layout_marginBottom="10dp"
 		android:background="@drawable/button_outlined_selected"
 		android:visibility="gone"
@@ -217,7 +229,7 @@
 		android:id="@+id/update"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Update Orders"
+		android:text="   Update Orders   "
 		android:layout_marginBottom="10dp"
 		android:background="@drawable/button_outlined_selected"
 		android:visibility="gone"
