@@ -172,7 +172,7 @@ public class AllOrders extends AppCompatActivity {
 		@SuppressLint("SetTextI18n")
 		@Override
 		public void onBindViewHolder(@NonNull OrderDetailViewHolder holder, int position) {
-			FirebaseFirestore.getInstance().collection("vendors").document(essentialOrderEntities.get(position).vendor_ID).collection("orders")
+			FirebaseFirestore.getInstance().collection("vendors").document(essentialOrderEntities.get(position).v_ID).collection("orders")
 					.document(essentialOrderEntities.get(position).order_ID).get().addOnSuccessListener(snapshot -> {
 						//Show the basic details
 
