@@ -214,7 +214,7 @@ public class AllOrders extends AppCompatActivity {
 			holder.binding.getRoot().setOnClickListener(v -> {
 				Intent intent = new Intent(context, OrderDetail.class);
 				intent.putExtra(OrderDetail.EXTRA_DOCUMENT_ID_KEY, essentialOrderEntities.get(position).order_ID);
-				intent.putExtra(OrderDetail.EXTRA_VENDOR_ID_KEY, essentialOrderEntities.get(position).vendor_ID);
+				intent.putExtra(OrderDetail.EXTRA_VENDOR_ID_KEY, essentialOrderEntities.get(position).v_ID);
 				startActivity(intent);
 			});
 		}
