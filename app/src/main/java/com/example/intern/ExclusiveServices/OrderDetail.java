@@ -6,17 +6,13 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.Scroller;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.intern.R;
 import com.example.intern.databinding.ActivityOrderDetailBinding;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -75,9 +71,11 @@ public class OrderDetail extends AppCompatActivity {
 									.into(binding.ivBill);
 							binding.ivBill.setVisibility(View.VISIBLE);
 						}
+						//Must have given total
+						assert total != null;
 						binding.tvTotal.setText("Total : " + total + " INR");
-					} catch (Exception ignored) {
-					}
+						binding.tvTotal.setVisibility(View.VISIBLE);
+					} catch (Exception ignored) {}
 					//Check for delivery status
 					try {
 						boolean deliverStatus = snapshot.getBoolean("deliverstat");
@@ -90,8 +88,9 @@ public class OrderDetail extends AppCompatActivity {
 								if (payStat) {
 									binding.tvStatus.setText("Status : Paid");
 								} else binding.tvStatus.setText("Status : Pay Later");
+								//This marks the end of a typical flow
 							} catch (Exception e) {
-								//No pay status
+								//No pay status, last usable option for user is to choose paid or pay later
 								binding.btnPaid.setVisibility(View.VISIBLE);
 								binding.btnNotPaid.setVisibility(View.VISIBLE);
 								binding.btnPaid.setOnClickListener(v -> {
@@ -118,17 +117,17 @@ public class OrderDetail extends AppCompatActivity {
 						//Not yet delivered, ignore
 					}
 				} else {
-					//TODO : Vendor rejected the order
+					//Vendor rejected the order
 					binding.tvStatus.setText("Status : Rejected");
 				}
 			} catch (Exception e) {
-				//Not yet accepted
-				binding.edit.setVisibility(View.VISIBLE);
+				//Not yet accepted, user can still edit the order
 				binding.tvStatus.setText("Status : Awaiting response");
+				binding.edit.setVisibility(View.VISIBLE);
 				binding.edit.setOnClickListener(v -> {
-					binding.tvOrderDetail.setVisibility(View.INVISIBLE);
-					binding.tvTotal.setVisibility(View.INVISIBLE);
-					binding.edit.setVisibility(View.INVISIBLE);
+					//Performing UI updates beforehand
+					binding.tvOrderDetail.setVisibility(View.GONE);
+					binding.edit.setVisibility(View.GONE);
 					binding.update.setVisibility(View.VISIBLE);
 					editOrders(snapshot);
 				});
@@ -207,38 +206,46 @@ public class OrderDetail extends AppCompatActivity {
 
 	private void editOrders(DocumentSnapshot snapshot) {
 		String orderDetails = snapshot.getString("orderDet");
+		assert orderDetails != null;
 		if (orderDetails != null && !TextUtils.isEmpty(orderDetails)) {
 			binding.etOrderDetail.setVisibility(View.VISIBLE);
 			binding.etOrderDetail.setText(orderDetails);
 			binding.update.setOnClickListener(v -> {
 				String editList=binding.etOrderDetail.getText().toString();
+				//Avoid redundant update
+				if(editList.equals(orderDetails)){
+					binding.etOrderDetail.setVisibility(View.GONE);
+					binding.tvOrderDetail.setVisibility(View.VISIBLE);
+					binding.update.setVisibility(View.GONE);
+					binding.edit.setVisibility(View.VISIBLE);
+					return;
+				}
+				//Found change ... Update order list
 				FirebaseFirestore.getInstance().collection("vendors").document(vendorID).collection("orders")
-						.document(documentID).update("orderDet",editList).addOnSuccessListener(new OnSuccessListener<Void>() {
-					@Override
-					public void onSuccess(Void aVoid) {
-						new AlertDialog.Builder(OrderDetail.this).setTitle("Updated").setMessage(Html.fromHtml("Your Order has been Upddated Successfully.View all your orders in the order list."))
-								.setIcon(R.drawable.pslogotrimmed).setPositiveButton("Ok", null).show();
-						binding.tvOrderDetail.setVisibility(View.VISIBLE);
-						binding.etOrderDetail.setVisibility(View.INVISIBLE);
-						binding.tvOrderDetail.setText(editList);
-						binding.redit.setVisibility(View.VISIBLE);
-						binding.update.setVisibility(View.INVISIBLE);
-						binding.redit.setOnClickListener(v1 -> {
-							binding.tvOrderDetail.setVisibility(View.INVISIBLE);
-							binding.etOrderDetail.setVisibility(View.VISIBLE);
-							binding.etOrderDetail.setText(editList);
-							binding.redit.setVisibility(View.INVISIBLE);
-							binding.update.setVisibility(View.VISIBLE);
-
+						.document(documentID).update("orderDet",editList).addOnSuccessListener(aVoid -> {
+							new AlertDialog.Builder(OrderDetail.this).setTitle("Updated").setMessage(Html.fromHtml("Your Order has been updated Successfully. View all your orders in the order list."))
+									.setIcon(R.drawable.pslogotrimmed).setPositiveButton("Ok", null)
+									.setOnDismissListener(dialog -> {
+										//UI Updates
+										binding.tvOrderDetail.setText(editList);
+										binding.tvOrderDetail.setVisibility(View.VISIBLE);
+										binding.etOrderDetail.setVisibility(View.GONE);
+										recreate();
+									})
+									.show();
+							/*binding.redit.setVisibility(View.VISIBLE);
+							binding.update.setVisibility(View.INVISIBLE);
+							binding.redit.setOnClickListener(v1 -> {
+								binding.tvOrderDetail.setVisibility(View.INVISIBLE);
+								binding.etOrderDetail.setVisibility(View.VISIBLE);
+								binding.etOrderDetail.setText(editList);
+								binding.redit.setVisibility(View.INVISIBLE);
+								binding.update.setVisibility(View.VISIBLE);
+	
+							});*/
+	
 						});
-
-					}
-				}).addOnFailureListener(new OnFailureListener() {
-					@Override
-					public void onFailure(@NonNull Exception e) {
-
-					}
-				});
+				//AddOnFailure is redundant as it cannot detect network issues
 			});
 
 
