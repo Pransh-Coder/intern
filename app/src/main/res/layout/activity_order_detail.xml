@@ -57,7 +57,7 @@
 	<androidx.core.widget.NestedScrollView
 		android:id="@+id/scroll"
 		android:layout_width="0dp"
-		android:layout_height="wrap_content"
+		android:layout_height="0dp"
 		android:layout_marginBottom="20dp"
 		app:layout_constraintBottom_toTopOf="@id/edit"
 		app:layout_constraintLeft_toLeftOf="parent"
@@ -97,9 +97,17 @@
 				android:hint="@string/essential_services_hint"
 				android:maxLength="200"
 				android:paddingStart="10dp"
+				app:layout_constraintBottom_toTopOf="@id/iv_order_list"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
+			
+			<androidx.constraintlayout.widget.Barrier
+				android:id="@+id/barrier_order_details_and_editor"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:barrierDirection="bottom"
+				app:constraint_referenced_ids="et_order_detail, tv_order_detail"/>
 
 
 			<com.jsibbold.zoomage.ZoomageView
@@ -110,7 +118,7 @@
 				android:visibility="gone"
 				android:layout_margin="10dp"
 				app:layout_constraintDimensionRatio="1:1"
-				app:layout_constraintTop_toBottomOf="@id/tv_order_detail"
+				app:layout_constraintTop_toBottomOf="@id/barrier_order_details_and_editor"
 				app:zoomage_animateOnReset="true"
 				app:zoomage_autoCenter="true"
 				app:zoomage_autoResetMode="UNDER"
@@ -131,6 +139,7 @@
 				android:layout_marginTop="20dp"
 				android:fontFamily="@font/century_gothic"
 				android:text="TOTAL : 0 INR"
+				android:visibility="gone"
 				android:textColor="@color/black"
 				android:textSize="20sp"
 				android:textStyle="bold"
@@ -187,47 +196,48 @@
 				app:layout_constraintTop_toTopOf="@id/btn_paid"/>
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.core.widget.NestedScrollView>
-
+	
 	<Button
 		android:id="@+id/edit"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Edit Orders"
+		android:layout_marginBottom="10dp"
 		android:background="@drawable/button_outlined_selected"
-		android:visibility="invisible"
-		app:layout_constraintTop_toBottomOf="@id/scroll"
+		android:visibility="gone"
 		app:layout_constraintBottom_toTopOf="@id/pslogo"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"></Button>
+		app:layout_constraintEnd_toEndOf="parent" />
+	
 	<Button
 		android:id="@+id/update"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Update Orders"
+		android:layout_marginBottom="10dp"
 		android:background="@drawable/button_outlined_selected"
-		android:visibility="invisible"
-		app:layout_constraintTop_toBottomOf="@id/scroll"
+		android:visibility="gone"
 		app:layout_constraintBottom_toTopOf="@id/pslogo"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"></Button>
+		app:layout_constraintEnd_toEndOf="parent" />
+	
 	<Button
 		android:id="@+id/redit"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Redit Orders"
 		android:background="@drawable/button_outlined_selected"
-		android:visibility="invisible"
-		app:layout_constraintTop_toBottomOf="@id/scroll"
+		android:layout_marginBottom="10dp"
+		android:visibility="gone"
 		app:layout_constraintBottom_toTopOf="@id/pslogo"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"></Button>
+		app:layout_constraintEnd_toEndOf="parent" />
 
 	<ImageView
 		android:id="@+id/pslogo"
 		android:layout_width="50dp"
 		android:layout_height="50dp"
 		android:src="@drawable/pslogotrimmed"
-		app:layout_constraintTop_toBottomOf="@id/edit"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"/>
