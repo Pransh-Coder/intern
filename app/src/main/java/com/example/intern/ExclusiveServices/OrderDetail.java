@@ -1,6 +1,7 @@
 package com.example.intern.ExclusiveServices;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -11,8 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.databinding.ActivityOrderDetailBinding;
+import com.example.intern.mainapp.MainApp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -39,6 +42,15 @@ public class OrderDetail extends AppCompatActivity {
 			finish();
 			return;
 		}
+		binding.back.setOnClickListener(v -> onBackPressed());
+		binding.homeBtn.setOnClickListener(v -> {
+			Intent intent = new Intent(this, MainApp.class);
+			startActivity(intent);finish();
+		});
+		binding.notifi.setOnClickListener(v -> {
+			Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+			startActivity(intent);
+		});
 		FirebaseFirestore.getInstance().collection("vendors").document(vendorID).collection("orders")
 				.document(documentID).get().addOnSuccessListener(snapshot -> {
 			//Show the basic details
@@ -87,7 +99,15 @@ public class OrderDetail extends AppCompatActivity {
 								boolean payStat = snapshot.getBoolean("paystat");
 								if (payStat) {
 									binding.tvStatus.setText("Status : Paid");
-								} else binding.tvStatus.setText("Status : Pay Later");
+								} else {binding.tvStatus.setText("Status : Pay Later");
+									binding.edit.setVisibility(View.VISIBLE);
+									binding.edit.setOnClickListener(v -> {
+										//Performing UI updates beforehand
+										binding.tvOrderDetail.setVisibility(View.GONE);
+										binding.edit.setVisibility(View.GONE);
+										binding.update.setVisibility(View.VISIBLE);
+										editOrders(snapshot);
+									});}
 								//This marks the end of a typical flow
 							} catch (Exception e) {
 								//No pay status, last usable option for user is to choose paid or pay later

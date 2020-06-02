@@ -18,11 +18,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
 import com.example.intern.database.local.EssentialOrderEntity;
 import com.example.intern.database.local.OrderDB;
 import com.example.intern.databinding.ActivityAllOrdersBinding;
 import com.example.intern.databinding.RecyclerOrderDetailItemBinding;
+import com.example.intern.mainapp.MainApp;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -80,6 +82,15 @@ public class AllOrders extends AppCompatActivity {
         spinnerDataList.add(0,"Select Vendor Id");
 		adapterspinner=new ArrayAdapter<String>(AllOrders.this,android.R.layout.simple_spinner_dropdown_item,spinnerDataList );
 		binding.orderspinner.setAdapter(adapterspinner);
+		binding.back.setOnClickListener(v -> onBackPressed());
+		binding.homeBtn.setOnClickListener(v -> {
+			Intent intent = new Intent(this, MainApp.class);
+			startActivity(intent);finish();
+		});
+		binding.notifi.setOnClickListener(v -> {
+			Intent intent = new Intent(this, NewsAndUpdatesACT.class);
+			startActivity(intent);
+		});
 
 		binding.orderspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override

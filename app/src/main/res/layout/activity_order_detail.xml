@@ -6,6 +6,36 @@
 	android:layout_height="match_parent"
 	tools:context=".ExclusiveServices.OrderDetail"
 	android:background="@drawable/ps">
+	<ImageView
+		android:id="@+id/back"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/back"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<ImageView
+		android:id="@+id/home_btn"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginLeft="7dp"
+		android:layout_marginTop="10dp"
+		android:src="@drawable/homeimg"
+		app:layout_constraintLeft_toRightOf="@+id/back"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<ImageView
+		android:id="@+id/notifi"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginTop="10dp"
+		android:layout_marginRight="10dp"
+		android:src="@drawable/notification"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/ver_23"
 		android:layout_width="match_parent"
