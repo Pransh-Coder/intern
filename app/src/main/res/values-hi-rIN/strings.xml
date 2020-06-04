@@ -268,4 +268,6 @@
     <string name="thank_you_for_order">ऑर्डर के लिए धन्यवाद!</string>
     <string name="order_ready">ऑर्डर तैयार है</string>
     <string name="thank_you_for_accepting_order">ऑर्डर स्वीकार करने के लिए धन्यवाद!</string>
+    <string name="item">Item</string>
+    <string name="price">Price</string>
 </resources>

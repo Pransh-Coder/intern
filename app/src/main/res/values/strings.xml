@@ -273,7 +273,9 @@
     <string name="thank_you_for_order">Thank you for order!</string>
     <string name="order_ready">Order Ready</string>
     <string name="thank_you_for_accepting_order">Thank you for\n Accepting order!</string>
-    <string-array name="timeslots">
+	<string name="item">Item</string>
+	<string name="price">Price</string>
+	<string-array name="timeslots">
         <item>Choose Time Slot…</item>
         <item>10AM-12PM</item>
         <item>12PM-2PM</item>

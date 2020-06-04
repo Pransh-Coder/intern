@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,20 +23,23 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.intern.ExclusiveServices.AllOrders;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
+import com.example.intern.custom.PriceChartDialog;
+import com.example.intern.database.PriceChartItemPOJO;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.FragmentOrderingFRBinding;
 import com.example.intern.mainapp.MainApp;
-import com.facebook.share.Share;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -49,7 +53,6 @@ public class OrderingFR extends Fragment {
 	private FragmentOrderingFRBinding binding;
 	private OrderingVM viewModel;
 	private List<VendorPOJO> vendorPOJOS;
-	private VendorPOJO vendorPOJO;
 	public OrderingFR() {}
 	
 	@Override
@@ -155,7 +158,7 @@ public class OrderingFR extends Fragment {
 
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				//This sets a textview to the current length
-				binding.charCount2.setText(String.valueOf(s.length())+"/200");
+				binding.charCount2.setText(s.length() +"/200");
 			}
 
 			public void afterTextChanged(Editable s) {
@@ -179,13 +182,41 @@ public class OrderingFR extends Fragment {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				if(position>0) {
-					vendorPOJO = vendorPOJOS.get(position-1);
 					viewModel.setChosenVendorID(vendorPOJOS.get(position-1).vendorID);
 					viewModel.setuID(vendorPOJOS.get(position-1).uid);
+					binding.tvViewPriceList.setVisibility(View.VISIBLE);
+				}else{
+					//Hide the view price list option
+					binding.tvViewPriceList.setVisibility(View.GONE);
 				}
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}
+		});
+		//TODO : Set a click listener to show the price list to user
+		binding.tvViewPriceList.setOnClickListener(v -> {
+			if (binding.tvViewPriceList.getVisibility() != View.VISIBLE) throw new AssertionError();
+			FirebaseFirestore.getInstance().collection("vendors").document(viewModel.getChosenVendorID()).collection("pricelist")
+					.document("list").get().addOnSuccessListener(documentSnapshot -> {
+						String priceListJSON = documentSnapshot.getString("jsonlist");
+						if(priceListJSON == null){
+							Toast.makeText(requireContext(), "Vendor has no price list", Toast.LENGTH_SHORT).show();
+						}else{
+							Log.d("json", "proceedNow: " + priceListJSON);
+							//Convert and show dialog
+							Type typeToken = new TypeToken<List<PriceChartItemPOJO>>(){}.getType();
+							List<PriceChartItemPOJO> priceChartItemPOJOList = new Gson().fromJson(priceListJSON, typeToken);
+							for(PriceChartItemPOJO pojo : priceChartItemPOJOList){
+								Log.d("json", "proceedNow: " + pojo.item + " " + pojo.price);
+							}
+							PriceChartDialog priceChartDialog = new PriceChartDialog(requireContext(), priceChartItemPOJOList, item_name -> {
+								//Add this item to the list
+								Toast.makeText(requireContext(), "Added Item", Toast.LENGTH_SHORT).show();
+								binding.etOrderDetail.append("\n" + item_name);
+							});
+							priceChartDialog.show(getChildFragmentManager(), "PRICE_CHART");
+						}
+			});
 		});
 		//Do all things here
 		binding.ivOrderList.setOnClickListener(v -> ImagePicker.Companion.with(requireActivity()).crop().compress(1024).start());
