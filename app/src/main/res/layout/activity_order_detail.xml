@@ -6,6 +6,7 @@
 	android:layout_height="match_parent"
 	tools:context=".ExclusiveServices.OrderDetail"
 	android:background="@drawable/ps">
+	
 	<ImageView
 		android:id="@+id/back"
 		android:layout_width="40dp"
@@ -154,8 +155,7 @@
 				android:layout_height="wrap_content"
 				app:barrierDirection="bottom"
 				app:constraint_referenced_ids="et_order_detail, tv_order_detail"/>
-
-
+			
 			<com.jsibbold.zoomage.ZoomageView
 				android:id="@+id/iv_order_list"
 				android:layout_width="0dp"
@@ -214,6 +214,65 @@
 				app:zoomage_restrictBounds="false"
 				app:zoomage_translatable="true"
 				app:zoomage_zoomable="true" />
+			
+			<TextView
+				android:id="@+id/tv_return_details"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="10dp"
+				android:fontFamily="@font/century_gothic"
+				android:gravity="center"
+				android:text="asdfasdfasdfsadfasdf:Asfasdf"
+				android:textColor="@color/black"
+				android:textSize="15sp"
+				android:visibility="gone"
+				app:layout_constraintTop_toBottomOf="@id/iv_bill"/>
+			
+			<LinearLayout
+				android:id="@+id/linear_return"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:orientation="vertical"
+				android:visibility="gone"
+				app:layout_constraintTop_toBottomOf="@id/tv_return_details">
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/century_gothic"
+					android:gravity="center"
+					android:text="Have Something to Return ?"
+					android:textColor="@color/black"
+					android:textSize="14sp"/>
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="5dp"
+					android:orientation="horizontal">
+					<EditText
+						android:id="@+id/et_return_notes"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:hint="Return Notes"/>
+					<EditText
+						android:id="@+id/et_return_amount"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:hint="Return Amount"
+						android:inputType="number"
+						android:maxLength="5"/>
+				</LinearLayout>
+				<Button
+					android:id="@+id/btn_return"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginTop="5dp"
+					android:background="@drawable/gradient_button"
+					android:text="Return"/>
+			</LinearLayout>
 
 			<Button
 				android:id="@+id/btn_paid"
@@ -227,7 +286,8 @@
 				android:textStyle="bold"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toLeftOf="@id/btn_not_paid"
-				app:layout_constraintTop_toBottomOf="@id/iv_bill"/>
+				app:layout_constraintTop_toBottomOf="@id/linear_return"/>
+			
 			<Button
 				android:id="@+id/btn_not_paid"
 				android:layout_width="wrap_content"

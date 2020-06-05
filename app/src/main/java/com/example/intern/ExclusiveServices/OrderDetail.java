@@ -14,10 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.intern.NewsAndUpdatesACT;
 import com.example.intern.R;
+import com.example.intern.database.ReturnPOJO;
 import com.example.intern.databinding.ActivityOrderDetailBinding;
 import com.example.intern.mainapp.MainApp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,8 +28,8 @@ public class OrderDetail extends AppCompatActivity {
 
 	public static final String EXTRA_DOCUMENT_ID_KEY = "doc_id";
 	public static final String EXTRA_VENDOR_ID_KEY = "vend_id";
-	ActivityOrderDetailBinding binding;
-	String vendorID,documentID;
+	private ActivityOrderDetailBinding binding;
+	private String vendorID,documentID;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,22 +94,48 @@ public class OrderDetail extends AppCompatActivity {
 					try {
 						boolean deliverStatus = snapshot.getBoolean("deliverstat");
 						if (deliverStatus) {
-							//Delivered, prompt user to pay or pay later
 							binding.tvStatus.setText("Status : Delivered");
+							//Search if anything was returned or not and show it, if not, show the option to return, revoke it later if paid for order
+							String returnStatus = snapshot.getString("return");
+							if(returnStatus != null){
+								//Found that user has already returned some things from order
+								ReturnPOJO returnPOJO = new Gson().fromJson(returnStatus, ReturnPOJO.class);
+								binding.tvReturnDetails.setText("Return Notes : " + returnPOJO.notes + "\nAmount(INR) : " + returnPOJO.amount);
+								binding.tvReturnDetails.setVisibility(View.VISIBLE);
+							}else{
+								//Let user have the option to return something
+								binding.linearReturn.setVisibility(View.VISIBLE);
+								binding.btnReturn.setOnClickListener(v -> {
+									String returnNotes = binding.etReturnNotes.getText().toString();
+									String returnAmount = binding.etReturnAmount.getText().toString();
+									if(TextUtils.isEmpty(returnNotes)){
+										binding.etReturnNotes.setError("Enter return notes");
+									}else if(TextUtils.isEmpty(returnAmount)){
+										binding.etReturnAmount.setError("Enter return amount");
+									}else{
+										//TODO : Make a return scheme
+										ReturnPOJO returnPOJO = new ReturnPOJO(returnNotes, Integer.parseInt(returnAmount));
+										String returnJSON = new Gson().toJson(returnPOJO);
+										Map<String, Object> returnPayload = new HashMap<>();
+										returnPayload.put("return", returnJSON);
+										snapshot.getReference().update(returnPayload).addOnSuccessListener(aVoid -> {
+											Toast.makeText(this, "Updated Return Status", Toast.LENGTH_SHORT).show();
+											recreate();
+										});
+									}
+								});
+							}
+							//Delivered, prompt user to pay or pay later
 							//Check if paystat is there
 							try {
 								boolean payStat = snapshot.getBoolean("paystat");
+								//If user has paid, revoke access to return anything
+								binding.linearReturn.setVisibility(View.GONE);
 								if (payStat) {
 									binding.tvStatus.setText("Status : Paid");
-								} else {binding.tvStatus.setText("Status : Pay Later");
-									binding.edit.setVisibility(View.VISIBLE);
-									binding.edit.setOnClickListener(v -> {
-										//Performing UI updates beforehand
-										binding.tvOrderDetail.setVisibility(View.GONE);
-										binding.edit.setVisibility(View.GONE);
-										binding.update.setVisibility(View.VISIBLE);
-										editOrders(snapshot);
-									});}
+								} else {
+									binding.tvStatus.setText("Status : Pay Later");
+								}
 								//This marks the end of a typical flow
 							} catch (Exception e) {
 								//No pay status, last usable option for user is to choose paid or pay later
