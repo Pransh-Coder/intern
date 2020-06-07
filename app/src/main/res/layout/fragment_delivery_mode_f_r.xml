@@ -259,16 +259,44 @@
 				app:layout_constraintRight_toRightOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/constraint_home_delivery"/>
 			
-			<Spinner
-				android:id="@+id/spinner_time_slot"
-				android:layout_width="wrap_content"
-				android:layout_height="0dp"
+			<LinearLayout
+				android:id="@+id/linear_time_slot"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
 				android:layout_marginTop="10dp"
-				android:entries="@array/timeslots"
+				android:orientation="vertical"
 				android:visibility="gone"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/et_address"/>
+				app:layout_constraintTop_toBottomOf="@id/et_address">
+				
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:gravity="center_horizontal"
+					android:orientation="horizontal">
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center_vertical"
+						android:text="Choose A Time Slot : "
+						android:textColor="@color/black"/>
+					<Spinner
+						android:id="@+id/spinner_time_slot"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center_horizontal"/>
+				</LinearLayout>
+				<TextView
+					android:id="@+id/tv_warning_delay_delivery"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center_horizontal"
+					android:text="*Delivery May Be Done Next Business Day"
+					android:textColor="@android:color/holo_red_dark"
+					android:visibility="gone"/>
+			</LinearLayout>
 			
 			<Button
 				android:id="@+id/btn_submit"
@@ -281,7 +309,7 @@
 				android:visibility="gone"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/spinner_time_slot"/>
+				app:layout_constraintTop_toBottomOf="@id/linear_time_slot"/>
 			
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.core.widget.NestedScrollView>

@@ -8,9 +8,11 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,13 +34,18 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.ByteArrayOutputStream;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DeliveryModeFR extends Fragment {
 	
 	private FragmentDeliveryModeFRBinding binding;
 	private OrderingVM viewModel;
+	private static final int BUFFER_TIME_IN_HOURS = 4;
 	public DeliveryModeFR() {
 		// Required empty public constructor
 	}
@@ -75,10 +82,11 @@ public class DeliveryModeFR extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
+		setUpTimeSlots();
 		//Set click listeners
 		binding.constraintTakeaway.setOnClickListener(v -> {
 			binding.btnSubmit.setVisibility(View.VISIBLE);
-			binding.spinnerTimeSlot.setVisibility(View.GONE);
+			binding.linearTimeSlot.setVisibility(View.GONE);
 			binding.etAddress.setVisibility(View.GONE);
 			binding.constraintTakeaway.setBackground(requireActivity().getDrawable(R.drawable.rectangle_green_outline));
 			binding.constraintHomeDelivery.setBackground(requireActivity().getDrawable(R.drawable.rectangle_outline));
@@ -86,7 +94,7 @@ public class DeliveryModeFR extends Fragment {
 		});
 		binding.constraintHomeDelivery.setOnClickListener(v -> {
 			binding.btnSubmit.setVisibility(View.VISIBLE);
-			binding.spinnerTimeSlot.setVisibility(View.VISIBLE);
+			binding.linearTimeSlot.setVisibility(View.VISIBLE);
 			binding.etAddress.setVisibility(View.VISIBLE);
 			binding.constraintHomeDelivery.setBackground(requireActivity().getDrawable(R.drawable.rectangle_green_outline));
 			binding.constraintTakeaway.setBackground(requireActivity().getDrawable(R.drawable.rectangle_outline));
@@ -116,7 +124,7 @@ public class DeliveryModeFR extends Fragment {
 					Toast.makeText(requireContext(), "Choose a time slot", Toast.LENGTH_SHORT).show();
 					return;
 				}else{
-					timeSlot = getResources().getStringArray(R.array.timeslots)[binding.spinnerTimeSlot.getSelectedItemPosition()];
+					timeSlot = (String) binding.spinnerTimeSlot.getSelectedItem();
 				}
 				//Check for Address
 				if(TextUtils.isEmpty(address) || address.equals("null") || address.length() < 10){
@@ -143,7 +151,6 @@ public class DeliveryModeFR extends Fragment {
 					taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
 						String imageDownloadURI = uri.toString();
 						order.put("orderimg", imageDownloadURI);
-						//TODO : upload the order on vendor side toggling first
 						FirebaseFirestore.getInstance().collection("vendors").document(viewModel.getChosenVendorID()).get().addOnSuccessListener(snapshot -> {
 							try{
 								long ordercount = snapshot.getLong("total_orders");
@@ -188,6 +195,43 @@ public class DeliveryModeFR extends Fragment {
 				});
 			}
 		});
+	}
+	
+	private void setUpTimeSlots() {
+		//TODO : Give a logic to hide previous time slots and hide really near time slots,
+		// Give at least 4 hours between choose-able time slot and time of placing order
+		List<String> availableTimeSlots = Arrays.asList(getResources().getStringArray(R.array.timeslots));
+		List<String> timeSlots = new ArrayList<>(availableTimeSlots);
+		java.util.Calendar calendar = java.util.Calendar.getInstance();
+		calendar.setTimeZone(java.util.TimeZone.getTimeZone("Asia/Kolkata"));
+		int currentHour = calendar.get(java.util.Calendar.HOUR_OF_DAY);
+		int currentMinute = calendar.get(Calendar.MINUTE);
+		//if minutes are more than 15, increment hour for the logic
+		if(currentMinute >= 15)currentHour++;
+		//Now counting from this current hour, increment 4 hours for a buffer time for vendor
+		currentHour+=BUFFER_TIME_IN_HOURS;
+		//Check if it exceeded 24 hour limit
+		if(currentHour >= 24){
+			currentHour = currentHour%24;
+		}
+		//Now perform checks if this hour lies in any of the lastly available slots, if not , show all, means next day
+		if(currentHour >= 12){
+			//Missed first slot
+			timeSlots.remove(0);
+		}
+		if(currentHour >= 17){
+			//Missed second time slot too
+			timeSlots.remove(0);
+		}
+		if(currentHour >= 21){
+			//Missed the last one too, show all now, for next day
+			timeSlots.clear();
+			Log.d("TimeSlot", "onResume: removed all time slots, adding again for next day");
+			timeSlots.addAll(availableTimeSlots);
+			binding.tvWarningDelayDelivery.setVisibility(View.VISIBLE);
+		}
+		ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, timeSlots);
+		binding.spinnerTimeSlot.setAdapter(adapter);
 	}
 	
 	@RequiresApi(api = Build.VERSION_CODES.O)

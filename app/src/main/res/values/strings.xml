@@ -276,10 +276,9 @@
 	<string name="item">Item</string>
 	<string name="price">Price</string>
 	<string-array name="timeslots">
-        <item>Choose Time Slot…</item>
         <item>10AM-12PM</item>
-        <item>12PM-2PM</item>
-        <item>4PM-6PM</item>
+        <item>3PM-5PM</item>
+        <item>7PM-9PM</item>
     </string-array>
     <string-array name="order_summary">
         <item>Order Summary</item>
