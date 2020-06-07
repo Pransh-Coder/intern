@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.intern.ExclusiveServices.OrderTrackService;
 import com.example.intern.R;
+import com.example.intern.custom.OrderSummaryDialog;
 import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.database.local.EssentialOrderEntity;
 import com.example.intern.database.local.OrderDB;
@@ -33,13 +35,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.ByteArrayOutputStream;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class DeliveryModeFR extends Fragment {
 	
@@ -101,100 +103,111 @@ public class DeliveryModeFR extends Fragment {
 			viewModel.setHasChosenHomeDelivery(true);
 		});
 		binding.btnSubmit.setOnClickListener(v -> {
-			Map<String, Object> order = new HashMap<>();
-			//add timestamp of order
-			order.put("timestamp", System.currentTimeMillis());
-			//add user phone number
-			order.put("userphone", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null));
-			//Add user UID
-			order.put("useruid", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null));
-			//Send user name explicitly
-			order.put("username", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, null));
-			//add order details if there
-			if(viewModel.getOrderDetailString()!= null){
-				//Upload order string if there
-				order.put("orderDet", viewModel.getOrderDetailString());
-			}
-			//add address if needed with timeslot
+			//TODO : Show the summary dialog first
+			String deliveryMode;
 			if(viewModel.isHasChosenHomeDelivery()){
-				String address = binding.etAddress.getText().toString();
-				String timeSlot;
-				//Check for time slot
-				if(binding.spinnerTimeSlot.getSelectedItemPosition()==0){
-					Toast.makeText(requireContext(), "Choose a time slot", Toast.LENGTH_SHORT).show();
-					return;
-				}else{
-					timeSlot = (String) binding.spinnerTimeSlot.getSelectedItem();
-				}
-				//Check for Address
-				if(TextUtils.isEmpty(address) || address.equals("null") || address.length() < 10){
-					Toast.makeText(requireContext(), "Enter address", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				//fulfilled conditions for home delivery
-				order.put("address", address);
-				order.put("time", timeSlot);
+				deliveryMode = "Home Delivery";
+			}else{
+				deliveryMode = "Take Away";
 			}
-			//Wait dialog
-			ProgressDialog dialog = new ProgressDialog(requireContext());
-			dialog.setTitle(R.string.please_wait);
-			dialog.setMessage("Uploading your request");
-			dialog.setIcon(R.drawable.pslogotrimmed);
-			dialog.setCancelable(false);
-			dialog.show();
-			if(viewModel.getOrderImageBitmap()!= null){
-				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-				viewModel.getOrderImageBitmap().compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-				byte[] imageData = outputStream.toByteArray();
-				FirebaseStorage.getInstance().getReference().child("users").child(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY,null))
-						.child("orders/" + System.currentTimeMillis() + ".png").putBytes(imageData).addOnSuccessListener(taskSnapshot -> {
-					taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
-						String imageDownloadURI = uri.toString();
-						order.put("orderimg", imageDownloadURI);
-						FirebaseFirestore.getInstance().collection("vendors").document(viewModel.getChosenVendorID()).get().addOnSuccessListener(snapshot -> {
-							try{
-								long ordercount = snapshot.getLong("total_orders");
-								ordercount++;
-								Map<String, Object> updateToggle = new HashMap<>();
-								updateToggle.put("total_orders", ordercount);
-								snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
-									uploadOrder(order, snapshot.getReference(), dialog);
-								});
-							}catch (Exception e){
-								//Did not find toggle, make one
-								long ordercount = 0L;
-								Map<String, Object> updateToggle = new HashMap<>();
-								updateToggle.put("total_orders", ordercount);
-								snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
-									uploadOrder(order, snapshot.getReference(), dialog);
-								});
-							}
-						});
+			OrderSummaryDialog summaryDialog = new OrderSummaryDialog(requireContext(), viewModel.getVendorName(), viewModel.getOrderDetailString(), viewModel.isHasChosenHomeDelivery(), viewModel.getTimeSlot() , viewModel.getOrderImageBitmap(), canProceed -> {
+				if(canProceed) {
+					makeOrder();
+				}else{
+					Toast.makeText(requireContext(), "Order Cancelled", Toast.LENGTH_SHORT).show();
+				}
+			} );
+			summaryDialog.setCancelable(false);
+			summaryDialog.show(getChildFragmentManager(), "SUMMARY");
+		});
+	}
+	
+	private void makeOrder(){
+		Map<String, Object> order = new HashMap<>();
+		//add timestamp of order
+		order.put("timestamp", System.currentTimeMillis());
+		//add user phone number
+		order.put("userphone", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_PHONE_NO, null));
+		//Add user UID
+		order.put("useruid", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null));
+		//Send user name explicitly
+		order.put("username", viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_NAME_KEY, null));
+		//add order details if there
+		if(viewModel.getOrderDetailString()!= null){
+			//Upload order string if there
+			order.put("orderDet", viewModel.getOrderDetailString());
+		}
+		//add address if needed with timeslot
+		if(viewModel.isHasChosenHomeDelivery()){
+			String address = binding.etAddress.getText().toString();
+			//Check for Address
+			if(TextUtils.isEmpty(address) || address.equals("null") || address.length() < 10){
+				Toast.makeText(requireContext(), "Enter address", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			//fulfilled conditions for home delivery
+			order.put("address", address);
+			order.put("time", viewModel.getTimeSlot());
+		}
+		//Wait dialog
+		ProgressDialog dialog = new ProgressDialog(requireContext());
+		dialog.setTitle(R.string.please_wait);
+		dialog.setMessage("Uploading your request");
+		dialog.setIcon(R.drawable.pslogotrimmed);
+		dialog.setCancelable(false);
+		dialog.show();
+		if(viewModel.getOrderImageBitmap()!= null){
+			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+			viewModel.getOrderImageBitmap().compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+			byte[] imageData = outputStream.toByteArray();
+			FirebaseStorage.getInstance().getReference().child("users").child(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY,null))
+					.child("orders/" + System.currentTimeMillis() + ".png").putBytes(imageData).addOnSuccessListener(taskSnapshot -> {
+				taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
+					String imageDownloadURI = uri.toString();
+					order.put("orderimg", imageDownloadURI);
+					FirebaseFirestore.getInstance().collection("vendors").document(viewModel.getChosenVendorID()).get().addOnSuccessListener(snapshot -> {
+						try{
+							long ordercount = snapshot.getLong("total_orders");
+							ordercount++;
+							Map<String, Object> updateToggle = new HashMap<>();
+							updateToggle.put("total_orders", ordercount);
+							snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
+								uploadOrder(order, snapshot.getReference(), dialog);
+							});
+						}catch (Exception e){
+							//Did not find toggle, make one
+							long ordercount = 0L;
+							Map<String, Object> updateToggle = new HashMap<>();
+							updateToggle.put("total_orders", ordercount);
+							snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
+								uploadOrder(order, snapshot.getReference(), dialog);
+							});
+						}
 					});
 				});
-			}else{
-				//No Image provided, no need for uri
-				FirebaseFirestore.getInstance().collection("vendors").document(viewModel.getChosenVendorID()).get().addOnSuccessListener(snapshot -> {
-					try{
-						long ordercount = snapshot.getLong("total_orders");
-						ordercount++;
-						Map<String, Object> updateToggle = new HashMap<>();
-						updateToggle.put("total_orders", ordercount);
-						snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
-							uploadOrder(order, snapshot.getReference(), dialog);
-						});
-					}catch (Exception e){
-						//Did not find toggle, make one
-						long ordercount = 0L;
-						Map<String, Object> updateToggle = new HashMap<>();
-						updateToggle.put("total_orders", ordercount);
-						snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
-							uploadOrder(order, snapshot.getReference(), dialog);
-						});
-					}
-				});
-			}
-		});
+			});
+		}else{
+			//No Image provided, no need for uri
+			FirebaseFirestore.getInstance().collection("vendors").document(viewModel.getChosenVendorID()).get().addOnSuccessListener(snapshot -> {
+				try{
+					long ordercount = snapshot.getLong("total_orders");
+					ordercount++;
+					Map<String, Object> updateToggle = new HashMap<>();
+					updateToggle.put("total_orders", ordercount);
+					snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
+						uploadOrder(order, snapshot.getReference(), dialog);
+					});
+				}catch (Exception e){
+					//Did not find toggle, make one
+					long ordercount = 0L;
+					Map<String, Object> updateToggle = new HashMap<>();
+					updateToggle.put("total_orders", ordercount);
+					snapshot.getReference().update(updateToggle).addOnSuccessListener(aVoid -> {
+						uploadOrder(order, snapshot.getReference(), dialog);
+					});
+				}
+			});
+		}
 	}
 	
 	private void setUpTimeSlots() {
@@ -232,12 +245,21 @@ public class DeliveryModeFR extends Fragment {
 		}
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, timeSlots);
 		binding.spinnerTimeSlot.setAdapter(adapter);
+		binding.spinnerTimeSlot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				viewModel.setTimeSlot((String)binding.spinnerTimeSlot.getSelectedItem());
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {}
+		});
 	}
 	
-	@RequiresApi(api = Build.VERSION_CODES.O)
 	private void uploadOrder(Map<String, Object> order, DocumentReference reference, ProgressDialog waitDialog) {
 		reference.collection("orders").add(order).addOnSuccessListener(documentReference -> {
-			EssentialOrderEntity orderEntity = new EssentialOrderEntity(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), viewModel.getuID(), documentReference.getId(), LocalDate.now().getMonth().toString(),System.currentTimeMillis(),viewModel.getChosenVendorID());
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
+			EssentialOrderEntity orderEntity = new EssentialOrderEntity(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), viewModel.getuID(), documentReference.getId(), Integer.toString(calendar.get(Calendar.MONTH) + 1),System.currentTimeMillis(),viewModel.getChosenVendorID());
 			OrderDB.getInstance(requireContext()).insertOrder(orderEntity);
 			Intent intent = new Intent(requireContext(), OrderTrackService.class);
 			intent.putExtra(OrderTrackService.EXTRA_VENDOR_ID, viewModel.getChosenVendorID());

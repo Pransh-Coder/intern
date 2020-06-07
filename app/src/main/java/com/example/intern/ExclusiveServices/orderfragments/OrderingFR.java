@@ -1,5 +1,6 @@
 package com.example.intern.ExclusiveServices.orderfragments;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,13 +30,10 @@ import com.example.intern.database.SharedPrefUtil;
 import com.example.intern.databinding.FragmentOrderingFRBinding;
 import com.example.intern.mainapp.MainApp;
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -75,7 +73,7 @@ public class OrderingFR extends Fragment {
 		ProgressDialog loadingDialog = new ProgressDialog(requireContext());
 		loadingDialog.setMessage("Looking for vendors in your area");
 		loadingDialog.setCancelable(false);
-		SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
+		SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
 		String orderList = sharedPreferences.getString("list", "");
 		//Toast.makeText(getContext(),orderList,Toast.LENGTH_LONG).show();
 		if(!orderList.isEmpty()) {
@@ -134,38 +132,33 @@ public class OrderingFR extends Fragment {
 			startActivity(intent);
 		});
 		binding.searchVendor.setOnClickListener(v -> {
-			String vendorPhone=binding.searchVendor.getText().toString();
-			// Create a reference to the cities collection
+			String uniqueID = binding.searchVendor.getText().toString();
 			CollectionReference vendor = FirebaseFirestore.getInstance().collection("vendors");
-// Create a query against the collection.
-			Query query = vendor.whereEqualTo("phNo", vendorPhone);
-// retrieve  query results asynchronously using query.get()
-			query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-
-				@Override
-				public void onComplete(@NonNull Task<QuerySnapshot> task) {
-					if (task.isSuccessful()) {
-						for (QueryDocumentSnapshot document : task.getResult()) {
-							viewModel.setChosenVendorID(document.getId());
-						}
+			Query query = vendor.whereEqualTo("unique_id", uniqueID);
+			query.get().addOnCompleteListener(task -> {
+				if (task.isSuccessful()) {
+					if(task.getResult() == null){
+						Toast.makeText(requireContext(), "Could not Find Vendor", Toast.LENGTH_SHORT).show();
+						return;
+					}
+					for (QueryDocumentSnapshot document : task.getResult()) {
+						Toast.makeText(requireContext(), "Found Vendor", Toast.LENGTH_SHORT).show();
+						viewModel.setChosenVendorID(document.getId());
+						viewModel.setVendorName(document.getString("stName"));
 					}
 				}
 			});
 		});
 		final TextWatcher mTextEditorWatcher = new TextWatcher() {
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
-
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			@SuppressLint("SetTextI18n")
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				//This sets a textview to the current length
-				binding.charCount2.setText(s.length() +"/200");
+				binding.charCount2.setText(s.length() + "/200");
 			}
-
-			public void afterTextChanged(Editable s) {
-			}
+			public void afterTextChanged(Editable s) {}
 		};
 		binding.etOrderDetail.addTextChangedListener(mTextEditorWatcher);
-
 	}
 	
 	
@@ -174,7 +167,7 @@ public class OrderingFR extends Fragment {
 		List<String> shopNames = new ArrayList<>();
 		shopNames.add(0,"Select Vendor Id");
 		for(VendorPOJO pojo : vendorPOJOS){
-			shopNames.add(pojo.uid);
+			shopNames.add(pojo.vendorShopName);
 		}
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, shopNames);
 		binding.vendorSpinner.setAdapter(adapter);
@@ -184,6 +177,7 @@ public class OrderingFR extends Fragment {
 				if(position>0) {
 					viewModel.setChosenVendorID(vendorPOJOS.get(position-1).vendorID);
 					viewModel.setuID(vendorPOJOS.get(position-1).uid);
+					viewModel.setVendorName(vendorPOJOS.get(position-1).vendorShopName);
 					binding.tvViewPriceList.setVisibility(View.VISIBLE);
 				}else{
 					//Hide the view price list option
@@ -193,7 +187,7 @@ public class OrderingFR extends Fragment {
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}
 		});
-		//TODO : Set a click listener to show the price list to user
+		//Set a click listener to show the price list to user
 		binding.tvViewPriceList.setOnClickListener(v -> {
 			if (binding.tvViewPriceList.getVisibility() != View.VISIBLE) throw new AssertionError();
 			FirebaseFirestore.getInstance().collection("vendors").document(viewModel.getChosenVendorID()).collection("pricelist")
@@ -221,6 +215,10 @@ public class OrderingFR extends Fragment {
 		//Do all things here
 		binding.ivOrderList.setOnClickListener(v -> ImagePicker.Companion.with(requireActivity()).crop().compress(1024).start());
 		binding.btnSubmit.setOnClickListener(v -> {
+			if(viewModel.getChosenVendorID() == null && viewModel.getVendorName() == null){
+				Toast.makeText(requireContext(), "Please Choose a vendor", Toast.LENGTH_SHORT).show();
+				return;
+			}
 			//Forward with collected data
 			if(viewModel.getOrderImageBitmap()==null){
 				Editable orderDetailEditable = binding.etOrderDetail.getText();
@@ -229,10 +227,10 @@ public class OrderingFR extends Fragment {
 					binding.etOrderDetail.setError("Please place order");
 				}else{
 					//String orderDetail = binding.etOrderDetail.getText().toString();
-					SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
+					SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
 					SharedPreferences.Editor editor = sharedPreferences.edit();
 					editor.putString("list",orderDetailEditable.toString());
-					Boolean t=editor.commit();
+					editor.apply();
 					viewModel.setOrderDetailString(orderDetailEditable.toString());
 					viewModel.getNavController().navigate(R.id.action_orderingFR_to_deliveryModeFR);
 				}
@@ -240,7 +238,7 @@ public class OrderingFR extends Fragment {
 				String orderDetail = binding.etOrderDetail.getText().toString();
 				if(!TextUtils.isEmpty(orderDetail))viewModel.setOrderDetailString(orderDetail);
 				{
-					SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
+					SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
 					SharedPreferences.Editor editor = sharedPreferences.edit();
 					editor.putString("list",orderDetail);
 					Boolean t=editor.commit();

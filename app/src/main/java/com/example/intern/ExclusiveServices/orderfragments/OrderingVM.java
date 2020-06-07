@@ -7,11 +7,11 @@ import androidx.navigation.NavController;
 
 import com.example.intern.database.SharedPrefUtil;
 
-import java.sql.Struct;
-
 public class OrderingVM extends ViewModel {
 	private SharedPrefUtil prefUtil;
 	private NavController navController;
+	private String vendorName = null;
+	private String timeSlot = null;
 	private Bitmap orderImageBitmap = null;
 	private String orderDetailString = null;
 	private ImageReceivedListener imageReceivedListener;
@@ -84,7 +84,24 @@ public class OrderingVM extends ViewModel {
 		this.uid=uid;
 
 	}
-
+	
+	public String getVendorName() {
+		return vendorName;
+	}
+	
+	public void setVendorName(String vendorName) {
+		this.vendorName = vendorName;
+	}
+	
+	public String getTimeSlot() {
+		return timeSlot;
+	}
+	
+	public void setTimeSlot(String timeSlot) {
+		this.timeSlot = timeSlot;
+	}
+	
+	
 	public interface ImageReceivedListener{
 		void hasReceivedImage(boolean b);
 	}
