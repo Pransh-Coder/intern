@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.collection.ArraySet;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -50,13 +51,13 @@ public class OrderingFR extends Fragment {
 	
 	private FragmentOrderingFRBinding binding;
 	private OrderingVM viewModel;
-	private List<VendorPOJO> vendorPOJOS;
+	private Set<VendorPOJO> vendorPOJOS;
 	public OrderingFR() {}
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
-		vendorPOJOS = new ArrayList<>();
+		vendorPOJOS = new ArraySet<>();
 		binding = FragmentOrderingFRBinding.inflate(inflater);
 		viewModel = new ViewModelProvider(requireActivity()).get(OrderingVM.class);
 		viewModel.setImageReceivedListener(b -> {
@@ -67,6 +68,7 @@ public class OrderingFR extends Fragment {
 		return binding.getRoot();
 	}
 	
+	@SuppressLint("SetTextI18n")
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
@@ -103,7 +105,7 @@ public class OrderingFR extends Fragment {
 						String name = vendorDataSnap.getString("stName");
 						String phoneNumber = vendorDataSnap.getString("phNo");
 						String uid=vendorDataSnap.getString("unique_id");
-						VendorPOJO vendorPOJO = new VendorPOJO(thisVendID, name, phoneNumber,uid);
+						VendorPOJO vendorPOJO = new VendorPOJO(thisVendID, name, phoneNumber, uid);
 						vendorPOJOS.add(vendorPOJO);
 						//Last one
 						if(!iterator.hasNext()){
@@ -143,8 +145,11 @@ public class OrderingFR extends Fragment {
 					}
 					for (QueryDocumentSnapshot document : task.getResult()) {
 						Toast.makeText(requireContext(), "Found Vendor", Toast.LENGTH_SHORT).show();
+						binding.vendorSpinner.setVisibility(View.GONE);
+						binding.tvSearchedVendor.setVisibility(View.VISIBLE);
 						viewModel.setChosenVendorID(document.getId());
 						viewModel.setVendorName(document.getString("stName"));
+						binding.tvSearchedVendor.setText("Vendor : " + viewModel.getVendorName() );
 					}
 				}
 			});
@@ -161,12 +166,16 @@ public class OrderingFR extends Fragment {
 		binding.etOrderDetail.addTextChangedListener(mTextEditorWatcher);
 	}
 	
-	
+	//AutoSet is used to determine whether user searched and spinner needs to autoset for the searched vendor
+	//Keep in mind that first entry is bogus, so setting the position +1 is needed
+	@SuppressLint("SetTextI18n")
 	private void proceedNow() {
+		//Convert the vendorPOJO set into a workable list now
+		List<VendorPOJO> vendorPOJOList = new ArrayList<>(vendorPOJOS);
 		//Set an item selected listener after all vendorIDS are added
 		List<String> shopNames = new ArrayList<>();
 		shopNames.add(0,"Select Vendor Id");
-		for(VendorPOJO pojo : vendorPOJOS){
+		for(VendorPOJO pojo : vendorPOJOList){
 			shopNames.add(pojo.vendorShopName);
 		}
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, shopNames);
@@ -175,18 +184,42 @@ public class OrderingFR extends Fragment {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				if(position>0) {
-					viewModel.setChosenVendorID(vendorPOJOS.get(position-1).vendorID);
-					viewModel.setuID(vendorPOJOS.get(position-1).uid);
-					viewModel.setVendorName(vendorPOJOS.get(position-1).vendorShopName);
+					viewModel.setChosenVendorID(vendorPOJOList.get(position-1).vendorID);
+					viewModel.setuID(vendorPOJOList.get(position-1).uid);
+					viewModel.setVendorName(vendorPOJOList.get(position-1).vendorShopName);
 					binding.tvViewPriceList.setVisibility(View.VISIBLE);
 				}else{
 					//Hide the view price list option
 					binding.tvViewPriceList.setVisibility(View.GONE);
+					viewModel.setChosenVendorID(null);
+					viewModel.setVendorName(null);
 				}
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}
 		});
+		//Get stale order info
+		if(viewModel.getOrderImageBitmap() != null){
+			binding.ivOrderList.setImageBitmap(viewModel.getOrderImageBitmap());
+		}
+		if(viewModel.getOrderDetailString() != null){
+			binding.etOrderDetail.setText(viewModel.getOrderDetailString());
+		}
+		if(viewModel.getChosenVendorID() != null){
+			binding.vendorSpinner.setVisibility(View.GONE);
+			binding.tvSearchedVendor.setVisibility(View.VISIBLE);
+			binding.tvSearchedVendor.setText("Vendor : " + viewModel.getVendorName());
+			for(int i = 0; i < vendorPOJOList.size(); i++){
+				if(vendorPOJOList.get(i).vendorID.equals(viewModel.getChosenVendorID())){
+					try {
+						//Account for extra string in the beginning and for the fact that the vendor might have been searched
+						binding.vendorSpinner.setSelection(i+1);
+						binding.vendorSpinner.setVisibility(View.VISIBLE);
+						binding.tvSearchedVendor.setVisibility(View.GONE);
+					}catch (Exception ignored){}
+				}
+			}
+		}
 		//Set a click listener to show the price list to user
 		binding.tvViewPriceList.setOnClickListener(v -> {
 			if (binding.tvViewPriceList.getVisibility() != View.VISIBLE) throw new AssertionError();
@@ -240,15 +273,14 @@ public class OrderingFR extends Fragment {
 				{
 					SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("prevOrder", MODE_PRIVATE);
 					SharedPreferences.Editor editor = sharedPreferences.edit();
-					editor.putString("list",orderDetail);
-					Boolean t=editor.commit();
+					editor.putString("list",orderDetail);editor.apply();
 					viewModel.getNavController().navigate(R.id.action_orderingFR_to_deliveryModeFR);
 				}
 			}
 		});
 	}
 	
-	class VendorPOJO{
+	static class VendorPOJO{
 		String vendorID;
 		String vendorShopName;
 		String vendorPhoneNumber;

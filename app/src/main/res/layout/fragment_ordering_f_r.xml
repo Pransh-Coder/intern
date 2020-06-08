@@ -191,6 +191,27 @@
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/tv_selectHere"/>
 			
+			<TextView
+				android:id="@+id/tv_searched_vendor"
+				android:layout_width="0dp"
+				android:layout_height="40dp"
+				android:layout_marginStart="15dp"
+				android:autoSizeMaxTextSize="16sp"
+				android:autoSizeTextType="uniform"
+				android:fontFamily="@font/century_gothic"
+				android:textColor="@color/black"
+				android:visibility="gone"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/tv_selectHere"/>
+			
+			<androidx.constraintlayout.widget.Barrier
+				android:id="@+id/barrier_vendor_selections"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:barrierDirection="bottom"
+				app:constraint_referenced_ids="tv_searched_vendor, vendor_spinner"/>
+			
 			<EditText
 				android:id="@+id/et_order_detail"
 				android:layout_width="match_parent"
@@ -206,7 +227,7 @@
 				android:paddingStart="10dp"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/vendor_spinner" />
+				app:layout_constraintTop_toBottomOf="@id/barrier_vendor_selections" />
 			
 			<TextView
 				android:id="@+id/char_count2"

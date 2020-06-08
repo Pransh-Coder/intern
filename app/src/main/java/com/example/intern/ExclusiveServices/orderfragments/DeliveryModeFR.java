@@ -35,13 +35,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.ByteArrayOutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TimeZone;
 
 public class DeliveryModeFR extends Fragment {
 	
@@ -122,6 +122,7 @@ public class DeliveryModeFR extends Fragment {
 		});
 	}
 	
+	@RequiresApi(api = Build.VERSION_CODES.O)
 	private void makeOrder(){
 		Map<String, Object> order = new HashMap<>();
 		//add timestamp of order
@@ -255,11 +256,10 @@ public class DeliveryModeFR extends Fragment {
 		});
 	}
 	
+	@RequiresApi(api = Build.VERSION_CODES.O)
 	private void uploadOrder(Map<String, Object> order, DocumentReference reference, ProgressDialog waitDialog) {
 		reference.collection("orders").add(order).addOnSuccessListener(documentReference -> {
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
-			EssentialOrderEntity orderEntity = new EssentialOrderEntity(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), viewModel.getuID(), documentReference.getId(), Integer.toString(calendar.get(Calendar.MONTH) + 1),System.currentTimeMillis(),viewModel.getChosenVendorID());
+			EssentialOrderEntity orderEntity = new EssentialOrderEntity(viewModel.getPrefUtil().getPreferences().getString(SharedPrefUtil.USER_UID_KEY, null), viewModel.getuID(), documentReference.getId(), LocalDate.now().getMonth().toString(),System.currentTimeMillis(),viewModel.getChosenVendorID());
 			OrderDB.getInstance(requireContext()).insertOrder(orderEntity);
 			Intent intent = new Intent(requireContext(), OrderTrackService.class);
 			intent.putExtra(OrderTrackService.EXTRA_VENDOR_ID, viewModel.getChosenVendorID());
