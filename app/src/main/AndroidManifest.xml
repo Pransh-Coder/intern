@@ -35,10 +35,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Order_Ready_Activity"></activity>
-        <activity android:name=".Order_Requests_Activity" />
-        <activity android:name=".ExclusiveServices.OrderDetail" />
-        <activity android:name=".ExclusiveServices.AllOrders" />
+        <activity
+            android:name=".Order_Ready_Activity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".Order_Requests_Activity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".ExclusiveServices.OrderDetail"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".ExclusiveServices.AllOrders"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
 
         <service
             android:name=".ExclusiveServices.OrderTrackService"
@@ -46,9 +55,15 @@
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <activity android:name=".ExclusiveServices.VendorChosingAct" />
-        <activity android:name=".ExclusiveServices.OrderActivity" />
-        <activity android:name=".fuel.RewardsOnFuel" />
+        <activity android:name=".ExclusiveServices.VendorChosingAct"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".ExclusiveServices.OrderActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".fuel.RewardsOnFuel"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
 
         <service
             android:name=".fuel.BackNavService"
@@ -66,7 +81,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".fuel.MapsActivity" />
+        <activity android:name=".fuel.MapsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -74,10 +91,14 @@
 
         <activity
             android:name="com.facebook.FacebookActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -92,10 +113,14 @@
         </activity>
         <activity
             android:name=".vendortest.VendorMain"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Splash"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -105,112 +130,196 @@
         </activity>
         <activity
             android:name=".mainapp.MainApp"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_main_app"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateVisible|adjustResize|adjustPan" />
         <activity
             android:name=".swabhiman.SwabhimanActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/MaterialAppTheme"
             android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
-        <activity android:name=".shopping.ActivityShopping" />
-        <activity android:name=".BPCL_Fuel_QR_ScannerActivity" />
-        <activity android:name=".fuel.FuelBPCLACT" />
+        <activity android:name=".shopping.ActivityShopping"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".BPCL_Fuel_QR_ScannerActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".fuel.FuelBPCLACT"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".MedicalRecords.MedicalRecord"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
-        <activity android:name=".tnc.TermsAndConditions" />
+        <activity android:name=".tnc.TermsAndConditions"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ReduceExpenses.ReduceExpenses"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/MaterialAppTheme"
             android:windowSoftInputMode="adjustResize|adjustPan" />
         <activity
             android:name=".TotalDiscountReceived.TotalDiscountReceived"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/MaterialAppTheme" />
-        <activity android:name=".NewsAndUpdatesACT" />
-        <activity android:name=".FeedBackOrComplaintACT" />
-        <activity android:name=".socialnetwork.Listactivity" />
-        <activity android:name=".fuel.FuelWithUsAct" />
+        <activity android:name=".NewsAndUpdatesACT"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".FeedBackOrComplaintACT"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".socialnetwork.Listactivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".fuel.FuelWithUsAct"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".auth.AuthActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:configChanges="locale|orientation"
             android:launchMode="singleTop" />
         <activity
             android:name=".MedicalRecords.Vitals"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
-        <activity android:name=".holiday_list" />
-        <activity android:name=".lifestyle_list" />
-        <activity android:name=".food_list" />
+        <activity android:name=".holiday_list"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".lifestyle_list"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".food_list"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".qr.QRScanner"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:launchMode="singleTop" />
         <activity
             android:name=".EditProfile.EditProfile"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:launchMode="singleTop"
             android:theme="@style/MaterialAppTheme" />
         <activity
             android:name=".ExclusiveServices.ExclusiveServices"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="stateVisible|adjustResize|adjustPan" />
         <activity
             android:name=".Rating"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:noHistory="true" />
-        <activity android:name=".askservices.DemandActivity" />
+        <activity android:name=".askservices.DemandActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name="save_money.Health"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
         <activity
             android:name="save_money.SaveMoney"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize" />
         <activity
             android:name="save_money.Offers.DentalCategoryOffers"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="save_money.Offers.DieticianOffers"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="save_money.Offers.EyeClinicOffers"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="save_money.Offers.HomeopathicOffers"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="save_money.Offers.Patholgy_LaborartoryOffers"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".payment.StandardPaymentActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:launchMode="singleTop" />
         <activity
             android:name="save_money.Offers.PhysiotherapyOffers"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".payment.BecomeAMember"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:launchMode="singleTop" />
         <activity
             android:name=".Gifts"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
-        <activity android:name=".ExclusiveServices.TiffinService" />
-        <activity android:name=".ExclusiveServices.HomeModification" />
+        <activity android:name=".ExclusiveServices.TiffinService"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".ExclusiveServices.HomeModification"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".Lifestyle"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
         <activity
             android:name=".FoodActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
         <activity
             android:name=".Holiday"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
         <activity
             android:name=".ServicesActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
         <activity android:name=".two_wheeler_repair_list" />
         <activity
             android:name=".ExclusiveServices.DoctorOnline"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustResize|stateHidden|adjustPan" />
-        <activity android:name=".askservices.EssentialServices" />
+        <activity android:name=".askservices.EssentialServices"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
